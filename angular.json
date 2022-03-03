@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "pomogamukrainie": {
+    "pomagamukrainie": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/pomogamukrainie",
+            "outputPath": "dist/pomagamukrainie",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -67,10 +67,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "pomogamukrainie:build:production"
+              "browserTarget": "pomagamukrainie:build:production"
             },
             "development": {
-              "browserTarget": "pomogamukrainie:build:development"
+              "browserTarget": "pomagamukrainie:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -78,7 +78,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "pomogamukrainie:build"
+            "browserTarget": "pomagamukrainie:build"
           }
         },
         "test": {
@@ -103,7 +103,7 @@
       }
     }
   },
-  "defaultProject": "pomogamukrainie",
+  "defaultProject": "pomagamukrainie",
   "cli": {
     "defaultCollection": "@angular-eslint/schematics"
   }
