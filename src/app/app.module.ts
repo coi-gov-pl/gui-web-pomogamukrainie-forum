@@ -5,10 +5,24 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
+import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
+import { PomTranslateLoader, Language } from "./core/translate-loader.service";
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, NoopAnimationsModule, MatCardModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    NoopAnimationsModule,
+    MatCardModule,
+    TranslateModule.forRoot({
+      defaultLanguage: Language.pl_PL,
+      loader: {
+        provide: TranslateLoader,
+        useClass: PomTranslateLoader,
+      }
+    }),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
