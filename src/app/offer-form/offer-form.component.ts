@@ -1,9 +1,4 @@
-import {Component, EventEmitter, NgModule, Output,} from '@angular/core';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatIconModule} from '@angular/material/icon';
-import {FormsModule} from '@angular/forms';
-import {MatInputModule} from '@angular/material/input';
-import {MatButtonModule} from '@angular/material/button';
+import {Component, EventEmitter, Output,} from '@angular/core';
 
 export interface Offer {
   title: string;
@@ -23,16 +18,3 @@ export class OfferFormComponent {
 
   @Output() onSubmit = new EventEmitter<Offer>();
 }
-
-@NgModule({
-  declarations: [OfferFormComponent],
-  imports: [
-    FormsModule,
-    MatFormFieldModule,
-    MatIconModule,
-    MatInputModule,
-    MatButtonModule,
-  ],
-  exports: [OfferFormComponent],
-})
-export class OfferFormComponentModule {}

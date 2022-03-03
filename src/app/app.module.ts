@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
-import { AccommodationFormComponentModule } from "./accommodation-form/accommodation-form.component";
+import { AccommodationFormComponentModule } from "./accommodation-form/accommodation-form.module";
 
 @NgModule({
   declarations: [

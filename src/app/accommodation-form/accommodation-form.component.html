@@ -16,11 +16,7 @@
       <label><b i18n>Czas pobytu</b></label>
       <mat-form-field appearance="outline">
         <mat-select placeholder="Wybierz" [(ngModel)]="data.lengthOfStay" name="czasPobytu">
-          <mat-option i18n value="1t">1 tydzień</mat-option>
-          <mat-option i18n value="2t">2 tygodnie</mat-option>
-          <mat-option i18n value="1m">1 miesiąc</mat-option>
-          <mat-option i18n value="2m">2 miesiące</mat-option>
-          <mat-option i18n value="o">dłużej</mat-option>
+          <mat-option *ngFor="let it of lengthsOfSay" [value]="it.code">{{it.label}}</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
@@ -28,11 +24,7 @@
       <label><b i18n>Język, w jakim mówi gospodarz:</b></label>
       <mat-form-field appearance="outline">
         <mat-select placeholder="Wybierz" multiple [(ngModel)]="data.hostLanguages" name="jezyk">
-          <mat-option i18n value="pl">Polski</mat-option>
-          <mat-option i18n value="en">Angielski</mat-option>
-          <mat-option i18n value="ua">Ukraiński</mat-option>
-          <mat-option i18n value="de">Niemiecki</mat-option>
-          <mat-option i18n value="ru">Rosyjski</mat-option>
+          <mat-option *ngFor="let it of languages" [value]="it.code">{{it.label}}</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
