@@ -1,0 +1,21 @@
+<form (ngSubmit)="handleSubmit($event)">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <label>Type of Support</label>
+        <mat-form-field appearance="outline">
+          <mat-select
+            placeholder="Select from the list"
+            [(ngModel)]="formData.type"
+            name="type"
+          >
+            <mat-option></mat-option>
+            <mat-option *ngFor="let type of materialSupportTypes" [value]="type">{{type}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <button type="submit">Submit</button>
+      </div>
+    </div>
+  </div>
+</form>
