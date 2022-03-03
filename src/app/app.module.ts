@@ -8,12 +8,7 @@ import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    NoopAnimationsModule,
-    MatCardModule,
-  ],
+  imports: [BrowserModule, AppRoutingModule, NoopAnimationsModule, MatCardModule],
   providers: [],
   bootstrap: [AppComponent],
 })
