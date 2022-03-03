@@ -1,0 +1,40 @@
+<app-offer-form (onSubmit)="handleSubmit($event)">
+  <div class="row">
+    <div class="col-md-4">
+      <label><b i18n>Wskaż lokalizację:</b></label>
+      <mat-form-field appearance="outline">
+        <input matInput name="lokalizacja" [(ngModel)]="data.location"/>
+      </mat-form-field>
+    </div>
+    <div class="col-md-2">
+      <label><b i18n>Ilość osób:</b></label>
+      <mat-form-field appearance="outline">
+        <input matInput type="number" min="1" [(ngModel)]="data.guests" name="osob"/>
+      </mat-form-field>
+    </div>
+    <div class="col-md-3">
+      <label><b i18n>Czas pobytu</b></label>
+      <mat-form-field appearance="outline">
+        <mat-select placeholder="Wybierz" [(ngModel)]="data.lengthOfStay" name="czasPobytu">
+          <mat-option i18n value="1t">1 tydzień</mat-option>
+          <mat-option i18n value="2t">2 tygodnie</mat-option>
+          <mat-option i18n value="1m">1 miesiąc</mat-option>
+          <mat-option i18n value="2m">2 miesiące</mat-option>
+          <mat-option i18n value="o">dłużej</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col-md-3">
+      <label><b i18n>Język, w jakim mówi gospodarz:</b></label>
+      <mat-form-field appearance="outline">
+        <mat-select placeholder="Wybierz" multiple [(ngModel)]="data.hostLanguages" name="jezyk">
+          <mat-option i18n value="pl">Polski</mat-option>
+          <mat-option i18n value="en">Angielski</mat-option>
+          <mat-option i18n value="ua">Ukraiński</mat-option>
+          <mat-option i18n value="de">Niemiecki</mat-option>
+          <mat-option i18n value="ru">Rosyjski</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+</app-offer-form>
