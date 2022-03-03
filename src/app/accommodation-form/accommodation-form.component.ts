@@ -1,14 +1,10 @@
-import {Component, NgModule} from '@angular/core';
-import {FormsModule} from "@angular/forms";
-import {MatFormFieldModule} from "@angular/material/form-field";
-import {Offer, OfferFormComponentModule} from "../offer-form/offer-form.component";
-import {MatSelectModule} from "@angular/material/select";
-import {MatInputModule} from "@angular/material/input";
+import {Component} from '@angular/core';
+import {Offer} from "../offer-form/offer-form.component";
 
 interface Accommodation {
   location: string;
-  guests: number |undefined;
-  lengthOfStay: string|undefined;
+  guests: number | undefined;
+  lengthOfStay: string | undefined;
   hostLanguages: string[];
 }
 @Component({
@@ -17,12 +13,24 @@ interface Accommodation {
   styleUrls: ['./accommodation-form.component.scss']
 })
 export class AccommodationFormComponent {
-  data:Accommodation= {
+  data: Accommodation = {
     location: '',
     guests: undefined,
     lengthOfStay: undefined,
     hostLanguages: []
   }
+  languages = [
+    {code: 'pl', label: 'Polski'},
+    {code: 'ua', label: 'Ukraiński'},
+    {code: 'en', label: 'Angielski'},
+  ]
+  lengthsOfSay = [
+    {code: '1t', label: '1 tydzień '},
+    {code: '2t', label: '2 tygodnie'},
+    {code: '1m', label: '1 miesiąc '},
+    {code: '2m', label: '2 miesiące'},
+    {code: 'o', label: 'dłużej'},
+  ]
 
   handleSubmit(offer: Offer) {
     console.log({
@@ -32,18 +40,3 @@ export class AccommodationFormComponent {
   }
 
 }
-
-@NgModule({
-  declarations: [
-    AccommodationFormComponent
-  ],
-  imports: [
-    MatFormFieldModule,
-    OfferFormComponentModule,
-    FormsModule,
-    MatSelectModule,
-    MatInputModule,
-  ],
-  exports:[AccommodationFormComponent]
-})
-export class AccommodationFormComponentModule { }
