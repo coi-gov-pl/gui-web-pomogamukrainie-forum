@@ -8,9 +8,8 @@ describe('FindHelpComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FindHelpComponent ]
-    })
-    .compileComponents();
+      declarations: [FindHelpComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

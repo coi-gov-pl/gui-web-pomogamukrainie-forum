@@ -1,5 +1,5 @@
-import {Component, EventEmitter, Output,} from '@angular/core';
-import {defaults} from "../defaults";
+import { Component, EventEmitter, Output } from '@angular/core';
+import { defaults } from '../defaults';
 
 export interface Offer {
   title: string;
@@ -14,5 +14,5 @@ export interface Offer {
 export class OfferFormComponent {
   data = defaults<Offer>();
 
-  @Output() onSubmit = new EventEmitter<Offer>();
+  @Output() submitOffer = new EventEmitter<Offer>();
 }
