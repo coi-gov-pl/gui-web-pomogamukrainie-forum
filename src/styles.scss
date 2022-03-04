@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap-grid.min.css";
+@import "~bootstrap/dist/css/bootstrap-utilities.min.css";
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import "./assets/styles/variables";
 @import "./src/app/offer-form/offer-form.component.deep";
@@ -31,3 +32,5 @@ h6 {
 p {
   margin: 0;
 }
+
+@import "./assets/styles/buttons";

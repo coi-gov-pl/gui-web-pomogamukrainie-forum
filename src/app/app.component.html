@@ -1,16 +1,15 @@
 <header class="header solid">
-  <nav id="main-nav" class="navbar navbar-expand-lg">
+  <div class="navbar navbar-expand-lg">
     <div class="container">
-      <img src="./assets/images/herb.png" alt="herb" class="herb navbar-brand" />
-      <img src="./assets/images/kprm.svg" alt="logo" class="logo navbar-brand" />
-      <img src="./assets/images/pomagamyua.svg" alt="logo" class="logo navbar-brand" />
+      <div class="d-flex flex-row">
+        <img src="./assets/images/herb.png" alt="herb" class="herb navbar-brand" />
+        <img src="./assets/images/kprm.svg" alt="logo" class="logo navbar-brand" />
+        <img src="./assets/images/pomagamyua.svg" alt="logo" class="logo navbar-brand" />
+      </div>
     </div>
-  </nav>
+  </div>
 </header>
 
-<main class="content">
-  <mat-card style="width: 100%">
-      <router-outlet></router-outlet>
-  </mat-card>
+<main>
   <router-outlet></router-outlet>
 </main>
