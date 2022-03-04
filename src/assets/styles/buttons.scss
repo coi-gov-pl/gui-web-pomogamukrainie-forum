@@ -7,31 +7,38 @@
   letter-spacing: 1.25px;
   padding: 15px 30px;
   text-transform: uppercase;
+
   &-primary {
     background: var(--c-darkblue);
     border-color: var(--c-darkblue);
     color: var(--c-white);
   }
+
   &-secondary {
     background: var(--c-lightgray);
     border-color: var(--c-lightgray);
     color: var(--c-darkblue);
   }
+
   &-highlight {
     background: var(--c-yellow);
     border-color: var(--c-yellow);
     color: var(--c-darkblue);
   }
+
   &-outline-highlight {
     background: transparent;
     border-color: var(--c-yellow);
     color: var(--c-yellow);
+
     mat-icon {
       color: var(--c-yellow);
     }
+
     &:hover {
       background: var(--c-yellow);
       color: var(--c-darkblue);
+
       mat-icon {
         color: var(--c-darkblue);
       }
