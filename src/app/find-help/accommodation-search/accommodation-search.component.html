@@ -1,0 +1,9 @@
+<mat-card>
+  <app-accommodation-search-form (onSubmit)="search($event)"></app-accommodation-search-form>
+</mat-card>
+<div class="results" *ngIf="this.total >=0 ">
+  Lista ogłoszeń ({{total}}):
+  <div>
+    <app-search-result *ngFor="let result of results">{{result.title}}</app-search-result>
+  </div>
+</div>

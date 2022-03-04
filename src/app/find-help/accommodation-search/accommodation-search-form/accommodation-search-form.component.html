@@ -7,7 +7,7 @@
           <input
             matInput
             placeholder="replace with location search component"
-            name="title"
+            name="location"
             [(ngModel)]="data.location"
           />
         </mat-form-field>
@@ -15,7 +15,7 @@
       <div class="col-md-2">
         <label><b>Liczba osób</b></label>
         <mat-form-field appearance="outline">
-          <input matInput min="1" name="title" type="number" [(ngModel)]="data.guests"/>
+          <input matInput min="1" name="guests" type="number" [(ngModel)]="data.guests"/>
         </mat-form-field>
       </div>
       <div class="col-md-4 search">
