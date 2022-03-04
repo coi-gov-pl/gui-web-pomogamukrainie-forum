@@ -8,9 +8,8 @@ describe('MoreInfoLinkComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MoreInfoLinkComponent ]
-    })
-    .compileComponents();
+      declarations: [MoreInfoLinkComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

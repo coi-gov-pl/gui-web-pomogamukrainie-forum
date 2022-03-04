@@ -4,24 +4,27 @@
       <div class="col-md-6">
         <label><b>Lokalizacja</b></label>
         <mat-form-field appearance="outline">
-          <input matInput placeholder="replace with location search component"
-                 name="title" [(ngModel)]="data.location"/>
+          <input
+            matInput
+            placeholder="replace with location search component"
+            name="title"
+            [(ngModel)]="data.location"
+          />
         </mat-form-field>
       </div>
       <div class="col-md-2">
         <label><b>Liczba osób</b></label>
         <mat-form-field appearance="outline">
-          <input matInput min="1" name="title" type="number" [(ngModel)]="data.guests"/>
+          <input matInput min="1" name="title" type="number" [(ngModel)]="data.guests" />
         </mat-form-field>
       </div>
       <div class="col-md-4 search">
         <button mat-flat-button color="primary" type="submit">
-          <mat-icon>search</mat-icon>
+          <mat-icon fontSet="material-icons-outlined">search</mat-icon>
           <span>Wyszukaj</span>
         </button>
       </div>
     </div>
+    <more-info-link></more-info-link>
   </div>
 </form>
-<more-info-link></more-info-link>
-

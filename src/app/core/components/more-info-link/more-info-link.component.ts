@@ -1,10 +1,10 @@
-import { Component, Input, NgModule } from "@angular/core";
+import { Component, Input, NgModule } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'more-info-link',
   templateUrl: './more-info-link.component.html',
-  styleUrls: ['./more-info-link.component.scss']
+  styleUrls: ['./more-info-link.component.scss'],
 })
 export class MoreInfoLinkComponent {
   @Input() href = '';
@@ -13,6 +13,6 @@ export class MoreInfoLinkComponent {
 @NgModule({
   declarations: [MoreInfoLinkComponent],
   imports: [MatIconModule],
-  exports: [MoreInfoLinkComponent]
+  exports: [MoreInfoLinkComponent],
 })
-export class MoreInfoLinkModule { }
+export class MoreInfoLinkModule {}

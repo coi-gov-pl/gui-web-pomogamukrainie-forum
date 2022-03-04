@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import {Offer} from "../offer-form/offer-form.component";
-import {defaults} from "../../core/defaults";
+import { Offer } from '../offer-form/offer-form.component';
+import { defaults } from '../../core/defaults';
 
 interface Accommodation {
   location: string;
