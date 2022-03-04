@@ -5,6 +5,7 @@ import {MatInputModule} from "@angular/material/input";
 import {FormsModule} from "@angular/forms";
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
+import {MoreInfoLinkModule} from "../../core/components/more-info-link/more-info-link.component";
 
 type Location = string; //TODO
 
@@ -39,6 +40,7 @@ export class AccommodationSearchComponent {
     FormsModule,
     MatIconModule,
     MatButtonModule,
+    MoreInfoLinkModule,
   ]
 })
 export class AccommodationSearchComponentModule {
