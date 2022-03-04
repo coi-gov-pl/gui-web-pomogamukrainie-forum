@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {Offer} from "../offer-form/offer-form.component";
+import {defaults} from "../defaults";
 
 interface Accommodation {
   location: string;
@@ -13,12 +14,9 @@ interface Accommodation {
   styleUrls: ['./accommodation-form.component.scss']
 })
 export class AccommodationFormComponent {
-  data: Accommodation = {
-    location: '',
-    guests: undefined,
-    lengthOfStay: undefined,
-    hostLanguages: []
-  }
+  data = defaults<Accommodation>({
+    hostLanguages: [],
+  })
   languages = [
     {code: 'pl', label: 'Polski'},
     {code: 'ua', label: 'Ukraiński'},
