@@ -22,7 +22,7 @@ import { AccommodationFormComponentModule } from "./accommodation-form/accommoda
       loader: {
         provide: TranslateLoader,
         useClass: PomTranslateLoader,
-      }
+      },
     }),
   ],
   providers: [],
