@@ -8,7 +8,6 @@ import { MatCardModule } from '@angular/material/card';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { PomTranslateLoader, Language } from './core/translate-loader.service';
 import { CitiesSearchModule } from './cities-search/cities-search.module';
-import { CitiesSearchComponent } from './cities-search/cities-search.component';
 
 @NgModule({
   declarations: [AppComponent],
