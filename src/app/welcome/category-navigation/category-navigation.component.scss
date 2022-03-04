@@ -1,6 +1,7 @@
 :host {
   width: 100%;
 }
+
 .navigation {
   text-align: center;
 
@@ -10,6 +11,7 @@
     font-size: 19px;
     line-height: 1.3;
   }
+
   ul {
     list-style: none;
     padding: 0;
@@ -30,16 +32,19 @@
     padding: 10px;
     text-align: center;
     text-decoration: none;
+
     &.disabled {
       opacity: 0.4;
       pointer-events: none;
     }
+
     mat-icon {
       display: block;
       white-space: nowrap;
       margin: 10px 0;
       overflow: hidden;
     }
+
     h3 {
       display: flex;
       align-items: center;
@@ -51,12 +56,15 @@
       text-decoration: none;
       margin-bottom: 0;
     }
+
     &:hover,
     &:focus {
       outline: 2px solid var(--c-yellow);
+
       mat-icon {
         color: var(--c-blue);
       }
+
       h3 {
         color: var(--c-blue);
       }
