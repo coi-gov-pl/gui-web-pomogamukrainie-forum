@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { defaults } from '../defaults';
+import { defaults } from '../../core/defaults';
 
 export interface Offer {
   title: string;
