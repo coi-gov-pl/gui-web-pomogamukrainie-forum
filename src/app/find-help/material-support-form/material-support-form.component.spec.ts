@@ -8,9 +8,8 @@ describe('MaterialSupportFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MaterialSupportFormComponent ]
-    })
-    .compileComponents();
+      declarations: [MaterialSupportFormComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
