@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class CategoryNavigationComponent {
   categories = [
-    { name: 'ACCOMMODATION', icon: 'bed', path: '', disabled: false },
+    { name: 'ACCOMMODATION', icon: 'bed', path: '/szukaj-pomocy/accommodation', disabled: false },
     { name: 'MATERIAL_HELP', icon: 'interests_outline', path: '', disabled: false },
     { name: 'TRANSPORT', icon: 'directions_car_outline', path: '', disabled: false },
     { name: 'HEALTH', icon: 'local_hospital', path: '', disabled: true },
