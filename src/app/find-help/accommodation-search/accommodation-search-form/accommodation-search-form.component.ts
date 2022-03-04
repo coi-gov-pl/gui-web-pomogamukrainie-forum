@@ -13,5 +13,5 @@ export interface AccommodationQuery {
 export class AccommodationSearchFormComponent {
   data: AccommodationQuery = {};
   @Output()
-  onSubmit = new EventEmitter<AccommodationQuery>();
+  search = new EventEmitter<AccommodationQuery>();
 }

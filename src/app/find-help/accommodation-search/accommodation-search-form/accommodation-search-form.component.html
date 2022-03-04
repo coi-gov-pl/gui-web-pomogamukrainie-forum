@@ -1,4 +1,4 @@
-<form (ngSubmit)="onSubmit.emit(data)">
+<form (ngSubmit)="search.emit(data)">
   <div class="container">
     <div class="row">
       <div class="col-md-6">
@@ -15,7 +15,7 @@
       <div class="col-md-2">
         <label><b>Liczba osób</b></label>
         <mat-form-field appearance="outline">
-          <input matInput min="1" name="guests" type="number" [(ngModel)]="data.guests"/>
+          <input matInput min="1" name="guests" type="number" [(ngModel)]="data.guests" />
         </mat-form-field>
       </div>
       <div class="col-md-4 search">
