@@ -8,6 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "format": "prettier \"src/**/*.{ts,html,scss,md}\" --write",
+    "format:check": "prettier \"src/**/*.{ts,html,scss,md}\" --check",
     "lint": "ng lint",
     "prepare": "husky install"
   },
