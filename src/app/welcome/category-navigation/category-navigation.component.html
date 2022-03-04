@@ -2,7 +2,7 @@
   <h2>{{ "WHAT_ARE_YOU_LOOKING_FOR" | translate }}</h2>
   <ul>
     <li *ngFor="let category of categories">
-      <a routerLink="#" class="navigation-tile" [ngClass]="{ disabled: category.disabled }">
+      <a [routerLink]="category.path" class="navigation-tile" [ngClass]="{ disabled: category.disabled }">
         <mat-icon fontSet="material-icons-outlined">{{ category.icon }}</mat-icon>
         <h3>{{ category.name | translate }}</h3>
       </a>
