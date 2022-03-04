@@ -1,21 +1,42 @@
 <form (ngSubmit)="handleSubmit($event)">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4">
-        <label>Type of Support</label>
-        <mat-form-field appearance="outline">
-          <mat-select
-            placeholder="Select from the list"
-            [(ngModel)]="formData.type"
-            name="type"
-          >
-            <mat-option></mat-option>
-            <mat-option *ngFor="let type of materialSupportTypes" [value]="type">{{type}}</mat-option>
-          </mat-select>
-        </mat-form-field>
-
-        <button type="submit">Submit</button>
-      </div>
+  <div class="d-block d-lg-flex align-items-end flex-wrap" style="gap: 14px;">
+    <div class="flex-lg-grow-1">
+      <label style="display:block; font-size: 12px; font-weight: bold; margin-bottom: 4px;">Type of Support</label>
+      <mat-form-field appearance="outline" style="width:100%">
+        <mat-select
+          placeholder="Select from the list"
+          [(ngModel)]="form.value.type"
+          name="type"
+        >
+          <mat-option value=""></mat-option>
+          <mat-option *ngFor="let type of materialSupportTypes" [value]="type.value">{{type.label}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="flex-lg-grow-1">
+      <label style="display:block; font-size: 12px; font-weight: bold; margin-bottom: 4px;">Location</label>
+      <mat-form-field appearance="outline" style="width:100%">
+        <input
+          matInput
+          type="text"
+          [(ngModel)]="form.value.location"
+          placeholder="Eg. Rzeszów, podkarpackie"
+          name="location"
+        />
+      </mat-form-field>
+    </div>
+    <div class="flex-lg-grow-0 flex-shrink-0 pb-lg-4">
+      <button
+        style="height: 48px; padding: 0 20px; border-radius: 50rem;"
+        class="d-flex align-items-center rounded-pill"
+        mat-flat-button
+        type="submit"
+        color="primary"
+      >
+        <mat-icon>search</mat-icon>
+        Search
+      </button>
     </div>
   </div>
+  <more-info-link href="/material-support/more-info"></more-info-link>
 </form>

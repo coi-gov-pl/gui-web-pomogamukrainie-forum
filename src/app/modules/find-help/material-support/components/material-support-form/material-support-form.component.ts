@@ -1,16 +1,31 @@
-import { Component, NgModule } from '@angular/core';
+import { Component, Input, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from "@angular/forms";
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from "@angular/material/input";
 import { MatSelectModule } from "@angular/material/select";
+import { MatButtonModule } from "@angular/material/button";
+import { MoreInfoLinkModule } from '../../../../../core/components/more-info-link/more-info-link.component'
 
-enum MaterialSupportType {
-  Equipment = 'equipment',
-  Food = 'food'
+interface SelectOption<T> {
+  label: string;
+  value: T;
 }
 
-const materialSupportTypes: MaterialSupportType[] = Object.values(MaterialSupportType);
+enum MaterialSupportType {
+  Food = 'food',
+  Clothing = 'clothing',
+  Hygiene = 'hygiene',
+  Other = 'other',
+}
+
+const materialSupportTypes: SelectOption<MaterialSupportType>[] = [
+  { label: 'Food', value: MaterialSupportType.Food },
+  { label: 'Clothing', value: MaterialSupportType.Clothing },
+  { label: 'Hygiene and cleaning products', value: MaterialSupportType.Hygiene },
+  { label: 'Other', value: MaterialSupportType.Other },
+];
 
 export interface MaterialSupport {
   type?: MaterialSupportType;
@@ -18,20 +33,26 @@ export interface MaterialSupport {
 }
 
 @Component({
-  selector: 'app-material-support-form',
+  selector: 'material-support-form',
   templateUrl: './material-support-form.component.html',
   styleUrls: ['./material-support-form.component.scss']
 })
 export class MaterialSupportFormComponent {
-  formData: MaterialSupport = {
-    type: undefined,
-    location: '',
-  }
+  form: FormGroup = new FormGroup({
+    type: new FormControl(undefined),
+    location: new FormControl(''),
+  });
   materialSupportTypes = materialSupportTypes;
+
+  constructor(private fb: FormBuilder) {}
 
   handleSubmit($event: any) {
     $event.preventDefault();
     console.log('Submitted!')
+  }
+
+  private createForm(model: MaterialSupport): FormGroup {
+    return this.fb.group(model);
   }
 }
 
@@ -40,11 +61,14 @@ export class MaterialSupportFormComponent {
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
+    MatButtonModule,
     MatFormFieldModule,
+    MatIconModule,
     MatInputModule,
     MatSelectModule,
+    MoreInfoLinkModule,
   ],
   exports: [MaterialSupportFormComponent]
 })
-
 export class MaterialSupportFormModule { }
