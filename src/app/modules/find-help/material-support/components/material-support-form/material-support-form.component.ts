@@ -1,6 +1,6 @@
-import { Component, Input, NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from "@angular/material/input";
@@ -27,11 +27,6 @@ const materialSupportTypes: SelectOption<MaterialSupportType>[] = [
   { label: 'Other', value: MaterialSupportType.Other },
 ];
 
-export interface MaterialSupport {
-  type?: MaterialSupportType;
-  location?: string;
-}
-
 @Component({
   selector: 'material-support-form',
   templateUrl: './material-support-form.component.html',
@@ -44,15 +39,9 @@ export class MaterialSupportFormComponent {
   });
   materialSupportTypes = materialSupportTypes;
 
-  constructor(private fb: FormBuilder) {}
-
   handleSubmit($event: any) {
     $event.preventDefault();
     console.log('Submitted!')
-  }
-
-  private createForm(model: MaterialSupport): FormGroup {
-    return this.fb.group(model);
   }
 }
 
