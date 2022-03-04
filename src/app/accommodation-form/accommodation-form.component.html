@@ -1,22 +1,22 @@
-<app-offer-form (onSubmit)="handleSubmit($event)">
+<app-offer-form (submitOffer)="handleSubmit($event)">
   <div class="row">
     <div class="col-md-4">
       <label><b>Wskaż lokalizację:</b></label>
       <mat-form-field appearance="outline">
-        <input matInput name="lokalizacja" [(ngModel)]="data.location"/>
+        <input matInput name="lokalizacja" [(ngModel)]="data.location" />
       </mat-form-field>
     </div>
     <div class="col-md-2">
       <label><b>Ilość osób:</b></label>
       <mat-form-field appearance="outline">
-        <input matInput type="number" min="1" [(ngModel)]="data.guests" name="osob"/>
+        <input matInput type="number" min="1" [(ngModel)]="data.guests" name="osob" />
       </mat-form-field>
     </div>
     <div class="col-md-3">
       <label><b>Czas pobytu</b></label>
       <mat-form-field appearance="outline">
         <mat-select placeholder="Wybierz" [(ngModel)]="data.lengthOfStay" name="czasPobytu">
-          <mat-option *ngFor="let it of lengthsOfSay" [value]="it.code">{{it.label}}</mat-option>
+          <mat-option *ngFor="let it of lengthsOfSay" [value]="it.code">{{ it.label }}</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
@@ -24,7 +24,7 @@
       <label><b>Język, w jakim mówi gospodarz:</b></label>
       <mat-form-field appearance="outline">
         <mat-select placeholder="Wybierz" multiple [(ngModel)]="data.hostLanguages" name="jezyk">
-          <mat-option *ngFor="let it of languages" [value]="it.code">{{it.label}}</mat-option>
+          <mat-option *ngFor="let it of languages" [value]="it.code">{{ it.label }}</mat-option>
         </mat-select>
       </mat-form-field>
     </div>

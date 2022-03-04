@@ -1,5 +1,5 @@
 export function defaults<T>(defaults: Partial<T> = {}) {
   return {
-    ...defaults
+    ...defaults,
   } as T;
 }

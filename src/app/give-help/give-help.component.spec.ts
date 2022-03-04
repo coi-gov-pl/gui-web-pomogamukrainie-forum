@@ -8,9 +8,8 @@ describe('GiveHelpComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GiveHelpComponent ]
-    })
-    .compileComponents();
+      declarations: [GiveHelpComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

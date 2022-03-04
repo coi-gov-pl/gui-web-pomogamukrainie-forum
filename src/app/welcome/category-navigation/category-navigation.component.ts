@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-category-navigation',
   templateUrl: './category-navigation.component.html',
   styleUrls: ['./category-navigation.component.scss'],
 })
-export class CategoryNavigationComponent implements OnInit {
+export class CategoryNavigationComponent {
   categories = [
     { name: 'ACCOMMODATION', icon: 'bed', path: '', disabled: false },
     { name: 'MATERIAL_HELP', icon: 'interests_outline', path: '', disabled: false },
@@ -16,8 +16,4 @@ export class CategoryNavigationComponent implements OnInit {
     { name: 'TRANSLATIONS', icon: 'translate', path: '', disabled: true },
     { name: 'MISC', icon: 'lan', path: '', disabled: true },
   ];
-
-  constructor() {}
-
-  ngOnInit(): void {}
 }

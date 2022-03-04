@@ -31,7 +31,7 @@
     text-align: center;
     text-decoration: none;
     &.disabled {
-       opacity: .4;
+      opacity: 0.4;
       pointer-events: none;
     }
     mat-icon {
