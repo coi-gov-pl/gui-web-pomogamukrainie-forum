@@ -1,0 +1,14 @@
+$icon-size: 20px;
+
+:host a {
+  font-size: 12px;
+  font-weight: 500;
+  background-color: #cedcf2;
+  color: #052c65;
+
+  mat-icon {
+    font-size: $icon-size;
+    width: $icon-size;
+    height: $icon-size;
+  }
+}
