@@ -7,28 +7,16 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MoreInfoLinkModule } from '../../core/components/more-info-link/more-info-link.component';
-
-interface SelectOption<T> {
-  label: string;
-  value: T;
-}
+import { TranslateModule } from '@ngx-translate/core';
 
 enum MaterialSupportType {
   Food = 'food',
   Clothing = 'clothing',
   Hygiene = 'hygiene',
-  Other = 'other',
+  Misc = 'misc',
 }
 
-const materialSupportTypes: SelectOption<MaterialSupportType>[] = [
-  { label: 'Food', value: MaterialSupportType.Food },
-  { label: 'Clothing', value: MaterialSupportType.Clothing },
-  {
-    label: 'Hygiene and cleaning products',
-    value: MaterialSupportType.Hygiene,
-  },
-  { label: 'Other', value: MaterialSupportType.Other },
-];
+const materialSupportTypes = Object.values(MaterialSupportType);
 
 @Component({
   selector: 'app-material-support-form',
@@ -60,6 +48,7 @@ export class MaterialSupportFormComponent {
     MatInputModule,
     MatSelectModule,
     MoreInfoLinkModule,
+    TranslateModule,
   ],
   exports: [MaterialSupportFormComponent],
 })
