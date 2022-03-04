@@ -1,11 +1,15 @@
 .btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 30px;
   font-family: var(--font-roboto);
   font-size: 14px;
   font-weight: 500;
   line-height: 16px;
   letter-spacing: 1.25px;
-  padding: 15px 30px;
+  padding: 0 30px;
+  height: 48px;
   text-transform: uppercase;
 
   &-primary {
@@ -33,6 +37,7 @@
 
     mat-icon {
       color: var(--c-yellow);
+      margin-right: 12px;
     }
 
     &:hover {
