@@ -1,0 +1,26 @@
+<form (ngSubmit)="onSubmit.emit(data)">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <label><b>Lokalizacja</b></label>
+        <mat-form-field appearance="outline">
+          <input matInput placeholder="replace with location search component"
+                 name="title" [(ngModel)]="data.location"/>
+        </mat-form-field>
+      </div>
+      <div class="col-md-2">
+        <label><b>Liczba osób</b></label>
+        <mat-form-field appearance="outline">
+          <input matInput min="1" name="title" type="number" [(ngModel)]="data.guests"/>
+        </mat-form-field>
+      </div>
+      <div class="col-md-4 search">
+        <button mat-flat-button color="primary" type="submit">
+          <mat-icon>search</mat-icon>
+          <span>Wyszukaj</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</form>
+
