@@ -1,0 +1,31 @@
+<form (ngSubmit)="onSubmit.emit(data)">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <label><b>Tytuł ogłoszenia </b> <span>(max 80 znaków): </span></label>
+        <mat-form-field appearance="outline">
+          <input matInput maxlength="80" placeholder="Wpisz tytuł ogłosznia..." required
+                 name="title"
+                 [(ngModel)]="data.title"/>
+        </mat-form-field>
+      </div>
+    </div>
+    <ng-content></ng-content>
+    <div class="row">
+      <div class="col-lg-9">
+        <label><b>Tytuł ogłoszenia </b> <span>(max 1000 znaków): </span></label>
+        <mat-form-field appearance="outline">
+          <textarea matInput rows="8" maxlength="1000" placeholder="Wpisz swoje ogłoszenie..."
+                    name="description"
+                    [(ngModel)]="data.description"></textarea>
+        </mat-form-field>
+      </div>
+      <div class="col-lg-3 publish">
+        <button mat-flat-button color="primary">
+          <mat-icon>add</mat-icon>
+          <span>Opublikuj ogłoszenie</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</form>
