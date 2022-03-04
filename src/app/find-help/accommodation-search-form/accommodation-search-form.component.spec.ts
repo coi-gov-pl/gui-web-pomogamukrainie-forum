@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AccommodationSearchComponent } from './accommodation-search.component';
+import { AccommodationSearchFormComponent } from './accommodation-search-form.component';
 
 describe('AccommodationSearchComponent', () => {
-  let component: AccommodationSearchComponent;
-  let fixture: ComponentFixture<AccommodationSearchComponent>;
+  let component: AccommodationSearchFormComponent;
+  let fixture: ComponentFixture<AccommodationSearchFormComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AccommodationSearchComponent],
+      declarations: [AccommodationSearchFormComponent],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AccommodationSearchComponent);
+    fixture = TestBed.createComponent(AccommodationSearchFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

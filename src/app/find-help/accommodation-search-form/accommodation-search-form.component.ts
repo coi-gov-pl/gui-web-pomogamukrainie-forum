@@ -15,11 +15,11 @@ interface AccommodationQuery {
 }
 
 @Component({
-  selector: 'app-accommodation-search',
-  templateUrl: './accommodation-search.component.html',
-  styleUrls: ['./accommodation-search.component.scss'],
+  selector: 'app-accommodation-search-form',
+  templateUrl: './accommodation-search-form.component.html',
+  styleUrls: ['./accommodation-search-form.component.scss'],
 })
-export class AccommodationSearchComponent {
+export class AccommodationSearchFormComponent {
   data: AccommodationQuery = {
     guests: 1,
   };
@@ -27,8 +27,8 @@ export class AccommodationSearchComponent {
   onSubmit = new EventEmitter<AccommodationQuery>();
 }
 @NgModule({
-  declarations: [AccommodationSearchComponent],
-  exports: [AccommodationSearchComponent],
+  declarations: [AccommodationSearchFormComponent],
+  exports: [AccommodationSearchFormComponent],
   imports: [
     CommonModule,
     MatFormFieldModule,
@@ -39,4 +39,4 @@ export class AccommodationSearchComponent {
     MoreInfoLinkModule,
   ],
 })
-export class AccommodationSearchComponentModule {}
+export class AccommodationSearchFormComponentModule {}
