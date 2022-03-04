@@ -12,13 +12,13 @@ export class CategoryNavigationComponent {
   routingCategoryName = CategoryRoutingName;
 
   categories: Category[] = [
-    { name: CategoryNameKey.ACCOMMODATION, icon: 'bed', path: '', disabled: false },
-    { name: CategoryNameKey.MATERIAL_HELP, icon: 'interests_outline', path: '', disabled: false },
-    { name: CategoryNameKey.TRANSPORT, icon: 'directions_car_outline', path: '', disabled: false },
-    { name: CategoryNameKey.HEALTH, icon: 'local_hospital', path: '', disabled: true },
-    { name: CategoryNameKey.LEGAL_HELP, icon: 'gavel', path: '', disabled: true },
-    { name: CategoryNameKey.WORK, icon: 'work_outline', path: '', disabled: true },
-    { name: CategoryNameKey.TRANSLATIONS, icon: 'translate', path: '', disabled: true },
-    { name: CategoryNameKey.MISC, icon: 'lan', path: '', disabled: true },
+    { name: CategoryNameKey.ACCOMMODATION, icon: 'bed' },
+    { name: CategoryNameKey.MATERIAL_HELP, icon: 'interests_outline' },
+    { name: CategoryNameKey.TRANSPORT, icon: 'directions_car_outline' },
+    { name: CategoryNameKey.HEALTH, icon: 'local_hospital' },
+    { name: CategoryNameKey.LEGAL_HELP, icon: 'gavel', disabled: true },
+    { name: CategoryNameKey.WORK, icon: 'work_outline', disabled: true },
+    { name: CategoryNameKey.TRANSLATIONS, icon: 'translate', disabled: true },
+    { name: CategoryNameKey.MISC, icon: 'lan', disabled: true },
   ];
 }
