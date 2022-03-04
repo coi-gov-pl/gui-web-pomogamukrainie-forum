@@ -1,4 +1,6 @@
-$icon-size: 20px;
+:root {
+  --icon-size: 20px;
+}
 
 :host a {
   font-size: 12px;
@@ -7,8 +9,8 @@ $icon-size: 20px;
   color: #052c65;
 
   mat-icon {
-    font-size: $icon-size;
-    width: $icon-size;
-    height: $icon-size;
+    font-size: var(--icon-size);
+    width: var(--icon-size);
+    height: var(--icon-size);
   }
 }
