@@ -8,6 +8,10 @@ interface Accommodation {
   lengthOfStay: string | undefined;
   hostLanguages: string[];
 }
+interface Option {
+  code: string,
+  label: string,
+}
 @Component({
   selector: 'app-accommodation-form',
   templateUrl: './accommodation-form.component.html',
@@ -17,12 +21,12 @@ export class AccommodationFormComponent {
   data = defaults<Accommodation>({
     hostLanguages: [],
   })
-  languages = [
+  languages:Option[] = [
     {code: 'pl', label: 'Polski'},
     {code: 'ua', label: 'Ukraiński'},
     {code: 'en', label: 'Angielski'},
   ]
-  lengthsOfSay = [
+  lengthsOfSay:Option[] = [
     {code: '1t', label: '1 tydzień '},
     {code: '2t', label: '2 tygodnie'},
     {code: '1m', label: '1 miesiąc '},
