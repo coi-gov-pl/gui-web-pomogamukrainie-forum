@@ -16,11 +16,15 @@ type Location = {
 export class CitiesSearchComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
+  options: Location[] = [];
+
+  selectedOption?: Location;
+
   ngOnInit(): void {
     this.myControl.valueChanges
       .pipe(
         tap(console.log),
-        filter((value) => typeof value === 'string' && value.length > 1),
+        filter((value) => typeof value === 'string' && value.length >= 2),
         distinctUntilChanged(),
         debounceTime(400),
         tap(() => {
@@ -35,22 +39,26 @@ export class CitiesSearchComponent implements OnInit {
 
   myControl = new FormControl();
 
-  options: Location[] = [];
-
-  selectedOption: Location | undefined;
-
   displayOption(location?: Location) {
     if (!location) {
       return '';
     }
 
-    return location.city + ', ' + location.voivodeship;
+    return toTitleCase(location.city) + ', ' + location.voivodeship;
+
+    function toTitleCase(value: string) {
+      return value.toLowerCase().replace(/(?:^|[\s-/])\w/g, (match) => match.toUpperCase());
+    }
+  }
+
+  onSelected(option: Location) {
+    this.selectedOption = option;
   }
 
   getData(query: string) {
     return this.http.get<{
       cities: Location[];
-    }>('http://localhost:8080/api/dictionaries/city', {
+    }>('http://192.168.1.36:8080/api/dictionaries/city', {
       params: {
         query,
       },
