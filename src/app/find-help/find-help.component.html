@@ -1,1 +1,5 @@
 <h1>Find help module</h1>
+
+<h4 *ngIf="activeCategoryKey$ | async as activeCategory">
+  <span>Kategoria: {{ activeCategory | translate }}</span>
+</h4>
