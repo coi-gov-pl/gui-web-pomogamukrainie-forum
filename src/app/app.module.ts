@@ -8,15 +8,18 @@ import { MatCardModule } from '@angular/material/card';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { PomTranslateLoader, Language } from './core/translate-loader.service';
 import { AccommodationFormComponentModule } from './accommodation-form/accommodation-form.module';
+import { CitiesSearchModule } from './cities-search/cities-search.module';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    CitiesSearchModule,
     BrowserModule,
     AppRoutingModule,
     NoopAnimationsModule,
     MatCardModule,
     AccommodationFormComponentModule,
+    CitiesSearchModule,
     TranslateModule.forRoot({
       defaultLanguage: Language.pl_PL,
       loader: {
