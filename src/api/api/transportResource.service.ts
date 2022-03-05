@@ -25,7 +25,13 @@ import { CustomHttpParameterCodec } from '../encoder';
 import { Observable } from 'rxjs';
 
 // @ts-ignore
+import { PageTransportOffer } from '../model/pageTransportOffer';
+// @ts-ignore
+import { Pageable } from '../model/pageable';
+// @ts-ignore
 import { TransportOffer } from '../model/transportOffer';
+// @ts-ignore
+import { TransportOfferSearchCriteria } from '../model/transportOfferSearchCriteria';
 
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS } from '../variables';
@@ -102,25 +108,25 @@ export class TransportResourceService {
     transportOffer: TransportOffer,
     observe?: 'body',
     reportProgress?: boolean,
-    options?: { httpHeaderAccept?: '*/*'; context?: HttpContext }
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<TransportOffer>;
   public create(
     transportOffer: TransportOffer,
     observe?: 'response',
     reportProgress?: boolean,
-    options?: { httpHeaderAccept?: '*/*'; context?: HttpContext }
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<HttpResponse<TransportOffer>>;
   public create(
     transportOffer: TransportOffer,
     observe?: 'events',
     reportProgress?: boolean,
-    options?: { httpHeaderAccept?: '*/*'; context?: HttpContext }
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<HttpEvent<TransportOffer>>;
   public create(
     transportOffer: TransportOffer,
     observe: any = 'body',
     reportProgress: boolean = false,
-    options?: { httpHeaderAccept?: '*/*'; context?: HttpContext }
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<any> {
     if (transportOffer === null || transportOffer === undefined) {
       throw new Error('Required parameter transportOffer was null or undefined when calling create.');
@@ -131,7 +137,7 @@ export class TransportResourceService {
     let localVarHttpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
     if (localVarHttpHeaderAcceptSelected === undefined) {
       // to determine the Accept header
-      const httpHeaderAccepts: string[] = ['*/*'];
+      const httpHeaderAccepts: string[] = ['application/json'];
       localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
     }
     if (localVarHttpHeaderAcceptSelected !== undefined) {
@@ -176,32 +182,32 @@ export class TransportResourceService {
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
-  public list(
+  public get(
     id: number,
     observe?: 'body',
     reportProgress?: boolean,
-    options?: { httpHeaderAccept?: '*/*'; context?: HttpContext }
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<TransportOffer>;
-  public list(
+  public get(
     id: number,
     observe?: 'response',
     reportProgress?: boolean,
-    options?: { httpHeaderAccept?: '*/*'; context?: HttpContext }
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<HttpResponse<TransportOffer>>;
-  public list(
+  public get(
     id: number,
     observe?: 'events',
     reportProgress?: boolean,
-    options?: { httpHeaderAccept?: '*/*'; context?: HttpContext }
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<HttpEvent<TransportOffer>>;
-  public list(
+  public get(
     id: number,
     observe: any = 'body',
     reportProgress: boolean = false,
-    options?: { httpHeaderAccept?: '*/*'; context?: HttpContext }
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<any> {
     if (id === null || id === undefined) {
-      throw new Error('Required parameter id was null or undefined when calling list.');
+      throw new Error('Required parameter id was null or undefined when calling get.');
     }
 
     let localVarHeaders = this.defaultHeaders;
@@ -209,7 +215,7 @@ export class TransportResourceService {
     let localVarHttpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
     if (localVarHttpHeaderAcceptSelected === undefined) {
       // to determine the Accept header
-      const httpHeaderAccepts: string[] = ['*/*'];
+      const httpHeaderAccepts: string[] = ['application/json'];
       localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
     }
     if (localVarHttpHeaderAcceptSelected !== undefined) {
@@ -243,5 +249,94 @@ export class TransportResourceService {
         reportProgress: reportProgress,
       }
     );
+  }
+
+  /**
+   * Allows to search for transport offers using different criterias (passes as query params). Each criteria is optional.
+   * @param pageRequest
+   * @param searchCriteria
+   * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+   * @param reportProgress flag to report request and response progress.
+   */
+  public list(
+    pageRequest: Pageable,
+    searchCriteria: TransportOfferSearchCriteria,
+    observe?: 'body',
+    reportProgress?: boolean,
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
+  ): Observable<PageTransportOffer>;
+  public list(
+    pageRequest: Pageable,
+    searchCriteria: TransportOfferSearchCriteria,
+    observe?: 'response',
+    reportProgress?: boolean,
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
+  ): Observable<HttpResponse<PageTransportOffer>>;
+  public list(
+    pageRequest: Pageable,
+    searchCriteria: TransportOfferSearchCriteria,
+    observe?: 'events',
+    reportProgress?: boolean,
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
+  ): Observable<HttpEvent<PageTransportOffer>>;
+  public list(
+    pageRequest: Pageable,
+    searchCriteria: TransportOfferSearchCriteria,
+    observe: any = 'body',
+    reportProgress: boolean = false,
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
+  ): Observable<any> {
+    if (pageRequest === null || pageRequest === undefined) {
+      throw new Error('Required parameter pageRequest was null or undefined when calling list.');
+    }
+    if (searchCriteria === null || searchCriteria === undefined) {
+      throw new Error('Required parameter searchCriteria was null or undefined when calling list.');
+    }
+
+    let localVarQueryParameters = new HttpParams({ encoder: this.encoder });
+    if (pageRequest !== undefined && pageRequest !== null) {
+      localVarQueryParameters = this.addToHttpParams(localVarQueryParameters, <any>pageRequest, 'pageRequest');
+    }
+    if (searchCriteria !== undefined && searchCriteria !== null) {
+      localVarQueryParameters = this.addToHttpParams(localVarQueryParameters, <any>searchCriteria, 'searchCriteria');
+    }
+
+    let localVarHeaders = this.defaultHeaders;
+
+    let localVarHttpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
+    if (localVarHttpHeaderAcceptSelected === undefined) {
+      // to determine the Accept header
+      const httpHeaderAccepts: string[] = ['application/json'];
+      localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+    }
+    if (localVarHttpHeaderAcceptSelected !== undefined) {
+      localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
+    }
+
+    let localVarHttpContext: HttpContext | undefined = options && options.context;
+    if (localVarHttpContext === undefined) {
+      localVarHttpContext = new HttpContext();
+    }
+
+    let responseType_: 'text' | 'json' | 'blob' = 'json';
+    if (localVarHttpHeaderAcceptSelected) {
+      if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
+        responseType_ = 'text';
+      } else if (this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)) {
+        responseType_ = 'json';
+      } else {
+        responseType_ = 'blob';
+      }
+    }
+
+    return this.httpClient.get<PageTransportOffer>(`${this.configuration.basePath}/api/transport`, {
+      context: localVarHttpContext,
+      params: localVarQueryParameters,
+      responseType: <any>responseType_,
+      withCredentials: this.configuration.withCredentials,
+      headers: localVarHeaders,
+      observe: observe,
+      reportProgress: reportProgress,
+    });
   }
 }

@@ -14,8 +14,8 @@ import { Sort } from './sort';
 import { TranslationOffer } from './translationOffer';
 
 export interface PageTranslationOffer {
-  totalElements?: number;
   totalPages?: number;
+  totalElements?: number;
   size?: number;
   content?: Array<TranslationOffer>;
   number?: number;

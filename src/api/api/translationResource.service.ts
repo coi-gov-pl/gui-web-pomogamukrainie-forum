@@ -106,25 +106,25 @@ export class TranslationResourceService {
     translationOffer: TranslationOffer,
     observe?: 'body',
     reportProgress?: boolean,
-    options?: { httpHeaderAccept?: '*/*'; context?: HttpContext }
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<TranslationOffer>;
   public create1(
     translationOffer: TranslationOffer,
     observe?: 'response',
     reportProgress?: boolean,
-    options?: { httpHeaderAccept?: '*/*'; context?: HttpContext }
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<HttpResponse<TranslationOffer>>;
   public create1(
     translationOffer: TranslationOffer,
     observe?: 'events',
     reportProgress?: boolean,
-    options?: { httpHeaderAccept?: '*/*'; context?: HttpContext }
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<HttpEvent<TranslationOffer>>;
   public create1(
     translationOffer: TranslationOffer,
     observe: any = 'body',
     reportProgress: boolean = false,
-    options?: { httpHeaderAccept?: '*/*'; context?: HttpContext }
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<any> {
     if (translationOffer === null || translationOffer === undefined) {
       throw new Error('Required parameter translationOffer was null or undefined when calling create1.');
@@ -135,7 +135,7 @@ export class TranslationResourceService {
     let localVarHttpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
     if (localVarHttpHeaderAcceptSelected === undefined) {
       // to determine the Accept header
-      const httpHeaderAccepts: string[] = ['*/*'];
+      const httpHeaderAccepts: string[] = ['application/json'];
       localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
     }
     if (localVarHttpHeaderAcceptSelected !== undefined) {
@@ -188,25 +188,25 @@ export class TranslationResourceService {
     pageRequest: Pageable,
     observe?: 'body',
     reportProgress?: boolean,
-    options?: { httpHeaderAccept?: '*/*'; context?: HttpContext }
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<PageTranslationOffer>;
   public list1(
     pageRequest: Pageable,
     observe?: 'response',
     reportProgress?: boolean,
-    options?: { httpHeaderAccept?: '*/*'; context?: HttpContext }
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<HttpResponse<PageTranslationOffer>>;
   public list1(
     pageRequest: Pageable,
     observe?: 'events',
     reportProgress?: boolean,
-    options?: { httpHeaderAccept?: '*/*'; context?: HttpContext }
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<HttpEvent<PageTranslationOffer>>;
   public list1(
     pageRequest: Pageable,
     observe: any = 'body',
     reportProgress: boolean = false,
-    options?: { httpHeaderAccept?: '*/*'; context?: HttpContext }
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<any> {
     if (pageRequest === null || pageRequest === undefined) {
       throw new Error('Required parameter pageRequest was null or undefined when calling list1.');
@@ -222,7 +222,7 @@ export class TranslationResourceService {
     let localVarHttpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
     if (localVarHttpHeaderAcceptSelected === undefined) {
       // to determine the Accept header
-      const httpHeaderAccepts: string[] = ['*/*'];
+      const httpHeaderAccepts: string[] = ['application/json'];
       localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
     }
     if (localVarHttpHeaderAcceptSelected !== undefined) {
@@ -265,25 +265,25 @@ export class TranslationResourceService {
     id: number,
     observe?: 'body',
     reportProgress?: boolean,
-    options?: { httpHeaderAccept?: '*/*'; context?: HttpContext }
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<TranslationOffer>;
   public list2(
     id: number,
     observe?: 'response',
     reportProgress?: boolean,
-    options?: { httpHeaderAccept?: '*/*'; context?: HttpContext }
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<HttpResponse<TranslationOffer>>;
   public list2(
     id: number,
     observe?: 'events',
     reportProgress?: boolean,
-    options?: { httpHeaderAccept?: '*/*'; context?: HttpContext }
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<HttpEvent<TranslationOffer>>;
   public list2(
     id: number,
     observe: any = 'body',
     reportProgress: boolean = false,
-    options?: { httpHeaderAccept?: '*/*'; context?: HttpContext }
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<any> {
     if (id === null || id === undefined) {
       throw new Error('Required parameter id was null or undefined when calling list2.');
@@ -294,7 +294,7 @@ export class TranslationResourceService {
     let localVarHttpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
     if (localVarHttpHeaderAcceptSelected === undefined) {
       // to determine the Accept header
-      const httpHeaderAccepts: string[] = ['*/*'];
+      const httpHeaderAccepts: string[] = ['application/json'];
       localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
     }
     if (localVarHttpHeaderAcceptSelected !== undefined) {

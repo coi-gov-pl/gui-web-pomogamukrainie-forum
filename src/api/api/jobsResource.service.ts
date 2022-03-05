@@ -106,25 +106,25 @@ export class JobsResourceService {
     jobOffer: JobOffer,
     observe?: 'body',
     reportProgress?: boolean,
-    options?: { httpHeaderAccept?: '*/*'; context?: HttpContext }
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<JobOffer>;
   public create2(
     jobOffer: JobOffer,
     observe?: 'response',
     reportProgress?: boolean,
-    options?: { httpHeaderAccept?: '*/*'; context?: HttpContext }
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<HttpResponse<JobOffer>>;
   public create2(
     jobOffer: JobOffer,
     observe?: 'events',
     reportProgress?: boolean,
-    options?: { httpHeaderAccept?: '*/*'; context?: HttpContext }
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<HttpEvent<JobOffer>>;
   public create2(
     jobOffer: JobOffer,
     observe: any = 'body',
     reportProgress: boolean = false,
-    options?: { httpHeaderAccept?: '*/*'; context?: HttpContext }
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<any> {
     if (jobOffer === null || jobOffer === undefined) {
       throw new Error('Required parameter jobOffer was null or undefined when calling create2.');
@@ -135,7 +135,7 @@ export class JobsResourceService {
     let localVarHttpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
     if (localVarHttpHeaderAcceptSelected === undefined) {
       // to determine the Accept header
-      const httpHeaderAccepts: string[] = ['*/*'];
+      const httpHeaderAccepts: string[] = ['application/json'];
       localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
     }
     if (localVarHttpHeaderAcceptSelected !== undefined) {
@@ -176,6 +176,77 @@ export class JobsResourceService {
   }
 
   /**
+   * @param id
+   * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+   * @param reportProgress flag to report request and response progress.
+   */
+  public get1(
+    id: number,
+    observe?: 'body',
+    reportProgress?: boolean,
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
+  ): Observable<JobOffer>;
+  public get1(
+    id: number,
+    observe?: 'response',
+    reportProgress?: boolean,
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
+  ): Observable<HttpResponse<JobOffer>>;
+  public get1(
+    id: number,
+    observe?: 'events',
+    reportProgress?: boolean,
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
+  ): Observable<HttpEvent<JobOffer>>;
+  public get1(
+    id: number,
+    observe: any = 'body',
+    reportProgress: boolean = false,
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
+  ): Observable<any> {
+    if (id === null || id === undefined) {
+      throw new Error('Required parameter id was null or undefined when calling get1.');
+    }
+
+    let localVarHeaders = this.defaultHeaders;
+
+    let localVarHttpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
+    if (localVarHttpHeaderAcceptSelected === undefined) {
+      // to determine the Accept header
+      const httpHeaderAccepts: string[] = ['application/json'];
+      localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+    }
+    if (localVarHttpHeaderAcceptSelected !== undefined) {
+      localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
+    }
+
+    let localVarHttpContext: HttpContext | undefined = options && options.context;
+    if (localVarHttpContext === undefined) {
+      localVarHttpContext = new HttpContext();
+    }
+
+    let responseType_: 'text' | 'json' | 'blob' = 'json';
+    if (localVarHttpHeaderAcceptSelected) {
+      if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
+        responseType_ = 'text';
+      } else if (this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)) {
+        responseType_ = 'json';
+      } else {
+        responseType_ = 'blob';
+      }
+    }
+
+    return this.httpClient.get<JobOffer>(`${this.configuration.basePath}/api/jobs/${encodeURIComponent(String(id))}`, {
+      context: localVarHttpContext,
+      responseType: <any>responseType_,
+      withCredentials: this.configuration.withCredentials,
+      headers: localVarHeaders,
+      observe: observe,
+      reportProgress: reportProgress,
+    });
+  }
+
+  /**
    * @param pageRequest
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
@@ -184,25 +255,25 @@ export class JobsResourceService {
     pageRequest: Pageable,
     observe?: 'body',
     reportProgress?: boolean,
-    options?: { httpHeaderAccept?: '*/*'; context?: HttpContext }
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<PageJobOffer>;
   public list3(
     pageRequest: Pageable,
     observe?: 'response',
     reportProgress?: boolean,
-    options?: { httpHeaderAccept?: '*/*'; context?: HttpContext }
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<HttpResponse<PageJobOffer>>;
   public list3(
     pageRequest: Pageable,
     observe?: 'events',
     reportProgress?: boolean,
-    options?: { httpHeaderAccept?: '*/*'; context?: HttpContext }
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<HttpEvent<PageJobOffer>>;
   public list3(
     pageRequest: Pageable,
     observe: any = 'body',
     reportProgress: boolean = false,
-    options?: { httpHeaderAccept?: '*/*'; context?: HttpContext }
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<any> {
     if (pageRequest === null || pageRequest === undefined) {
       throw new Error('Required parameter pageRequest was null or undefined when calling list3.');
@@ -218,7 +289,7 @@ export class JobsResourceService {
     let localVarHttpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
     if (localVarHttpHeaderAcceptSelected === undefined) {
       // to determine the Accept header
-      const httpHeaderAccepts: string[] = ['*/*'];
+      const httpHeaderAccepts: string[] = ['application/json'];
       localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
     }
     if (localVarHttpHeaderAcceptSelected !== undefined) {
@@ -244,77 +315,6 @@ export class JobsResourceService {
     return this.httpClient.get<PageJobOffer>(`${this.configuration.basePath}/api/jobs`, {
       context: localVarHttpContext,
       params: localVarQueryParameters,
-      responseType: <any>responseType_,
-      withCredentials: this.configuration.withCredentials,
-      headers: localVarHeaders,
-      observe: observe,
-      reportProgress: reportProgress,
-    });
-  }
-
-  /**
-   * @param id
-   * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-   * @param reportProgress flag to report request and response progress.
-   */
-  public list4(
-    id: number,
-    observe?: 'body',
-    reportProgress?: boolean,
-    options?: { httpHeaderAccept?: '*/*'; context?: HttpContext }
-  ): Observable<JobOffer>;
-  public list4(
-    id: number,
-    observe?: 'response',
-    reportProgress?: boolean,
-    options?: { httpHeaderAccept?: '*/*'; context?: HttpContext }
-  ): Observable<HttpResponse<JobOffer>>;
-  public list4(
-    id: number,
-    observe?: 'events',
-    reportProgress?: boolean,
-    options?: { httpHeaderAccept?: '*/*'; context?: HttpContext }
-  ): Observable<HttpEvent<JobOffer>>;
-  public list4(
-    id: number,
-    observe: any = 'body',
-    reportProgress: boolean = false,
-    options?: { httpHeaderAccept?: '*/*'; context?: HttpContext }
-  ): Observable<any> {
-    if (id === null || id === undefined) {
-      throw new Error('Required parameter id was null or undefined when calling list4.');
-    }
-
-    let localVarHeaders = this.defaultHeaders;
-
-    let localVarHttpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
-    if (localVarHttpHeaderAcceptSelected === undefined) {
-      // to determine the Accept header
-      const httpHeaderAccepts: string[] = ['*/*'];
-      localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-    }
-    if (localVarHttpHeaderAcceptSelected !== undefined) {
-      localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
-    }
-
-    let localVarHttpContext: HttpContext | undefined = options && options.context;
-    if (localVarHttpContext === undefined) {
-      localVarHttpContext = new HttpContext();
-    }
-
-    let responseType_: 'text' | 'json' | 'blob' = 'json';
-    if (localVarHttpHeaderAcceptSelected) {
-      if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
-        responseType_ = 'text';
-      } else if (this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)) {
-        responseType_ = 'json';
-      } else {
-        responseType_ = 'blob';
-      }
-    }
-
-    return this.httpClient.get<JobOffer>(`${this.configuration.basePath}/api/jobs/${encodeURIComponent(String(id))}`, {
-      context: localVarHttpContext,
       responseType: <any>responseType_,
       withCredentials: this.configuration.withCredentials,
       headers: localVarHeaders,

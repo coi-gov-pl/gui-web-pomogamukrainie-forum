@@ -14,8 +14,8 @@ import { JobOffer } from './jobOffer';
 import { Sort } from './sort';
 
 export interface PageJobOffer {
-  totalElements?: number;
   totalPages?: number;
+  totalElements?: number;
   size?: number;
   content?: Array<JobOffer>;
   number?: number;

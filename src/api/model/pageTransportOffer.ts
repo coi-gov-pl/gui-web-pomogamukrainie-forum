@@ -10,14 +10,14 @@
  * Do not edit the class manually.
  */
 import { PageableObject } from './pageableObject';
-import { AccommodationOffer } from './accommodationOffer';
+import { TransportOffer } from './transportOffer';
 import { Sort } from './sort';
 
-export interface PageAccommodationOffer {
+export interface PageTransportOffer {
   totalPages?: number;
   totalElements?: number;
   size?: number;
-  content?: Array<AccommodationOffer>;
+  content?: Array<TransportOffer>;
   number?: number;
   sort?: Sort;
   pageable?: PageableObject;
