@@ -6,13 +6,16 @@ import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { PomTranslateLoader, Language } from './core/translate-loader.service';
+import { Language, PomTranslateLoader } from './core/translate-loader.service';
 import { AccommodationFormComponentModule } from './accommodation-form/accommodation-form.module';
+import { HttpClientModule } from '@angular/common/http';
+import { ApiModule, Configuration } from '../api';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     NoopAnimationsModule,
     MatCardModule,
@@ -24,6 +27,7 @@ import { AccommodationFormComponentModule } from './accommodation-form/accommoda
         useClass: PomTranslateLoader,
       },
     }),
+    ApiModule.forRoot(() => new Configuration({ basePath: '' })),
   ],
   providers: [],
   bootstrap: [AppComponent],
