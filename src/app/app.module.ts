@@ -7,7 +7,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { Language, PomTranslateLoader } from './core/translate-loader.service';
-import { AccommodationFormComponentModule } from './accommodation-form/accommodation-form.module';
+import { AccommodationFormComponentModule } from './give-help/accommodation-form/accommodation-form.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ApiModule, Configuration } from '../api';
 
