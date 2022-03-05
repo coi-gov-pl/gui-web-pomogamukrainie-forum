@@ -1,3 +1,19 @@
 <mat-card class="result">
-  <ng-content></ng-content>
+  <div class="attributes" style="margin-top: 0">
+    <div *ngIf="location">
+      <mat-icon fontSet="material-icons-outlined">location_on</mat-icon>
+      {{ location.city }}
+    </div>
+    <div class="right" *ngIf="posted">{{ posted | date: "short" }}</div>
+  </div>
+  <h4>{{ title }}</h4>
+  <div class="attributes">
+    <div *ngFor="let attribute of attributes">
+      <mat-icon fontSet="material-icons-outlined">{{ attribute.icon }}</mat-icon>
+      {{ attribute.text }}
+    </div>
+  </div>
+  <div class="description">
+    {{ description }}
+  </div>
 </mat-card>
