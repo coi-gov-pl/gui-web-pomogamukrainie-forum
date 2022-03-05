@@ -4,6 +4,11 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { OfferLocation } from '../../api/types';
 
+interface Attribute {
+  icon: string;
+  text: string;
+}
+
 @Component({
   selector: 'app-search-result',
   templateUrl: './search-result.component.html',
@@ -19,10 +24,7 @@ export class SearchResultComponent {
   @Input()
   posted?: Date;
   @Input()
-  attributes?: {
-    icon: string;
-    text: string;
-  }[];
+  attributes?: Attribute[];
 }
 
 @NgModule({
