@@ -1,9 +1,11 @@
 .header {
+  position: fixed;
+  width: 100%;
+  z-index: 9999;
+  overflow: hidden;
+
   &.transparent {
     background: transparent;
-  }
-  &.solid {
-    background: var(--c-darkblue);
   }
 
   .logo,

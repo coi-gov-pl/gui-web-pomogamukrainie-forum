@@ -1,12 +1,12 @@
 .hero {
-  background-image: url("/assets/images/hero.png");
+  background-image: linear-gradient(-66.4045498763deg, rgba(5, 44, 101, 0), #052c65 83.1595525064%),
+    url("/assets/images/hero.jpg");
   background-size: cover;
-  background-position-x: 80%;
-  background-repeat: no-repeat;
-  min-height: 594px;
-  display: flex;
-  align-items: center;
+  padding-top: 20px;
+  min-height: 528px;
   position: relative;
+  z-index: 0;
+  overflow: hidden;
 
   &::after {
     content: "";
@@ -19,6 +19,7 @@
   }
 
   &-wrap {
+    padding-top: 150px;
     position: relative;
     z-index: 1;
   }
