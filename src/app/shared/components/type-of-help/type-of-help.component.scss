@@ -1,0 +1,108 @@
+$color-white: #fff;
+$color-yellow: #ffd700;
+
+$border-radius: 4px;
+$border-thickness: 3px;
+$border-type: solid;
+
+$border-default: $border-thickness $border-type $color-yellow;
+$border-white: $border-thickness $border-type $color-white;
+
+$card-width: 130px;
+$card-height: 102px;
+
+$unfold-height: 30px;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+
+  mat-card {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    min-height: $card-height;
+    max-height: $card-height;
+    min-width: $card-width;
+    max-width: $card-width;
+    padding-top: 0;
+    border: $border-white;
+
+    .icon-wrapper,
+    .name-wrapper {
+      display: flex;
+      flex: 0 0 50%;
+      justify-content: center;
+    }
+
+    .icon-wrapper {
+      margin: 0;
+      align-items: flex-end;
+    }
+
+    .name-wrapper {
+      align-items: center;
+      text-align: center;
+      font-size: 0.8em;
+    }
+  }
+
+  .bottom-unfold,
+  .top-unfold {
+    height: $unfold-height;
+    width: $card-width;
+    background: $color-white;
+
+    border: $border-default;
+    border-bottom: none;
+  }
+
+  .bottom-unfold {
+    border-top: none;
+  }
+
+  .top-unfold {
+    border-top-right-radius: $border-radius;
+    border-top-left-radius: $border-radius;
+  }
+
+  &.selected {
+    .mat-card:not([class*="mat-elevation-z"]) {
+      box-shadow: none;
+      border: $border-default;
+    }
+
+    &.unfold-on-select {
+      .icon-wrapper {
+        align-items: flex-start;
+      }
+
+      .mat-card:not([class*="mat-elevation-z"]) {
+        border-bottom: none;
+        border-top: none;
+        border-radius: 0;
+      }
+    }
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+
+    mat-card {
+      .icon-wrapper,
+      .name-wrapper {
+        opacity: 0.3;
+      }
+    }
+  }
+
+  &.border-on-hover:not(.disabled) {
+    mat-card {
+      &:hover {
+        box-shadow: none;
+        border: $border-default;
+      }
+    }
+  }
+}
