@@ -1,8 +1,5 @@
-<div class="container">
-  <header>
-    <h2>#PomagamUkrainie</h2>
-    <h1>Znajdź pomoc</h1>
-  </header>
-  <app-category-navigation></app-category-navigation>
-  <router-outlet></router-outlet>
-</div>
+<h1>Find help module</h1>
+
+<h4 *ngIf="activeCategoryKey$ | async as activeCategory">
+  <span>Kategoria: {{ activeCategory | translate }}</span>
+</h4>

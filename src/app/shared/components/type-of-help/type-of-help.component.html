@@ -1,0 +1,10 @@
+<div *ngIf="unfoldOnSelect" class="top-unfold" [style.visibility]="topBottomVisibility"></div>
+<mat-card (click)="handleClick()">
+  <div class="icon-wrapper">
+    <mat-icon class="material-icons-outlined">{{ icon }}</mat-icon>
+  </div>
+  <div class="name-wrapper">
+    <strong [innerHTML]="name | translate"></strong>
+  </div>
+</mat-card>
+<div *ngIf="unfoldOnSelect" class="bottom-unfold" [style.visibility]="topBottomVisibility"></div>
