@@ -24,14 +24,25 @@
     color: var(--c-darkblue);
   }
 
+  &-highlight,
+  &-outline-highlight {
+    &:focus {
+      outline: 0;
+      box-shadow: 0 0 0 0.2rem #fad50080;
+    }
+  }
+
   &-highlight {
     background: var(--c-yellow);
     border-color: var(--c-yellow);
     color: var(--c-darkblue);
+    &:hover {
+      background: var(--c-dark-yellow);
+    }
   }
 
   &-outline-highlight {
-    background: transparent;
+    background: var(--c-darkblue-trans);
     border-color: var(--c-yellow);
     color: var(--c-yellow);
 
@@ -41,12 +52,8 @@
     }
 
     &:hover {
-      background: var(--c-yellow);
-      color: var(--c-darkblue);
-
-      mat-icon {
-        color: var(--c-darkblue);
-      }
+      background: var(--c-darkblue);
+      color: var(--c-yellow);
     }
   }
 }

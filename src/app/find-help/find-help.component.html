@@ -1,2 +1,12 @@
-<h1>Find help module</h1>
-<app-material-support-form></app-material-support-form>
+<div class="container">
+  <header>
+    <h2>#PomagamUkrainie</h2>
+    <h1>Znajdź pomoc</h1>
+  </header>
+
+  <app-category-navigation></app-category-navigation>
+
+  <div [ngSwitch]="activeCategoryKey$ | async" style="margin-top: 21px">
+    <app-accommodation-search *ngSwitchCase="'ACCOMMODATION'"></app-accommodation-search>
+  </div>
+</div>

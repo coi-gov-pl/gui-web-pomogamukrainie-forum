@@ -1,11 +1,18 @@
 <nav class="navigation">
   <h2>{{ "WHAT_ARE_YOU_LOOKING_FOR" | translate }}</h2>
-  <ul>
-    <li *ngFor="let category of categories">
-      <a routerLink="#" class="navigation-tile" [ngClass]="{ disabled: category.disabled }">
-        <mat-icon fontSet="material-icons-outlined">{{ category.icon }}</mat-icon>
-        <h3>{{ category.name | translate }}</h3>
-      </a>
-    </li>
-  </ul>
+
+  <div class="categories">
+    <ng-container *ngFor="let category of categories">
+      <app-type-of-help
+        [icon]="category.icon"
+        [name]="category.name"
+        [path]="['/szukaj-pomocy', routingCategoryName[category.name]]"
+        [selected]="category.selected"
+        [disabled]="category.disabled"
+        [redirectOnClick]="true"
+        [borderOnHover]="true"
+      >
+      </app-type-of-help>
+    </ng-container>
+  </div>
 </nav>
