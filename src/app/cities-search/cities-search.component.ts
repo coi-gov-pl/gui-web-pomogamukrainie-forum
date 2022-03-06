@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, filter, map, Observable, of, startWith, switchMap, tap } from 'rxjs';
 
 type Location = {
@@ -12,13 +12,23 @@ type Location = {
   selector: 'app-cities-search',
   templateUrl: './cities-search.component.html',
   styleUrls: ['./cities-search.component.scss'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      multi: true,
+      useExisting: CitiesSearchComponent,
+    },
+  ],
 })
-export class CitiesSearchComponent implements OnInit {
+export class CitiesSearchComponent implements OnInit, ControlValueAccessor {
+  //FIXME: validator
   constructor(private http: HttpClient) {}
 
   options: Location[] = [];
 
   selectedOption?: Location;
+
+  touched = false;
 
   ngOnInit(): void {
     this.myControl.valueChanges
@@ -51,8 +61,33 @@ export class CitiesSearchComponent implements OnInit {
     }
   }
 
+  onChange: (value: Location) => void = () => {};
+
+  registerOnChange(fn: any): void {
+    this.onChange = fn;
+  }
+
+  markAsTouched() {
+    if (!this.touched) {
+      this.onTouched();
+      this.touched = true;
+    }
+  }
+
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
+
+  onTouched = () => {};
+
+  writeValue(obj: any): void {
+    this.selectedOption = obj;
+  }
+
   onSelected(option: Location) {
+    this.markAsTouched();
     this.selectedOption = option;
+    this.onChange(option);
   }
 
   getData(query: string) {

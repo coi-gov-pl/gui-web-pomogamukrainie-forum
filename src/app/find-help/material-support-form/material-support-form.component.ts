@@ -8,6 +8,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MoreInfoLinkModule } from '../../core/components/more-info-link/more-info-link.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { CitiesSearchModule } from 'src/app/cities-search/cities-search.module';
 
 enum MaterialSupportType {
   Food = 'food',
@@ -24,15 +25,16 @@ const materialSupportTypes = Object.values(MaterialSupportType);
   styleUrls: ['./material-support-form.component.scss'],
 })
 export class MaterialSupportFormComponent {
-  form: FormGroup = new FormGroup({
-    type: new FormControl(undefined),
-    location: new FormControl(''),
-  });
   materialSupportTypes = materialSupportTypes;
+
+  data = {
+    type: undefined,
+    location: undefined,
+  };
 
   handleSubmit($event: any) {
     $event.preventDefault();
-    console.log('Submitted!');
+    console.log(this.data);
   }
 }
 
@@ -49,6 +51,7 @@ export class MaterialSupportFormComponent {
     MatSelectModule,
     MoreInfoLinkModule,
     TranslateModule,
+    CitiesSearchModule,
   ],
   exports: [MaterialSupportFormComponent],
 })

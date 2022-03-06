@@ -1,11 +1,11 @@
-<form (ngSubmit)="handleSubmit($event)">
+<form (ngSubmit)="handleSubmit($event)" #form="ngForm">
   <div class="d-block d-lg-flex align-items-end flex-wrap" style="gap: 14px">
     <div class="flex-lg-grow-1">
       <label class="d-block" style="font-size: 12px; font-weight: bold; margin-bottom: 4px">{{
         "TYPE_OF_SUPPORT" | translate
       }}</label>
       <mat-form-field appearance="outline" style="width: 100%">
-        <mat-select [placeholder]="'SELECT_FROM_THE_LIST' | translate" [(ngModel)]="form.value.type" name="type">
+        <mat-select required [placeholder]="'SELECT_FROM_THE_LIST' | translate" [(ngModel)]="data.type" name="type">
           <mat-option value=""></mat-option>
           <mat-option *ngFor="let type of materialSupportTypes" [value]="type">{{
             type.toUpperCase() | translate
@@ -14,6 +14,9 @@
       </mat-form-field>
     </div>
     <div class="flex-lg-grow-1">
+      <app-cities-search required [(ngModel)]="data.location" name="location"></app-cities-search>
+    </div>
+    <!-- <div class="flex-lg-grow-1">
       <label class="d-block" style="font-size: 12px; font-weight: bold; margin-bottom: 4px">
         {{ "LOCATION" | translate }}
       </label>
@@ -26,9 +29,9 @@
           name="location"
         />
       </mat-form-field>
-    </div>
+    </div> -->
     <div class="flex-lg-grow-0 flex-shrink-0 pb-lg-4">
-      <button type="submit" class="btn btn-primary">
+      <button type="submit" class="btn btn-primary" [disabled]="!form.valid">
         <mat-icon class="me-1">search</mat-icon>
         {{ "SEARCH" | translate }}
       </button>
