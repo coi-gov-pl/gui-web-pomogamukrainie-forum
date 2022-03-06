@@ -16,6 +16,13 @@
     background: var(--c-darkblue);
     border-color: var(--c-darkblue);
     color: var(--c-white);
+    &:hover {
+      background: #09224e;
+    }
+    &:focus {
+      background: #09224e;
+      box-shadow: 0 0 0 0.2rem transparentize(#0c2c65, 0.3);
+    }
   }
 
   &-secondary {
@@ -28,7 +35,7 @@
   &-outline-highlight {
     &:focus {
       outline: 0;
-      box-shadow: 0 0 0 0.2rem #fad50080;
+      box-shadow: 0 0 0 0.2rem transparentize(#fad500, 0.3);
     }
   }
 

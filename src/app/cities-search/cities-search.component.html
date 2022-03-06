@@ -10,7 +10,7 @@
       (optionSelected)="onSelected($event.option.value)"
     >
       <mat-option *ngFor="let option of options" [value]="option">
-        {{ displayOption(option) }}
+        {{ option | displayLocationOption }}
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
