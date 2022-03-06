@@ -11,6 +11,7 @@ import { AccommodationSearchComponent } from './accommodation-search.component';
 import { MatCardModule } from '@angular/material/card';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchResultComponentModule } from '../search-result/search-result.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [AccommodationSearchFormComponent, AccommodationSearchComponent],
@@ -26,6 +27,7 @@ import { SearchResultComponentModule } from '../search-result/search-result.comp
     MoreInfoLinkModule,
     MatCardModule,
     SearchResultComponentModule,
+    TranslateModule,
   ],
 })
 export class AccommodationSearchModule {}
