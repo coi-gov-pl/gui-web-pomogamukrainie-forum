@@ -16,22 +16,8 @@
     <div class="flex-lg-grow-1">
       <app-cities-search required [(ngModel)]="data.location" name="location"></app-cities-search>
     </div>
-    <!-- <div class="flex-lg-grow-1">
-      <label class="d-block" style="font-size: 12px; font-weight: bold; margin-bottom: 4px">
-        {{ "LOCATION" | translate }}
-      </label>
-      <mat-form-field appearance="outline" style="width: 100%">
-        <input
-          matInput
-          type="text"
-          [(ngModel)]="form.value.location"
-          placeholder="Eg. Rzeszów, podkarpackie"
-          name="location"
-        />
-      </mat-form-field>
-    </div> -->
     <div class="flex-lg-grow-0 flex-shrink-0 pb-lg-4">
-      <button type="submit" class="btn btn-primary" [disabled]="!form.valid">
+      <button type="submit" class="btn btn-primary">
         <mat-icon class="me-1">search</mat-icon>
         {{ "SEARCH" | translate }}
       </button>
