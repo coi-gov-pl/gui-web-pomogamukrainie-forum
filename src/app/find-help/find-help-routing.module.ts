@@ -4,7 +4,7 @@ import { FindHelpComponent } from './find-help.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: ':category',
     component: FindHelpComponent,
   },
 ];

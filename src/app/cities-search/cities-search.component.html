@@ -1,18 +1,17 @@
-<form class="example-form">
-  <mat-form-field class="example-full-width" appearance="fill">
-    <mat-label>Miasto</mat-label>
-    <input
-      type="text"
-      placeholder="Pick one"
-      aria-label="Miasto"
-      matInput
-      [formControl]="myControl"
-      [matAutocomplete]="auto"
-    />
-    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayOption">
+<div>
+  <label
+    ><b>{{ label }}</b></label
+  >
+  <mat-form-field class="example-full-width" appearance="outline">
+    <input type="text" [placeholder]="placeholder" matInput [formControl]="formControl" [matAutocomplete]="auto" />
+    <mat-autocomplete
+      #auto="matAutocomplete"
+      [displayWith]="displayOption"
+      (optionSelected)="onSelected($event.option.value)"
+    >
       <mat-option *ngFor="let option of options" [value]="option">
-        {{ option.city }}, {{ option.voivodeship }}
+        {{ displayOption(option) }}
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
-</form>
+</div>

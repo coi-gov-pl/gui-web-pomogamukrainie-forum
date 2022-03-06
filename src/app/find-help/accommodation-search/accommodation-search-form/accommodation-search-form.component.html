@@ -1,0 +1,27 @@
+<form (ngSubmit)="search.emit(data)" #form="ngForm">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <app-cities-search
+          [(ngModel)]="data.location"
+          name="location"
+          [placeholder]="'Rzeszów, podkarpackie'"
+          [label]="'Lokalizacja'"
+        ></app-cities-search>
+      </div>
+      <div class="col-md-2">
+        <label><b>Liczba osób</b></label>
+        <mat-form-field appearance="outline">
+          <input matInput min="1" name="guests" type="number" [(ngModel)]="data.guests" />
+        </mat-form-field>
+      </div>
+      <div class="col-md-4 search">
+        <button mat-flat-button color="primary" type="submit">
+          <mat-icon fontSet="material-icons-outlined">search</mat-icon>
+          <span>Wyszukaj</span>
+        </button>
+      </div>
+    </div>
+    <app-more-info-link></app-more-info-link>
+  </div>
+</form>

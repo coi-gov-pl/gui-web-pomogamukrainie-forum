@@ -1,26 +1,42 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { Component, Input, OnInit } from '@angular/core';
+import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, filter, map, Observable, of, startWith, switchMap, tap } from 'rxjs';
 
 type Location = {
   city: string;
-  voivodeship: string;
+  region: string;
 };
 
 @Component({
   selector: 'app-cities-search',
   templateUrl: './cities-search.component.html',
   styleUrls: ['./cities-search.component.scss'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      multi: true,
+      useExisting: CitiesSearchComponent,
+    },
+  ],
 })
-export class CitiesSearchComponent implements OnInit {
+export class CitiesSearchComponent implements OnInit, ControlValueAccessor {
   constructor(private http: HttpClient) {}
 
+  @Input() placeholder = '';
+  @Input() label = '';
+
+  options: Location[] = [];
+  selectedOption?: Location;
+  touched = false;
+  formControl = new FormControl();
+
+  private readonly queryMinLength = 2;
+
   ngOnInit(): void {
-    this.myControl.valueChanges
+    this.formControl.valueChanges
       .pipe(
-        tap(console.log),
-        filter((value) => typeof value === 'string' && value.length > 1),
+        filter((value) => typeof value === 'string' && value.length >= this.queryMinLength),
         distinctUntilChanged(),
         debounceTime(400),
         tap(() => {
@@ -33,24 +49,51 @@ export class CitiesSearchComponent implements OnInit {
       });
   }
 
-  myControl = new FormControl();
-
-  options: Location[] = [];
-
-  selectedOption: Location | undefined;
-
   displayOption(location?: Location) {
     if (!location) {
       return '';
     }
 
-    return location.city + ', ' + location.voivodeship;
+    return toTitleCase(location.city) + ', ' + location.region;
+
+    function toTitleCase(value: string) {
+      return value.toLowerCase().replace(/(?:^|[\s-/])\w/g, (match) => match.toUpperCase());
+    }
+  }
+
+  onChange: (value: Location) => void = () => {};
+
+  registerOnChange(fn: any): void {
+    this.onChange = fn;
+  }
+
+  onTouched = () => {};
+
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
+
+  markAsTouched() {
+    if (!this.touched) {
+      this.onTouched();
+      this.touched = true;
+    }
+  }
+
+  writeValue(location: Location): void {
+    this.selectedOption = location;
+  }
+
+  onSelected(option: Location) {
+    this.markAsTouched();
+    this.selectedOption = option;
+    this.onChange(option);
   }
 
   getData(query: string) {
     return this.http.get<{
       cities: Location[];
-    }>('http://localhost:8080/api/dictionaries/city', {
+    }>('/api/dictionaries/city', {
       params: {
         query,
       },

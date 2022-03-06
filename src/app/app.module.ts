@@ -7,8 +7,8 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { PomTranslateLoader, Language } from './core/translate-loader.service';
-import { AccommodationFormComponentModule } from './accommodation-form/accommodation-form.module';
 import { CitiesSearchModule } from './cities-search/cities-search.module';
+import { AccommodationFormComponentModule } from './give-help/accommodation-form/accommodation-form.module';
 
 @NgModule({
   declarations: [AppComponent],
