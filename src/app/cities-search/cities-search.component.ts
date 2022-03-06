@@ -1,11 +1,11 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, filter, map, Observable, of, startWith, switchMap, tap } from 'rxjs';
 
 type Location = {
   city: string;
-  voivodeship: string;
+  region: string;
 };
 
 @Component({
@@ -21,20 +21,22 @@ type Location = {
   ],
 })
 export class CitiesSearchComponent implements OnInit, ControlValueAccessor {
-  //FIXME: validator
   constructor(private http: HttpClient) {}
 
+  @Input() placeholder = '';
+  @Input() label = '';
+
   options: Location[] = [];
-
   selectedOption?: Location;
-
   touched = false;
+  formControl = new FormControl();
+
+  private readonly queryMinLength = 2;
 
   ngOnInit(): void {
-    this.myControl.valueChanges
+    this.formControl.valueChanges
       .pipe(
-        tap(console.log),
-        filter((value) => typeof value === 'string' && value.length >= 2),
+        filter((value) => typeof value === 'string' && value.length >= this.queryMinLength),
         distinctUntilChanged(),
         debounceTime(400),
         tap(() => {
@@ -47,14 +49,12 @@ export class CitiesSearchComponent implements OnInit, ControlValueAccessor {
       });
   }
 
-  myControl = new FormControl();
-
   displayOption(location?: Location) {
     if (!location) {
       return '';
     }
 
-    return toTitleCase(location.city) + ', ' + location.voivodeship;
+    return toTitleCase(location.city) + ', ' + location.region;
 
     function toTitleCase(value: string) {
       return value.toLowerCase().replace(/(?:^|[\s-/])\w/g, (match) => match.toUpperCase());
@@ -67,6 +67,12 @@ export class CitiesSearchComponent implements OnInit, ControlValueAccessor {
     this.onChange = fn;
   }
 
+  onTouched = () => {};
+
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
+
   markAsTouched() {
     if (!this.touched) {
       this.onTouched();
@@ -74,14 +80,8 @@ export class CitiesSearchComponent implements OnInit, ControlValueAccessor {
     }
   }
 
-  registerOnTouched(fn: any): void {
-    this.onTouched = fn;
-  }
-
-  onTouched = () => {};
-
-  writeValue(obj: any): void {
-    this.selectedOption = obj;
+  writeValue(location: Location): void {
+    this.selectedOption = location;
   }
 
   onSelected(option: Location) {
@@ -93,7 +93,7 @@ export class CitiesSearchComponent implements OnInit, ControlValueAccessor {
   getData(query: string) {
     return this.http.get<{
       cities: Location[];
-    }>('http://192.168.1.36:8080/api/dictionaries/city', {
+    }>('/api/dictionaries/city', {
       params: {
         query,
       },

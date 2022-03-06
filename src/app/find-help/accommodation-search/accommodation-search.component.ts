@@ -27,11 +27,12 @@ export class AccommodationSearchComponent {
   search(query: AccommodationQuery) {
     this.loading = true;
     this.http
-      .get<Pagable<AccommodationOffer>>('/api/accommodations', {
-        params: {
-          ...query,
-        },
-      })
+      .get<Pagable<AccommodationOffer>>(
+        `/api/accommodations/` + (query.location ? `${query.location.region}/${query.location.city}` : ''),
+        {
+          params: query.guests ? { capacity: query.guests } : {},
+        }
+      )
       .subscribe({
         next: (results) => {
           this.results = results.content;
