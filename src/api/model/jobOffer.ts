@@ -9,12 +9,10 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { UserId } from './userId';
 import { Location } from './location';
 
 export interface JobOffer {
   id?: number;
-  userId: UserId;
   title: string;
   description: string;
   mode?: JobOffer.ModeEnum;

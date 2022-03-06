@@ -102,32 +102,32 @@ export class AccommodationsResourceService {
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
-  public create3(
+  public createAccommodations(
     accommodationOffer: AccommodationOffer,
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<AccommodationOffer>;
-  public create3(
+  public createAccommodations(
     accommodationOffer: AccommodationOffer,
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<HttpResponse<AccommodationOffer>>;
-  public create3(
+  public createAccommodations(
     accommodationOffer: AccommodationOffer,
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<HttpEvent<AccommodationOffer>>;
-  public create3(
+  public createAccommodations(
     accommodationOffer: AccommodationOffer,
     observe: any = 'body',
     reportProgress: boolean = false,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<any> {
     if (accommodationOffer === null || accommodationOffer === undefined) {
-      throw new Error('Required parameter accommodationOffer was null or undefined when calling create3.');
+      throw new Error('Required parameter accommodationOffer was null or undefined when calling createAccommodations.');
     }
 
     let localVarHeaders = this.defaultHeaders;
@@ -180,33 +180,107 @@ export class AccommodationsResourceService {
   }
 
   /**
+   * @param id
+   * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+   * @param reportProgress flag to report request and response progress.
+   */
+  public getAccommodations(
+    id: number,
+    observe?: 'body',
+    reportProgress?: boolean,
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
+  ): Observable<AccommodationOffer>;
+  public getAccommodations(
+    id: number,
+    observe?: 'response',
+    reportProgress?: boolean,
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
+  ): Observable<HttpResponse<AccommodationOffer>>;
+  public getAccommodations(
+    id: number,
+    observe?: 'events',
+    reportProgress?: boolean,
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
+  ): Observable<HttpEvent<AccommodationOffer>>;
+  public getAccommodations(
+    id: number,
+    observe: any = 'body',
+    reportProgress: boolean = false,
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
+  ): Observable<any> {
+    if (id === null || id === undefined) {
+      throw new Error('Required parameter id was null or undefined when calling getAccommodations.');
+    }
+
+    let localVarHeaders = this.defaultHeaders;
+
+    let localVarHttpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
+    if (localVarHttpHeaderAcceptSelected === undefined) {
+      // to determine the Accept header
+      const httpHeaderAccepts: string[] = ['application/json'];
+      localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+    }
+    if (localVarHttpHeaderAcceptSelected !== undefined) {
+      localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
+    }
+
+    let localVarHttpContext: HttpContext | undefined = options && options.context;
+    if (localVarHttpContext === undefined) {
+      localVarHttpContext = new HttpContext();
+    }
+
+    let responseType_: 'text' | 'json' | 'blob' = 'json';
+    if (localVarHttpHeaderAcceptSelected) {
+      if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
+        responseType_ = 'text';
+      } else if (this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)) {
+        responseType_ = 'json';
+      } else {
+        responseType_ = 'blob';
+      }
+    }
+
+    return this.httpClient.get<AccommodationOffer>(
+      `${this.configuration.basePath}/api/accommodations/${encodeURIComponent(String(id))}`,
+      {
+        context: localVarHttpContext,
+        responseType: <any>responseType_,
+        withCredentials: this.configuration.withCredentials,
+        headers: localVarHeaders,
+        observe: observe,
+        reportProgress: reportProgress,
+      }
+    );
+  }
+
+  /**
    * @param pageRequest
    * @param capacity
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
-  public list4(
+  public listAccommodations(
     pageRequest: Pageable,
     capacity?: number,
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<PageAccommodationOffer>;
-  public list4(
+  public listAccommodations(
     pageRequest: Pageable,
     capacity?: number,
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<HttpResponse<PageAccommodationOffer>>;
-  public list4(
+  public listAccommodations(
     pageRequest: Pageable,
     capacity?: number,
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<HttpEvent<PageAccommodationOffer>>;
-  public list4(
+  public listAccommodations(
     pageRequest: Pageable,
     capacity?: number,
     observe: any = 'body',
@@ -214,7 +288,7 @@ export class AccommodationsResourceService {
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<any> {
     if (pageRequest === null || pageRequest === undefined) {
-      throw new Error('Required parameter pageRequest was null or undefined when calling list4.');
+      throw new Error('Required parameter pageRequest was null or undefined when calling listAccommodations.');
     }
 
     let localVarQueryParameters = new HttpParams({ encoder: this.encoder });
@@ -272,7 +346,7 @@ export class AccommodationsResourceService {
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
-  public list5(
+  public listByLocationAccommodations(
     region: string,
     city: string,
     pageRequest: Pageable,
@@ -281,7 +355,7 @@ export class AccommodationsResourceService {
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<PageAccommodationOffer>;
-  public list5(
+  public listByLocationAccommodations(
     region: string,
     city: string,
     pageRequest: Pageable,
@@ -290,7 +364,7 @@ export class AccommodationsResourceService {
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<HttpResponse<PageAccommodationOffer>>;
-  public list5(
+  public listByLocationAccommodations(
     region: string,
     city: string,
     pageRequest: Pageable,
@@ -299,7 +373,7 @@ export class AccommodationsResourceService {
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<HttpEvent<PageAccommodationOffer>>;
-  public list5(
+  public listByLocationAccommodations(
     region: string,
     city: string,
     pageRequest: Pageable,
@@ -309,13 +383,15 @@ export class AccommodationsResourceService {
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<any> {
     if (region === null || region === undefined) {
-      throw new Error('Required parameter region was null or undefined when calling list5.');
+      throw new Error('Required parameter region was null or undefined when calling listByLocationAccommodations.');
     }
     if (city === null || city === undefined) {
-      throw new Error('Required parameter city was null or undefined when calling list5.');
+      throw new Error('Required parameter city was null or undefined when calling listByLocationAccommodations.');
     }
     if (pageRequest === null || pageRequest === undefined) {
-      throw new Error('Required parameter pageRequest was null or undefined when calling list5.');
+      throw new Error(
+        'Required parameter pageRequest was null or undefined when calling listByLocationAccommodations.'
+      );
     }
 
     let localVarQueryParameters = new HttpParams({ encoder: this.encoder });
@@ -361,80 +437,6 @@ export class AccommodationsResourceService {
       {
         context: localVarHttpContext,
         params: localVarQueryParameters,
-        responseType: <any>responseType_,
-        withCredentials: this.configuration.withCredentials,
-        headers: localVarHeaders,
-        observe: observe,
-        reportProgress: reportProgress,
-      }
-    );
-  }
-
-  /**
-   * @param id
-   * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-   * @param reportProgress flag to report request and response progress.
-   */
-  public list6(
-    id: number,
-    observe?: 'body',
-    reportProgress?: boolean,
-    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<AccommodationOffer>;
-  public list6(
-    id: number,
-    observe?: 'response',
-    reportProgress?: boolean,
-    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<AccommodationOffer>>;
-  public list6(
-    id: number,
-    observe?: 'events',
-    reportProgress?: boolean,
-    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<AccommodationOffer>>;
-  public list6(
-    id: number,
-    observe: any = 'body',
-    reportProgress: boolean = false,
-    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<any> {
-    if (id === null || id === undefined) {
-      throw new Error('Required parameter id was null or undefined when calling list6.');
-    }
-
-    let localVarHeaders = this.defaultHeaders;
-
-    let localVarHttpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
-    if (localVarHttpHeaderAcceptSelected === undefined) {
-      // to determine the Accept header
-      const httpHeaderAccepts: string[] = ['application/json'];
-      localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-    }
-    if (localVarHttpHeaderAcceptSelected !== undefined) {
-      localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
-    }
-
-    let localVarHttpContext: HttpContext | undefined = options && options.context;
-    if (localVarHttpContext === undefined) {
-      localVarHttpContext = new HttpContext();
-    }
-
-    let responseType_: 'text' | 'json' | 'blob' = 'json';
-    if (localVarHttpHeaderAcceptSelected) {
-      if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
-        responseType_ = 'text';
-      } else if (this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)) {
-        responseType_ = 'json';
-      } else {
-        responseType_ = 'blob';
-      }
-    }
-
-    return this.httpClient.get<AccommodationOffer>(
-      `${this.configuration.basePath}/api/accommodations/${encodeURIComponent(String(id))}`,
-      {
-        context: localVarHttpContext,
         responseType: <any>responseType_,
         withCredentials: this.configuration.withCredentials,
         headers: localVarHeaders,

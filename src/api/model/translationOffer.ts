@@ -9,11 +9,9 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { UserId } from './userId';
 
 export interface TranslationOffer {
   id?: number;
-  userId: UserId;
   title: string;
   description: string;
   mode?: TranslationOffer.ModeEnum;

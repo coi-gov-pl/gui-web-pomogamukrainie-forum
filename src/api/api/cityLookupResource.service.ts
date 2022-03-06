@@ -98,32 +98,32 @@ export class CityLookupResourceService {
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
-  public getCities(
+  public getCitiesCityLookup(
     query: string,
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<CityLookupResponse>;
-  public getCities(
+  public getCitiesCityLookup(
     query: string,
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<HttpResponse<CityLookupResponse>>;
-  public getCities(
+  public getCitiesCityLookup(
     query: string,
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<HttpEvent<CityLookupResponse>>;
-  public getCities(
+  public getCitiesCityLookup(
     query: string,
     observe: any = 'body',
     reportProgress: boolean = false,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<any> {
     if (query === null || query === undefined) {
-      throw new Error('Required parameter query was null or undefined when calling getCities.');
+      throw new Error('Required parameter query was null or undefined when calling getCitiesCityLookup.');
     }
 
     let localVarQueryParameters = new HttpParams({ encoder: this.encoder });

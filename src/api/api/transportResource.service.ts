@@ -104,32 +104,32 @@ export class TransportResourceService {
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
-  public create(
+  public createTransport(
     transportOffer: TransportOffer,
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<TransportOffer>;
-  public create(
+  public createTransport(
     transportOffer: TransportOffer,
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<HttpResponse<TransportOffer>>;
-  public create(
+  public createTransport(
     transportOffer: TransportOffer,
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<HttpEvent<TransportOffer>>;
-  public create(
+  public createTransport(
     transportOffer: TransportOffer,
     observe: any = 'body',
     reportProgress: boolean = false,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<any> {
     if (transportOffer === null || transportOffer === undefined) {
-      throw new Error('Required parameter transportOffer was null or undefined when calling create.');
+      throw new Error('Required parameter transportOffer was null or undefined when calling createTransport.');
     }
 
     let localVarHeaders = this.defaultHeaders;
@@ -182,32 +182,32 @@ export class TransportResourceService {
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
-  public get(
+  public getTransport(
     id: number,
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<TransportOffer>;
-  public get(
+  public getTransport(
     id: number,
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<HttpResponse<TransportOffer>>;
-  public get(
+  public getTransport(
     id: number,
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<HttpEvent<TransportOffer>>;
-  public get(
+  public getTransport(
     id: number,
     observe: any = 'body',
     reportProgress: boolean = false,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<any> {
     if (id === null || id === undefined) {
-      throw new Error('Required parameter id was null or undefined when calling get.');
+      throw new Error('Required parameter id was null or undefined when calling getTransport.');
     }
 
     let localVarHeaders = this.defaultHeaders;
@@ -258,28 +258,28 @@ export class TransportResourceService {
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
-  public list(
+  public listTransport(
     pageRequest: Pageable,
     searchCriteria: TransportOfferSearchCriteria,
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<PageTransportOffer>;
-  public list(
+  public listTransport(
     pageRequest: Pageable,
     searchCriteria: TransportOfferSearchCriteria,
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<HttpResponse<PageTransportOffer>>;
-  public list(
+  public listTransport(
     pageRequest: Pageable,
     searchCriteria: TransportOfferSearchCriteria,
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<HttpEvent<PageTransportOffer>>;
-  public list(
+  public listTransport(
     pageRequest: Pageable,
     searchCriteria: TransportOfferSearchCriteria,
     observe: any = 'body',
@@ -287,10 +287,10 @@ export class TransportResourceService {
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<any> {
     if (pageRequest === null || pageRequest === undefined) {
-      throw new Error('Required parameter pageRequest was null or undefined when calling list.');
+      throw new Error('Required parameter pageRequest was null or undefined when calling listTransport.');
     }
     if (searchCriteria === null || searchCriteria === undefined) {
-      throw new Error('Required parameter searchCriteria was null or undefined when calling list.');
+      throw new Error('Required parameter searchCriteria was null or undefined when calling listTransport.');
     }
 
     let localVarQueryParameters = new HttpParams({ encoder: this.encoder });

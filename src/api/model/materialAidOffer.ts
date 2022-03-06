@@ -9,13 +9,31 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { UserId } from './userId';
 import { Location } from './location';
 
 export interface MaterialAidOffer {
   id?: number;
-  userId: UserId;
   title: string;
   description: string;
+  category?: MaterialAidOffer.CategoryEnum;
   location?: Location;
+}
+export namespace MaterialAidOffer {
+  export type CategoryEnum =
+    | 'FOOD'
+    | 'HOUSEHOLD_GOODS'
+    | 'ELECTRONICS'
+    | 'FOR_CHILDREN'
+    | 'COSMETICS_AND_DOMESTIC_DETERGENTS'
+    | 'FURNITURE'
+    | 'CLOTHING';
+  export const CategoryEnum = {
+    Food: 'FOOD' as CategoryEnum,
+    HouseholdGoods: 'HOUSEHOLD_GOODS' as CategoryEnum,
+    Electronics: 'ELECTRONICS' as CategoryEnum,
+    ForChildren: 'FOR_CHILDREN' as CategoryEnum,
+    CosmeticsAndDomesticDetergents: 'COSMETICS_AND_DOMESTIC_DETERGENTS' as CategoryEnum,
+    Furniture: 'FURNITURE' as CategoryEnum,
+    Clothing: 'CLOTHING' as CategoryEnum,
+  };
 }

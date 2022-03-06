@@ -22,6 +22,7 @@ model/materialAidOffer.ts
 model/models.ts
 model/pageAccommodationOffer.ts
 model/pageJobOffer.ts
+model/pageMaterialAidOffer.ts
 model/pageTranslationOffer.ts
 model/pageTransportOffer.ts
 model/pageable.ts
@@ -30,5 +31,4 @@ model/sort.ts
 model/translationOffer.ts
 model/transportOffer.ts
 model/transportOfferSearchCriteria.ts
-model/userId.ts
 variables.ts

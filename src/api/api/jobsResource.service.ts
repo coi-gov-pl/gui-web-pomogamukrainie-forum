@@ -102,32 +102,32 @@ export class JobsResourceService {
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
-  public create2(
+  public createJobs(
     jobOffer: JobOffer,
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<JobOffer>;
-  public create2(
+  public createJobs(
     jobOffer: JobOffer,
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<HttpResponse<JobOffer>>;
-  public create2(
+  public createJobs(
     jobOffer: JobOffer,
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<HttpEvent<JobOffer>>;
-  public create2(
+  public createJobs(
     jobOffer: JobOffer,
     observe: any = 'body',
     reportProgress: boolean = false,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<any> {
     if (jobOffer === null || jobOffer === undefined) {
-      throw new Error('Required parameter jobOffer was null or undefined when calling create2.');
+      throw new Error('Required parameter jobOffer was null or undefined when calling createJobs.');
     }
 
     let localVarHeaders = this.defaultHeaders;
@@ -180,32 +180,32 @@ export class JobsResourceService {
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
-  public get1(
+  public getJobs(
     id: number,
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<JobOffer>;
-  public get1(
+  public getJobs(
     id: number,
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<HttpResponse<JobOffer>>;
-  public get1(
+  public getJobs(
     id: number,
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<HttpEvent<JobOffer>>;
-  public get1(
+  public getJobs(
     id: number,
     observe: any = 'body',
     reportProgress: boolean = false,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<any> {
     if (id === null || id === undefined) {
-      throw new Error('Required parameter id was null or undefined when calling get1.');
+      throw new Error('Required parameter id was null or undefined when calling getJobs.');
     }
 
     let localVarHeaders = this.defaultHeaders;
@@ -251,32 +251,32 @@ export class JobsResourceService {
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
-  public list3(
+  public listJobs(
     pageRequest: Pageable,
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<PageJobOffer>;
-  public list3(
+  public listJobs(
     pageRequest: Pageable,
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<HttpResponse<PageJobOffer>>;
-  public list3(
+  public listJobs(
     pageRequest: Pageable,
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<HttpEvent<PageJobOffer>>;
-  public list3(
+  public listJobs(
     pageRequest: Pageable,
     observe: any = 'body',
     reportProgress: boolean = false,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<any> {
     if (pageRequest === null || pageRequest === undefined) {
-      throw new Error('Required parameter pageRequest was null or undefined when calling list3.');
+      throw new Error('Required parameter pageRequest was null or undefined when calling listJobs.');
     }
 
     let localVarQueryParameters = new HttpParams({ encoder: this.encoder });
