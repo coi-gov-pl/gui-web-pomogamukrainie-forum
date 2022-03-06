@@ -2,11 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, filter, map, Observable, of, startWith, switchMap, tap } from 'rxjs';
-
-type Location = {
-  city: string;
-  region: string;
-};
+import { displayLocationOption, Location } from './display-location-option';
 
 @Component({
   selector: 'app-cities-search',
@@ -50,15 +46,7 @@ export class CitiesSearchComponent implements OnInit, ControlValueAccessor {
   }
 
   displayOption(location?: Location) {
-    if (!location) {
-      return '';
-    }
-
-    return toTitleCase(location.city) + ', ' + location.region;
-
-    function toTitleCase(value: string) {
-      return value.toLowerCase().replace(/(?:^|[\s-/])\w/g, (match) => match.toUpperCase());
-    }
+    return displayLocationOption(location);
   }
 
   onChange: (value: Location) => void = () => {};
