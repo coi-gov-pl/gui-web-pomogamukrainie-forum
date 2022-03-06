@@ -1,5 +1,8 @@
 :host {
   width: 100%;
+  .container {
+    max-width: 1176px;
+  }
   h2 {
     color: var(--c-yellow);
     text-align: center;
