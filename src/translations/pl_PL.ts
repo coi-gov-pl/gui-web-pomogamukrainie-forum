@@ -18,6 +18,7 @@ export default {
   HYGIENE: 'Środki higieny i czystości',
   TYPE_OF_SUPPORT: 'Rodzaj pomocy',
   LOCATION: 'Lokalizacja',
+  NUMBER_OF_PEOPLE: 'Liczba osób',
   SEARCH: 'Wyszukaj',
   SELECT_FROM_THE_LIST: 'Wybierz z listy',
   MORE_SUPPORT_INFORMATION: 'Więcej informacji o pomocy',
