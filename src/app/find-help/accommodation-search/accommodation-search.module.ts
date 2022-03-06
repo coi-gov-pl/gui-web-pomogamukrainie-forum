@@ -11,6 +11,7 @@ import { AccommodationSearchComponent } from './accommodation-search.component';
 import { MatCardModule } from '@angular/material/card';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchResultComponentModule } from '../search-result/search-result.component';
+import { CitiesSearchModule } from 'src/app/cities-search/cities-search.module';
 import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
@@ -27,6 +28,7 @@ import { TranslateModule } from '@ngx-translate/core';
     MoreInfoLinkModule,
     MatCardModule,
     SearchResultComponentModule,
+    CitiesSearchModule,
     TranslateModule,
   ],
 })

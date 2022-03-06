@@ -1,18 +1,13 @@
-<form (ngSubmit)="search.emit(data)">
+<form (ngSubmit)="search.emit(data)" #form="ngForm">
   <div class="container">
     <div class="row">
       <div class="col-md-6">
-        <label
-          ><b>{{ "LOCATION" | translate }}</b></label
-        >
-        <mat-form-field appearance="outline">
-          <input
-            matInput
-            placeholder="replace with location search component"
-            name="location"
-            [(ngModel)]="data.location"
-          />
-        </mat-form-field>
+        <app-cities-search
+          [(ngModel)]="data.location"
+          name="location"
+          [placeholder]="'Rzeszów, podkarpackie'"
+          [label]="'LOCATION' | translate"
+        ></app-cities-search>
       </div>
       <div class="col-md-2">
         <label

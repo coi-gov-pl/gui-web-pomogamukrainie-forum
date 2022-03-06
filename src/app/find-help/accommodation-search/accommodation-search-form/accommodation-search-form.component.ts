@@ -1,7 +1,10 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 
 export interface AccommodationQuery {
-  location?: string;
+  location?: {
+    city: string;
+    region: string;
+  };
   guests?: number;
 }
 
