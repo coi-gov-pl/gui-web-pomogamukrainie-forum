@@ -1,7 +1,9 @@
 .header {
-  position: fixed;
+  display: flex;
+  align-items: center;
+  background: var(--c-darkblue);
+  height: var(--header-height);
   width: 100%;
-  z-index: 9999;
   overflow: hidden;
 
   &.transparent {
@@ -33,4 +35,8 @@
 
 .card.card.highlight-card span {
   margin-left: 60px;
+}
+
+main.header-padding {
+  padding-top: var(--header-height);
 }

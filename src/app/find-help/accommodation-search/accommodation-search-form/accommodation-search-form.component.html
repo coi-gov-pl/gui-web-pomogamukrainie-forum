@@ -2,7 +2,9 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6">
-        <label><b>Lokalizacja</b></label>
+        <label
+          ><b>{{ "LOCATION" | translate }}</b></label
+        >
         <mat-form-field appearance="outline">
           <input
             matInput
@@ -13,15 +15,17 @@
         </mat-form-field>
       </div>
       <div class="col-md-2">
-        <label><b>Liczba osób</b></label>
+        <label
+          ><b>{{ "NUMBER_OF_PEOPLE" | translate }}</b></label
+        >
         <mat-form-field appearance="outline">
           <input matInput min="1" name="guests" type="number" [(ngModel)]="data.guests" />
         </mat-form-field>
       </div>
       <div class="col-md-4 search">
-        <button mat-flat-button color="primary" type="submit">
+        <button type="submit" class="btn btn-primary">
           <mat-icon fontSet="material-icons-outlined">search</mat-icon>
-          <span>Wyszukaj</span>
+          <span>{{ "SEARCH" | translate }}</span>
         </button>
       </div>
     </div>
