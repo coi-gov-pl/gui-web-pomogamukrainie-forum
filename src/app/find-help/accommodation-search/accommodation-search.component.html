@@ -9,10 +9,17 @@
       [location]="result.location"
       [title]="result.title"
       [description]="result.description"
-      [attributes]="[
-        { text: result.guests + ' osoby', icon: 'person' },
-        { text: result.hostLanguage.join(', '), icon: 'translate' }
-      ]"
-    ></app-search-result>
+    >
+      <app-search-result-attribute
+        *ngIf="result.guests"
+        [text]="result.guests + ' ' + (result.guests | pluralizePolish: 'osoba':'osoby':'osób')"
+        icon="person"
+      ></app-search-result-attribute>
+      <app-search-result-attribute
+        *ngIf="result.hostLanguage"
+        [text]="result.hostLanguage.join(', ')"
+        icon="translate"
+      ></app-search-result-attribute>
+    </app-search-result>
   </div>
 </div>

@@ -4,16 +4,9 @@
   .attributes {
     --attribute-font-size: 12px;
     font-family: var(--font-roboto);
-    margin: 11px 0;
+    margin: 0 0 11px 0;
     opacity: 0.5;
     font-size: 12px;
-    mat-icon {
-      font-size: var(--attribute-font-size);
-      width: var(--attribute-font-size);
-      height: var(--attribute-font-size);
-      opacity: 1;
-      color: var(--c-yellow);
-    }
     display: flex;
     gap: 18px;
     .right {

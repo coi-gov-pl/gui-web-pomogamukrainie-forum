@@ -1,0 +1,26 @@
+<mat-card>
+  <app-transport-search-form (search)="search($event)"></app-transport-search-form>
+</mat-card>
+<div class="results" *ngIf="this.total && this.total >= 0" [class.loading]="loading">
+  <div class="total">Lista ogłoszeń ({{ total }}):</div>
+  <div>
+    <app-search-result
+      *ngFor="let result of results"
+      [location]="result.origin"
+      [destination]="result.destination"
+      [title]="result.title"
+      [description]="result.description"
+    >
+      <app-search-result-attribute
+        *ngIf="result.transportDate"
+        [text]="result.transportDate"
+        icon="date_range"
+      ></app-search-result-attribute>
+      <app-search-result-attribute
+        *ngIf="result.capacity"
+        [text]="result.capacity + ' ' + (result.capacity | pluralizePolish: 'osoba':'osoby':'osób')"
+        icon="person"
+      ></app-search-result-attribute>
+    </app-search-result>
+  </div>
+</div>

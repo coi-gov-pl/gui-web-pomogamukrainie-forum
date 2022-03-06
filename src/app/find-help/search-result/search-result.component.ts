@@ -1,13 +1,5 @@
-import { Component, Input, NgModule } from '@angular/core';
-import { MatCardModule } from '@angular/material/card';
-import { CommonModule } from '@angular/common';
-import { MatIconModule } from '@angular/material/icon';
-import { OfferLocation } from '../../api/types';
-
-interface Attribute {
-  icon: string;
-  text: string;
-}
+import { Component, Input } from '@angular/core';
+import { Location } from '../../../api';
 
 @Component({
   selector: 'app-search-result',
@@ -16,20 +8,13 @@ interface Attribute {
 })
 export class SearchResultComponent {
   @Input()
-  location?: OfferLocation;
+  location?: Location;
+  @Input()
+  destination?: Location;
   @Input()
   title!: string;
   @Input()
   description!: string;
   @Input()
   posted?: Date;
-  @Input()
-  attributes?: Attribute[];
 }
-
-@NgModule({
-  declarations: [SearchResultComponent],
-  exports: [SearchResultComponent],
-  imports: [MatCardModule, CommonModule, MatIconModule],
-})
-export class SearchResultComponentModule {}

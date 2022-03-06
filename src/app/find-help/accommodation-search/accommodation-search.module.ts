@@ -9,8 +9,9 @@ import { MoreInfoLinkModule } from '../../core/components/more-info-link/more-in
 import { AccommodationSearchFormComponent } from './accommodation-search-form/accommodation-search-form.component';
 import { AccommodationSearchComponent } from './accommodation-search.component';
 import { MatCardModule } from '@angular/material/card';
+import { PomCommonPipesModule } from '../../shared/pipes/pom-common-pipes.module';
 import { HttpClientModule } from '@angular/common/http';
-import { SearchResultComponentModule } from '../search-result/search-result.component';
+import { SearchResultComponentModule } from '../search-result/search-result.module';
 import { CitiesSearchModule } from 'src/app/cities-search/cities-search.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { AccomodationSearchRoutingModule } from './accomodation-search.routing.module';
@@ -28,6 +29,7 @@ import { AccomodationSearchRoutingModule } from './accomodation-search.routing.m
     MatButtonModule,
     MoreInfoLinkModule,
     MatCardModule,
+    PomCommonPipesModule,
     SearchResultComponentModule,
     CitiesSearchModule,
     TranslateModule,

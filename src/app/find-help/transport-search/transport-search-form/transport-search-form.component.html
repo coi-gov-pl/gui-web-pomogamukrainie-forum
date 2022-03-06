@@ -1,0 +1,53 @@
+<form (ngSubmit)="search.emit(data)" #form="ngForm">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <app-cities-search
+          [(ngModel)]="data.origin"
+          name="origin"
+          [placeholder]="'Np. Rzeszów, podkarpackie'"
+          [label]="'LOCATION_FROM' | translate"
+        ></app-cities-search>
+      </div>
+      <div class="col-md-3">
+        <app-cities-search
+          [(ngModel)]="data.destination"
+          name="destination"
+          [placeholder]="'Np. Warszawa, mazowieckie'"
+          [label]="'LOCATION_TO' | translate"
+        ></app-cities-search>
+      </div>
+      <div class="col-md-2">
+        <label
+          ><b>{{ "DATE" | translate }}</b></label
+        >
+        <mat-form-field appearance="outline">
+          <input
+            matInput
+            [(ngModel)]="data.transportDate"
+            [matDatepicker]="picker"
+            name="transportDate"
+            [placeholder]="'Wybierz datę'"
+          />
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="col-md-1">
+        <label
+          ><b>{{ "NUMBER_OF_PEOPLE" | translate }}</b></label
+        >
+        <mat-form-field appearance="outline">
+          <input matInput min="1" name="capacity" type="number" [(ngModel)]="data.capacity" />
+        </mat-form-field>
+      </div>
+      <div class="col-md-3 search">
+        <button type="submit" class="btn btn-primary">
+          <mat-icon fontSet="material-icons-outlined">search</mat-icon>
+          <span>{{ "SEARCH" | translate }}</span>
+        </button>
+      </div>
+    </div>
+    <app-more-info-link></app-more-info-link>
+  </div>
+</form>
