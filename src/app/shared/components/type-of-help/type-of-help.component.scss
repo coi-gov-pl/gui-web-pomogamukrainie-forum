@@ -28,6 +28,7 @@ $unfold-height: 30px;
     max-width: $card-width;
     padding-top: 0;
     border: $border-white;
+    overflow: hidden;
 
     .icon-wrapper,
     .name-wrapper {

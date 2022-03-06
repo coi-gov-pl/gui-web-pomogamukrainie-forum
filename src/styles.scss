@@ -1,10 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~bootstrap/dist/css/bootstrap-grid.min.css";
-@import "~bootstrap/dist/css/bootstrap-utilities.min.css";
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import "./assets/styles/mat-card";
 @import "./assets/styles/variables";
 @import "./forms";
+@import "./assets/styles/utilities";
 
 html,
 body {
