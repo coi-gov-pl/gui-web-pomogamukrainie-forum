@@ -100,7 +100,8 @@ $unfold-height: 30px;
 
   &.border-on-hover:not(.disabled) {
     mat-card {
-      &:hover {
+      &:hover,
+      &:focus {
         box-shadow: none;
         border: $border-default;
       }

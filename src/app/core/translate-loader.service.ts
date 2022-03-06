@@ -6,6 +6,8 @@ import plPlTranslations from '../../translations/pl_PL';
 
 export enum Language {
   pl_PL = 'pl_PL',
+  en_EN = 'en_EN',
+  uk_UK = 'uk_UK',
 }
 
 export interface Translations {

@@ -1,11 +1,11 @@
-@import "~bootstrap/scss/bootstrap-grid.scss";
+@import "node_modules/bootstrap/scss/bootstrap-grid";
 
-.hero {
+.dashboard {
   background-image: linear-gradient(-66.4045498763deg, rgba(5, 44, 101, 0), #052c65 83.1595525064%),
-    url("/assets/images/hero.jpg");
+    url("../../../assets/images/dashboard.jpg");
   background-size: cover;
   padding-top: 20px;
-  min-height: 528px;
+  min-height: 628px;
   position: relative;
   z-index: 0;
   overflow: hidden;
