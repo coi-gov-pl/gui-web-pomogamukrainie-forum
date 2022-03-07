@@ -7,7 +7,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { CategoryNavigationComponentModule } from './category-navigation/category-navigation.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { HeaderModule } from '../header/header.module';
 
 @NgModule({
   declarations: [WelcomeComponent, DashboardComponent],
@@ -18,7 +17,6 @@ import { HeaderModule } from '../header/header.module';
     WelcomeRoutingModule,
     MatIconModule,
     TranslateModule,
-    HeaderModule,
   ],
 })
 export class WelcomeModule {}
