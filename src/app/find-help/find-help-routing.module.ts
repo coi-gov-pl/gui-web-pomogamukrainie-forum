@@ -1,11 +1,40 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FindHelpComponent } from './find-help.component';
+import { CategoryRoutingName } from '../core/routing-category-name.enum';
 
 const routes: Routes = [
   {
-    path: ':category',
+    path: '',
     component: FindHelpComponent,
+    children: [
+      {
+        path: CategoryRoutingName.ACCOMMODATION,
+        loadChildren: () =>
+          import('./accommodation-search/accommodation-search.module').then((m) => m.AccommodationSearchModule),
+      },
+      {
+        path: CategoryRoutingName.MATERIAL_HELP,
+      },
+      {
+        path: CategoryRoutingName.TRANSPORT,
+      },
+      {
+        path: CategoryRoutingName.HEALTH,
+      },
+      {
+        path: CategoryRoutingName.LEGAL_HELP,
+      },
+      {
+        path: CategoryRoutingName.WORK,
+      },
+      {
+        path: CategoryRoutingName.TRANSLATIONS,
+      },
+      {
+        path: CategoryRoutingName.MISC,
+      },
+    ],
   },
 ];
 

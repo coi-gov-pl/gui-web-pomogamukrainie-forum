@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SearchResultComponentModule } from '../search-result/search-result.component';
 import { CitiesSearchModule } from 'src/app/cities-search/cities-search.module';
 import { TranslateModule } from '@ngx-translate/core';
+import { AccomodationSearchRoutingModule } from './accomodation-search.routing.module';
 
 @NgModule({
   declarations: [AccommodationSearchFormComponent, AccommodationSearchComponent],
@@ -30,6 +31,7 @@ import { TranslateModule } from '@ngx-translate/core';
     SearchResultComponentModule,
     CitiesSearchModule,
     TranslateModule,
+    AccomodationSearchRoutingModule,
   ],
 })
 export class AccommodationSearchModule {}
