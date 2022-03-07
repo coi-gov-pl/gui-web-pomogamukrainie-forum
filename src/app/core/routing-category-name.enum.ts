@@ -8,14 +8,3 @@ export enum CategoryRoutingName {
   TRANSLATIONS = 'tlumaczenia',
   MISC = 'misc',
 }
-
-export enum CategoryKeyFromRoutingName {
-  'noclegi' = 'ACCOMMODATION',
-  'pomoc-materialna' = 'MATERIAL_HELP',
-  'transport' = 'TRANSPORT',
-  'zdrowie' = 'HEALTH',
-  'pomoc-prawna' = 'LEGAL_HELP',
-  'praca' = 'WORK',
-  'tlumaczenia' = 'TRANSLATIONS',
-  'misc' = 'MISC',
-}
