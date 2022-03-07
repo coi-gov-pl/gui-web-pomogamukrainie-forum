@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { HelpTypePath } from '../../core/help-direction.enum';
+import { CategoryRoutingName } from '../../core/routing-category-name.enum';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,5 +8,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent {
-  constructor() {}
+  helpTypePath = HelpTypePath;
+  categoryRoutingName = CategoryRoutingName;
 }

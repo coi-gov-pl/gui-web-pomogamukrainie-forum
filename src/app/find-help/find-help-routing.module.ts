@@ -15,25 +15,12 @@ const routes: Routes = [
       },
       {
         path: CategoryRoutingName.MATERIAL_HELP,
+        loadChildren: () =>
+          import('./material-support-form/material-support-form.module').then((m) => m.MaterialSupportFormModule),
       },
       {
         path: CategoryRoutingName.TRANSPORT,
         loadChildren: () => import('./transport-search/transport-search.module').then((m) => m.TransportSearchModule),
-      },
-      {
-        path: CategoryRoutingName.HEALTH,
-      },
-      {
-        path: CategoryRoutingName.LEGAL_HELP,
-      },
-      {
-        path: CategoryRoutingName.WORK,
-      },
-      {
-        path: CategoryRoutingName.TRANSLATIONS,
-      },
-      {
-        path: CategoryRoutingName.MISC,
       },
     ],
   },

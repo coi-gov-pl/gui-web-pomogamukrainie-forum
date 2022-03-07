@@ -8,10 +8,17 @@
       </h1>
       <p class="dashboard-desc font-white mt-3" [innerHTML]="'DASHBOARD_DESCRIPTION' | translate"></p>
       <div class="dashboard-actions">
-        <a routerLink="/szukaj-pomocy/noclegi" id="search" class="btn btn-highlight">{{
-          "SEARCH_FOR_HELP" | translate
-        }}</a>
-        <a routerLink="/daj-pomoc" id="help" class="btn btn-outline-highlight">
+        <a
+          [routerLink]="[helpTypePath.Find, categoryRoutingName.ACCOMMODATION]"
+          id="search"
+          class="btn btn-highlight"
+          >{{ "SEARCH_FOR_HELP" | translate }}</a
+        >
+        <a
+          [routerLink]="[helpTypePath.Give, categoryRoutingName.ACCOMMODATION]"
+          id="help"
+          class="btn btn-outline-highlight"
+        >
           <mat-icon fontSet="material-icons-outlined">add</mat-icon>
           {{ "ADD_AD" | translate }}
         </a>

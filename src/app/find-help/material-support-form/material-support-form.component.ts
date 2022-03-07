@@ -37,22 +37,3 @@ export class MaterialSupportFormComponent {
     console.log(this.data);
   }
 }
-
-@NgModule({
-  declarations: [MaterialSupportFormComponent],
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatIconModule,
-    MatInputModule,
-    MatSelectModule,
-    MoreInfoLinkModule,
-    TranslateModule,
-    CitiesSearchModule,
-  ],
-  exports: [MaterialSupportFormComponent],
-})
-export class MaterialSupportFormModule {}

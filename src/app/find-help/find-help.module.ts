@@ -7,6 +7,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { CategoryNavigationComponentModule } from '../welcome/category-navigation/category-navigation.component';
 import { AccommodationSearchModule } from './accommodation-search/accommodation-search.module';
 import { TransportSearchModule } from './transport-search/transport-search.module';
+import { MaterialSupportFormModule } from './material-support-form/material-support-form.module';
 
 @NgModule({
   declarations: [FindHelpComponent],
@@ -18,6 +19,7 @@ import { TransportSearchModule } from './transport-search/transport-search.modul
     FindHelpRoutingModule,
     AccommodationSearchModule,
     TransportSearchModule,
+    MaterialSupportFormModule,
   ],
 })
 export class FindHelpModule {}

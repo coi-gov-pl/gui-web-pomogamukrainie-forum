@@ -1,10 +1,10 @@
 <div class="container">
   <header>
-    <h2>#PomagamUkrainie</h2>
-    <h1>Znajdź pomoc</h1>
+    <h2>{{ "HELPUA" | translate }}</h2>
+    <h1>{{ "SEARCH_FOR_HELP" | translate }}</h1>
   </header>
 
-  <app-category-navigation></app-category-navigation>
+  <app-category-navigation [outputPath]="helpTypePath.Find"></app-category-navigation>
 
   <section>
     <router-outlet></router-outlet>

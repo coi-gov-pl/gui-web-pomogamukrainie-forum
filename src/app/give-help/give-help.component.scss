@@ -1,3 +1,24 @@
 :host {
   width: 100%;
+  .container {
+    max-width: 1176px;
+  }
+  h2 {
+    color: var(--c-yellow);
+    text-align: center;
+    font-size: 13px;
+    font-weight: 700;
+  }
+  h1 {
+    text-align: center;
+    font-size: 24px;
+  }
+  header {
+    padding: 40px;
+  }
+
+  section {
+    display: block;
+    margin: 2em;
+  }
 }
