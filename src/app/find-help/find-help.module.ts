@@ -6,6 +6,7 @@ import { MatCardModule } from '@angular/material/card';
 import { TranslateModule } from '@ngx-translate/core';
 import { CategoryNavigationComponentModule } from '../welcome/category-navigation/category-navigation.component';
 import { AccommodationSearchModule } from './accommodation-search/accommodation-search.module';
+import { TransportSearchModule } from './transport-search/transport-search.module';
 
 @NgModule({
   declarations: [FindHelpComponent],
@@ -16,6 +17,7 @@ import { AccommodationSearchModule } from './accommodation-search/accommodation-
     TranslateModule,
     FindHelpRoutingModule,
     AccommodationSearchModule,
+    TransportSearchModule,
   ],
 })
 export class FindHelpModule {}

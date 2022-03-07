@@ -18,6 +18,7 @@ const routes: Routes = [
       },
       {
         path: CategoryRoutingName.TRANSPORT,
+        loadChildren: () => import('./transport-search/transport-search.module').then((m) => m.TransportSearchModule),
       },
       {
         path: CategoryRoutingName.HEALTH,

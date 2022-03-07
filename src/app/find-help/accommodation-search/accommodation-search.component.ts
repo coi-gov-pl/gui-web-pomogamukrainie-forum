@@ -2,13 +2,13 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AccommodationQuery } from './accommodation-search-form/accommodation-search-form.component';
 import { Pagable } from '../../api/pagable';
-import { OfferLocation } from '../../api/types';
+import { Location } from '../../../api';
 
 interface AccommodationOffer {
   id: number;
   title: string;
   description: string;
-  location: OfferLocation;
+  location: Location;
   guests: number;
   lengthOfStay: string;
   hostLanguage: string[];
