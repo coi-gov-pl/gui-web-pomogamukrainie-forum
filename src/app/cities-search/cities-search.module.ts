@@ -4,12 +4,11 @@ import { CitiesSearchComponent } from './cities-search.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
-import { HttpClientModule } from '@angular/common/http';
 import { DisplayLocationOptionPipe } from './display-location-option';
 
 @NgModule({
   declarations: [CitiesSearchComponent, DisplayLocationOptionPipe],
-  imports: [CommonModule, ReactiveFormsModule, MatAutocompleteModule, MatInputModule, HttpClientModule],
+  imports: [CommonModule, ReactiveFormsModule, MatAutocompleteModule, MatInputModule],
   exports: [CitiesSearchComponent],
 })
 export class CitiesSearchModule {}
