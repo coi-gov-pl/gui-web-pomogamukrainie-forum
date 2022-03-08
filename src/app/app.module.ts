@@ -10,6 +10,8 @@ import { Language, PomTranslateLoader } from './core/translate-loader.service';
 import { AccommodationFormComponentModule } from './give-help/accommodation-form/accommodation-form.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ApiModule, Configuration } from '../api';
+import { AuthModule } from './core/auth';
+import { InterceptorModule } from './core/interceptor/interceptor.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,8 +30,9 @@ import { ApiModule, Configuration } from '../api';
       },
     }),
     ApiModule.forRoot(() => new Configuration({ basePath: '' })),
+    AuthModule,
+    InterceptorModule,
   ],
-  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
