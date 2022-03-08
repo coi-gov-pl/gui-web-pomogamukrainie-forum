@@ -1,0 +1,73 @@
+<header class="header fixed-top" [ngClass]="getHeaderClass()">
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <div class="d-flex flex-row">
+        <img class="navbar-brand herb" src="./assets/images/herb.png" alt="herb" />
+        <a href="https://www.gov.pl/web/premier" class="navbar-brand">
+          <img class="logo" src="./assets/images/kprm.svg" alt="kancelaria prezesa rady ministrów" />
+        </a>
+        <a href="https://pomagamukrainie.gov.pl/" class="navbar-brand">
+          <img class="logo" src="./assets/images/pomagamyua.svg" alt="pomagamy ukrainie" />
+        </a>
+      </div>
+
+      <button
+        (click)="onToggle()"
+        [ngClass]="getMenuClass()"
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <svg class="cross" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
+          <path d="M2 20 19.854 2M2.146 2 20 20" stroke="#fff" stroke-width="3" stroke-linecap="round" />
+        </svg>
+        <svg class="menu" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 17">
+          <path d="M1.5 15.5h21m-21-7h21m-13-7h13" stroke-width="3" stroke-linecap="round" />
+        </svg>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+          <li class="navbar-item dropdown desktop-only">
+            <a
+              class="navbar-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              {{ "SELECT_LANGUAGE" | translate }}
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li *ngFor="let lang of languages">
+                <a class="dropdown-item" href="#">
+                  <img src="/assets/images/{{ lang.code }}.svg" alt="" />
+                  {{ lang.text }}
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="navbar-item navbar-big mobile-only mb-3 mt-5">
+            <span class="navbar-link">{{ "SELECT_LANGUAGE" | translate }}</span>
+          </li>
+          <li *ngFor="let lang of languages" class="navbar-item mobile-only">
+            <a class="dropdown-item" href="#">
+              <img src="/assets/images/{{ lang.code }}.svg" alt="" />
+              {{ lang.text }}
+            </a>
+          </li>
+          <li class="navbar-item navbar-big">
+            <a class="navbar-link" href="#">{{ "STATEMENT" | translate }}</a>
+          </li>
+          <li class="navbar-item navbar-big mobile-only">
+            <a class="navbar-link" href="#">{{ "ANNOUNCEMENTS" | translate }}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
