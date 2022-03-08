@@ -9,8 +9,13 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { Location } from './location';
 
-export interface Location {
-  region: string;
-  city: string;
+export interface TransportOfferDefinitionDTO {
+  title: string;
+  description: string;
+  origin: Location;
+  destination: Location;
+  capacity: number;
+  transportDate: string;
 }

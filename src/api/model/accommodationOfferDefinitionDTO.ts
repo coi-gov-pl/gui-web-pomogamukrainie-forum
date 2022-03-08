@@ -11,17 +11,15 @@
  */
 import { Location } from './location';
 
-export interface AccommodationOffer {
-  id?: number;
+export interface AccommodationOfferDefinitionDTO {
   title: string;
   description: string;
-  modifiedDate?: string;
   location: Location;
   guests: number;
-  lengthOfStay: AccommodationOffer.LengthOfStayEnum;
-  hostLanguage: Array<AccommodationOffer.HostLanguageEnum>;
+  lengthOfStay: AccommodationOfferDefinitionDTO.LengthOfStayEnum;
+  hostLanguage: Array<AccommodationOfferDefinitionDTO.HostLanguageEnum>;
 }
-export namespace AccommodationOffer {
+export namespace AccommodationOfferDefinitionDTO {
   export type LengthOfStayEnum = 'WEEK_1' | 'WEEK_2' | 'MONTH_1' | 'MONTH_2' | 'MONTH_3' | 'LONGER';
   export const LengthOfStayEnum = {
     Week1: 'WEEK_1' as LengthOfStayEnum,

@@ -11,15 +11,11 @@
  */
 import { Location } from './location';
 
-export interface MaterialAidOffer {
-  id?: number;
-  title: string;
-  description: string;
-  modifiedDate?: string;
-  category: MaterialAidOffer.CategoryEnum;
-  location: Location;
+export interface MaterialAidOfferSearchCriteria {
+  category?: MaterialAidOfferSearchCriteria.CategoryEnum;
+  location?: Location;
 }
-export namespace MaterialAidOffer {
+export namespace MaterialAidOfferSearchCriteria {
   export type CategoryEnum =
     | 'FOOD'
     | 'HOUSEHOLD_GOODS'
