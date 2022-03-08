@@ -9,9 +9,10 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { TransportOffer } from './transportOffer';
 
-export interface Sort {
-  empty?: boolean;
-  sorted?: boolean;
-  unsorted?: boolean;
+export interface OffersTransportOffer {
+  content?: Array<TransportOffer>;
+  totalElements?: number;
+  totalPages?: number;
 }

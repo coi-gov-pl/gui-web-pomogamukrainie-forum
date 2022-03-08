@@ -4,10 +4,10 @@ import { HttpClient } from '@angular/common/http';
 
 import { AccommodationsResourceService } from './api/accommodationsResource.service';
 import { CityLookupResourceService } from './api/cityLookupResource.service';
-import { JobsResourceService } from './api/jobsResource.service';
 import { MaterialAidResourceService } from './api/materialAidResource.service';
-import { TranslationResourceService } from './api/translationResource.service';
+import { MyOffersResourceService } from './api/myOffersResource.service';
 import { TransportResourceService } from './api/transportResource.service';
+import { UsersResourceService } from './api/usersResource.service';
 
 @NgModule({
   imports: [],

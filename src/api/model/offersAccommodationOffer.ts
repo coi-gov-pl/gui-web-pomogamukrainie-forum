@@ -9,20 +9,10 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { PageableObject } from './pageableObject';
-import { TransportOffer } from './transportOffer';
-import { Sort } from './sort';
+import { AccommodationOffer } from './accommodationOffer';
 
-export interface PageTransportOffer {
-  totalPages?: number;
+export interface OffersAccommodationOffer {
+  content?: Array<AccommodationOffer>;
   totalElements?: number;
-  size?: number;
-  content?: Array<TransportOffer>;
-  number?: number;
-  sort?: Sort;
-  pageable?: PageableObject;
-  first?: boolean;
-  last?: boolean;
-  numberOfElements?: number;
-  empty?: boolean;
+  totalPages?: number;
 }

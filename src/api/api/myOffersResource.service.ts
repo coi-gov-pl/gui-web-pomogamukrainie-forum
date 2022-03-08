@@ -25,11 +25,15 @@ import { CustomHttpParameterCodec } from '../encoder';
 import { Observable } from 'rxjs';
 
 // @ts-ignore
-import { PageTranslationOffer } from '../model/pageTranslationOffer';
+import { AccommodationOffer } from '../model/accommodationOffer';
+// @ts-ignore
+import { MaterialAidOffer } from '../model/materialAidOffer';
+// @ts-ignore
+import { OffersBaseOffer } from '../model/offersBaseOffer';
 // @ts-ignore
 import { Pageable } from '../model/pageable';
 // @ts-ignore
-import { TranslationOffer } from '../model/translationOffer';
+import { TransportOffer } from '../model/transportOffer';
 
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS } from '../variables';
@@ -38,7 +42,7 @@ import { Configuration } from '../configuration';
 @Injectable({
   providedIn: 'root',
 })
-export class TranslationResourceService {
+export class MyOffersResourceService {
   protected basePath = 'http://localhost:8080';
   public defaultHeaders = new HttpHeaders();
   public configuration = new Configuration();
@@ -98,118 +102,36 @@ export class TranslationResourceService {
   }
 
   /**
-   * @param translationOffer
-   * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-   * @param reportProgress flag to report request and response progress.
-   */
-  public createTranslation(
-    translationOffer: TranslationOffer,
-    observe?: 'body',
-    reportProgress?: boolean,
-    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<TranslationOffer>;
-  public createTranslation(
-    translationOffer: TranslationOffer,
-    observe?: 'response',
-    reportProgress?: boolean,
-    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<TranslationOffer>>;
-  public createTranslation(
-    translationOffer: TranslationOffer,
-    observe?: 'events',
-    reportProgress?: boolean,
-    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<TranslationOffer>>;
-  public createTranslation(
-    translationOffer: TranslationOffer,
-    observe: any = 'body',
-    reportProgress: boolean = false,
-    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<any> {
-    if (translationOffer === null || translationOffer === undefined) {
-      throw new Error('Required parameter translationOffer was null or undefined when calling createTranslation.');
-    }
-
-    let localVarHeaders = this.defaultHeaders;
-
-    let localVarHttpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
-    if (localVarHttpHeaderAcceptSelected === undefined) {
-      // to determine the Accept header
-      const httpHeaderAccepts: string[] = ['application/json'];
-      localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-    }
-    if (localVarHttpHeaderAcceptSelected !== undefined) {
-      localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
-    }
-
-    let localVarHttpContext: HttpContext | undefined = options && options.context;
-    if (localVarHttpContext === undefined) {
-      localVarHttpContext = new HttpContext();
-    }
-
-    // to determine the Content-Type header
-    const consumes: string[] = ['application/json'];
-    const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
-    if (httpContentTypeSelected !== undefined) {
-      localVarHeaders = localVarHeaders.set('Content-Type', httpContentTypeSelected);
-    }
-
-    let responseType_: 'text' | 'json' | 'blob' = 'json';
-    if (localVarHttpHeaderAcceptSelected) {
-      if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
-        responseType_ = 'text';
-      } else if (this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)) {
-        responseType_ = 'json';
-      } else {
-        responseType_ = 'blob';
-      }
-    }
-
-    return this.httpClient.post<TranslationOffer>(
-      `${this.configuration.basePath}/api/secure/translations`,
-      translationOffer,
-      {
-        context: localVarHttpContext,
-        responseType: <any>responseType_,
-        withCredentials: this.configuration.withCredentials,
-        headers: localVarHeaders,
-        observe: observe,
-        reportProgress: reportProgress,
-      }
-    );
-  }
-
-  /**
    * @param id
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
-  public getTranslation(
+  public getMyOffers(
     id: number,
     observe?: 'body',
     reportProgress?: boolean,
-    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<TranslationOffer>;
-  public getTranslation(
+    options?: { httpHeaderAccept?: '*/*'; context?: HttpContext }
+  ): Observable<AccommodationOffer | MaterialAidOffer | TransportOffer>;
+  public getMyOffers(
     id: number,
     observe?: 'response',
     reportProgress?: boolean,
-    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<TranslationOffer>>;
-  public getTranslation(
+    options?: { httpHeaderAccept?: '*/*'; context?: HttpContext }
+  ): Observable<HttpResponse<AccommodationOffer | MaterialAidOffer | TransportOffer>>;
+  public getMyOffers(
     id: number,
     observe?: 'events',
     reportProgress?: boolean,
-    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<TranslationOffer>>;
-  public getTranslation(
+    options?: { httpHeaderAccept?: '*/*'; context?: HttpContext }
+  ): Observable<HttpEvent<AccommodationOffer | MaterialAidOffer | TransportOffer>>;
+  public getMyOffers(
     id: number,
     observe: any = 'body',
     reportProgress: boolean = false,
-    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
+    options?: { httpHeaderAccept?: '*/*'; context?: HttpContext }
   ): Observable<any> {
     if (id === null || id === undefined) {
-      throw new Error('Required parameter id was null or undefined when calling getTranslation.');
+      throw new Error('Required parameter id was null or undefined when calling getMyOffers.');
     }
 
     let localVarHeaders = this.defaultHeaders;
@@ -217,7 +139,7 @@ export class TranslationResourceService {
     let localVarHttpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
     if (localVarHttpHeaderAcceptSelected === undefined) {
       // to determine the Accept header
-      const httpHeaderAccepts: string[] = ['application/json'];
+      const httpHeaderAccepts: string[] = ['*/*'];
       localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
     }
     if (localVarHttpHeaderAcceptSelected !== undefined) {
@@ -240,8 +162,8 @@ export class TranslationResourceService {
       }
     }
 
-    return this.httpClient.get<TranslationOffer>(
-      `${this.configuration.basePath}/api/translations/${encodeURIComponent(String(id))}`,
+    return this.httpClient.get<AccommodationOffer | MaterialAidOffer | TransportOffer>(
+      `${this.configuration.basePath}/api/secure/my-offers/${encodeURIComponent(String(id))}`,
       {
         context: localVarHttpContext,
         responseType: <any>responseType_,
@@ -258,32 +180,32 @@ export class TranslationResourceService {
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
-  public listTranslation(
+  public listMyOffers(
     pageRequest: Pageable,
     observe?: 'body',
     reportProgress?: boolean,
-    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<PageTranslationOffer>;
-  public listTranslation(
+    options?: { httpHeaderAccept?: '*/*'; context?: HttpContext }
+  ): Observable<OffersBaseOffer>;
+  public listMyOffers(
     pageRequest: Pageable,
     observe?: 'response',
     reportProgress?: boolean,
-    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<PageTranslationOffer>>;
-  public listTranslation(
+    options?: { httpHeaderAccept?: '*/*'; context?: HttpContext }
+  ): Observable<HttpResponse<OffersBaseOffer>>;
+  public listMyOffers(
     pageRequest: Pageable,
     observe?: 'events',
     reportProgress?: boolean,
-    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<PageTranslationOffer>>;
-  public listTranslation(
+    options?: { httpHeaderAccept?: '*/*'; context?: HttpContext }
+  ): Observable<HttpEvent<OffersBaseOffer>>;
+  public listMyOffers(
     pageRequest: Pageable,
     observe: any = 'body',
     reportProgress: boolean = false,
-    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
+    options?: { httpHeaderAccept?: '*/*'; context?: HttpContext }
   ): Observable<any> {
     if (pageRequest === null || pageRequest === undefined) {
-      throw new Error('Required parameter pageRequest was null or undefined when calling listTranslation.');
+      throw new Error('Required parameter pageRequest was null or undefined when calling listMyOffers.');
     }
 
     let localVarQueryParameters = new HttpParams({ encoder: this.encoder });
@@ -296,7 +218,7 @@ export class TranslationResourceService {
     let localVarHttpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
     if (localVarHttpHeaderAcceptSelected === undefined) {
       // to determine the Accept header
-      const httpHeaderAccepts: string[] = ['application/json'];
+      const httpHeaderAccepts: string[] = ['*/*'];
       localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
     }
     if (localVarHttpHeaderAcceptSelected !== undefined) {
@@ -319,7 +241,7 @@ export class TranslationResourceService {
       }
     }
 
-    return this.httpClient.get<PageTranslationOffer>(`${this.configuration.basePath}/api/translations`, {
+    return this.httpClient.get<OffersBaseOffer>(`${this.configuration.basePath}/api/secure/my-offers`, {
       context: localVarHttpContext,
       params: localVarQueryParameters,
       responseType: <any>responseType_,

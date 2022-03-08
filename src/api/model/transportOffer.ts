@@ -15,8 +15,9 @@ export interface TransportOffer {
   id?: number;
   title: string;
   description: string;
+  modifiedDate?: string;
   origin: Location;
   destination: Location;
   capacity: number;
-  transportDate?: string;
+  transportDate: string;
 }
