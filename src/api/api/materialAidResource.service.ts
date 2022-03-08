@@ -27,7 +27,11 @@ import { Observable } from 'rxjs';
 // @ts-ignore
 import { MaterialAidOffer } from '../model/materialAidOffer';
 // @ts-ignore
-import { PageMaterialAidOffer } from '../model/pageMaterialAidOffer';
+import { MaterialAidOfferDefinitionDTO } from '../model/materialAidOfferDefinitionDTO';
+// @ts-ignore
+import { MaterialAidOfferSearchCriteria } from '../model/materialAidOfferSearchCriteria';
+// @ts-ignore
+import { OffersMaterialAidOffer } from '../model/offersMaterialAidOffer';
 // @ts-ignore
 import { Pageable } from '../model/pageable';
 
@@ -172,30 +176,36 @@ export class MaterialAidResourceService {
   }
 
   /**
+   * Allows to search for material aid offers using different criteria (passes as query params). Each criteria is optional.
    * @param pageRequest
+   * @param searchCriteria
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
   public listMaterialAid(
     pageRequest: Pageable,
+    searchCriteria: MaterialAidOfferSearchCriteria,
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<PageMaterialAidOffer>;
+  ): Observable<OffersMaterialAidOffer>;
   public listMaterialAid(
     pageRequest: Pageable,
+    searchCriteria: MaterialAidOfferSearchCriteria,
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<PageMaterialAidOffer>>;
+  ): Observable<HttpResponse<OffersMaterialAidOffer>>;
   public listMaterialAid(
     pageRequest: Pageable,
+    searchCriteria: MaterialAidOfferSearchCriteria,
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<PageMaterialAidOffer>>;
+  ): Observable<HttpEvent<OffersMaterialAidOffer>>;
   public listMaterialAid(
     pageRequest: Pageable,
+    searchCriteria: MaterialAidOfferSearchCriteria,
     observe: any = 'body',
     reportProgress: boolean = false,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
@@ -203,10 +213,16 @@ export class MaterialAidResourceService {
     if (pageRequest === null || pageRequest === undefined) {
       throw new Error('Required parameter pageRequest was null or undefined when calling listMaterialAid.');
     }
+    if (searchCriteria === null || searchCriteria === undefined) {
+      throw new Error('Required parameter searchCriteria was null or undefined when calling listMaterialAid.');
+    }
 
     let localVarQueryParameters = new HttpParams({ encoder: this.encoder });
     if (pageRequest !== undefined && pageRequest !== null) {
       localVarQueryParameters = this.addToHttpParams(localVarQueryParameters, <any>pageRequest, 'pageRequest');
+    }
+    if (searchCriteria !== undefined && searchCriteria !== null) {
+      localVarQueryParameters = this.addToHttpParams(localVarQueryParameters, <any>searchCriteria, 'searchCriteria');
     }
 
     let localVarHeaders = this.defaultHeaders;
@@ -237,7 +253,7 @@ export class MaterialAidResourceService {
       }
     }
 
-    return this.httpClient.get<PageMaterialAidOffer>(`${this.configuration.basePath}/api/material-aid`, {
+    return this.httpClient.get<OffersMaterialAidOffer>(`${this.configuration.basePath}/api/material-aid`, {
       context: localVarHttpContext,
       params: localVarQueryParameters,
       responseType: <any>responseType_,
@@ -250,37 +266,37 @@ export class MaterialAidResourceService {
 
   /**
    * Creates material aid offer
-   * @param materialAidOffer
+   * @param materialAidOfferDefinitionDTO
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
   public postMaterialAidOfferMaterialAid(
-    materialAidOffer: MaterialAidOffer,
+    materialAidOfferDefinitionDTO: MaterialAidOfferDefinitionDTO,
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<MaterialAidOffer>;
   public postMaterialAidOfferMaterialAid(
-    materialAidOffer: MaterialAidOffer,
+    materialAidOfferDefinitionDTO: MaterialAidOfferDefinitionDTO,
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<HttpResponse<MaterialAidOffer>>;
   public postMaterialAidOfferMaterialAid(
-    materialAidOffer: MaterialAidOffer,
+    materialAidOfferDefinitionDTO: MaterialAidOfferDefinitionDTO,
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<HttpEvent<MaterialAidOffer>>;
   public postMaterialAidOfferMaterialAid(
-    materialAidOffer: MaterialAidOffer,
+    materialAidOfferDefinitionDTO: MaterialAidOfferDefinitionDTO,
     observe: any = 'body',
     reportProgress: boolean = false,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<any> {
-    if (materialAidOffer === null || materialAidOffer === undefined) {
+    if (materialAidOfferDefinitionDTO === null || materialAidOfferDefinitionDTO === undefined) {
       throw new Error(
-        'Required parameter materialAidOffer was null or undefined when calling postMaterialAidOfferMaterialAid.'
+        'Required parameter materialAidOfferDefinitionDTO was null or undefined when calling postMaterialAidOfferMaterialAid.'
       );
     }
 
@@ -321,7 +337,7 @@ export class MaterialAidResourceService {
 
     return this.httpClient.post<MaterialAidOffer>(
       `${this.configuration.basePath}/api/secure/material-aid`,
-      materialAidOffer,
+      materialAidOfferDefinitionDTO,
       {
         context: localVarHttpContext,
         responseType: <any>responseType_,

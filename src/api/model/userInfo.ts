@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 
-export interface Location {
-  region: string;
-  city: string;
+export interface UserInfo {
+  email?: string;
+  phoneNumber?: string;
 }

@@ -26,6 +26,7 @@ export class AccommodationSearchComponent {
 
   search(query: AccommodationQuery) {
     this.loading = true;
+    console.log(query);
     this.http
       .get<Pagable<AccommodationOffer>>(
         `/api/accommodations/` + (query.location ? `${query.location.region}/${query.location.city}` : ''),

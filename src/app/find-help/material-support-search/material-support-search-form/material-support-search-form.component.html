@@ -1,0 +1,31 @@
+<form (ngSubmit)="search.emit(data)" #form="ngForm">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <label
+          ><b>{{ "TYPE_OF_SUPPORT" | translate }}</b></label
+        >
+        <mat-form-field appearance="outline">
+          <mat-select placeholder="Wybierz z listy" [(ngModel)]="categories" name="kategoriePomocy">
+            <mat-option *ngFor="let it of categories" [value]="it.code">{{ it.label | translate }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-md-4">
+        <app-cities-search
+          [(ngModel)]="data.location"
+          name="location"
+          [placeholder]="'Np. Rzeszów, podkarpackie'"
+          [label]="'LOCATION' | translate"
+        ></app-cities-search>
+      </div>
+      <div class="col-md-3 search">
+        <button type="submit" class="btn btn-primary">
+          <mat-icon fontSet="material-icons-outlined">search</mat-icon>
+          <span>{{ "SEARCH" | translate }}</span>
+        </button>
+      </div>
+    </div>
+    <app-more-info-link></app-more-info-link>
+  </div>
+</form>
