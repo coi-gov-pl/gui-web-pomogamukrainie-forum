@@ -13,6 +13,7 @@ import { Location } from './location';
 
 export interface TransportOffer {
   id?: number;
+  userFirstName: string;
   title: string;
   description: string;
   modifiedDate?: string;
