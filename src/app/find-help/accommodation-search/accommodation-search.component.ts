@@ -1,18 +1,7 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { AccommodationQuery } from './accommodation-search-form/accommodation-search-form.component';
-import { Pagable } from '../../api/pagable';
-import { Location } from '../../../api';
+import { AccommodationsResourceService, AccommodationOffer, Pageable } from '../../../api';
 
-interface AccommodationOffer {
-  id: number;
-  title: string;
-  description: string;
-  location: Location;
-  guests: number;
-  lengthOfStay: string;
-  hostLanguage: string[];
-}
 @Component({
   selector: 'app-accommodation-search',
   templateUrl: './accommodation-search.component.html',
@@ -20,30 +9,46 @@ interface AccommodationOffer {
 })
 export class AccommodationSearchComponent {
   results: AccommodationOffer[] = [];
-  total: number = NaN;
+  total?: number = undefined;
   loading = false;
-  constructor(private http: HttpClient) {}
+  constructor(private accommodationsResourceService: AccommodationsResourceService) {}
 
-  search(query: AccommodationQuery) {
+  getResultsObservable(
+    region: string | undefined,
+    city: string | undefined,
+    pageRequest: Pageable,
+    capacity: number | undefined
+  ) {
+    if (region && city) {
+      return this.accommodationsResourceService.listByLocationAccommodations(region, city, pageRequest, capacity);
+    } else {
+      return this.accommodationsResourceService.listAccommodations(pageRequest, capacity);
+    }
+  }
+
+  search(searchCriteria: AccommodationQuery) {
     this.loading = true;
-    this.http
-      .get<Pagable<AccommodationOffer>>(
-        `/api/accommodations/` + (query.location ? `${query.location.region}/${query.location.city}` : ''),
-        {
-          params: query.guests ? { capacity: query.guests } : {},
-        }
-      )
-      .subscribe({
-        next: (results) => {
-          this.results = results.content;
-          this.total = results.totalElements;
-          this.loading = false;
-        },
-        error: () => {
-          this.results = [];
-          this.total = NaN;
-          this.loading = false;
-        },
-      });
+
+    // TODO specify the params; at least sorting is configurable from the UI
+    const pageRequest: Pageable = {
+      // page?: number;
+      // size?: number;
+      // sort?: Array<string>;
+    };
+
+    const { location: { region, city } = {}, capacity } = searchCriteria;
+
+    this.getResultsObservable(region, city, pageRequest, capacity).subscribe({
+      next: (results) => {
+        this.results = results.content ?? [];
+        this.total = results.totalElements;
+        this.loading = false;
+      },
+      error: () => {
+        this.results = [];
+        this.total = undefined;
+        this.loading = false;
+      },
+    });
   }
 }
