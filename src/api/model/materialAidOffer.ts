@@ -13,6 +13,7 @@ import { Location } from './location';
 
 export interface MaterialAidOffer {
   id?: number;
+  userFirstName: string;
   title: string;
   description: string;
   modifiedDate?: string;

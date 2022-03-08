@@ -13,6 +13,7 @@ import { Location } from './location';
 
 export interface AccommodationOffer {
   id?: number;
+  userFirstName: string;
   title: string;
   description: string;
   modifiedDate?: string;

@@ -11,6 +11,6 @@
  */
 
 export interface CityLookupDto {
-  city?: string;
-  region?: string;
+  city: string;
+  region: string;
 }
