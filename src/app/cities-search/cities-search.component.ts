@@ -1,8 +1,8 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { debounceTime, distinctUntilChanged, filter, map, Observable, of, startWith, switchMap, tap } from 'rxjs';
+import { debounceTime, distinctUntilChanged, filter, switchMap, tap } from 'rxjs';
 import { displayLocationOption, Location } from './display-location-option';
+import { CityLookupResourceService } from '../../api';
 
 @Component({
   selector: 'app-cities-search',
@@ -17,7 +17,7 @@ import { displayLocationOption, Location } from './display-location-option';
   ],
 })
 export class CitiesSearchComponent implements OnInit, ControlValueAccessor {
-  constructor(private http: HttpClient) {}
+  constructor(private cityLookupResourceService: CityLookupResourceService) {}
 
   @Input() placeholder = '';
   @Input() label = '';
@@ -41,7 +41,7 @@ export class CitiesSearchComponent implements OnInit, ControlValueAccessor {
         switchMap((value) => this.getData(value))
       )
       .subscribe((data) => {
-        this.options = data.cities;
+        this.options = data.cities ?? [];
       });
   }
 
@@ -79,12 +79,6 @@ export class CitiesSearchComponent implements OnInit, ControlValueAccessor {
   }
 
   getData(query: string) {
-    return this.http.get<{
-      cities: Location[];
-    }>('/api/dictionaries/city', {
-      params: {
-        query,
-      },
-    });
+    return this.cityLookupResourceService.getCitiesCityLookup(query);
   }
 }
