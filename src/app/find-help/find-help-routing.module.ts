@@ -16,7 +16,7 @@ const routes: Routes = [
       {
         path: CategoryRoutingName.MATERIAL_HELP,
         loadChildren: () =>
-          import('./material-support-form/material-support-form.module').then((m) => m.MaterialSupportFormModule),
+          import('./material-support-search/material-support-search.module').then((m) => m.MaterialSupportSearchModule),
       },
       {
         path: CategoryRoutingName.TRANSPORT,
