@@ -4,6 +4,7 @@
 @import "./assets/styles/variables";
 @import "./forms";
 @import "./assets/styles/utilities";
+@import "assets/styles/overrides";
 
 html,
 body {
@@ -32,6 +33,17 @@ h6 {
 
 p {
   margin: 0;
+}
+
+h1 {
+  font-size: 24px;
+}
+
+h2 {
+  color: var(--c-yellow);
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
 }
 
 @import "./assets/styles/buttons";
