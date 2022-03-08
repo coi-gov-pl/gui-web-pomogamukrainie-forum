@@ -10,7 +10,6 @@ import { AccommodationSearchFormComponent } from './accommodation-search-form/ac
 import { AccommodationSearchComponent } from './accommodation-search.component';
 import { MatCardModule } from '@angular/material/card';
 import { PomCommonPipesModule } from '../../shared/pipes/pom-common-pipes.module';
-import { HttpClientModule } from '@angular/common/http';
 import { SearchResultComponentModule } from '../search-result/search-result.module';
 import { CitiesSearchModule } from 'src/app/cities-search/cities-search.module';
 import { TranslateModule } from '@ngx-translate/core';
@@ -21,7 +20,6 @@ import { AccomodationSearchRoutingModule } from './accomodation-search.routing.m
   exports: [AccommodationSearchComponent],
   imports: [
     CommonModule,
-    HttpClientModule,
     MatFormFieldModule,
     MatInputModule,
     FormsModule,

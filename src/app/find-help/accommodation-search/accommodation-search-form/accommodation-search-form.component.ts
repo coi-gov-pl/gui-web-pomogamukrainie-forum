@@ -1,11 +1,9 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { Location } from '../../../../api';
 
 export interface AccommodationQuery {
-  location?: {
-    city: string;
-    region: string;
-  };
-  guests?: number;
+  location?: Location;
+  capacity?: number;
 }
 
 @Component({
