@@ -1,1 +1,12 @@
-<h1>Give help module</h1>
+<div class="container">
+  <header>
+    <h2>{{ "HELPUA" | translate }}</h2>
+    <h1>{{ "SEARCH_FOR_HELP" | translate }}</h1>
+  </header>
+
+  <app-category-navigation [outputPath]="helpType.Give"></app-category-navigation>
+
+  <section>
+    <router-outlet></router-outlet>
+  </section>
+</div>

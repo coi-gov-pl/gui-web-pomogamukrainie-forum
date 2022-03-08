@@ -4,7 +4,7 @@
       <app-type-of-help
         [icon]="category.icon"
         [name]="category.name"
-        [path]="['/szukaj-pomocy', routingCategoryName[category.name]]"
+        [path]="['', outputPath, routingCategoryName[category.name]]"
         [selected]="category.selected"
         [disabled]="category.disabled"
         [redirectOnClick]="true"
