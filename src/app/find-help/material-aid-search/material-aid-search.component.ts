@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Pageable, MaterialAidOfferSearchCriteria, MaterialAidResourceService, MaterialAidOffer } from '../../../api';
 
 @Component({
@@ -11,7 +10,7 @@ export class MaterialAidSearchComponent {
   results: MaterialAidOffer[] = [];
   total?: number = undefined;
   loading = false;
-  constructor(private http: HttpClient, private materialAidResourceService: MaterialAidResourceService) {}
+  constructor(private materialAidResourceService: MaterialAidResourceService) {}
 
   search(searchCriteria: MaterialAidOfferSearchCriteria) {
     this.loading = true;
@@ -22,7 +21,6 @@ export class MaterialAidSearchComponent {
       // sort?: Array<string>;
     };
 
-    // TODO a proper request
     this.materialAidResourceService.listMaterialAid(pageRequest, searchCriteria).subscribe({
       next: (results) => {
         this.results = results.content ?? [];
