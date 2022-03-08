@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { AccommodationQuery } from './accommodation-search-form/accommodation-search-form.component';
-import { AccommodationsResourceService, OffersAccommodationOffer, AccommodationOffer, Pageable } from '../../../api';
-import { Observable } from 'rxjs';
+import { AccommodationsResourceService, AccommodationOffer, Pageable } from '../../../api';
 
 @Component({
   selector: 'app-accommodation-search',
@@ -14,6 +13,19 @@ export class AccommodationSearchComponent {
   loading = false;
   constructor(private accommodationsResourceService: AccommodationsResourceService) {}
 
+  getResultsObservable(
+    region: string | undefined,
+    city: string | undefined,
+    pageRequest: Pageable,
+    capacity: number | undefined
+  ) {
+    if (region && city) {
+      return this.accommodationsResourceService.listByLocationAccommodations(region, city, pageRequest, capacity);
+    } else {
+      return this.accommodationsResourceService.listAccommodations(pageRequest, capacity);
+    }
+  }
+
   search(searchCriteria: AccommodationQuery) {
     this.loading = true;
 
@@ -24,22 +36,9 @@ export class AccommodationSearchComponent {
       // sort?: Array<string>;
     };
 
-    let resultsObservable: Observable<OffersAccommodationOffer>;
-
     const { location: { region, city } = {}, capacity } = searchCriteria;
 
-    if (region && city) {
-      resultsObservable = this.accommodationsResourceService.listByLocationAccommodations(
-        region,
-        city,
-        pageRequest,
-        capacity
-      );
-    } else {
-      resultsObservable = this.accommodationsResourceService.listAccommodations(pageRequest, capacity);
-    }
-
-    resultsObservable.subscribe({
+    this.getResultsObservable(region, city, pageRequest, capacity).subscribe({
       next: (results) => {
         this.results = results.content ?? [];
         this.total = results.totalElements;
