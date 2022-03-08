@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Location } from '../../../api';
 
 @Component({
@@ -6,7 +6,7 @@ import { Location } from '../../../api';
   templateUrl: './search-result.component.html',
   styleUrls: ['./search-result.component.scss'],
 })
-export class SearchResultComponent {
+export class SearchResultComponent implements OnChanges {
   @Input()
   location?: Location;
   @Input()
@@ -16,5 +16,16 @@ export class SearchResultComponent {
   @Input()
   description!: string;
   @Input()
-  posted?: Date;
+  posted?: Date | string | undefined;
+
+  postedDate: Date | undefined;
+
+  ngOnChanges({ posted }: SimpleChanges) {
+    const postedVal = posted.currentValue;
+    if (postedVal === undefined || postedVal instanceof Date) {
+      this.postedDate = postedVal;
+    } else {
+      this.postedDate = new Date(postedVal);
+    }
+  }
 }

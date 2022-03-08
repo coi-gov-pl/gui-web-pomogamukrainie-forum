@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MaterialSupportFormComponent } from './material-support-form.component';
+import { MaterialAidSearchComponent } from './material-aid-search.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: MaterialSupportFormComponent,
+    component: MaterialAidSearchComponent,
   },
 ];
 
@@ -13,4 +13,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class MaterialSupportFormRoutingModule {}
+export class MaterialAidSearchRoutingModule {}

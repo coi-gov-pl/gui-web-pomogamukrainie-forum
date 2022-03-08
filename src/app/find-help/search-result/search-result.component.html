@@ -4,7 +4,7 @@
       <mat-icon fontSet="material-icons-outlined">location_on</mat-icon>
       {{ location.city }}
     </div>
-    <div class="right" *ngIf="posted">{{ posted | date: "short" }}</div>
+    <div class="right" *ngIf="posted">{{ postedDate | date: "short" }}</div>
   </div>
   <h4>{{ title }}</h4>
   <div class="attributes">
