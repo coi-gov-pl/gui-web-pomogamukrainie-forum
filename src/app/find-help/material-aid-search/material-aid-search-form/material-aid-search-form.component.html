@@ -6,8 +6,8 @@
           ><b>{{ "TYPE_OF_SUPPORT" | translate }}</b></label
         >
         <mat-form-field appearance="outline">
-          <mat-select placeholder="Wybierz z listy" [(ngModel)]="categories" name="kategoriePomocy">
-            <mat-option *ngFor="let it of categories" [value]="it.code">{{ it.label | translate }}</mat-option>
+          <mat-select placeholder="Wybierz z listy" [(ngModel)]="data.category" name="kategoriePomocy">
+            <mat-option *ngFor="let cat of categories" [value]="cat.value">{{ cat.value | translate }}</mat-option>
           </mat-select>
         </mat-form-field>
       </div>

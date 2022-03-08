@@ -8,18 +8,18 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { MaterialSupportSearchRoutingModule } from './material-support-search.routing.module';
+import { MaterialAidSearchRoutingModule } from './material-aid-search.routing.module';
 import { PomCommonPipesModule } from '../../shared/pipes/pom-common-pipes.module';
 import { TranslateModule } from '@ngx-translate/core';
-import { MaterialSupportSearchComponent } from './material-support-search.component';
+import { MaterialAidSearchComponent } from './material-aid-search.component';
 import { SearchResultComponentModule } from '../search-result/search-result.module';
 import { CitiesSearchModule } from '../../cities-search/cities-search.module';
 import { MoreInfoLinkModule } from '../../core/components/more-info-link/more-info-link.component';
-import { MaterialSupportSearchFormComponent } from './material-support-search-form/material-support-search-form.component';
+import { MaterialAidSearchFormComponent } from './material-aid-search-form/material-aid-search-form.component';
 
 @NgModule({
-  declarations: [MaterialSupportSearchComponent, MaterialSupportSearchFormComponent],
-  exports: [MaterialSupportSearchComponent],
+  declarations: [MaterialAidSearchComponent, MaterialAidSearchFormComponent],
+  exports: [MaterialAidSearchComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -30,7 +30,7 @@ import { MaterialSupportSearchFormComponent } from './material-support-search-fo
     MatInputModule,
     MatSelectModule,
     MatNativeDateModule,
-    MaterialSupportSearchRoutingModule,
+    MaterialAidSearchRoutingModule,
     PomCommonPipesModule,
     TranslateModule,
     CitiesSearchModule,
@@ -38,4 +38,4 @@ import { MaterialSupportSearchFormComponent } from './material-support-search-fo
     MoreInfoLinkModule,
   ],
 })
-export class MaterialSupportSearchModule {}
+export class MaterialAidSearchModule {}

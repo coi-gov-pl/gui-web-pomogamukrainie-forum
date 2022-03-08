@@ -7,7 +7,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { CategoryNavigationComponentModule } from '../welcome/category-navigation/category-navigation.component';
 import { AccommodationSearchModule } from './accommodation-search/accommodation-search.module';
 import { TransportSearchModule } from './transport-search/transport-search.module';
-import { MaterialSupportSearchModule } from './material-support-search/material-support-search.module';
+import { MaterialAidSearchModule } from './material-aid-search/material-aid-search.module';
 
 @NgModule({
   declarations: [FindHelpComponent],
@@ -19,7 +19,7 @@ import { MaterialSupportSearchModule } from './material-support-search/material-
     FindHelpRoutingModule,
     AccommodationSearchModule,
     TransportSearchModule,
-    MaterialSupportSearchModule,
+    MaterialAidSearchModule,
   ],
 })
 export class FindHelpModule {}

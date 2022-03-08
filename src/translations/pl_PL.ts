@@ -27,4 +27,9 @@ export default {
   MORE_SUPPORT_INFORMATION: 'Więcej informacji o pomocy',
   DASHBOARD_DESCRIPTION:
     'Ofertę pomocy potwierdzisz <strong>profilem zaufanym</strong>. W ten sposób chronimy Twoje dane i dbamy o wiarygodną pomoc dla uchodźców.',
+  HOUSEHOLD_GOODS: 'HOUSEHOLD_GOODS',
+  ELECTRONICS: 'ELECTRONICS',
+  FOR_CHILDREN: 'FOR_CHILDREN',
+  COSMETICS_AND_DOMESTIC_DETERGENTS: 'COSMETICS_AND_DOMESTIC_DETERGENTS',
+  FURNITURE: 'FURNITURE',
 };
