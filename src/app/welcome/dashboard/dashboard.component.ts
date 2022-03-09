@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { HelpTypePath } from '../../core/help-direction.enum';
-import { CategoryRoutingName } from '../../core/routing-category-name.enum';
+import { HelpTypePath } from '@app/shared/models';
+import { CategoryRoutingName } from '@app/shared/models';
 
 @Component({
   selector: 'app-dashboard',

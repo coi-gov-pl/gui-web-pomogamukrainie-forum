@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Pageable, TransportOfferSearchCriteria, TransportResourceService, TransportOffer } from '../../../api';
+import { Pageable, TransportOfferSearchCriteria, TransportResourceService, TransportOffer } from '@app/core/api';
 
 @Component({
   selector: 'app-transport-search',

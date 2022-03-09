@@ -1,5 +1,5 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import { MaterialAidOffer, MaterialAidOfferSearchCriteria } from '../../../../api';
+import { MaterialAidOffer, MaterialAidOfferSearchCriteria } from '@app/core/api';
 
 const categories = Object.entries(MaterialAidOffer.CategoryEnum).map(([key, value]) => ({
   code: key,

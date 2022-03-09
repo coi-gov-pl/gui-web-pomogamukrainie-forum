@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { GiveHelpComponent } from './give-help.component';
-import { CategoryRoutingName } from '../core/routing-category-name.enum';
+import { CategoryRoutingName } from '@app/shared/models';
 
 const routes: Routes = [
   {

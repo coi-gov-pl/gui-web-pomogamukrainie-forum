@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AccommodationQuery } from './accommodation-search-form/accommodation-search-form.component';
-import { AccommodationsResourceService, AccommodationOffer, Pageable } from '../../../api';
+import { AccommodationsResourceService, AccommodationOffer, Pageable } from '@app/core/api';
 
 @Component({
   selector: 'app-accommodation-search',

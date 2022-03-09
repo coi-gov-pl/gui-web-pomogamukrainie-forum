@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Pageable, MaterialAidOfferSearchCriteria, MaterialAidResourceService, MaterialAidOffer } from '../../../api';
+import { Pageable, MaterialAidOfferSearchCriteria, MaterialAidResourceService, MaterialAidOffer } from '@app/core/api';
 
 @Component({
   selector: 'app-material-aid-search',

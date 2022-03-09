@@ -13,8 +13,7 @@ import { PomCommonPipesModule } from '../../shared/pipes/pom-common-pipes.module
 import { TranslateModule } from '@ngx-translate/core';
 import { MaterialAidSearchComponent } from './material-aid-search.component';
 import { SearchResultComponentModule } from '../search-result/search-result.module';
-import { CitiesSearchModule } from '../../cities-search/cities-search.module';
-import { MoreInfoLinkModule } from '../../core/components/more-info-link/more-info-link.component';
+import { CitiesSearchModule, MoreInfoLinkModule } from '@app/shared/components';
 import { MaterialAidSearchFormComponent } from './material-aid-search-form/material-aid-search-form.component';
 
 @NgModule({

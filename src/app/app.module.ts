@@ -5,29 +5,21 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { Language, PomTranslateLoader } from './core/translate-loader.service';
-import { AccommodationFormComponentModule } from './give-help/accommodation-form/accommodation-form.module';
 import { HttpClientModule } from '@angular/common/http';
-import { ApiModule, Configuration } from '../api';
-import { SiteHeaderComponent } from './site-header/site-header.component';
+import { ApiModule, Configuration } from '@app/core/api';
+import { TranslationsModule } from '@app/core/translations';
+import { SiteHeaderModule } from '@app/core/site-header';
 
 @NgModule({
-  declarations: [AppComponent, SiteHeaderComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     NoopAnimationsModule,
     MatCardModule,
-    AccommodationFormComponentModule,
-    TranslateModule.forRoot({
-      defaultLanguage: Language.pl_PL,
-      loader: {
-        provide: TranslateLoader,
-        useClass: PomTranslateLoader,
-      },
-    }),
+    SiteHeaderModule,
+    TranslationsModule,
     ApiModule.forRoot(() => new Configuration({ basePath: '' })),
   ],
   providers: [],

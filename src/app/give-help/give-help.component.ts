@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HelpTypePath } from '../core/help-direction.enum';
+import { HelpTypePath } from '@app/shared/models';
 
 @Component({
   selector: 'app-give-help',

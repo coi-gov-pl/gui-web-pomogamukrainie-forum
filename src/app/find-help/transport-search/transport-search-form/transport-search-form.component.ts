@@ -1,5 +1,5 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import { TransportOfferSearchCriteria } from '../../../../api';
+import { TransportOfferSearchCriteria } from '@app/core/api';
 
 @Component({
   selector: 'app-transport-search-form',
