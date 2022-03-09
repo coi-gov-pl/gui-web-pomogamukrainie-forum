@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, filter, switchMap, tap } from 'rxjs';
 import { displayLocationOption, Location } from './display-location-option';
-import { CityLookupResourceService } from '../../api';
+import { CityLookupResourceService } from '@app/core/api';
 
 @Component({
   selector: 'app-cities-search',

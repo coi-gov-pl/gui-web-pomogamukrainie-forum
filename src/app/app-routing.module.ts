@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HelpTypePath } from './core/help-direction.enum';
+import { HelpTypePath } from '@app/shared/models';
 
 const routes: Routes = [
   {

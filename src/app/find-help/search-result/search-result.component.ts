@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { Location } from '../../../api';
+import { Location } from '@app/core/api';
 
 @Component({
   selector: 'app-search-result',

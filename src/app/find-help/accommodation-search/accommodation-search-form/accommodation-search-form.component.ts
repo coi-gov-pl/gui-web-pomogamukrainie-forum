@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { Location } from '../../../../api';
+import { Location } from '@app/core/api';
 
 export interface AccommodationQuery {
   location?: Location;
