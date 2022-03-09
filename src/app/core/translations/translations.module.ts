@@ -1,11 +1,11 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { Language, PomTranslateLoader } from './translate-loader.service';
+import { LanguageCode, PomTranslateLoader } from './translate-loader.service';
 
 @NgModule({
   imports: [
     TranslateModule.forRoot({
-      defaultLanguage: Language.pl_PL,
+      defaultLanguage: LanguageCode.pl_PL,
       loader: {
         provide: TranslateLoader,
         useClass: PomTranslateLoader,

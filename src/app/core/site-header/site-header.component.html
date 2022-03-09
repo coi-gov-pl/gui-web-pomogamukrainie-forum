@@ -44,7 +44,7 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li *ngFor="let lang of languages">
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" (click)="useLanguage(lang.code)">
                   <img src="/assets/images/{{ lang.code }}.svg" alt="" />
                   {{ lang.text }}
                 </a>
@@ -55,7 +55,7 @@
             <span class="navbar-link">{{ "SELECT_LANGUAGE" | translate }}</span>
           </li>
           <li *ngFor="let lang of languages" class="navbar-item mobile-only">
-            <a class="dropdown-item" href="#">
+            <a class="dropdown-item" (click)="useLanguage(lang.code)">
               <img src="/assets/images/{{ lang.code }}.svg" alt="" />
               {{ lang.text }}
             </a>
