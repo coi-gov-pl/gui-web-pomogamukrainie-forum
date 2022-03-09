@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { FindHelpComponent } from './find-help.component';
 
@@ -9,6 +10,7 @@ describe('FindHelpComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [FindHelpComponent],
+      imports: [TranslateModule.forRoot()],
     }).compileComponents();
   });
 
