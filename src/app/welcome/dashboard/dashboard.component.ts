@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { HelpTypePath } from '@app/shared/models';
-import { CategoryRoutingName } from '@app/shared/models';
+import { CategoryRoutingName, HelpTypePath } from '@app/shared/models';
 
 @Component({
   selector: 'app-dashboard',
