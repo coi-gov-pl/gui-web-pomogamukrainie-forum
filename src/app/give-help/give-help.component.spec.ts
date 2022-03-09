@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { GiveHelpComponent } from './give-help.component';
 
@@ -9,6 +10,7 @@ describe('GiveHelpComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [GiveHelpComponent],
+      imports: [TranslateModule.forRoot()],
     }).compileComponents();
   });
 
