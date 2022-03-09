@@ -11,10 +11,6 @@ export class AppComponent {
 
   constructor(private router: Router) {}
 
-  getHeaderClass() {
-    return this.router.url === '/' ? 'transparent' : '';
-  }
-
   getContentClass() {
     return this.router.url === '/' ? '' : 'header-padding';
   }

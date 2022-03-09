@@ -1,7 +1,22 @@
+@import "node_modules/bootstrap/scss/bootstrap-grid";
+
 .font-white {
   color: var(--c-white);
 }
 
 .font-yellow {
   color: var(--c-yellow);
+}
+
+.desktop-only {
+  display: none;
+  @include media-breakpoint-up(lg) {
+    display: block;
+  }
+}
+.mobile-only {
+  display: block;
+  @include media-breakpoint-up(lg) {
+    display: none;
+  }
 }
