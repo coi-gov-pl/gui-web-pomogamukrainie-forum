@@ -2,9 +2,11 @@ import { CommonModule } from '@angular/common';
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { SiteHeaderComponent } from './site-header.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
-  imports: [CommonModule, TranslateModule],
+  imports: [CommonModule, TranslateModule, MatButtonModule, MatIconModule],
   declarations: [SiteHeaderComponent],
   exports: [SiteHeaderComponent],
 })

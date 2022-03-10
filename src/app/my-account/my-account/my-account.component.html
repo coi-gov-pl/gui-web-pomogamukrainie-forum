@@ -1,0 +1,21 @@
+<div class="container">
+  <header>
+    <h2>{{ "HELPUA" | translate }}</h2>
+    <h1>{{ "MY_ACCOUNT" | translate }}</h1>
+  </header>
+  <section>
+    <p class="text">{{ "ACCOUNT_SETTINGS" | translate }}</p>
+    <app-my-account-settings [myAccountPersonalData]="myAccountPersonalData$ | async"></app-my-account-settings>
+  </section>
+  <button color="primary" mat-flat-button>
+    <mat-icon fontSet="material-icons-outlined">add</mat-icon>
+    {{ "ADD_ANNOUNCEMENT" | translate }}
+  </button>
+
+  <section *ngIf="myAnnouncements.length">
+    <p class="text">{{ "YOUR_ANNOUNCEMENT" | translate }}</p>
+    <div class="announcements-wrapper">
+      <div *ngFor="let announcement of myAnnouncements">// TODO podpiac komponent z ogloszeniem jak bedzie gotowy</div>
+    </div>
+  </section>
+</div>

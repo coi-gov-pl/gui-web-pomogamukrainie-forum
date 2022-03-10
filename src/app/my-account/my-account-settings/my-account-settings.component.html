@@ -1,0 +1,25 @@
+<mat-card *ngIf="myAccountPersonalData" class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-6">
+      <p class="font-small">{{ "NAME" | translate }}</p>
+      <p class="font-large pb-sm-1">{{ myAccountPersonalData.name }}</p>
+      <p>{{ "NAME_FROM_TRUSTED_PROFILE" | translate }}</p>
+      <p>{{ "DISPLAY_DATA_WITH_YOUR_ANNOUNCEMENTS" | translate }}</p>
+    </div>
+    <div class="col-sm-12 col-md-6">
+      <p class="font-small pt-sm-4 pt-md-0">{{ "EMAIL_ADDRESS" | translate }}</p>
+      <p class="font-large pb-sm-1">{{ myAccountPersonalData.email }}</p>
+      <p>{{ "EMAIL_INFO" | translate }}</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <p class="pt-sm-5 pt-md-3">
+        {{ "REMOVE_ACCOUNT" | translate }}
+        <a href="mailto:admin@pomagamukrainie.gov.pl" target="_blank" class="color-gray email"
+          >admin@pomagamukrainie.gov.pl</a
+        >
+      </p>
+    </div>
+  </div>
+</mat-card>
