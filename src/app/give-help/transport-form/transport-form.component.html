@@ -1,0 +1,35 @@
+<mat-card>
+  <app-offer-form (submitOffer)="handleSubmit($event)">
+    <div class="row">
+      <div class="col-md-3">
+        <label><b>{{ 'LOCATION_FROM' | translate }}</b></label>
+        <mat-form-field appearance="outline">
+          <input matInput type="text" name="origin" [(ngModel)]="data.origin"
+            placeholder="{{ 'PLACEHOLDER_TYPE' | translate }}" />
+        </mat-form-field>
+      </div>
+      <div class="col-md-3">
+        <label><b>{{ 'LOCATION_TO' | translate }}</b></label>
+        <mat-form-field appearance="outline">
+          <input matInput type="text" min="1" [(ngModel)]="data.destination" name="destination"
+            placeholder="{{ 'PLACEHOLDER_TYPE' | translate }}" />
+        </mat-form-field>
+      </div>
+      <div class="col-md-4">
+        <label><b>{{ 'LABEL_DATE' | translate }}</b></label>
+        <mat-form-field appearance="outline">
+          <input matInput [(ngModel)]="data.transportDate" [matDatepicker]="picker" name="transportDate"
+            placeholder="{{ 'PLACEHOLDER_CHOOSE_DATE' | translate }}" />
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="col-md-2">
+        <label><b>{{ 'LABEL_HOW_MANY_PEOPLE_UCAN_TAKE' | translate }}</b></label>
+        <mat-form-field appearance="outline">
+          <input matInput type="number" placeholder="{{ 'PLACEHOLDER_CHOOSE' | translate }}" [(ngModel)]="data.capacity" name="capacity"/>
+        </mat-form-field>
+      </div>
+    </div>
+  </app-offer-form>
+</mat-card>

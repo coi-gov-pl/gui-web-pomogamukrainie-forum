@@ -4,6 +4,10 @@ import { defaults } from '@app/shared/utils';
 export interface Offer {
   title: string;
   description: string;
+  phoneNumber?: string;
+}
+interface Prefix {
+  prefix: number;
 }
 
 @Component({
@@ -14,5 +18,13 @@ export interface Offer {
 export class OfferFormComponent {
   data = defaults<Offer>();
 
+  prefixes: Prefix[] = [{ prefix: 48 }, { prefix: 380 }];
+  phonePrefix: string = '';
+  phoneNumber: string = '';
+
   @Output() submitOffer = new EventEmitter<Offer>();
+
+  onPhoneNumberChange() {
+    this.data.phoneNumber = this.phonePrefix + this.phoneNumber;
+  }
 }

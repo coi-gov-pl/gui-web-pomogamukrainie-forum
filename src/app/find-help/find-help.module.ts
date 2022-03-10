@@ -8,6 +8,7 @@ import { CategoryNavigationComponentModule } from '@app/shared/components';
 import { AccommodationSearchModule } from './accommodation-search/accommodation-search.module';
 import { TransportSearchModule } from './transport-search/transport-search.module';
 import { MaterialAidSearchModule } from './material-aid-search/material-aid-search.module';
+import { PomCommonPipesModule } from '../shared';
 
 @NgModule({
   declarations: [FindHelpComponent],
@@ -20,6 +21,7 @@ import { MaterialAidSearchModule } from './material-aid-search/material-aid-sear
     AccommodationSearchModule,
     TransportSearchModule,
     MaterialAidSearchModule,
+    PomCommonPipesModule,
   ],
 })
 export class FindHelpModule {}
