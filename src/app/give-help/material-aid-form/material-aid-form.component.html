@@ -1,0 +1,37 @@
+<mat-card>
+  <app-offer-form (submitOffer)="handleSubmit($event)">
+    <div class="row">
+      <div class="col-md-6">
+        <label
+          ><b>{{ "TYPE_OF_SUPPORT" | translate }}:</b></label
+        >
+        <mat-form-field appearance="outline">
+          <mat-select
+            placeholder="{{ 'SELECT_PLACEHOLDER' | translate }}"
+            [(ngModel)]="data.category"
+            name="aidType"
+            required
+          >
+            <mat-option *ngFor="let it of categories" [value]="it.value">{{
+              it.value | translate | lowercase
+            }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <label
+          ><b>{{ "LOCATION" | translate }}:</b></label
+        >
+        <mat-form-field appearance="outline">
+          <input
+            matInput
+            placeholder="{{ 'LOCATION_PLACEHOLDER' | translate }}"
+            name="location"
+            [(ngModel)]="data.location"
+            required
+          />
+        </mat-form-field>
+      </div>
+    </div>
+  </app-offer-form>
+</mat-card>
