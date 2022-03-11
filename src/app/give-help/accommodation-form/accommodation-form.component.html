@@ -58,7 +58,7 @@
               [(ngModel)]="data.lengthOfStay"
               name="lengthOfStay"
             >
-              <mat-option *ngFor="let it of lengthsOfSay" [value]="it.code">{{ it.label }}</mat-option>
+              <mat-option *ngFor="let it of LENGTHOFSTAY" [value]="it.code">{{ it.label }}</mat-option>
             </mat-select>
           </mat-form-field>
         </div>
@@ -73,7 +73,7 @@
               [(ngModel)]="data.hostLanguage"
               name="language"
             >
-              <mat-option *ngFor="let it of languages" [value]="it.code">{{ it.label }}</mat-option>
+              <mat-option *ngFor="let it of LANGUAGES" [value]="it.code">{{ it.label }}</mat-option>
             </mat-select>
           </mat-form-field>
         </div>
@@ -107,7 +107,7 @@
               name="prefix"
               required
             >
-              <mat-option *ngFor="let prefix of prefixes" [value]="prefix.prefix">+ {{ prefix.prefix }}</mat-option>
+              <mat-option *ngFor="let prefix of PREFIXES" [value]="prefix.prefix">+ {{ prefix.prefix }}</mat-option>
             </mat-select>
           </mat-form-field>
         </div>
