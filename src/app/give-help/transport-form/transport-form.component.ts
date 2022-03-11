@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { defaults } from '@app/shared/utils';
 import { TransportOfferDefinitionDTO } from '@app/core/api/model/transportOfferDefinitionDTO';
-import { Offer, TempTransportOfferDefinitionDTO } from '@app/shared/models/give-help.model';
+import { TransportResourceService } from '../../core/api/api/transportResource.service';
+import { prefixes, PHONE_NUMBER_REGEX } from '@app/shared/temporary-consts';
 
 @Component({
   selector: 'app-transport-form',
@@ -10,15 +11,20 @@ import { Offer, TempTransportOfferDefinitionDTO } from '@app/shared/models/give-
 })
 export class TransportFormComponent {
   minDate: Date = new Date();
+  prefixes = prefixes;
+  PHONE_NUMBER_REGEX = PHONE_NUMBER_REGEX;
+  phonePrefix: string = '48';
+  phoneNumber: string = '';
+  data = defaults<TransportOfferDefinitionDTO>();
 
-  constructor() {}
+  constructor(private transportResourceService: TransportResourceService) {}
 
-  data = defaults<TempTransportOfferDefinitionDTO>();
+  onPhoneNumberChange(): void {
+    // Waiting for TransportOfferDefinitionDTO receive a phoneNumber prop
+    // this.data.phoneNumber = this.phonePrefix + this.phoneNumber;
+  }
 
-  handleSubmit(offer: Offer): void {
-    console.log({
-      ...offer,
-      ...this.data,
-    });
+  submitOffer(): void {
+    this.transportResourceService.createTransport(this.data);
   }
 }

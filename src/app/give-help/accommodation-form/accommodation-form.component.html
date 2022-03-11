@@ -1,34 +1,139 @@
 <mat-card>
-  <app-offer-form (submitOffer)="handleSubmit($event)">
-    <div class="row">
-      <div class="col-md-4">
-        <label><b>Wskaż lokalizację:</b></label>
-        <mat-form-field appearance="outline">
-          <input matInput name="lokalizacja" [(ngModel)]="data.location" />
-        </mat-form-field>
+  <form (ngSubmit)="submitOffer()">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <label
+            ><b>{{ "LABEL_OFFER_TITLE" | translate }}</b>
+            <span> {{ "LABEL_OFFER_MAXCHARS" | translate }} *</span></label
+          >
+          <mat-form-field appearance="outline">
+            <input
+              matInput
+              maxlength="80"
+              placeholder="{{ 'PLACEHOLDER_OFFER_TITLE' | translate }}"
+              required
+              name="title"
+              [(ngModel)]="data.title"
+            />
+          </mat-form-field>
+        </div>
       </div>
-      <div class="col-md-2">
-        <label><b>Ilość osób:</b></label>
-        <mat-form-field appearance="outline">
-          <input matInput type="number" min="1" [(ngModel)]="data.guests" name="osob" />
-        </mat-form-field>
+      <div class="row">
+        <div class="col-md-4">
+          <label
+            ><b>{{ "LABEL_POINT_LOCALISATION" | translate }}</b></label
+          >
+          <mat-form-field appearance="outline">
+            <input
+              matInput
+              name="location"
+              placeholder="{{ 'PLACEHOLDER_TYPE' | translate }}"
+              [(ngModel)]="data.location"
+            />
+          </mat-form-field>
+        </div>
+        <div class="col-md-2">
+          <label
+            ><b>{{ "NUMBER_OF_PEOPLE" | translate }}</b></label
+          >
+          <mat-form-field appearance="outline">
+            <input
+              matInput
+              placeholder="{{ 'PLACEHOLDER_CHOOSE' | translate }}"
+              type="number"
+              min="1"
+              [(ngModel)]="data.guests"
+              name="guests"
+            />
+          </mat-form-field>
+        </div>
+        <div class="col-md-3">
+          <label
+            ><b>{{ "LABEL_LENGTH_OF_STAY" | translate }}</b></label
+          >
+          <mat-form-field appearance="outline">
+            <mat-select
+              placeholder="{{ 'PLACEHOLDER_CHOOSE' | translate }}"
+              [(ngModel)]="data.lengthOfStay"
+              name="lengthOfStay"
+            >
+              <mat-option *ngFor="let it of lengthsOfSay" [value]="it.code">{{ it.label }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-md-3">
+          <label
+            ><b>{{ "LABEL_HOST_LANG" | translate }}</b></label
+          >
+          <mat-form-field appearance="outline">
+            <mat-select
+              placeholder="{{ 'PLACEHOLDER_CHOOSE' | translate }}"
+              multiple
+              [(ngModel)]="data.hostLanguage"
+              name="language"
+            >
+              <mat-option *ngFor="let it of languages" [value]="it.code">{{ it.label }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
       </div>
-      <div class="col-md-3">
-        <label><b>Czas pobytu</b></label>
-        <mat-form-field appearance="outline">
-          <mat-select placeholder="Wybierz" [(ngModel)]="data.lengthOfStay" name="czasPobytu">
-            <mat-option *ngFor="let it of lengthsOfSay" [value]="it.code">{{ it.label }}</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-      <div class="col-md-3">
-        <label><b>Język, w jakim mówi gospodarz:</b></label>
-        <mat-form-field appearance="outline">
-          <mat-select placeholder="Wybierz" multiple [(ngModel)]="data.hostLanguages" name="jezyk">
-            <mat-option *ngFor="let it of languages" [value]="it.code">{{ it.label }}</mat-option>
-          </mat-select>
-        </mat-form-field>
+      <div class="row">
+        <div class="col-lg-7">
+          <label
+            ><b>{{ "LABEL_OFFER_DESCRIBTION" | translate }}</b
+            ><span> {{ "LABEL_OFFER_MAXCHARS" | translate }} *</span></label
+          >
+          <mat-form-field appearance="outline">
+            <textarea
+              matInput
+              rows="8"
+              maxlength="1000"
+              placeholder="{{ 'PLACEHOLDER_OFFER_DESCRIBTION' | translate }}"
+              name="description"
+              [(ngModel)]="data.description"
+            ></textarea>
+          </mat-form-field>
+        </div>
+        <div class="col-md-2">
+          <label
+            ><b>{{ "LABEL_PHONE_NUMBER" | translate }}</b></label
+          >
+          <mat-form-field appearance="outline">
+            <mat-select
+              placeholder="{{ 'PLACEHOLDER_CHOOSE' | translate }}"
+              (selectionChange)="onPhoneNumberChange()"
+              [(ngModel)]="phonePrefix"
+              name="prefix"
+              required
+            >
+              <mat-option *ngFor="let prefix of prefixes" [value]="prefix.prefix">+ {{ prefix.prefix }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-md-3">
+          <label>&nbsp;</label>
+          <mat-form-field appearance="outline" class="phoneInut">
+            <input
+              placeholder="{{ 'PLACEHOLDER_TYPE' | translate }}"
+              matInput
+              type="text"
+              name="phone"
+              (input)="onPhoneNumberChange()"
+              required
+              [(ngModel)]="phoneNumber"
+              [pattern]="PHONE_NUMBER_REGEX"
+              inputmode="numeric"
+            />
+          </mat-form-field>
+        </div>
+        <div class="col-lg-3 publish">
+          <button class="btn btn-primary">
+            <mat-icon fontSet="material-icons-outlined">add</mat-icon>
+            <span>{{ "OFFER_PUBLISH" | translate }}</span>
+          </button>
+        </div>
       </div>
     </div>
-  </app-offer-form>
+  </form>
 </mat-card>

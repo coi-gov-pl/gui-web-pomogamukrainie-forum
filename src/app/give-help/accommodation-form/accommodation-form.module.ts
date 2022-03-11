@@ -5,9 +5,10 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { AccommodationFormComponent } from './accommodation-form.component';
 import { CommonModule } from '@angular/common';
-import { OfferFormComponentModule } from '../offer-form/offer-form.module';
 import { AccommodationSearchRoutingModule } from './accomodation-form.routing.module';
 import { MatCardModule } from '@angular/material/card';
+import { TranslateModule } from '@ngx-translate/core';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [AccommodationFormComponent],
@@ -17,9 +18,10 @@ import { MatCardModule } from '@angular/material/card';
     FormsModule,
     MatSelectModule,
     MatInputModule,
-    OfferFormComponentModule,
     AccommodationSearchRoutingModule,
     MatCardModule,
+    TranslateModule,
+    MatIconModule,
   ],
   exports: [AccommodationFormComponent],
 })
