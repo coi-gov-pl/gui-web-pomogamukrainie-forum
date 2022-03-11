@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { defaults } from '@app/shared/utils';
 import { TransportOfferDefinitionDTO } from '@app/core/api/model/transportOfferDefinitionDTO';
 import { TransportResourceService } from '../../core/api/api/transportResource.service';
-import { prefixes, PHONE_NUMBER_REGEX } from '@app/shared/temporary-consts';
+import { PREFIXES, PHONE_NUMBER_REGEX } from '@app/shared/temporary-consts';
 
 @Component({
   selector: 'app-transport-form',
@@ -11,7 +11,7 @@ import { prefixes, PHONE_NUMBER_REGEX } from '@app/shared/temporary-consts';
 })
 export class TransportFormComponent {
   minDate: Date = new Date();
-  prefixes = prefixes;
+  PREFIXES = PREFIXES;
   PHONE_NUMBER_REGEX = PHONE_NUMBER_REGEX;
   phonePrefix: string = '48';
   phoneNumber: string = '';
