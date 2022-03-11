@@ -18,5 +18,4 @@ export interface TransportOfferDefinitionDTO {
   destination: Location;
   capacity: number;
   transportDate: string;
-  phoneNumber?: string;
 }

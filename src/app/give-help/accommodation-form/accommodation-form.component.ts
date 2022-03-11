@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Offer } from '../offer-form/offer-form.component';
 import { defaults } from '@app/shared/utils';
+import { Offer } from '@app/shared/models/give-help.model';
 
 interface Accommodation {
   location: string;

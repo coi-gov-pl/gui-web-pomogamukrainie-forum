@@ -31,23 +31,43 @@
         </mat-form-field>
       </div>
       <div class="col-md-2">
-        <label><b>{{ 'LABEL_PHONE_NUMBER' | translate }}</b></label>
+        <label
+          ><b>{{ "LABEL_PHONE_NUMBER" | translate }}</b></label
+        >
         <mat-form-field appearance="outline">
-          <mat-select placeholder="{{ 'PLACEHOLDER_CHOOSE' | translate }}" (change)="onPhoneNumberChange()" [(ngModel)]="phonePrefix" name="prefix" required>
+          <mat-select
+            placeholder="{{ 'PLACEHOLDER_CHOOSE' | translate }}"
+            (change)="onPhoneNumberChange()"
+            [(ngModel)]="phonePrefix"
+            name="prefix"
+            required
+          >
             <mat-option *ngFor="let prefix of prefixes" [value]="prefix.prefix">+ {{ prefix.prefix }}</mat-option>
           </mat-select>
         </mat-form-field>
       </div>
       <div class="col-md-3">
         <label>&nbsp;</label>
-        <mat-form-field appearance="outline">
-          <input placeholder="{{ 'PLACEHOLDER_TYPE' | translate }}" matInput type="tel" name="phone" (change)="onPhoneNumberChange()" required [(ngModel)]="phoneNumber" maxlength="9" minlength="9" />
+        <mat-form-field appearance="outline" class="phoneInut">
+          <input
+            placeholder="{{ 'PLACEHOLDER_TYPE' | translate }}"
+            matInput
+            type="text"
+            name="phone"
+            (change)="onPhoneNumberChange()"
+            required
+            [(ngModel)]="phoneNumber"
+            maxlength="9"
+            minlength="9"
+            [pattern]="PHONE_NUMBER_REGEX"
+            inputmode="numeric"
+          />
         </mat-form-field>
       </div>
       <div class="col-lg-3 publish">
         <button class="btn btn-primary">
           <mat-icon fontSet="material-icons-outlined">add</mat-icon>
-          <span>{{ 'OFFER_PUBLISH' | translate }}</span>
+          <span>{{ "OFFER_PUBLISH" | translate }}</span>
         </button>
       </div>
     </div>

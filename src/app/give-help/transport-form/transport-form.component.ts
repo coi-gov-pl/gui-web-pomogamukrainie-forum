@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { Offer } from '../offer-form/offer-form.component';
 import { defaults } from '@app/shared/utils';
 import { TransportOfferDefinitionDTO } from '../../core/api/model/transportOfferDefinitionDTO';
+import { Offer, TempTransportOfferDefinitionDTO } from '../../shared/models/give-help.model';
 
 @Component({
   selector: 'app-transport-form',
@@ -9,11 +9,13 @@ import { TransportOfferDefinitionDTO } from '../../core/api/model/transportOffer
   styleUrls: ['./transport-form.component.scss'],
 })
 export class TransportFormComponent {
+  minDate: Date = new Date();
+
   constructor() {}
 
-  data = defaults<TransportOfferDefinitionDTO>();
+  data = defaults<TempTransportOfferDefinitionDTO>();
 
-  handleSubmit(offer: Offer) {
+  handleSubmit(offer: Offer): void {
     console.log({
       ...offer,
       ...this.data,
