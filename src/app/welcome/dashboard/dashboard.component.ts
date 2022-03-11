@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { CategoryRoutingName } from '@app/shared/models';
 import { CategoryRoutingName, CorePath } from '@app/shared/models';
 
 @Component({
