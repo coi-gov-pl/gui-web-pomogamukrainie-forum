@@ -66,6 +66,10 @@
           <li class="navbar-item navbar-big mobile-only">
             <a class="navbar-link" href="#">{{ "ANNOUNCEMENTS" | translate }}</a>
           </li>
+          <li (click)="navigateToMyAccount()" class="navbar-item button">
+            <mat-icon class="button-icon" fontSet="material-icons-outlined">perm_identity</mat-icon>
+            <span class="button-title">{{ "MY_ACCOUNT" | translate }}o</span>
+          </li>
         </ul>
       </div>
     </div>

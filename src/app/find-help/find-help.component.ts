@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HelpTypePath } from '@app/shared/models';
+import { CorePath } from '@app/shared/models';
 
 @Component({
   selector: 'app-find-get-help',
@@ -7,5 +7,5 @@ import { HelpTypePath } from '@app/shared/models';
   styleUrls: ['./find-help.component.scss'],
 })
 export class FindHelpComponent {
-  helpTypePath = HelpTypePath;
+  corePath = CorePath;
 }

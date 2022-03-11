@@ -106,6 +106,34 @@
       width: 100%;
     }
   }
+
+  .navbar-item {
+    &.button {
+      display: flex;
+      align-items: center;
+      height: 42px;
+      border: 1px solid var(--c-white);
+      background-color: #ffffff0d;
+      border-radius: 21px;
+      color: var(--c-white);
+      cursor: pointer;
+
+      &:hover {
+        background: transparent;
+        border-color: var(--c-lightblue);
+      }
+    }
+
+    .button-title {
+      padding-left: 10px;
+    }
+
+    .button-icon {
+      background-color: var(--c-white);
+      color: var(--c-darkblue);
+      border-radius: 50%;
+    }
+  }
 }
 
 .dropdown {

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { CategoryRoutingName, HelpTypePath } from '@app/shared/models';
+import { CategoryRoutingName } from '@app/shared/models';
+import { CategoryRoutingName, CorePath } from '@app/shared/models';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,6 +8,6 @@ import { CategoryRoutingName, HelpTypePath } from '@app/shared/models';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent {
-  helpTypePath = HelpTypePath;
+  corePath = CorePath;
   categoryRoutingName = CategoryRoutingName;
 }
