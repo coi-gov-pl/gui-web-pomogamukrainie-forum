@@ -8,14 +8,11 @@
       </h1>
       <p class="dashboard-desc font-white mt-3" [innerHTML]="'DASHBOARD_DESCRIPTION' | translate"></p>
       <div class="dashboard-actions">
+        <a [routerLink]="[corePath.Find, categoryRoutingName.ACCOMMODATION]" id="search" class="btn btn-highlight">{{
+          "SEARCH_FOR_HELP" | translate
+        }}</a>
         <a
-          [routerLink]="[helpTypePath.Find, categoryRoutingName.ACCOMMODATION]"
-          id="search"
-          class="btn btn-highlight"
-          >{{ "SEARCH_FOR_HELP" | translate }}</a
-        >
-        <a
-          [routerLink]="[helpTypePath.Give, categoryRoutingName.ACCOMMODATION]"
+          [routerLink]="[corePath.Give, categoryRoutingName.ACCOMMODATION]"
           id="help"
           class="btn btn-outline-highlight"
         >

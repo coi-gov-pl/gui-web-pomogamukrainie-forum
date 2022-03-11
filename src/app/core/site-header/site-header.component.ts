@@ -2,6 +2,7 @@ import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageCode } from '@app/core/translations';
+import { CorePath } from '@app/shared/models';
 
 interface Language {
   code: LanguageCode;
@@ -49,5 +50,9 @@ export class SiteHeaderComponent {
 
   useLanguage(langCode: string) {
     this.translateService.use(langCode);
+  }
+
+  public navigateToMyAccount(): void {
+    this.router.navigate([CorePath.MyAccount]);
   }
 }
