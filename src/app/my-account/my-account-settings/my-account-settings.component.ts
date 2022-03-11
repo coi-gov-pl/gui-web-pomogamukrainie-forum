@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { MyAccountPersonalData } from '../../../api/model/my-account-personal-data';
+import { MyAccountPersonalData } from '../my-account.types';
 
 @Component({
   selector: 'app-my-account-settings',
