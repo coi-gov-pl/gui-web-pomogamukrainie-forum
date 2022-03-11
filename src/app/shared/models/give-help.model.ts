@@ -6,7 +6,7 @@ export interface Offer {
 
 export interface Prefix {
   countryCode: string;
-  prefix: number;
+  prefix: string;
 }
 
 export interface TempTransportOfferDefinitionDTO {

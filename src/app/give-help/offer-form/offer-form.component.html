@@ -42,7 +42,7 @@
         <mat-form-field appearance="outline">
           <mat-select
             placeholder="{{ 'PLACEHOLDER_CHOOSE' | translate }}"
-            (change)="onPhoneNumberChange()"
+            (selectionChange)="onPhoneNumberChange()"
             [(ngModel)]="phonePrefix"
             name="prefix"
             required
@@ -59,7 +59,7 @@
             matInput
             type="text"
             name="phone"
-            (change)="onPhoneNumberChange()"
+            (input)="onPhoneNumberChange()"
             required
             [(ngModel)]="phoneNumber"
             maxlength="9"

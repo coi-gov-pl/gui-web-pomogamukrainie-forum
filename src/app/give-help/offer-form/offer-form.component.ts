@@ -13,15 +13,15 @@ export class OfferFormComponent {
   prefixes: Prefix[] = [
     {
       countryCode: 'pl_PL',
-      prefix: 48,
+      prefix: '48',
     },
     {
       countryCode: 'uk_UA',
-      prefix: 380,
+      prefix: '380',
     },
   ];
 
-  phonePrefix: string = '';
+  phonePrefix: string = '48';
   phoneNumber: string = '';
 
   @Output() submitOffer = new EventEmitter<Offer>();
