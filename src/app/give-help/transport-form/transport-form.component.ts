@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { defaults } from '@app/shared/utils';
-import { TransportOfferDefinitionDTO } from '../../core/api/model/transportOfferDefinitionDTO';
-import { Offer, TempTransportOfferDefinitionDTO } from '../../shared/models/give-help.model';
+import { TransportOfferDefinitionDTO } from '@app/core/api/model/transportOfferDefinitionDTO';
+import { Offer, TempTransportOfferDefinitionDTO } from '@app/shared/models/give-help.model';
 
 @Component({
   selector: 'app-transport-form',
