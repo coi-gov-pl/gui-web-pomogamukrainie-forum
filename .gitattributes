@@ -1,0 +1,2 @@
+# Enforce UNIX line endings for tools like Prettier to work
+* text=auto eol=lf
