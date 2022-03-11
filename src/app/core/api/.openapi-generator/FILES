@@ -6,6 +6,7 @@ api/accommodationsResource.service.ts
 api/api.ts
 api/cityLookupResource.service.ts
 api/materialAidResource.service.ts
+api/messageResource.service.ts
 api/myOffersResource.service.ts
 api/transportResource.service.ts
 api/usersResource.service.ts
@@ -27,6 +28,7 @@ model/offersBaseOffer.ts
 model/offersMaterialAidOffer.ts
 model/offersTransportOffer.ts
 model/pageable.ts
+model/sendMessageDTO.ts
 model/transportOffer.ts
 model/transportOfferDefinitionDTO.ts
 model/transportOfferSearchCriteria.ts

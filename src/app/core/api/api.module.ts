@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { AccommodationsResourceService } from './api/accommodationsResource.service';
 import { CityLookupResourceService } from './api/cityLookupResource.service';
 import { MaterialAidResourceService } from './api/materialAidResource.service';
+import { MessageResourceService } from './api/messageResource.service';
 import { MyOffersResourceService } from './api/myOffersResource.service';
 import { TransportResourceService } from './api/transportResource.service';
 import { UsersResourceService } from './api/usersResource.service';

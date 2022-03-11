@@ -11,6 +11,7 @@ export * from './offersBaseOffer';
 export * from './offersMaterialAidOffer';
 export * from './offersTransportOffer';
 export * from './pageable';
+export * from './sendMessageDTO';
 export * from './transportOffer';
 export * from './transportOfferDefinitionDTO';
 export * from './transportOfferSearchCriteria';
