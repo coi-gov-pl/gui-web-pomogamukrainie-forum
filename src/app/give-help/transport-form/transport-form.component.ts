@@ -25,6 +25,6 @@ export class TransportFormComponent {
   }
 
   submitOffer(): void {
-    this.transportResourceService.createTransport(this.data);
+    this.transportResourceService.createTransport(this.data).subscribe((response) => {});
   }
 }

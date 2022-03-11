@@ -28,6 +28,6 @@ export class AccommodationFormComponent {
   }
 
   submitOffer(): void {
-    this.accommodationsResourceService.createAccommodations(this.data);
+    this.accommodationsResourceService.createAccommodations(this.data).subscribe((response) => {});
   }
 }
