@@ -8,5 +8,5 @@ set -eu
    -o src/app/core/api
 rm -f src/api/{README.md,git_push.sh}
 echo 'DO NOT EDIT THIS DIRECTORY.
-Generated using `./generate-api.sh` ' > src/api/00-DO_NOT_EDIT-GENERATED.md
+Generated using `./generate-api.sh` ' > src/app/core/api/00-DO_NOT_EDIT-GENERATED.md
 ./node_modules/.bin/prettier "src/app/core/api/**/*.{ts,html,scss,md}" --write
