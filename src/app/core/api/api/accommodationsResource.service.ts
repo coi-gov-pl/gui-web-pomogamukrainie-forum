@@ -246,7 +246,6 @@ export class AccommodationsResourceService {
 
     return this.httpClient.delete<any>(
       `${this.configuration.basePath}/api/secure/accommodations/${encodeURIComponent(String(id))}`,
-      null,
       {
         context: localVarHttpContext,
         responseType: <any>responseType_,

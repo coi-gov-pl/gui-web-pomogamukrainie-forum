@@ -164,7 +164,6 @@ export class MaterialAidResourceService {
 
     return this.httpClient.delete<any>(
       `${this.configuration.basePath}/api/secure/material-aid/${encodeURIComponent(String(id))}`,
-      null,
       {
         context: localVarHttpContext,
         responseType: <any>responseType_,
