@@ -1,0 +1,5 @@
+https://maps.googleapis.com/maps/api/place/findplacefromtext/json
+  ?fields=formatted_address%2Cname%2cadr_address
+  &input=Жешув
+  &inputtype=textquery
+  &key=AIzaSyCMtaoORN7gC8e3W70u23A7tSfk-5OrgsA

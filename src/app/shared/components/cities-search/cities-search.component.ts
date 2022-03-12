@@ -4,6 +4,7 @@ import { debounceTime, distinctUntilChanged, filter, map, Observable, of, switch
 import { displayLocationOption, Location } from './display-location-option';
 import { CityLookupDto, CityLookupResourceService } from '@app/core/api';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import PlacesServiceStatus = google.maps.places.PlacesServiceStatus;
 
 interface TranslatedCitiesFromGoogle {
   candidates: [
@@ -12,7 +13,7 @@ interface TranslatedCitiesFromGoogle {
       name: string;
     }
   ];
-  status: string;
+  status: PlacesServiceStatus;
 }
 
 @Component({
