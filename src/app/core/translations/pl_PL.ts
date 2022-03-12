@@ -63,4 +63,6 @@ export default {
   LABEL_LENGTH_OF_STAY: 'Czas pobytu',
   LABEL_HOST_LANG: 'Język, w jakim mówi gospodarz:',
   MAIN_PAGE: 'Strona Główna',
+  EG_RZESZOW_PODKARPACKIE: 'Np. Rzeszów, podkarpackie',
+  EG_WARSZAWA_MAZOWIECKIE: 'Np. Warszawa, mazowieckie',
 };

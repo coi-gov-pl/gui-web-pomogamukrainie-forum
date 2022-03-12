@@ -5,7 +5,7 @@
         <app-cities-search
           [(ngModel)]="data.origin"
           name="origin"
-          [placeholder]="'Np. Rzeszów, podkarpackie'"
+          [placeholder]="'EG_RZESZOW_PODKARPACKIE' | translate"
           [label]="'LOCATION_FROM' | translate"
         ></app-cities-search>
       </div>
@@ -13,7 +13,7 @@
         <app-cities-search
           [(ngModel)]="data.destination"
           name="destination"
-          [placeholder]="'Np. Warszawa, mazowieckie'"
+          [placeholder]="'EG_WARSZAWA_MAZOWIECKIE' | translate"
           [label]="'LOCATION_TO' | translate"
         ></app-cities-search>
       </div>
@@ -21,17 +21,7 @@
         <label
           ><b>{{ "DATE" | translate }}</b></label
         >
-        <mat-form-field appearance="outline">
-          <input
-            matInput
-            [(ngModel)]="data.transportDate"
-            [matDatepicker]="picker"
-            name="transportDate"
-            [placeholder]="'Wybierz datę'"
-          />
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
+        <app-datepicker [(date)]="data.transportDate"></app-datepicker>
       </div>
       <div class="col-md-1">
         <label

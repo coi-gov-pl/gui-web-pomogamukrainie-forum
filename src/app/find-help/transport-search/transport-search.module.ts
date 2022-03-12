@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatNativeDateModule } from '@angular/material/core';
-import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -14,6 +13,7 @@ import { TransportSearchComponent } from './transport-search.component';
 import { SearchResultComponentModule } from '../search-result/search-result.module';
 import { CitiesSearchModule, MoreInfoLinkModule } from '@app/shared/components';
 import { TransportSearchFormComponent } from './transport-search-form/transport-search-form.component';
+import { DatepickerModule } from '../../shared/components/datepicker/datepicker.module';
 
 @NgModule({
   declarations: [TransportSearchComponent, TransportSearchFormComponent],
@@ -23,7 +23,6 @@ import { TransportSearchFormComponent } from './transport-search-form/transport-
     FormsModule,
     ReactiveFormsModule,
     MatCardModule,
-    MatDatepickerModule,
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
@@ -34,6 +33,7 @@ import { TransportSearchFormComponent } from './transport-search-form/transport-
     CitiesSearchModule,
     SearchResultComponentModule,
     MoreInfoLinkModule,
+    DatepickerModule,
   ],
 })
 export class TransportSearchModule {}

@@ -8,6 +8,7 @@ import { TransportOfferSearchCriteria } from '@app/core/api';
 })
 export class TransportSearchFormComponent {
   data: TransportOfferSearchCriteria = {};
+
   @Output()
   search = new EventEmitter<TransportOfferSearchCriteria>();
 }

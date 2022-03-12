@@ -8,9 +8,9 @@ import { MatCardModule } from '@angular/material/card';
 import { TransportFormComponent } from './transport-form.component';
 import { TransportFormRoutingModule } from './transport-form.routing.modue';
 import { MatNativeDateModule } from '@angular/material/core';
-import { MatDatepickerModule } from '@angular/material/datepicker';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatIconModule } from '@angular/material/icon';
+import { DatepickerModule } from '@app/shared/components/datepicker/datepicker.module';
 
 @NgModule({
   declarations: [TransportFormComponent],
@@ -22,10 +22,10 @@ import { MatIconModule } from '@angular/material/icon';
     MatInputModule,
     TransportFormRoutingModule,
     MatCardModule,
-    MatDatepickerModule,
     MatNativeDateModule,
     TranslateModule,
     MatIconModule,
+    DatepickerModule,
   ],
   exports: [TransportFormComponent],
 })
