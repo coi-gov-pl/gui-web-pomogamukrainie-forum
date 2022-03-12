@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CorePath } from '@app/shared/models';
+import { CorePath } from '@app/shared/models/core-path.enum';
 
 @Component({
   selector: 'app-find-get-help',
