@@ -10,10 +10,11 @@
       [destination]="result.destination"
       [title]="result.title"
       [description]="result.description"
+      [posted]="result.modifiedDate"
     >
       <app-search-result-attribute
         *ngIf="result.transportDate"
-        [text]="result.transportDate"
+        [text]="result.transportDate | date"
         icon="date_range"
       ></app-search-result-attribute>
       <app-search-result-attribute
