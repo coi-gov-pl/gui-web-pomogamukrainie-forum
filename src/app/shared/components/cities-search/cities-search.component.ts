@@ -1,8 +1,19 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { debounceTime, distinctUntilChanged, filter, switchMap, tap } from 'rxjs';
+import { debounceTime, distinctUntilChanged, filter, map, Observable, of, switchMap, take, tap } from 'rxjs';
 import { displayLocationOption, Location } from './display-location-option';
-import { CityLookupResourceService } from '@app/core/api';
+import { CityLookupDto, CityLookupResourceService } from '@app/core/api';
+import { HttpClient, HttpParams } from '@angular/common/http';
+
+interface TranslatedCitiesFromGoogle {
+  candidates: [
+    {
+      formatted_address: string;
+      name: string;
+    }
+  ];
+  status: string;
+}
 
 @Component({
   selector: 'app-cities-search',
@@ -17,12 +28,12 @@ import { CityLookupResourceService } from '@app/core/api';
   ],
 })
 export class CitiesSearchComponent implements OnInit, ControlValueAccessor {
-  constructor(private cityLookupResourceService: CityLookupResourceService) {}
+  constructor(private cityLookupResourceService: CityLookupResourceService, private http: HttpClient) {}
 
   @Input() placeholder = '';
   @Input() label = '';
 
-  options: Location[] = [];
+  options$: Observable<Location[]> | undefined;
   selectedOption?: Location;
   touched = false;
   formControl = new FormControl();
@@ -30,19 +41,14 @@ export class CitiesSearchComponent implements OnInit, ControlValueAccessor {
   private readonly queryMinLength = 2;
 
   ngOnInit(): void {
-    this.formControl.valueChanges
-      .pipe(
-        filter((value) => typeof value === 'string' && value.length >= this.queryMinLength),
-        distinctUntilChanged(),
-        debounceTime(400),
-        tap(() => {
-          this.options = [];
-        }),
-        switchMap((value) => this.getData(value))
-      )
-      .subscribe((data) => {
-        this.options = data.cities ?? [];
-      });
+    this.options$ = this.formControl.valueChanges.pipe(
+      filter((value) => typeof value === 'string' && value.length >= this.queryMinLength),
+      distinctUntilChanged(),
+      debounceTime(400),
+      switchMap((value) => this.getData(value)),
+      map((data) => data.cities || []),
+      tap((cities: CityLookupDto[]) => this.translateCities(cities, this.formControl.value))
+    );
   }
 
   displayOption(location?: Location) {
@@ -80,5 +86,23 @@ export class CitiesSearchComponent implements OnInit, ControlValueAccessor {
 
   getData(query: string) {
     return this.cityLookupResourceService.getCitiesCityLookup(query);
+  }
+
+  private translateCities(cities: CityLookupDto[], value: string): void {
+    const params = new HttpParams();
+    params.append('fields', 'formatted_address');
+    params.append('fields', 'name');
+    params.append('input', value);
+    params.append('inputtype', 'textquery');
+    params.append('key', '');
+
+    this.http
+      .get<TranslatedCitiesFromGoogle>('https://maps.googleapis.com/maps/api/place/findplacefromtext/json', { params })
+      .pipe(take(1))
+      .subscribe((translatedCities) => {
+        this.options$ = of(
+          cities.map((city, i) => ({ ...city, cityTranslated: translatedCities.candidates[i].name })) as Location[]
+        );
+      });
   }
 }
