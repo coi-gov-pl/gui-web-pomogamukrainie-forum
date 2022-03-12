@@ -6,7 +6,9 @@
     </div>
     <div class="right" *ngIf="posted">{{ postedDate | date: "short" }}</div>
   </div>
-  <h4>{{ title }}</h4>
+  <h4>
+    <a href="#routerLink?">{{ title }}</a>
+  </h4>
   <div class="attributes">
     <ng-content select="app-search-result-attribute"></ng-content>
   </div>

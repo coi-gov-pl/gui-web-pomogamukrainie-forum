@@ -1,0 +1,22 @@
+.offer {
+  .header {
+    font-family: var(--font-roboto);
+    margin: 0 0 11px 0;
+    opacity: 0.5;
+    font-size: 12px;
+    display: flex;
+    gap: 18px;
+    .right {
+      flex: 1;
+      text-align: right;
+    }
+  }
+  h4 {
+    font-size: 18px;
+    color: var(--c-darkblue);
+  }
+  .description {
+    font-size: 15px;
+    color: var(--c-darkblue);
+  }
+}

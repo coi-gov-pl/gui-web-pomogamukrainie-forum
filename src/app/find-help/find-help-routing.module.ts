@@ -14,6 +14,11 @@ const routes: Routes = [
           import('./accommodation-search/accommodation-search.module').then((m) => m.AccommodationSearchModule),
       },
       {
+        path: CategoryRoutingName.ACCOMMODATION + '/:id',
+        loadChildren: () =>
+          import('./accommodation-offer/accommodation-offer.module').then((m) => m.AccommodationOfferModule),
+      },
+      {
         path: CategoryRoutingName.MATERIAL_HELP,
         loadChildren: () =>
           import('./material-aid-search/material-aid-search.module').then((m) => m.MaterialAidSearchModule),

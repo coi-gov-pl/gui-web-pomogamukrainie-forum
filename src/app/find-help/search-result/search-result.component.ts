@@ -8,6 +8,8 @@ import { Location } from '@app/core/api';
 })
 export class SearchResultComponent implements OnChanges {
   @Input()
+  id?: number;
+  @Input()
   location?: Location;
   @Input()
   destination?: Location;
