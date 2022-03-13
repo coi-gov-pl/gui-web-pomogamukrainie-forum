@@ -30,47 +30,51 @@
         </svg>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav">
-          <li class="navbar-item dropdown desktop-only">
-            <a
-              class="navbar-link dropdown-toggle"
-              href="#"
-              id="navbarDropdown"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              {{ "SELECT_LANGUAGE" | translate }}
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li *ngFor="let lang of languages">
-                <a class="dropdown-item" (click)="useLanguage(lang.code)">
-                  <img src="/assets/images/{{ lang.code }}.svg" alt="" />
-                  {{ lang.text }}
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="navbar-item navbar-big mobile-only mb-3 mt-5">
-            <span class="navbar-link">{{ "SELECT_LANGUAGE" | translate }}</span>
-          </li>
-          <li *ngFor="let lang of languages" class="navbar-item mobile-only">
-            <a class="dropdown-item" (click)="useLanguage(lang.code)">
-              <img src="/assets/images/{{ lang.code }}.svg" alt="" />
-              {{ lang.text }}
-            </a>
-          </li>
-          <li class="navbar-item navbar-big">
-            <a class="navbar-link" href="#">{{ "STATEMENT" | translate }}</a>
-          </li>
-          <li class="navbar-item navbar-big mobile-only">
-            <a class="navbar-link" href="#">{{ "ANNOUNCEMENTS" | translate }}</a>
-          </li>
-          <li (click)="navigateToMyAccount()" class="navbar-item button">
-            <mat-icon class="button-icon" fontSet="material-icons-outlined">perm_identity</mat-icon>
-            <span class="button-title">{{ "MY_ACCOUNT" | translate }}</span>
-          </li>
-        </ul>
+        <div class="navbar-wrap">
+          <ul class="navbar-nav">
+            <li class="navbar-item dropdown desktop-only">
+              <a
+                class="navbar-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                {{ "SELECT_LANGUAGE" | translate }}
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li *ngFor="let lang of languages">
+                  <a class="dropdown-item" (click)="useLanguage(lang.code)">
+                    <img src="/assets/images/{{ lang.code }}.svg" alt="" />
+                    {{ lang.text }}
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="navbar-item navbar-big mobile-only mb-3 mt-5">
+              <span class="navbar-link">{{ "SELECT_LANGUAGE" | translate }}</span>
+            </li>
+            <li *ngFor="let lang of languages" class="navbar-item mobile-only">
+              <a class="dropdown-item" (click)="useLanguage(lang.code)">
+                <img src="/assets/images/{{ lang.code }}.svg" alt="" />
+                {{ lang.text }}
+              </a>
+            </li>
+            <li class="navbar-item navbar-big">
+              <a class="navbar-link" href="#">{{ "STATEMENT" | translate }}</a>
+            </li>
+            <li class="navbar-item navbar-big mobile-only">
+              <a class="navbar-link" href="#">{{ "ANNOUNCEMENTS" | translate }}</a>
+            </li>
+            <li class="navbar-item">
+              <button (click)="navigateToMyAccount()" class="btn btn-outline-light">
+                <mat-icon class="button-icon" fontSet="material-icons-outlined">account_circle</mat-icon>
+                <span class="button-title">{{ "MY_ACCOUNT" | translate }}</span>
+              </button>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </nav>
