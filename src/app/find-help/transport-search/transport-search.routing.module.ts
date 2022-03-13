@@ -5,7 +5,16 @@ import { TransportSearchComponent } from './transport-search.component';
 const routes: Routes = [
   {
     path: '',
-    component: TransportSearchComponent,
+    children: [
+      {
+        path: '',
+        component: TransportSearchComponent,
+      },
+      {
+        path: ':id',
+        // place for your component
+      },
+    ],
   },
 ];
 

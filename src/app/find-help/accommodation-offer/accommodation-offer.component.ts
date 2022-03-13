@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 // import { AccommodationQuery } from './accommodation-search-form/accommodation-search-form.component';
 import { AccommodationsResourceService, AccommodationOffer, Pageable } from '@app/core/api';
+import { CorePath } from '@app/shared/models';
 
 @Component({
   selector: 'app-accommodation-offer',
@@ -8,5 +9,6 @@ import { AccommodationsResourceService, AccommodationOffer, Pageable } from '@ap
   styleUrls: ['./accommodation-offer.component.scss'],
 })
 export class AccommodationOfferComponent {
+  corePath = CorePath;
   constructor() {}
 }

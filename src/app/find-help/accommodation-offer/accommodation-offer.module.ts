@@ -5,7 +5,7 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { MoreInfoLinkModule } from '@app/shared/components';
+import { CategoryNavigationComponentModule, MoreInfoLinkModule } from '@app/shared/components';
 import { AccommodationOfferComponent } from './accommodation-offer.component';
 import { MatCardModule } from '@angular/material/card';
 import { PomCommonPipesModule } from '@app/shared/pipes';
@@ -30,6 +30,7 @@ import { TranslateModule } from '@ngx-translate/core';
     SearchResultComponentModule,
     CitiesSearchModule,
     TranslateModule,
+    CategoryNavigationComponentModule,
   ],
 })
 export class AccommodationOfferModule {}

@@ -5,7 +5,7 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { MoreInfoLinkModule } from '@app/shared/components';
+import { CategoryNavigationComponentModule, MoreInfoLinkModule } from '@app/shared/components';
 import { AccommodationSearchFormComponent } from './accommodation-search-form/accommodation-search-form.component';
 import { AccommodationSearchComponent } from './accommodation-search.component';
 import { MatCardModule } from '@angular/material/card';
@@ -33,6 +33,7 @@ import { AccomodationSearchRoutingModule } from './accomodation-search.routing.m
     CitiesSearchModule,
     TranslateModule,
     AccomodationSearchRoutingModule,
+    CategoryNavigationComponentModule,
   ],
 })
 export class AccommodationSearchModule {}

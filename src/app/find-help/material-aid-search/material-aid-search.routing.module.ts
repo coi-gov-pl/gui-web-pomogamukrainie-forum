@@ -5,7 +5,16 @@ import { MaterialAidSearchComponent } from './material-aid-search.component';
 const routes: Routes = [
   {
     path: '',
-    component: MaterialAidSearchComponent,
+    children: [
+      {
+        path: '',
+        component: MaterialAidSearchComponent,
+      },
+      {
+        path: ':id',
+        // place for your component
+      },
+    ],
   },
 ];
 
