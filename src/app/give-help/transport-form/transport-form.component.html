@@ -19,65 +19,75 @@
           </mat-form-field>
         </div>
       </div>
+
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-3">
           <label
-            ><b>{{ "LABEL_POINT_LOCALISATION" | translate }}</b></label
+            ><b>{{ "LOCATION_FROM" | translate }}</b></label
           >
           <mat-form-field appearance="outline">
             <input
               matInput
-              name="location"
+              type="text"
+              name="origin"
+              [(ngModel)]="data.origin"
               placeholder="{{ 'PLACEHOLDER_TYPE' | translate }}"
-              [(ngModel)]="data.location"
+              autocomplete="off"
             />
+          </mat-form-field>
+        </div>
+        <div class="col-md-3">
+          <label
+            ><b>{{ "LOCATION_TO" | translate }}</b></label
+          >
+          <mat-form-field appearance="outline">
+            <input
+              matInput
+              type="text"
+              min="1"
+              [(ngModel)]="data.destination"
+              name="destination"
+              placeholder="{{ 'PLACEHOLDER_TYPE' | translate }}"
+              autocomplete="off"
+            />
+          </mat-form-field>
+        </div>
+        <div class="col-md-4">
+          <label
+            ><b>{{ "LABEL_DATE" | translate }}</b></label
+          >
+          <mat-form-field appearance="outline">
+            <input
+              matInput
+              [(ngModel)]="data.transportDate"
+              [matDatepicker]="picker"
+              [min]="minDate"
+              name="transportDate"
+              placeholder="{{ 'PLACEHOLDER_CHOOSE_DATE' | translate }}"
+              autocomplete="off"
+            />
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
         </div>
         <div class="col-md-2">
           <label
-            ><b>{{ "NUMBER_OF_PEOPLE" | translate }}</b></label
+            ><b>{{ "LABEL_HOW_MANY_PEOPLE_UCAN_TAKE" | translate }}</b></label
           >
           <mat-form-field appearance="outline">
             <input
               matInput
-              placeholder="{{ 'PLACEHOLDER_CHOOSE' | translate }}"
               type="number"
+              placeholder="{{ 'PLACEHOLDER_CHOOSE' | translate }}"
+              [(ngModel)]="data.capacity"
+              name="capacity"
               min="1"
-              [(ngModel)]="data.guests"
-              name="guests"
+              autocomplete="off"
             />
           </mat-form-field>
         </div>
-        <div class="col-md-3">
-          <label
-            ><b>{{ "LABEL_LENGTH_OF_STAY" | translate }}</b></label
-          >
-          <mat-form-field appearance="outline">
-            <mat-select
-              placeholder="{{ 'PLACEHOLDER_CHOOSE' | translate }}"
-              [(ngModel)]="data.lengthOfStay"
-              name="lengthOfStay"
-            >
-              <mat-option *ngFor="let it of LENGTHOFSTAY" [value]="it.code">{{ it.label }}</mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
-        <div class="col-md-3">
-          <label
-            ><b>{{ "LABEL_HOST_LANG" | translate }}</b></label
-          >
-          <mat-form-field appearance="outline">
-            <mat-select
-              placeholder="{{ 'PLACEHOLDER_CHOOSE' | translate }}"
-              multiple
-              [(ngModel)]="data.hostLanguage"
-              name="language"
-            >
-              <mat-option *ngFor="let it of LANGUAGES" [value]="it.code">{{ it.label }}</mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
       </div>
+
       <div class="row">
         <div class="col-lg-7">
           <label>

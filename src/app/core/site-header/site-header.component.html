@@ -44,7 +44,7 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li *ngFor="let lang of languages">
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" (click)="useLanguage(lang.code)">
                   <img src="/assets/images/{{ lang.code }}.svg" alt="" />
                   {{ lang.text }}
                 </a>
@@ -55,7 +55,7 @@
             <span class="navbar-link">{{ "SELECT_LANGUAGE" | translate }}</span>
           </li>
           <li *ngFor="let lang of languages" class="navbar-item mobile-only">
-            <a class="dropdown-item" href="#">
+            <a class="dropdown-item" (click)="useLanguage(lang.code)">
               <img src="/assets/images/{{ lang.code }}.svg" alt="" />
               {{ lang.text }}
             </a>
@@ -65,6 +65,10 @@
           </li>
           <li class="navbar-item navbar-big mobile-only">
             <a class="navbar-link" href="#">{{ "ANNOUNCEMENTS" | translate }}</a>
+          </li>
+          <li (click)="navigateToMyAccount()" class="navbar-item button">
+            <mat-icon class="button-icon" fontSet="material-icons-outlined">perm_identity</mat-icon>
+            <span class="button-title">{{ "MY_ACCOUNT" | translate }}o</span>
           </li>
         </ul>
       </div>

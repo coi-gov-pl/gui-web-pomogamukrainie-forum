@@ -1,12 +1,10 @@
 import { Component, Input, NgModule } from '@angular/core';
-import { CategoryRoutingName } from '@app/shared/models';
-import { Category, CategoryNameKey } from '@app/shared/models';
+import { Category, CategoryNameKey, CategoryRoutingName, CorePath } from '@app/shared/models';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
 import { TypeOfHelpComponentModule } from '@app/shared/components';
-import { HelpTypePath } from '@app/shared/models';
 
 @Component({
   selector: 'app-category-navigation',
@@ -14,7 +12,7 @@ import { HelpTypePath } from '@app/shared/models';
   styleUrls: ['./category-navigation.component.scss'],
 })
 export class CategoryNavigationComponent {
-  @Input() outputPath: HelpTypePath = HelpTypePath.Find;
+  @Input() outputPath: CorePath = CorePath.Find;
   routingCategoryName = CategoryRoutingName;
 
   categories: Category[] = [

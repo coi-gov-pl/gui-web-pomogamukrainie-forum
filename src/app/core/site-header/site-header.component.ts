@@ -1,5 +1,13 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
+import { LanguageCode } from '@app/core/translations';
+import { CorePath } from '@app/shared/models';
+
+interface Language {
+  code: LanguageCode;
+  text: string;
+}
 
 @Component({
   selector: 'app-site-header',
@@ -10,13 +18,13 @@ export class SiteHeaderComponent {
   isOpen: boolean = false;
   scrolled: boolean = false;
 
-  languages = [
-    { code: 'ua', text: 'український' },
-    { code: 'ru', text: 'русский' },
-    { code: 'en', text: 'English' },
-    { code: 'pl', text: 'Polski' },
+  languages: Language[] = [
+    { code: LanguageCode.uk_UA, text: 'український' },
+    { code: LanguageCode.ru_RU, text: 'русский' },
+    { code: LanguageCode.en_GB, text: 'English' },
+    { code: LanguageCode.pl_PL, text: 'Polski' },
   ];
-  constructor(private router: Router) {}
+  constructor(private router: Router, private translateService: TranslateService) {}
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
@@ -38,5 +46,13 @@ export class SiteHeaderComponent {
 
   onToggle() {
     this.isOpen = !this.isOpen;
+  }
+
+  useLanguage(langCode: string) {
+    this.translateService.use(langCode);
+  }
+
+  public navigateToMyAccount(): void {
+    this.router.navigate([CorePath.MyAccount]);
   }
 }
