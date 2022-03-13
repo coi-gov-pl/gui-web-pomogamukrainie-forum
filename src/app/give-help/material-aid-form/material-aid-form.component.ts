@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { MaterialAidOfferDefinitionDTO, MaterialAidResourceService } from '@app/core/api';
 import { Location } from '@app/shared/components';
+import { PHONE_NUMBER_REGEX, PREFIXES } from '@app/shared/temporary-consts';
 import { defaults } from '@app/shared/utils';
-import { Offer } from '../offer-form/offer-form.component';
 
-interface MaterialAid {
-  location: Location;
-  category: MaterialAidOfferDefinitionDTO.CategoryEnum;
-}
+// interface MaterialAid {
+//   location: Location;
+//   category: MaterialAidOfferDefinitionDTO.CategoryEnum;
+// }
 
 const CATEGORIES = Object.entries(MaterialAidOfferDefinitionDTO.CategoryEnum).map(([key, value]) => ({
   key,
@@ -20,13 +20,21 @@ const CATEGORIES = Object.entries(MaterialAidOfferDefinitionDTO.CategoryEnum).ma
   styleUrls: ['./material-aid-form.component.scss'],
 })
 export class MaterialAidFormComponent {
-  data = defaults<MaterialAid>({});
+  data = defaults<MaterialAidOfferDefinitionDTO>({});
   categories = CATEGORIES;
+  PREFIXES = PREFIXES;
+  PHONE_NUMBER_REGEX = PHONE_NUMBER_REGEX;
+  phonePrefix: string = '48';
+  phoneNumber: string = '';
 
   constructor(private materialAidResourceService: MaterialAidResourceService) {}
 
-  handleSubmit(offer: Offer) {
-    let data: MaterialAidOfferDefinitionDTO = { ...offer, ...this.data };
-    this.materialAidResourceService.postMaterialAidOfferMaterialAid(data).subscribe((response) => {});
+  onPhoneNumberChange(): void {
+    // Waiting for TransportOfferDefinitionDTO receive a phoneNumber prop
+    // this.data.phoneNumber = this.phonePrefix + this.phoneNumber;
+  }
+
+  handleSubmit() {
+    this.materialAidResourceService.postMaterialAidOfferMaterialAid(this.data).subscribe((response) => {});
   }
 }
