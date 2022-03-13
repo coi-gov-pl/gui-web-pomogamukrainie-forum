@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { MyAccountPersonalData } from '../../api/model/my-account-personal-data';
+import { MyAccountPersonalData } from './my-account.types';
 
 @Injectable({
   providedIn: 'root',

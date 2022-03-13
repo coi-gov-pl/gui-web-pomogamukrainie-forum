@@ -7,7 +7,7 @@ import {
   Pageable,
   TransportOffer,
 } from '@app/core/api';
-import { MyAccountPersonalData } from '../../../api/model/my-account-personal-data';
+import { MyAccountPersonalData } from '../my-account.types';
 import { MyAccountService } from '../my-account.service';
 import { Observable } from 'rxjs';
 

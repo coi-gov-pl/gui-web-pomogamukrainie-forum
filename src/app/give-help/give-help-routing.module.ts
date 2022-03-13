@@ -18,6 +18,8 @@ const routes: Routes = [
       },
       {
         path: CategoryRoutingName.TRANSPORT,
+        loadChildren: () =>
+          import('./transport-form/transport-form.module').then((m) => m.TransportFormComponentModule),
       },
     ],
   },
