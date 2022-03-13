@@ -45,4 +45,6 @@ export default {
   EMAIL_INFO: 'Adresu e-mail nie będziemy wyświetlać w Twoich ogłoszeniach.',
   REMOVE_ACCOUNT: 'Chcesz usunąć konto lub zmienić adres e-mail? Prześlij wiadomość na adres',
   MY_ACCOUNT: 'Moje konto',
+  EDIT_ANNOUNCEMENT: 'Edytuj',
+  REMOVE_ANNOUNCEMENT: 'Usuń',
 };

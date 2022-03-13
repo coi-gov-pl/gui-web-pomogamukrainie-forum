@@ -17,11 +17,13 @@ export class SearchResultComponent implements OnChanges {
   description!: string;
   @Input()
   posted?: Date | string | undefined;
+  @Input()
+  origin?: Location;
 
   postedDate: Date | undefined;
 
   ngOnChanges({ posted }: SimpleChanges) {
-    const postedVal = posted.currentValue;
+    const postedVal = posted?.currentValue;
     if (postedVal === undefined || postedVal instanceof Date) {
       this.postedDate = postedVal;
     } else {
