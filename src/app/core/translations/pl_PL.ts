@@ -62,4 +62,5 @@ export default {
   LABEL_POINT_LOCALISATION: 'Wskaż lokalizację:',
   LABEL_LENGTH_OF_STAY: 'Czas pobytu',
   LABEL_HOST_LANG: 'Język, w jakim mówi gospodarz:',
+  MAIN_PAGE: 'Strona Główna',
 };

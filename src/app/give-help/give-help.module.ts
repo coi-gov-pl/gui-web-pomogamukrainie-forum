@@ -6,6 +6,7 @@ import { MatCardModule } from '@angular/material/card';
 import { AccommodationFormComponentModule } from './accommodation-form/accommodation-form.module';
 import { CategoryNavigationComponentModule } from '@app/shared/components';
 import { TranslateModule } from '@ngx-translate/core';
+import { SharedModule } from '@app/shared/shared.module';
 
 @NgModule({
   declarations: [GiveHelpComponent],
@@ -16,6 +17,7 @@ import { TranslateModule } from '@ngx-translate/core';
     AccommodationFormComponentModule,
     CategoryNavigationComponentModule,
     TranslateModule,
+    SharedModule,
   ],
 })
 export class GiveHelpModule {}
