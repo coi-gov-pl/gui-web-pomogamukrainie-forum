@@ -8,7 +8,7 @@
     <p class="text">{{ "ACCOUNT_SETTINGS" | translate }}</p>
     <app-my-account-settings [myAccountPersonalData]="myAccountPersonalData$ | async"></app-my-account-settings>
   </section>
-  <button color="primary" mat-flat-button>
+  <button color="primary" mat-flat-button (click)="addNewAd()">
     <mat-icon fontSet="material-icons-outlined">add</mat-icon>
     {{ "ADD_ANNOUNCEMENT" | translate }}
   </button>
