@@ -45,8 +45,6 @@ export default {
   EMAIL_INFO: 'Adresu e-mail nie będziemy wyświetlać w Twoich ogłoszeniach.',
   REMOVE_ACCOUNT: 'Chcesz usunąć konto lub zmienić adres e-mail? Prześlij wiadomość na adres',
   MY_ACCOUNT: 'Moje konto',
-  EDIT_ANNOUNCEMENT: 'Edytuj',
-  REMOVE_ANNOUNCEMENT: 'Usuń',
   PLACEHOLDER_CHOOSE_DATE: 'Wybierz datę',
   LABEL_HOW_MANY_PEOPLE_UCAN_TAKE: 'Ile osób możesz zabrać',
   PLACEHOLDER_TYPE: 'Wpisz',
@@ -63,4 +61,6 @@ export default {
   LABEL_POINT_LOCALISATION: 'Wskaż lokalizację:',
   LABEL_LENGTH_OF_STAY: 'Czas pobytu',
   LABEL_HOST_LANG: 'Język, w jakim mówi gospodarz:',
+  EDIT_ANNOUNCEMENT: 'Edytuj',
+  REMOVE_ANNOUNCEMENT: 'Usuń',
 };
