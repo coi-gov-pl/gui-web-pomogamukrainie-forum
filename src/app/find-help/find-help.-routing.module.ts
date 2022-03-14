@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FindHelpComponent } from './find-help.component';
 import { CategoryRoutingName } from '@app/shared/models';
+import { SearchResultComponentModule } from './search-result/search-result.module';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
       {
         path: CategoryRoutingName.TRANSPORT,
         loadChildren: () => import('./transport-search/transport-search.module').then((m) => m.TransportSearchModule),
+      },
+      {
+        path: 'view-offer',
+        loadChildren: () => import('./view-offer/view-offer.module').then((m) => m.ViewOfferModule),
       },
     ],
   },
