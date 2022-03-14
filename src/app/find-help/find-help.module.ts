@@ -8,7 +8,7 @@ import { TransportSearchModule } from './transport-search/transport-search.modul
 import { MaterialAidSearchModule } from './material-aid-search/material-aid-search.module';
 import { FindHelpRoutingModule } from './find-help.-routing.module';
 import { TranslateModule } from '@ngx-translate/core';
-import { ViewOfferModule } from './view-offer/view-offer.module';
+import { ViewOfferAccommodationModule } from './view-offer-accommodation/view-offer-accommodation.module';
 
 @NgModule({
   declarations: [FindHelpComponent],
@@ -22,7 +22,7 @@ import { ViewOfferModule } from './view-offer/view-offer.module';
     TransportSearchModule,
     MaterialAidSearchModule,
     TranslateModule,
-    ViewOfferModule,
+    ViewOfferAccommodationModule,
   ],
 })
 export class FindHelpModule {}

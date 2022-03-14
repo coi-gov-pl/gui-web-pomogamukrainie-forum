@@ -7,13 +7,12 @@ import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatIconModule } from '@angular/material/icon';
-import { ReplyOfferRoutingModule } from './view-offer.routing.module';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { ViewOfferComponent } from './view-offer.component';
+import { ViewOfferAccommodationComponent } from './view-offer-accommodation.component';
 import { ReplyOfferModule } from '../reply-offer/reply-offer.module';
 
 @NgModule({
-  declarations: [ViewOfferComponent],
+  declarations: [ViewOfferAccommodationComponent],
   imports: [
     CommonModule,
     MatFormFieldModule,
@@ -24,9 +23,8 @@ import { ReplyOfferModule } from '../reply-offer/reply-offer.module';
     MatCardModule,
     TranslateModule,
     MatIconModule,
-    ReplyOfferRoutingModule,
     ReplyOfferModule,
   ],
-  exports: [ViewOfferComponent],
+  exports: [ViewOfferAccommodationComponent],
 })
-export class ViewOfferModule {}
+export class ViewOfferAccommodationModule {}

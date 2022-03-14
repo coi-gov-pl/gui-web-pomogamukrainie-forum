@@ -5,11 +5,11 @@ import { CategoryRoutingName } from '@app/shared/models';
 import { defaults } from '@app/shared/utils';
 
 @Component({
-  selector: 'app-view-offer',
-  templateUrl: './view-offer.component.html',
-  styleUrls: ['./view-offer.component.scss'],
+  selector: 'app-view-offer-accommodation',
+  templateUrl: './view-offer-accommodation.component.html',
+  styleUrls: ['./view-offer-accommodation.component.scss'],
 })
-export class ViewOfferComponent implements OnInit {
+export class ViewOfferAccommodationComponent implements OnInit {
   @Input() offerId: number = 3;
   @Input() category!: CategoryRoutingName;
   accomodationOfferData = defaults<AccommodationOffer>();

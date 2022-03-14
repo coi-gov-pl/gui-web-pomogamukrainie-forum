@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { FindHelpComponent } from './find-help.component';
 import { CategoryRoutingName } from '@app/shared/models';
 import { SearchResultComponentModule } from './search-result/search-result.module';
+import { ViewOfferAccomodationModule } from './view-offer-accommodation/view-offer-accommodation.routing.module';
 
 const routes: Routes = [
   {
@@ -25,7 +26,10 @@ const routes: Routes = [
       },
       {
         path: 'view-offer',
-        loadChildren: () => import('./view-offer/view-offer.module').then((m) => m.ViewOfferModule),
+        loadChildren: () =>
+          import('./view-offer-accommodation/view-offer-accommodation.module').then(
+            (m) => m.ViewOfferAccommodationModule
+          ),
       },
     ],
   },
