@@ -8,9 +8,18 @@ import { MyAccountSettingsComponent } from './my-account-settings/my-account-set
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { SharedModule } from '@app/shared/shared.module';
+import { SearchResultComponentModule } from '../find-help/search-result/search-result.module';
 
 @NgModule({
   declarations: [MyAccountComponent, MyAccountSettingsComponent],
-  imports: [CommonModule, MatCardModule, MatButtonModule, MatIconModule, TranslateModule, SharedModule],
+  imports: [
+    CommonModule,
+    MatCardModule,
+    MatButtonModule,
+    MatIconModule,
+    TranslateModule,
+    SharedModule,
+    SearchResultComponentModule,
+  ],
 })
 export class MyAccountModule {}

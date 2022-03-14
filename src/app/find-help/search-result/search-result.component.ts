@@ -17,6 +17,8 @@ export class SearchResultComponent implements OnChanges {
   description!: string;
   @Input()
   posted?: Date | string | undefined;
+  @Input()
+  origin?: Location;
 
   postedDate: Date | undefined;
 
