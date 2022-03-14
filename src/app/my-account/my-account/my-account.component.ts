@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { OffersBaseOffer } from '@app/core/api';
-import { MyAccountPersonalData } from '../my-account.types';
-import { MyAccountService } from '../my-account.service';
-import { Observable } from 'rxjs';
+import { OffersBaseOffer, UserInfo, UsersResourceService } from '@app/core/api';
+import { catchError, Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
 import { CorePath } from '@app/shared/models';
 
@@ -12,12 +10,19 @@ import { CorePath } from '@app/shared/models';
   styleUrls: ['./my-account.component.scss'],
 })
 export class MyAccountComponent implements OnInit {
-  public myAccountPersonalData$: Observable<MyAccountPersonalData> | undefined;
+  public myAccountPersonalData$: Observable<UserInfo> | null | undefined;
   public myAnnouncements: Array<OffersBaseOffer> = [];
-  constructor(private myAccountService: MyAccountService, private router: Router) {}
+  constructor(private usersResourceService: UsersResourceService, private router: Router) {}
 
   public ngOnInit() {
-    this.myAccountPersonalData$ = this.myAccountService.getPersonalData();
+    this.myAccountPersonalData$ = this.usersResourceService.meUsers().pipe(
+      catchError(() => {
+        return of({
+          firstName: 'empty name',
+          email: 'empty mail',
+        });
+      })
+    );
   }
 
   public addNewAd(): void {
