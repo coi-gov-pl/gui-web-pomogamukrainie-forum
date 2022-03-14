@@ -20,12 +20,14 @@ export class SearchResultComponent implements OnChanges {
 
   postedDate: Date | undefined;
 
-  ngOnChanges({ posted }: SimpleChanges) {
-    const postedVal = posted.currentValue;
-    if (postedVal === undefined || postedVal instanceof Date) {
-      this.postedDate = postedVal;
-    } else {
-      this.postedDate = new Date(postedVal);
+  ngOnChanges({ posted, location, destination }: SimpleChanges) {
+    if (posted) {
+      const postedVal = posted.currentValue;
+      if (postedVal === undefined || postedVal instanceof Date) {
+        this.postedDate = postedVal;
+      } else {
+        this.postedDate = new Date(postedVal);
+      }
     }
   }
 }

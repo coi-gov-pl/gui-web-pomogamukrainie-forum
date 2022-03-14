@@ -1,10 +1,16 @@
 <mat-card class="result">
   <div class="attributes">
-    <div *ngIf="location">
-      <mat-icon fontSet="material-icons-outlined">location_on</mat-icon>
-      {{ location.city }}
-    </div>
-    <div class="right" *ngIf="posted">{{ postedDate | date: "short" }}</div>
+    <app-search-result-attribute
+      *ngIf="location && !destination"
+      [text]="location.city"
+      icon="location_on"
+    ></app-search-result-attribute>
+    <app-search-result-attribute *ngIf="location && destination" icon="location_on">
+      <span class="text-with-icon"
+        >{{ location.city }} <mat-icon fontSet="material-icons-outlined">east</mat-icon> {{ destination.city }}</span
+      >
+    </app-search-result-attribute>
+    <div class="right" *ngIf="posted">{{ postedDate | date }}</div>
   </div>
   <h4>{{ title }}</h4>
   <div class="attributes">

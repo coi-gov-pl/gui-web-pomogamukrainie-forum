@@ -7,7 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 export class SearchResultAttributeComponent {
   @Input()
-  text?: string;
+  text: string | null | undefined;
   @Input()
-  icon?: string;
+  icon: string | null | undefined;
 }

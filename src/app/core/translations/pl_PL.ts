@@ -63,4 +63,5 @@ export default {
   LABEL_LENGTH_OF_STAY: 'Czas pobytu',
   LABEL_HOST_LANG: 'Język, w jakim mówi gospodarz:',
   MAIN_PAGE: 'Strona Główna',
+  PLACEHOLDER_LOCATION_2: 'Np. Warszawa, mazowieckie',
 };
