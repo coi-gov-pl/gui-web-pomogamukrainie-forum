@@ -4,12 +4,14 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start:mock": "nodemon --watch mock/ --exec \"ts-node -P ./mock/tsconfig-mock.json \" ./mock/index.ts",
+    "start:proxy": "npm run start:mock -- --proxy",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "generate-api": "./generate-api.sh",
-    "format": "prettier \"src/**/*.{ts,html,scss,md}\" --write",
-    "format:check": "prettier \"src/**/*.{ts,html,scss,md}\" --check",
+    "format": "prettier \"{src,mock}/**/*.{ts,html,scss,md}\" --write",
+    "format:check": "prettier \"{src,mock}/**/*.{ts,html,scss,md}\" --check",
     "lint": "ng lint",
     "prepare": "husky install"
   },
@@ -58,7 +60,9 @@
     "karma-coverage": "~2.1.0",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
+    "nodemon": "^2.0.15",
     "prettier": "^2.5.1",
+    "ts-node": "^10.7.0",
     "typescript": "~4.5.2"
   }
 }

@@ -1,0 +1,28 @@
+.breadcrumb-item {
+  margin-top: 24px;
+  font-size: 13px;
+  letter-spacing: -0.1px;
+  font-family: var(--font-roboto);
+  color: #0b52bd;
+  padding-left: 0;
+  display: flex;
+  align-items: flex-start;
+
+  &::before {
+    content: "";
+  }
+
+  a {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .icon {
+    font-size: 18px;
+    margin-left: 8px;
+    width: 20px;
+  }
+}

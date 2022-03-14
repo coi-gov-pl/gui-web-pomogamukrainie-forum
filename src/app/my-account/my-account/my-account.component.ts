@@ -10,6 +10,8 @@ import {
 import { MyAccountPersonalData } from '../my-account.types';
 import { MyAccountService } from '../my-account.service';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
+import { CorePath } from '@app/shared/models';
 
 @Component({
   selector: 'app-my-account',
@@ -20,7 +22,7 @@ export class MyAccountComponent implements OnInit {
   public myAccountPersonalData$: Observable<MyAccountPersonalData> | undefined;
   public myAnnouncements!: OffersBaseOffer;
   pageRequest: Pageable = {};
-  constructor(private myAccountService: MyAccountService, private myOffersResource: MyOffersResourceService) {}
+  constructor(private myAccountService: MyAccountService, private router: Router, private myOffersResource: MyOffersResourceService) {}
 
   public ngOnInit() {
     this.myAccountPersonalData$ = this.myAccountService.getPersonalData();
@@ -35,5 +37,9 @@ export class MyAccountComponent implements OnInit {
 
   editAnnouncement(announcement: AccommodationOffer | MaterialAidOffer | TransportOffer): void {
     console.log(announcement);
+  }
+
+  public addNewAd(): void {
+    this.router.navigate([CorePath.Give]);
   }
 }
