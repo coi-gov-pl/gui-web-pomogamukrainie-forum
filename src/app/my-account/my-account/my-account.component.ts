@@ -22,7 +22,11 @@ export class MyAccountComponent implements OnInit {
   public myAccountPersonalData$: Observable<MyAccountPersonalData> | undefined;
   public myAnnouncements!: OffersBaseOffer;
   pageRequest: Pageable = {};
-  constructor(private myAccountService: MyAccountService, private router: Router, private myOffersResource: MyOffersResourceService) {}
+  constructor(
+    private myAccountService: MyAccountService,
+    private router: Router,
+    private myOffersResource: MyOffersResourceService
+  ) {}
 
   public ngOnInit() {
     this.myAccountPersonalData$ = this.myAccountService.getPersonalData();
