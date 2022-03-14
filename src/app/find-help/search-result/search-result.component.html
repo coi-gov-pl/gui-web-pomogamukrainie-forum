@@ -5,18 +5,27 @@
       [text]="location.city"
       icon="location_on"
     ></app-search-result-attribute>
-    <app-search-result-attribute *ngIf="location && destination" icon="location_on">
-      <span class="text-with-icon"
-        >{{ location.city }} <mat-icon fontSet="material-icons-outlined">east</mat-icon> {{ destination.city }}</span
-      >
+    <app-search-result-attribute *ngIf="origin && destination" icon="location_on">
+      <span class="text-with-icon">
+        {{ origin.city }}
+        <mat-icon fontSet="material-icons-outlined" class="mx-3">arrow_forward</mat-icon>
+        {{ destination.city }}
+      </span>
     </app-search-result-attribute>
     <div class="right" *ngIf="posted">{{ postedDate | date }}</div>
   </div>
-  <h4>{{ title }}</h4>
-  <div class="attributes">
-    <ng-content select="app-search-result-attribute"></ng-content>
-  </div>
-  <div class="description">
-    {{ description }}
+  <div class="d-sm-flex">
+    <div class="flex-fill">
+      <h4 class="text-start">{{ title }}</h4>
+      <div class="attributes">
+        <ng-content select="app-search-result-attribute"></ng-content>
+      </div>
+      <div class="description text-start">
+        {{ description }}
+      </div>
+    </div>
+    <div>
+      <ng-content select="[buttons]"></ng-content>
+    </div>
   </div>
 </mat-card>
