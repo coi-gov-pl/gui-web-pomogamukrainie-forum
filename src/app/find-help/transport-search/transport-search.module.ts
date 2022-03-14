@@ -13,7 +13,7 @@ import { TransportSearchComponent } from './transport-search.component';
 import { SearchResultComponentModule } from '../search-result/search-result.module';
 import { CitiesSearchModule, MoreInfoLinkModule } from '@app/shared/components';
 import { TransportSearchFormComponent } from './transport-search-form/transport-search-form.component';
-import { DatepickerModule } from '../../shared/components/datepicker/datepicker.module';
+import { DatepickerModule } from '@app/shared/components';
 
 @NgModule({
   declarations: [TransportSearchComponent, TransportSearchFormComponent],
