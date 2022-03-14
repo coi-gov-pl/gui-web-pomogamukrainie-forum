@@ -9,9 +9,10 @@ import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatIconModule } from '@angular/material/icon';
+import { OfferTitleValidateDirective } from '@app/shared/validators/offer-title-validate.directive';
 
 @NgModule({
-  declarations: [MaterialAidFormComponent],
+  declarations: [MaterialAidFormComponent, OfferTitleValidateDirective],
   imports: [
     CommonModule,
     MatFormFieldModule,

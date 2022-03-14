@@ -1,5 +1,5 @@
 <mat-card>
-  <form (submitOffer)="handleSubmit()">
+  <form (submitOffer)="handleSubmit()" #materialAidForm="ngForm">
     <div class="row">
       <div class="col-md-12">
         <label>
@@ -14,7 +14,11 @@
             required
             name="title"
             [(ngModel)]="data.title"
+            #title="ngModel"
+            appOfferTitleValidate
           />
+          <mat-error *ngIf="title.errors?.['required']">Pole jest wymagane</mat-error>
+          <mat-error *ngIf="title.errors?.['offerTitleInvalid']">Dozwolone znaki to [a-zA-Z]</mat-error>
         </mat-form-field>
       </div>
     </div>
@@ -101,7 +105,7 @@
         </mat-form-field>
       </div>
       <div class="col-lg-3 publish">
-        <button class="btn btn-primary">
+        <button class="btn btn-dark" [disabled]="materialAidForm.invalid">
           <mat-icon fontSet="material-icons-outlined">add</mat-icon>
           <span>{{ "OFFER_PUBLISH" | translate }}</span>
         </button>

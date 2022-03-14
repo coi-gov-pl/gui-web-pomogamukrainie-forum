@@ -19,6 +19,7 @@ const routes: Routes = [
       },
       {
         path: CategoryRoutingName.MATERIAL_HELP,
+        loadChildren: () => import('./material-aid-form/material-aid-form.module').then((m) => m.MaterialAidFormModule),
         data: {
           title: BreadcrumbLabels.MATERIAL_HELP,
         },
