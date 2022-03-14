@@ -25,7 +25,7 @@ const routes: Routes = [
         loadChildren: () => import('./transport-search/transport-search.module').then((m) => m.TransportSearchModule),
       },
       {
-        path: 'view-offer',
+        path: 'view-offer/:id',
         loadChildren: () =>
           import('./view-offer-accommodation/view-offer-accommodation.module').then(
             (m) => m.ViewOfferAccommodationModule

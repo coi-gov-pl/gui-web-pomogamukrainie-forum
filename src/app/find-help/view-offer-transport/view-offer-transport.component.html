@@ -1,1 +1,40 @@
-<p>view-offer-transport works!</p>
+<div class="d-flex flex-column flex-md-row">
+  <mat-card class="offer p-4 w-100 w-md-50">
+    <div class="d-flex mb-3">
+      <div>Wczoraj, 14:56</div>
+      <div class="ml-auto">
+        <a href="#"> <mat-icon fontSet="material-icons-outlined">share</mat-icon></a>
+      </div>
+    </div>
+    <h3>Pokoj w mieszkaniu dla 2 osob lub 2 osob + dziecko w centrum Wrocławia</h3>
+    <div class="row mt-4">
+      <div class="attribute col-md-4">
+        <div class="fw-bold">Lokalizacja</div>
+        <mat-icon fontSet="material-icons-outlined">place</mat-icon>
+      </div>
+      <div class="attribute col-md-4">
+        <div class="fw-bold">Liczba osób</div>
+        <mat-icon fontSet="material-icons-outlined">person</mat-icon>
+      </div>
+      <div class="attribute col-md-4">
+        <div class="fw-bold">Język</div>
+        <mat-icon fontSet="material-icons-outlined">translate</mat-icon>
+      </div>
+    </div>
+    <div class="content mt-5 h-auto">
+      <label><b>Treść ogłoszenia</b></label>
+      <p>
+        #nocleg #noclegmazowieckie #transport Podkarpacie, miejscowość Rzeszów - ok. 5 km od Dworca głównego. Kawalerka
+        na wyłączność pomieści 2 osoby i zwierzęta są mile widziane. Okres: 2 miesiące, Bezpłatnie. Domek jest
+        kompletnie wyposażony - brak jedynie pralki. Osobna sypialnia, łazienka, ogrzewanie elektryczne lub piec
+        kaflowy, kuchnia i salon. (TV) Pomożemy z transportem osób z granicy do naszego domku Zapraszamy do kontaktu.
+      </p>
+    </div>
+    <div class="disclaimer mb-3">Zmień język strony, aby automatycznie przetłumaczyć treść ogłoszenia.</div>
+    <a href="#">&lt; Wróć do listy</a>
+  </mat-card>
+
+  <div class="w-100 w-md-50">
+    <app-reply-offer [helperPhoneNumber]="'123123213'" [helperFirstname]="data.userFirstName"></app-reply-offer>
+  </div>
+</div>
