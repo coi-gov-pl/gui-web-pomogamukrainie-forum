@@ -1,11 +1,12 @@
 @import "node_modules/bootstrap/scss/bootstrap-grid";
+@import "vars";
 
 :host {
+  position: relative;
   header {
     display: flex;
     align-items: center;
     background: var(--c-darkblue);
-    height: var(--header-height);
     width: 100%;
 
     &.transparent {
@@ -56,6 +57,11 @@
       border-color: var(--c-lightblue);
     }
   }
+  &-wrap {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
   &-nav {
     margin: 0 auto;
     text-align: center;
@@ -63,8 +69,7 @@
       align-items: center;
     }
     @include media-breakpoint-up(lg) {
-      margin-left: auto;
-      margin-right: 0;
+      align-items: center;
     }
   }
   &-toggler {
@@ -95,14 +100,15 @@
     }
   }
   &-collapse {
+    transition: height 200ms ease-in;
+    justify-content: flex-end;
     @include media-breakpoint-down(lg) {
       align-items: center;
       background: var(--c-darkblue);
       position: fixed;
-      z-index: 100;
-      top: 70px;
-      left: 0;
-      height: calc(100vh - var(--header-height));
+      z-index: -1;
+      inset: 0 0 0 0;
+      height: 100%;
       width: 100%;
     }
   }
@@ -125,13 +131,7 @@
     }
 
     .button-title {
-      padding-left: 10px;
-    }
-
-    .button-icon {
-      background-color: var(--c-white);
-      color: var(--c-darkblue);
-      border-radius: 50%;
+      margin-left: 10px;
     }
   }
 }
@@ -152,8 +152,10 @@
     }
   }
   &-item {
+    background: transparentize($c-darkblue, 0.2);
     border-bottom: 2px solid transparent;
     color: var(--c-white);
+    cursor: pointer;
     font-size: 18px;
     font-weight: 700;
     padding: 0.4rem 1rem;
@@ -168,7 +170,6 @@
       }
     }
     &:hover {
-      background: transparent;
       border-color: var(--c-lightblue);
     }
     @include media-breakpoint-up(lg) {

@@ -1,21 +1,17 @@
 <section class="dashboard">
   <div class="container">
     <div class="dashboard-wrap">
-      <p class="dashboard-hash font-yellow fw-bold mb-3">{{ "HELPUA" | translate }}</p>
-      <h1 class="dashboard-title fw-bold font-white">
+      <p class="header-3 font-yellow fw-bold mb-3">{{ "HELPUA" | translate }}</p>
+      <h1 class="header-1 font-white fw-bold">
         {{ "HELP_FROM_WAR" | translate }}<br />
         {{ "SUPPORT_REFUGEES" | translate }}
       </h1>
       <p class="dashboard-desc font-white mt-3" [innerHTML]="'DASHBOARD_DESCRIPTION' | translate"></p>
       <div class="dashboard-actions">
-        <a [routerLink]="[corePath.Find, categoryRoutingName.ACCOMMODATION]" id="search" class="btn btn-highlight">{{
+        <a [routerLink]="[corePath.Find, categoryRoutingName.ACCOMMODATION]" id="search" class="btn btn-primary">{{
           "SEARCH_FOR_HELP" | translate
         }}</a>
-        <a
-          [routerLink]="[corePath.Give, categoryRoutingName.ACCOMMODATION]"
-          id="help"
-          class="btn btn-outline-highlight"
-        >
+        <a [routerLink]="[corePath.Give, categoryRoutingName.ACCOMMODATION]" id="help" class="btn btn-outline-primary">
           <mat-icon fontSet="material-icons-outlined">add</mat-icon>
           {{ "ADD_AD" | translate }}
         </a>
