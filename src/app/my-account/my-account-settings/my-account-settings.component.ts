@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { MyAccountPersonalData } from '../my-account.types';
+import { UserInfo } from '@app/core/api';
 
 @Component({
   selector: 'app-my-account-settings',
@@ -7,7 +7,7 @@ import { MyAccountPersonalData } from '../my-account.types';
   styleUrls: ['./my-account-settings.component.scss'],
 })
 export class MyAccountSettingsComponent {
-  @Input() public myAccountPersonalData: MyAccountPersonalData | null | undefined;
+  @Input() public myAccountPersonalData: UserInfo | null | undefined;
 
   constructor() {}
 }

@@ -6,10 +6,10 @@ import {
   OffersBaseOffer,
   Pageable,
   TransportOffer,
+  UserInfo,
+  UsersResourceService,
 } from '@app/core/api';
-import { MyAccountPersonalData } from '../my-account.types';
-import { MyAccountService } from '../my-account.service';
-import { Observable } from 'rxjs';
+import { Observable, switchMap, tap } from 'rxjs';
 import { Router } from '@angular/router';
 import { CorePath } from '@app/shared/models';
 
@@ -19,20 +19,27 @@ import { CorePath } from '@app/shared/models';
   styleUrls: ['./my-account.component.scss'],
 })
 export class MyAccountComponent implements OnInit {
-  public myAccountPersonalData$: Observable<MyAccountPersonalData> | undefined;
+  public myAccountPersonalData: UserInfo | undefined;
   public myAnnouncements!: OffersBaseOffer;
   pageRequest: Pageable = {};
   constructor(
-    private myAccountService: MyAccountService,
+    private usersResourceService: UsersResourceService,
     private router: Router,
     private myOffersResource: MyOffersResourceService
   ) {}
 
   public ngOnInit() {
-    this.myAccountPersonalData$ = this.myAccountService.getPersonalData();
-    this.myOffersResource.listMyOffers(this.pageRequest).subscribe((results) => {
-      this.myAnnouncements = results;
-    });
+    this.myOffersResource
+      .listMyOffers(this.pageRequest)
+      .pipe(
+        tap((results) => (this.myAnnouncements = results)),
+        switchMap(() => {
+          return this.usersResourceService.meUsers();
+        })
+      )
+      .subscribe((data) => {
+        this.myAccountPersonalData = data;
+      });
   }
 
   removeAnnouncement(announcement: AccommodationOffer | MaterialAidOffer | TransportOffer): void {
