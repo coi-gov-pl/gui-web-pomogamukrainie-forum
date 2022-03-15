@@ -20,7 +20,7 @@ export class UrlHelperService {
     }
     this._origin = this.stripTrailingSlash(window.location.origin);
     this._absolutePath = this._origin + this._baseHref;
-    this._imagesPath = this._baseHref + 'assets/images/';
+    this._imagesPath = `${this._baseHref}assets/images/`;
   }
 
   /** Url absolute/relative */
