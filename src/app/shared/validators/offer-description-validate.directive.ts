@@ -2,7 +2,7 @@ import { Directive } from '@angular/core';
 import { AbstractControl, NG_VALIDATORS, ValidationErrors, Validator, Validators } from '@angular/forms';
 import { ErrorCode } from '../components/field-error/errors';
 
-const OFFER_TITLE_REGEX = /^[^'"%<>`~]+$/;
+const OFFER_DESCRIPTION_REGEX = /^[^'"%<>`~]+$/;
 
 @Directive({
   selector: '[appOfferDescriptionValidate]',
@@ -13,9 +13,9 @@ export class OfferDescriptionValidateDirective implements Validator {
     if (Validators.required(control)) {
       return null;
     }
-    const valid = OFFER_TITLE_REGEX.test(control.value);
+    const valid = OFFER_DESCRIPTION_REGEX.test(control.value);
     const error: ValidationErrors = {};
-    error[ErrorCode.titleIllegalCharacters] = { value: control.value };
+    error[ErrorCode.descriptionIllegalCharacters] = { value: control.value };
     return valid ? null : error;
   }
 }
