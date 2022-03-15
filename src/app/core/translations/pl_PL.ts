@@ -66,4 +66,8 @@ export default {
   PLACEHOLDER_LOCATION_2: 'Np. Warszawa, mazowieckie',
   EDIT_ANNOUNCEMENT: 'Edytuj',
   REMOVE_ANNOUNCEMENT: 'Usuń',
+  ERROR_TITLE_ILLEGAL_CHARACTERS: 'Użyto niedozwolonych znaków',
+  ERROR_DESCRIPTION_ILLEGAL_CHARACTERS: 'Użyto niedozwolonych znaków w opisie',
+  ERROR_REQUIRED: 'Pole jest wymagane',
+  ERROR_PATTERN: 'Niepoprawny format',
 };

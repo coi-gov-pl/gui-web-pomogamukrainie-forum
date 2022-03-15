@@ -10,9 +10,11 @@ import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatIconModule } from '@angular/material/icon';
 import { OfferTitleValidateDirective } from '@app/shared/validators/offer-title-validate.directive';
+import { FieldErrorModule } from '@app/shared/components';
+import { OfferDescriptionValidateDirective } from '@app/shared/validators/offer-description-validate.directive'; // TODO: move imports to eg. shared
 
 @NgModule({
-  declarations: [MaterialAidFormComponent, OfferTitleValidateDirective],
+  declarations: [MaterialAidFormComponent, OfferTitleValidateDirective, OfferDescriptionValidateDirective],
   imports: [
     CommonModule,
     MatFormFieldModule,
@@ -23,6 +25,7 @@ import { OfferTitleValidateDirective } from '@app/shared/validators/offer-title-
     MatCardModule,
     TranslateModule,
     MatIconModule,
+    FieldErrorModule,
   ],
 })
 export class MaterialAidFormModule {}

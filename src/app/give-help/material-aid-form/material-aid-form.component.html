@@ -17,8 +17,9 @@
             #title="ngModel"
             appOfferTitleValidate
           />
-          <mat-error *ngIf="title.errors?.['required']">Pole jest wymagane</mat-error>
-          <mat-error *ngIf="title.errors?.['offerTitleInvalid']">Dozwolone znaki to [a-zA-Z]</mat-error>
+          <mat-error>
+            <app-field-error [model]="title"></app-field-error>
+          </mat-error>
         </mat-form-field>
       </div>
     </div>
@@ -33,11 +34,15 @@
             [(ngModel)]="data.category"
             name="aidType"
             required
+            #category="ngModel"
           >
             <mat-option *ngFor="let it of categories" [value]="it.value">{{
               it.value | translate | lowercase
             }}</mat-option>
           </mat-select>
+          <mat-error>
+            <app-field-error [model]="category"></app-field-error>
+          </mat-error>
         </mat-form-field>
       </div>
       <div class="col-md-6">
@@ -51,7 +56,11 @@
             name="location"
             [(ngModel)]="data.location"
             required
+            #location="ngModel"
           />
+          <mat-error>
+            <app-field-error [model]="location"></app-field-error>
+          </mat-error>
         </mat-form-field>
       </div>
     </div>
@@ -69,7 +78,13 @@
             placeholder="{{ 'PLACEHOLDER_OFFER_DESCRIBTION' | translate }}"
             name="description"
             [(ngModel)]="data.description"
+            required
+            #description="ngModel"
+            appOfferDescriptionValidate
           ></textarea>
+          <mat-error>
+            <app-field-error [model]="description"></app-field-error>
+          </mat-error>
         </mat-form-field>
       </div>
       <div class="col-md-2">
@@ -101,7 +116,11 @@
             [(ngModel)]="phoneNumber"
             [pattern]="PHONE_NUMBER_REGEX"
             inputmode="numeric"
+            #phoneNumberModel="ngModel"
           />
+          <mat-error>
+            <app-field-error [model]="phoneNumberModel"></app-field-error>
+          </mat-error>
         </mat-form-field>
       </div>
       <div class="col-lg-3 publish">
