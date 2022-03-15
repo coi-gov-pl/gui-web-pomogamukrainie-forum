@@ -14,3 +14,13 @@
     width: 100%;
   }
 }
+
+button {
+  &.phone {
+    &:hover {
+      a {
+        color: white;
+      }
+    }
+  }
+}

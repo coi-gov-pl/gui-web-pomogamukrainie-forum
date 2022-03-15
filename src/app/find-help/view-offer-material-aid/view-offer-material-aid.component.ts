@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MaterialAidResourceService } from '@app/core/api';
 import { MaterialAidOffer } from '@app/core/api';
 import { CategoryRoutingName } from '@app/shared/models';
@@ -13,11 +13,23 @@ export class ViewOfferMaterialAidComponent implements OnInit {
   offerId: number = 0;
   data = defaults<MaterialAidOffer>();
   categoryRouteName = CategoryRoutingName.MATERIAL_HELP;
-  constructor(private route: ActivatedRoute, private materialAidResourceService: MaterialAidResourceService) {}
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private materialAidResourceService: MaterialAidResourceService
+  ) {}
 
   ngOnInit(): void {
     this.offerId = Number(this.route.snapshot.paramMap.get('id'));
     this.getMaterialAidOffer();
+  }
+
+  copyUrl() {
+    console.log(window.location.origin + this.router.url);
+    navigator.clipboard
+      .writeText(this.router.url)
+      .then()
+      .catch((e) => console.error(e));
   }
 
   getMaterialAidOffer() {

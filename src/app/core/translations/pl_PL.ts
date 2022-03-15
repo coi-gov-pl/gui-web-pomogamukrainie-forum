@@ -27,7 +27,7 @@ export default {
   MORE_SUPPORT_INFORMATION: 'Więcej informacji o pomocy',
   DASHBOARD_DESCRIPTION:
     'Ofertę pomocy potwierdzisz <strong>profilem zaufanym</strong>. W ten sposób chronimy Twoje dane i dbamy o wiarygodną pomoc dla uchodźców.',
-  HOUSEHOLD_GOODS: 'HOUSEHOLD_GOODS',
+  HOUSEHOLD_GOODS: 'Artykuły gospodarstwa domowego',
   ELECTRONICS: 'ELECTRONICS',
   FOR_CHILDREN: 'FOR_CHILDREN',
   COSMETICS_AND_DOMESTIC_DETERGENTS: 'COSMETICS_AND_DOMESTIC_DETERGENTS',
@@ -73,4 +73,9 @@ export default {
   REPLY_OFFER: 'Odpowiedz na ogłoszenie',
   REPLY_MESSAGE: 'Napisz wiadomość do osoby pomagającej. Jeśli podała swój telefon - znajdziesz go pod przyciskiem',
   SHOW_PHONE: 'Pokaż telefon',
+  MODIFICATION_DATE: 'Opublikowano',
+  CHANGE_LANG_SITE_DISCLAIMER: 'Zmień język strony, aby automatycznie przetłumaczyć treść ogłoszenia.',
+  BACK_TO_LIST: 'Wróć do listy',
+  LANGUAGE: 'Język',
+  WHEN: 'Kiedy',
 };

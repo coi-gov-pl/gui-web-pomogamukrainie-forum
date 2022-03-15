@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TransportResourceService } from '@app/core/api';
 import { TransportOffer } from '@app/core/api';
 import { CategoryRoutingName } from '@app/shared/models';
@@ -13,11 +13,23 @@ export class ViewOfferTransportComponent implements OnInit {
   offerId: number = 0;
   data = defaults<TransportOffer>();
   categoryRouteName = CategoryRoutingName.TRANSPORT;
-  constructor(private route: ActivatedRoute, private transportResourceService: TransportResourceService) {}
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private transportResourceService: TransportResourceService
+  ) {}
 
   ngOnInit(): void {
     this.offerId = Number(this.route.snapshot.paramMap.get('id'));
     this.getTransportOffer();
+  }
+
+  copyUrl() {
+    console.log(window.location.origin + this.router.url);
+    navigator.clipboard
+      .writeText(this.router.url)
+      .then()
+      .catch((e) => console.error(e));
   }
 
   getTransportOffer() {

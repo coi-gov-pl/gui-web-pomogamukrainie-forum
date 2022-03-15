@@ -1,3 +1,16 @@
 .mat-form-field-appearance-outline .mat-form-field-infix {
   padding-top: 0.5em;
 }
+
+mat-icon {
+  &.yellow-icon {
+    color: var(--c-dark-yellow);
+  }
+}
+
+//hack-fix for phone iocon proper position
+.phone {
+  mat-icon {
+    direction: rtl !important;
+  }
+}
