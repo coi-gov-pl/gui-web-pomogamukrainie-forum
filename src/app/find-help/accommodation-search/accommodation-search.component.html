@@ -9,6 +9,8 @@
       [location]="result.location"
       [title]="result.title"
       [description]="result.description"
+      [offerId]="result.id!"
+      [category]="CategoryRoutingName.VIEW_OFFER_ACCOMMODATION"
     >
       <app-search-result-attribute
         *ngIf="result.guests"

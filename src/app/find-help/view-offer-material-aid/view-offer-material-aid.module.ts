@@ -27,4 +27,4 @@ import { ViewOfferMaterialAidComponent } from './view-offer-material-aid.compone
   ],
   exports: [ViewOfferMaterialAidComponent],
 })
-export class ViewOfferMaterialHelpModule {}
+export class ViewOfferMaterialAidModule {}

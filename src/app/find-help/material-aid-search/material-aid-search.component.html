@@ -10,6 +10,8 @@
       [title]="result.title"
       [description]="result.description"
       [posted]="result.modifiedDate"
+      [offerId]="result.id!"
+      [category]="CategoryRoutingName.VIEW_OFFER_MATERIALAID"
     >
       <app-search-result-attribute
         *ngIf="result.category"

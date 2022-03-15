@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Pageable, MaterialAidOfferSearchCriteria, MaterialAidResourceService, MaterialAidOffer } from '@app/core/api';
+import { CategoryRoutingName } from '@app/shared/models';
 
 @Component({
   selector: 'app-material-aid-search',
@@ -10,6 +11,7 @@ export class MaterialAidSearchComponent {
   results: MaterialAidOffer[] = [];
   total?: number = undefined;
   loading = false;
+  CategoryRoutingName = CategoryRoutingName;
   constructor(private materialAidResourceService: MaterialAidResourceService) {}
 
   search(searchCriteria: MaterialAidOfferSearchCriteria) {

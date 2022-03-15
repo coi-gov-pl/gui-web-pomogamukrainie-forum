@@ -10,6 +10,8 @@
       [destination]="result.destination"
       [title]="result.title"
       [description]="result.description"
+      [offerId]="result.id!"
+      [category]="CategoryRoutingName.VIEW_OFFER_TRANSPORT"
     >
       <app-search-result-attribute
         *ngIf="result.transportDate"
