@@ -3,7 +3,7 @@ import { Category, CategoryNameKey, CategoryRoutingName, CorePath } from '@app/s
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatIconModule } from '@angular/material/icon';
-import { RouterModule } from '@angular/router';
+import { Event, NavigationEnd, PRIMARY_OUTLET, Router, RouterModule } from '@angular/router';
 import { TypeOfHelpComponentModule } from '@app/shared/components';
 
 @Component({
@@ -25,6 +25,26 @@ export class CategoryNavigationComponent {
     { name: CategoryNameKey.TRANSLATIONS, icon: 'translate', disabled: true },
     { name: CategoryNameKey.MISC, icon: 'lan', disabled: true },
   ];
+
+  constructor(private router: Router) {
+    this.router.events.subscribe((event: Event) => {
+      if (event instanceof NavigationEnd) {
+        const tree = this.router.parseUrl(event.url);
+        const children = tree.root.children[PRIMARY_OUTLET];
+        const segments = children?.segments;
+
+        this.categories.forEach((element) => (element.selected = false));
+
+        if (segments && segments.length == 2) {
+          const path = segments[1].path;
+          let activeCategory = this.categories.find((element) => this.routingCategoryName[element.name] === path);
+          if (activeCategory) {
+            activeCategory.selected = true;
+          }
+        }
+      }
+    });
+  }
 }
 
 @NgModule({

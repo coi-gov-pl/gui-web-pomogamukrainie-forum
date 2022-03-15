@@ -66,4 +66,5 @@ export default {
   PLACEHOLDER_LOCATION_2: 'Np. Warszawa, mazowieckie',
   EDIT_ANNOUNCEMENT: 'Edytuj',
   REMOVE_ANNOUNCEMENT: 'Usuń',
+  ADD_ANNOUNCEMENT_HEADER: 'Dodaj ogłoszenie',
 };
