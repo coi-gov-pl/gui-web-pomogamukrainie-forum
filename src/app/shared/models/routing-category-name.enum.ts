@@ -10,8 +10,8 @@ export enum CategoryRoutingName {
   FIND_HELP = 'znajdz-pomoc',
   VIEW_OFFER_ACCOMMODATION = 'view-offer-accommodation',
   VIEW_OFFER_MATERIALAID = 'view-offer-materialaid',
-  VIEW_OFFER_TRANSPORT = 'view-offer-trsnsport',
+  VIEW_OFFER_TRANSPORT = 'view-offer-transport',
   VIEW_ACCOMMODATION_ID = 'view-offer-accommodation:/id',
   VIEW_MATERIALAID_ID = 'view-offer-materialaid:/id',
-  VIEW_TRANSPORT_ID = 'view-offer-trsnsport:/id',
+  VIEW_TRANSPORT_ID = 'view-offer-transport:/id',
 }

@@ -10,7 +10,7 @@ import { CategoryRoutingName } from '@app/shared/models';
 })
 export class SearchResultComponent implements OnChanges {
   @Input()
-  offerId: number = 0;
+  offerId!: number;
   @Input()
   category?: CategoryRoutingName;
   @Input()
@@ -29,7 +29,8 @@ export class SearchResultComponent implements OnChanges {
   constructor(private router: Router) {}
 
   onViewOffer() {
-    this.router.navigate([CategoryRoutingName.FIND_HELP, this.category, this.offerId]);
+    // this.router.navigate([CategoryRoutingName.FIND_HELP, this.category, this.offerId]);
+    this.router.navigate(['znajdz-pomoc', 'view-offer-accommodation', this.offerId]);
   }
 
   ngOnChanges({ posted }: SimpleChanges) {

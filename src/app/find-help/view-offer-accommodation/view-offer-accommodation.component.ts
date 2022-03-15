@@ -11,7 +11,7 @@ import { defaults } from '@app/shared/utils';
   styleUrls: ['./view-offer-accommodation.component.scss'],
 })
 export class ViewOfferAccommodationComponent implements OnInit {
-  offerId: number = 0;
+  offerId!: number;
   data = defaults<AccommodationOffer>();
   categoryRouteName = CategoryRoutingName.ACCOMMODATION;
 
