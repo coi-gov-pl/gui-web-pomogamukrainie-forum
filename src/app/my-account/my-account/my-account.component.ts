@@ -11,7 +11,7 @@ import {
 } from '@app/core/api';
 import { Observable, switchMap, tap } from 'rxjs';
 import { Router } from '@angular/router';
-import { CorePath } from '@app/shared/models';
+import { CategoryRoutingName, CorePath } from '@app/shared/models';
 
 @Component({
   selector: 'app-my-account',
@@ -51,6 +51,6 @@ export class MyAccountComponent implements OnInit {
   }
 
   public addNewAd(): void {
-    this.router.navigate([CorePath.Give]);
+    this.router.navigate([CorePath.Give, CategoryRoutingName.ACCOMMODATION]);
   }
 }
