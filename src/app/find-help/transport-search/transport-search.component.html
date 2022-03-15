@@ -1,7 +1,15 @@
+<header>
+  <h2>{{ "HELPUA" | translate }}</h2>
+  <h1>{{ "SEARCH_FOR_HELP" | translate }}</h1>
+</header>
+
+<app-category-navigation class="mb-5" [outputPath]="corePath.Find"></app-category-navigation>
+
 <mat-card>
   <app-transport-search-form (search)="search($event)"></app-transport-search-form>
 </mat-card>
 <div class="results" *ngIf="this.total" [class.loading]="loading">
+  <router-outlet></router-outlet>
   <div class="total">Lista ogłoszeń ({{ total }}):</div>
   <div>
     <app-search-result
@@ -11,7 +19,7 @@
       [title]="result.title"
       [description]="result.description"
       [offerId]="result.id!"
-      [category]="CategoryRoutingName.VIEW_OFFER_TRANSPORT"
+      [category]="CategoryRoutingName.TRANSPORT"
     >
       <app-search-result-attribute
         *ngIf="result.transportDate"

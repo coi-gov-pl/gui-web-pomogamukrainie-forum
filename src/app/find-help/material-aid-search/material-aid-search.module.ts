@@ -13,7 +13,7 @@ import { PomCommonPipesModule } from '../../shared/pipes/pom-common-pipes.module
 import { TranslateModule } from '@ngx-translate/core';
 import { MaterialAidSearchComponent } from './material-aid-search.component';
 import { SearchResultComponentModule } from '../search-result/search-result.module';
-import { CitiesSearchModule, MoreInfoLinkModule } from '@app/shared/components';
+import { CategoryNavigationComponentModule, CitiesSearchModule, MoreInfoLinkModule } from '@app/shared/components';
 import { MaterialAidSearchFormComponent } from './material-aid-search-form/material-aid-search-form.component';
 
 @NgModule({
@@ -35,6 +35,7 @@ import { MaterialAidSearchFormComponent } from './material-aid-search-form/mater
     CitiesSearchModule,
     SearchResultComponentModule,
     MoreInfoLinkModule,
+    CategoryNavigationComponentModule,
   ],
 })
 export class MaterialAidSearchModule {}

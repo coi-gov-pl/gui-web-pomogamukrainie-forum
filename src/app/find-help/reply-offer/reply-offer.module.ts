@@ -8,7 +8,6 @@ import { MatCardModule } from '@angular/material/card';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatIconModule } from '@angular/material/icon';
 import { ReplyOfferComponent } from './reply-offer.component';
-import { ReplyOfferRoutingModule } from './reply-offer.routing.module';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
@@ -23,7 +22,6 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatCardModule,
     TranslateModule,
     MatIconModule,
-    ReplyOfferRoutingModule,
   ],
   exports: [ReplyOfferComponent],
 })

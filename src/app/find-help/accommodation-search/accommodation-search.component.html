@@ -1,3 +1,10 @@
+<header>
+  <h2>{{ "HELPUA" | translate }}</h2>
+  <h1>{{ "SEARCH_FOR_HELP" | translate }}</h1>
+</header>
+
+<app-category-navigation class="mb-5" [outputPath]="corePath.Find"></app-category-navigation>
+
 <mat-card>
   <app-accommodation-search-form (search)="search($event)"></app-accommodation-search-form>
 </mat-card>
@@ -10,7 +17,7 @@
       [title]="result.title"
       [description]="result.description"
       [offerId]="result.id!"
-      [category]="CategoryRoutingName.VIEW_OFFER_ACCOMMODATION"
+      [category]="CategoryRoutingName.ACCOMMODATION"
     >
       <app-search-result-attribute
         *ngIf="result.guests"

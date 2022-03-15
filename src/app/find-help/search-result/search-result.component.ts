@@ -1,7 +1,7 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Location } from '@app/core/api';
 import { Router } from '@angular/router';
-import { CategoryRoutingName } from '@app/shared/models';
+import { CategoryRoutingName, CorePath } from '@app/shared/models';
 
 @Component({
   selector: 'app-search-result',
@@ -29,12 +29,10 @@ export class SearchResultComponent implements OnChanges {
   constructor(private router: Router) {}
 
   onViewOffer() {
-    // this.router.navigate([CategoryRoutingName.FIND_HELP, this.category, this.offerId]);
-    this.router.navigate(['znajdz-pomoc', 'view-offer-accommodation', this.offerId]);
+    this.router.navigate([CorePath.Find, this.category, this.offerId]);
   }
 
   ngOnChanges({ posted }: SimpleChanges) {
-    console.log(CategoryRoutingName.FIND_HELP, this.category, this.offerId);
     const postedVal = posted.currentValue;
     if (postedVal === undefined || postedVal instanceof Date) {
       this.postedDate = postedVal;

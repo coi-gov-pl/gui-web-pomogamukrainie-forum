@@ -5,7 +5,17 @@ import { MaterialAidSearchComponent } from './material-aid-search.component';
 const routes: Routes = [
   {
     path: '',
-    component: MaterialAidSearchComponent,
+    children: [
+      {
+        path: '',
+        component: MaterialAidSearchComponent,
+      },
+      {
+        path: ':id',
+        loadChildren: () =>
+          import('../view-offer-material-aid/view-offer-material-aid.module').then((m) => m.ViewOfferMaterialAidModule),
+      },
+    ],
   },
 ];
 

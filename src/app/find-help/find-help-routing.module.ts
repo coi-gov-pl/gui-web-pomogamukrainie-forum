@@ -2,10 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FindHelpComponent } from './find-help.component';
 import { CategoryRoutingName } from '@app/shared/models';
-import { SearchResultComponentModule } from './search-result/search-result.module';
-import { ViewOfferAccomodationModule } from './view-offer-accommodation/view-offer-accommodation.routing.module';
-import { ViewOfferMaterialAidModule } from './view-offer-material-aid/view-offer-material-aid.routing.module';
-import { ViewOfferTransportModule } from './view-offer-transport/view-offer-transport.module';
 
 const routes: Routes = [
   {
@@ -25,23 +21,6 @@ const routes: Routes = [
       {
         path: CategoryRoutingName.TRANSPORT,
         loadChildren: () => import('./transport-search/transport-search.module').then((m) => m.TransportSearchModule),
-      },
-      {
-        path: 'view-offer-accommodation:/id',
-        loadChildren: () =>
-          import('./view-offer-accommodation/view-offer-accommodation.module').then(
-            (m) => m.ViewOfferAccommodationModule
-          ),
-      },
-      {
-        path: CategoryRoutingName.VIEW_MATERIALAID_ID,
-        loadChildren: () =>
-          import('./view-offer-material-aid/view-offer-material-aid.module').then((m) => m.ViewOfferMaterialAidModule),
-      },
-      {
-        path: CategoryRoutingName.VIEW_TRANSPORT_ID,
-        loadChildren: () =>
-          import('./view-offer-transport/view-offer-transport.module').then((m) => m.ViewOfferTransportModule),
       },
     ],
   },

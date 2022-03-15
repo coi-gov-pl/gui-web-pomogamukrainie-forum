@@ -10,6 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ReplyOfferModule } from '../reply-offer/reply-offer.module';
 import { ViewOfferMaterialAidComponent } from './view-offer-material-aid.component';
+import { ViewOfferMaterialAidRoutingModule } from './view-offer-material-aid.routing.module';
 
 @NgModule({
   declarations: [ViewOfferMaterialAidComponent],
@@ -24,6 +25,7 @@ import { ViewOfferMaterialAidComponent } from './view-offer-material-aid.compone
     TranslateModule,
     MatIconModule,
     ReplyOfferModule,
+    ViewOfferMaterialAidRoutingModule,
   ],
   exports: [ViewOfferMaterialAidComponent],
 })

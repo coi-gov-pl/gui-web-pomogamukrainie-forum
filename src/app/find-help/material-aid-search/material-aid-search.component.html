@@ -1,3 +1,10 @@
+<header>
+  <h2>{{ "HELPUA" | translate }}</h2>
+  <h1>{{ "SEARCH_FOR_HELP" | translate }}</h1>
+</header>
+
+<app-category-navigation class="mb-5" [outputPath]="corePath.Find"></app-category-navigation>
+
 <mat-card>
   <app-material-aid-search-form (search)="search($event)"></app-material-aid-search-form>
 </mat-card>
@@ -11,7 +18,7 @@
       [description]="result.description"
       [posted]="result.modifiedDate"
       [offerId]="result.id!"
-      [category]="CategoryRoutingName.VIEW_OFFER_MATERIALAID"
+      [category]="CategoryRoutingName.MATERIAL_HELP"
     >
       <app-search-result-attribute
         *ngIf="result.category"
