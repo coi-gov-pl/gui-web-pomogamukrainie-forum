@@ -2,12 +2,12 @@
   <nav class="navbar navbar-expand-lg">
     <div class="container">
       <div class="d-flex flex-row">
-        <img class="navbar-brand herb" src="./assets/images/herb.png" alt="herb" />
+        <img class="navbar-brand herb" [src]="'herb.png' | path: 'imagesPath'" alt="herb" />
         <a href="https://www.gov.pl/web/premier" class="navbar-brand">
-          <img class="logo" src="./assets/images/kprm.svg" alt="kancelaria prezesa rady ministrów" />
+          <img class="logo" [src]="'kprm.svg' | path: 'imagesPath'" alt="kancelaria prezesa rady ministrów" />
         </a>
         <a href="https://pomagamukrainie.gov.pl/" class="navbar-brand">
-          <img class="logo" src="./assets/images/pomagamyua.svg" alt="pomagamy ukrainie" />
+          <img class="logo" [src]="'pomagamyua.svg' | path: 'imagesPath'" alt="pomagamy ukrainie" />
         </a>
       </div>
 
@@ -46,7 +46,7 @@
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li *ngFor="let lang of languages">
                   <a class="dropdown-item" (click)="useLanguage(lang.code)">
-                    <img src="/assets/images/{{ lang.code }}.svg" alt="" />
+                    <img [src]="lang.code + '.svg' | path: 'imagesPath'" alt="" />
                     {{ lang.text }}
                   </a>
                 </li>
@@ -57,7 +57,7 @@
             </li>
             <li *ngFor="let lang of languages" class="navbar-item mobile-only">
               <a class="dropdown-item" (click)="useLanguage(lang.code)">
-                <img src="/assets/images/{{ lang.code }}.svg" alt="" />
+                <img [src]="lang.code + '.svg' | path: 'imagesPath'" alt="" />
                 {{ lang.text }}
               </a>
             </li>
