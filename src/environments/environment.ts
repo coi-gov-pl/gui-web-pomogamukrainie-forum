@@ -2,8 +2,18 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-export const environment = {
+import { EnvironmentConfig, EnvironmentType } from './model';
+
+export const environment: EnvironmentConfig = {
   production: false,
+  environmentType: EnvironmentType.OFFAUTH,
+  authConfig: {
+    // issuer docker: https://github.com/coi-gov-pl/pomocua-ogloszenia
+    issuer: 'https://local.pomagamukrainie.gov.pl/auth/realms/POMOCUA',
+    showDebugInformation: true,
+    redirectUri: `${window.location.origin}`,
+    logoutUrl: `${window.location.origin}`,
+  },
 };
 
 /*

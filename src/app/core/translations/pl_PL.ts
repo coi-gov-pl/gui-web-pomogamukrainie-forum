@@ -86,4 +86,7 @@ export default {
   EMAIL_ILLEGAL_CHARACTERS: 'Niepoprawny format e-maila',
   PHONE_ILLEGAL_CHARACTERS: 'Niepoprawny format telefonu',
   ERROR_REQUIRED: 'Pole wymagane',
+  LOGIN: 'Logowanie',
+  LOGOUT: 'Wyloguj',
+  CHANGE_EMAIL: 'Zmień e-mail',
 };
