@@ -1,10 +1,17 @@
-<div class="container">
+<div>
   <ul class="breadcrumb">
     <li *ngFor="let breadcrumb of breadcrumbs; let last = last" class="breadcrumb-item">
-      <a routerLink="{{ breadcrumb.url }}">
-        {{ breadcrumb.label | translate }}
-      </a>
-      <mat-icon *ngIf="!last" class="icon" fontSet="material-icons-outlined">arrow_right</mat-icon>
+      <ng-container *ngIf="breadcrumb.url === activeRoute(); then inactive; else active"> </ng-container>
+      <ng-template #inactive>
+        <span>
+          {{ breadcrumb.label | translate }}
+        </span>
+      </ng-template>
+      <ng-template #active>
+        <a routerLink="{{ breadcrumb.url }}">
+          {{ breadcrumb.label | translate }}
+        </a>
+      </ng-template>
     </li>
   </ul>
 </div>

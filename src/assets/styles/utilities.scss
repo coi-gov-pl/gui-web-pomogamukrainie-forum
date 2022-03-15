@@ -21,10 +21,7 @@
 }
 
 .header-2 {
-  font-size: 18px;
-  @include media-breakpoint-up(lg) {
-    font-size: 24px;
-  }
+  font-size: 24px;
 }
 
 .header-3 {
