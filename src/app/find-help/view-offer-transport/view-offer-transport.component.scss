@@ -7,5 +7,10 @@
 }
 
 .clickable {
-  cursor: pointer !important;
+  cursor: pointer;
+  &:active {
+    mat-icon {
+      color: grey;
+    }
+  }
 }

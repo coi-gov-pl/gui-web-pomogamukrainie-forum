@@ -12,7 +12,7 @@ export class AccommodationSearchComponent {
   results: AccommodationOffer[] = [];
   total?: number = undefined;
   loading = false;
-  CategoryRoutingName = CategoryRoutingName;
+  categoryRoutingName = CategoryRoutingName;
   corePath = CorePath;
   constructor(private accommodationsResourceService: AccommodationsResourceService) {}
 

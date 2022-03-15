@@ -14,7 +14,11 @@ export class ViewOfferAccommodationComponent implements OnInit {
   offerId!: number;
   data = defaults<AccommodationOffer>();
   categoryRouteName = CategoryRoutingName.ACCOMMODATION;
-
+  centered = false;
+  disabled = false;
+  unbounded = false;
+  radius!: number;
+  color!: string;
   constructor(
     private route: ActivatedRoute,
     private accommodationsResourceService: AccommodationsResourceService,

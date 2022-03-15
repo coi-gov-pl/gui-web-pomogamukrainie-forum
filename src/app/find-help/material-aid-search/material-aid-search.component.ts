@@ -11,7 +11,7 @@ export class MaterialAidSearchComponent {
   results: MaterialAidOffer[] = [];
   total?: number = undefined;
   loading = false;
-  CategoryRoutingName = CategoryRoutingName;
+  categoryRoutingName = CategoryRoutingName;
   corePath = CorePath;
   constructor(private materialAidResourceService: MaterialAidResourceService) {}
 
