@@ -97,6 +97,18 @@ export class CitiesSearchComponent implements OnInit, ControlValueAccessor {
     params.append('inputtype', 'textquery');
     params.append('key', '');
 
+    const input = document.getElementById('pac-input') as HTMLInputElement;
+    const options = {
+      componentRestrictions: { country: 'us' },
+      fields: ['address_components', 'geometry', 'icon', 'name'],
+      strictBounds: false,
+      types: ['establishment'],
+    };
+
+    const autocomplete = new google.maps.places.Autocomplete(input, options);
+
+    console.log('autocoplete', autocomplete);
+
     this.http
       .get<TranslatedCitiesFromGoogle>('https://maps.googleapis.com/maps/api/place/findplacefromtext/json', { params })
       .pipe(take(1))
