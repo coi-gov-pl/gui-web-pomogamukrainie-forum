@@ -4,9 +4,10 @@ import { TranslateModule } from '@ngx-translate/core';
 import { SiteHeaderComponent } from './site-header.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { PomCommonPipesModule } from '@app/shared/pipes';
 
 @NgModule({
-  imports: [CommonModule, TranslateModule, MatButtonModule, MatIconModule],
+  imports: [CommonModule, TranslateModule, MatButtonModule, MatIconModule, PomCommonPipesModule],
   declarations: [SiteHeaderComponent],
   exports: [SiteHeaderComponent],
 })
