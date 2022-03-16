@@ -92,4 +92,7 @@ export default {
   ERROR_TITLE_ILLEGAL_CHARACTERS: 'Użyto niedozwolonych znaków',
   ERROR_DESCRIPTION_ILLEGAL_CHARACTERS: 'Użyto niedozwolonych znaków w opisie',
   ERROR_PATTERN: 'Niepoprawny format',
+  ERROR_MIN_VALUE: 'Wartość zbyt mała',
+  ERROR_MAX_VALUE: 'Wartość zbyt duża',
+  ERROR_INVALID_DATE: 'Niepoprawny format daty',
 };

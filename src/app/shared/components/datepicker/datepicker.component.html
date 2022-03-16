@@ -6,7 +6,12 @@
     [matDatepicker]="picker"
     name="transportDate"
     [placeholder]="'PLACEHOLDER_CHOOSE_DATE' | translate"
+    [required]="required"
+    #phone="ngModel"
   />
   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
   <mat-datepicker #picker></mat-datepicker>
+  <mat-error>
+    <app-field-error [model]="phone"></app-field-error>
+  </mat-error>
 </mat-form-field>
