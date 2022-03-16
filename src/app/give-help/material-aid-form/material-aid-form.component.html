@@ -1,5 +1,5 @@
 <mat-card>
-  <form (submitOffer)="handleSubmit()">
+  <form (submitOffer)="handleSubmit()" #materialAidForm="ngForm">
     <div class="row">
       <div class="col-md-12">
         <label>
@@ -14,7 +14,12 @@
             required
             name="title"
             [(ngModel)]="data.title"
+            #title="ngModel"
+            appOfferTitleValidate
           />
+          <mat-error>
+            <app-field-error [model]="title"></app-field-error>
+          </mat-error>
         </mat-form-field>
       </div>
     </div>
@@ -29,11 +34,15 @@
             [(ngModel)]="data.category"
             name="aidType"
             required
+            #category="ngModel"
           >
             <mat-option *ngFor="let it of categories" [value]="it.value">{{
               it.value | translate | lowercase
             }}</mat-option>
           </mat-select>
+          <mat-error>
+            <app-field-error [model]="category"></app-field-error>
+          </mat-error>
         </mat-form-field>
       </div>
       <div class="col-md-6">
@@ -47,7 +56,11 @@
             name="location"
             [(ngModel)]="data.location"
             required
+            #location="ngModel"
           />
+          <mat-error>
+            <app-field-error [model]="location"></app-field-error>
+          </mat-error>
         </mat-form-field>
       </div>
     </div>
@@ -65,7 +78,13 @@
             placeholder="{{ 'PLACEHOLDER_OFFER_DESCRIBTION' | translate }}"
             name="description"
             [(ngModel)]="data.description"
+            required
+            #description="ngModel"
+            appOfferDescriptionValidate
           ></textarea>
+          <mat-error>
+            <app-field-error [model]="description"></app-field-error>
+          </mat-error>
         </mat-form-field>
       </div>
       <div class="col-md-2">
@@ -97,11 +116,15 @@
             [(ngModel)]="phoneNumber"
             [pattern]="PHONE_NUMBER_REGEX"
             inputmode="numeric"
+            #phoneNumberModel="ngModel"
           />
+          <mat-error>
+            <app-field-error [model]="phoneNumberModel"></app-field-error>
+          </mat-error>
         </mat-form-field>
       </div>
       <div class="col-lg-3 publish">
-        <button class="btn btn-primary">
+        <button class="btn btn-dark" [disabled]="materialAidForm.invalid">
           <mat-icon fontSet="material-icons-outlined">add</mat-icon>
           <span>{{ "OFFER_PUBLISH" | translate }}</span>
         </button>

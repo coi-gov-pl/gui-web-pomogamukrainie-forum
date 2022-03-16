@@ -89,4 +89,7 @@ export default {
   LOGIN: 'Logowanie',
   LOGOUT: 'Wyloguj',
   CHANGE_EMAIL: 'Zmień e-mail',
+  ERROR_TITLE_ILLEGAL_CHARACTERS: 'Użyto niedozwolonych znaków',
+  ERROR_DESCRIPTION_ILLEGAL_CHARACTERS: 'Użyto niedozwolonych znaków w opisie',
+  ERROR_PATTERN: 'Niepoprawny format',
 };
