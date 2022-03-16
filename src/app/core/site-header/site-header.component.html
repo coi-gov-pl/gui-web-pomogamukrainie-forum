@@ -42,14 +42,19 @@
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                {{ "SELECT_LANGUAGE" | translate }}
+                <img [src]="activeLanguage?.code + '.svg' | path: 'imagesPath'" alt="" class="lang-flag" />
+                <span>{{ activeLanguage?.text }}</span>
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li *ngFor="let lang of languages">
-                  <a class="dropdown-item" (click)="useLanguage(lang.code)">
-                    <img [src]="lang.code + '.svg' | path: 'imagesPath'" alt="" />
+                  <span
+                    *ngIf="lang.code !== activeLanguage?.code"
+                    class="dropdown-item"
+                    (click)="useLanguage(lang.code)"
+                  >
+                    <img [src]="lang.code + '.svg' | path: 'imagesPath'" alt="" class="lang-flag" />
                     {{ lang.text }}
-                  </a>
+                  </span>
                 </li>
               </ul>
             </li>
@@ -62,10 +67,10 @@
               data-bs-toggle="collapse"
               data-bs-target=".navbar-collapse.show"
             >
-              <a class="dropdown-item" (click)="useLanguage(lang.code)">
-                <img [src]="lang.code + '.svg' | path: 'imagesPath'" alt="" />
+              <span class="dropdown-item" (click)="useLanguage(lang.code)">
+                <img [src]="lang.code + '.svg' | path: 'imagesPath'" alt="" class="lang-flag" />
                 {{ lang.text }}
-              </a>
+              </span>
             </li>
             <li class="navbar-item navbar-big" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">
               <a class="navbar-link" href="#">{{ "STATEMENT" | translate }}</a>
