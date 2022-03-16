@@ -6,7 +6,7 @@ export const environment: EnvironmentConfig = {
   authConfig: {
     issuer: `${window.location.origin}/auth/realms/POMOCUA`,
     showDebugInformation: false,
-    redirectUri: `${window.location.origin}/ogloszenia`,
-    logoutUrl: `${window.location.origin}/ogloszenia`,
+    redirectUri: `${window.location.origin}/ogloszenia/`,
+    logoutUrl: `${window.location.origin}/ogloszenia/`,
   },
 };

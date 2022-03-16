@@ -11,8 +11,8 @@ export const environment: EnvironmentConfig = {
     // issuer docker: https://github.com/coi-gov-pl/pomocua-ogloszenia
     issuer: 'https://local.pomagamukrainie.gov.pl/auth/realms/POMOCUA',
     showDebugInformation: true,
-    redirectUri: `${window.location.origin}`,
-    logoutUrl: `${window.location.origin}`,
+    redirectUri: window.location.origin,
+    logoutUrl: window.location.origin,
   },
 };
 

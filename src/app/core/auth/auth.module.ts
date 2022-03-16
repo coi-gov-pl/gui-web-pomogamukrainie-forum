@@ -13,8 +13,8 @@ function authFactory(authService: AuthService): () => Promise<boolean> {
       ? Promise.resolve(true)
       : authService
           .initAuth()
-          .catch((_) => Promise.resolve(true))
-          .then((_) => Promise.resolve(true));
+          .then((_) => Promise.resolve(true))
+          .catch((_) => Promise.resolve(true));
 }
 
 export const STORAGE_INJECTION_TOKEN: InjectionToken<string> = new InjectionToken<string>('storageToken');

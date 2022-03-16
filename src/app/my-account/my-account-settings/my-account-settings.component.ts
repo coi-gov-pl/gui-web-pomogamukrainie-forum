@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { UserInfo } from '@app/core/api';
+import { AuthService } from '@app/core/auth';
 
 @Component({
   selector: 'app-my-account-settings',
@@ -9,5 +10,9 @@ import { UserInfo } from '@app/core/api';
 export class MyAccountSettingsComponent {
   @Input() public myAccountPersonalData: UserInfo | null | undefined;
 
-  constructor() {}
+  constructor(private readonly authService: AuthService) {}
+
+  public changeEmail(): void {
+    this.authService.updateProfile();
+  }
 }

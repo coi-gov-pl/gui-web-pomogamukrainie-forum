@@ -16,6 +16,10 @@ export class AuthService {
     this.oAuthService.initCodeFlow();
   }
 
+  public updateProfile(): void {
+    this.oAuthService.initCodeFlow(undefined, { kc_action: 'UPDATE_PROFILE' });
+  }
+
   public logOut(): void {
     this.oAuthService.logOut();
   }
