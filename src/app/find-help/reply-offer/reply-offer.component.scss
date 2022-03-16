@@ -14,10 +14,3 @@
     width: 100%;
   }
 }
-
-//to be fixed with integrated negative margin classes of bootstrap
-.mt-md-n1 {
-  @media (min-width: $min-tab) {
-    margin-top: -1.7em !important;
-  }
-}
