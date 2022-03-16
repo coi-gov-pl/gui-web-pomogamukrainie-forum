@@ -30,7 +30,7 @@
               <app-field-error [model]="email"></app-field-error>
             </mat-error>
           </mat-form-field>
-          <span class="disclaimer">{{ "EMAIL_DISCLAIMER" | translate }}</span>
+          <div class="disclaimer float-none float-md-end mt-1 mt-md-n2">{{ "EMAIL_DISCLAIMER" | translate }}</div>
         </div>
       </div>
       <div class="row">
@@ -46,7 +46,12 @@
             placeholder="{{ 'PLACEHOLDER_REPLY_CONTENT' | translate }}"
             name="description"
             [(ngModel)]="data.text"
+            #description="ngModel"
+            appOfferDescriptionValidate
           ></textarea>
+          <mat-error>
+            <app-field-error [model]="description"></app-field-error>
+          </mat-error>
         </mat-form-field>
       </div>
       <div class="row">

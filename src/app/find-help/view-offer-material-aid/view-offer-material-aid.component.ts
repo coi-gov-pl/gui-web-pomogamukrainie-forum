@@ -25,7 +25,6 @@ export class ViewOfferMaterialAidComponent implements OnInit {
   }
 
   copyUrl() {
-    console.log(window.location.origin + this.router.url);
     navigator.clipboard
       .writeText(this.router.url)
       .then()
