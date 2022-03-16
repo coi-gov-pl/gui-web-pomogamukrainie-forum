@@ -1,5 +1,5 @@
 <mat-card>
-  <form (ngSubmit)="submitOffer()">
+  <form (ngSubmit)="submitOffer()" #transportForm="ngForm">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
@@ -15,7 +15,12 @@
               required
               name="title"
               [(ngModel)]="data.title"
+              #title="ngModel"
+              appOfferTitleValidate
             />
+            <mat-error>
+              <app-field-error [model]="title"></app-field-error>
+            </mat-error>
           </mat-form-field>
         </div>
       </div>
@@ -33,7 +38,12 @@
               [(ngModel)]="data.origin"
               placeholder="{{ 'PLACEHOLDER_TYPE' | translate }}"
               autocomplete="off"
+              required
+              #origin="ngModel"
             />
+            <mat-error>
+              <app-field-error [model]="origin"></app-field-error>
+            </mat-error>
           </mat-form-field>
         </div>
         <div class="col-md-3">
@@ -49,14 +59,19 @@
               name="destination"
               placeholder="{{ 'PLACEHOLDER_TYPE' | translate }}"
               autocomplete="off"
+              required
+              #destination="ngModel"
             />
+            <mat-error>
+              <app-field-error [model]="destination"></app-field-error>
+            </mat-error>
           </mat-form-field>
         </div>
         <div class="col-md-4">
           <label
             ><b>{{ "LABEL_DATE" | translate }}</b></label
           >
-          <app-datepicker [(date)]="data.transportDate"></app-datepicker>
+          <app-datepicker [(date)]="data.transportDate" [required]="true"></app-datepicker>
         </div>
         <div class="col-md-2">
           <label
@@ -70,8 +85,14 @@
               [(ngModel)]="data.capacity"
               name="capacity"
               min="1"
+              max="99"
               autocomplete="off"
+              required
+              #capacity="ngModel"
             />
+            <mat-error>
+              <app-field-error [model]="capacity"></app-field-error>
+            </mat-error>
           </mat-form-field>
         </div>
       </div>
@@ -90,7 +111,13 @@
               placeholder="{{ 'PLACEHOLDER_OFFER_DESCRIBTION' | translate }}"
               name="description"
               [(ngModel)]="data.description"
+              required
+              #description="ngModel"
+              appOfferDescriptionValidate
             ></textarea>
+            <mat-error>
+              <app-field-error [model]="description"></app-field-error>
+            </mat-error>
           </mat-form-field>
         </div>
         <div class="col-md-2">
@@ -120,13 +147,17 @@
               (input)="onPhoneNumberChange()"
               required
               [(ngModel)]="phoneNumber"
-              [pattern]="PHONE_NUMBER_REGEX"
+              simplePhone
               inputmode="numeric"
+              #phoneNumberModel="ngModel"
             />
+            <mat-error>
+              <app-field-error [model]="phoneNumberModel"></app-field-error>
+            </mat-error>
           </mat-form-field>
         </div>
         <div class="col-lg-3 publish">
-          <button class="btn btn-dark">
+          <button class="btn btn-dark" [disabled]="transportForm.invalid">
             <mat-icon fontSet="material-icons-outlined">add</mat-icon>
             <span>{{ "OFFER_PUBLISH" | translate }}</span>
           </button>

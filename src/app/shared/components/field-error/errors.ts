@@ -9,6 +9,9 @@ export enum ErrorCode {
   descriptionIllegalCharacters = 'descriptionIllegalCharacters',
   emailIllegalCharacters = 'emailIllegalCharacters',
   phoneIllegalCharacters = 'phoneIllegalCharacters',
+  min = 'min',
+  max = 'max',
+  matDatepickerParse = 'matDatepickerParse',
 }
 
 export const ErrorTranslationKey: { [P in keyof typeof ErrorCode]: PL_KEYS } = {
@@ -18,4 +21,7 @@ export const ErrorTranslationKey: { [P in keyof typeof ErrorCode]: PL_KEYS } = {
   descriptionIllegalCharacters: 'ERROR_DESCRIPTION_ILLEGAL_CHARACTERS',
   emailIllegalCharacters: 'EMAIL_ILLEGAL_CHARACTERS',
   phoneIllegalCharacters: 'PHONE_ILLEGAL_CHARACTERS',
+  min: 'ERROR_MIN_VALUE',
+  max: 'ERROR_MAX_VALUE',
+  matDatepickerParse: 'ERROR_INVALID_DATE',
 };
