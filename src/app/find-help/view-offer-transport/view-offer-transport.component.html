@@ -14,21 +14,21 @@
         <div class="fw-bold">{{ "LOCATION_FROM" | translate }}</div>
         <div class="d-flex">
           <mat-icon class="yellow-icon" fontSet="material-icons-outlined">place</mat-icon>
-          <span class="ml-1">{{ data.origin?.city }}</span>
+          <span class="ms-1">{{ data.origin?.city }}</span>
         </div>
       </div>
       <div class="attribute col-md-3">
         <div class="fw-bold">{{ "LOCATION_TO" | translate }}</div>
         <div class="d-flex">
           <mat-icon class="yellow-icon" fontSet="material-icons-outlined">place</mat-icon>
-          <span class="ml-1">{{ data.destination?.city }}</span>
+          <span class="ms-1">{{ data.destination?.city }}</span>
         </div>
       </div>
       <div class="attribute col-md-3">
         <div class="fw-bold">{{ "WHEN" | translate }}</div>
         <div class="d-flex">
           <mat-icon class="yellow-icon" fontSet="material-icons-outlined">date_range</mat-icon>
-          <span class="ml-1">{{ data.transportDate | date: "dd/MM/yyyy" }}</span>
+          <span class="ms-1">{{ data.transportDate | date: "dd/MM/yyyy" }}</span>
         </div>
       </div>
 
@@ -36,7 +36,7 @@
         <div class="fw-bold">{{ "NUMBER_OF_PEOPLE" | translate }}</div>
         <div class="d-flex">
           <mat-icon class="yellow-icon" fontSet="material-icons-outlined">person</mat-icon>
-          <span class="ml-1">{{ data.capacity }}</span>
+          <span class="ms-1">{{ data.capacity }}</span>
         </div>
       </div>
     </div>
