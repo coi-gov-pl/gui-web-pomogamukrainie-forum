@@ -6,12 +6,20 @@
     <input type="text" [placeholder]="placeholder" matInput [formControl]="formControl" [matAutocomplete]="auto" />
     <mat-autocomplete
       #auto="matAutocomplete"
-      [displayWith]="displayOption"
+      [displayWith]="displayOption.bind(this)"
       (optionSelected)="onSelected($event.option.value)"
     >
-      <mat-option *ngFor="let option of options$ | async" [value]="option">
-        {{ option | displayLocationOption }}
+      <mat-option *ngFor="let prediction of predictions$ | async" [value]="prediction">
+        <span>{{ prediction.structured_formatting.main_text }}</span>
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
+  <ng-container *ngFor="let component of addressComponents; let i = index">
+    <ng-container
+      *ngIf="component.types.includes('locality') || component.types.includes('administrative_area_level_1')"
+    >
+      <span>{{ component.long_name }}</span>
+      <span>{{ component.types.includes("locality") ? ", " : "" }}</span>
+    </ng-container>
+  </ng-container>
 </div>

@@ -1,20 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { debounceTime, distinctUntilChanged, filter, map, Observable, of, switchMap, take, tap } from 'rxjs';
-import { displayLocationOption, Location } from './display-location-option';
-import { CityLookupDto, CityLookupResourceService } from '@app/core/api';
+import { debounceTime, distinctUntilChanged, filter, map, Observable, switchMap, take } from 'rxjs';
+import { Location } from './display-location-option';
+import { CityLookupResourceService } from '@app/core/api';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import PlacesServiceStatus = google.maps.places.PlacesServiceStatus;
-
-interface TranslatedCitiesFromGoogle {
-  candidates: [
-    {
-      formatted_address: string;
-      name: string;
-    }
-  ];
-  status: PlacesServiceStatus;
-}
+import { AutocompletePrediction } from '@app/shared/components/cities-search/temp-google.interfaces';
+import { GoogleLanguageCode } from '@app/core/translations';
 
 @Component({
   selector: 'app-cities-search',
@@ -29,31 +20,36 @@ interface TranslatedCitiesFromGoogle {
   ],
 })
 export class CitiesSearchComponent implements OnInit, ControlValueAccessor {
+  private readonly api_key = '';
   constructor(private cityLookupResourceService: CityLookupResourceService, private http: HttpClient) {}
 
   @Input() placeholder = '';
   @Input() label = '';
 
-  options$: Observable<Location[]> | undefined;
+  predictions$: Observable<AutocompletePrediction[]> | undefined;
   selectedOption?: Location;
   touched = false;
   formControl = new FormControl();
+  addressComponents: any[] = [];
 
   private readonly queryMinLength = 2;
 
   ngOnInit(): void {
-    this.options$ = this.formControl.valueChanges.pipe(
+    this.predictions$ = this.formControl.valueChanges.pipe(
       filter((value) => typeof value === 'string' && value.length >= this.queryMinLength),
       distinctUntilChanged(),
       debounceTime(400),
-      switchMap((value) => this.getData(value)),
-      map((data) => data.cities || []),
-      tap((cities: CityLookupDto[]) => this.translateCities(cities, this.formControl.value))
+      switchMap((value) => this.getCities(value, GoogleLanguageCode.uk_UA)),
+      map((data) => data || [])
     );
   }
 
-  displayOption(location?: Location) {
-    return displayLocationOption(location);
+  displayOption(location: AutocompletePrediction) {
+    if (location?.place_id) {
+      this.getCityDetails(location.place_id);
+    }
+
+    return location?.structured_formatting.main_text ?? '';
   }
 
   onChange: (value: Location) => void = () => {};
@@ -89,33 +85,31 @@ export class CitiesSearchComponent implements OnInit, ControlValueAccessor {
     return this.cityLookupResourceService.getCitiesCityLookup(query);
   }
 
-  private translateCities(cities: CityLookupDto[], value: string): void {
-    const params = new HttpParams();
-    params.append('fields', 'formatted_address');
-    params.append('fields', 'name');
-    params.append('input', value);
-    params.append('inputtype', 'textquery');
-    params.append('key', '');
+  getCities(value: string, language: GoogleLanguageCode): Observable<AutocompletePrediction[]> {
+    const params = new HttpParams({
+      fromString: `input=${value}&fields&types=%28cities%29&key=${this.api_key}&components=country:pl&language=${language}`,
+    });
 
-    const input = document.getElementById('pac-input') as HTMLInputElement;
-    const options = {
-      componentRestrictions: { country: 'us' },
-      fields: ['address_components', 'geometry', 'icon', 'name'],
-      strictBounds: false,
-      types: ['establishment'],
-    };
+    return this.http
+      .get<{ predictions: AutocompletePrediction[] }>('https://maps.googleapis.com/maps/api/place/autocomplete/json', {
+        params,
+      })
+      .pipe(
+        map((value) => value.predictions),
+        take(1)
+      );
+  }
 
-    const autocomplete = new google.maps.places.Autocomplete(input, options);
-
-    console.log('autocoplete', autocomplete);
+  private getCityDetails(place_id: string) {
+    const params = new HttpParams({
+      fromString: `place_id=${place_id}&key=${this.api_key}`,
+    });
 
     this.http
-      .get<TranslatedCitiesFromGoogle>('https://maps.googleapis.com/maps/api/place/findplacefromtext/json', { params })
+      .get<any>('https://maps.googleapis.com/maps/api/place/details/json', {
+        params,
+      })
       .pipe(take(1))
-      .subscribe((translatedCities) => {
-        this.options$ = of(
-          cities.map((city, i) => ({ ...city, cityTranslated: translatedCities.candidates[i].name })) as Location[]
-        );
-      });
+      .subscribe((place) => (this.addressComponents = place.result.address_components));
   }
 }

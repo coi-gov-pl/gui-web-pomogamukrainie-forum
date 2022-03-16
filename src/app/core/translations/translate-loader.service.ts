@@ -13,6 +13,13 @@ export enum LanguageCode {
   ru_RU = 'ru_RU',
 }
 
+export enum GoogleLanguageCode {
+  pl_PL = 'pl',
+  uk_UA = 'uk',
+  en_GB = 'en',
+  ru_RU = 'ru',
+}
+
 export interface Translations {
   [LanguageCode.pl_PL]: {
     [key: string]: string;
