@@ -1,23 +1,22 @@
-:root {
-  --c-white: #fff;
-  --c-yellow: #fad500;
-  --c-dark-yellow: #c7a900;
-  --c-darkblue: #0c2c65;
-  --c-blue: #1f52bd;
-  --c-lightblue: #b3e8ff;
-  --c-grayblue: #8295b2;
-  --c-gray: #8093b1;
-  --c-lightgray: #f5f7fa;
-  --c-highlight: #edf0f4;
-  --c-darkblue-trans: #0c2c654d;
-  --base-line-height: 1.5;
-  --base-font-size: 16px;
-  --base-font-family: "Open Sans", sans-serif;
-  --font-roboto: "Roboto", sans-serif;
-  --box-shadow: 0 3px 12px #052c6526;
-  --header-height: 70px;
-  --base-transition: 200ms ease-in;
+@import "vars";
 
+:root {
+  --c-white: #{$c-white};
+  --c-yellow: #{$c-yellow};
+  --c-darkblue: #{$c-darkblue};
+  --c-blue: #{$c-blue};
+  --c-lightblue: #{$c-lightblue};
+  --c-grayblue: #{$c-grayblue};
+  --c-gray: #{$c-gray};
+  --c-lightgray: #{$c-lightgray};
+  --c-highlight: #{$c-highlight};
+  --base-line-height: #{$base-line-height};
+  --base-font-size: #{$base-font-size};
+  --base-font-family: #{$font-open-sans};
+  --base-transition: #{$base-transition};
+  --font-roboto: #{$font-roboto};
+  --box-shadow: #{$box-shadow};
+  --header-height: #{$header-height};
   --width-lg: 1320px;
   --enable-negative-margins: true;
 }

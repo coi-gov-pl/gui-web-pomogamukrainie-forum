@@ -1,1 +1,4 @@
-<mat-icon fontSet="material-icons-outlined">{{ icon }}</mat-icon> {{ text }}
+
+<mat-icon fontSet="material-icons-outlined">{{ icon }}</mat-icon>
+<span *ngIf="text">{{ text }}</span>
+<ng-content></ng-content>

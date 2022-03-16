@@ -1,8 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { OffersBaseOffer } from '@app/core/api';
-import { MyAccountPersonalData } from '../my-account.types';
-import { MyAccountService } from '../my-account.service';
-import { Observable } from 'rxjs';
+import {
+  AccommodationOffer,
+  MaterialAidOffer,
+  MyOffersResourceService,
+  OffersBaseOffer,
+  Pageable,
+  TransportOffer,
+  UserInfo,
+  UsersResourceService,
+} from '@app/core/api';
+import { Observable, switchMap, tap } from 'rxjs';
+import { Router } from '@angular/router';
+import { CategoryRoutingName, CorePath } from '@app/shared/models';
 
 @Component({
   selector: 'app-my-account',
@@ -10,11 +19,38 @@ import { Observable } from 'rxjs';
   styleUrls: ['./my-account.component.scss'],
 })
 export class MyAccountComponent implements OnInit {
-  public myAccountPersonalData$: Observable<MyAccountPersonalData> | undefined;
-  public myAnnouncements: Array<OffersBaseOffer> = [];
-  constructor(private myAccountService: MyAccountService) {}
+  public myAccountPersonalData: UserInfo | undefined;
+  public myAnnouncements!: OffersBaseOffer;
+  pageRequest: Pageable = {};
+  constructor(
+    private usersResourceService: UsersResourceService,
+    private router: Router,
+    private myOffersResource: MyOffersResourceService
+  ) {}
 
   public ngOnInit() {
-    this.myAccountPersonalData$ = this.myAccountService.getPersonalData();
+    this.myOffersResource
+      .listMyOffers(this.pageRequest)
+      .pipe(
+        tap((results) => (this.myAnnouncements = results)),
+        switchMap(() => {
+          return this.usersResourceService.meUsers();
+        })
+      )
+      .subscribe((data) => {
+        this.myAccountPersonalData = data;
+      });
+  }
+
+  removeAnnouncement(announcement: AccommodationOffer | MaterialAidOffer | TransportOffer): void {
+    console.log(announcement);
+  }
+
+  editAnnouncement(announcement: AccommodationOffer | MaterialAidOffer | TransportOffer): void {
+    console.log(announcement);
+  }
+
+  public addNewAd(): void {
+    this.router.navigate([CorePath.Give, CategoryRoutingName.ACCOMMODATION]);
   }
 }

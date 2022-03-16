@@ -1,71 +1,109 @@
+@import "node_modules/bootstrap";
+@import "vars";
+
 .btn {
-  display: flex;
   align-items: center;
-  justify-content: center;
   border-radius: 30px;
+  display: flex;
   font-family: var(--font-roboto);
   font-size: 14px;
   font-weight: 500;
+  height: 48px;
   line-height: 16px;
+  justify-content: center;
   letter-spacing: 1.25px;
   padding: 0 30px;
-  height: 48px;
   text-transform: uppercase;
+}
 
-  &-primary {
-    background: var(--c-darkblue);
-    border-color: var(--c-darkblue);
-    color: var(--c-white);
-    &:hover {
-      background: #09224e;
-    }
-    &:focus {
-      background: #09224e;
-      box-shadow: 0 0 0 0.2rem transparentize(#0c2c65, 0.3);
-    }
-  }
+.btn-primary {
+  @include button-variant(
+    $c-yellow,
+    $c-yellow,
+    $c-darkblue,
+    darken($c-yellow, 5%),
+    darken($c-yellow, 5%),
+    darken($c-darkblue, 5%),
+    darken($c-yellow, 7.5%),
+    darken($c-yellow, 7.5%),
+    darken($c-darkblue, 7.5%)
+  );
+}
 
-  &-secondary {
-    background: var(--c-lightgray);
-    border-color: var(--c-lightgray);
-    color: var(--c-darkblue);
-  }
+.btn-outline-primary {
+  @include button-variant(
+    transparentize($c-darkblue, 0.3),
+    $c-yellow,
+    $c-yellow,
+    $c-yellow,
+    $c-yellow,
+    $c-darkblue,
+    darken($c-yellow, 5%),
+    darken($c-yellow, 5%),
+    darken($c-darkblue, 5%)
+  );
+}
 
-  &-highlight,
-  &-outline-highlight {
-    &:focus {
-      outline: 0;
-      box-shadow: 0 0 0 0.2rem transparentize(#fad500, 0.3);
-    }
-  }
+.btn-secondary {
+  @include button-variant(
+    $c-lightgray,
+    $c-darkblue,
+    $c-darkblue,
+    darken($c-lightgray, 5%),
+    $c-darkblue,
+    $c-darkblue,
+    darken($c-lightgray, 7.5%),
+    darken($c-darkblue, 5%),
+    darken($c-darkblue, 5%)
+  );
+}
 
-  &-highlight {
-    background: var(--c-yellow);
-    border-color: var(--c-yellow);
-    color: var(--c-darkblue);
-    &:hover {
-      background: var(--c-dark-yellow);
-    }
-  }
+.btn-light {
+  @include button-variant(
+    $c-lightgray,
+    $c-lightgray,
+    $c-darkblue,
+    darken($c-lightgray, 5%),
+    darken($c-lightgray, 5%),
+    $c-darkblue,
+    darken($c-lightgray, 7.5%),
+    darken($c-lightgray, 7.5%),
+    $c-darkblue
+  );
+}
 
-  &-outline-highlight {
-    background: var(--c-darkblue-trans);
-    border-color: var(--c-yellow);
-    color: var(--c-yellow);
+.btn-outline-light {
+  @include button-variant(
+    transparent,
+    $c-white,
+    $c-white,
+    $c-white,
+    $c-white,
+    $c-darkblue,
+    darken($c-white, 5%),
+    darken($c-white, 5%),
+    $c-darkblue
+  );
+}
 
-    mat-icon {
-      color: var(--c-yellow);
-      margin-right: 12px;
-    }
+.btn-dark {
+  @include button-variant(
+    $c-darkblue,
+    $c-darkblue,
+    $c-white,
+    darken($c-darkblue, 2%),
+    darken($c-darkblue, 2%),
+    $c-white
+  );
+}
 
-    &:hover {
-      background: var(--c-darkblue);
-      color: var(--c-yellow);
-    }
-  }
-
-  &-outline-white {
-    border-color: var(--c-white);
-    color: var(--c-white);
-  }
+.btn-outline-dark {
+  @include button-variant(
+    transparent,
+    $c-darkblue,
+    $c-white,
+    darken($c-darkblue, 5%),
+    darken($c-darkblue, 5%),
+    darken($c-darkblue, 30%)
+  );
 }

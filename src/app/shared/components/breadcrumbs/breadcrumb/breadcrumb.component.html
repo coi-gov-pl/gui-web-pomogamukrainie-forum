@@ -1,0 +1,10 @@
+<div class="container">
+  <ul class="breadcrumb">
+    <li *ngFor="let breadcrumb of breadcrumbs; let last = last" class="breadcrumb-item">
+      <a routerLink="{{ breadcrumb.url }}">
+        {{ breadcrumb.label | translate }}
+      </a>
+      <mat-icon *ngIf="!last" class="icon" fontSet="material-icons-outlined">arrow_right</mat-icon>
+    </li>
+  </ul>
+</div>

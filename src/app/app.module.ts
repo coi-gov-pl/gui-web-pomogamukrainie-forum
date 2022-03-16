@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ApiModule, Configuration } from '@app/core/api';
 import { TranslationsModule } from '@app/core/translations';
 import { SiteHeaderModule } from '@app/core/site-header';
+import { UrlHelperModule } from '@app/core/url';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,6 +22,7 @@ import { SiteHeaderModule } from '@app/core/site-header';
     SiteHeaderModule,
     TranslationsModule,
     ApiModule.forRoot(() => new Configuration({ basePath: '' })),
+    UrlHelperModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

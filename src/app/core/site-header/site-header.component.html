@@ -2,12 +2,12 @@
   <nav class="navbar navbar-expand-lg">
     <div class="container">
       <div class="d-flex flex-row">
-        <img class="navbar-brand herb" src="./assets/images/herb.png" alt="herb" />
+        <img class="navbar-brand herb" [src]="'herb.png' | path: 'imagesPath'" alt="herb" />
         <a href="https://www.gov.pl/web/premier" class="navbar-brand">
-          <img class="logo" src="./assets/images/kprm.svg" alt="kancelaria prezesa rady ministrów" />
+          <img class="logo" [src]="'kprm.svg' | path: 'imagesPath'" alt="kancelaria prezesa rady ministrów" />
         </a>
         <a href="https://pomagamukrainie.gov.pl/" class="navbar-brand">
-          <img class="logo" src="./assets/images/pomagamyua.svg" alt="pomagamy ukrainie" />
+          <img class="logo" [src]="'pomagamyua.svg' | path: 'imagesPath'" alt="pomagamy ukrainie" />
         </a>
       </div>
 
@@ -30,47 +30,51 @@
         </svg>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav">
-          <li class="navbar-item dropdown desktop-only">
-            <a
-              class="navbar-link dropdown-toggle"
-              href="#"
-              id="navbarDropdown"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              {{ "SELECT_LANGUAGE" | translate }}
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li *ngFor="let lang of languages">
-                <a class="dropdown-item" (click)="useLanguage(lang.code)">
-                  <img src="/assets/images/{{ lang.code }}.svg" alt="" />
-                  {{ lang.text }}
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="navbar-item navbar-big mobile-only mb-3 mt-5">
-            <span class="navbar-link">{{ "SELECT_LANGUAGE" | translate }}</span>
-          </li>
-          <li *ngFor="let lang of languages" class="navbar-item mobile-only">
-            <a class="dropdown-item" (click)="useLanguage(lang.code)">
-              <img src="/assets/images/{{ lang.code }}.svg" alt="" />
-              {{ lang.text }}
-            </a>
-          </li>
-          <li class="navbar-item navbar-big">
-            <a class="navbar-link" href="#">{{ "STATEMENT" | translate }}</a>
-          </li>
-          <li class="navbar-item navbar-big mobile-only">
-            <a class="navbar-link" href="#">{{ "ANNOUNCEMENTS" | translate }}</a>
-          </li>
-          <li (click)="navigateToMyAccount()" class="navbar-item button">
-            <mat-icon class="button-icon" fontSet="material-icons-outlined">perm_identity</mat-icon>
-            <span class="button-title">{{ "MY_ACCOUNT" | translate }}o</span>
-          </li>
-        </ul>
+        <div class="navbar-wrap">
+          <ul class="navbar-nav">
+            <li class="navbar-item dropdown desktop-only">
+              <a
+                class="navbar-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                {{ "SELECT_LANGUAGE" | translate }}
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li *ngFor="let lang of languages">
+                  <a class="dropdown-item" (click)="useLanguage(lang.code)">
+                    <img [src]="lang.code + '.svg' | path: 'imagesPath'" alt="" />
+                    {{ lang.text }}
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="navbar-item navbar-big mobile-only mb-3 mt-5">
+              <span class="navbar-link">{{ "SELECT_LANGUAGE" | translate }}</span>
+            </li>
+            <li *ngFor="let lang of languages" class="navbar-item mobile-only">
+              <a class="dropdown-item" (click)="useLanguage(lang.code)">
+                <img [src]="lang.code + '.svg' | path: 'imagesPath'" alt="" />
+                {{ lang.text }}
+              </a>
+            </li>
+            <li class="navbar-item navbar-big">
+              <a class="navbar-link" href="#">{{ "STATEMENT" | translate }}</a>
+            </li>
+            <li class="navbar-item navbar-big mobile-only">
+              <a class="navbar-link" href="#">{{ "ANNOUNCEMENTS" | translate }}</a>
+            </li>
+            <li class="navbar-item">
+              <button (click)="navigateToMyAccount()" class="btn btn-outline-light">
+                <mat-icon class="button-icon" fontSet="material-icons-outlined">account_circle</mat-icon>
+                <span class="button-title">{{ "MY_ACCOUNT" | translate }}</span>
+              </button>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </nav>

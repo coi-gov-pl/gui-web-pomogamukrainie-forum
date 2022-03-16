@@ -9,6 +9,7 @@ import { CorePath } from '@app/shared/models';
 })
 export class TransportSearchFormComponent {
   data: TransportOfferSearchCriteria = {};
+
   @Output()
   search = new EventEmitter<TransportOfferSearchCriteria>();
   corePath = CorePath;

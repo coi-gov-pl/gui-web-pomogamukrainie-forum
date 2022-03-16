@@ -7,6 +7,8 @@ import { TransportSearchModule } from './transport-search/transport-search.modul
 import { MaterialAidSearchModule } from './material-aid-search/material-aid-search.module';
 import { FindHelpRoutingModule } from './find-help-routing.module';
 import { TranslateModule } from '@ngx-translate/core';
+import { SharedModule } from '@app/shared/shared.module';
+import { CategoryNavigationComponentModule } from '@app/shared/components';
 
 @NgModule({
   declarations: [FindHelpComponent],
@@ -19,6 +21,8 @@ import { TranslateModule } from '@ngx-translate/core';
     TransportSearchModule,
     MaterialAidSearchModule,
     TranslateModule,
+    SharedModule,
+    CategoryNavigationComponentModule,
   ],
 })
 export class FindHelpModule {}

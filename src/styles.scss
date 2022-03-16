@@ -28,6 +28,7 @@ h4,
 h5,
 h6 {
   font-weight: 700;
+  font-family: var(--font-roboto);
 }
 
 h3 {
@@ -36,17 +37,6 @@ h3 {
 
 p {
   margin: 0;
-}
-
-h1 {
-  font-size: 24px;
-}
-
-h2 {
-  color: var(--c-yellow);
-  text-align: center;
-  font-size: 13px;
-  font-weight: 700;
 }
 
 @import "./assets/styles/buttons";
