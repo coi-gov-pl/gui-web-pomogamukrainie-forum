@@ -1,5 +1,5 @@
 <mat-card>
-  <form (ngSubmit)="submitOffer()">
+  <form (ngSubmit)="submitOffer()" #accommodationForm="ngForm">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
@@ -15,7 +15,12 @@
               required
               name="title"
               [(ngModel)]="data.title"
+              #title="ngModel"
+              appOfferTitleValidate
             />
+            <mat-error>
+              <app-field-error [model]="title"></app-field-error>
+            </mat-error>
           </mat-form-field>
         </div>
       </div>
@@ -30,7 +35,12 @@
               name="location"
               placeholder="{{ 'PLACEHOLDER_TYPE' | translate }}"
               [(ngModel)]="data.location"
+              required
+              #location="ngModel"
             />
+            <mat-error>
+              <app-field-error [model]="location"></app-field-error>
+            </mat-error>
           </mat-form-field>
         </div>
         <div class="col-md-2">
@@ -43,9 +53,15 @@
               placeholder="{{ 'PLACEHOLDER_CHOOSE' | translate }}"
               type="number"
               min="1"
+              max="99"
               [(ngModel)]="data.guests"
               name="guests"
+              required
+              #guests="ngModel"
             />
+            <mat-error>
+              <app-field-error [model]="guests"></app-field-error>
+            </mat-error>
           </mat-form-field>
         </div>
         <div class="col-md-3">
@@ -57,9 +73,14 @@
               placeholder="{{ 'PLACEHOLDER_CHOOSE' | translate }}"
               [(ngModel)]="data.lengthOfStay"
               name="lengthOfStay"
+              required
+              #lengthOfStay="ngModel"
             >
               <mat-option *ngFor="let it of LENGTHOFSTAY" [value]="it.code">{{ it.label }}</mat-option>
             </mat-select>
+            <mat-error>
+              <app-field-error [model]="lengthOfStay"></app-field-error>
+            </mat-error>
           </mat-form-field>
         </div>
         <div class="col-md-3">
@@ -72,9 +93,14 @@
               multiple
               [(ngModel)]="data.hostLanguage"
               name="language"
+              required
+              #language="ngModel"
             >
               <mat-option *ngFor="let it of LANGUAGES" [value]="it.code">{{ it.label }}</mat-option>
             </mat-select>
+            <mat-error>
+              <app-field-error [model]="language"></app-field-error>
+            </mat-error>
           </mat-form-field>
         </div>
       </div>
@@ -92,7 +118,13 @@
               placeholder="{{ 'PLACEHOLDER_OFFER_DESCRIBTION' | translate }}"
               name="description"
               [(ngModel)]="data.description"
+              required
+              #description="ngModel"
+              appOfferDescriptionValidate
             ></textarea>
+            <mat-error>
+              <app-field-error [model]="description"></app-field-error>
+            </mat-error>
           </mat-form-field>
         </div>
         <div class="col-md-2">
@@ -122,13 +154,17 @@
               (input)="onPhoneNumberChange()"
               required
               [(ngModel)]="phoneNumber"
-              [pattern]="PHONE_NUMBER_REGEX"
+              simplePhone
               inputmode="numeric"
+              #phoneNumberModel="ngModel"
             />
+            <mat-error>
+              <app-field-error [model]="phoneNumberModel"></app-field-error>
+            </mat-error>
           </mat-form-field>
         </div>
         <div class="col-lg-3 publish">
-          <button class="btn btn-dark">
+          <button class="btn btn-dark" [disabled]="accommodationForm.invalid">
             <mat-icon fontSet="material-icons-outlined">add</mat-icon>
             <span>{{ "OFFER_PUBLISH" | translate }}</span>
           </button>

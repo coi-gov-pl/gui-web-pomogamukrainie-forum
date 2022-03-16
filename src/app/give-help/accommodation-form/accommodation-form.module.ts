@@ -9,6 +9,8 @@ import { AccommodationSearchRoutingModule } from './accomodation-form.routing.mo
 import { MatCardModule } from '@angular/material/card';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatIconModule } from '@angular/material/icon';
+import { FieldErrorModule } from '@app/shared/components';
+import { ValidatorsDirectivesModule } from '@app/shared/validators';
 
 @NgModule({
   declarations: [AccommodationFormComponent],
@@ -22,6 +24,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatCardModule,
     TranslateModule,
     MatIconModule,
+    FieldErrorModule,
+    ValidatorsDirectivesModule,
   ],
   exports: [AccommodationFormComponent],
 })
