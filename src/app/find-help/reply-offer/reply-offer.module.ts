@@ -10,10 +10,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { ReplyOfferComponent } from './reply-offer.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FieldErrorModule } from '@app/shared/components';
-import { EmailValidateDirective } from '@app/shared/validators/email-validate.directive';
+import { ValidatorsDirectivesModule } from '@app/shared/validators';
 
 @NgModule({
-  declarations: [ReplyOfferComponent, EmailValidateDirective],
+  declarations: [ReplyOfferComponent],
   imports: [
     CommonModule,
     MatFormFieldModule,
@@ -25,6 +25,7 @@ import { EmailValidateDirective } from '@app/shared/validators/email-validate.di
     TranslateModule,
     MatIconModule,
     FieldErrorModule,
+    ValidatorsDirectivesModule,
   ],
   exports: [ReplyOfferComponent],
 })

@@ -9,12 +9,11 @@ import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatIconModule } from '@angular/material/icon';
-import { OfferTitleValidateDirective } from '@app/shared/validators/offer-title-validate.directive';
 import { FieldErrorModule } from '@app/shared/components';
-import { OfferDescriptionValidateDirective } from '@app/shared/validators/offer-description-validate.directive'; // TODO: move imports to eg. shared
+import { ValidatorsDirectivesModule } from '@app/shared/validators';
 
 @NgModule({
-  declarations: [MaterialAidFormComponent, OfferTitleValidateDirective, OfferDescriptionValidateDirective],
+  declarations: [MaterialAidFormComponent],
   imports: [
     CommonModule,
     MatFormFieldModule,
@@ -26,6 +25,7 @@ import { OfferDescriptionValidateDirective } from '@app/shared/validators/offer-
     TranslateModule,
     MatIconModule,
     FieldErrorModule,
+    ValidatorsDirectivesModule,
   ],
 })
 export class MaterialAidFormModule {}
