@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { defaults } from '@app/shared/utils';
 import { TransportOfferDefinitionDTO } from '@app/core/api/model/transportOfferDefinitionDTO';
-import { PREFIXES, PHONE_NUMBER_REGEX } from '@app/shared/temporary-consts';
+import { PREFIXES } from '@app/shared/consts';
 import { MessageResourceService } from '@app/core/api/api/messageResource.service';
 import { SendMessageDTO } from '@app/core/api';
 

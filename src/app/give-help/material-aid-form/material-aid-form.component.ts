@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MaterialAidOfferDefinitionDTO, MaterialAidResourceService } from '@app/core/api';
 import { Location } from '@app/shared/components';
-import { PHONE_NUMBER_REGEX, PREFIXES } from '@app/shared/temporary-consts';
+import { PREFIXES } from '@app/shared/consts';
 import { defaults } from '@app/shared/utils';
 
 // interface MaterialAid {
@@ -23,7 +23,6 @@ export class MaterialAidFormComponent {
   data = defaults<MaterialAidOfferDefinitionDTO>({});
   categories = CATEGORIES;
   PREFIXES = PREFIXES;
-  PHONE_NUMBER_REGEX = PHONE_NUMBER_REGEX;
   phonePrefix: string = '48';
   phoneNumber: string = '';
 

@@ -1,9 +1,15 @@
 import { Prefix, Option } from './models/temporary-models';
 import { LanguageCode, LanguageNames } from '@app/core/translations';
 
-export const PHONE_NUMBER_REGEX = /^\d{9}$/;
-
 export const PREFIXES: Prefix[] = [
+  {
+    countryCode: LanguageCode.ru_RU,
+    prefix: '7',
+  },
+  {
+    countryCode: LanguageCode.en_GB,
+    prefix: '44',
+  },
   {
     countryCode: LanguageCode.pl_PL,
     prefix: '48',
