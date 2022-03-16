@@ -78,4 +78,7 @@ export default {
   BACK_TO_LIST: 'Wróć do listy',
   LANGUAGE: 'Język',
   WHEN: 'Kiedy',
+  EMAIL_ILLEGAL_CHARACTERS: 'Niepoprawny format e-maila',
+  PHONE_ILLEGAL_CHARACTERS: 'Niepoprawny format telefonu',
+  ERROR_REQUIRED: 'Pole wymagane',
 };

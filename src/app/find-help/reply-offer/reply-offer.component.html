@@ -22,8 +22,13 @@
               placeholder="{{ 'PLACEHOLDER_EMAIL' | translate }}"
               required
               name="title"
+              email
+              #email="ngModel"
               [(ngModel)]="data.replyEmail"
             />
+            <mat-error>
+              <app-field-error [model]="email"></app-field-error>
+            </mat-error>
           </mat-form-field>
           <span class="disclaimer">{{ "EMAIL_DISCLAIMER" | translate }}</span>
         </div>

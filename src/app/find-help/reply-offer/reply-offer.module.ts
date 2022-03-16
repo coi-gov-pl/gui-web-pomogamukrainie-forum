@@ -9,9 +9,11 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MatIconModule } from '@angular/material/icon';
 import { ReplyOfferComponent } from './reply-offer.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { FieldErrorModule } from '@app/shared/components';
+import { EmailValidateDirective } from '@app/shared/validators/email-validate.directive';
 
 @NgModule({
-  declarations: [ReplyOfferComponent],
+  declarations: [ReplyOfferComponent, EmailValidateDirective],
   imports: [
     CommonModule,
     MatFormFieldModule,
@@ -22,6 +24,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatCardModule,
     TranslateModule,
     MatIconModule,
+    FieldErrorModule,
   ],
   exports: [ReplyOfferComponent],
 })
