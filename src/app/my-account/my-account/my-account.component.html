@@ -1,5 +1,5 @@
-<app-breadcrumb></app-breadcrumb>
 <div class="container">
+  <app-breadcrumb></app-breadcrumb>
   <header>
     <p class="font-small font-yellow fw-bold mb-1">{{ "HELPUA" | translate }}</p>
     <h1 class="header-2 font-darkblue fw-bold">{{ "SEARCH_FOR_HELP" | translate }}</h1>
@@ -8,10 +8,12 @@
     <p class="text">{{ "ACCOUNT_SETTINGS" | translate }}</p>
     <app-my-account-settings [myAccountPersonalData]="myAccountPersonalData"></app-my-account-settings>
   </section>
-  <button color="primary" mat-flat-button (click)="addNewAd()">
-    <mat-icon fontSet="material-icons-outlined">add</mat-icon>
-    {{ "ADD_ANNOUNCEMENT" | translate }}
-  </button>
+  <div class="d-flex justify-content-center">
+    <button class="btn btn-dark" (click)="addNewAd()">
+      <mat-icon fontSet="material-icons-outlined">add</mat-icon>
+      {{ "ADD_ANNOUNCEMENT" | translate }}
+    </button>
+  </div>
 
   <section *ngIf="myAnnouncements?.content?.length">
     <p class="text">{{ "YOUR_ANNOUNCEMENT" | translate }}</p>

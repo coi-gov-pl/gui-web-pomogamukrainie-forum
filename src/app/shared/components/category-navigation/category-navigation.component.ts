@@ -1,9 +1,9 @@
 import { Component, Input, NgModule } from '@angular/core';
 import { Category, CategoryNameKey, CategoryRoutingName, CorePath } from '@app/shared/models';
 import { CommonModule } from '@angular/common';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { MatIconModule } from '@angular/material/icon';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { TypeOfHelpComponentModule } from '@app/shared/components';
 
 @Component({
@@ -25,6 +25,12 @@ export class CategoryNavigationComponent {
     { name: CategoryNameKey.TRANSLATIONS, icon: 'translate', disabled: true },
     { name: CategoryNameKey.MISC, icon: 'lan', disabled: true },
   ];
+
+  constructor(private router: Router) {}
+
+  activeRoute(): string | undefined {
+    return this.router.url.split('/').pop();
+  }
 }
 
 @NgModule({

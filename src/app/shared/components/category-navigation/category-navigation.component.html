@@ -5,7 +5,7 @@
         [icon]="category.icon"
         [name]="category.name"
         [path]="['', outputPath, routingCategoryName[category.name]]"
-        [selected]="category.selected"
+        [selected]="routingCategoryName[category.name] === activeRoute()"
         [disabled]="category.disabled"
         [redirectOnClick]="true"
         [borderOnHover]="true"

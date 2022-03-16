@@ -55,4 +55,8 @@ export class BreadcrumbComponent implements OnInit {
       });
     });
   }
+
+  activeRoute(): string {
+    return this.router.url;
+  }
 }
