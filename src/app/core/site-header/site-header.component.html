@@ -67,10 +67,21 @@
             <li class="navbar-item navbar-big mobile-only">
               <a class="navbar-link" href="#">{{ "ANNOUNCEMENTS" | translate }}</a>
             </li>
-            <li class="navbar-item">
-              <button (click)="navigateToMyAccount()" class="btn btn-outline-light">
+            <li class="navbar-item" *ngIf="!authService.isLoggedIn()">
+              <a [routerLink]="[corePath.MyAccount]" class="btn btn-outline-light">
+                <mat-icon class="button-icon" fontSet="material-icons-outlined">account_circle</mat-icon>
+                <span class="button-title">{{ "LOGIN" | translate }}</span>
+              </a>
+            </li>
+            <li class="navbar-item" *ngIf="authService.isLoggedIn() && !this.isAccountUrl">
+              <a [routerLink]="[corePath.MyAccount]" class="btn btn-outline-light">
                 <mat-icon class="button-icon" fontSet="material-icons-outlined">account_circle</mat-icon>
                 <span class="button-title">{{ "MY_ACCOUNT" | translate }}</span>
+              </a>
+            </li>
+            <li class="navbar-item" *ngIf="authService.isLoggedIn() && this.isAccountUrl">
+              <button (click)="authService.logOut()" class="btn btn-outline-light">
+                <span class="button-title">{{ "LOGOUT" | translate }}</span>
               </button>
             </li>
           </ul>

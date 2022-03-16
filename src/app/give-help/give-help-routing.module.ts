@@ -3,11 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { GiveHelpComponent } from './give-help.component';
 import { CategoryRoutingName } from '@app/shared/models';
 import { BreadcrumbLabels } from '@app/shared/models';
+import { AuthGuard } from '@app/core/auth';
 
 const routes: Routes = [
   {
     path: '',
     component: GiveHelpComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: CategoryRoutingName.ACCOMMODATION,
