@@ -2,6 +2,7 @@
   <app-transport-search-form (search)="search($event)"></app-transport-search-form>
 </mat-card>
 <div class="results" *ngIf="this.total" [class.loading]="loading">
+  <router-outlet></router-outlet>
   <div class="total">Lista ogłoszeń ({{ total }}):</div>
   <div>
     <app-search-result
@@ -10,6 +11,8 @@
       [destination]="result.destination"
       [title]="result.title"
       [description]="result.description"
+      [offerId]="result.id!"
+      [category]="CategoryRoutingName.TRANSPORT"
       [posted]="result.modifiedDate"
     >
       <app-search-result-attribute

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AccommodationQuery } from './accommodation-search-form/accommodation-search-form.component';
 import { AccommodationsResourceService, AccommodationOffer, Pageable } from '@app/core/api';
+import { CategoryRoutingName, CorePath } from '@app/shared/models';
 
 @Component({
   selector: 'app-accommodation-search',
@@ -11,6 +12,8 @@ export class AccommodationSearchComponent {
   results: AccommodationOffer[] = [];
   total?: number = undefined;
   loading = false;
+  categoryRoutingName = CategoryRoutingName;
+  corePath = CorePath;
   constructor(private accommodationsResourceService: AccommodationsResourceService) {}
 
   getResultsObservable(

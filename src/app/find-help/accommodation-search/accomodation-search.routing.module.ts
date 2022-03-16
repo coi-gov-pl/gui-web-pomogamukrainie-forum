@@ -5,7 +5,19 @@ import { AccommodationSearchComponent } from './accommodation-search.component';
 const routes: Routes = [
   {
     path: '',
-    component: AccommodationSearchComponent,
+    children: [
+      {
+        path: '',
+        component: AccommodationSearchComponent,
+      },
+      {
+        path: ':id',
+        loadChildren: () =>
+          import('../view-offer-accommodation/view-offer-accommodation.module').then(
+            (m) => m.ViewOfferAccommodationModule
+          ),
+      },
+    ],
   },
 ];
 

@@ -5,7 +5,17 @@ import { TransportSearchComponent } from './transport-search.component';
 const routes: Routes = [
   {
     path: '',
-    component: TransportSearchComponent,
+    children: [
+      {
+        path: '',
+        component: TransportSearchComponent,
+      },
+    ],
+  },
+  {
+    path: ':id',
+    loadChildren: () =>
+      import('../view-offer-transport/view-offer-transport.module').then((m) => m.ViewOfferTransportModule),
   },
 ];
 

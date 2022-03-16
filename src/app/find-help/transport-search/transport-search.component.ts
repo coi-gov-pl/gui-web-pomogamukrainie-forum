@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Pageable, TransportOfferSearchCriteria, TransportResourceService, TransportOffer } from '@app/core/api';
+import { CategoryRoutingName, CorePath } from '@app/shared/models';
 
 @Component({
   selector: 'app-transport-search',
@@ -10,6 +11,8 @@ export class TransportSearchComponent {
   results: TransportOffer[] = [];
   total?: number = undefined;
   loading = false;
+  CategoryRoutingName = CategoryRoutingName;
+  corePath = CorePath;
   constructor(private transportResourceService: TransportResourceService) {}
 
   search(searchCriteria: TransportOfferSearchCriteria) {

@@ -1,4 +1,5 @@
 <mat-card class="result">
+  <a role="button" (click)="onViewOffer()">
   <div class="attributes">
     <app-search-result-attribute
       *ngIf="location && !destination"
@@ -28,4 +29,5 @@
       <ng-content select="[buttons]"></ng-content>
     </div>
   </div>
+</a>
 </mat-card>

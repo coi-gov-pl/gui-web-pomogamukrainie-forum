@@ -1,5 +1,7 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Location } from '@app/core/api';
+import { Router } from '@angular/router';
+import { CategoryRoutingName, CorePath } from '@app/shared/models';
 
 @Component({
   selector: 'app-search-result',
@@ -7,6 +9,10 @@ import { Location } from '@app/core/api';
   styleUrls: ['./search-result.component.scss'],
 })
 export class SearchResultComponent implements OnChanges {
+  @Input()
+  offerId!: number;
+  @Input()
+  category?: CategoryRoutingName;
   @Input()
   location?: Location;
   @Input()
@@ -19,8 +25,14 @@ export class SearchResultComponent implements OnChanges {
   posted?: Date | string | undefined;
   @Input()
   origin?: Location;
-
   postedDate: Date | undefined;
+  CategoryRoutingName = CategoryRoutingName;
+
+  constructor(private router: Router) {}
+
+  onViewOffer() {
+    this.router.navigate([CorePath.Find, this.category, this.offerId]);
+  }
 
   ngOnChanges({ posted, location, destination }: SimpleChanges) {
     if (posted) {

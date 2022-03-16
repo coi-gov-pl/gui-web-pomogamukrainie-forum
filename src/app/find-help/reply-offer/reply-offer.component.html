@@ -1,0 +1,86 @@
+<mat-card class="p-4">
+  <form (ngSubmit)="submitMessage()" #messageForm="ngForm">
+    <div class="container">
+      <div class="header text-center">
+        <span
+          >{{ "HELPING_PERSON" | translate }}: <b>{{ helperFirstname }}</b></span
+        >
+        <h3>{{ "REPLY_OFFER" | translate }}</h3>
+        <p>
+          {{ "REPLY_MESSAGE" | translate }} <b>{{ "SHOW_PHONE" | translate }}</b>
+        </p>
+      </div>
+      <div class="row">
+        <div class="mb-4">
+          <label>
+            <b>{{ "EMAIL_ADDRESS" | translate }}</b>
+          </label>
+          <mat-form-field appearance="outline" class="input-with-disclaimer mb-n2">
+            <input
+              matInput
+              maxlength="80"
+              placeholder="{{ 'PLACEHOLDER_EMAIL' | translate }}"
+              required
+              name="title"
+              email
+              #email="ngModel"
+              [(ngModel)]="data.replyEmail"
+            />
+            <mat-error>
+              <app-field-error [model]="email"></app-field-error>
+            </mat-error>
+          </mat-form-field>
+          <span class="disclaimer">{{ "EMAIL_DISCLAIMER" | translate }}</span>
+        </div>
+      </div>
+      <div class="row">
+        <label>
+          <b>{{ "LABEL_REPLY_CONTENT" | translate }}</b>
+        </label>
+        <mat-form-field appearance="outline">
+          <textarea
+            required
+            matInput
+            rows="8"
+            maxlength="1000"
+            placeholder="{{ 'PLACEHOLDER_REPLY_CONTENT' | translate }}"
+            name="description"
+            [(ngModel)]="data.text"
+          ></textarea>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-checkbox
+          required
+          color="primary"
+          appearance="outline"
+          [(ngModel)]="data.tosApproved"
+          (change)="onConsentChange()"
+          name="consent"
+        >
+          <span>{{ "ACCEPT" | translate }} </span
+          ><a routerLink=""
+            ><span>{{ "CONSENT" | translate }}</span></a
+          >
+        </mat-checkbox>
+      </div>
+      <div class="d-flex flex-column flex-xl-row">
+        <div class="m-2 m-xl-2">
+          <button class="btn btn-secondary phone" type="button" (click)="onPhoneNumberClick()">
+            <mat-icon class="phone" fontSet="material-icons-outlined">telephone</mat-icon>
+            <div *ngIf="!showPhoneNumber">{{ "BUTTON_SHOW_TELNO" | translate }}</div>
+            <div *ngIf="showPhoneNumber">
+              <a href="tel:{{ helperPhoneNumber }}">{{ helperPhoneNumber }}</a>
+            </div>
+          </button>
+        </div>
+        <div class="m-2 m-xl-2">
+          <button class="btn btn-primary phone" type="submit" [disabled]="!messageForm.valid">
+            <mat-icon class="phone" fontSet="material-icons-outlined">send</mat-icon>
+            <div>{{ "BUTTON_SEND_MESSAGE" | translate }}</div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</mat-card>
