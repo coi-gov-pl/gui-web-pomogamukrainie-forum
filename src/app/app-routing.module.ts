@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CorePath } from '@app/shared/models';
-import { MyAccountComponent } from './my-account/my-account/my-account.component';
 import { BreadcrumbLabels } from '@app/shared/models';
+import { AuthGuard } from '@app/core/auth';
 
 const routes: Routes = [
   {
@@ -15,6 +15,7 @@ const routes: Routes = [
   },
   {
     path: CorePath.Give,
+    canLoad: [AuthGuard],
     loadChildren: () => import('./give-help/give-help.module').then((m) => m.GiveHelpModule),
     data: {
       title: BreadcrumbLabels.ADD_AD,
@@ -22,7 +23,7 @@ const routes: Routes = [
   },
   {
     path: CorePath.MyAccount,
-    component: MyAccountComponent,
+    canLoad: [AuthGuard],
     loadChildren: () => import('./my-account/my-account.module').then((m) => m.MyAccountModule),
     data: {
       title: BreadcrumbLabels.MY_ACCOUNT,

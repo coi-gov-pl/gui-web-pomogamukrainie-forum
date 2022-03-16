@@ -11,7 +11,7 @@ import { PomCommonPipesModule } from '@app/shared/pipes';
 import { TranslateModule } from '@ngx-translate/core';
 import { TransportSearchComponent } from './transport-search.component';
 import { SearchResultComponentModule } from '../search-result/search-result.module';
-import { CitiesSearchModule, MoreInfoLinkModule } from '@app/shared/components';
+import { CategoryNavigationComponentModule, CitiesSearchModule, MoreInfoLinkModule } from '@app/shared/components';
 import { TransportSearchFormComponent } from './transport-search-form/transport-search-form.component';
 import { DatepickerModule } from '@app/shared/components';
 
@@ -33,6 +33,7 @@ import { DatepickerModule } from '@app/shared/components';
     CitiesSearchModule,
     SearchResultComponentModule,
     MoreInfoLinkModule,
+    CategoryNavigationComponentModule,
     DatepickerModule,
   ],
 })
