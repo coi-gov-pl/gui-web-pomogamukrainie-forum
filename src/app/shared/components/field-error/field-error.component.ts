@@ -1,6 +1,6 @@
 import { Component, Input, NgModule, OnInit } from '@angular/core';
 import { NgModel } from '@angular/forms';
-import { ErrorTranslationKey } from './errors';
+import { ErrorCode, ErrorTranslationKey } from './errors';
 
 @Component({
   selector: 'app-field-error',
@@ -18,7 +18,7 @@ export class FieldErrorComponent {
     if (validationErrors) {
       const errors = Object.keys(validationErrors);
       if (errors.length > 0) {
-        return ErrorTranslationKey[errors[0]];
+        return ErrorTranslationKey[errors[0] as ErrorCode];
       }
     }
     return '';

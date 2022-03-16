@@ -1,3 +1,7 @@
+import * as pl from '@app/core/translations/pl_PL';
+
+type PL_KEYS = keyof typeof pl.default;
+
 export enum ErrorCode {
   required = 'required',
   pattern = 'pattern',
@@ -7,7 +11,7 @@ export enum ErrorCode {
   phoneIllegalCharacters = 'phoneIllegalCharacters',
 }
 
-export const ErrorTranslationKey: { [key: string]: string } = {
+export const ErrorTranslationKey: { [P in keyof typeof ErrorCode]: PL_KEYS } = {
   required: 'ERROR_REQUIRED',
   pattern: 'ERROR_PATTERN',
   titleIllegalCharacters: 'ERROR_TITLE_ILLEGAL_CHARACTERS',
