@@ -1,10 +1,13 @@
+
+@import "vars";
+
 .mat-form-field-appearance-outline .mat-form-field-infix {
   padding-top: 0.5em;
 }
 
 mat-icon {
   &.yellow-icon {
-    color: var(--c-dark-yellow);
+    color: $c-yellow;
   }
 }
 
