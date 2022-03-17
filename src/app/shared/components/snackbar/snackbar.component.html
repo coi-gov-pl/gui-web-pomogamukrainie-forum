@@ -1,0 +1,12 @@
+<div class="d-flex">
+  <mat-icon class="button-icon mt-2 ps-0 ps-md-2" fontSet="material-icons-outlined">check_circle_outline</mat-icon>
+  <div *ngIf="data">
+    <h5>{{ data.header }}</h5>
+    <p>{{ data.content }}</p>
+  </div>
+  <!-- <div class="dismiss">
+    <button mat-raised-button
+    color="accent"
+    (click)="snackBarRef.dismiss()">close</button>
+  </div> -->
+</div>

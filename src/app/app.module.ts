@@ -12,6 +12,7 @@ import { SiteHeaderModule } from '@app/core/site-header';
 import { UrlHelperModule } from '@app/core/url';
 import { AuthModule } from '@app/core/auth';
 import { InterceptorModule } from '@app/core/interceptor';
+import { MaterialSnackBarModule } from './shared/components/snackbar/snackbar.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,7 +28,9 @@ import { InterceptorModule } from '@app/core/interceptor';
     UrlHelperModule,
     AuthModule,
     InterceptorModule,
+    MaterialSnackBarModule,
   ],
+  // exports: [SnackbarComponent, MaterialModule],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

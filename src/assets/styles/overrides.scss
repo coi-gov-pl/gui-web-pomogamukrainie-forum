@@ -20,3 +20,35 @@ mat-icon {
 .mat-error {
   margin-left: -0.8em;
 }
+
+snack-bar-container.snackbar-alert {
+  max-width: 90vw !important;
+  width: 100%;
+  background: white;
+  color: blue;
+  z-index: 10000;
+  margin: 20vh auto !important;
+  border: 2px solid $c-green;
+  @media (min-width: $max-tab) {
+    margin: 16vh auto !important;
+  }
+  h5 {
+    font-size: 15px;
+    color: #052c65;
+    font-weight: bold;
+  }
+
+  p {
+    font-size: 15px;
+    color: #052c65;
+  }
+
+  .button-icon {
+    width: 20%;
+    @media (min-width: $max-tab) {
+      width: 10%;
+    }
+    color: $c-green;
+    font-size: 3em;
+  }
+}
