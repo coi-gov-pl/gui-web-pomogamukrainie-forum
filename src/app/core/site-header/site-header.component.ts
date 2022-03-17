@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageCode } from '@app/core/translations';
@@ -72,6 +72,7 @@ export class SiteHeaderComponent {
 
   useLanguage(langCode: string) {
     this.translateService.use(langCode);
+    this.closeMenu();
   }
 
   public get isAccountUrl(): boolean {
