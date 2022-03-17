@@ -21,34 +21,51 @@ mat-icon {
   margin-left: -0.8em;
 }
 
-snack-bar-container.snackbar-alert {
-  max-width: 90vw !important;
-  width: 100%;
-  background: white;
-  color: blue;
-  z-index: 10000;
-  margin: 20vh auto !important;
-  border: 2px solid $c-green;
-  @media (min-width: $max-tab) {
-    margin: 16vh auto !important;
+snack-bar-container {
+  &.snack-bar-error {
+    background: $c-redalert;
+    color: $c-darkblue;
+    font-weight: 500;
   }
-  h5 {
-    font-size: 15px;
-    color: #052c65;
-    font-weight: bold;
+  &.snack-bar-warning {
+    background: $c-yellowwarning;
+    color: $c-darkblue;
+    font-weight: 500;
   }
-
-  p {
-    font-size: 15px;
-    color: #052c65;
+  &.snack-bar-confirm {
+    background: $c-greenconfirm;
+    color: $c-darkblue;
+    font-weight: 500;
   }
-
-  .button-icon {
-    width: 20%;
+  &.snackbar-alert {
+    max-width: 90vw !important;
+    width: 100%;
+    background: white;
+    color: $c-blue;
+    z-index: 10000;
+    margin: 20vh auto !important;
+    border: 2px solid $c-green;
     @media (min-width: $max-tab) {
-      width: 10%;
+      margin: 16vh auto !important;
     }
-    color: $c-green;
-    font-size: 3em;
+    h5 {
+      font-size: 15px;
+      color: $c-blue;
+      font-weight: bold;
+    }
+
+    p {
+      font-size: 15px;
+      color: $c-blue;
+    }
+
+    .button-icon {
+      width: 20%;
+      @media (min-width: $max-tab) {
+        width: 10%;
+      }
+      color: $c-green;
+      font-size: 3em;
+    }
   }
 }
