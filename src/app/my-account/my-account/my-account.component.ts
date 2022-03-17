@@ -9,9 +9,11 @@ import {
   UserInfo,
   UsersResourceService,
 } from '@app/core/api';
-import { Observable, switchMap, tap } from 'rxjs';
+import { switchMap, take, tap } from 'rxjs';
 import { Router } from '@angular/router';
 import { CategoryRoutingName, CorePath } from '@app/shared/models';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { ConfirmRemoveAdComponent } from '../confirm-remove-ad/confirm-remove-ad.component';
 
 @Component({
   selector: 'app-my-account',
@@ -19,13 +21,14 @@ import { CategoryRoutingName, CorePath } from '@app/shared/models';
   styleUrls: ['./my-account.component.scss'],
 })
 export class MyAccountComponent implements OnInit {
-  public myAccountPersonalData: UserInfo | undefined;
+  public myAccountPersonalData!: UserInfo;
   public myAnnouncements!: OffersBaseOffer;
   pageRequest: Pageable = {};
   constructor(
     private usersResourceService: UsersResourceService,
     private router: Router,
-    private myOffersResource: MyOffersResourceService
+    private myOffersResource: MyOffersResourceService,
+    private dialog: MatDialog
   ) {}
 
   public ngOnInit() {
@@ -43,7 +46,21 @@ export class MyAccountComponent implements OnInit {
   }
 
   removeAnnouncement(announcement: AccommodationOffer | MaterialAidOffer | TransportOffer): void {
-    console.log(announcement);
+    const dialogRef: MatDialogRef<ConfirmRemoveAdComponent> = this.dialog.open(ConfirmRemoveAdComponent, {
+      hasBackdrop: false,
+      width: '100%',
+      maxHeight: '450px',
+      maxWidth: '720px',
+    });
+
+    dialogRef.componentInstance.currentAnnouncement = announcement;
+
+    dialogRef.componentInstance.onClosed.pipe(take(1)).subscribe((confirmed: boolean) => {
+      dialogRef.close();
+      if (confirmed) {
+        // TODO: call to api
+      }
+    });
   }
 
   editAnnouncement(announcement: AccommodationOffer | MaterialAidOffer | TransportOffer): void {

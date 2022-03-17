@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="icon">
+    <mat-icon fontSet="material-icons-outlined">restore_from_trash</mat-icon>
+  </div>
+  <div class="title">{{ "CONFIRM_REMOVE_AD" | translate }}</div>
+
+  <app-search-result
+    [location]="$any(currentAnnouncement).location"
+    [origin]="$any(currentAnnouncement).origin"
+    [destination]="$any(currentAnnouncement).destination"
+    [title]="currentAnnouncement.title"
+    [description]="currentAnnouncement.description"
+    [posted]="currentAnnouncement.modifiedDate"
+    class="item-wrapper"
+  >
+    <app-search-result-attribute
+      *ngIf="$any(currentAnnouncement).guests"
+      [text]="('NUMBER_OF_PEOPLE' | translate) + ': ' + $any(currentAnnouncement).guests"
+      icon="person"
+    ></app-search-result-attribute>
+    <app-search-result-attribute
+      *ngIf="$any(currentAnnouncement).hostLanguage"
+      [text]="$any(currentAnnouncement).hostLanguage.join(', ')"
+      icon="translate"
+    ></app-search-result-attribute>
+    <app-search-result-attribute
+      *ngIf="$any(currentAnnouncement).category"
+      [text]="$any(currentAnnouncement).category | translate"
+      icon="interests_outline"
+    ></app-search-result-attribute>
+
+    <app-search-result-attribute
+      *ngIf="$any(currentAnnouncement).transportDate"
+      [text]="$any(currentAnnouncement).transportDate"
+      icon="date_range"
+    ></app-search-result-attribute>
+    <app-search-result-attribute
+      *ngIf="$any(currentAnnouncement).capacity"
+      [text]="('NUMBER_OF_PEOPLE' | translate) + ': ' + $any(currentAnnouncement).capacity"
+      icon="person"
+    ></app-search-result-attribute>
+  </app-search-result>
+
+  <div class="footer">
+    <button type="submit" class="btn btn-dark" (click)="confirmAction(false)">
+      <span>{{ "NO" | translate }}</span>
+    </button>
+    <button type="submit" class="btn btn-secondary" (click)="confirmAction(true)">
+      <span>{{ "YES" | translate }}</span>
+    </button>
+  </div>
+</div>
