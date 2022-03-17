@@ -35,7 +35,7 @@ export interface Translations {
   };
 }
 
-const LANG: Translations = {
+export const LANG: Translations = {
   pl_PL: plPlTranslations,
   uk_UA: ukUATranslations,
   en_GB: enGBTranslations,
