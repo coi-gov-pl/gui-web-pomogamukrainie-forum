@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MyAccountSettingsComponent } from './my-account-settings.component';
+import { AuthService } from '@app/core/auth';
 
 describe('MyAccountSettingsComponent', () => {
   let component: MyAccountSettingsComponent;
@@ -9,6 +10,12 @@ describe('MyAccountSettingsComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [MyAccountSettingsComponent],
+      providers: [
+        {
+          provide: AuthService,
+          useValue: {},
+        },
+      ],
     }).compileComponents();
   });
 
