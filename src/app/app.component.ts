@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { SnackbarComponent, SnackAlertComponent } from './shared/components/snackbar/snackbar.component';
+import { SnackAlertComponent } from './shared/components/snackbar/snackbar.component';
 export class Alert {
   header?: string;
   content?: string;
