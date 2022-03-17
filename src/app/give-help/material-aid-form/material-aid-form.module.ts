@@ -11,6 +11,8 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MatIconModule } from '@angular/material/icon';
 import { FieldErrorModule } from '@app/shared/components';
 import { ValidatorsDirectivesModule } from '@app/shared/validators';
+import { CitiesSearchModule } from '@app/shared/components';
+import { MaterialSnackBarModule } from '@app/shared/components/snackbar/snackbar.module';
 
 @NgModule({
   declarations: [MaterialAidFormComponent],
@@ -26,6 +28,8 @@ import { ValidatorsDirectivesModule } from '@app/shared/validators';
     MatIconModule,
     FieldErrorModule,
     ValidatorsDirectivesModule,
+    CitiesSearchModule,
+    MaterialSnackBarModule,
   ],
 })
 export class MaterialAidFormModule {}

@@ -2,10 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackAlertComponent } from './shared/components/snackbar/snackbar.component';
-export class Alert {
-  header?: string;
-  content?: string;
-}
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageCode } from '@app/core/translations';
 
@@ -16,23 +12,7 @@ import { LanguageCode } from '@app/core/translations';
 })
 export class AppComponent implements OnInit {
   title = 'pomagamukrainie';
-  alert: Alert = {
-    header: 'Twoje głoszenie zostało opublikowane',
-    content:
-      'Sprawdzaj swoją skrzynkę i – jeśli podajesz numer – odbieraj telefon. W każdej chwili ktoś może odpowiedzieć na twoje ogłoszenie.',
-  };
-
   constructor(private router: Router, private translateService: TranslateService, private snackBar: MatSnackBar) {}
-
-  onklik() {
-    this.snackBar.openFromComponent(SnackAlertComponent, {
-      data: this.alert,
-      panelClass: 'snackbar-alert',
-      duration: 110000,
-      horizontalPosition: 'center',
-      verticalPosition: 'top',
-    });
-  }
 
   getContentClass() {
     return this.router.url === '/' ? '' : 'header-padding';

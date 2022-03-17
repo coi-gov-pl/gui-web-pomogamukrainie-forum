@@ -14,3 +14,8 @@ export interface Option {
   code: string;
   label: string;
 }
+
+export class Alert {
+  header: string | undefined;
+  content: string | undefined;
+}

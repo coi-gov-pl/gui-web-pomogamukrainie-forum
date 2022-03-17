@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { MaterialAidOfferDefinitionDTO, MaterialAidResourceService } from '@app/core/api';
-import { Location } from '@app/shared/components';
 import { PREFIXES } from '@app/shared/consts';
 import { defaults } from '@app/shared/utils';
-
-// interface MaterialAid {
-//   location: Location;
-//   category: MaterialAidOfferDefinitionDTO.CategoryEnum;
-// }
+import { OFFER_SENT_ALERT } from '@app/shared/consts';
+import { SnackAlertComponent } from '../../shared/components/snackbar/snackbar.component';
+import { CorePath } from '@app/shared/models/core-path.enum';
 
 const CATEGORIES = Object.entries(MaterialAidOfferDefinitionDTO.CategoryEnum).map(([key, value]) => ({
   key,
@@ -21,12 +20,16 @@ const CATEGORIES = Object.entries(MaterialAidOfferDefinitionDTO.CategoryEnum).ma
 })
 export class MaterialAidFormComponent {
   data = defaults<MaterialAidOfferDefinitionDTO>({});
-  categories = CATEGORIES;
+  CATEGORIES = CATEGORIES;
   PREFIXES = PREFIXES;
   phonePrefix: string = '48';
   phoneNumber: string = '';
-
-  constructor(private materialAidResourceService: MaterialAidResourceService) {}
+  OFFER_SENT_ALERT = OFFER_SENT_ALERT;
+  constructor(
+    private router: Router,
+    private materialAidResourceService: MaterialAidResourceService,
+    private snackBar: MatSnackBar
+  ) {}
 
   onPhoneNumberChange(): void {
     // Waiting for TransportOfferDefinitionDTO receive a phoneNumber prop
@@ -34,6 +37,18 @@ export class MaterialAidFormComponent {
   }
 
   handleSubmit() {
-    this.materialAidResourceService.postMaterialAidOfferMaterialAid(this.data).subscribe((response) => {});
+    this.materialAidResourceService.postMaterialAidOfferMaterialAid(this.data).subscribe((response) => {
+      this.router.navigate([CorePath.MyAccount]).then((navigated: boolean) => {
+        if (navigated) {
+          this.snackBar.openFromComponent(SnackAlertComponent, {
+            data: this.OFFER_SENT_ALERT,
+            panelClass: 'snackbar-alert',
+            duration: 10000,
+            horizontalPosition: 'center',
+            verticalPosition: 'top',
+          });
+        }
+      });
+    });
   }
 }

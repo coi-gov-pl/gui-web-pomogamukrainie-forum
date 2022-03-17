@@ -1,4 +1,4 @@
-import { Prefix, Option } from './models/temporary-models';
+import { Prefix, Option, Alert } from './models/temporary-models';
 import { LanguageCode, LanguageNames } from '@app/core/translations';
 
 export const PREFIXES: Prefix[] = [
@@ -34,3 +34,9 @@ export const LENGTHOFSTAY: Option[] = [
   { code: '2m', label: '2 miesiące' },
   { code: 'o', label: 'dłużej' },
 ];
+
+export const OFFER_SENT_ALERT: Alert = {
+  header: 'Twoje głoszenie zostało opublikowane',
+  content:
+    'Sprawdzaj swoją skrzynkę i – jeśli podajesz numer – odbieraj telefon. W każdej chwili ktoś może odpowiedzieć na twoje ogłoszenie.',
+};

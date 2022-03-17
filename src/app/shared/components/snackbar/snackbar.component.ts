@@ -1,10 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MatSnackBarRef, MAT_SNACK_BAR_DATA } from '@angular/material/snack-bar';
-
-interface Alert {
-  header?: string;
-  content?: string;
-}
+import { Alert } from '@app/shared/models/temporary-models';
 
 @Component({
   selector: 'app-snackbar',
