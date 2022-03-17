@@ -95,4 +95,7 @@ export default {
   ERROR_MIN_VALUE: 'Wartość zbyt mała',
   ERROR_MAX_VALUE: 'Wartość zbyt duża',
   ERROR_INVALID_DATE: 'Niepoprawny format daty',
+  CONFIRM_REMOVE_AD: 'Usunąć to ogłoszenie?',
+  YES: 'Tak',
+  NO: 'Nie',
 };
