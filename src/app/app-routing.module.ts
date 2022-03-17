@@ -12,6 +12,9 @@ const routes: Routes = [
   {
     path: CorePath.Find,
     loadChildren: () => import('./find-help/find-help.module').then((m) => m.FindHelpModule),
+    data: {
+      title: BreadcrumbLabels.SEARCH_FOR_HELP,
+    },
   },
   {
     path: CorePath.Give,
