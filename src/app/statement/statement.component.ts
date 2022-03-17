@@ -8,6 +8,7 @@ type Statement = {
   title: string;
   content: string;
   isExpanded: boolean;
+  icon: string;
 };
 
 @Component({
@@ -33,60 +34,70 @@ export class StatementComponent implements AfterViewInit {
         title: this.translateService.instant('INFORMATOR_MOST_IMPORTANT_HEADER'),
         content: this.translateService.instant('INFORMATOR_MOST_IMPORTANT_DESC'),
         isExpanded: shouldBeExpanded,
+        icon: 'info',
       },
       {
         id: 'panel-2',
         title: this.translateService.instant('INFORMATOR_PHONES_HEADER'),
         content: this.translateService.instant('INFORMATOR_PHONES_DESC'),
         isExpanded: shouldBeExpanded,
+        icon: 'phone',
       },
       {
         id: 'panel-3',
         title: this.translateService.instant('ACCOMMODATION'),
         content: this.translateService.instant('INFORMATOR_ACCOMMODATION_DESC'),
         isExpanded: shouldBeExpanded,
+        icon: 'bed',
       },
       {
         id: 'panel-4',
         title: this.translateService.instant('MATERIAL_HELP'),
         content: this.translateService.instant('INFORMATOR_MATERIAL_HELP_DESC'),
         isExpanded: shouldBeExpanded,
+        icon: 'interests_outline',
       },
       {
         id: 'panel-5',
         title: this.translateService.instant('TRANSPORT'),
         content: this.translateService.instant('INFORMATOR_TRANSPORT_DESC'),
         isExpanded: shouldBeExpanded,
+        icon: 'directions_car_outline',
       },
       {
         id: 'panel-6',
         title: this.translateService.instant('HEALTH'),
         content: this.translateService.instant('INFORMATOR_HEALTH_DESC'),
         isExpanded: shouldBeExpanded,
+        icon: 'local_hospital',
       },
       {
         id: 'panel-7',
         title: this.translateService.instant('LEGAL_HELP'),
         content: this.translateService.instant('INFORMATOR_LEGAL_HELP_DESC'),
         isExpanded: shouldBeExpanded,
+        icon: 'gavel',
       },
       {
         id: 'panel-8',
         title: this.translateService.instant('TRANSLATIONS'),
         content: this.translateService.instant('INFORMATOR_TRANSLATIONS_DESC'),
         isExpanded: shouldBeExpanded,
+        icon: 'work_outline',
       },
       {
         id: 'panel-9',
         title: this.translateService.instant('WORK'),
         content: this.translateService.instant('INFORMATOR_WORK_DESC'),
         isExpanded: shouldBeExpanded,
+        icon: 'translate',
       },
       {
         id: 'panel-10',
         title: this.translateService.instant('INFORMATOR_EDUCATION_HEADER'),
         content: this.translateService.instant('INFORMATOR_EDUCATION_DESC'),
         isExpanded: shouldBeExpanded,
+        icon: 'lan',
       },
     ];
   }
