@@ -97,7 +97,6 @@
             (selectionChange)="onPhoneNumberChange()"
             [(ngModel)]="phonePrefix"
             name="prefix"
-            required
           >
             <mat-option *ngFor="let prefix of PREFIXES" [value]="prefix.prefix">+ {{ prefix.prefix }}</mat-option>
           </mat-select>
@@ -112,9 +111,8 @@
             type="text"
             name="phone"
             (input)="onPhoneNumberChange()"
-            required
             [(ngModel)]="phoneNumber"
-            [pattern]="PHONE_NUMBER_REGEX"
+            simplePhone
             inputmode="numeric"
             #phoneNumberModel="ngModel"
           />

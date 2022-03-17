@@ -1,7 +1,7 @@
 import { Directive } from '@angular/core';
 import { AbstractControl, NG_VALIDATORS, ValidationErrors, Validator, Validators } from '@angular/forms';
 import { ErrorCode } from '../components/field-error/errors';
-const PHONE_NUMBER_REGEX = /^\d{9}$/;
+const PHONE_NUMBER_REGEX = /^\d{7,15}$/;
 
 @Directive({
   // eslint-disable-next-line @angular-eslint/directive-selector
