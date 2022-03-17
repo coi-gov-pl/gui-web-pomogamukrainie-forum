@@ -27,45 +27,22 @@
 
       <div class="row">
         <div class="col-md-3">
-          <label
-            ><b>{{ "LOCATION_FROM" | translate }}</b></label
-          >
-          <mat-form-field appearance="outline">
-            <input
-              matInput
-              type="text"
-              name="origin"
-              [(ngModel)]="data.origin"
-              placeholder="{{ 'PLACEHOLDER_TYPE' | translate }}"
-              autocomplete="off"
-              required
-              #origin="ngModel"
-            />
-            <mat-error>
-              <app-field-error [model]="origin"></app-field-error>
-            </mat-error>
-          </mat-form-field>
+          <app-cities-search
+            [(ngModel)]="data.origin"
+            name="origin"
+            [placeholder]="'Np. Rzeszów, podkarpackie'"
+            [label]="'LOCATION_FROM' | translate"
+            required
+          ></app-cities-search>
         </div>
         <div class="col-md-3">
-          <label
-            ><b>{{ "LOCATION_TO" | translate }}</b></label
-          >
-          <mat-form-field appearance="outline">
-            <input
-              matInput
-              type="text"
-              min="1"
-              [(ngModel)]="data.destination"
-              name="destination"
-              placeholder="{{ 'PLACEHOLDER_TYPE' | translate }}"
-              autocomplete="off"
-              required
-              #destination="ngModel"
-            />
-            <mat-error>
-              <app-field-error [model]="destination"></app-field-error>
-            </mat-error>
-          </mat-form-field>
+          <app-cities-search
+            [(ngModel)]="data.destination"
+            name="destination"
+            [placeholder]="'Np. Warszawa, mazowieckie'"
+            [label]="'LOCATION_TO' | translate"
+            required
+          ></app-cities-search>
         </div>
         <div class="col-md-4">
           <label

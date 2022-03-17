@@ -10,8 +10,9 @@ import { TransportFormRoutingModule } from './transport-form.routing.modue';
 import { MatNativeDateModule } from '@angular/material/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatIconModule } from '@angular/material/icon';
-import { DatepickerModule, FieldErrorModule } from '@app/shared/components';
+import { CitiesSearchModule, DatepickerModule, FieldErrorModule } from '@app/shared/components';
 import { ValidatorsDirectivesModule } from '@app/shared/validators';
+import { MaterialSnackBarModule } from '@app/shared/components/snackbar/snackbar.module';
 
 @NgModule({
   declarations: [TransportFormComponent],
@@ -29,6 +30,8 @@ import { ValidatorsDirectivesModule } from '@app/shared/validators';
     DatepickerModule,
     FieldErrorModule,
     ValidatorsDirectivesModule,
+    CitiesSearchModule,
+    MaterialSnackBarModule,
   ],
   exports: [TransportFormComponent],
 })
