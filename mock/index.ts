@@ -1,7 +1,21 @@
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import { createProxyMiddleware } from 'http-proxy-middleware';
-import { acommodationsPost, cityGet } from './operations';
+import {
+  accommodationGet,
+  accommodationsListGet,
+  accommodationsPost,
+  cityGet,
+  materialAidGet,
+  materialAidListGet,
+  materialAidPost,
+  meGet,
+  messagePost,
+  myOffersGet,
+  transportGet,
+  transportListGet,
+  transportPost,
+} from './operations';
 
 const port = process.env['PORT'] || 3000;
 const app: express.Express = express();
@@ -15,7 +29,22 @@ if (process.argv.includes('--proxy')) {
   app.use(bodyParser.urlencoded({ extended: true })).use(bodyParser.json());
 }
 
-router.get('/api/dictionaries/city', cityGet).post('/api/secure/accommodations', acommodationsPost);
+const baseHref: string = '/api';
+
+router
+  .get(`${baseHref}/dictionaries/city`, cityGet)
+  .get(`${baseHref}/accommodations`, accommodationsListGet)
+  .get(`${baseHref}/accommodations/:id`, accommodationGet)
+  .get(`${baseHref}/material-aid`, materialAidListGet)
+  .get(`${baseHref}/material-aid/:id`, materialAidGet)
+  .get(`${baseHref}/transport`, transportListGet)
+  .get(`${baseHref}/transport/:id`, transportGet)
+  .get(`${baseHref}/secure/me`, meGet)
+  .get(`${baseHref}/secure/my-offers`, myOffersGet)
+  .post(`${baseHref}/secure/accommodations`, accommodationsPost)
+  .post(`${baseHref}/secure/material-aid`, materialAidPost)
+  .post(`${baseHref}/secure/transport`, transportPost)
+  .post(`${baseHref}/message`, messagePost);
 
 app.use(router);
 
