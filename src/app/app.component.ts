@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackAlertComponent } from './shared/components/snackbar/snackbar.component';
@@ -6,12 +6,15 @@ export class Alert {
   header?: string;
   content?: string;
 }
+import { TranslateService } from '@ngx-translate/core';
+import { LanguageCode } from '@app/core/translations';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'pomagamukrainie';
   alert: Alert = {
     header: 'Twoje głoszenie zostało opublikowane',
@@ -19,7 +22,7 @@ export class AppComponent {
       'Sprawdzaj swoją skrzynkę i – jeśli podajesz numer – odbieraj telefon. W każdej chwili ktoś może odpowiedzieć na twoje ogłoszenie.',
   };
 
-  constructor(private router: Router, private snackBar: MatSnackBar) {}
+  constructor(private router: Router, private translateService: TranslateService, private snackBar: MatSnackBar) {}
 
   onklik() {
     this.snackBar.openFromComponent(SnackAlertComponent, {
@@ -77,4 +80,8 @@ export class AppComponent {
   //     panelClass: ['snackbar-alert'],
   //   });
   // }
+
+  ngOnInit() {
+    this.translateService.use(LanguageCode.pl_PL);
+  }
 }

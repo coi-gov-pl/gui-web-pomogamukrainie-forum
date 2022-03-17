@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { defaults } from '@app/shared/utils';
 import { AccommodationOfferDefinitionDTO } from '../../core/api/model/accommodationOfferDefinitionDTO';
-import { PHONE_NUMBER_REGEX, PREFIXES, LANGUAGES, LENGTHOFSTAY } from '@app/shared/temporary-consts';
+import { PREFIXES, LANGUAGES, LENGTHOFSTAY } from '@app/shared/consts';
 import { AccommodationsResourceService } from '@app/core/api';
 
 @Component({
@@ -15,7 +15,6 @@ export class AccommodationFormComponent {
   LENGTHOFSTAY = LENGTHOFSTAY;
   LANGUAGES = LANGUAGES;
   PREFIXES = PREFIXES;
-  PHONE_NUMBER_REGEX = PHONE_NUMBER_REGEX;
 
   data = defaults<AccommodationOfferDefinitionDTO>({
     hostLanguage: [],

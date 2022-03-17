@@ -1,0 +1,47 @@
+@import "src/assets/styles/vars";
+
+:host {
+  text-align: center;
+  font-family: var(--font-roboto);
+}
+
+.icon {
+  color: #cc0a0a;
+  font-size: 24px;
+
+  .material-icons-outlined {
+    font-size: 38px;
+  }
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: -0.19px;
+  color: #052c65;
+  margin-bottom: 25px;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 35px;
+
+  button {
+    width: 172px;
+    height: 43px;
+
+    span {
+      font-size: 14px;
+      letter-spacing: 1.25px;
+      color: #052c65;
+      text-transform: uppercase;
+    }
+  }
+
+  button:first-of-type {
+    span {
+      color: $c-white;
+    }
+  }
+}

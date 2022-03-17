@@ -159,21 +159,22 @@
     font-size: 18px;
     font-weight: 700;
     padding: 0.4rem 1rem;
-    img {
-      width: 32px;
-      height: 32px;
-      margin-right: 12px;
-      @include media-breakpoint-up(lg) {
-        width: 16px;
-        height: 16px;
-        margin-right: 4px;
-      }
-    }
     &:hover {
       border-color: var(--c-lightblue);
     }
     @include media-breakpoint-up(lg) {
       font-size: 13px;
     }
+  }
+}
+
+.lang-flag {
+  width: 32px;
+  height: 32px;
+  margin-right: 12px;
+  @include media-breakpoint-up(lg) {
+    width: 16px;
+    height: 16px;
+    margin-right: 4px;
   }
 }
