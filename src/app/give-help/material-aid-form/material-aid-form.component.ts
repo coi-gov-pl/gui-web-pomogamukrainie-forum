@@ -34,6 +34,7 @@ export class MaterialAidFormComponent {
   }
 
   handleSubmit() {
+    console.log('submit');
     this.materialAidResourceService.postMaterialAidOfferMaterialAid(this.data).subscribe((response) => {});
   }
 }
