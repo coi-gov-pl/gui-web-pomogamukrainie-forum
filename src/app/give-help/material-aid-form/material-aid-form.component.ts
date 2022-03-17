@@ -34,7 +34,6 @@ export class MaterialAidFormComponent {
   constructor(
     private router: Router,
     private materialAidResourceService: MaterialAidResourceService,
-    private snackBar: MatSnackBar,
     private snackbarService: SnackbarService
   ) {}
 

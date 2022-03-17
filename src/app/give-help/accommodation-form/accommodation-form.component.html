@@ -26,22 +26,13 @@
       </div>
       <div class="row">
         <div class="col-md-4">
-          <label
-            ><b>{{ "LABEL_POINT_LOCALISATION" | translate }}</b></label
-          >
-          <mat-form-field appearance="outline">
-            <input
-              matInput
-              name="location"
-              placeholder="{{ 'PLACEHOLDER_TYPE' | translate }}"
-              [(ngModel)]="data.location"
-              required
-              #location="ngModel"
-            />
-            <mat-error>
-              <app-field-error [model]="location"></app-field-error>
-            </mat-error>
-          </mat-form-field>
+          <app-cities-search
+            [(ngModel)]="data.location"
+            name="location"
+            [placeholder]="'Rzeszów, podkarpackie'"
+            [label]="'LOCATION' | translate"
+            required
+          ></app-cities-search>
         </div>
         <div class="col-md-2">
           <label
