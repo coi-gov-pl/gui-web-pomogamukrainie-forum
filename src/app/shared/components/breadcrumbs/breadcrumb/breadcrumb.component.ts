@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { distinctUntilChanged, filter, startWith } from 'rxjs';
-import { CorePath } from '@app/shared/models';
 import { Breadcrumb, BreadcrumbLabels } from '@app/shared/models';
 
 @Component({
@@ -13,7 +12,7 @@ export class BreadcrumbComponent implements OnInit {
   public breadcrumbs: Breadcrumb[] = [];
   public mainPage: Breadcrumb = {
     label: BreadcrumbLabels.MAIN_PAGE,
-    url: `/${CorePath.Find}`,
+    url: '',
   };
 
   constructor(private router: Router, private route: ActivatedRoute) {}
@@ -43,9 +42,6 @@ export class BreadcrumbComponent implements OnInit {
 
   private setBreadcrumbs(currentUrlAsArray: string[]): void {
     currentUrlAsArray.forEach((el: string, i: number) => {
-      if (el === CorePath.Find) {
-        return;
-      }
       this.breadcrumbs.push({
         label: this.route.snapshot.children[i - 1]?.data['title'] || this.route.snapshot.data['title'],
         url: this.router.url
