@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 import { DateAdapter } from '@angular/material/core';
 import { Moment } from 'moment';
+import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-datepicker',
@@ -33,12 +34,10 @@ export class DatepickerComponent implements OnDestroy {
     this.dateAdapter.setLocale(locale);
   }
 
-  onDatePickerChange(ev: any) {
-    debugger;
-    const newValue: Moment = ev.value;
-    if (newValue?.isValid()) {
-      this.dateModel = newValue?.toDate();
-      this.dateChange.emit(newValue?.format('YYYY-MM-DD'));
+  onDatePickerChange({ value }: MatDatepickerInputEvent<Moment>) {
+    if (value?.isValid()) {
+      this.dateModel = value?.toDate();
+      this.dateChange.emit(value?.format('YYYY-MM-DD'));
     } else {
       this.dateChange.emit(undefined);
     }
