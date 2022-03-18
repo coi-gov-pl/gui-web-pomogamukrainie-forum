@@ -30,7 +30,7 @@
           <app-cities-search
             [(ngModel)]="data.origin"
             name="origin"
-            [placeholder]="'Np. Rzeszów, podkarpackie'"
+            [placeholder]="'PLACEHOLDER_TYPE' | translate"
             [label]="'LOCATION_FROM' | translate"
             required
           ></app-cities-search>
@@ -39,7 +39,7 @@
           <app-cities-search
             [(ngModel)]="data.destination"
             name="destination"
-            [placeholder]="'Np. Warszawa, mazowieckie'"
+            [placeholder]="'PLACEHOLDER_TYPE' | translate"
             [label]="'LOCATION_TO' | translate"
             required
           ></app-cities-search>

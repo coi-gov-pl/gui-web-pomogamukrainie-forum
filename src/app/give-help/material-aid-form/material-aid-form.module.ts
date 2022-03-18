@@ -9,9 +9,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatIconModule } from '@angular/material/icon';
-import { FieldErrorModule } from '@app/shared/components';
+import { CitiesSearchModule, FieldErrorModule } from '@app/shared/components';
 import { ValidatorsDirectivesModule } from '@app/shared/validators';
-import { CitiesSearchModule } from '@app/shared/components';
 import { SnackbarAlertModule } from '@app/shared/components';
 
 @NgModule({

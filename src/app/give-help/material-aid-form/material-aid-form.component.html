@@ -1,5 +1,5 @@
 <mat-card>
-  <form (ngSubmit)="handleSubmit()" #materialAidForm="ngForm">
+  <form (submit)="handleSubmit()" #materialAidForm="ngForm">
     <div class="row">
       <div class="col-md-12">
         <label>
@@ -49,7 +49,7 @@
         <app-cities-search
           [(ngModel)]="data.location"
           name="location"
-          [placeholder]="'Rzeszów, podkarpackie'"
+          [placeholder]="'PLACEHOLDER_LOCATION' | translate"
           [label]="'LOCATION' | translate"
           required
         ></app-cities-search>

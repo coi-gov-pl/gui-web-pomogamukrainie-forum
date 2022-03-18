@@ -9,7 +9,6 @@ import { LanguageCode } from '@app/core/translations';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  title = 'pomagamukrainie';
   constructor(private router: Router, private translateService: TranslateService) {}
 
   getContentClass() {

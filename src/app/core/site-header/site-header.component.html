@@ -72,10 +72,16 @@
                 {{ lang.text }}
               </span>
             </li>
-            <li class="navbar-item navbar-big" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">
+            <li
+              (click)="closeMenu()"
+              class="navbar-item navbar-big"
+              data-bs-toggle="collapse"
+              data-bs-target=".navbar-collapse.show"
+            >
               <a class="navbar-link" href="#">{{ "STATEMENT" | translate }}</a>
             </li>
             <li
+              (click)="closeMenu()"
               class="navbar-item navbar-big mobile-only"
               data-bs-toggle="collapse"
               data-bs-target=".navbar-collapse.show"
@@ -83,6 +89,7 @@
               <a class="navbar-link" href="#">{{ "ANNOUNCEMENTS" | translate }}</a>
             </li>
             <li
+              (click)="closeMenu()"
               class="navbar-item"
               *ngIf="!authService.isLoggedIn()"
               data-bs-toggle="collapse"
@@ -94,6 +101,7 @@
               </a>
             </li>
             <li
+              (click)="closeMenu()"
               class="navbar-item"
               *ngIf="authService.isLoggedIn() && !this.isAccountUrl"
               data-bs-toggle="collapse"
@@ -105,7 +113,7 @@
               </a>
             </li>
             <li class="navbar-item" *ngIf="authService.isLoggedIn() && this.isAccountUrl">
-              <button (click)="authService.logOut()" class="btn btn-outline-light">
+              <button (click)="authService.logOut(); closeMenu()" class="btn btn-outline-light">
                 <span class="button-title">{{ "LOGOUT" | translate }}</span>
               </button>
             </li>

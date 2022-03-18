@@ -1,6 +1,7 @@
 import { Prefix, Option, Alert } from './models/temporary-models';
 import { LanguageCode, LanguageNames } from '@app/core/translations';
-import { AccommodationOffer } from '@app/core/api';
+import { AccommodationOffer, AccommodationOfferDefinitionDTO } from '@app/core/api';
+import HostLanguageEnum = AccommodationOfferDefinitionDTO.HostLanguageEnum;
 
 export const PREFIXES: Prefix[] = [
   {
@@ -22,8 +23,8 @@ export const PREFIXES: Prefix[] = [
 ];
 
 export const LANGUAGES: Option[] = [
-  { code: AccommodationOffer.HostLanguageEnum.Pl, label: LanguageNames.POLISH },
-  { code: AccommodationOffer.HostLanguageEnum.Ua, label: LanguageNames.UKRAINIAN },
+  { code: HostLanguageEnum.Pl, label: LanguageNames.POLISH },
+  { code: HostLanguageEnum.Ua, label: LanguageNames.UKRAINIAN },
 ];
 
 export const LENGTHOFSTAY: Option[] = [
@@ -31,6 +32,7 @@ export const LENGTHOFSTAY: Option[] = [
   { code: AccommodationOffer.LengthOfStayEnum.Week2, label: '2 tygodnie' },
   { code: AccommodationOffer.LengthOfStayEnum.Month1, label: '1 miesiąc ' },
   { code: AccommodationOffer.LengthOfStayEnum.Month2, label: '2 miesiące' },
+  { code: AccommodationOffer.LengthOfStayEnum.Month3, label: '3 miesiące' },
   { code: AccommodationOffer.LengthOfStayEnum.Longer, label: 'dłużej' },
 ];
 
