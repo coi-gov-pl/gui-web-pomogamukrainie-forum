@@ -1,4 +1,4 @@
-import { Prefix, Option, Alert } from './models';
+import { Prefix, Option } from './models';
 import { LanguageCode, LanguageNames } from '@app/core/translations';
 import { AccommodationOffer, AccommodationOfferDefinitionDTO } from '@app/core/api';
 import HostLanguageEnum = AccommodationOfferDefinitionDTO.HostLanguageEnum;
@@ -35,9 +35,3 @@ export const LENGTHOFSTAY: Option[] = [
   { code: AccommodationOffer.LengthOfStayEnum.Month3, label: '3 miesiące' },
   { code: AccommodationOffer.LengthOfStayEnum.Longer, label: 'dłużej' },
 ];
-
-export const OFFER_SENT_ALERT: Alert = {
-  header: 'Twoje głoszenie zostało opublikowane',
-  content:
-    'Sprawdzaj swoją skrzynkę i – jeśli podajesz numer – odbieraj telefon. W każdej chwili ktoś może odpowiedzieć na twoje ogłoszenie.',
-};

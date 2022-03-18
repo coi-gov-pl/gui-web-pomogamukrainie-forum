@@ -6,7 +6,6 @@ import {
   MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
 import { SnackAlertComponent } from '../components/snackbar/snackbar.component';
-import { OFFER_SENT_ALERT } from '../consts';
 import { ALERT_TYPES } from '../models';
 
 @Injectable({
@@ -24,7 +23,7 @@ export class SnackbarService {
 
   openSnackAlert() {
     this.snackbar.openFromComponent(SnackAlertComponent, {
-      data: OFFER_SENT_ALERT,
+      data: ALERT_TYPES.OFFER_SUCCESS,
       panelClass: 'snackbar-alert',
       duration: 10000,
       horizontalPosition: 'center',

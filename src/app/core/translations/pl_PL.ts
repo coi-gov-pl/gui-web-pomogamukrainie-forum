@@ -98,4 +98,7 @@ export default {
   CONFIRM_REMOVE_AD: 'Usunąć to ogłoszenie?',
   YES: 'Tak',
   NO: 'Nie',
+  OFFER_SENT_ALERT_HEADER: 'Twoje głoszenie zostało opublikowane',
+  OFFER_SENT_ALERT_CONTENT:
+    'Sprawdzaj swoją skrzynkę i – jeśli podajesz numer – odbieraj telefon. W każdej chwili ktoś może odpowiedzieć na twoje ogłoszenie.',
 };

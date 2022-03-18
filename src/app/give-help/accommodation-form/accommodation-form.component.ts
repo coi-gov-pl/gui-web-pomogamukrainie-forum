@@ -3,7 +3,6 @@ import { defaults } from '@app/shared/utils';
 import { AccommodationOfferDefinitionDTO } from '../../core/api/model/accommodationOfferDefinitionDTO';
 import { PREFIXES, LANGUAGES, LENGTHOFSTAY } from '@app/shared/consts';
 import { AccommodationsResourceService } from '@app/core/api';
-import { OFFER_SENT_ALERT } from '@app/shared/consts';
 import { CorePath } from '@app/shared/models/core-path.model';
 import { SnackbarService } from '@app/shared/services/snackbar.service';
 import { ALERT_TYPES } from '@app/shared/models/';
@@ -26,7 +25,6 @@ export class AccommodationFormComponent {
   LENGTHOFSTAY = LENGTHOFSTAY;
   LANGUAGES = LANGUAGES;
   PREFIXES = PREFIXES;
-  OFFER_SENT_ALERT = OFFER_SENT_ALERT;
   data = defaults<AccommodationOfferDefinition>({
     hostLanguage: [],
   });
