@@ -3,7 +3,14 @@
     ><b>{{ label }}</b></label
   >
   <mat-form-field class="example-full-width" appearance="outline">
-    <input type="text" [placeholder]="placeholder" matInput [formControl]="formControl" [matAutocomplete]="auto" />
+    <input
+      type="text"
+      #autoCompleteInput
+      [placeholder]="placeholder"
+      matInput
+      [formControl]="formControl"
+      [matAutocomplete]="auto"
+    />
     <mat-autocomplete
       #auto="matAutocomplete"
       [displayWith]="displayOption"
@@ -13,5 +20,16 @@
         {{ option | displayLocationOption }}
       </mat-option>
     </mat-autocomplete>
+    <button
+      *ngIf="selectedOption"
+      type="button"
+      mat-button
+      matSuffix
+      mat-icon-button
+      aria-label="Clear"
+      (click)="clearValue()"
+    >
+      <mat-icon class="button-icon" fontSet="material-icons-outlined">close</mat-icon>
+    </button>
   </mat-form-field>
 </div>
