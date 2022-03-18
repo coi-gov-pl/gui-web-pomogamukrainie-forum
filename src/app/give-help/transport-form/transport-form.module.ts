@@ -12,7 +12,6 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MatIconModule } from '@angular/material/icon';
 import { CitiesSearchModule, DatepickerModule, FieldErrorModule } from '@app/shared/components';
 import { ValidatorsDirectivesModule } from '@app/shared/validators';
-import { SnackbarAlertModule } from '@app/shared/components';
 
 @NgModule({
   declarations: [TransportFormComponent],
@@ -31,7 +30,6 @@ import { SnackbarAlertModule } from '@app/shared/components';
     FieldErrorModule,
     ValidatorsDirectivesModule,
     CitiesSearchModule,
-    SnackbarAlertModule,
   ],
   exports: [TransportFormComponent],
 })
