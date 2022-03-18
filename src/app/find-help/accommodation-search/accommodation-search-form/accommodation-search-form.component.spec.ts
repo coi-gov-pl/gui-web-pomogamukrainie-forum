@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { AccommodationSearchFormComponent } from './accommodation-search-form.component';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('AccommodationSearchFormComponent', () => {
   let component: AccommodationSearchFormComponent;
@@ -12,7 +13,7 @@ describe('AccommodationSearchFormComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [AccommodationSearchFormComponent],
-      imports: [TranslateModule.forRoot(), HttpClientTestingModule, FormsModule],
+      imports: [TranslateModule.forRoot(), HttpClientTestingModule, FormsModule, RouterTestingModule],
     }).compileComponents();
   });
 

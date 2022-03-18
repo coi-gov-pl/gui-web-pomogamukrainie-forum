@@ -1,5 +1,7 @@
 import { Prefix, Option } from './models/temporary-models';
 import { LanguageCode, LanguageNames } from '@app/core/translations';
+import { AccommodationOffer, AccommodationOfferDefinitionDTO } from '@app/core/api';
+import HostLanguageEnum = AccommodationOfferDefinitionDTO.HostLanguageEnum;
 
 export const PREFIXES: Prefix[] = [
   {
@@ -21,16 +23,15 @@ export const PREFIXES: Prefix[] = [
 ];
 
 export const LANGUAGES: Option[] = [
-  { code: LanguageCode.pl_PL, label: LanguageNames.POLISH },
-  { code: LanguageCode.uk_UA, label: LanguageNames.UKRAINIAN },
-  { code: LanguageCode.en_GB, label: LanguageNames.ENGLISH },
-  { code: LanguageCode.ru_RU, label: LanguageNames.RUSSIAN },
+  { code: HostLanguageEnum.Pl, label: LanguageNames.POLISH },
+  { code: HostLanguageEnum.Ua, label: LanguageNames.UKRAINIAN },
 ];
 
 export const LENGTHOFSTAY: Option[] = [
-  { code: '1t', label: '1 tydzień ' },
-  { code: '2t', label: '2 tygodnie' },
-  { code: '1m', label: '1 miesiąc ' },
-  { code: '2m', label: '2 miesiące' },
-  { code: 'o', label: 'dłużej' },
+  { code: AccommodationOffer.LengthOfStayEnum.Week1, label: '1 tydzień ' },
+  { code: AccommodationOffer.LengthOfStayEnum.Week2, label: '2 tygodnie' },
+  { code: AccommodationOffer.LengthOfStayEnum.Month1, label: '1 miesiąc ' },
+  { code: AccommodationOffer.LengthOfStayEnum.Month2, label: '2 miesiące' },
+  { code: AccommodationOffer.LengthOfStayEnum.Month3, label: '3 miesiące' },
+  { code: AccommodationOffer.LengthOfStayEnum.Longer, label: 'dłużej' },
 ];
