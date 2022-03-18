@@ -54,7 +54,7 @@ export class AccommodationFormComponent {
   redirectOnSuccess() {
     this.router.navigate([CorePath.MyAccount]).then((navigated: boolean) => {
       if (navigated) {
-        this.snackbarService.openSnackAlert();
+        this.snackbarService.openSnackAlert(ALERT_TYPES.OFFER_SUCCESS);
       }
     });
   }
