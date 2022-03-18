@@ -12,7 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { FieldErrorModule } from '@app/shared/components';
 import { ValidatorsDirectivesModule } from '@app/shared/validators';
 import { CitiesSearchModule } from '@app/shared/components';
-import { MaterialSnackBarModule } from '@app/shared/components/snackbar/snackbar.module';
+import { SnackbarAlertModule } from '@app/shared/components';
 
 @NgModule({
   declarations: [MaterialAidFormComponent],
@@ -29,7 +29,7 @@ import { MaterialSnackBarModule } from '@app/shared/components/snackbar/snackbar
     FieldErrorModule,
     ValidatorsDirectivesModule,
     CitiesSearchModule,
-    MaterialSnackBarModule,
+    SnackbarAlertModule,
   ],
 })
 export class MaterialAidFormModule {}

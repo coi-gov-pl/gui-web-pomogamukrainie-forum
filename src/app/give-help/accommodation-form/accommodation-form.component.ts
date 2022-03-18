@@ -47,15 +47,17 @@ export class AccommodationFormComponent {
       .createAccommodations(this.data)
       .pipe(take(1))
       .subscribe(
-        (response) => {
-          this.router.navigate([CorePath.MyAccount]).then((navigated: boolean) => {
-            if (navigated) {
-              this.snackbarService.openSnackAlert();
-            }
-          });
-        },
+        (response) => this.redirectOnSuccess(),
         (error) => this.snackbarService.openSnack(error.message, ALERT_TYPES.ERROR)
       )
       .add(() => (this.loading = false));
+  }
+
+  redirectOnSuccess() {
+    this.router.navigate([CorePath.MyAccount]).then((navigated: boolean) => {
+      if (navigated) {
+        this.snackbarService.openSnackAlert();
+      }
+    });
   }
 }

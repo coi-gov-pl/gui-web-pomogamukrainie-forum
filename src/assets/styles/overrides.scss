@@ -22,26 +22,30 @@ mat-icon {
 }
 
 snack-bar-container {
+  font-size: 15px;
   &.snack-bar-error {
-    background: $c-redalert;
-    color: $c-darkblue;
+    background: $c-lightgray;
+    border: 2px solid $c-redalert;
     font-weight: 500;
+    color: $c-black;
   }
   &.snack-bar-warning {
-    background: $c-yellowwarning;
-    color: $c-darkblue;
+    background: $c-lightgray;
+    border: 2px solid $c-yellowwarning;
     font-weight: 500;
+    color: $c-black;
   }
   &.snack-bar-confirm {
-    background: $c-greenconfirm;
-    color: $c-darkblue;
+    background: $c-lightgray;
+    border: 2px solid $c-greenconfirm;
     font-weight: 500;
+    color: $c-black;
   }
   &.snackbar-alert {
+    color: $c-black;
     max-width: 90vw !important;
     width: 100%;
-    background: white;
-    color: $c-blue;
+    background: $c-lightgray;
     z-index: 10000;
     margin: 20vh auto !important;
     border: 2px solid $c-green;
@@ -49,16 +53,8 @@ snack-bar-container {
       margin: 16vh auto !important;
     }
     h5 {
-      font-size: 15px;
-      color: $c-blue;
       font-weight: bold;
     }
-
-    p {
-      font-size: 15px;
-      color: $c-blue;
-    }
-
     .button-icon {
       width: 20%;
       @media (min-width: $max-tab) {

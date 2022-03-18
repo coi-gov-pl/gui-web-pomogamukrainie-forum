@@ -9,4 +9,4 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
   imports: [MatSnackBarModule, MatIconModule, MatButtonModule, CommonModule],
   exports: [SnackAlertComponent],
 })
-export class MaterialSnackBarModule {}
+export class SnackbarAlertModule {}
