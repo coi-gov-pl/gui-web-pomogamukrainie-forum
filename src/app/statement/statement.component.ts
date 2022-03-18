@@ -1,7 +1,8 @@
-import { Component, ViewChild, AfterViewInit } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
-import { CategoryRoutingName, CorePath } from '@app/shared/models';
+import { Component, ViewChild, OnInit, AfterViewInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { MatAccordion } from '@angular/material/expansion';
+import { TranslateService } from '@ngx-translate/core';
+import { CategoryRoutingName, CorePath, StatementAnchors } from '@app/shared/models';
 
 type Statement = {
   id: string;
@@ -10,95 +11,105 @@ type Statement = {
   isExpanded: boolean;
 };
 
+const isExpanded = (allExpanded: boolean, panelId: string, activePanel: string | undefined) =>
+  allExpanded || panelId === activePanel;
+
 @Component({
   selector: 'app-statement',
   templateUrl: './statement.component.html',
   styleUrls: ['./statement.component.scss'],
 })
-export class StatementComponent implements AfterViewInit {
+export class StatementComponent implements OnInit, AfterViewInit {
   categoryRoutingName = CategoryRoutingName;
   corePath = CorePath;
   accordionList: Array<Statement>;
-  shouldScroll: boolean;
+  activePanel?: string | null;
 
   @ViewChild('accordion') accordion!: MatAccordion;
 
-  constructor(private translateService: TranslateService) {
-    this.shouldScroll = false; // TODO: should be retrieved from the passed parameters
-    const shouldBeExpanded = !this.shouldScroll;
+  constructor(private route: ActivatedRoute, private translateService: TranslateService) {
+    this.accordionList = [];
+    this.activePanel = null;
+  }
 
-    this.accordionList = [
-      {
-        id: 'panel-1',
-        title: this.translateService.instant('INFORMATOR_MOST_IMPORTANT_HEADER'),
-        content: this.translateService.instant('INFORMATOR_MOST_IMPORTANT_DESC'),
-        isExpanded: shouldBeExpanded,
-      },
-      {
-        id: 'panel-2',
-        title: this.translateService.instant('INFORMATOR_PHONES_HEADER'),
-        content: this.translateService.instant('INFORMATOR_PHONES_DESC'),
-        isExpanded: shouldBeExpanded,
-      },
-      {
-        id: 'panel-3',
-        title: this.translateService.instant('ACCOMMODATION'),
-        content: this.translateService.instant('INFORMATOR_ACCOMMODATION_DESC'),
-        isExpanded: shouldBeExpanded,
-      },
-      {
-        id: 'panel-4',
-        title: this.translateService.instant('MATERIAL_HELP'),
-        content: this.translateService.instant('INFORMATOR_MATERIAL_HELP_DESC'),
-        isExpanded: shouldBeExpanded,
-      },
-      {
-        id: 'panel-5',
-        title: this.translateService.instant('TRANSPORT'),
-        content: this.translateService.instant('INFORMATOR_TRANSPORT_DESC'),
-        isExpanded: shouldBeExpanded,
-      },
-      {
-        id: 'panel-6',
-        title: this.translateService.instant('HEALTH'),
-        content: this.translateService.instant('INFORMATOR_HEALTH_DESC'),
-        isExpanded: shouldBeExpanded,
-      },
-      {
-        id: 'panel-7',
-        title: this.translateService.instant('LEGAL_HELP'),
-        content: this.translateService.instant('INFORMATOR_LEGAL_HELP_DESC'),
-        isExpanded: shouldBeExpanded,
-      },
-      {
-        id: 'panel-8',
-        title: this.translateService.instant('TRANSLATIONS'),
-        content: this.translateService.instant('INFORMATOR_TRANSLATIONS_DESC'),
-        isExpanded: shouldBeExpanded,
-      },
-      {
-        id: 'panel-9',
-        title: this.translateService.instant('WORK'),
-        content: this.translateService.instant('INFORMATOR_WORK_DESC'),
-        isExpanded: shouldBeExpanded,
-      },
-      {
-        id: 'panel-10',
-        title: this.translateService.instant('INFORMATOR_EDUCATION_HEADER'),
-        content: this.translateService.instant('INFORMATOR_EDUCATION_DESC'),
-        isExpanded: shouldBeExpanded,
-      },
-    ];
+  ngOnInit() {
+    this.route.fragment.subscribe((value: string | null) => {
+      this.activePanel = Object.values(StatementAnchors).find((statementAnchor) => statementAnchor === value);
+      const allExpanded = !this.activePanel;
+
+      this.accordionList = [
+        {
+          id: StatementAnchors.MOST_IMPORTANT,
+          title: this.translateService.instant('INFORMATOR_MOST_IMPORTANT_HEADER'),
+          content: this.translateService.instant('INFORMATOR_MOST_IMPORTANT_DESC'),
+          isExpanded: isExpanded(allExpanded, StatementAnchors.MOST_IMPORTANT, this.activePanel),
+        },
+        {
+          id: StatementAnchors.PHONES,
+          title: this.translateService.instant('INFORMATOR_PHONES_HEADER'),
+          content: this.translateService.instant('INFORMATOR_PHONES_DESC'),
+          isExpanded: isExpanded(allExpanded, StatementAnchors.PHONES, this.activePanel),
+        },
+        {
+          id: StatementAnchors.ACCOMMODATION,
+          title: this.translateService.instant('ACCOMMODATION'),
+          content: this.translateService.instant('INFORMATOR_ACCOMMODATION_DESC'),
+          isExpanded: isExpanded(allExpanded, StatementAnchors.ACCOMMODATION, this.activePanel),
+        },
+        {
+          id: StatementAnchors.MATERIAL_AID,
+          title: this.translateService.instant('MATERIAL_HELP'),
+          content: this.translateService.instant('INFORMATOR_MATERIAL_HELP_DESC'),
+          isExpanded: isExpanded(allExpanded, StatementAnchors.MATERIAL_AID, this.activePanel),
+        },
+        {
+          id: StatementAnchors.TRANSPORT,
+          title: this.translateService.instant('TRANSPORT'),
+          content: this.translateService.instant('INFORMATOR_TRANSPORT_DESC'),
+          isExpanded: isExpanded(allExpanded, StatementAnchors.TRANSPORT, this.activePanel),
+        },
+        {
+          id: StatementAnchors.HEALTH,
+          title: this.translateService.instant('HEALTH'),
+          content: this.translateService.instant('INFORMATOR_HEALTH_DESC'),
+          isExpanded: isExpanded(allExpanded, StatementAnchors.HEALTH, this.activePanel),
+        },
+        {
+          id: StatementAnchors.LEGAL_HELP,
+          title: this.translateService.instant('LEGAL_HELP'),
+          content: this.translateService.instant('INFORMATOR_LEGAL_HELP_DESC'),
+          isExpanded: isExpanded(allExpanded, StatementAnchors.LEGAL_HELP, this.activePanel),
+        },
+        {
+          id: StatementAnchors.TRANSLATIONS,
+          title: this.translateService.instant('TRANSLATIONS'),
+          content: this.translateService.instant('INFORMATOR_TRANSLATIONS_DESC'),
+          isExpanded: isExpanded(allExpanded, StatementAnchors.TRANSLATIONS, this.activePanel),
+        },
+        {
+          id: StatementAnchors.WORK,
+          title: this.translateService.instant('WORK'),
+          content: this.translateService.instant('INFORMATOR_WORK_DESC'),
+          isExpanded: isExpanded(allExpanded, StatementAnchors.WORK, this.activePanel),
+        },
+        {
+          id: StatementAnchors.EDUCATION,
+          title: this.translateService.instant('INFORMATOR_EDUCATION_HEADER'),
+          content: this.translateService.instant('INFORMATOR_EDUCATION_DESC'),
+          isExpanded: isExpanded(allExpanded, StatementAnchors.EDUCATION, this.activePanel),
+        },
+      ];
+    });
   }
 
   ngAfterViewInit() {
-    if (this.shouldScroll) {
-      this.scroll('panel-10');
+    if (this.activePanel) {
+      this.scroll(this.activePanel);
     }
   }
 
   scroll(id: string) {
-    let el = document.getElementById(id);
+    const el = document.getElementById(id);
 
     if (el) {
       el.scrollIntoView();

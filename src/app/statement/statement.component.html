@@ -6,7 +6,7 @@
   </header>
 
   <mat-accordion #accordion="matAccordion" multi>
-    <mat-expansion-panel *ngFor="let panel of accordionList" [expanded]="panel.isExpanded">
+    <mat-expansion-panel *ngFor="let panel of accordionList" [expanded]="panel.isExpanded" [id]="panel.id">
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{ panel.title }}
