@@ -12,6 +12,11 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       {
+        path: '',
+        redirectTo: CategoryRoutingName.ACCOMMODATION,
+        pathMatch: 'full',
+      },
+      {
         path: CategoryRoutingName.ACCOMMODATION,
         loadChildren: () =>
           import('./accommodation-form/accommodation-form.module').then((m) => m.AccommodationFormComponentModule),

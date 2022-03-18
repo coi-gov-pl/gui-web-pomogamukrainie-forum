@@ -10,6 +10,11 @@ const routes: Routes = [
     component: FindHelpComponent,
     children: [
       {
+        path: '',
+        redirectTo: CategoryRoutingName.ACCOMMODATION,
+        pathMatch: 'full',
+      },
+      {
         path: CategoryRoutingName.ACCOMMODATION,
         loadChildren: () =>
           import('./accommodation-search/accommodation-search.module').then((m) => m.AccommodationSearchModule),
