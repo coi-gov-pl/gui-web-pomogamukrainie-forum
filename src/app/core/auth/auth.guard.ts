@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, CanLoad } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, CanLoad, Route, RouterStateSnapshot, UrlSegment } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { EnvironmentType } from 'src/environments/model';
 import { AuthService } from './auth.service';
@@ -8,7 +8,7 @@ import { AuthService } from './auth.service';
 export class AuthGuard implements CanActivate, CanLoad {
   constructor(private readonly authService: AuthService) {}
 
-  canActivate(): boolean {
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     // dev
     if (environment.environmentType === EnvironmentType.OFFAUTH) {
       return true;
@@ -16,11 +16,11 @@ export class AuthGuard implements CanActivate, CanLoad {
     if (this.authService.isLoggedIn()) {
       return true;
     }
-    this.authService.login();
+    this.authService.login(state.url);
     return false;
   }
 
-  canLoad(): boolean {
+  canLoad(route: Route, segments: UrlSegment[]) {
     // dev
     if (environment.environmentType === EnvironmentType.OFFAUTH) {
       return true;
@@ -28,7 +28,7 @@ export class AuthGuard implements CanActivate, CanLoad {
     if (this.authService.isLoggedIn()) {
       return true;
     }
-    this.authService.login();
+    this.authService.login(`/${route.path}`);
     return false;
   }
 }
