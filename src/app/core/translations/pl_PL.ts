@@ -98,4 +98,5 @@ export default {
   YES: 'Tak',
   NO: 'Nie',
   PLACEHOLDER_LOCATION: 'Np. Rzeszów, podkarpackie',
+  CHANCELLERY_OF_PRIME_MINISTER: 'Kancelaria Prezesa Rady Ministrów',
 };
