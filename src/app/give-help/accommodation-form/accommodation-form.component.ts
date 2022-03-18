@@ -4,9 +4,9 @@ import { AccommodationOfferDefinitionDTO } from '../../core/api/model/accommodat
 import { PREFIXES, LANGUAGES, LENGTHOFSTAY } from '@app/shared/consts';
 import { AccommodationsResourceService } from '@app/core/api';
 import { OFFER_SENT_ALERT } from '@app/shared/consts';
-import { CorePath } from '@app/shared/models/core-path.enum';
+import { CorePath } from '@app/shared/models/core-path.model';
 import { SnackbarService } from '@app/shared/services/snackbar.service';
-import { ALERT_TYPES } from '@app/shared/models/temporary-models';
+import { ALERT_TYPES } from '@app/shared/models/';
 import { take } from 'rxjs/operators';
 import { Router } from '@angular/router';
 // Waiting for TransportOfferDefinitionDTO receive a phoneNumber prop

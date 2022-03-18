@@ -5,9 +5,9 @@ import { MaterialAidOfferDefinitionDTO, MaterialAidResourceService } from '@app/
 import { PREFIXES } from '@app/shared/consts';
 import { defaults } from '@app/shared/utils';
 import { OFFER_SENT_ALERT } from '@app/shared/consts';
-import { CorePath } from '@app/shared/models/core-path.enum';
+import { CorePath } from '@app/shared/models/core-path.model';
 import { SnackbarService } from '@app/shared/services/snackbar.service';
-import { ALERT_TYPES } from '@app/shared/models/temporary-models';
+import { ALERT_TYPES } from '@app/shared/models';
 import { take } from 'rxjs/operators';
 // Waiting for TransportOfferDefinitionDTO receive a phoneNumber prop
 interface MaterialAidOfferDefinition extends MaterialAidOfferDefinitionDTO {

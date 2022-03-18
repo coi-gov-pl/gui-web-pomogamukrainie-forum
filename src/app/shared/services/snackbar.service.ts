@@ -7,7 +7,7 @@ import {
 } from '@angular/material/snack-bar';
 import { SnackAlertComponent } from '../components/snackbar/snackbar.component';
 import { OFFER_SENT_ALERT } from '../consts';
-import { ALERT_TYPES } from '../models/temporary-models';
+import { ALERT_TYPES } from '../models';
 
 @Injectable({
   providedIn: 'root',

@@ -1,4 +1,4 @@
-import { Prefix, Option, Alert } from './models/temporary-models';
+import { Prefix, Option, Alert } from './models';
 import { LanguageCode, LanguageNames } from '@app/core/translations';
 import { AccommodationOffer, AccommodationOfferDefinitionDTO } from '@app/core/api';
 import HostLanguageEnum = AccommodationOfferDefinitionDTO.HostLanguageEnum;
