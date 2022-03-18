@@ -1,5 +1,5 @@
 <mat-card>
-  <form (submitOffer)="handleSubmit()" #materialAidForm="ngForm">
+  <form (submit)="handleSubmit()" #materialAidForm="ngForm">
     <div class="row">
       <div class="col-md-12">
         <label>
@@ -46,22 +46,13 @@
         </mat-form-field>
       </div>
       <div class="col-md-6">
-        <label
-          ><b>{{ "LOCATION" | translate }}:</b></label
-        >
-        <mat-form-field appearance="outline">
-          <input
-            matInput
-            placeholder="{{ 'PLACEHOLDER_LOCATION' | translate }}"
-            name="location"
-            [(ngModel)]="data.location"
-            required
-            #location="ngModel"
-          />
-          <mat-error>
-            <app-field-error [model]="location"></app-field-error>
-          </mat-error>
-        </mat-form-field>
+        <app-cities-search
+          [(ngModel)]="data.location"
+          name="location"
+          [placeholder]="'PLACEHOLDER_LOCATION' | translate"
+          [label]="'LOCATION' | translate"
+          required
+        ></app-cities-search>
       </div>
     </div>
     <div class="row">

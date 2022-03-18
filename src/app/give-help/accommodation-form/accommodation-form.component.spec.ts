@@ -3,6 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { AccommodationFormComponent } from './accommodation-form.component';
+import { FormsModule } from '@angular/forms';
 
 describe('AccommodationFormComponent', () => {
   let component: AccommodationFormComponent;
@@ -11,7 +12,7 @@ describe('AccommodationFormComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [AccommodationFormComponent],
-      imports: [TranslateModule.forRoot(), HttpClientTestingModule],
+      imports: [TranslateModule.forRoot(), HttpClientTestingModule, FormsModule],
     }).compileComponents();
   });
 
