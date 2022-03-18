@@ -12,6 +12,7 @@ import { SiteHeaderModule } from '@app/core/site-header';
 import { UrlHelperModule } from '@app/core/url';
 import { AuthModule } from '@app/core/auth';
 import { InterceptorModule } from '@app/core/interceptor';
+import { SiteFooterModule } from '@app/core/site-footer';
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,6 +28,7 @@ import { InterceptorModule } from '@app/core/interceptor';
     UrlHelperModule,
     AuthModule,
     InterceptorModule,
+    SiteFooterModule,
   ],
   bootstrap: [AppComponent],
 })

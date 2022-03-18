@@ -1,0 +1,24 @@
+<footer>
+  <nav class="navbar">
+    <div class="container">
+      <div class="items-wrapper">
+        <img class="navbar-item emblem" [src]="'herb.png' | path: 'imagesPath'" alt="emblem" />
+        <span class="navbar-item gov">{{ "GOV" | translate }}</span>
+      </div>
+      <div class="items-wrapper">
+        <a href="#" class="navbar-item ukraine-help">{{ "HELP_FOR_UKRAINE" | translate }}</a>
+        <a href="#" class="navbar-item">{{ "ANNOUNCEMENTS" | translate }}</a>
+        <a href="#" class="navbar-item">{{ "HUMANITY_TRANSPORT" | translate }}</a>
+        <a href="#" class="navbar-item">{{ "STATEMENT" | translate }}</a>
+        <a href="#" class="navbar-item">{{ "CONSENT" | translate }}</a>
+        <a href="#" class="navbar-item">{{ "POLICY" | translate }}</a>
+        <a [routerLink]="[aboutPath]" class="navbar-item">{{ "ABOUT_APP" | translate }}</a>
+      </div>
+      <div class="items-wrapper">
+        <a href="#" class="navbar-item">
+          <img class="" [src]="'coi.svg' | path: 'imagesPath'" alt="COI" />
+        </a>
+      </div>
+    </div>
+  </nav>
+</footer>

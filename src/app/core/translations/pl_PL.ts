@@ -98,4 +98,30 @@ export default {
   CONFIRM_REMOVE_AD: 'Usunąć to ogłoszenie?',
   YES: 'Tak',
   NO: 'Nie',
+  ABOUT_APP: 'O projekcie',
+  HELP_FOR_UKRAINE: 'Pomagam Ukrainie',
+  HUMANITY_TRANSPORT: 'Konwój humanitarny',
+  POLICY: 'Polityka Prywatności',
+  GOV: 'gov.pl',
+  HOSTING: 'Hosting',
+  AZURE: 'Azure',
+  ANGULAR: 'Angular',
+  FRONTED: 'Frontend',
+  BACKEND: 'Backend',
+  JAVA: 'Java 17 + PostgreSQL 13',
+  KEYCLOCK: 'Keycloack - serwer autoryzacyjny (integracja z Węzłem Krajowym)',
+  DEV_TEAM: 'Zespół projektowy',
+  TECH_STACK: 'Zastosowane technologie',
+  COI: 'Centralny Ośrodek Informatyki',
+  SYSOPS_DEVOPS: 'Fundacja SysOps/DevOps Polska',
+  SNOWFLAKE: 'Snowflake Poland',
+  WARSAW_JS: 'WarsawJs',
+  WEBSCOUTS: 'WebScouts',
+  ORDER_BY: 'W kolejności alfabetycznej',
+  PARTICIPANTS: 'Podmioty biorące udział w projekcie',
+  ABOUT_APP_DESCRIPTION:
+    'Wojna na Ukrainie spowodowała napływ uchodźców do Polski. Instytucje rządowe, pozarządowe i zwykli obywatele rzucili się do pomocy - oferują m.in. noclegi, transport i pomoc materialną. Różnego rodzaju akcje oddolne nie są centralnie koordynowane. Brakuje systemu informatycznego, który pozwoli na dodawanie w bezpieczny sposób ogłoszeń przez osoby oferujące pomoc i kontaktowanie się z nimi przez osoby uciekające z Ukrainy.' +
+    '\n' +
+    '\n' +
+    'COI (Centralny Ośrodek Informatyki) wraz z zespołami ze strony publicznej budują serwis ogłoszeniowy, który będzie mapował konkretne osoby potrzebujące pomocy z konkretnymi osobami oferującymi pomoc.',
 };

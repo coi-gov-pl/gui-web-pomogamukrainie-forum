@@ -1,0 +1,44 @@
+:host {
+  width: 100%;
+  font-family: var(--font-roboto);
+
+  .container {
+    max-width: var(--width-lg);
+  }
+
+  header {
+    text-align: center;
+    padding: 40px;
+  }
+
+  .content-wrapper {
+    padding: 26px;
+    color: #052c65;
+
+    .title {
+      text-align: left;
+      font-size: 20px;
+      font-weight: bold;
+      padding-bottom: 24px;
+    }
+
+    .subtitle {
+      font-weight: bold;
+      font-size: 15px;
+      padding-top: 28px;
+    }
+
+    .text {
+      font-size: 15px;
+
+      a {
+        text-decoration: none;
+        color: #052c65;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
