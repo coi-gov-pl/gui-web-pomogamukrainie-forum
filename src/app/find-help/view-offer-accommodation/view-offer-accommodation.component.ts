@@ -37,6 +37,10 @@ export class ViewOfferAccommodationComponent implements OnInit {
       .catch((e) => console.error(e));
   }
 
+  getListUrl(): string {
+    return this.router.url.replace(/\/[^/]+$/, '');
+  }
+
   getAccomodationOffer() {
     this.accommodationsResourceService.getAccommodations(this.offerId).subscribe((response) => {
       this.data = response;
