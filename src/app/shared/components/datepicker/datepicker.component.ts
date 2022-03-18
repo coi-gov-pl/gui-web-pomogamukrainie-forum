@@ -1,11 +1,15 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
+import { DateAdapter } from '@angular/material/core';
+import { Moment } from 'moment';
 
 @Component({
   selector: 'app-datepicker',
   templateUrl: './datepicker.component.html',
   styleUrls: ['./datepicker.component.scss'],
 })
-export class DatepickerComponent {
+export class DatepickerComponent implements OnDestroy {
   @Input()
   date: string | undefined;
   @Input() required = false;
@@ -15,16 +19,32 @@ export class DatepickerComponent {
 
   dateModel: Date | undefined;
 
-  onDatePickerChange(newValue: Date) {
-    this.dateModel = newValue;
+  langChangeSub: Subscription;
 
-    // See https://stackoverflow.com/a/34290167/369687
-    this.date = [
-      newValue.getFullYear(),
-      ('0' + (newValue.getMonth() + 1)).slice(-2),
-      ('0' + newValue.getDate()).slice(-2),
-    ].join('-');
+  constructor(private translate: TranslateService, private dateAdapter: DateAdapter<Date>) {
+    const currentLang = translate.currentLang ?? translate.getBrowserCultureLang();
+    this.setLocale(currentLang.split('_')[0]);
+    this.langChangeSub = translate.onLangChange.subscribe((event: LangChangeEvent) => {
+      this.setLocale(event.lang.split('_')[0]);
+    });
+  }
 
-    this.dateChange.emit(this.date);
+  setLocale(locale: string) {
+    this.dateAdapter.setLocale(locale);
+  }
+
+  onDatePickerChange(ev: any) {
+    debugger;
+    const newValue: Moment = ev.value;
+    if (newValue?.isValid()) {
+      this.dateModel = newValue?.toDate();
+      this.dateChange.emit(newValue?.format('YYYY-MM-DD'));
+    } else {
+      this.dateChange.emit(undefined);
+    }
+  }
+
+  ngOnDestroy() {
+    this.langChangeSub.unsubscribe();
   }
 }

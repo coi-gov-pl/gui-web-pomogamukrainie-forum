@@ -2,7 +2,7 @@
   <input
     matInput
     [ngModel]="dateModel"
-    (ngModelChange)="onDatePickerChange($event)"
+    (dateChange)="onDatePickerChange($event)"
     [matDatepicker]="picker"
     name="transportDate"
     [placeholder]="'PLACEHOLDER_CHOOSE_DATE' | translate"
