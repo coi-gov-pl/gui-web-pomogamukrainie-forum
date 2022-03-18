@@ -23,7 +23,7 @@ import { InterceptorModule } from '@app/core/interceptor';
     MatCardModule,
     SiteHeaderModule,
     TranslationsModule,
-    ApiModule.forRoot(() => new Configuration({ basePath: '' })),
+    ApiModule.forRoot(() => new Configuration({ basePath: '/ogloszenia' })),
     UrlHelperModule,
     AuthModule,
     InterceptorModule,
