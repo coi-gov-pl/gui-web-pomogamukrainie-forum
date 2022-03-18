@@ -1,0 +1,12 @@
+import { Component } from '@angular/core';
+import { CorePath } from '@app/shared/models';
+
+@Component({
+  selector: 'app-site-footer',
+  templateUrl: './site-footer.component.html',
+  styleUrls: ['./site-footer.component.scss'],
+})
+export class SiteFooterComponent {
+  public aboutPath: CorePath = CorePath.About;
+  constructor() {}
+}

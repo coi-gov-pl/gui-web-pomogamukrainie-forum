@@ -8,6 +8,11 @@
   flex-direction: column;
   align-items: center;
 }
-main.header-padding {
+main.header-footer-padding {
   padding-top: var(--header-height);
+  padding-bottom: 120px;
+}
+
+main.only-footer-padding {
+  padding-bottom: 120px;
 }

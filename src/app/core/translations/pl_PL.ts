@@ -122,6 +122,32 @@ export default {
   INFORMATOR_EDUCATION_HEADER: 'Edukacja',
   INFORMATOR_EDUCATION_DESC:
     '<ol><li>Dzieci w wieku 7-18 lat mogą bezpłatnie uczyć się w polskich szkołach. Szczegóły znajdziesz na stronie <a href="//gov.pl/web/edukacja-i-nauka/informacja-dla-rodzicow-dzieci-przybywajacych-z-ukrainy" target="_blank">gov.pl/web/edukacja-i-nauka/informacja-dla-rodzicow-dzieci-przybywajacych-z-ukrainy</a></li><li>Informacje dla studentów i naukowców z Ukrainy o kontynuacji nauki i pracy naukowej w Polsce znajdują się na stronie <a href="//gov.pl/web/edukacja-i-nauka/informacja-dla-studentow-i-naukowcow-przybywajacych-z-ukrainy" target="_blank">gov.pl/web/edukacja-i-nauka/informacja-dla-studentow-i-naukowcow-przybywajacych-z-ukrainy</a></li></ol>',
+  ABOUT_APP: 'O projekcie',
+  HELP_FOR_UKRAINE: 'Pomagam Ukrainie',
+  HUMANITY_TRANSPORT: 'Konwój humanitarny',
+  POLICY: 'Polityka Prywatności',
+  GOV: 'gov.pl',
+  HOSTING: 'Hosting',
+  AZURE: 'Azure',
+  ANGULAR: 'Angular',
+  FRONTED: 'Frontend',
+  BACKEND: 'Backend',
+  JAVA: 'Java 17 + PostgreSQL 13',
+  KEYCLOCK: 'Keycloack - serwer autoryzacyjny (integracja z Węzłem Krajowym)',
+  DEV_TEAM: 'Zespół projektowy',
+  TECH_STACK: 'Zastosowane technologie',
+  COI: 'Centralny Ośrodek Informatyki',
+  SYSOPS_DEVOPS: 'Fundacja SysOps/DevOps Polska',
+  SNOWFLAKE: 'Snowflake Poland',
+  WARSAW_JS: 'WarsawJs',
+  WEBSCOUTS: 'WebScouts',
+  ORDER_BY: 'W kolejności alfabetycznej',
+  PARTICIPANTS: 'Podmioty biorące udział w projekcie',
+  ABOUT_APP_DESCRIPTION:
+    'Wojna na Ukrainie spowodowała napływ uchodźców do Polski. Instytucje rządowe, pozarządowe i zwykli obywatele rzucili się do pomocy - oferują m.in. noclegi, transport i pomoc materialną. Różnego rodzaju akcje oddolne nie są centralnie koordynowane. Brakuje systemu informatycznego, który pozwoli na dodawanie w bezpieczny sposób ogłoszeń przez osoby oferujące pomoc i kontaktowanie się z nimi przez osoby uciekające z Ukrainy.' +
+    '\n' +
+    '\n' +
+    'COI (Centralny Ośrodek Informatyki) wraz z zespołami ze strony publicznej budują serwis ogłoszeniowy, który będzie mapował konkretne osoby potrzebujące pomocy z konkretnymi osobami oferującymi pomoc.',
   OFFER_SENT_ALERT_HEADER: 'Twoje głoszenie zostało opublikowane',
   OFFER_SENT_ALERT_CONTENT:
     'Sprawdzaj swoją skrzynkę i – jeśli podajesz numer – odbieraj telefon. W każdej chwili ktoś może odpowiedzieć na twoje ogłoszenie.',

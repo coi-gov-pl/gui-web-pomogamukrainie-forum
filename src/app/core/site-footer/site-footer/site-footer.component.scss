@@ -1,0 +1,98 @@
+@import "node_modules/bootstrap/scss/bootstrap-grid";
+@import "vars";
+
+footer {
+  position: fixed;
+  bottom: 0;
+  min-height: 82px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  @include media-breakpoint-down(lg) {
+    position: static;
+    bottom: unset;
+  }
+
+  .navbar {
+    width: 100%;
+
+    .container {
+      flex-wrap: nowrap;
+
+      .items-wrapper:nth-child(1) {
+        display: flex;
+        align-items: center;
+      }
+      .items-wrapper:nth-child(2) {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+
+        @include media-breakpoint-down(lg) {
+          justify-content: flex-start;
+        }
+      }
+
+      .navbar-item {
+        font-size: 12px;
+        letter-spacing: 0.37px;
+        color: #040404;
+        font-family: $font-open-sans;
+        cursor: pointer;
+        margin-right: 15px;
+        text-decoration: none;
+        white-space: nowrap;
+
+        &.emblem {
+          width: 36px;
+          margin-right: 10px;
+          cursor: auto;
+        }
+
+        &.gov {
+          font-weight: bold;
+          font-size: 18px;
+          letter-spacing: 0.56px;
+          margin-right: 42px;
+          cursor: auto;
+        }
+
+        &.ukraine-help {
+          margin-right: 37px;
+
+          @include media-breakpoint-down(xl) {
+            margin-right: unset;
+          }
+        }
+      }
+    }
+
+    @include media-breakpoint-down(lg) {
+      .container {
+        flex-wrap: wrap;
+        padding: 0 50px;
+      }
+
+      .items-wrapper:nth-child(1),
+      .items-wrapper:nth-child(3) {
+        margin-top: 20px;
+        width: 50%;
+      }
+
+      .items-wrapper:nth-child(2) {
+        order: 3;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        margin-top: 20px;
+
+        .navbar-item {
+          margin-right: 0;
+          width: 50%;
+          margin-bottom: 15px;
+        }
+      }
+    }
+  }
+}
