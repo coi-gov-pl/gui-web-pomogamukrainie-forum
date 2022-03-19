@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 import { DateAdapter } from '@angular/material/core';
@@ -10,7 +10,7 @@ import { MatDatepickerInputEvent } from '@angular/material/datepicker';
   templateUrl: './datepicker.component.html',
   styleUrls: ['./datepicker.component.scss'],
 })
-export class DatepickerComponent implements OnDestroy {
+export class DatepickerComponent implements OnInit, OnDestroy {
   @Input()
   date: string | undefined;
   @Input() required = false;
@@ -20,13 +20,15 @@ export class DatepickerComponent implements OnDestroy {
 
   dateModel: Date | undefined;
 
-  langChangeSub: Subscription;
+  langChangeSub$!: Subscription;
 
-  constructor(private translate: TranslateService, private dateAdapter: DateAdapter<Date>) {
-    const currentLang = translate.currentLang ?? translate.getBrowserCultureLang();
-    this.setLocale(currentLang.split('_')[0]);
-    this.langChangeSub = translate.onLangChange.subscribe((event: LangChangeEvent) => {
-      this.setLocale(event.lang.split('_')[0]);
+  constructor(private translate: TranslateService, private dateAdapter: DateAdapter<Date>) {}
+
+  ngOnInit() {
+    const currentLang = this.translate.currentLang ?? this.translate.getBrowserCultureLang();
+    this.setLocale(currentLang);
+    this.langChangeSub$ = this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
+      this.setLocale(event.lang);
     });
   }
 
@@ -44,6 +46,6 @@ export class DatepickerComponent implements OnDestroy {
   }
 
   ngOnDestroy() {
-    this.langChangeSub.unsubscribe();
+    this.langChangeSub$.unsubscribe();
   }
 }
