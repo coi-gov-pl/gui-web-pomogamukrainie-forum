@@ -29,4 +29,8 @@ export default {
   FOR_CHILDREN: 'for kids',
   COSMETICS_AND_DOMESTIC_DETERGENTS: 'cosmetics and domestic detergents',
   FURNITURE: 'furniture',
+  ITEM_OF_PAGE: 'Advertisements on the site',
+  NEXT_PAGE: 'Next page',
+  PREVIOUS_PAGE: 'Previous page',
+  PAGE_OF: 'of',
 };

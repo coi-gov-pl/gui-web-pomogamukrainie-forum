@@ -14,6 +14,7 @@ import { SearchResultComponentModule } from '../search-result/search-result.modu
 import { CategoryNavigationComponentModule, CitiesSearchModule, MoreInfoLinkModule } from '@app/shared/components';
 import { TransportSearchFormComponent } from './transport-search-form/transport-search-form.component';
 import { DatepickerModule } from '@app/shared/components';
+import { PaginatorModule } from '@app/shared/components/paginator/paginator.module';
 
 @NgModule({
   declarations: [TransportSearchComponent, TransportSearchFormComponent],
@@ -35,6 +36,7 @@ import { DatepickerModule } from '@app/shared/components';
     MoreInfoLinkModule,
     CategoryNavigationComponentModule,
     DatepickerModule,
+    PaginatorModule,
   ],
 })
 export class TransportSearchModule {}

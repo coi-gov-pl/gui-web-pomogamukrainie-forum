@@ -99,4 +99,8 @@ export default {
   NO: 'Nie',
   PLACEHOLDER_LOCATION: 'Np. Rzeszów, podkarpackie',
   CHANCELLERY_OF_PRIME_MINISTER: 'Kancelaria Prezesa Rady Ministrów',
+  ITEM_OF_PAGE: 'Ogłoszeń na stronie:',
+  NEXT_PAGE: 'Następna strona',
+  PREVIOUS_PAGE: 'Poprzednia strona',
+  PAGE_OF: 'z',
 };

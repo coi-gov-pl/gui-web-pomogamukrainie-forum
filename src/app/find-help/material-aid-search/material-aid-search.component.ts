@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Pageable, MaterialAidOfferSearchCriteria, MaterialAidResourceService, MaterialAidOffer } from '@app/core/api';
+import { MaterialAidOffer, MaterialAidOfferSearchCriteria, MaterialAidResourceService, Pageable } from '@app/core/api';
 import { CategoryRoutingName, CorePath } from '@app/shared/models';
 
 @Component({
@@ -13,18 +13,24 @@ export class MaterialAidSearchComponent {
   loading = false;
   categoryRoutingName = CategoryRoutingName;
   corePath = CorePath;
+  searchCriteria: MaterialAidOfferSearchCriteria = {};
+  pagination: Pageable | undefined = {};
   constructor(private materialAidResourceService: MaterialAidResourceService) {}
 
-  search(searchCriteria: MaterialAidOfferSearchCriteria) {
+  search(searchCriteria?: MaterialAidOfferSearchCriteria, pagination?: Pageable) {
     this.loading = true;
 
+    this.searchCriteria.category = searchCriteria?.category || this.searchCriteria.category;
+    this.searchCriteria.location = searchCriteria?.location || this.searchCriteria.location;
+    this.pagination = pagination || this.pagination;
+
     const pageRequest: Pageable = {
-      // page?: number;
-      // size?: number;
-      // sort?: Array<string>;
+      page: pagination?.page,
+      size: this.pagination?.size,
+      sort: pagination?.sort,
     };
 
-    this.materialAidResourceService.listMaterialAid(pageRequest, searchCriteria).subscribe({
+    this.materialAidResourceService.listMaterialAid(pageRequest, this.searchCriteria).subscribe({
       next: (results) => {
         this.results = results.content ?? [];
         this.total = results.totalElements ?? 0;

@@ -1,0 +1,35 @@
+.container {
+  .paginator {
+    background: transparent;
+
+    .mat-paginator-container {
+      justify-content: space-between;
+
+      .mat-paginator-page-size-label {
+        font-size: 15px;
+        color: var(--c-darkblue);
+      }
+
+      .mat-form-field-flex {
+        padding: 0.3em 0.75em 0.4em 0.75em;
+
+        .mat-form-field-outline {
+          background: white;
+        }
+      }
+
+      .mat-paginator-range-actions {
+        font-size: 15px;
+        color: var(--c-darkblue);
+
+        .mat-button-disabled {
+          display: none;
+        }
+
+        .mat-paginator-range-label {
+          margin: 0;
+        }
+      }
+    }
+  }
+}

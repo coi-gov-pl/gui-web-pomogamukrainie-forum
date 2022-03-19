@@ -29,4 +29,8 @@ export default {
   FOR_CHILDREN: 'для дітей',
   COSMETICS_AND_DOMESTIC_DETERGENTS: 'побутова хімія',
   FURNITURE: 'меблі',
+  ITEM_OF_PAGE: 'Оголошень на сторінці:',
+  NEXT_PAGE: 'Наступна сторінка',
+  PREVIOUS_PAGE: 'Попередня сторінка',
+  PAGE_OF: 'з',
 };
