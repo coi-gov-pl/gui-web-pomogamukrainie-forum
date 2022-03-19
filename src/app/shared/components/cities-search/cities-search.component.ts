@@ -20,7 +20,7 @@ import { GoogleLanguageCode } from '@app/core/translations';
   ],
 })
 export class CitiesSearchComponent implements OnInit, ControlValueAccessor {
-  private readonly api_key = '';
+  private readonly api_key = 'AIzaSyCMtaoORN7gC8e3W70u23A7tSfk-5OrgsA';
   constructor(private cityLookupResourceService: CityLookupResourceService, private http: HttpClient) {}
 
   @Input() placeholder = '';
@@ -86,9 +86,13 @@ export class CitiesSearchComponent implements OnInit, ControlValueAccessor {
   }
 
   getCities(value: string, language: GoogleLanguageCode): Observable<AutocompletePrediction[]> {
-    const params = new HttpParams({
-      fromString: `input=${value}&fields&types=%28cities%29&key=${this.api_key}&components=country:pl&language=${language}`,
-    });
+    let params = new HttpParams();
+
+    params = params.append('input', value);
+    params = params.append('types', '(cities)');
+    params = params.append('key', this.api_key);
+    params = params.append('components', 'country:pl');
+    params = params.append('language', 'uk');
 
     return this.http
       .get<{ predictions: AutocompletePrediction[] }>('https://maps.googleapis.com/maps/api/place/autocomplete/json', {
