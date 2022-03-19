@@ -4,6 +4,7 @@ import { TransportResourceService } from '@app/core/api';
 import { TransportOffer } from '@app/core/api';
 import { CategoryRoutingName } from '@app/shared/models';
 import { defaults } from '@app/shared/utils';
+// TODO BE adding phoneNumber inprogress
 interface TransportOfferPhone extends TransportOffer {
   phoneNumber?: string;
 }

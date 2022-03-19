@@ -4,6 +4,7 @@ import { AccommodationsResourceService } from '@app/core/api';
 import { AccommodationOffer } from '@app/core/api';
 import { CategoryRoutingName } from '@app/shared/models';
 import { defaults } from '@app/shared/utils';
+// TODO BE adding phoneNumber inprogress
 interface AccommodationOfferPhone extends AccommodationOffer {
   phoneNumber?: string;
 }

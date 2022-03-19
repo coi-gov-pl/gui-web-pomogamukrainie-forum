@@ -4,6 +4,7 @@ import { MaterialAidResourceService } from '@app/core/api';
 import { MaterialAidOffer } from '@app/core/api';
 import { CategoryRoutingName } from '@app/shared/models';
 import { defaults } from '@app/shared/utils';
+// TODO BE adding phoneNumber inprogress
 interface MaterialAidOfferPhone extends MaterialAidOffer {
   phoneNumber?: string;
 }
