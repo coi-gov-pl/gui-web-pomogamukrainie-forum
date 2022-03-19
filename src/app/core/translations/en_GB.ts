@@ -94,4 +94,5 @@ export default {
   NEXT_PAGE: 'Next page',
   PREVIOUS_PAGE: 'Previous page',
   PAGE_OF: 'of',
+  SELECT_PAGE: 'Select page',
 };

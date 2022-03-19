@@ -159,4 +159,5 @@ export default {
   NEXT_PAGE: 'Następna strona',
   PREVIOUS_PAGE: 'Poprzednia strona',
   PAGE_OF: 'z',
+  SELECT_PAGE: 'Wybierz stronę',
 };

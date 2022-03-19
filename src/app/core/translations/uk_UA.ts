@@ -94,4 +94,5 @@ export default {
   NEXT_PAGE: 'Наступна сторінка',
   PREVIOUS_PAGE: 'Попередня сторінка',
   PAGE_OF: 'з',
+  SELECT_PAGE: 'Вибери сторінку',
 };
