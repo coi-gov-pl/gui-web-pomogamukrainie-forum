@@ -1,0 +1,29 @@
+@import "node_modules/bootstrap/scss/bootstrap-grid";
+
+:host::ng-deep {
+  .mat-expansion-indicator::after {
+    color: var(--c-darkblue);
+    padding: 4px;
+  }
+  .mat-icon {
+    color: var(--c-blue);
+    margin-right: 10px;
+    @include media-breakpoint-up(lg) {
+      margin-right: 16px;
+    }
+  }
+  .mat-expansion-panel-body {
+    color: var(--base-font-color);
+    font-size: 15px;
+    padding: 0 24px 24px;
+    overflow-wrap: break-word;
+    ul,
+    ol {
+      padding-left: 0;
+      list-style-position: inside;
+      li {
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
