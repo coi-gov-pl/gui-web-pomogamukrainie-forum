@@ -31,6 +31,10 @@ export class ViewOfferTransportComponent implements OnInit {
       .catch((e) => console.error(e));
   }
 
+  getListUrl(): string {
+    return this.router.url.replace(/\/[^/]+$/, '');
+  }
+
   getTransportOffer() {
     this.transportResourceService.getTransport(this.offerId).subscribe((response) => {
       this.data = response;

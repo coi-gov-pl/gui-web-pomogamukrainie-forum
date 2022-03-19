@@ -1,8 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, filter, switchMap, tap } from 'rxjs';
 import { displayLocationOption, Location } from './display-location-option';
 import { CityLookupResourceService } from '@app/core/api';
+import { MatAutocompleteTrigger } from '@angular/material/autocomplete';
 
 @Component({
   selector: 'app-cities-search',
@@ -21,6 +22,8 @@ export class CitiesSearchComponent implements OnInit, ControlValueAccessor {
 
   @Input() placeholder = '';
   @Input() label = '';
+
+  @ViewChild('autoCompleteInput', { read: MatAutocompleteTrigger }) autoComplete?: MatAutocompleteTrigger;
 
   options: Location[] = [];
   selectedOption?: Location;
@@ -49,7 +52,7 @@ export class CitiesSearchComponent implements OnInit, ControlValueAccessor {
     return displayLocationOption(location);
   }
 
-  onChange: (value: Location) => void = () => {};
+  onChange: (value: Location | undefined) => void = () => {};
 
   registerOnChange(fn: any): void {
     this.onChange = fn;
@@ -70,6 +73,19 @@ export class CitiesSearchComponent implements OnInit, ControlValueAccessor {
 
   writeValue(location: Location): void {
     this.selectedOption = location;
+  }
+
+  clearValue(): void {
+    this.selectedOption = undefined;
+    this.formControl.setValue('');
+    this.onChange(undefined);
+
+    // This doesn't work without a setTimeout.
+    // Unfortunately, with `setTimeout` there's sometimes
+    // small flickering. Better solutions welcome.
+    setTimeout(() => {
+      this.autoComplete?.closePanel();
+    });
   }
 
   onSelected(option: Location) {

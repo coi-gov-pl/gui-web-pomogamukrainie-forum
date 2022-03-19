@@ -32,6 +32,13 @@ const routes: Routes = [
       title: BreadcrumbLabels.MY_ACCOUNT,
     },
   },
+  {
+    path: CorePath.Statement,
+    loadChildren: () => import('./statement/statement.module').then((m) => m.StatementModule),
+    data: {
+      title: BreadcrumbLabels.STATEMENT,
+    },
+  },
 ];
 
 @NgModule({

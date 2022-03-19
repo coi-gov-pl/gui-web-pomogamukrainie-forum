@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Location } from '@app/core/api';
+import { StatementAnchors } from '@app/shared/models';
 
 export interface AccommodationQuery {
   location?: Location;
@@ -15,4 +16,5 @@ export class AccommodationSearchFormComponent {
   data: AccommodationQuery = {};
   @Output()
   search = new EventEmitter<AccommodationQuery>();
+  statementAnchor: string = StatementAnchors.ACCOMMODATION;
 }

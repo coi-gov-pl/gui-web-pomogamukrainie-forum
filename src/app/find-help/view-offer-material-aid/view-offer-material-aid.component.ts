@@ -31,6 +31,10 @@ export class ViewOfferMaterialAidComponent implements OnInit {
       .catch((e) => console.error(e));
   }
 
+  getListUrl(): string {
+    return this.router.url.replace(/\/[^/]+$/, '');
+  }
+
   getMaterialAidOffer() {
     this.materialAidResourceService.getMaterialAid(this.offerId).subscribe((response) => {
       this.data = response;

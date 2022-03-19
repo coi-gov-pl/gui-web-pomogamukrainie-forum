@@ -6,3 +6,4 @@ export * from './core-path.model';
 export * from './offer.model';
 export * from './routing-category-name.model';
 export * from './snackbar.model';
+export * from './statement-anchors.model';

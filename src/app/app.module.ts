@@ -24,7 +24,7 @@ import { SnackbarAlertModule } from '@app/shared/components';
     MatCardModule,
     SiteHeaderModule,
     TranslationsModule,
-    ApiModule.forRoot(() => new Configuration({ basePath: '' })),
+    ApiModule.forRoot(() => new Configuration({ basePath: '/ogloszenia' })),
     UrlHelperModule,
     AuthModule,
     InterceptorModule,
