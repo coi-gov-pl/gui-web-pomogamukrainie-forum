@@ -122,4 +122,8 @@ export default {
   INFORMATOR_EDUCATION_HEADER: 'Edukacja',
   INFORMATOR_EDUCATION_DESC:
     '<ol><li>Dzieci w wieku 7-18 lat mogą bezpłatnie uczyć się w polskich szkołach. Szczegóły znajdziesz na stronie <a href="//gov.pl/web/edukacja-i-nauka/informacja-dla-rodzicow-dzieci-przybywajacych-z-ukrainy" target="_blank">gov.pl/web/edukacja-i-nauka/informacja-dla-rodzicow-dzieci-przybywajacych-z-ukrainy</a></li><li>Informacje dla studentów i naukowców z Ukrainy o kontynuacji nauki i pracy naukowej w Polsce znajdują się na stronie <a href="//gov.pl/web/edukacja-i-nauka/informacja-dla-studentow-i-naukowcow-przybywajacych-z-ukrainy" target="_blank">gov.pl/web/edukacja-i-nauka/informacja-dla-studentow-i-naukowcow-przybywajacych-z-ukrainy</a></li></ol>',
+  NO_RESULTS_HEADER: 'Nie znaleźliśmy ogłoszeń spełniających podane kryteria',
+  NO_RESULTS_TEXT_START: 'Zmień kryteria wyszukiwania, lub',
+  NO_RESULTS_TEXT_LINK: 'przejdź do informatora',
+  NO_RESULTS_TEXT_END: 'by wyświetlić inne dostępne formy pomocy dla tej kategorii.',
 };
