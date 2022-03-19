@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
   constructor(private router: Router, private translateService: TranslateService) {}
 
   getContentClass() {
-    return this.router.url === '/' ? '' : 'header-padding';
+    return this.router.url === '/' ? 'only-footer-padding' : 'header-footer-padding';
   }
 
   ngOnInit() {

@@ -1,4 +1,4 @@
-import { CategoryNameKey } from './category-name-key.enum';
+import { CategoryNameKey } from './category-name-key.model';
 
 export interface Category {
   name: CategoryNameKey;
