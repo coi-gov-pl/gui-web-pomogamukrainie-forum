@@ -35,13 +35,19 @@ export class CitiesSearchComponent implements OnInit, ControlValueAccessor {
   ngOnInit(): void {
     this.formControl.valueChanges
       .pipe(
+        tap((value) => {
+          if (typeof value === 'string') {
+            this.selectedOption = undefined;
+            this.onChange(undefined);
+          }
+        }),
         filter((value) => typeof value === 'string' && value.length >= this.queryMinLength),
         distinctUntilChanged(),
         debounceTime(400),
         tap(() => {
           this.options = [];
         }),
-        switchMap((value) => this.getData(value))
+        switchMap((value: string) => this.getData(value))
       )
       .subscribe((data) => {
         this.options = data.cities ?? [];
