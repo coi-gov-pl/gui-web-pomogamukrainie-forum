@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { UserInfo } from '@app/core/api';
+import { Component, OnInit } from '@angular/core';
+import { UserInfo, UsersResourceService } from '@app/core/api';
 import { AuthService } from '@app/core/auth';
 
 @Component({
@@ -7,10 +7,16 @@ import { AuthService } from '@app/core/auth';
   templateUrl: './my-account-settings.component.html',
   styleUrls: ['./my-account-settings.component.scss'],
 })
-export class MyAccountSettingsComponent {
-  @Input() public myAccountPersonalData: UserInfo | null | undefined;
+export class MyAccountSettingsComponent implements OnInit {
+  myAccountPersonalData: UserInfo | undefined;
 
-  constructor(private readonly authService: AuthService) {}
+  constructor(private usersResourceService: UsersResourceService, private readonly authService: AuthService) {}
+
+  ngOnInit(): void {
+    this.usersResourceService.meUsers().subscribe((user) => {
+      this.myAccountPersonalData = user;
+    });
+  }
 
   public changeEmail(): void {
     this.authService.updateProfile();
