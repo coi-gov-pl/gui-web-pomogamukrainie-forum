@@ -1,0 +1,12 @@
+:host {
+  width: 100%;
+
+  .container {
+    max-width: var(--width-lg);
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+}

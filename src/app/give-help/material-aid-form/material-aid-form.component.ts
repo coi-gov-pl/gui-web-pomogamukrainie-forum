@@ -1,14 +1,17 @@
 import { Component } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { MaterialAidOfferDefinitionDTO, MaterialAidResourceService } from '@app/core/api';
-import { Location } from '@app/shared/components';
 import { PREFIXES } from '@app/shared/consts';
 import { defaults } from '@app/shared/utils';
-
-// interface MaterialAid {
-//   location: Location;
-//   category: MaterialAidOfferDefinitionDTO.CategoryEnum;
-// }
-
+import { CorePath } from '@app/shared/models/core-path.model';
+import { SnackbarService } from '@app/shared/services/snackbar.service';
+import { ALERT_TYPES } from '@app/shared/models';
+import { take } from 'rxjs/operators';
+// Waiting for TransportOfferDefinitionDTO receive a phoneNumber prop
+interface MaterialAidOfferDefinition extends MaterialAidOfferDefinitionDTO {
+  phoneNumber?: string;
+}
 const CATEGORIES = Object.entries(MaterialAidOfferDefinitionDTO.CategoryEnum).map(([key, value]) => ({
   key,
   value,
@@ -20,21 +23,39 @@ const CATEGORIES = Object.entries(MaterialAidOfferDefinitionDTO.CategoryEnum).ma
   styleUrls: ['./material-aid-form.component.scss'],
 })
 export class MaterialAidFormComponent {
-  data = defaults<MaterialAidOfferDefinitionDTO>({});
-  categories = CATEGORIES;
+  data = defaults<MaterialAidOfferDefinition>({});
+  CATEGORIES = CATEGORIES;
   PREFIXES = PREFIXES;
   phonePrefix: string = '48';
   phoneNumber: string = '';
-
-  constructor(private materialAidResourceService: MaterialAidResourceService) {}
+  loading: boolean = false;
+  constructor(
+    private router: Router,
+    private materialAidResourceService: MaterialAidResourceService,
+    private snackbarService: SnackbarService
+  ) {}
 
   onPhoneNumberChange(): void {
-    // Waiting for TransportOfferDefinitionDTO receive a phoneNumber prop
-    // this.data.phoneNumber = this.phonePrefix + this.phoneNumber;
+    this.data.phoneNumber = this.phonePrefix + this.phoneNumber;
   }
 
   handleSubmit() {
-    console.log('submit');
-    this.materialAidResourceService.postMaterialAidOfferMaterialAid(this.data).subscribe((response) => {});
+    this.loading = true;
+    this.materialAidResourceService
+      .postMaterialAidOfferMaterialAid(this.data)
+      .pipe(take(1))
+      .subscribe(
+        (response) => this.redirectOnSuccess(),
+        (error) => this.snackbarService.openSnack(error.message, ALERT_TYPES.ERROR)
+      )
+      .add(() => (this.loading = false));
+  }
+
+  redirectOnSuccess() {
+    this.router.navigate([CorePath.MyAccount]).then((navigated: boolean) => {
+      if (navigated) {
+        this.snackbarService.openSnackAlert(ALERT_TYPES.OFFER_SUCCESS);
+      }
+    });
   }
 }

@@ -17,6 +17,7 @@ import { AccomodationSearchRoutingModule } from './accomodation-search.routing.m
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ReplyOfferModule } from '../reply-offer/reply-offer.module';
+import { NoResultsModule } from '@app/shared/components/no-results/no-results.module';
 import { PaginatorModule } from '@app/shared/components/paginator/paginator.module';
 
 @NgModule({
@@ -48,6 +49,7 @@ import { PaginatorModule } from '@app/shared/components/paginator/paginator.modu
     TranslateModule,
     MatIconModule,
     ReplyOfferModule,
+    NoResultsModule,
     PaginatorModule,
   ],
 })

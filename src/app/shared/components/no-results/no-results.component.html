@@ -1,0 +1,8 @@
+<div class="no-results">
+  <h5>{{ "NO_RESULTS_HEADER" | translate }}</h5>
+  <p>
+    {{ "NO_RESULTS_TEXT_START" | translate }}
+    <a [routerLink]="['/' + corePath.Statement]" class="font-blue">{{ "NO_RESULTS_TEXT_LINK" | translate }}</a>
+    {{ "NO_RESULTS_TEXT_END" | translate }}
+  </p>
+</div>

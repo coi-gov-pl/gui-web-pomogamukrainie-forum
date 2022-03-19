@@ -1,6 +1,7 @@
 <mat-card>
   <app-material-aid-search-form (search)="search($event)"></app-material-aid-search-form>
 </mat-card>
+<app-no-results *ngIf="total === 0"></app-no-results>
 <div class="results" *ngIf="this.total && this.total >= 0" [class.loading]="loading">
   <div class="total">Lista ogłoszeń ({{ total }}):</div>
   <div>

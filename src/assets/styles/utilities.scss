@@ -25,6 +25,13 @@
 }
 
 .header-3 {
+  font-size: 18px;
+  @include media-breakpoint-up(lg) {
+    font-size: 20px;
+  }
+}
+
+.header-4 {
   font-size: 16px;
   @include media-breakpoint-up(lg) {
     font-size: 20px;
@@ -33,6 +40,10 @@
 
 .font-small {
   font-size: 13px;
+}
+
+.font-base {
+  font-size: var(--base-font-size);
 }
 
 .desktop-only {

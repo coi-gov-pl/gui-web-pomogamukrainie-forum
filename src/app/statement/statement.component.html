@@ -1,0 +1,19 @@
+<div class="container">
+  <app-breadcrumb></app-breadcrumb>
+  <header class="text-center mb-4">
+    <p class="font-small font-yellow fw-bold mb-1">{{ "HELPUA" | translate }}</p>
+    <h1 class="header-2 font-darkblue fw-bold">{{ "STATEMENT" | translate }}</h1>
+  </header>
+
+  <mat-accordion #accordion="matAccordion" multi>
+    <mat-expansion-panel *ngFor="let panel of accordionList" [expanded]="panel.isExpanded" [id]="panel.id">
+      <mat-expansion-panel-header>
+        <mat-panel-title class="py-3">
+          <mat-icon class="material-icons-outlined">{{ panel.icon }}</mat-icon>
+          <h2 class="header-3 font-darkblue fw-bold mb-0">{{ panel.title }}</h2>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div [innerHTML]="panel.content"></div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

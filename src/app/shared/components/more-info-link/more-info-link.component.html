@@ -1,4 +1,8 @@
-<a [href]="href" class="d-inline-flex align-items-center text-decoration-none pe-2 fw-bold">
+<a
+  routerLink="/{{ corePath.Statement }}"
+  fragment="{{ statementAnchor }}"
+  class="d-inline-flex align-items-center text-decoration-none pe-2 fw-bold"
+>
   <mat-icon fontSet="material-icons-outlined" class="me-1">info</mat-icon>
   {{ "MORE_SUPPORT_INFORMATION" | translate }}
 </a>

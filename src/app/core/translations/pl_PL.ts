@@ -48,16 +48,16 @@ export default {
   PLACEHOLDER_CHOOSE: 'Wybierz',
   LABEL_PHONE_NUMBER: 'Numer telefonu',
   LABEL_OFFER_DESCRIBTION: 'Treść ogłoszenia',
-  LABEL_OFFER_DESCRIBTION_MAXCHARS: '(do 80 znaków):',
+  LABEL_OFFER_DESCRIBTION_MAXCHARS: '(do 80 znaków)',
   OFFER_PUBLISH: 'Opublikuj ogłoszenie',
   LABEL_OFFER_TITLE: 'Tytuł ogłoszenia',
-  LABEL_OFFER_MAXCHARS: '(do 80 znaków):',
+  LABEL_OFFER_MAXCHARS: '(do 80 znaków)',
   PLACEHOLDER_OFFER_TITLE: 'Wpisz tytuł ogłosznia...',
   PLACEHOLDER_OFFER_DESCRIBTION: 'Wpisz swoje ogłoszenie...',
   LABEL_DATE: 'Data',
-  LABEL_POINT_LOCALISATION: 'Wskaż lokalizację:',
+  LABEL_POINT_LOCALISATION: 'Wskaż lokalizację',
   LABEL_LENGTH_OF_STAY: 'Czas pobytu',
-  LABEL_HOST_LANG: 'Język, w jakim mówi gospodarz:',
+  LABEL_HOST_LANG: 'Język, w jakim mówi gospodarz',
   MAIN_PAGE: 'Strona Główna',
   PLACEHOLDER_LOCATION_2: 'Np. Warszawa, mazowieckie',
   EDIT_ANNOUNCEMENT: 'Edytuj',
@@ -99,6 +99,62 @@ export default {
   NO: 'Nie',
   PLACEHOLDER_LOCATION: 'Np. Rzeszów, podkarpackie',
   CHANCELLERY_OF_PRIME_MINISTER: 'Kancelaria Prezesa Rady Ministrów',
+  INFORMATOR_MOST_IMPORTANT_HEADER: 'Najważniejsze informacje',
+  INFORMATOR_MOST_IMPORTANT_DESC:
+    '<ol><li>W pierwszych dniach w Polsce nie musisz martwić się o formalności i składać wniosków w Urzędzie do Spraw Cudzoziemców, urzędach wojewódzkich czy placówkach Straży Granicznej.</li><li>Aktualne informacje sprawdzisz na stronie <a href="https://www.gov.pl/web/udsc/" target="_blank">https://www.gov.pl/web/udsc/</a></li></ol>',
+  INFORMATOR_PHONES_HEADER: 'Telefony',
+  INFORMATOR_PHONES_DESC:
+    '<ol><li>W Polsce każdy numer telefonu musi być zarejestrowany na konkretną osobę. Numer możesz zarejestrować w miejscu, gdzie została zakupiona karta - potrzebujesz do tego dokumentu tożsamości.</li><li>Wielu operatorów oferuje tańsze połączenia do Ukrainy.</li></ol>',
+  INFORMATOR_ACCOMMODATION_DESC:
+    '<p>Informacje o bezpłatnym noclegu uzyskasz:</p><ol><li>w punkcie recepcyjnym - listę punktów znajdziesz na stronie <a href="//gov.pl/web/udsc/punkty-recepcyjne2" target="_blank">gov.pl/web/udsc/punkty-recepcyjne2</a></li><li>w punkcie informacyjnym na dworcach miast wojewódzkich - listę punktów znajdziesz na stronie <a href="//gov.pl/web/udsc/punkty-informacyjne-i-infolinie-urzedow-wojewodzkich" target="_blank">gov.pl/web/udsc/punkty-informacyjne-i-infolinie-urzedow-wojewodzkich</a></li><li>po wypełnieniu formularza na stronie <a href="//pomagamukrainie.gov.pl" target="_blank">pomagamukrainie.gov.pl</a></li></ol>',
+  INFORMATOR_MATERIAL_HELP_DESC:
+    '<p>Jeśli potrzebujesz pomocy materialnej, wypełnij formularz na stronie <a href="//pomagamukrainie.gov.pl" target="_blank">pomagamukrainie.gov.pl</a></p>',
+  INFORMATOR_TRANSPORT_DESC:
+    '<p>Możesz bezpłatnie podróżować pociągami PKP Intercity do 25 marca 2022 roku. Bilet, który uprawnia do bezpłatnego przejazdu, dostaniesz w kasie dworca. Aby go uzyskać, potrzebujesz dokumentu, który potwierdza twoje obywatelstwo.</p><p>Szczegóły znajdziesz na stronie <a href="//intercity.pl/pl/site/o-nas/dzial-prasowy/komunikaty/bezplatne-przejazdy-dla-obywateli-ukrainy-pociagami-pkp-intercity.html" target="_blank">intercity.pl/pl/site/o-nas/dzial-prasowy/komunikaty/bezplatne-przejazdy-dla-obywateli-ukrainy-pociagami-pkp-intercity.html</a></p>',
+  INFORMATOR_HEALTH_DESC:
+    '<ol><li>W Polsce masz zapewnioną bezpłatną pomoc medyczną. Aby ją uzyskać, potrzebujesz dokumentu, który potwierdza przekroczenie granicy Polski po 23 lutego. Szczegóły znajdziesz na stronie <a href="//nfz.gov.pl/aktualnosci/aktualnosci-centrali/pomoc-medyczna-dla-obywateli-ukrainy-zasady-udzielania-i-rozliczania-swiadczen,8149.html" target="_blank">nfz.gov.pl/aktualnosci/aktualnosci-centrali/pomoc-medyczna-dla-obywateli-ukrainy-zasady-udzielania-i-rozliczania-swiadczen,8149.html</a></li><li>Możesz bezpłatnie zaszczepić się przeciw COVID-19. Szczegóły znajdziesz na stronie <a href="https://www.gov.pl/web/zdrowie/szczepienia-przeciw-covid-19-cudzoziemcow-narodowosci-ukrainskiej" target="_blank">https://www.gov.pl/web/zdrowie/szczepienia-przeciw-covid-19-cudzoziemcow-narodowosci-ukrainskiej</a></li></ol>',
+  INFORMATOR_LEGAL_HELP_DESC:
+    '<ol><li>Możesz skorzystać z bezpłatnej pomocy prawnej. Informacje, jak ją uzyskać, znajdziesz na stronie np. <a href="//ms.gov.pl/aktualnosci/komunikat,60" target="_blank">ms.gov.pl/aktualnosci/komunikat,60</a></li><li>Informacje na temat legalnego pobytu w Polsce oraz tego, jak sprowadzić rodzinę z Ukrainy znajdziesz na stronie <a href="//wardynski.com.pl/publikacje/opracowania/przekraczanie-granicy-i-laczenie-rodzin-obywatele-ukrainy-" target="_blank">wardynski.com.pl/publikacje/opracowania/przekraczanie-granicy-i-laczenie-rodzin-obywatele-ukrainy-</a></li></ol>',
+  INFORMATOR_TRANSLATIONS_DESC:
+    '<p>Usługę zdalnego tłumaczenia ukraińskiego języka migowego znajdziesz na stronie <a href="https://www.gov.pl/web/ua-pl/jezyk-migowy" target="_blank">https://www.gov.pl/web/ua-pl/jezyk-migowy</a></p>',
+  INFORMATOR_WORK_DESC:
+    '<ol><li>Informacje, jak znaleźć pracę w Polsce, uzyskasz na stronie <a href="//gov.pl/web/rodzina/praca-w-Polsce" target="_blank">gov.pl/web/rodzina/praca-w-Polsce</a></li><li>Informacje na temat legalnej pracy i pobytu w Polsce znajdziesz na stronie <a href="//wardynski.com.pl/publikacje/opracowania/residing-and-working-in-poland-guide-for-citizens-of-ukraine-" target="_blank">wardynski.com.pl/publikacje/opracowania/residing-and-working-in-poland-guide-for-citizens-of-ukraine-</a></li><li>Informacje o tym, jak zatrudnić pracownika z Ukrainy znajdują się na stronie <a href="//biznes.gov.pl/pl/portal/00211" target="_blank">biznes.gov.pl/pl/portal/00211</a></li></ol>',
+  INFORMATOR_EDUCATION_HEADER: 'Edukacja',
+  INFORMATOR_EDUCATION_DESC:
+    '<ol><li>Dzieci w wieku 7-18 lat mogą bezpłatnie uczyć się w polskich szkołach. Szczegóły znajdziesz na stronie <a href="//gov.pl/web/edukacja-i-nauka/informacja-dla-rodzicow-dzieci-przybywajacych-z-ukrainy" target="_blank">gov.pl/web/edukacja-i-nauka/informacja-dla-rodzicow-dzieci-przybywajacych-z-ukrainy</a></li><li>Informacje dla studentów i naukowców z Ukrainy o kontynuacji nauki i pracy naukowej w Polsce znajdują się na stronie <a href="//gov.pl/web/edukacja-i-nauka/informacja-dla-studentow-i-naukowcow-przybywajacych-z-ukrainy" target="_blank">gov.pl/web/edukacja-i-nauka/informacja-dla-studentow-i-naukowcow-przybywajacych-z-ukrainy</a></li></ol>',
+  ABOUT_APP: 'O projekcie',
+  HELP_FOR_UKRAINE: 'Pomagam Ukrainie',
+  HUMANITY_TRANSPORT: 'Konwój humanitarny',
+  POLICY: 'Polityka Prywatności',
+  GOV: 'gov.pl',
+  HOSTING: 'Hosting',
+  AZURE: 'Azure',
+  ANGULAR: 'Angular',
+  FRONTED: 'Frontend',
+  BACKEND: 'Backend',
+  JAVA: 'Java 17 + PostgreSQL 13',
+  KEYCLOCK: 'Keycloack - serwer autoryzacyjny (integracja z Węzłem Krajowym)',
+  DEV_TEAM: 'Zespół projektowy',
+  TECH_STACK: 'Zastosowane technologie',
+  COI: 'Centralny Ośrodek Informatyki',
+  SYSOPS_DEVOPS: 'Fundacja SysOps/DevOps Polska',
+  SNOWFLAKE: 'Snowflake Poland',
+  WARSAW_JS: 'WarsawJs',
+  WEBSCOUTS: 'WebScouts',
+  ORDER_BY: 'W kolejności alfabetycznej',
+  PARTICIPANTS: 'Podmioty biorące udział w projekcie',
+  ABOUT_APP_DESCRIPTION:
+    'Wojna na Ukrainie spowodowała napływ uchodźców do Polski. Instytucje rządowe, pozarządowe i zwykli obywatele rzucili się do pomocy - oferują m.in. noclegi, transport i pomoc materialną. Różnego rodzaju akcje oddolne nie są centralnie koordynowane. Brakuje systemu informatycznego, który pozwoli na dodawanie w bezpieczny sposób ogłoszeń przez osoby oferujące pomoc i kontaktowanie się z nimi przez osoby uciekające z Ukrainy.' +
+    '\n' +
+    '\n' +
+    'COI (Centralny Ośrodek Informatyki) wraz z zespołami ze strony publicznej budują serwis ogłoszeniowy, który będzie mapował konkretne osoby potrzebujące pomocy z konkretnymi osobami oferującymi pomoc.',
+  OFFER_SENT_ALERT_HEADER: 'Twoje głoszenie zostało opublikowane',
+  OFFER_SENT_ALERT_CONTENT:
+    'Sprawdzaj swoją skrzynkę i – jeśli podajesz numer – odbieraj telefon. W każdej chwili ktoś może odpowiedzieć na twoje ogłoszenie.',
+  NO_RESULTS_HEADER: 'Nie znaleźliśmy ogłoszeń spełniających podane kryteria',
+  NO_RESULTS_TEXT_START: 'Zmień kryteria wyszukiwania, lub',
+  NO_RESULTS_TEXT_LINK: 'przejdź do informatora',
+  NO_RESULTS_TEXT_END: 'by wyświetlić inne dostępne formy pomocy dla tej kategorii.',
   ITEM_OF_PAGE: 'Ogłoszeń na stronie:',
   NEXT_PAGE: 'Następna strona',
   PREVIOUS_PAGE: 'Poprzednia strona',
