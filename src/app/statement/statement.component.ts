@@ -9,6 +9,7 @@ type Statement = {
   title: string;
   content: string;
   isExpanded: boolean;
+  icon: string;
 };
 
 const isExpanded = (allExpanded: boolean, panelId: string, activePanel: string | undefined) =>
@@ -43,60 +44,70 @@ export class StatementComponent implements OnInit, AfterViewInit {
           title: this.translateService.instant('INFORMATOR_MOST_IMPORTANT_HEADER'),
           content: this.translateService.instant('INFORMATOR_MOST_IMPORTANT_DESC'),
           isExpanded: isExpanded(allExpanded, StatementAnchors.MOST_IMPORTANT, this.activePanel),
+          icon: 'info',
         },
         {
           id: StatementAnchors.PHONES,
           title: this.translateService.instant('INFORMATOR_PHONES_HEADER'),
           content: this.translateService.instant('INFORMATOR_PHONES_DESC'),
           isExpanded: isExpanded(allExpanded, StatementAnchors.PHONES, this.activePanel),
+          icon: 'phone',
         },
         {
           id: StatementAnchors.ACCOMMODATION,
           title: this.translateService.instant('ACCOMMODATION'),
           content: this.translateService.instant('INFORMATOR_ACCOMMODATION_DESC'),
           isExpanded: isExpanded(allExpanded, StatementAnchors.ACCOMMODATION, this.activePanel),
+          icon: 'bed',
         },
         {
           id: StatementAnchors.MATERIAL_AID,
           title: this.translateService.instant('MATERIAL_HELP'),
           content: this.translateService.instant('INFORMATOR_MATERIAL_HELP_DESC'),
           isExpanded: isExpanded(allExpanded, StatementAnchors.MATERIAL_AID, this.activePanel),
+          icon: 'interests_outline',
         },
         {
           id: StatementAnchors.TRANSPORT,
           title: this.translateService.instant('TRANSPORT'),
           content: this.translateService.instant('INFORMATOR_TRANSPORT_DESC'),
           isExpanded: isExpanded(allExpanded, StatementAnchors.TRANSPORT, this.activePanel),
+          icon: 'directions_car_outline',
         },
         {
           id: StatementAnchors.HEALTH,
           title: this.translateService.instant('HEALTH'),
           content: this.translateService.instant('INFORMATOR_HEALTH_DESC'),
           isExpanded: isExpanded(allExpanded, StatementAnchors.HEALTH, this.activePanel),
+          icon: 'local_hospital',
         },
         {
           id: StatementAnchors.LEGAL_HELP,
           title: this.translateService.instant('LEGAL_HELP'),
           content: this.translateService.instant('INFORMATOR_LEGAL_HELP_DESC'),
           isExpanded: isExpanded(allExpanded, StatementAnchors.LEGAL_HELP, this.activePanel),
+          icon: 'gavel',
         },
         {
           id: StatementAnchors.TRANSLATIONS,
           title: this.translateService.instant('TRANSLATIONS'),
           content: this.translateService.instant('INFORMATOR_TRANSLATIONS_DESC'),
           isExpanded: isExpanded(allExpanded, StatementAnchors.TRANSLATIONS, this.activePanel),
+          icon: 'translate',
         },
         {
           id: StatementAnchors.WORK,
           title: this.translateService.instant('WORK'),
           content: this.translateService.instant('INFORMATOR_WORK_DESC'),
           isExpanded: isExpanded(allExpanded, StatementAnchors.WORK, this.activePanel),
+          icon: 'work_outline',
         },
         {
           id: StatementAnchors.EDUCATION,
           title: this.translateService.instant('INFORMATOR_EDUCATION_HEADER'),
           content: this.translateService.instant('INFORMATOR_EDUCATION_DESC'),
           isExpanded: isExpanded(allExpanded, StatementAnchors.EDUCATION, this.activePanel),
+          icon: 'lan',
         },
       ];
     });
