@@ -3,7 +3,7 @@
     <div class="container">
       <div class="header text-center">
         <span
-          >{{ "HELPING_PERSON" | translate }}: <b>{{ helperFirstname }}</b></span
+          >{{ "HELPING_PERSON" | translate }}: <b>{{ helpersFirstname }}</b></span
         >
         <h3>{{ "REPLY_OFFER" | translate }}</h3>
         <p>
@@ -70,18 +70,18 @@
         </mat-checkbox>
       </div>
       <div class="d-flex flex-column flex-xl-row">
-        <div class="m-2 m-xl-2">
+        <div *ngIf="helpersPhoneNumber" class="m-2 m-xl-2">
           <button class="btn btn-secondary phone" type="button" (click)="onPhoneNumberClick()">
             <mat-icon class="phone" fontSet="material-icons-outlined">telephone</mat-icon>
             <div *ngIf="!showPhoneNumber">{{ "BUTTON_SHOW_TELNO" | translate }}</div>
             <div *ngIf="showPhoneNumber">
-              <a href="tel:{{ helperPhoneNumber }}">{{ helperPhoneNumber }}</a>
+              <a href="tel:{{ helpersPhoneNumber }}">{{ helpersPhoneNumber }}</a>
             </div>
           </button>
         </div>
         <div class="m-2 m-xl-2">
-          <button class="btn btn-primary phone" type="submit" [disabled]="!messageForm.valid">
-            <mat-icon class="phone" fontSet="material-icons-outlined">send</mat-icon>
+          <button class="btn btn-primary" type="submit" [disabled]="!messageForm.valid">
+            <mat-icon fontSet="material-icons-outlined">send</mat-icon>
             <div>{{ "BUTTON_SEND_MESSAGE" | translate }}</div>
           </button>
         </div>

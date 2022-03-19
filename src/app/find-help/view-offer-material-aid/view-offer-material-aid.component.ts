@@ -4,6 +4,9 @@ import { MaterialAidResourceService } from '@app/core/api';
 import { MaterialAidOffer } from '@app/core/api';
 import { CategoryRoutingName } from '@app/shared/models';
 import { defaults } from '@app/shared/utils';
+interface MaterialAidOfferPhone extends MaterialAidOffer {
+  phoneNumber?: string;
+}
 @Component({
   selector: 'app-view-offer-material-help',
   templateUrl: './view-offer-material-aid.component.html',
@@ -11,7 +14,7 @@ import { defaults } from '@app/shared/utils';
 })
 export class ViewOfferMaterialAidComponent implements OnInit {
   offerId: number = 0;
-  data = defaults<MaterialAidOffer>();
+  data = defaults<MaterialAidOfferPhone>();
   categoryRouteName = CategoryRoutingName.MATERIAL_HELP;
   constructor(
     private router: Router,

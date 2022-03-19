@@ -4,6 +4,9 @@ import { AccommodationsResourceService } from '@app/core/api';
 import { AccommodationOffer } from '@app/core/api';
 import { CategoryRoutingName } from '@app/shared/models';
 import { defaults } from '@app/shared/utils';
+interface AccommodationOfferPhone extends AccommodationOffer {
+  phoneNumber?: string;
+}
 
 @Component({
   selector: 'app-view-offer-accommodation',
@@ -12,7 +15,7 @@ import { defaults } from '@app/shared/utils';
 })
 export class ViewOfferAccommodationComponent implements OnInit {
   offerId!: number;
-  data = defaults<AccommodationOffer>();
+  data = defaults<AccommodationOfferPhone>();
   categoryRouteName = CategoryRoutingName.ACCOMMODATION;
   centered = false;
   disabled = false;
