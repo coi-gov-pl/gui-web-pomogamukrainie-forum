@@ -8,3 +8,10 @@ export enum CategoryRoutingName {
   TRANSLATIONS = 'tlumaczenia',
   MISC = 'misc',
 }
+
+export enum CorePath {
+  Find = 'znajdz-pomoc',
+  Give = 'dodaj-ogloszenie',
+  MyAccount = 'moje-konto',
+  Statement = 'informator',
+}

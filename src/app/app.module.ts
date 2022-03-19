@@ -13,6 +13,7 @@ import { UrlHelperModule } from '@app/core/url';
 import { AuthModule } from '@app/core/auth';
 import { InterceptorModule } from '@app/core/interceptor';
 import { SnackbarAlertModule } from '@app/shared/components';
+import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
 
 @NgModule({
   declarations: [AppComponent],

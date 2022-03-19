@@ -3,7 +3,7 @@ import { defaults } from '@app/shared/utils';
 import { TransportOfferDefinitionDTO } from '@app/core/api/model/transportOfferDefinitionDTO';
 import { TransportResourceService } from '../../core/api/api/transportResource.service';
 import { PREFIXES } from '@app/shared/consts';
-import { CorePath } from '@app/shared/models/core-path.model';
+import { CorePath } from '@app/shared/models';
 import { SnackbarService } from '@app/shared/services/snackbar.service';
 import { ALERT_TYPES } from '@app/shared/models';
 import { take } from 'rxjs/operators';
