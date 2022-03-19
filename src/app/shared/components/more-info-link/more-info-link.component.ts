@@ -1,6 +1,8 @@
-import { Component, Input, NgModule } from '@angular/core';
+import { Component, NgModule, Input } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
+import { CorePath } from '@app/shared/models';
 
 @Component({
   selector: 'app-more-info-link',
@@ -8,12 +10,14 @@ import { TranslateModule } from '@ngx-translate/core';
   styleUrls: ['./more-info-link.component.scss'],
 })
 export class MoreInfoLinkComponent {
-  @Input() href = '';
+  corePath = CorePath;
+
+  @Input() statementAnchor = '';
 }
 
 @NgModule({
   declarations: [MoreInfoLinkComponent],
-  imports: [MatIconModule, TranslateModule],
+  imports: [MatIconModule, RouterModule, TranslateModule],
   exports: [MoreInfoLinkComponent],
 })
 export class MoreInfoLinkModule {}

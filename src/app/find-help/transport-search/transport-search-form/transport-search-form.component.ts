@@ -1,6 +1,7 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { TransportOfferSearchCriteria } from '@app/core/api';
 import { CorePath } from '@app/shared/models';
+import { StatementAnchors } from '@app/shared/models';
 
 @Component({
   selector: 'app-transport-search-form',
@@ -13,4 +14,5 @@ export class TransportSearchFormComponent {
   @Output()
   search = new EventEmitter<TransportOfferSearchCriteria>();
   corePath = CorePath;
+  statementAnchor: string = StatementAnchors.TRANSPORT;
 }
