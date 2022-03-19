@@ -14,6 +14,7 @@ import { MaterialAidSearchComponent } from './material-aid-search.component';
 import { SearchResultComponentModule } from '../search-result/search-result.module';
 import { CategoryNavigationComponentModule, CitiesSearchModule, MoreInfoLinkModule } from '@app/shared/components';
 import { MaterialAidSearchFormComponent } from './material-aid-search-form/material-aid-search-form.component';
+import { NoResultsModule } from '@app/shared/components/no-results/no-results.module';
 
 @NgModule({
   declarations: [MaterialAidSearchComponent, MaterialAidSearchFormComponent],
@@ -34,6 +35,7 @@ import { MaterialAidSearchFormComponent } from './material-aid-search-form/mater
     SearchResultComponentModule,
     MoreInfoLinkModule,
     CategoryNavigationComponentModule,
+    NoResultsModule,
   ],
 })
 export class MaterialAidSearchModule {}

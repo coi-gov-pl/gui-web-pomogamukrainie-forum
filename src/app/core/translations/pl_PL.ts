@@ -151,4 +151,8 @@ export default {
   OFFER_SENT_ALERT_HEADER: 'Twoje głoszenie zostało opublikowane',
   OFFER_SENT_ALERT_CONTENT:
     'Sprawdzaj swoją skrzynkę i – jeśli podajesz numer – odbieraj telefon. W każdej chwili ktoś może odpowiedzieć na twoje ogłoszenie.',
+  NO_RESULTS_HEADER: 'Nie znaleźliśmy ogłoszeń spełniających podane kryteria',
+  NO_RESULTS_TEXT_START: 'Zmień kryteria wyszukiwania, lub',
+  NO_RESULTS_TEXT_LINK: 'przejdź do informatora',
+  NO_RESULTS_TEXT_END: 'by wyświetlić inne dostępne formy pomocy dla tej kategorii.',
 };
