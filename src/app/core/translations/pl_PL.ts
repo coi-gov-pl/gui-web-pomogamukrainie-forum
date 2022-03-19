@@ -48,16 +48,16 @@ export default {
   PLACEHOLDER_CHOOSE: 'Wybierz',
   LABEL_PHONE_NUMBER: 'Numer telefonu',
   LABEL_OFFER_DESCRIBTION: 'Treść ogłoszenia',
-  LABEL_OFFER_DESCRIBTION_MAXCHARS: '(do 80 znaków):',
+  LABEL_OFFER_DESCRIBTION_MAXCHARS: '(do 80 znaków)',
   OFFER_PUBLISH: 'Opublikuj ogłoszenie',
   LABEL_OFFER_TITLE: 'Tytuł ogłoszenia',
-  LABEL_OFFER_MAXCHARS: '(do 80 znaków):',
+  LABEL_OFFER_MAXCHARS: '(do 80 znaków)',
   PLACEHOLDER_OFFER_TITLE: 'Wpisz tytuł ogłosznia...',
   PLACEHOLDER_OFFER_DESCRIBTION: 'Wpisz swoje ogłoszenie...',
   LABEL_DATE: 'Data',
-  LABEL_POINT_LOCALISATION: 'Wskaż lokalizację:',
+  LABEL_POINT_LOCALISATION: 'Wskaż lokalizację',
   LABEL_LENGTH_OF_STAY: 'Czas pobytu',
-  LABEL_HOST_LANG: 'Język, w jakim mówi gospodarz:',
+  LABEL_HOST_LANG: 'Język, w jakim mówi gospodarz',
   MAIN_PAGE: 'Strona Główna',
   PLACEHOLDER_LOCATION_2: 'Np. Warszawa, mazowieckie',
   EDIT_ANNOUNCEMENT: 'Edytuj',
@@ -122,4 +122,7 @@ export default {
   INFORMATOR_EDUCATION_HEADER: 'Edukacja',
   INFORMATOR_EDUCATION_DESC:
     '<ol><li>Dzieci w wieku 7-18 lat mogą bezpłatnie uczyć się w polskich szkołach. Szczegóły znajdziesz na stronie <a href="//gov.pl/web/edukacja-i-nauka/informacja-dla-rodzicow-dzieci-przybywajacych-z-ukrainy" target="_blank">gov.pl/web/edukacja-i-nauka/informacja-dla-rodzicow-dzieci-przybywajacych-z-ukrainy</a></li><li>Informacje dla studentów i naukowców z Ukrainy o kontynuacji nauki i pracy naukowej w Polsce znajdują się na stronie <a href="//gov.pl/web/edukacja-i-nauka/informacja-dla-studentow-i-naukowcow-przybywajacych-z-ukrainy" target="_blank">gov.pl/web/edukacja-i-nauka/informacja-dla-studentow-i-naukowcow-przybywajacych-z-ukrainy</a></li></ol>',
+  OFFER_SENT_ALERT_HEADER: 'Twoje głoszenie zostało opublikowane',
+  OFFER_SENT_ALERT_CONTENT:
+    'Sprawdzaj swoją skrzynkę i – jeśli podajesz numer – odbieraj telefon. W każdej chwili ktoś może odpowiedzieć na twoje ogłoszenie.',
 };
