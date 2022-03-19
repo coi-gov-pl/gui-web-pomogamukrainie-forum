@@ -155,4 +155,6 @@ export default {
   NO_RESULTS_TEXT_START: 'Zmień kryteria wyszukiwania, lub',
   NO_RESULTS_TEXT_LINK: 'przejdź do informatora',
   NO_RESULTS_TEXT_END: 'by wyświetlić inne dostępne formy pomocy dla tej kategorii.',
+  MESSAGE_SENT_ALERT_HEADER: 'Twoja odpowiedź została wysłana do osoby pomagającej',
+  MESSAGE_SENT_ALERT_CONTENT: 'Potwierdzenie wysłania przesłaliśmy na Twój e-mail.',
 };

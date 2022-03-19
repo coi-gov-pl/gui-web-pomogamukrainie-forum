@@ -4,4 +4,8 @@
     <h5>{{ "OFFER_SENT_ALERT_HEADER" | translate }}</h5>
     <p>{{ "OFFER_SENT_ALERT_CONTENT" | translate }}</p>
   </div>
+  <div *ngIf="data === ALERT_TYPES.MESSAGE_SENT">
+    <h5>{{ "MESSAGE_SENT_ALERT_HEADER" | translate }}</h5>
+    <p>{{ "MESSAGE_SENT_ALERT_CONTENT" | translate }}</p>
+  </div>
 </div>
