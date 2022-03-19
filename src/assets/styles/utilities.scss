@@ -42,6 +42,10 @@
   font-size: 13px;
 }
 
+.font-base {
+  font-size: var(--base-font-size);
+}
+
 .desktop-only {
   display: none;
   @include media-breakpoint-up(lg) {
