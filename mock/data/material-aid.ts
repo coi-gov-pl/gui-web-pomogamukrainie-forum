@@ -1,5 +1,4 @@
-import { MaterialAidOfferDefinitionDTO } from '@app/core/api';
-import { MaterialAidOffer, OffersMaterialAidOffer } from '@app/shared/models';
+import { MaterialAidOfferDefinitionDTO, MaterialAidOffer, OffersMaterialAidOffer } from '@app/core/api';
 
 export const materialAidOffer = (body: MaterialAidOfferDefinitionDTO): MaterialAidOffer => {
   return {
@@ -7,7 +6,7 @@ export const materialAidOffer = (body: MaterialAidOfferDefinitionDTO): MaterialA
     id: 1,
     userFirstName: 'example',
     modifiedDate: new Date().toISOString(),
-    type: 'materialAid',
+    type: 'MATERIAL_AID',
   };
 };
 
@@ -22,7 +21,7 @@ export const materialAidList: OffersMaterialAidOffer = {
       category: 'HOUSEHOLD_GOODS',
       location: { region: 'Pomorskie', city: 'Gdańsk' },
       phoneNumber: '48123456789',
-      type: 'materialAid',
+      type: 'MATERIAL_AID',
     },
     {
       id: 7,
@@ -33,7 +32,7 @@ export const materialAidList: OffersMaterialAidOffer = {
       category: 'FOR_CHILDREN',
       location: { region: 'Mazowieckie', city: 'Warszawa' },
       phoneNumber: '48456789123',
-      type: 'materialAid',
+      type: 'MATERIAL_AID',
     },
     {
       id: 17,
@@ -44,7 +43,7 @@ export const materialAidList: OffersMaterialAidOffer = {
       category: 'HOUSEHOLD_GOODS',
       location: { region: 'Pomorskie', city: 'Gdańsk' },
       phoneNumber: '48789123456',
-      type: 'materialAid',
+      type: 'MATERIAL_AID',
     },
     {
       id: 19,
@@ -55,7 +54,7 @@ export const materialAidList: OffersMaterialAidOffer = {
       category: 'FOR_CHILDREN',
       location: { region: 'Mazowieckie', city: 'Warszawa' },
       phoneNumber: '48891234567',
-      type: 'materialAid',
+      type: 'MATERIAL_AID',
     },
   ],
   totalElements: 4,

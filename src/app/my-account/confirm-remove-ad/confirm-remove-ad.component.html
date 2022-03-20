@@ -5,7 +5,7 @@
   <div class="title">{{ "CONFIRM_REMOVE_AD" | translate }}</div>
 
   <app-search-result
-    *ngIf="currentAnnouncement.type === 'accommodation'"
+    *ngIf="currentAnnouncement.type === 'ACCOMMODATION'"
     [location]="currentAnnouncement.location"
     [title]="currentAnnouncement.title"
     [description]="currentAnnouncement.description"
@@ -23,7 +23,7 @@
   </app-search-result>
 
   <app-search-result
-    *ngIf="currentAnnouncement.type === 'materialAid'"
+    *ngIf="currentAnnouncement.type === 'MATERIAL_AID'"
     [location]="currentAnnouncement.location"
     [title]="currentAnnouncement.title"
     [description]="currentAnnouncement.description"
@@ -37,7 +37,7 @@
   </app-search-result>
 
   <app-search-result
-    *ngIf="currentAnnouncement.type === 'transport'"
+    *ngIf="currentAnnouncement.type === 'TRANSPORT'"
     [origin]="currentAnnouncement.origin"
     [destination]="currentAnnouncement.destination"
     [title]="currentAnnouncement.title"

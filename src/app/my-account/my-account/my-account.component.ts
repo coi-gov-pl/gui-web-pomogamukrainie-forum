@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { MyOffersResourceService, Pageable, UserInfo } from '@app/core/api';
-import { Observable, take } from 'rxjs';
-import { Router } from '@angular/router';
 import {
-  CategoryRoutingName,
-  CorePath,
+  MyOffersResourceService,
+  Pageable,
+  UserInfo,
   AccommodationOffer,
   MaterialAidOffer,
   OffersBaseOffer,
   TransportOffer,
-} from '@app/shared/models';
+} from '@app/core/api';
+import { take } from 'rxjs';
+import { Router } from '@angular/router';
+import { CategoryRoutingName, CorePath } from '@app/shared/models';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ConfirmRemoveAdComponent } from '../confirm-remove-ad/confirm-remove-ad.component';
 
@@ -25,7 +26,7 @@ export class MyAccountComponent implements OnInit {
   constructor(private router: Router, private myOffersResource: MyOffersResourceService, private dialog: MatDialog) {}
 
   public ngOnInit() {
-    (this.myOffersResource.listMyOffers(this.pageRequest) as Observable<OffersBaseOffer>).subscribe((results) => {
+    this.myOffersResource.listMyOffers(this.pageRequest).subscribe((results) => {
       this.myAnnouncements = results;
     });
   }
