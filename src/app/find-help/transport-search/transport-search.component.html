@@ -1,5 +1,5 @@
 <mat-card>
-  <app-transport-search-form (search)="search($event)"></app-transport-search-form>
+  <app-transport-search-form (search)="search($event, { page: 0, size: 5 })"></app-transport-search-form>
 </mat-card>
 <app-no-results *ngIf="total === 0"></app-no-results>
 <div class="results" *ngIf="this.total" [class.loading]="loading">
