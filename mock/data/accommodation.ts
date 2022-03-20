@@ -22,6 +22,7 @@ export const accommodationsList: OffersAccommodationOffer = {
       guests: 2,
       lengthOfStay: 'MONTH_2',
       hostLanguage: ['PL', 'UA'],
+      phoneNumber: '48123456789',
     },
     {
       id: 3,
@@ -34,6 +35,7 @@ export const accommodationsList: OffersAccommodationOffer = {
       guests: 4,
       lengthOfStay: 'LONGER',
       hostLanguage: ['PL', 'UA'],
+      phoneNumber: '48456789123',
     },
     {
       id: 13,
@@ -46,6 +48,7 @@ export const accommodationsList: OffersAccommodationOffer = {
       guests: 2,
       lengthOfStay: 'MONTH_2',
       hostLanguage: ['PL', 'UA'],
+      phoneNumber: '48789123456',
     },
     {
       id: 15,
@@ -58,6 +61,7 @@ export const accommodationsList: OffersAccommodationOffer = {
       guests: 4,
       lengthOfStay: 'LONGER',
       hostLanguage: ['PL', 'UA'],
+      phoneNumber: '48891234567',
     },
   ],
   totalElements: 4,
