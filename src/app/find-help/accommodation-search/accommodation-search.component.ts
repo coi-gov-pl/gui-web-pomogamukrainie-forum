@@ -20,7 +20,7 @@ export class AccommodationSearchComponent implements OnInit {
   constructor(private accommodationsResourceService: AccommodationsResourceService, private route: ActivatedRoute) {}
 
   ngOnInit() {
-    const { capacity, city, region } = this.route.snapshot.queryParams;
+    const { page, size, capacity, city, region } = this.route.snapshot.queryParams;
     const searchCriteria: AccommodationQuery = {
       capacity,
       location: {
@@ -28,7 +28,7 @@ export class AccommodationSearchComponent implements OnInit {
         city,
       },
     };
-    if (searchCriteria.capacity || searchCriteria.location?.city) {
+    if (page || size || capacity || city || region) {
       this.search(searchCriteria);
     }
   }

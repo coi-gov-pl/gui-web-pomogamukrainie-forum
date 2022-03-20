@@ -19,7 +19,7 @@ export class TransportSearchComponent implements OnInit {
   constructor(private transportResourceService: TransportResourceService, private route: ActivatedRoute) {}
 
   ngOnInit() {
-    const { capacity, transportDate, originCity, originRegion, destinationCity, destinationRegion } =
+    const { page, size, capacity, transportDate, originCity, originRegion, destinationCity, destinationRegion } =
       this.route.snapshot.queryParams;
     const searchCriteria: TransportOfferSearchCriteria = {
       capacity,
@@ -34,12 +34,14 @@ export class TransportSearchComponent implements OnInit {
       },
     };
     if (
-      searchCriteria.capacity ||
-      searchCriteria.transportDate ||
-      searchCriteria.origin?.city ||
-      searchCriteria.origin?.region ||
-      searchCriteria.destination?.city ||
-      searchCriteria.destination?.region
+      page ||
+      size ||
+      capacity ||
+      transportDate ||
+      originCity ||
+      originRegion ||
+      destinationCity ||
+      destinationRegion
     ) {
       this.search(searchCriteria);
     }
