@@ -3,9 +3,8 @@ import { Router } from '@angular/router';
 import { MaterialAidOfferDefinitionDTO, MaterialAidResourceService } from '@app/core/api';
 import { PREFIXES } from '@app/shared/consts';
 import { defaults } from '@app/shared/utils';
-import { CorePath } from '@app/shared/models/core-path.model';
 import { SnackbarService } from '@app/shared/services/snackbar.service';
-import { ALERT_TYPES } from '@app/shared/models';
+import { CorePath, ALERT_TYPES } from '@app/shared/models';
 import { take } from 'rxjs/operators';
 
 const CATEGORIES = Object.entries(MaterialAidOfferDefinitionDTO.CategoryEnum).map(([key, value]) => ({

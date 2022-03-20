@@ -1,9 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { defaults } from '@app/shared/utils';
-import { MessageResourceService } from '@app/core/api/api/messageResource.service';
-import { SendMessageDTO } from '@app/core/api';
-import { Router } from '@angular/router';
-import { SnackbarService } from '@app/shared/services/snackbar.service';
+import { SendMessageDTO, MessageResourceService } from '@app/core/api';
+import { SnackbarService } from '@app/shared/services';
 import { ALERT_TYPES } from '@app/shared/models';
 import { switchMap, take } from 'rxjs';
 import { ReCaptchaV3Service } from 'ng-recaptcha';

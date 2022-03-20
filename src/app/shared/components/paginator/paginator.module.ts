@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PaginatorComponent } from './paginator.component';
 import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
-import { MyPaginatorIntl } from '@app/shared/components/paginator/paginator-init';
+import { MyPaginatorIntl } from './paginator-init';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
