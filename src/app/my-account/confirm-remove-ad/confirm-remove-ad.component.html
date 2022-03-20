@@ -5,38 +5,52 @@
   <div class="title">{{ "CONFIRM_REMOVE_AD" | translate }}</div>
 
   <app-search-result
-    [location]="$any(currentAnnouncement).location"
-    [origin]="$any(currentAnnouncement).origin"
-    [destination]="$any(currentAnnouncement).destination"
+    *ngIf="currentAnnouncement.type === 'accommodation'"
+    [location]="currentAnnouncement.location"
     [title]="currentAnnouncement.title"
     [description]="currentAnnouncement.description"
     [posted]="currentAnnouncement.modifiedDate"
     class="item-wrapper"
   >
     <app-search-result-attribute
-      *ngIf="$any(currentAnnouncement).guests"
-      [text]="('NUMBER_OF_PEOPLE' | translate) + ': ' + $any(currentAnnouncement).guests"
+      [text]="('NUMBER_OF_PEOPLE' | translate) + ': ' + currentAnnouncement.guests"
       icon="person"
     ></app-search-result-attribute>
     <app-search-result-attribute
-      *ngIf="$any(currentAnnouncement).hostLanguage"
-      [text]="$any(currentAnnouncement).hostLanguage.join(', ')"
+      [text]="currentAnnouncement.hostLanguage.join(', ')"
       icon="translate"
     ></app-search-result-attribute>
+  </app-search-result>
+
+  <app-search-result
+    *ngIf="currentAnnouncement.type === 'materialAid'"
+    [location]="currentAnnouncement.location"
+    [title]="currentAnnouncement.title"
+    [description]="currentAnnouncement.description"
+    [posted]="currentAnnouncement.modifiedDate"
+    class="item-wrapper"
+  >
     <app-search-result-attribute
-      *ngIf="$any(currentAnnouncement).category"
-      [text]="$any(currentAnnouncement).category | translate"
+      [text]="currentAnnouncement.category | translate"
       icon="interests_outline"
     ></app-search-result-attribute>
+  </app-search-result>
 
+  <app-search-result
+    *ngIf="currentAnnouncement.type === 'transport'"
+    [origin]="currentAnnouncement.origin"
+    [destination]="currentAnnouncement.destination"
+    [title]="currentAnnouncement.title"
+    [description]="currentAnnouncement.description"
+    [posted]="currentAnnouncement.modifiedDate"
+    class="item-wrapper"
+  >
     <app-search-result-attribute
-      *ngIf="$any(currentAnnouncement).transportDate"
-      [text]="$any(currentAnnouncement).transportDate"
+      [text]="currentAnnouncement.transportDate"
       icon="date_range"
     ></app-search-result-attribute>
     <app-search-result-attribute
-      *ngIf="$any(currentAnnouncement).capacity"
-      [text]="('NUMBER_OF_PEOPLE' | translate) + ': ' + $any(currentAnnouncement).capacity"
+      [text]="('NUMBER_OF_PEOPLE' | translate) + ': ' + currentAnnouncement.capacity"
       icon="person"
     ></app-search-result-attribute>
   </app-search-result>
