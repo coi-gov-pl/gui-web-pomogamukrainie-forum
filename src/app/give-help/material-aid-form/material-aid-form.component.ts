@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { MaterialAidOfferDefinitionDTO, MaterialAidResourceService } from '@app/core/api';
 import { PREFIXES } from '@app/shared/consts';
@@ -8,10 +7,7 @@ import { CorePath } from '@app/shared/models/core-path.model';
 import { SnackbarService } from '@app/shared/services/snackbar.service';
 import { ALERT_TYPES } from '@app/shared/models';
 import { take } from 'rxjs/operators';
-// Waiting for TransportOfferDefinitionDTO receive a phoneNumber prop
-interface MaterialAidOfferDefinition extends MaterialAidOfferDefinitionDTO {
-  phoneNumber?: string;
-}
+
 const CATEGORIES = Object.entries(MaterialAidOfferDefinitionDTO.CategoryEnum).map(([key, value]) => ({
   key,
   value,
@@ -23,7 +19,7 @@ const CATEGORIES = Object.entries(MaterialAidOfferDefinitionDTO.CategoryEnum).ma
   styleUrls: ['./material-aid-form.component.scss'],
 })
 export class MaterialAidFormComponent {
-  data = defaults<MaterialAidOfferDefinition>({});
+  data = defaults<MaterialAidOfferDefinitionDTO>({});
   CATEGORIES = CATEGORIES;
   PREFIXES = PREFIXES;
   phonePrefix: string = '48';

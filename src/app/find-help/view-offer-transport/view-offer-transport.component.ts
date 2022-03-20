@@ -1,13 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TransportResourceService } from '@app/core/api';
 import { TransportOffer } from '@app/core/api';
 import { CategoryRoutingName } from '@app/shared/models';
 import { defaults } from '@app/shared/utils';
-// TODO BE adding phoneNumber inprogress
-interface TransportOfferPhone extends TransportOffer {
-  phoneNumber?: string;
-}
 
 @Component({
   selector: 'app-view-offer-transport',
@@ -16,7 +12,7 @@ interface TransportOfferPhone extends TransportOffer {
 })
 export class ViewOfferTransportComponent implements OnInit {
   offerId: number = 0;
-  data = defaults<TransportOfferPhone>();
+  data = defaults<TransportOffer>();
   categoryRouteName = CategoryRoutingName.TRANSPORT;
   constructor(
     private router: Router,
