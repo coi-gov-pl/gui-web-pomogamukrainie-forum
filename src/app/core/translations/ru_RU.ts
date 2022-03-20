@@ -90,4 +90,9 @@ export default {
   ERROR_MIN_VALUE: `Слишком маленькое значение`,
   ERROR_MAX_VALUE: `Слишком большое значение`,
   ERROR_INVALID_DATE: `Неверный формат дат`,
+  ITEM_OF_PAGE: 'Объявлений на странице:',
+  NEXT_PAGE: 'Cледущая страница',
+  PREVIOUS_PAGE: 'Предыдущая страница',
+  PAGE_OF: 'из',
+  SELECT_PAGE: 'Выберите страницу',
 };

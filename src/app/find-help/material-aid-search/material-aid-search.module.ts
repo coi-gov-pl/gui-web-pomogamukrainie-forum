@@ -15,6 +15,7 @@ import { SearchResultComponentModule } from '../search-result/search-result.modu
 import { CategoryNavigationComponentModule, CitiesSearchModule, MoreInfoLinkModule } from '@app/shared/components';
 import { MaterialAidSearchFormComponent } from './material-aid-search-form/material-aid-search-form.component';
 import { NoResultsModule } from '@app/shared/components/no-results/no-results.module';
+import { PaginatorModule } from '@app/shared/components/paginator/paginator.module';
 
 @NgModule({
   declarations: [MaterialAidSearchComponent, MaterialAidSearchFormComponent],
@@ -36,6 +37,7 @@ import { NoResultsModule } from '@app/shared/components/no-results/no-results.mo
     MoreInfoLinkModule,
     CategoryNavigationComponentModule,
     NoResultsModule,
+    PaginatorModule,
   ],
 })
 export class MaterialAidSearchModule {}

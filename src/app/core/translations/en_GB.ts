@@ -90,4 +90,9 @@ export default {
   ERROR_MIN_VALUE: `The value is too small`,
   ERROR_MAX_VALUE: `The value is too large`,
   ERROR_INVALID_DATE: `Incorrect date format`,
+  ITEM_OF_PAGE: 'Advertisements on the site',
+  NEXT_PAGE: 'Next page',
+  PREVIOUS_PAGE: 'Previous page',
+  PAGE_OF: 'of',
+  SELECT_PAGE: 'Select page',
 };

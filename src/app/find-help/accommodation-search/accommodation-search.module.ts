@@ -18,6 +18,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ReplyOfferModule } from '../reply-offer/reply-offer.module';
 import { NoResultsModule } from '@app/shared/components/no-results/no-results.module';
+import { PaginatorModule } from '@app/shared/components/paginator/paginator.module';
 
 @NgModule({
   declarations: [AccommodationSearchFormComponent, AccommodationSearchComponent],
@@ -49,6 +50,7 @@ import { NoResultsModule } from '@app/shared/components/no-results/no-results.mo
     MatIconModule,
     ReplyOfferModule,
     NoResultsModule,
+    PaginatorModule,
   ],
 })
 export class AccommodationSearchModule {}

@@ -90,4 +90,9 @@ export default {
   ERROR_MIN_VALUE: `Значення занадто мале`,
   ERROR_MAX_VALUE: `Значення завелике`,
   ERROR_INVALID_DATE: `Неправильний формат дат`,
+  ITEM_OF_PAGE: 'Оголошень на сторінці:',
+  NEXT_PAGE: 'Наступна сторінка',
+  PREVIOUS_PAGE: 'Попередня сторінка',
+  PAGE_OF: 'з',
+  SELECT_PAGE: 'Вибери сторінку',
 };
