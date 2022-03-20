@@ -1,13 +1,14 @@
-import { Component } from '@angular/core';
-import { Pageable, TransportOfferSearchCriteria, TransportResourceService, TransportOffer } from '@app/core/api';
+import { Component, OnInit } from '@angular/core';
+import { Pageable, TransportOffer, TransportOfferSearchCriteria, TransportResourceService } from '@app/core/api';
 import { CategoryRoutingName, CorePath } from '@app/shared/models';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-transport-search',
   templateUrl: './transport-search.component.html',
   styleUrls: ['./transport-search.component.scss'],
 })
-export class TransportSearchComponent {
+export class TransportSearchComponent implements OnInit {
   results: TransportOffer[] = [];
   total?: number = undefined;
   loading = false;
@@ -15,21 +16,51 @@ export class TransportSearchComponent {
   corePath = CorePath;
   searchCriteria: TransportOfferSearchCriteria = {};
   pagination: Pageable | undefined;
-  constructor(private transportResourceService: TransportResourceService) {}
+  constructor(private transportResourceService: TransportResourceService, private route: ActivatedRoute) {}
 
-  search(searchCriteria?: TransportOfferSearchCriteria, pagination?: Pageable) {
+  ngOnInit() {
+    const { capacity, transportDate, originCity, originRegion, destinationCity, destinationRegion } =
+      this.route.snapshot.queryParams;
+    const searchCriteria: TransportOfferSearchCriteria = {
+      capacity,
+      transportDate,
+      origin: {
+        region: originRegion,
+        city: originCity,
+      },
+      destination: {
+        region: destinationRegion,
+        city: destinationCity,
+      },
+    };
+    if (
+      searchCriteria.capacity ||
+      searchCriteria.transportDate ||
+      searchCriteria.origin?.city ||
+      searchCriteria.origin?.region ||
+      searchCriteria.destination?.city ||
+      searchCriteria.destination?.region
+    ) {
+      this.search(searchCriteria);
+    }
+  }
+
+  search(searchCriteria?: TransportOfferSearchCriteria) {
     this.loading = true;
 
-    this.searchCriteria.origin = searchCriteria?.origin ?? this.searchCriteria.origin;
-    this.searchCriteria.destination = searchCriteria?.destination ?? this.searchCriteria.destination;
-    this.searchCriteria.capacity = searchCriteria?.capacity ?? this.searchCriteria.capacity;
-    this.searchCriteria.transportDate = searchCriteria?.transportDate ?? this.searchCriteria.transportDate;
-    this.pagination = pagination ?? this.pagination;
+    const { page, size, sort } = this.route.snapshot.queryParams;
+
+    if (searchCriteria) {
+      this.searchCriteria.origin = searchCriteria?.origin;
+      this.searchCriteria.destination = searchCriteria?.destination;
+      this.searchCriteria.capacity = searchCriteria?.capacity;
+      this.searchCriteria.transportDate = searchCriteria?.transportDate;
+    }
 
     const pageRequest: Pageable = {
-      page: pagination?.page,
-      size: this.pagination?.size,
-      sort: pagination?.sort,
+      page,
+      size,
+      sort,
     };
 
     this.transportResourceService.listTransport(pageRequest, this.searchCriteria).subscribe({

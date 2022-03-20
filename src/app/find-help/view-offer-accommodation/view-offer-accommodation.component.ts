@@ -4,6 +4,7 @@ import { AccommodationsResourceService } from '@app/core/api';
 import { AccommodationOffer } from '@app/core/api';
 import { CategoryRoutingName } from '@app/shared/models';
 import { defaults } from '@app/shared/utils';
+import { Location } from '@angular/common';
 // TODO BE adding phoneNumber inprogress
 interface AccommodationOfferPhone extends AccommodationOffer {
   phoneNumber?: string;
@@ -26,7 +27,8 @@ export class ViewOfferAccommodationComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private accommodationsResourceService: AccommodationsResourceService,
-    private router: Router
+    private router: Router,
+    private location: Location
   ) {}
 
   ngOnInit(): void {
@@ -41,8 +43,8 @@ export class ViewOfferAccommodationComponent implements OnInit {
       .catch((e) => console.error(e));
   }
 
-  getListUrl(): string {
-    return this.router.url.replace(/\/[^/]+$/, '');
+  navigateBack(): void {
+    this.location.back();
   }
 
   getAccomodationOffer() {

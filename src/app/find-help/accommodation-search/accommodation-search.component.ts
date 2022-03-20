@@ -1,14 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AccommodationQuery } from './accommodation-search-form/accommodation-search-form.component';
 import { AccommodationsResourceService, AccommodationOffer, Pageable } from '@app/core/api';
 import { CategoryRoutingName, CorePath } from '@app/shared/models';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-accommodation-search',
   templateUrl: './accommodation-search.component.html',
   styleUrls: ['./accommodation-search.component.scss'],
 })
-export class AccommodationSearchComponent {
+export class AccommodationSearchComponent implements OnInit {
   results: AccommodationOffer[] = [];
   total?: number = undefined;
   loading = false;
@@ -16,7 +17,21 @@ export class AccommodationSearchComponent {
   corePath = CorePath;
   searchCriteria: AccommodationQuery = {};
   pagination: Pageable | undefined = {};
-  constructor(private accommodationsResourceService: AccommodationsResourceService) {}
+  constructor(private accommodationsResourceService: AccommodationsResourceService, private route: ActivatedRoute) {}
+
+  ngOnInit() {
+    const { capacity, city, region } = this.route.snapshot.queryParams;
+    const searchCriteria: AccommodationQuery = {
+      capacity,
+      location: {
+        region,
+        city,
+      },
+    };
+    if (searchCriteria.capacity || searchCriteria.location?.city) {
+      this.search(searchCriteria);
+    }
+  }
 
   getResultsObservable(
     region: string | undefined,
@@ -31,17 +46,19 @@ export class AccommodationSearchComponent {
     }
   }
 
-  search(searchCriteria?: AccommodationQuery, pagination?: Pageable) {
+  search(searchCriteria?: AccommodationQuery) {
     this.loading = true;
 
-    this.searchCriteria.capacity = searchCriteria?.capacity ?? this.searchCriteria.capacity;
-    this.searchCriteria.location = searchCriteria?.location ?? this.searchCriteria.location;
-    this.pagination = pagination ?? this.pagination;
+    const { page, size, sort } = this.route.snapshot.queryParams;
+    if (searchCriteria) {
+      this.searchCriteria.capacity = searchCriteria?.capacity;
+      this.searchCriteria.location = searchCriteria?.location;
+    }
 
     const pageRequest: Pageable = {
-      page: pagination?.page,
-      size: this.pagination?.size,
-      sort: pagination?.sort,
+      page,
+      size,
+      sort,
     };
 
     const { location: { region, city } = {}, capacity } = this.searchCriteria;

@@ -1,9 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TransportResourceService } from '@app/core/api';
-import { TransportOffer } from '@app/core/api';
+import { TransportOffer, TransportResourceService } from '@app/core/api';
 import { CategoryRoutingName } from '@app/shared/models';
 import { defaults } from '@app/shared/utils';
+import { Location } from '@angular/common';
+
 // TODO BE adding phoneNumber inprogress
 interface TransportOfferPhone extends TransportOffer {
   phoneNumber?: string;
@@ -21,7 +22,8 @@ export class ViewOfferTransportComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private transportResourceService: TransportResourceService
+    private transportResourceService: TransportResourceService,
+    private location: Location
   ) {}
 
   ngOnInit(): void {
@@ -36,8 +38,8 @@ export class ViewOfferTransportComponent implements OnInit {
       .catch((e) => console.error(e));
   }
 
-  getListUrl(): string {
-    return this.router.url.replace(/\/[^/]+$/, '');
+  navigateBack(): void {
+    this.location.back();
   }
 
   getTransportOffer() {
