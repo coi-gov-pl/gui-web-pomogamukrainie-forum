@@ -1,4 +1,3 @@
-export * from './api-workarounds';
 export * from './breadcrumb-labels.model';
 export * from './breadcrumb.model';
 export * from './category-name-key.model';

@@ -20,7 +20,7 @@
     <div class="announcements-wrapper">
       <ng-container *ngFor="let announcement of myAnnouncements.content">
         <app-search-result
-          *ngIf="announcement.type === 'accommodation'"
+          *ngIf="announcement.type === 'ACCOMMODATION'"
           [location]="announcement.location"
           [title]="announcement.title"
           [description]="announcement.description"
@@ -48,7 +48,7 @@
         </app-search-result>
 
         <app-search-result
-          *ngIf="announcement.type === 'materialAid'"
+          *ngIf="announcement.type === 'MATERIAL_AID'"
           [location]="announcement.location"
           [title]="announcement.title"
           [description]="announcement.description"
@@ -71,7 +71,7 @@
         </app-search-result>
 
         <app-search-result
-          *ngIf="announcement.type === 'transport'"
+          *ngIf="announcement.type === 'TRANSPORT'"
           [origin]="announcement.origin"
           [destination]="announcement.destination"
           [title]="announcement.title"
