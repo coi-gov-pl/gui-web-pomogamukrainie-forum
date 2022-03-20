@@ -18,6 +18,7 @@ export const userOffers: OffersBaseOffer = {
       guests: 2,
       lengthOfStay: 'MONTH_2',
       hostLanguage: ['PL', 'UA'],
+      phoneNumber: '48123456789',
     },
     {
       id: 19,
@@ -30,6 +31,7 @@ export const userOffers: OffersBaseOffer = {
         region: 'Mazowieckie',
         city: 'Warszawa',
       },
+      phoneNumber: '48456789123',
     },
     {
       id: 23,
@@ -48,6 +50,7 @@ export const userOffers: OffersBaseOffer = {
       },
       capacity: 10,
       transportDate: '2022-03-16',
+      phoneNumber: '48789123456',
     },
   ],
   totalElements: 3,

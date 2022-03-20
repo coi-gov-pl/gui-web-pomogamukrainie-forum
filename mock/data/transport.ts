@@ -22,6 +22,7 @@ export const transportList: OffersTransportOffer = {
       destination: { region: 'Pomorskie', city: 'Gdynia' },
       capacity: 11,
       transportDate: '2022-03-14',
+      phoneNumber: '48123456789',
     },
     {
       id: 11,
@@ -34,6 +35,7 @@ export const transportList: OffersTransportOffer = {
       destination: { region: 'Mazowieckie', city: 'Warszawa' },
       capacity: 10,
       transportDate: '2022-03-14',
+      phoneNumber: '48456789123',
     },
     {
       id: 21,
@@ -46,6 +48,7 @@ export const transportList: OffersTransportOffer = {
       destination: { region: 'Pomorskie', city: 'Gdynia' },
       capacity: 11,
       transportDate: '2022-03-16',
+      phoneNumber: '48789123456',
     },
     {
       id: 23,
@@ -58,6 +61,7 @@ export const transportList: OffersTransportOffer = {
       destination: { region: 'Mazowieckie', city: 'Warszawa' },
       capacity: 10,
       transportDate: '2022-03-16',
+      phoneNumber: '48891234567',
     },
   ],
   totalElements: 4,

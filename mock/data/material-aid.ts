@@ -19,6 +19,7 @@ export const materialAidList: OffersMaterialAidOffer = {
       modifiedDate: '2022-03-14T10:36:12Z',
       category: 'HOUSEHOLD_GOODS',
       location: { region: 'Pomorskie', city: 'Gdańsk' },
+      phoneNumber: '48123456789',
     },
     {
       id: 7,
@@ -28,6 +29,7 @@ export const materialAidList: OffersMaterialAidOffer = {
       modifiedDate: '2022-03-14T10:36:12Z',
       category: 'FOR_CHILDREN',
       location: { region: 'Mazowieckie', city: 'Warszawa' },
+      phoneNumber: '48456789123',
     },
     {
       id: 17,
@@ -37,6 +39,7 @@ export const materialAidList: OffersMaterialAidOffer = {
       modifiedDate: '2022-03-16T14:43:15Z',
       category: 'HOUSEHOLD_GOODS',
       location: { region: 'Pomorskie', city: 'Gdańsk' },
+      phoneNumber: '48789123456',
     },
     {
       id: 19,
@@ -46,6 +49,7 @@ export const materialAidList: OffersMaterialAidOffer = {
       modifiedDate: '2022-03-16T14:43:15Z',
       category: 'FOR_CHILDREN',
       location: { region: 'Mazowieckie', city: 'Warszawa' },
+      phoneNumber: '48891234567',
     },
   ],
   totalElements: 4,
