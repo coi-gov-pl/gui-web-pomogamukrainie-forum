@@ -1,0 +1,10 @@
+<div class="container">
+  <mat-paginator
+    class="paginator"
+    [length]="length"
+    [pageSizeOptions]="[5, 10, 20, 50]"
+    [attr.aria-label]="'SELECT_PAGE' | translate"
+    (page)="handlePageEvent($event)"
+  >
+  </mat-paginator>
+</div>
