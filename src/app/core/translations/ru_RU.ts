@@ -95,4 +95,9 @@ export default {
   PREVIOUS_PAGE: 'Предыдущая страница',
   PAGE_OF: 'из',
   SELECT_PAGE: 'Выберите страницу',
+  PLACEHOLDER_LOCATION: 'Например: Жешув, Подкарпацкий район',
+  CHOOSE_FROM_THE_LIST: 'Выберите из списка',
+  LOCATION_FROM: 'Откуда',
+  LOCATION_TO: 'Куда',
+  DATE: 'Дата',
 };

@@ -160,4 +160,5 @@ export default {
   PREVIOUS_PAGE: 'Poprzednia strona',
   PAGE_OF: 'z',
   SELECT_PAGE: 'Wybierz stronę',
+  CHOOSE_FROM_THE_LIST: 'Wybierz z listy',
 };

@@ -95,4 +95,9 @@ export default {
   PREVIOUS_PAGE: 'Previous page',
   PAGE_OF: 'of',
   SELECT_PAGE: 'Select page',
+  PLACEHOLDER_LOCATION: 'E.g. Rzeszów, Subcarpathian Voivodeship',
+  CHOOSE_FROM_THE_LIST: 'Choose from the list',
+  LOCATION_FROM: 'From',
+  LOCATION_TO: 'Where',
+  DATE: 'Date',
 };

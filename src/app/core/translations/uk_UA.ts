@@ -95,4 +95,9 @@ export default {
   PREVIOUS_PAGE: 'Попередня сторінка',
   PAGE_OF: 'з',
   SELECT_PAGE: 'Вибери сторінку',
+  PLACEHOLDER_LOCATION: 'Наприклад: Ряшів, Підкарпацький район',
+  CHOOSE_FROM_THE_LIST: 'Виберіть зі списку',
+  LOCATION_FROM: 'Звідки',
+  LOCATION_TO: 'Куди',
+  DATE: 'Дата',
 };
