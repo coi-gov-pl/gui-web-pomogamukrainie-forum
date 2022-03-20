@@ -47,7 +47,7 @@ export default {
   PLACEHOLDER_CHOOSE: `Выбрать`,
   LABEL_PHONE_NUMBER: `Номер телефона`,
   LABEL_OFFER_DESCRIPTION: `Описания`,
-  LABEL_OFFER_DESCRIPTION_MAXCHARS: `(до 80 символов)`,
+  LABEL_OFFER_DESCRIPTION_MAXCHARS: `(до 2000 символов)`,
   OFFER_PUBLISH: `Опубликовать объявление`,
   LABEL_OFFER_TITLE: `Заголовок объявления`,
   LABEL_OFFER_MAXCHARS: `(до 80 символов)`,

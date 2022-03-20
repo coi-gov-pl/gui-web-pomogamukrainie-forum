@@ -48,7 +48,7 @@ export default {
   PLACEHOLDER_CHOOSE: 'Wybierz',
   LABEL_PHONE_NUMBER: 'Numer telefonu',
   LABEL_OFFER_DESCRIPTION: 'Treść ogłoszenia',
-  LABEL_OFFER_DESCRIPTION_MAXCHARS: '(do 80 znaków)',
+  LABEL_OFFER_DESCRIPTION_MAXCHARS: '(do 2000 znaków)',
   OFFER_PUBLISH: 'Opublikuj ogłoszenie',
   LABEL_OFFER_TITLE: 'Tytuł ogłoszenia',
   LABEL_OFFER_MAXCHARS: '(do 80 znaków)',
