@@ -155,5 +155,10 @@ export default {
   NO_RESULTS_TEXT_START: 'Zmień kryteria wyszukiwania, lub',
   NO_RESULTS_TEXT_LINK: 'przejdź do informatora',
   NO_RESULTS_TEXT_END: 'by wyświetlić inne dostępne formy pomocy dla tej kategorii.',
+  ITEM_OF_PAGE: 'Ogłoszeń na stronie:',
+  NEXT_PAGE: 'Następna strona',
+  PREVIOUS_PAGE: 'Poprzednia strona',
+  PAGE_OF: 'z',
+  SELECT_PAGE: 'Wybierz stronę',
   CHOOSE_FROM_THE_LIST: 'Wybierz z listy',
 };
