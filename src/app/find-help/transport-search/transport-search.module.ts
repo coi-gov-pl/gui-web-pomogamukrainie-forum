@@ -13,9 +13,7 @@ import { TransportSearchComponent } from './transport-search.component';
 import { SearchResultComponentModule } from '../search-result/search-result.module';
 import { CategoryNavigationComponentModule, CitiesSearchModule, MoreInfoLinkModule } from '@app/shared/components';
 import { TransportSearchFormComponent } from './transport-search-form/transport-search-form.component';
-import { DatepickerModule } from '@app/shared/components';
-import { NoResultsModule } from '@app/shared/components/no-results/no-results.module';
-import { PaginatorModule } from '@app/shared/components/paginator/paginator.module';
+import { DatepickerModule, NoResultsModule, PaginatorModule } from '@app/shared/components';
 
 @NgModule({
   declarations: [TransportSearchComponent, TransportSearchFormComponent],
