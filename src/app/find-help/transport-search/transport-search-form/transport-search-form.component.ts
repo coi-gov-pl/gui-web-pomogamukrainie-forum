@@ -32,8 +32,8 @@ export class TransportSearchFormComponent implements OnInit {
     }
   }
 
-  onSubmit(): void {
-    this.router.navigate([], {
+  async onSubmit(): Promise<void> {
+    await this.router.navigate([], {
       relativeTo: this.route,
       queryParams: {
         page: 0,
