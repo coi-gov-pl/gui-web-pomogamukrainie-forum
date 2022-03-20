@@ -4,6 +4,11 @@ import { TransportResourceService } from '@app/core/api';
 import { TransportOffer } from '@app/core/api';
 import { CategoryRoutingName } from '@app/shared/models';
 import { defaults } from '@app/shared/utils';
+// TODO BE adding phoneNumber inprogress
+interface TransportOfferPhone extends TransportOffer {
+  phoneNumber?: string;
+}
+
 @Component({
   selector: 'app-view-offer-transport',
   templateUrl: './view-offer-transport.component.html',
@@ -11,7 +16,7 @@ import { defaults } from '@app/shared/utils';
 })
 export class ViewOfferTransportComponent implements OnInit {
   offerId: number = 0;
-  data = defaults<TransportOffer>();
+  data = defaults<TransportOfferPhone>();
   categoryRouteName = CategoryRoutingName.TRANSPORT;
   constructor(
     private router: Router,

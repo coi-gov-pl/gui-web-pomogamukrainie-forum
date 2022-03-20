@@ -35,6 +35,10 @@
     <a [routerLink]="getListUrl()">&lt; {{ "BACK_TO_LIST" | translate }}</a>
   </mat-card>
   <div class="w-100 w-md-50">
-    <app-reply-offer [helperPhoneNumber]="'123123213'" [helperFirstname]="data.userFirstName"></app-reply-offer>
+    <app-reply-offer
+      [offerId]="offerId"
+      [helpersPhoneNumber]="data.phoneNumber"
+      [helpersFirstname]="data.userFirstName"
+    ></app-reply-offer>
   </div>
 </div>
