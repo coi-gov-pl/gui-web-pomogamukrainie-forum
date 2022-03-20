@@ -1,13 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MaterialAidResourceService } from '@app/core/api';
 import { MaterialAidOffer } from '@app/core/api';
 import { CategoryRoutingName } from '@app/shared/models';
 import { defaults } from '@app/shared/utils';
-// TODO BE adding phoneNumber inprogress
-interface MaterialAidOfferPhone extends MaterialAidOffer {
-  phoneNumber?: string;
-}
+
 @Component({
   selector: 'app-view-offer-material-help',
   templateUrl: './view-offer-material-aid.component.html',
@@ -15,7 +12,7 @@ interface MaterialAidOfferPhone extends MaterialAidOffer {
 })
 export class ViewOfferMaterialAidComponent implements OnInit {
   offerId: number = 0;
-  data = defaults<MaterialAidOfferPhone>();
+  data = defaults<MaterialAidOffer>();
   categoryRouteName = CategoryRoutingName.MATERIAL_HELP;
   constructor(
     private router: Router,

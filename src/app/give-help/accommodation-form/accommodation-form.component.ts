@@ -8,11 +8,6 @@ import { SnackbarService } from '@app/shared/services/snackbar.service';
 import { ALERT_TYPES } from '@app/shared/models/';
 import { take } from 'rxjs/operators';
 import { Router } from '@angular/router';
-// Waiting for TransportOfferDefinitionDTO receive a phoneNumber prop
-interface AccommodationOfferDefinition extends AccommodationOfferDefinitionDTO {
-  phoneNumber?: string;
-}
-import { AccommodationOffer } from '@app/core/api';
 
 @Component({
   selector: 'app-accommodation-form',
@@ -25,7 +20,7 @@ export class AccommodationFormComponent {
   LENGTHOFSTAY = LENGTHOFSTAY;
   LANGUAGES = LANGUAGES;
   PREFIXES = PREFIXES;
-  data = defaults<AccommodationOfferDefinition>({
+  data = defaults<AccommodationOfferDefinitionDTO>({
     hostLanguage: [],
   });
   loading: boolean = false;
