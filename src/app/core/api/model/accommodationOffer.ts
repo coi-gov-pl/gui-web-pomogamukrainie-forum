@@ -16,11 +16,13 @@ export interface AccommodationOffer {
   userFirstName: string;
   title: string;
   description: string;
+  phoneNumber: string;
   modifiedDate?: string;
   location: Location;
   guests: number;
   lengthOfStay: AccommodationOffer.LengthOfStayEnum;
   hostLanguage: Array<AccommodationOffer.HostLanguageEnum>;
+  type?: string;
 }
 export namespace AccommodationOffer {
   export type LengthOfStayEnum = 'WEEK_1' | 'WEEK_2' | 'MONTH_1' | 'MONTH_2' | 'MONTH_3' | 'LONGER';
