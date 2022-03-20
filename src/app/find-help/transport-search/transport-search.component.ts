@@ -20,11 +20,11 @@ export class TransportSearchComponent {
   search(searchCriteria?: TransportOfferSearchCriteria, pagination?: Pageable) {
     this.loading = true;
 
-    this.searchCriteria.origin = searchCriteria?.origin || this.searchCriteria.origin;
-    this.searchCriteria.destination = searchCriteria?.destination || this.searchCriteria.destination;
-    this.searchCriteria.capacity = searchCriteria?.capacity || this.searchCriteria.capacity;
-    this.searchCriteria.transportDate = searchCriteria?.transportDate || this.searchCriteria.transportDate;
-    this.pagination = pagination || this.pagination;
+    this.searchCriteria.origin = searchCriteria?.origin ?? this.searchCriteria.origin;
+    this.searchCriteria.destination = searchCriteria?.destination ?? this.searchCriteria.destination;
+    this.searchCriteria.capacity = searchCriteria?.capacity ?? this.searchCriteria.capacity;
+    this.searchCriteria.transportDate = searchCriteria?.transportDate ?? this.searchCriteria.transportDate;
+    this.pagination = pagination ?? this.pagination;
 
     const pageRequest: Pageable = {
       page: pagination?.page,

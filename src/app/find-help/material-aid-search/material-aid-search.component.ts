@@ -20,9 +20,9 @@ export class MaterialAidSearchComponent {
   search(searchCriteria?: MaterialAidOfferSearchCriteria, pagination?: Pageable) {
     this.loading = true;
 
-    this.searchCriteria.category = searchCriteria?.category || this.searchCriteria.category;
-    this.searchCriteria.location = searchCriteria?.location || this.searchCriteria.location;
-    this.pagination = pagination || this.pagination;
+    this.searchCriteria.category = searchCriteria?.category ?? this.searchCriteria.category;
+    this.searchCriteria.location = searchCriteria?.location ?? this.searchCriteria.location;
+    this.pagination = pagination ?? this.pagination;
 
     const pageRequest: Pageable = {
       page: pagination?.page,

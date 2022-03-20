@@ -34,9 +34,9 @@ export class AccommodationSearchComponent {
   search(searchCriteria?: AccommodationQuery, pagination?: Pageable) {
     this.loading = true;
 
-    this.searchCriteria.capacity = searchCriteria?.capacity || this.searchCriteria.capacity;
-    this.searchCriteria.location = searchCriteria?.location || this.searchCriteria.location;
-    this.pagination = pagination || this.pagination;
+    this.searchCriteria.capacity = searchCriteria?.capacity ?? this.searchCriteria.capacity;
+    this.searchCriteria.location = searchCriteria?.location ?? this.searchCriteria.location;
+    this.pagination = pagination ?? this.pagination;
 
     const pageRequest: Pageable = {
       page: pagination?.page,
