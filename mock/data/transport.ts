@@ -1,4 +1,5 @@
-import { OffersTransportOffer, TransportOffer, TransportOfferDefinitionDTO } from '@app/core/api';
+import { TransportOfferDefinitionDTO } from '@app/core/api';
+import { OffersTransportOffer, TransportOffer } from '@app/shared/models';
 
 export const transportOffer = (body: TransportOfferDefinitionDTO): TransportOffer => {
   return {
@@ -6,6 +7,7 @@ export const transportOffer = (body: TransportOfferDefinitionDTO): TransportOffe
     id: 1,
     userFirstName: 'example',
     modifiedDate: new Date().toISOString(),
+    type: 'transport',
   };
 };
 
@@ -22,6 +24,8 @@ export const transportList: OffersTransportOffer = {
       destination: { region: 'Pomorskie', city: 'Gdynia' },
       capacity: 11,
       transportDate: '2022-03-14',
+      phoneNumber: '48123456789',
+      type: 'transport',
     },
     {
       id: 11,
@@ -34,6 +38,8 @@ export const transportList: OffersTransportOffer = {
       destination: { region: 'Mazowieckie', city: 'Warszawa' },
       capacity: 10,
       transportDate: '2022-03-14',
+      phoneNumber: '48456789123',
+      type: 'transport',
     },
     {
       id: 21,
@@ -46,6 +52,8 @@ export const transportList: OffersTransportOffer = {
       destination: { region: 'Pomorskie', city: 'Gdynia' },
       capacity: 11,
       transportDate: '2022-03-16',
+      phoneNumber: '48789123456',
+      type: 'transport',
     },
     {
       id: 23,
@@ -58,6 +66,8 @@ export const transportList: OffersTransportOffer = {
       destination: { region: 'Mazowieckie', city: 'Warszawa' },
       capacity: 10,
       transportDate: '2022-03-16',
+      phoneNumber: '48891234567',
+      type: 'transport',
     },
   ],
   totalElements: 4,

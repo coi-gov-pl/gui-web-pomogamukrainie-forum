@@ -16,9 +16,11 @@ export interface TransportOffer {
   userFirstName: string;
   title: string;
   description: string;
+  phoneNumber: string;
   modifiedDate?: string;
   origin: Location;
   destination: Location;
   capacity: number;
   transportDate: string;
+  type?: string;
 }

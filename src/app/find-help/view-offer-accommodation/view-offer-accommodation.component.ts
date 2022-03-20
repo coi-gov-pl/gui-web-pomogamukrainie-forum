@@ -1,14 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AccommodationsResourceService } from '@app/core/api';
 import { AccommodationOffer } from '@app/core/api';
 import { CategoryRoutingName } from '@app/shared/models';
 import { defaults } from '@app/shared/utils';
 import { Location } from '@angular/common';
-// TODO BE adding phoneNumber inprogress
-interface AccommodationOfferPhone extends AccommodationOffer {
-  phoneNumber?: string;
-}
 
 @Component({
   selector: 'app-view-offer-accommodation',
@@ -17,7 +13,7 @@ interface AccommodationOfferPhone extends AccommodationOffer {
 })
 export class ViewOfferAccommodationComponent implements OnInit {
   offerId!: number;
-  data = defaults<AccommodationOfferPhone>();
+  data = defaults<AccommodationOffer>();
   categoryRouteName = CategoryRoutingName.ACCOMMODATION;
   centered = false;
   disabled = false;

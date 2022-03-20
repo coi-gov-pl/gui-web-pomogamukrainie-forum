@@ -8,10 +8,6 @@ import { SnackbarService } from '@app/shared/services/snackbar.service';
 import { ALERT_TYPES } from '@app/shared/models';
 import { take } from 'rxjs/operators';
 import { Router } from '@angular/router';
-// Waiting for TransportOfferDefinitionDTO receive a phoneNumber prop
-interface TransportOfferDefinition extends TransportOfferDefinitionDTO {
-  phoneNumber?: string;
-}
 
 @Component({
   selector: 'app-transport-form',
@@ -23,7 +19,7 @@ export class TransportFormComponent {
   PREFIXES = PREFIXES;
   phonePrefix: string = '48';
   phoneNumber: string = '';
-  data = defaults<TransportOfferDefinition>();
+  data = defaults<TransportOfferDefinitionDTO>();
   loading: boolean = false;
 
   constructor(

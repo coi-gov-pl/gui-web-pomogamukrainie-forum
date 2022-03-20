@@ -16,9 +16,11 @@ export interface MaterialAidOffer {
   userFirstName: string;
   title: string;
   description: string;
+  phoneNumber: string;
   modifiedDate?: string;
   category: MaterialAidOffer.CategoryEnum;
   location: Location;
+  type?: string;
 }
 export namespace MaterialAidOffer {
   export type CategoryEnum =
