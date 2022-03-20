@@ -1,0 +1,14 @@
+.sorting {
+  margin-top: 36px;
+  margin-bottom: 10px;
+  font-size: 0.75rem;
+
+  a {
+    cursor: pointer;
+    color: var(--c-blue);
+    text-decoration: none;
+    &:hover {
+      color: var(--c-darkblue);
+    }
+  }
+}

@@ -151,4 +151,8 @@ export default {
   OFFER_SENT_ALERT_HEADER: 'Twoje głoszenie zostało opublikowane',
   OFFER_SENT_ALERT_CONTENT:
     'Sprawdzaj swoją skrzynkę i – jeśli podajesz numer – odbieraj telefon. W każdej chwili ktoś może odpowiedzieć na twoje ogłoszenie.',
+  ADVERTISEMENTS_LIST: 'Lista ogłoszeń',
+  SORTING: 'Sortowanie',
+  ASCENDING: 'Od najnowszych',
+  DESCENDING: 'Od najstarszych',
 };
