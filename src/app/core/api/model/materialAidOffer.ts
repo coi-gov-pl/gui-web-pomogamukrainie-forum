@@ -20,7 +20,7 @@ export interface MaterialAidOffer {
   modifiedDate?: string;
   category: MaterialAidOffer.CategoryEnum;
   location: Location;
-  type?: string;
+  type: MaterialAidOffer.TypeEnum;
 }
 export namespace MaterialAidOffer {
   export type CategoryEnum =
@@ -39,5 +39,9 @@ export namespace MaterialAidOffer {
     CosmeticsAndDomesticDetergents: 'COSMETICS_AND_DOMESTIC_DETERGENTS' as CategoryEnum,
     Furniture: 'FURNITURE' as CategoryEnum,
     Clothing: 'CLOTHING' as CategoryEnum,
+  };
+  export type TypeEnum = 'MATERIAL_AID';
+  export const TypeEnum = {
+    MaterialAid: 'MATERIAL_AID' as TypeEnum,
   };
 }
