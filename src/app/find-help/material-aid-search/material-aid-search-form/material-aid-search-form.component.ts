@@ -38,7 +38,7 @@ export class MaterialAidSearchFormComponent implements OnInit {
       relativeTo: this.route,
       queryParams: {
         page: 0,
-        size: 5,
+        size: localStorage.getItem('size') ?? 5,
         category: this.data?.category,
         city: this.data.location?.city,
         region: this.data.location?.region,

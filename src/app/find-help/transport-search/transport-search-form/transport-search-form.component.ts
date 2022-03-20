@@ -37,7 +37,7 @@ export class TransportSearchFormComponent implements OnInit {
       relativeTo: this.route,
       queryParams: {
         page: 0,
-        size: 5,
+        size: localStorage.getItem('size') ?? 5,
         capacity: this.data?.capacity,
         transportDate: this.data.transportDate,
         destinationRegion: this.data.destination?.region,

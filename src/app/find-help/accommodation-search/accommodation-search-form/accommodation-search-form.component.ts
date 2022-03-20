@@ -33,7 +33,7 @@ export class AccommodationSearchFormComponent implements OnInit {
       relativeTo: this.route,
       queryParams: {
         page: 0,
-        size: 5,
+        size: localStorage.getItem('size') ?? 5,
         capacity: this.data?.capacity,
         city: this.data.location?.city,
         region: this.data.location?.region,

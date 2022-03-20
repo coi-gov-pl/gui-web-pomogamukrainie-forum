@@ -3,6 +3,7 @@
     class="paginator"
     [length]="length"
     [pageIndex]="(params$ | async)?.page"
+    [pageSize]="(params$ | async)?.size"
     [pageSizeOptions]="[5, 10, 20, 50]"
     [attr.aria-label]="'SELECT_PAGE' | translate"
     (page)="handlePageEvent($event)"
