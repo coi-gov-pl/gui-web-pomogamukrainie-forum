@@ -12,10 +12,11 @@
     --attribute-font-size: 13px;
     font-family: var(--font-roboto);
     margin: 0 0 11px 0;
-    opacity: 0.5;
+    color: var(--base-font-color);
     font-size: var(--attribute-font-size);
     display: flex;
     gap: 18px;
+
     .right {
       flex: 1;
       text-align: right;
