@@ -16,6 +16,8 @@ import { CategoryRoutingName, CorePath } from '@app/shared/models';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ConfirmRemoveAdComponent } from '../confirm-remove-ad/confirm-remove-ad.component';
 
+const DEFAULT_PAGE_SIZE = 5;
+
 @Component({
   selector: 'app-my-account',
   templateUrl: './my-account.component.html',
@@ -23,7 +25,7 @@ import { ConfirmRemoveAdComponent } from '../confirm-remove-ad/confirm-remove-ad
 })
 export class MyAccountComponent implements OnInit {
   public myAnnouncements!: OffersBaseOffer;
-  pageRequest: Pageable = {};
+  pageRequest: Pageable = { size: DEFAULT_PAGE_SIZE };
 
   constructor(
     private router: Router,
@@ -35,9 +37,7 @@ export class MyAccountComponent implements OnInit {
   ) {}
 
   public ngOnInit() {
-    this.myOffersResource.listMyOffers(this.pageRequest).subscribe((results) => {
-      this.myAnnouncements = results;
-    });
+    this.loadAnnouncements();
   }
 
   removeAnnouncement(announcement: AccommodationOffer | MaterialAidOffer | TransportOffer): void {
@@ -76,11 +76,22 @@ export class MyAccountComponent implements OnInit {
     });
   }
 
+  private loadAnnouncements(): void {
+    this.myOffersResource.listMyOffers(this.pageRequest).subscribe((results) => {
+      this.myAnnouncements = results;
+    });
+  }
+
   editAnnouncement(announcement: AccommodationOffer | MaterialAidOffer | TransportOffer): void {
     console.log(announcement);
   }
 
   public addNewAd(): void {
     this.router.navigate([CorePath.Give, CategoryRoutingName.ACCOMMODATION]);
+  }
+
+  pageChange(event: Pageable) {
+    this.pageRequest = event;
+    this.loadAnnouncements();
   }
 }

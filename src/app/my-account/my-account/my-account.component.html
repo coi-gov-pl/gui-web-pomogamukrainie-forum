@@ -99,7 +99,7 @@
           </div>
         </app-search-result>
       </ng-container>
-      <!-- TODO: add paginator / global component-->
     </div>
+    <app-paginator [length]="myAnnouncements.totalElements" (param)="pageChange($event)"></app-paginator>
   </section>
 </div>
