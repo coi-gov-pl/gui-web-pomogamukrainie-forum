@@ -163,5 +163,5 @@ export default {
   CHOOSE_FROM_THE_LIST: 'Wybierz z listy',
   MESSAGE_SENT_ALERT_HEADER: 'Twoja odpowiedź została wysłana do osoby pomagającej',
   MESSAGE_SENT_ALERT_CONTENT: 'Potwierdzenie wysłania przesłaliśmy na Twój e-mail.',
-  ERROR_MIN_DATE: 'Wprowadź pożniejszą datę.',
+  ERROR_MIN_DATE: 'Wprowadź późniejszą datę.',
 };
