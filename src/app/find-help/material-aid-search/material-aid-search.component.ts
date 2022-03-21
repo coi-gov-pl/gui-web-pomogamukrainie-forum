@@ -27,7 +27,7 @@ export class MaterialAidSearchComponent implements OnInit {
         city,
       },
     };
-    if (page || size || category || city || region) {
+    if (page != null || size != null || category != null || city != null || region != null) {
       this.search(searchCriteria);
     }
   }

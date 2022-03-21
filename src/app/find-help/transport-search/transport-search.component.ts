@@ -34,14 +34,14 @@ export class TransportSearchComponent implements OnInit {
       },
     };
     if (
-      page ||
-      size ||
-      capacity ||
-      transportDate ||
-      originCity ||
-      originRegion ||
-      destinationCity ||
-      destinationRegion
+      page != null ||
+      size != null ||
+      capacity != null ||
+      transportDate != null ||
+      originCity != null ||
+      originRegion != null ||
+      destinationCity != null ||
+      destinationRegion != null
     ) {
       this.search(searchCriteria);
     }
