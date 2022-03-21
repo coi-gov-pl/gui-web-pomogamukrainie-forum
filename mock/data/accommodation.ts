@@ -1,4 +1,4 @@
-import { AccommodationOffer, AccommodationOfferDefinitionDTO, OffersAccommodationOffer } from '@app/core/api';
+import { AccommodationOfferDefinitionDTO, AccommodationOffer, OffersAccommodationOffer } from '@app/core/api';
 
 export const accommodationOffer = (body: AccommodationOfferDefinitionDTO): AccommodationOffer => {
   return {
@@ -6,6 +6,7 @@ export const accommodationOffer = (body: AccommodationOfferDefinitionDTO): Accom
     id: 1,
     userFirstName: 'example',
     modifiedDate: new Date().toISOString(),
+    type: 'ACCOMMODATION',
   };
 };
 
@@ -22,6 +23,8 @@ export const accommodationsList: OffersAccommodationOffer = {
       guests: 2,
       lengthOfStay: 'MONTH_2',
       hostLanguage: ['PL', 'UA'],
+      phoneNumber: '48123456789',
+      type: 'ACCOMMODATION',
     },
     {
       id: 3,
@@ -34,6 +37,8 @@ export const accommodationsList: OffersAccommodationOffer = {
       guests: 4,
       lengthOfStay: 'LONGER',
       hostLanguage: ['PL', 'UA'],
+      phoneNumber: '48456789123',
+      type: 'ACCOMMODATION',
     },
     {
       id: 13,
@@ -46,6 +51,8 @@ export const accommodationsList: OffersAccommodationOffer = {
       guests: 2,
       lengthOfStay: 'MONTH_2',
       hostLanguage: ['PL', 'UA'],
+      phoneNumber: '48789123456',
+      type: 'ACCOMMODATION',
     },
     {
       id: 15,
@@ -58,6 +65,8 @@ export const accommodationsList: OffersAccommodationOffer = {
       guests: 4,
       lengthOfStay: 'LONGER',
       hostLanguage: ['PL', 'UA'],
+      phoneNumber: '48891234567',
+      type: 'ACCOMMODATION',
     },
   ],
   totalElements: 4,

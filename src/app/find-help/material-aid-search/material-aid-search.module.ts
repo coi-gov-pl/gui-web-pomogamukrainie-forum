@@ -12,7 +12,13 @@ import { PomCommonPipesModule } from '@app/shared/pipes';
 import { TranslateModule } from '@ngx-translate/core';
 import { MaterialAidSearchComponent } from './material-aid-search.component';
 import { SearchResultComponentModule } from '../search-result/search-result.module';
-import { CategoryNavigationComponentModule, CitiesSearchModule, MoreInfoLinkModule } from '@app/shared/components';
+import {
+  CategoryNavigationComponentModule,
+  CitiesSearchModule,
+  MoreInfoLinkModule,
+  NoResultsModule,
+  PaginatorModule,
+} from '@app/shared/components';
 import { MaterialAidSearchFormComponent } from './material-aid-search-form/material-aid-search-form.component';
 import { SortingHeaderModule } from '@app/shared/components/sorting/sorting-header.module';
 
@@ -35,6 +41,8 @@ import { SortingHeaderModule } from '@app/shared/components/sorting/sorting-head
     SearchResultComponentModule,
     MoreInfoLinkModule,
     CategoryNavigationComponentModule,
+    NoResultsModule,
+    PaginatorModule,
     SortingHeaderModule,
   ],
 })

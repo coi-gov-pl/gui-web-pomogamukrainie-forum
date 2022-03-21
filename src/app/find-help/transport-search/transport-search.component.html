@@ -1,6 +1,7 @@
 <mat-card>
   <app-transport-search-form (search)="search($event)"></app-transport-search-form>
 </mat-card>
+<app-no-results *ngIf="total === 0"></app-no-results>
 <div class="results" *ngIf="this.total" [class.loading]="loading">
   <router-outlet></router-outlet>
   <app-sorting-header
@@ -31,4 +32,5 @@
       ></app-search-result-attribute>
     </app-search-result>
   </div>
+  <app-paginator [length]="total" (param)="search(undefined, $event)"></app-paginator>
 </div>

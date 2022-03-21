@@ -1,0 +1,13 @@
+.no-results {
+  padding-top: 80px;
+  padding-bottom: 40px;
+  text-align: center;
+}
+
+a {
+  color: var(--c-blue);
+  text-decoration: none;
+  &:hover {
+    color: var(--c-darkblue);
+  }
+}

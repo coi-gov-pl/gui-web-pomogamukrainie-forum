@@ -13,22 +13,27 @@ export class TransportSearchComponent {
   loading = false;
   CategoryRoutingName = CategoryRoutingName;
   corePath = CorePath;
+  searchCriteria: TransportOfferSearchCriteria = {};
+  pagination: Pageable | undefined;
   modifiedDateSortOrder: 'asc' | 'desc' = 'asc';
-  searchCriteria!: TransportOfferSearchCriteria;
   constructor(private transportResourceService: TransportResourceService) {}
 
-  search(searchCriteria: TransportOfferSearchCriteria = this.searchCriteria) {
-    this.searchCriteria = searchCriteria;
+  search(searchCriteria?: TransportOfferSearchCriteria, pagination?: Pageable) {
     this.loading = true;
 
-    // TODO specify the params; at least sorting is configurable from the UI
+    this.searchCriteria.origin = searchCriteria?.origin ?? this.searchCriteria.origin;
+    this.searchCriteria.destination = searchCriteria?.destination ?? this.searchCriteria.destination;
+    this.searchCriteria.capacity = searchCriteria?.capacity ?? this.searchCriteria.capacity;
+    this.searchCriteria.transportDate = searchCriteria?.transportDate ?? this.searchCriteria.transportDate;
+    this.pagination = pagination ?? this.pagination;
+
     const pageRequest: Pageable = {
-      // page?: number;
-      // size?: number;
+      page: pagination?.page,
+      size: this.pagination?.size,
       sort: [`modifiedDate,${this.modifiedDateSortOrder}`],
     };
 
-    this.transportResourceService.listTransport(pageRequest, searchCriteria).subscribe({
+    this.transportResourceService.listTransport(pageRequest, this.searchCriteria).subscribe({
       next: (results) => {
         this.results = results.content ?? [];
         this.total = results.totalElements ?? 0;

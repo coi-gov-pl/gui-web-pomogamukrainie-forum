@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { AccommodationOffer, MaterialAidOffer, OffersBaseOffer, TransportOffer } from '@app/core/api';
+import { AccommodationOffer, MaterialAidOffer, TransportOffer } from '@app/core/api';
 
 @Component({
   selector: 'app-confirm-remove-ad',

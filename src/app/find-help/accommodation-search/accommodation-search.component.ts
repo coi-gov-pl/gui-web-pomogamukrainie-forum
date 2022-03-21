@@ -14,8 +14,9 @@ export class AccommodationSearchComponent {
   loading = false;
   categoryRoutingName = CategoryRoutingName;
   corePath = CorePath;
+  searchCriteria: AccommodationQuery = {};
+  pagination: Pageable | undefined = {};
   modifiedDateSortOrder: 'asc' | 'desc' = 'asc';
-  searchCriteria!: AccommodationQuery;
   constructor(private accommodationsResourceService: AccommodationsResourceService) {}
 
   getResultsObservable(
@@ -31,18 +32,20 @@ export class AccommodationSearchComponent {
     }
   }
 
-  search(searchCriteria: AccommodationQuery = this.searchCriteria) {
-    this.searchCriteria = searchCriteria;
+  search(searchCriteria?: AccommodationQuery, pagination?: Pageable) {
     this.loading = true;
 
-    // TODO specify the params; at least sorting is configurable from the UI
+    this.searchCriteria.capacity = searchCriteria?.capacity ?? this.searchCriteria.capacity;
+    this.searchCriteria.location = searchCriteria?.location ?? this.searchCriteria.location;
+    this.pagination = pagination ?? this.pagination;
+
     const pageRequest: Pageable = {
-      // page?: number;
-      // size?: number;
+      page: pagination?.page,
+      size: this.pagination?.size,
       sort: [`modifiedDate,${this.modifiedDateSortOrder}`],
     };
 
-    const { location: { region, city } = {}, capacity } = searchCriteria;
+    const { location: { region, city } = {}, capacity } = this.searchCriteria;
 
     this.getResultsObservable(region, city, pageRequest, capacity).subscribe({
       next: (results) => {

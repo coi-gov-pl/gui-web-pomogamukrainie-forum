@@ -34,7 +34,6 @@ const routes: Routes = [
   },
   {
     path: CorePath.About,
-    canLoad: [AuthGuard],
     loadChildren: () => import('./about-app/about-app.module').then((m) => m.AboutAppModule),
     data: {
       title: BreadcrumbLabels.ABOUT,

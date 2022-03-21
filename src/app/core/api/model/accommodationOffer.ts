@@ -16,11 +16,13 @@ export interface AccommodationOffer {
   userFirstName: string;
   title: string;
   description: string;
+  phoneNumber: string;
   modifiedDate?: string;
   location: Location;
   guests: number;
   lengthOfStay: AccommodationOffer.LengthOfStayEnum;
   hostLanguage: Array<AccommodationOffer.HostLanguageEnum>;
+  type: AccommodationOffer.TypeEnum;
 }
 export namespace AccommodationOffer {
   export type LengthOfStayEnum = 'WEEK_1' | 'WEEK_2' | 'MONTH_1' | 'MONTH_2' | 'MONTH_3' | 'LONGER';
@@ -36,5 +38,9 @@ export namespace AccommodationOffer {
   export const HostLanguageEnum = {
     Ua: 'UA' as HostLanguageEnum,
     Pl: 'PL' as HostLanguageEnum,
+  };
+  export type TypeEnum = 'ACCOMMODATION';
+  export const TypeEnum = {
+    Accommodation: 'ACCOMMODATION' as TypeEnum,
   };
 }
