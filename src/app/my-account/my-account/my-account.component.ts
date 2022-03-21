@@ -24,6 +24,7 @@ import { StoreUrlService } from '@app/core/store-url/store-url.service';
 })
 export class MyAccountComponent implements OnInit {
   public myAnnouncements!: OffersBaseOffer;
+  pageRequest: Pageable = {};
   categoryRoutingName = CategoryRoutingName;
 
   constructor(
@@ -45,13 +46,14 @@ export class MyAccountComponent implements OnInit {
   getMyOffers() {
     const { page, size, sort } = this.route.snapshot.queryParams;
 
-    const pageRequest: Pageable = {
+    this.pageRequest = {
       page,
       size,
       sort,
     };
-    this.myOffersResource.listMyOffers(pageRequest).subscribe((results) => {
+    this.myOffersResource.listMyOffers(this.pageRequest).subscribe((results) => {
       this.myAnnouncements = results;
+      console.log(this.myAnnouncements);
     });
   }
 
