@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { NotFoundComponent } from '@app/core/not-found/not-found.component';
+import { CategoryRoutingName } from '@app/shared/models';
 import { TransportSearchComponent } from './transport-search.component';
 
 const routes: Routes = [
@@ -12,6 +14,10 @@ const routes: Routes = [
       },
     ],
   },
+  {         
+    path: CategoryRoutingName.NOT_FOUND,
+    component: NotFoundComponent
+  },  
   {
     path: ':id',
     loadChildren: () =>
