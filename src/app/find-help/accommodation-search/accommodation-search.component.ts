@@ -28,7 +28,7 @@ export class AccommodationSearchComponent implements OnInit {
         city,
       },
     };
-    if (page || size || capacity || city || region) {
+    if (page != null || size != null || capacity != null || city != null || region != null) {
       this.search(searchCriteria);
     }
   }
