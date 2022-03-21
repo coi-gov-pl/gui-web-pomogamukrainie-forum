@@ -63,8 +63,16 @@
           (change)="onConsentChange()"
           name="consent"
         >
-          <span innerHTML="{{ 'ACCEPT_RULES' | translate }}"></span>
-          <span *ngIf="isLoggedIn === false" innerHTML="{{ 'PRIVATE_POLICY' | translate }}"></span>
+          <span>{{ "ACCEPT" | translate }} </span>
+          <a target="_blank" href=""
+            ><span>{{ "CONSENT" | translate }}</span></a
+          >
+          <span *ngIf="isLoggedIn === false">
+            <span> {{ "AND" | translate }} </span>
+            <a target="_blank" href="https://pomagamukrainie.gov.pl/assets/rodo/politykaprywatnosci.pdf"
+              ><span>{{ "PRIVATE_POLICY" | translate }}</span></a
+            >
+          </span>
         </mat-checkbox>
       </div>
       <div class="d-flex flex-column flex-xl-row">
