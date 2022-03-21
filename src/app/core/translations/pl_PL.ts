@@ -167,4 +167,5 @@ export default {
   SORTING: 'Sortowanie',
   ASCENDING: 'Od najnowszych',
   DESCENDING: 'Od najstarszych',
+  ERROR_MIN_DATE: 'Wprowadź późniejszą datę.',
 };
