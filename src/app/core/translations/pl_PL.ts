@@ -163,6 +163,7 @@ export default {
   CHOOSE_FROM_THE_LIST: 'Wybierz z listy',
   MESSAGE_SENT_ALERT_HEADER: 'Twoja odpowiedź została wysłana do osoby pomagającej',
   MESSAGE_SENT_ALERT_CONTENT: 'Potwierdzenie wysłania przesłaliśmy na Twój e-mail.',
-  AND: 'i',
-  PRIVATE_POLICY: 'politykę prywantności',
+  PRIVATE_POLICY:
+    '<span> i </span><a target="_blank" href="https://pomagamukrainie.gov.pl/assets/rodo/politykaprywatnosci.pdf"><span> politykę prywatności</span></a></span>',
+  ACCEPT_RULES: '<span>Akceptuję </span><a target="_blank" href=""><span>regulamin</span></a>',
 };

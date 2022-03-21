@@ -20,6 +20,7 @@ export class ReplyOfferComponent implements OnInit {
   @Input() helpersFirstname: string | undefined;
   showPhoneNumber: boolean = false;
   loading: boolean = false;
+  isLoggedIn: boolean = false;
   constructor(
     private messageResourceService: MessageResourceService,
     private snackbarService: SnackbarService,
@@ -30,6 +31,7 @@ export class ReplyOfferComponent implements OnInit {
   ngOnInit(): void {
     this.data.tosApproved = false;
     this.data.offerId = this.offerId;
+    this.isLoggedIn = this.authService.isLoggedIn();
   }
 
   onConsentChange(): void {
@@ -38,10 +40,6 @@ export class ReplyOfferComponent implements OnInit {
 
   onPhoneNumberClick(): void {
     this.showPhoneNumber = true;
-  }
-
-  checkIfLogged(): boolean {
-    return this.authService.isLoggedIn();
   }
 
   submitMessage(): void {
