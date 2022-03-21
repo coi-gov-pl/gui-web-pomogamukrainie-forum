@@ -26,6 +26,7 @@ const DEFAULT_PAGE_SIZE = 5;
 export class MyAccountComponent implements OnInit {
   public myAnnouncements!: OffersBaseOffer;
   pageRequest: Pageable = { size: DEFAULT_PAGE_SIZE };
+  categoryRoutingName = CategoryRoutingName;
 
   constructor(
     private router: Router,
@@ -83,6 +84,7 @@ export class MyAccountComponent implements OnInit {
   }
 
   editAnnouncement(announcement: AccommodationOffer | MaterialAidOffer | TransportOffer): void {
+    // TODO: modify search-result component, now we have buttons inside <a> tag
     console.log(announcement);
   }
 

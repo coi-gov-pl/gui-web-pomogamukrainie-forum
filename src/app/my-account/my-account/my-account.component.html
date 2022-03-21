@@ -25,6 +25,8 @@
           [title]="announcement.title"
           [description]="announcement.description"
           [posted]="announcement.modifiedDate"
+          [offerId]="announcement.id!"
+          [category]="categoryRoutingName.ACCOMMODATION"
         >
           <app-search-result-attribute
             *ngIf="announcement.guests"
@@ -53,6 +55,8 @@
           [title]="announcement.title"
           [description]="announcement.description"
           [posted]="announcement.modifiedDate"
+          [offerId]="announcement.id!"
+          [category]="categoryRoutingName.MATERIAL_HELP"
         >
           <app-search-result-attribute
             *ngIf="announcement.category"
@@ -77,6 +81,8 @@
           [title]="announcement.title"
           [description]="announcement.description"
           [posted]="announcement.modifiedDate"
+          [offerId]="announcement.id!"
+          [category]="categoryRoutingName.TRANSPORT"
         >
           <app-search-result-attribute
             *ngIf="announcement.transportDate"
