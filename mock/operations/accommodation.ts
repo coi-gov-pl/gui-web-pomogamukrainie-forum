@@ -15,6 +15,5 @@ export function accommodationGet(req: express.Request, res: express.Response): e
 }
 
 export function accommodationDelete(req: express.Request, res: express.Response): express.Response {
-  const { id } = req.params;
-  return res.json(accommodationsList.content?.find((el) => el.id === +id));
+  return res.json();
 }

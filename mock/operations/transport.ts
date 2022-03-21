@@ -15,6 +15,5 @@ export function transportGet(req: express.Request, res: express.Response): expre
 }
 
 export function transportDelete(req: express.Request, res: express.Response): express.Response {
-  const { id } = req.params;
-  return res.json(transportList.content?.find((el) => el.id === +id));
+  return res.json();
 }

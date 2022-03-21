@@ -15,6 +15,5 @@ export function materialAidGet(req: express.Request, res: express.Response): exp
 }
 
 export function materialAidDelete(req: express.Request, res: express.Response): express.Response {
-  const { id } = req.params;
-  return res.json(materialAidList.content?.find((el) => el.id === +id));
+  return res.json();
 }
