@@ -14,7 +14,6 @@ import { AboutAppRoutingModule } from './about-app-routing.module';
     CommonModule,
     SharedModule,
     AboutAppRoutingModule,
-
     MatCardModule,
     MatButtonModule,
     MatIconModule,

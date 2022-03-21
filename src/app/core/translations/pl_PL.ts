@@ -48,7 +48,7 @@ export default {
   PLACEHOLDER_CHOOSE: 'Wybierz',
   LABEL_PHONE_NUMBER: 'Numer telefonu',
   LABEL_OFFER_DESCRIPTION: 'Treść ogłoszenia',
-  LABEL_OFFER_DESCRIPTION_MAXCHARS: '(do 80 znaków)',
+  LABEL_OFFER_DESCRIPTION_MAXCHARS: '(do 2000 znaków)',
   OFFER_PUBLISH: 'Opublikuj ogłoszenie',
   LABEL_OFFER_TITLE: 'Tytuł ogłoszenia',
   LABEL_OFFER_MAXCHARS: '(do 80 znaków)',
@@ -163,4 +163,5 @@ export default {
   CHOOSE_FROM_THE_LIST: 'Wybierz z listy',
   MESSAGE_SENT_ALERT_HEADER: 'Twoja odpowiedź została wysłana do osoby pomagającej',
   MESSAGE_SENT_ALERT_CONTENT: 'Potwierdzenie wysłania przesłaliśmy na Twój e-mail.',
+  ERROR_MIN_DATE: 'Wprowadź późniejszą datę.',
 };

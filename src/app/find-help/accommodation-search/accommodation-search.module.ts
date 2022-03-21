@@ -11,14 +11,12 @@ import { AccommodationSearchComponent } from './accommodation-search.component';
 import { MatCardModule } from '@angular/material/card';
 import { PomCommonPipesModule } from '@app/shared/pipes';
 import { SearchResultComponentModule } from '../search-result/search-result.module';
-import { CitiesSearchModule } from '@app/shared/components';
+import { CitiesSearchModule, NoResultsModule, PaginatorModule } from '@app/shared/components';
 import { TranslateModule } from '@ngx-translate/core';
 import { AccomodationSearchRoutingModule } from './accomodation-search.routing.module';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ReplyOfferModule } from '../reply-offer/reply-offer.module';
-import { NoResultsModule } from '@app/shared/components/no-results/no-results.module';
-import { PaginatorModule } from '@app/shared/components/paginator/paginator.module';
 
 @NgModule({
   declarations: [AccommodationSearchFormComponent, AccommodationSearchComponent],

@@ -9,12 +9,7 @@ import { AuthGuard } from './auth.guard';
 
 function authFactory(authService: AuthService): () => Promise<boolean> {
   return () =>
-    [EnvironmentType.OFFAUTH].includes(environment.environmentType)
-      ? Promise.resolve(true)
-      : authService
-          .initAuth()
-          .then((_) => Promise.resolve(true))
-          .catch((_) => Promise.resolve(true));
+    [EnvironmentType.OFFAUTH].includes(environment.environmentType) ? Promise.resolve(true) : authService.initAuth();
 }
 
 export const STORAGE_INJECTION_TOKEN: InjectionToken<string> = new InjectionToken<string>('storageToken');

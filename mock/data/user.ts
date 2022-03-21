@@ -1,5 +1,4 @@
-import { UserInfo } from '@app/core/api';
-import { OffersBaseOffer } from '@app/shared/models';
+import { UserInfo, OffersBaseOffer } from '@app/core/api';
 
 export const loggedUserInfo: UserInfo = { email: 'john@email.invalid', firstName: 'John', phoneNumber: undefined };
 
@@ -20,7 +19,7 @@ export const userOffers: OffersBaseOffer = {
       lengthOfStay: 'MONTH_2',
       hostLanguage: ['PL', 'UA'],
       phoneNumber: '48123456789',
-      type: 'accommodation',
+      type: 'ACCOMMODATION',
     },
     {
       id: 19,
@@ -34,7 +33,7 @@ export const userOffers: OffersBaseOffer = {
         city: 'Warszawa',
       },
       phoneNumber: '48456789123',
-      type: 'materialAid',
+      type: 'MATERIAL_AID',
     },
     {
       id: 23,
@@ -54,7 +53,7 @@ export const userOffers: OffersBaseOffer = {
       capacity: 10,
       transportDate: '2022-03-16',
       phoneNumber: '48789123456',
-      type: 'transport',
+      type: 'TRANSPORT',
     },
   ],
   totalElements: 3,

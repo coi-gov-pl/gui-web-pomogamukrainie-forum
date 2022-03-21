@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { AuthConfig, OAuthService } from 'angular-oauth2-oidc';
+import { AuthConfig, OAuthErrorEvent, OAuthService } from 'angular-oauth2-oidc';
+import { filter } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { AuthSessionStorageKeys } from './model';
 
@@ -9,7 +10,10 @@ export class AuthService {
 
   public initAuth(): Promise<boolean> {
     this.oAuthService.configure(this.createAuthConfig());
-    return this.oAuthService.loadDiscoveryDocumentAndTryLogin();
+    return this.oAuthService
+      .loadDiscoveryDocumentAndTryLogin()
+      .then((_) => this.automaticSilentRefresh())
+      .catch((_) => Promise.resolve(true));
   }
 
   /**
@@ -33,6 +37,18 @@ export class AuthService {
 
   public isLoggedIn(): boolean {
     return this.oAuthService.hasValidAccessToken() && this.oAuthService.hasValidIdToken();
+  }
+
+  public automaticSilentRefresh(): Promise<boolean> {
+    if (this.isLoggedIn()) {
+      this.oAuthService.events.pipe(filter((res) => res instanceof OAuthErrorEvent)).subscribe((error) => {
+        if (error.type === 'token_refresh_error') {
+          this.logOut();
+        }
+      });
+      this.oAuthService.setupAutomaticSilentRefresh();
+    }
+    return Promise.resolve(true);
   }
 
   private createAuthConfig(): AuthConfig {

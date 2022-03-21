@@ -22,5 +22,11 @@ export interface TransportOffer {
   destination: Location;
   capacity: number;
   transportDate: string;
-  type?: string;
+  type: TransportOffer.TypeEnum;
+}
+export namespace TransportOffer {
+  export type TypeEnum = 'TRANSPORT';
+  export const TypeEnum = {
+    Transport: 'TRANSPORT' as TypeEnum,
+  };
 }

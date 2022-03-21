@@ -20,11 +20,13 @@
     <div class="announcements-wrapper">
       <ng-container *ngFor="let announcement of myAnnouncements.content">
         <app-search-result
-          *ngIf="announcement.type === 'accommodation'"
+          *ngIf="announcement.type === 'ACCOMMODATION'"
           [location]="announcement.location"
           [title]="announcement.title"
           [description]="announcement.description"
           [posted]="announcement.modifiedDate"
+          [offerId]="announcement.id!"
+          [category]="categoryRoutingName.ACCOMMODATION"
         >
           <app-search-result-attribute
             *ngIf="announcement.guests"
@@ -48,11 +50,13 @@
         </app-search-result>
 
         <app-search-result
-          *ngIf="announcement.type === 'materialAid'"
+          *ngIf="announcement.type === 'MATERIAL_AID'"
           [location]="announcement.location"
           [title]="announcement.title"
           [description]="announcement.description"
           [posted]="announcement.modifiedDate"
+          [offerId]="announcement.id!"
+          [category]="categoryRoutingName.MATERIAL_HELP"
         >
           <app-search-result-attribute
             *ngIf="announcement.category"
@@ -71,12 +75,14 @@
         </app-search-result>
 
         <app-search-result
-          *ngIf="announcement.type === 'transport'"
+          *ngIf="announcement.type === 'TRANSPORT'"
           [origin]="announcement.origin"
           [destination]="announcement.destination"
           [title]="announcement.title"
           [description]="announcement.description"
           [posted]="announcement.modifiedDate"
+          [offerId]="announcement.id!"
+          [category]="categoryRoutingName.TRANSPORT"
         >
           <app-search-result-attribute
             *ngIf="announcement.transportDate"
