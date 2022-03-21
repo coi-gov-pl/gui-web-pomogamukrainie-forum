@@ -17,6 +17,7 @@ import { AccomodationSearchRoutingModule } from './accomodation-search.routing.m
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ReplyOfferModule } from '../reply-offer/reply-offer.module';
+import { SortingHeaderModule } from '@app/shared/components/sorting/sorting-header.module';
 
 @NgModule({
   declarations: [AccommodationSearchFormComponent, AccommodationSearchComponent],
@@ -47,6 +48,7 @@ import { ReplyOfferModule } from '../reply-offer/reply-offer.module';
     TranslateModule,
     MatIconModule,
     ReplyOfferModule,
+    SortingHeaderModule,
   ],
 })
 export class AccommodationSearchModule {}

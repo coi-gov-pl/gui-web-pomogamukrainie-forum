@@ -2,7 +2,11 @@
   <app-accommodation-search-form (search)="search($event)"></app-accommodation-search-form>
 </mat-card>
 <div class="results" *ngIf="this.total" [class.loading]="loading">
-  <div class="total">Lista ogłoszeń ({{ total }}):</div>
+  <app-sorting-header
+    [total]="total"
+    [(sortingOrder)]="modifiedDateSortOrder"
+    (sortingOrderChange)="search()"
+  ></app-sorting-header>
   <div>
     <app-search-result
       *ngFor="let result of results"

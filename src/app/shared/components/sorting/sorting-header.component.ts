@@ -7,12 +7,12 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class SortingHeaderComponent {
   @Input() total!: number;
-  @Input() sortingOrder: 'ASCENDING' | 'DESCENDING' = 'ASCENDING';
+  @Input() sortingOrder: 'desc' | 'asc' = 'asc';
 
-  @Output() sortingOrderChange = new EventEmitter<'ASCENDING' | 'DESCENDING'>();
+  @Output() sortingOrderChange = new EventEmitter<'desc' | 'asc'>();
 
   changeOrder() {
-    this.sortingOrder = this.sortingOrder === 'ASCENDING' ? 'DESCENDING' : 'ASCENDING';
+    this.sortingOrder = this.sortingOrder === 'asc' ? 'desc' : 'asc';
     this.sortingOrderChange.emit(this.sortingOrder);
   }
 }

@@ -13,16 +13,19 @@ export class TransportSearchComponent {
   loading = false;
   CategoryRoutingName = CategoryRoutingName;
   corePath = CorePath;
+  modifiedDateSortOrder: 'asc' | 'desc' = 'asc';
+  searchCriteria!: TransportOfferSearchCriteria;
   constructor(private transportResourceService: TransportResourceService) {}
 
-  search(searchCriteria: TransportOfferSearchCriteria) {
+  search(searchCriteria: TransportOfferSearchCriteria = this.searchCriteria) {
+    this.searchCriteria = searchCriteria;
     this.loading = true;
 
     // TODO specify the params; at least sorting is configurable from the UI
     const pageRequest: Pageable = {
       // page?: number;
       // size?: number;
-      // sort?: Array<string>;
+      sort: [`modifiedDate,${this.modifiedDateSortOrder}`],
     };
 
     this.transportResourceService.listTransport(pageRequest, searchCriteria).subscribe({

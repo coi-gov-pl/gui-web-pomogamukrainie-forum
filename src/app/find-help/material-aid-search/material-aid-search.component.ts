@@ -13,15 +13,18 @@ export class MaterialAidSearchComponent {
   loading = false;
   categoryRoutingName = CategoryRoutingName;
   corePath = CorePath;
+  modifiedDateSortOrder: 'asc' | 'desc' = 'asc';
+  searchCriteria!: MaterialAidOfferSearchCriteria;
   constructor(private materialAidResourceService: MaterialAidResourceService) {}
 
-  search(searchCriteria: MaterialAidOfferSearchCriteria) {
+  search(searchCriteria: MaterialAidOfferSearchCriteria = this.searchCriteria) {
+    this.searchCriteria = searchCriteria;
     this.loading = true;
 
     const pageRequest: Pageable = {
       // page?: number;
       // size?: number;
-      // sort?: Array<string>;
+      sort: [`modifiedDate,${this.modifiedDateSortOrder}`],
     };
 
     this.materialAidResourceService.listMaterialAid(pageRequest, searchCriteria).subscribe({
