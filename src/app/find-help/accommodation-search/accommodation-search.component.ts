@@ -16,7 +16,7 @@ export class AccommodationSearchComponent {
   corePath = CorePath;
   searchCriteria: AccommodationQuery = {};
   pagination: Pageable | undefined = {};
-  modifiedDateSortOrder: 'asc' | 'desc' = 'asc';
+  modifiedDateSortOrder: 'asc' | 'desc' = 'desc';
   constructor(private accommodationsResourceService: AccommodationsResourceService) {}
 
   getResultsObservable(

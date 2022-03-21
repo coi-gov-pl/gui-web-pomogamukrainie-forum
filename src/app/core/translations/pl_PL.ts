@@ -165,6 +165,7 @@ export default {
   MESSAGE_SENT_ALERT_CONTENT: 'Potwierdzenie wysłania przesłaliśmy na Twój e-mail.',
   ADVERTISEMENTS_LIST: 'Lista ogłoszeń',
   SORTING: 'Sortowanie',
-  ASCENDING: 'Od najnowszych',
-  DESCENDING: 'Od najstarszych',
+  ASCENDING: 'Od najstarszych',
+  DESCENDING: 'Od najnowszych',
+  ERROR_MIN_DATE: 'Wprowadź późniejszą datę.',
 };

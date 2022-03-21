@@ -7,7 +7,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class SortingHeaderComponent {
   @Input() total!: number;
-  @Input() sortingOrder: 'desc' | 'asc' = 'asc';
+  @Input() sortingOrder: 'desc' | 'asc' = 'desc';
 
   @Output() sortingOrderChange = new EventEmitter<'desc' | 'asc'>();
 

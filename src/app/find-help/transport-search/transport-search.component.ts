@@ -15,7 +15,7 @@ export class TransportSearchComponent {
   corePath = CorePath;
   searchCriteria: TransportOfferSearchCriteria = {};
   pagination: Pageable | undefined;
-  modifiedDateSortOrder: 'asc' | 'desc' = 'asc';
+  modifiedDateSortOrder: 'asc' | 'desc' = 'desc';
   constructor(private transportResourceService: TransportResourceService) {}
 
   search(searchCriteria?: TransportOfferSearchCriteria, pagination?: Pageable) {

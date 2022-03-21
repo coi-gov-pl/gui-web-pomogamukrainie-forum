@@ -15,7 +15,7 @@ export class MaterialAidSearchComponent {
   corePath = CorePath;
   searchCriteria: MaterialAidOfferSearchCriteria = {};
   pagination: Pageable | undefined = {};
-  modifiedDateSortOrder: 'asc' | 'desc' = 'asc';
+  modifiedDateSortOrder: 'asc' | 'desc' = 'desc';
   constructor(private materialAidResourceService: MaterialAidResourceService) {}
 
   search(searchCriteria?: MaterialAidOfferSearchCriteria, pagination?: Pageable) {
