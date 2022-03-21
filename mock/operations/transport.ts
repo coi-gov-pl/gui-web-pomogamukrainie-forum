@@ -1,5 +1,5 @@
 import * as express from 'express';
-import { transportList, transportOffer } from '../data';
+import { transportList, transportOffer, userOffers } from '../data';
 
 export function transportPost(req: express.Request, res: express.Response): express.Response {
   return res.json(transportOffer(req.body));
@@ -15,5 +15,9 @@ export function transportGet(req: express.Request, res: express.Response): expre
 }
 
 export function transportDelete(req: express.Request, res: express.Response): express.Response {
-  return res.json();
+  const { id } = req.params;
+  userOffers.content = userOffers.content?.filter((el) => el.id !== +id);
+
+  res.status(204);
+  return res.send();
 }
