@@ -18,9 +18,9 @@ import {
   MoreInfoLinkModule,
   NoResultsModule,
   PaginatorModule,
+  SortingHeaderModule,
 } from '@app/shared/components';
 import { MaterialAidSearchFormComponent } from './material-aid-search-form/material-aid-search-form.component';
-import { SortingHeaderModule } from '@app/shared/components/sorting/sorting-header.module';
 
 @NgModule({
   declarations: [MaterialAidSearchComponent, MaterialAidSearchFormComponent],

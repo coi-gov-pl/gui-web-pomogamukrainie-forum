@@ -11,10 +11,14 @@ import { PomCommonPipesModule } from '@app/shared/pipes';
 import { TranslateModule } from '@ngx-translate/core';
 import { TransportSearchComponent } from './transport-search.component';
 import { SearchResultComponentModule } from '../search-result/search-result.module';
-import { CategoryNavigationComponentModule, CitiesSearchModule, MoreInfoLinkModule } from '@app/shared/components';
+import {
+  CategoryNavigationComponentModule,
+  CitiesSearchModule,
+  MoreInfoLinkModule,
+  SortingHeaderModule,
+} from '@app/shared/components';
 import { TransportSearchFormComponent } from './transport-search-form/transport-search-form.component';
 import { DatepickerModule, NoResultsModule, PaginatorModule } from '@app/shared/components';
-import { SortingHeaderModule } from '@app/shared/components/sorting/sorting-header.module';
 
 @NgModule({
   declarations: [TransportSearchComponent, TransportSearchFormComponent],
