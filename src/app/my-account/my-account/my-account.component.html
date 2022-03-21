@@ -2,11 +2,11 @@
   <app-breadcrumb></app-breadcrumb>
   <header>
     <p class="font-small font-yellow fw-bold mb-1">{{ "HELPUA" | translate }}</p>
-    <h1 class="header-2 font-darkblue fw-bold">{{ "SEARCH_FOR_HELP" | translate }}</h1>
+    <h1 class="header-2 font-darkblue fw-bold">{{ "MY_ACCOUNT" | translate }}</h1>
   </header>
   <section>
     <p class="text">{{ "ACCOUNT_SETTINGS" | translate }}</p>
-    <app-my-account-settings [myAccountPersonalData]="myAccountPersonalData"></app-my-account-settings>
+    <app-my-account-settings></app-my-account-settings>
   </section>
   <div class="d-flex justify-content-center">
     <button class="btn btn-dark" (click)="addNewAd()">
@@ -18,50 +18,87 @@
   <section *ngIf="myAnnouncements?.content?.length">
     <p class="text">{{ "YOUR_ANNOUNCEMENT" | translate }}</p>
     <div class="announcements-wrapper">
-      <app-search-result
-        *ngFor="let announcement of myAnnouncements.content"
-        [location]="$any(announcement).location"
-        [origin]="$any(announcement).origin"
-        [destination]="$any(announcement).destination"
-        [title]="announcement.title"
-        [description]="announcement.description"
-        [posted]="announcement.modifiedDate"
-      >
-        <app-search-result-attribute
-          *ngIf="$any(announcement).guests"
-          [text]="('NUMBER_OF_PEOPLE' | translate) + ': ' + $any(announcement).guests"
-          icon="person"
-        ></app-search-result-attribute>
-        <app-search-result-attribute
-          *ngIf="$any(announcement).hostLanguage"
-          [text]="$any(announcement).hostLanguage.join(', ')"
-          icon="translate"
-        ></app-search-result-attribute>
-        <app-search-result-attribute
-          *ngIf="$any(announcement).category"
-          [text]="$any(announcement).category | translate"
-          icon="interests_outline"
-        ></app-search-result-attribute>
+      <ng-container *ngFor="let announcement of myAnnouncements.content">
+        <app-search-result
+          *ngIf="announcement.type === 'ACCOMMODATION'"
+          [location]="announcement.location"
+          [title]="announcement.title"
+          [description]="announcement.description"
+          [posted]="announcement.modifiedDate"
+        >
+          <app-search-result-attribute
+            *ngIf="announcement.guests"
+            [text]="('NUMBER_OF_PEOPLE' | translate) + ': ' + announcement.guests"
+            icon="person"
+          ></app-search-result-attribute>
+          <app-search-result-attribute
+            *ngIf="announcement.hostLanguage"
+            [text]="announcement.hostLanguage.join(', ')"
+            icon="translate"
+          ></app-search-result-attribute>
 
-        <app-search-result-attribute
-          *ngIf="$any(announcement).transportDate"
-          [text]="$any(announcement).transportDate"
-          icon="date_range"
-        ></app-search-result-attribute>
-        <app-search-result-attribute
-          *ngIf="$any(announcement).capacity"
-          [text]="('NUMBER_OF_PEOPLE' | translate) + ': ' + $any(announcement).capacity"
-          icon="person"
-        ></app-search-result-attribute>
-        <div class="pt-2 pt-sm-0 ps-sm-2" buttons>
-          <button type="button" class="btn btn-secondary mb-2" (click)="editAnnouncement(announcement)">
-            {{ "EDIT_ANNOUNCEMENT" | translate }}
-          </button>
-          <button type="button" class="btn btn-link btn-sm" (click)="removeAnnouncement(announcement)">
-            {{ "REMOVE_ANNOUNCEMENT" | translate }}
-          </button>
-        </div>
-      </app-search-result>
+          <div class="pt-2 pt-sm-0 ps-sm-2" buttons>
+            <button type="button" class="btn btn-secondary mb-2" (click)="editAnnouncement(announcement)">
+              {{ "EDIT_ANNOUNCEMENT" | translate }}
+            </button>
+            <button type="button" class="btn btn-link btn-sm" (click)="removeAnnouncement(announcement)">
+              {{ "REMOVE_ANNOUNCEMENT" | translate }}
+            </button>
+          </div>
+        </app-search-result>
+
+        <app-search-result
+          *ngIf="announcement.type === 'MATERIAL_AID'"
+          [location]="announcement.location"
+          [title]="announcement.title"
+          [description]="announcement.description"
+          [posted]="announcement.modifiedDate"
+        >
+          <app-search-result-attribute
+            *ngIf="announcement.category"
+            [text]="announcement.category | translate"
+            icon="interests_outline"
+          ></app-search-result-attribute>
+
+          <div class="pt-2 pt-sm-0 ps-sm-2" buttons>
+            <button type="button" class="btn btn-secondary mb-2" (click)="editAnnouncement(announcement)">
+              {{ "EDIT_ANNOUNCEMENT" | translate }}
+            </button>
+            <button type="button" class="btn btn-link btn-sm" (click)="removeAnnouncement(announcement)">
+              {{ "REMOVE_ANNOUNCEMENT" | translate }}
+            </button>
+          </div>
+        </app-search-result>
+
+        <app-search-result
+          *ngIf="announcement.type === 'TRANSPORT'"
+          [origin]="announcement.origin"
+          [destination]="announcement.destination"
+          [title]="announcement.title"
+          [description]="announcement.description"
+          [posted]="announcement.modifiedDate"
+        >
+          <app-search-result-attribute
+            *ngIf="announcement.transportDate"
+            [text]="announcement.transportDate"
+            icon="date_range"
+          ></app-search-result-attribute>
+          <app-search-result-attribute
+            *ngIf="announcement.capacity"
+            [text]="('NUMBER_OF_PEOPLE' | translate) + ': ' + announcement.capacity"
+            icon="person"
+          ></app-search-result-attribute>
+
+          <div class="pt-2 pt-sm-0 ps-sm-2" buttons>
+            <button type="button" class="btn btn-secondary mb-2" (click)="editAnnouncement(announcement)">
+              {{ "EDIT_ANNOUNCEMENT" | translate }}
+            </button>
+            <button type="button" class="btn btn-link btn-sm" (click)="removeAnnouncement(announcement)">
+              {{ "REMOVE_ANNOUNCEMENT" | translate }}
+            </button>
+          </div>
+        </app-search-result>
+      </ng-container>
       <!-- TODO: add paginator / global component-->
     </div>
   </section>

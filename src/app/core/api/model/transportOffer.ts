@@ -16,9 +16,17 @@ export interface TransportOffer {
   userFirstName: string;
   title: string;
   description: string;
+  phoneNumber: string;
   modifiedDate?: string;
   origin: Location;
   destination: Location;
   capacity: number;
   transportDate: string;
+  type: TransportOffer.TypeEnum;
+}
+export namespace TransportOffer {
+  export type TypeEnum = 'TRANSPORT';
+  export const TypeEnum = {
+    Transport: 'TRANSPORT' as TypeEnum,
+  };
 }

@@ -1,16 +1,28 @@
 <nav class="navigation">
   <div class="categories">
     <ng-container *ngFor="let category of categories">
-      <app-type-of-help
-        [icon]="category.icon"
-        [name]="category.name"
-        [path]="['', outputPath, routingCategoryName[category.name]]"
-        [selected]="routingCategoryName[category.name] === activeRoute()"
-        [disabled]="category.disabled"
-        [redirectOnClick]="true"
-        [borderOnHover]="true"
+      <a
+        *ngIf="!category.disabled"
+        class="category-link"
+        [routerLink]="['/', outputPath, routingCategoryName[category.name]]"
       >
-      </app-type-of-help>
+        <app-type-of-help
+          [icon]="category.icon"
+          [name]="category.name"
+          [selected]="routingCategoryName[category.name] === activeRoute()"
+          [disabled]="category.disabled"
+        >
+        </app-type-of-help>
+      </a>
+      <div *ngIf="category.disabled">
+        <app-type-of-help
+          [icon]="category.icon"
+          [name]="category.name"
+          [selected]="routingCategoryName[category.name] === activeRoute()"
+          [disabled]="category.disabled"
+        >
+        </app-type-of-help>
+      </div>
     </ng-container>
   </div>
 </nav>

@@ -13,7 +13,7 @@ import { TransportSearchComponent } from './transport-search.component';
 import { SearchResultComponentModule } from '../search-result/search-result.module';
 import { CategoryNavigationComponentModule, CitiesSearchModule, MoreInfoLinkModule } from '@app/shared/components';
 import { TransportSearchFormComponent } from './transport-search-form/transport-search-form.component';
-import { DatepickerModule } from '@app/shared/components';
+import { DatepickerModule, NoResultsModule, PaginatorModule } from '@app/shared/components';
 
 @NgModule({
   declarations: [TransportSearchComponent, TransportSearchFormComponent],
@@ -35,6 +35,8 @@ import { DatepickerModule } from '@app/shared/components';
     MoreInfoLinkModule,
     CategoryNavigationComponentModule,
     DatepickerModule,
+    NoResultsModule,
+    PaginatorModule,
   ],
 })
 export class TransportSearchModule {}

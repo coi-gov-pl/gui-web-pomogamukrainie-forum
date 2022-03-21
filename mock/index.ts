@@ -29,7 +29,7 @@ if (process.argv.includes('--proxy')) {
   app.use(bodyParser.urlencoded({ extended: true })).use(bodyParser.json());
 }
 
-const baseHref: string = '/api';
+const baseHref: string = '/ogloszenia/api';
 
 router
   .get(`${baseHref}/dictionaries/city`, cityGet)

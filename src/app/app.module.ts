@@ -13,6 +13,7 @@ import { UrlHelperModule } from '@app/core/url';
 import { AuthModule } from '@app/core/auth';
 import { InterceptorModule } from '@app/core/interceptor';
 import { SiteFooterModule } from '@app/core/site-footer';
+import { SnackbarAlertModule } from '@app/shared/components';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,10 +25,11 @@ import { SiteFooterModule } from '@app/core/site-footer';
     MatCardModule,
     SiteHeaderModule,
     TranslationsModule,
-    ApiModule.forRoot(() => new Configuration({ basePath: '' })),
+    ApiModule.forRoot(() => new Configuration({ basePath: '/ogloszenia' })),
     UrlHelperModule,
     AuthModule,
     InterceptorModule,
+    SnackbarAlertModule,
     SiteFooterModule,
   ],
   bootstrap: [AppComponent],

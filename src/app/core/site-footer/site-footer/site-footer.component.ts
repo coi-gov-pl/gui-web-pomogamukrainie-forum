@@ -7,6 +7,6 @@ import { CorePath } from '@app/shared/models';
   styleUrls: ['./site-footer.component.scss'],
 })
 export class SiteFooterComponent {
-  public aboutPath: CorePath = CorePath.About;
+  corePath = CorePath;
   constructor() {}
 }

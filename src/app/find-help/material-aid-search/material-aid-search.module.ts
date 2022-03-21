@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatNativeDateModule } from '@angular/material/core';
-import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -13,7 +12,13 @@ import { PomCommonPipesModule } from '@app/shared/pipes';
 import { TranslateModule } from '@ngx-translate/core';
 import { MaterialAidSearchComponent } from './material-aid-search.component';
 import { SearchResultComponentModule } from '../search-result/search-result.module';
-import { CategoryNavigationComponentModule, CitiesSearchModule, MoreInfoLinkModule } from '@app/shared/components';
+import {
+  CategoryNavigationComponentModule,
+  CitiesSearchModule,
+  MoreInfoLinkModule,
+  NoResultsModule,
+  PaginatorModule,
+} from '@app/shared/components';
 import { MaterialAidSearchFormComponent } from './material-aid-search-form/material-aid-search-form.component';
 
 @NgModule({
@@ -23,7 +28,6 @@ import { MaterialAidSearchFormComponent } from './material-aid-search-form/mater
     CommonModule,
     FormsModule,
     MatCardModule,
-    MatDatepickerModule,
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
@@ -36,6 +40,8 @@ import { MaterialAidSearchFormComponent } from './material-aid-search-form/mater
     SearchResultComponentModule,
     MoreInfoLinkModule,
     CategoryNavigationComponentModule,
+    NoResultsModule,
+    PaginatorModule,
   ],
 })
 export class MaterialAidSearchModule {}

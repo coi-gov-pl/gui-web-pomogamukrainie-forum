@@ -34,10 +34,16 @@ const routes: Routes = [
   },
   {
     path: CorePath.About,
-    canLoad: [AuthGuard],
     loadChildren: () => import('./about-app/about-app.module').then((m) => m.AboutAppModule),
     data: {
       title: BreadcrumbLabels.ABOUT,
+    },
+  },
+  {
+    path: CorePath.Statement,
+    loadChildren: () => import('./statement/statement.module').then((m) => m.StatementModule),
+    data: {
+      title: BreadcrumbLabels.STATEMENT,
     },
   },
 ];

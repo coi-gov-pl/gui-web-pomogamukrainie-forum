@@ -4,7 +4,7 @@ WORKDIR /app
 COPY . .
 RUN npm cache clean --force
 RUN npm ci
-RUN npx ng build --prod --base-href=/ogloszenia/
+RUN npx ng build --base-href=/ogloszenia/
 
 FROM nginx:1.21.6 AS ngi
 

@@ -7,4 +7,5 @@ export enum BreadcrumbLabels {
   MATERIAL_HELP = 'MATERIAL_HELP',
   TRANSPORT = 'TRANSPORT',
   ABOUT = 'ABOUT_APP',
+  STATEMENT = 'STATEMENT',
 }

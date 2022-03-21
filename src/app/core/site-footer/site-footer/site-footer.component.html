@@ -1,24 +1,27 @@
-<footer>
-  <nav class="navbar">
-    <div class="container">
-      <div class="items-wrapper">
+<footer class="py-5 px-3">
+  <div class="container">
+    <div class="footer-grid">
+      <section class="logos mb-4">
         <img class="navbar-item emblem" [src]="'herb.png' | path: 'imagesPath'" alt="emblem" />
-        <span class="navbar-item gov">{{ "GOV" | translate }}</span>
-      </div>
-      <div class="items-wrapper">
-        <a href="#" class="navbar-item ukraine-help">{{ "HELP_FOR_UKRAINE" | translate }}</a>
-        <a href="#" class="navbar-item">{{ "ANNOUNCEMENTS" | translate }}</a>
-        <a href="#" class="navbar-item">{{ "HUMANITY_TRANSPORT" | translate }}</a>
-        <a href="#" class="navbar-item">{{ "STATEMENT" | translate }}</a>
-        <a href="#" class="navbar-item">{{ "CONSENT" | translate }}</a>
-        <a href="#" class="navbar-item">{{ "POLICY" | translate }}</a>
-        <a [routerLink]="[aboutPath]" class="navbar-item">{{ "ABOUT_APP" | translate }}</a>
-      </div>
-      <div class="items-wrapper">
-        <a href="#" class="navbar-item">
-          <img class="" [src]="'coi.svg' | path: 'imagesPath'" alt="COI" />
-        </a>
-      </div>
+        <img class="navbar-item emblem" [src]="'coi.svg' | path: 'imagesPath'" alt="COI" />
+        <img class="navbar-item emblem" [src]="'kprm.png' | path: 'imagesPath'" alt="KPRM" />
+        <img class="navbar-item emblem" [src]="'pomagamyua.png' | path: 'imagesPath'" alt="Pomagamy Ukrainie" />
+      </section>
+
+      <nav class="footer-nav">
+        <a href="https://pomagamukrainie.gov.pl/" class="navbar-item ukraine-help">{{
+          "HELP_FOR_UKRAINE" | translate
+        }}</a>
+        <a href="https://pomagamukrainie.gov.pl/konwoj" class="navbar-item">{{ "HUMANITY_TRANSPORT" | translate }}</a>
+        <a [routerLink]="corePath.Statement" class="navbar-item">{{ "STATEMENT" | translate }}</a>
+        <a
+          href="https://pomagamukrainie.gov.pl/assets/rodo/politykaprywatnosci.pdf"
+          target="_blank"
+          class="navbar-item"
+          >{{ "POLICY" | translate }}</a
+        >
+        <a [routerLink]="[corePath.About]" class="navbar-item">{{ "ABOUT_APP" | translate }}</a>
+      </nav>
     </div>
-  </nav>
+  </div>
 </footer>

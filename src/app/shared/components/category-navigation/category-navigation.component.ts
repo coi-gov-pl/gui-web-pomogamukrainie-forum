@@ -1,7 +1,7 @@
 import { Component, Input, NgModule } from '@angular/core';
 import { Category, CategoryNameKey, CategoryRoutingName, CorePath } from '@app/shared/models';
 import { CommonModule } from '@angular/common';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { TranslateModule } from '@ngx-translate/core';
 import { MatIconModule } from '@angular/material/icon';
 import { Router, RouterModule } from '@angular/router';
 import { TypeOfHelpComponentModule } from '@app/shared/components';
@@ -29,7 +29,7 @@ export class CategoryNavigationComponent {
   constructor(private router: Router) {}
 
   activeRoute(): string | undefined {
-    return this.router.url.split('/').pop();
+    return this.router.url.split('/')[2];
   }
 }
 

@@ -16,17 +16,21 @@ $unfold-height: 30px;
 :host {
   display: flex;
   flex-direction: column;
+
   cursor: pointer;
 
   mat-card {
+    flex: 1;
+
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
+
     box-sizing: border-box;
     min-height: $card-height;
     max-height: $card-height;
     min-width: $card-width;
     max-width: $card-width;
-    padding-top: 0;
     border: $border-white;
     overflow: hidden;
     color: var(--c-darkblue);
@@ -74,18 +78,6 @@ $unfold-height: 30px;
       box-shadow: none;
       border: $border-default;
     }
-
-    &.unfold-on-select {
-      .icon-wrapper {
-        align-items: flex-start;
-      }
-
-      .mat-card:not([class*="mat-elevation-z"]) {
-        border-bottom: none;
-        border-top: none;
-        border-radius: 0;
-      }
-    }
   }
 
   &.disabled {
@@ -99,7 +91,7 @@ $unfold-height: 30px;
     }
   }
 
-  &.border-on-hover:not(.disabled) {
+  &:not(.disabled) {
     mat-card {
       &:hover,
       &:focus {

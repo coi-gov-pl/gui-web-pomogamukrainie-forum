@@ -3,4 +3,5 @@ export enum CorePath {
   Give = 'dodaj-ogloszenie',
   MyAccount = 'moje-konto',
   About = 'o-projekcie',
+  Statement = 'informator',
 }

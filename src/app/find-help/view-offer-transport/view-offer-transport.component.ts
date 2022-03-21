@@ -1,9 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TransportResourceService } from '@app/core/api';
 import { TransportOffer } from '@app/core/api';
 import { CategoryRoutingName } from '@app/shared/models';
 import { defaults } from '@app/shared/utils';
+
 @Component({
   selector: 'app-view-offer-transport',
   templateUrl: './view-offer-transport.component.html',
@@ -29,6 +30,10 @@ export class ViewOfferTransportComponent implements OnInit {
       .writeText(this.router.url)
       .then()
       .catch((e) => console.error(e));
+  }
+
+  getListUrl(): string {
+    return this.router.url.replace(/\/[^/]+$/, '');
   }
 
   getTransportOffer() {

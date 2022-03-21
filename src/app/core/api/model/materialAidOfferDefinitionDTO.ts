@@ -16,6 +16,7 @@ export interface MaterialAidOfferDefinitionDTO {
   description: string;
   location: Location;
   category: MaterialAidOfferDefinitionDTO.CategoryEnum;
+  phoneNumber: string;
 }
 export namespace MaterialAidOfferDefinitionDTO {
   export type CategoryEnum =

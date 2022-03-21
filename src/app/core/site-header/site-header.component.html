@@ -2,12 +2,21 @@
   <nav class="navbar navbar-expand-lg">
     <div class="container">
       <div class="d-flex flex-row">
-        <img class="navbar-brand herb" [src]="'herb.png' | path: 'imagesPath'" alt="herb" />
-        <a href="https://www.gov.pl/web/premier" class="navbar-brand">
-          <img class="logo" [src]="'kprm.svg' | path: 'imagesPath'" alt="kancelaria prezesa rady ministrów" />
+        <a href="https://gov.pl">
+          <span class="visually-hidden">gov.pl</span>
+          <img class="navbar-brand herb" [src]="'herb.png' | path: 'imagesPath'" alt="herb" />
         </a>
-        <a href="https://pomagamukrainie.gov.pl/" class="navbar-brand">
-          <img class="logo" [src]="'pomagamyua.svg' | path: 'imagesPath'" alt="pomagamy ukrainie" />
+        <a href="https://www.gov.pl/web/premier" class="navbar-brand">
+          <span class="visually-hidden">{{ "CHANCELLERY_OF_PRIME_MINISTER" | translate }}</span>
+          <img
+            class="logo"
+            [src]="'kprm.svg' | path: 'imagesPath'"
+            [alt]="'CHANCELLERY_OF_PRIME_MINISTER' | translate"
+          />
+        </a>
+        <a href="/" class="navbar-brand">
+          <span class="visually-hidden">{{ "MAIN_PAGE" | translate }}</span>
+          <img class="logo" [src]="'pomagamyua.svg' | path: 'imagesPath'" [alt]="'MAIN_PAGE' | translate" />
         </a>
       </div>
 
@@ -78,7 +87,7 @@
               data-bs-toggle="collapse"
               data-bs-target=".navbar-collapse.show"
             >
-              <a class="navbar-link" href="#">{{ "STATEMENT" | translate }}</a>
+              <a class="navbar-link" [routerLink]="[corePath.Statement]">{{ "STATEMENT" | translate }}</a>
             </li>
             <li
               (click)="closeMenu()"

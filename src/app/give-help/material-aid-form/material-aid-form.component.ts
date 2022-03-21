@@ -1,13 +1,11 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { MaterialAidOfferDefinitionDTO, MaterialAidResourceService } from '@app/core/api';
-import { Location } from '@app/shared/components';
 import { PREFIXES } from '@app/shared/consts';
 import { defaults } from '@app/shared/utils';
-
-// interface MaterialAid {
-//   location: Location;
-//   category: MaterialAidOfferDefinitionDTO.CategoryEnum;
-// }
+import { SnackbarService } from '@app/shared/services/snackbar.service';
+import { CorePath, ALERT_TYPES } from '@app/shared/models';
+import { take } from 'rxjs/operators';
 
 const CATEGORIES = Object.entries(MaterialAidOfferDefinitionDTO.CategoryEnum).map(([key, value]) => ({
   key,
@@ -21,20 +19,38 @@ const CATEGORIES = Object.entries(MaterialAidOfferDefinitionDTO.CategoryEnum).ma
 })
 export class MaterialAidFormComponent {
   data = defaults<MaterialAidOfferDefinitionDTO>({});
-  categories = CATEGORIES;
+  CATEGORIES = CATEGORIES;
   PREFIXES = PREFIXES;
   phonePrefix: string = '48';
   phoneNumber: string = '';
-
-  constructor(private materialAidResourceService: MaterialAidResourceService) {}
+  loading: boolean = false;
+  constructor(
+    private router: Router,
+    private materialAidResourceService: MaterialAidResourceService,
+    private snackbarService: SnackbarService
+  ) {}
 
   onPhoneNumberChange(): void {
-    // Waiting for TransportOfferDefinitionDTO receive a phoneNumber prop
-    // this.data.phoneNumber = this.phonePrefix + this.phoneNumber;
+    this.data.phoneNumber = this.phonePrefix + this.phoneNumber;
   }
 
   handleSubmit() {
-    console.log('submit');
-    this.materialAidResourceService.postMaterialAidOfferMaterialAid(this.data).subscribe((response) => {});
+    this.loading = true;
+    this.materialAidResourceService
+      .postMaterialAidOfferMaterialAid(this.data)
+      .pipe(take(1))
+      .subscribe(
+        (response) => this.redirectOnSuccess(),
+        (error) => this.snackbarService.openSnack(error.message, ALERT_TYPES.ERROR)
+      )
+      .add(() => (this.loading = false));
+  }
+
+  redirectOnSuccess() {
+    this.router.navigate([CorePath.MyAccount]).then((navigated: boolean) => {
+      if (navigated) {
+        this.snackbarService.openSnackAlert(ALERT_TYPES.OFFER_SUCCESS);
+      }
+    });
   }
 }

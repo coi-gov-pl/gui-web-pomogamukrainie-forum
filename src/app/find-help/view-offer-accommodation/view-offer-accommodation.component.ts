@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AccommodationsResourceService } from '@app/core/api';
 import { AccommodationOffer } from '@app/core/api';
@@ -35,6 +35,10 @@ export class ViewOfferAccommodationComponent implements OnInit {
       .writeText(this.router.url)
       .then()
       .catch((e) => console.error(e));
+  }
+
+  getListUrl(): string {
+    return this.router.url.replace(/\/[^/]+$/, '');
   }
 
   getAccomodationOffer() {
