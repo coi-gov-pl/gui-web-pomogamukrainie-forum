@@ -2,13 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import {
   MyOffersResourceService,
   Pageable,
-  UserInfo,
   AccommodationOffer,
+  AccommodationsResourceService,
   MaterialAidOffer,
+  MaterialAidResourceService,
   OffersBaseOffer,
   TransportOffer,
+  TransportResourceService,
 } from '@app/core/api';
-import { take } from 'rxjs';
+import { switchMap, take } from 'rxjs';
 import { Router } from '@angular/router';
 import { CategoryRoutingName, CorePath } from '@app/shared/models';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
@@ -20,10 +22,17 @@ import { ConfirmRemoveAdComponent } from '../confirm-remove-ad/confirm-remove-ad
   styleUrls: ['./my-account.component.scss'],
 })
 export class MyAccountComponent implements OnInit {
-  public myAccountPersonalData!: UserInfo;
   public myAnnouncements!: OffersBaseOffer;
   pageRequest: Pageable = {};
-  constructor(private router: Router, private myOffersResource: MyOffersResourceService, private dialog: MatDialog) {}
+
+  constructor(
+    private router: Router,
+    private myOffersResource: MyOffersResourceService,
+    private dialog: MatDialog,
+    private transportResourceService: TransportResourceService,
+    private accommodationsResourceService: AccommodationsResourceService,
+    private materialAidResourceService: MaterialAidResourceService
+  ) {}
 
   public ngOnInit() {
     this.myOffersResource.listMyOffers(this.pageRequest).subscribe((results) => {
@@ -44,7 +53,34 @@ export class MyAccountComponent implements OnInit {
     dialogRef.componentInstance.onClosed.pipe(take(1)).subscribe((confirmed: boolean) => {
       dialogRef.close();
       if (confirmed) {
-        // TODO: call to api
+        if (announcement.type === TransportOffer.TypeEnum.Transport) {
+          this.transportResourceService
+            .deleteTransport(announcement.id!)
+            .pipe(
+              switchMap((_) => {
+                return this.myOffersResource.listMyOffers(this.pageRequest);
+              })
+            )
+            .subscribe((data) => (this.myAnnouncements = data));
+        } else if (announcement.type === AccommodationOffer.TypeEnum.Accommodation) {
+          this.accommodationsResourceService
+            .deleteAccommodations(announcement.id!)
+            .pipe(
+              switchMap((_) => {
+                return this.myOffersResource.listMyOffers(this.pageRequest);
+              })
+            )
+            .subscribe((data) => (this.myAnnouncements = data));
+        } else {
+          this.materialAidResourceService
+            .deleteMaterialAid(announcement.id!)
+            .pipe(
+              switchMap((_) => {
+                return this.myOffersResource.listMyOffers(this.pageRequest);
+              })
+            )
+            .subscribe((data) => (this.myAnnouncements = data));
+        }
       }
     });
   }
