@@ -69,7 +69,7 @@ export default {
   BUTTON_SEND_MESSAGE: 'Wyślij wiadomość',
   BUTTON_SHOW_TELNO: 'Pokaż telefon',
   ACCEPT: 'Akceptuję',
-  CONSENT: 'Regulamin',
+  CONSENT: 'regulamin',
   HELPING_PERSON: 'Osoba pomagająca',
   REPLY_OFFER: 'Odpowiedz na ogłoszenie',
   REPLY_MESSAGE: 'Napisz wiadomość do osoby pomagającej. Jeśli podała swój telefon - znajdziesz go pod przyciskiem',
@@ -163,4 +163,6 @@ export default {
   CHOOSE_FROM_THE_LIST: 'Wybierz z listy',
   MESSAGE_SENT_ALERT_HEADER: 'Twoja odpowiedź została wysłana do osoby pomagającej',
   MESSAGE_SENT_ALERT_CONTENT: 'Potwierdzenie wysłania przesłaliśmy na Twój e-mail.',
+  AND: 'i',
+  PRIVATE_POLICY: 'politykę prywantności',
 };
