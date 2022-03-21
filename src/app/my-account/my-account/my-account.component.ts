@@ -24,6 +24,7 @@ import { ConfirmRemoveAdComponent } from '../confirm-remove-ad/confirm-remove-ad
 export class MyAccountComponent implements OnInit {
   public myAnnouncements!: OffersBaseOffer;
   pageRequest: Pageable = {};
+  categoryRoutingName = CategoryRoutingName;
 
   constructor(
     private router: Router,
@@ -77,6 +78,7 @@ export class MyAccountComponent implements OnInit {
   }
 
   editAnnouncement(announcement: AccommodationOffer | MaterialAidOffer | TransportOffer): void {
+    // TODO: modify search-result component, now we have buttons inside <a> tag
     console.log(announcement);
   }
 
