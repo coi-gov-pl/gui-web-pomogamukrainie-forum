@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MyOffersResourceService, Pageable, UserInfo } from '@app/core/api';
 import { Observable, take } from 'rxjs';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import {
   CategoryRoutingName,
   CorePath,
@@ -12,6 +12,7 @@ import {
 } from '@app/shared/models';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ConfirmRemoveAdComponent } from '../confirm-remove-ad/confirm-remove-ad.component';
+import { StoreUrlService } from '@app/core/store-url/store-url.service';
 
 @Component({
   selector: 'app-my-account',
@@ -21,11 +22,28 @@ import { ConfirmRemoveAdComponent } from '../confirm-remove-ad/confirm-remove-ad
 export class MyAccountComponent implements OnInit {
   public myAccountPersonalData!: UserInfo;
   public myAnnouncements!: OffersBaseOffer;
-  pageRequest: Pageable = {};
-  constructor(private router: Router, private myOffersResource: MyOffersResourceService, private dialog: MatDialog) {}
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private myOffersResource: MyOffersResourceService,
+    private dialog: MatDialog,
+    private storeUrlService: StoreUrlService
+  ) {}
 
-  public ngOnInit() {
-    (this.myOffersResource.listMyOffers(this.pageRequest) as Observable<OffersBaseOffer>).subscribe((results) => {
+  public async ngOnInit() {
+    await this.storeUrlService.setDefaultPaginatorParam();
+    this.getMyOffers();
+  }
+
+  getMyOffers() {
+    const { page, size, sort } = this.route.snapshot.queryParams;
+
+    const pageRequest: Pageable = {
+      page,
+      size,
+      sort,
+    };
+    (this.myOffersResource.listMyOffers(pageRequest) as Observable<OffersBaseOffer>).subscribe((results) => {
       this.myAnnouncements = results;
     });
   }

@@ -99,7 +99,7 @@
           </div>
         </app-search-result>
       </ng-container>
-      <!-- TODO: add paginator / global component-->
+      <app-paginator [length]="myAnnouncements.totalElements" (param)="getMyOffers()"></app-paginator>
     </div>
   </section>
 </div>

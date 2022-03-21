@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Location } from '@app/core/api';
 import { StatementAnchors } from '@app/shared/models';
 import { ActivatedRoute, Router } from '@angular/router';
+import { StoreUrlService } from '@app/core/store-url/store-url.service';
 
 export interface AccommodationQuery {
   location?: Location;
@@ -19,7 +20,7 @@ export class AccommodationSearchFormComponent implements OnInit {
   search = new EventEmitter<AccommodationQuery>();
   statementAnchor: string = StatementAnchors.ACCOMMODATION;
 
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  constructor(private router: Router, private route: ActivatedRoute, private storeUrlService: StoreUrlService) {}
 
   ngOnInit() {
     if (Object.keys(this.route.snapshot.queryParams).length > 0) {
@@ -29,17 +30,7 @@ export class AccommodationSearchFormComponent implements OnInit {
   }
 
   async onSubmit(): Promise<void> {
-    await this.router.navigate([], {
-      relativeTo: this.route,
-      queryParams: {
-        page: 0,
-        size: localStorage.getItem('pomagamukrainie-size') ?? 5,
-        capacity: this.data?.capacity,
-        city: this.data.location?.city,
-        region: this.data.location?.region,
-      },
-      queryParamsHandling: 'merge',
-    });
+    await this.storeUrlService.setDefaultPaginatorParam();
     this.search.emit(this.data);
   }
 }

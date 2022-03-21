@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Params, Router, RoutesRecognized } from '@angular/router';
+import { ActivatedRoute, Params, Router, RoutesRecognized } from '@angular/router';
 import { filter, pairwise } from 'rxjs';
 import { CategoryRoutingName } from '@app/shared/models';
 
@@ -7,7 +7,7 @@ import { CategoryRoutingName } from '@app/shared/models';
   providedIn: 'root',
 })
 export class StoreUrlService {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private route: ActivatedRoute) {}
 
   setPreviousUrl(): void {
     this.router.events
@@ -37,5 +37,16 @@ export class StoreUrlService {
         return acc;
       }, {});
     return this.getPreviousUrl?.includes(routing) ? (params as Params) : null;
+  }
+
+  async setDefaultPaginatorParam(): Promise<void> {
+    await this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: {
+        page: 0,
+        size: localStorage.getItem('pomagamukrainie-size') ?? 5,
+      },
+      queryParamsHandling: 'merge',
+    });
   }
 }
