@@ -26,7 +26,7 @@
     <div class="row">
       <div class="col-md-6">
         <label
-          ><b>{{ "TYPE_OF_SUPPORT" | translate }}:</b></label
+          ><b>{{ "TYPE_OF_SUPPORT" | translate }} *</b></label
         >
         <mat-form-field appearance="outline">
           <mat-select
@@ -50,7 +50,7 @@
           [(ngModel)]="data.location"
           name="location"
           [placeholder]="'PLACEHOLDER_LOCATION' | translate"
-          [label]="'LOCATION' | translate"
+          [label]="('LOCATION' | translate) + ' *'"
           required
         ></app-cities-search>
       </div>

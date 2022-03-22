@@ -32,7 +32,6 @@
             name="origin"
             [placeholder]="'PLACEHOLDER_TYPE' | translate"
             [label]="'LOCATION_FROM' | translate"
-            required
           ></app-cities-search>
         </div>
         <div class="col-md-3">
@@ -41,18 +40,17 @@
             name="destination"
             [placeholder]="'PLACEHOLDER_TYPE' | translate"
             [label]="'LOCATION_TO' | translate"
-            required
           ></app-cities-search>
         </div>
         <div class="col-md-4">
           <label
             ><b>{{ "LABEL_DATE" | translate }}</b></label
           >
-          <app-datepicker [(date)]="data.transportDate" [required]="true" [minDate]="minDate"></app-datepicker>
+          <app-datepicker [(date)]="data.transportDate" [minDate]="minDate"></app-datepicker>
         </div>
         <div class="col-md-2">
           <label
-            ><b>{{ "LABEL_HOW_MANY_PEOPLE_UCAN_TAKE" | translate }}</b></label
+            ><b>{{ "LABEL_HOW_MANY_PEOPLE_UCAN_TAKE" | translate }} *</b></label
           >
           <mat-form-field appearance="outline">
             <input
