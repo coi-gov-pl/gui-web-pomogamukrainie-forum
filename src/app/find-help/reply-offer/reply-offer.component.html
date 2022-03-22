@@ -67,7 +67,7 @@
           <a target="_blank" href=""
             ><span>{{ "CONSENT" | translate }}</span></a
           >
-          <span *ngIf="isLoggedIn === false">
+          <span *ngIf="!authService.isLoggedIn()">
             <span> {{ "AND" | translate }} </span>
             <a target="_blank" href="https://pomagamukrainie.gov.pl/assets/rodo/politykaprywatnosci.pdf"
               ><span>{{ "PRIVATE_POLICY" | translate }}</span></a

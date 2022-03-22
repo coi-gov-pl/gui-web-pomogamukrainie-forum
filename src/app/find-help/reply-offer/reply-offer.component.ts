@@ -20,18 +20,17 @@ export class ReplyOfferComponent implements OnInit {
   @Input() helpersFirstname: string | undefined;
   showPhoneNumber: boolean = false;
   loading: boolean = false;
-  isLoggedIn: boolean = false;
+
   constructor(
     private messageResourceService: MessageResourceService,
     private snackbarService: SnackbarService,
     private reCaptchaV3Service: ReCaptchaV3Service,
-    private authService: AuthService
+    public readonly authService: AuthService
   ) {}
 
   ngOnInit(): void {
     this.data.tosApproved = false;
     this.data.offerId = this.offerId;
-    this.isLoggedIn = this.authService.isLoggedIn();
   }
 
   onConsentChange(): void {
