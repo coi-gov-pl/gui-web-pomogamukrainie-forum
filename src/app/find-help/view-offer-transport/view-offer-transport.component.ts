@@ -38,11 +38,18 @@ export class ViewOfferTransportComponent implements OnInit {
   }
 
   getTransportOffer() {
-    this.transportResourceService.getTransport(this.offerId).subscribe((response) => {
-      if (response == null) {
-       this.router.navigate([CorePath.Find, CategoryRoutingName.TRANSPORT, CategoryRoutingName.NOT_FOUND]);
-      } 
-      this.data = response;
-    });
+    this.transportResourceService.getTransport(this.offerId).subscribe(
+      (response) => {
+        if (response == null) {
+          this.router.navigate([CorePath.Find, CategoryRoutingName.TRANSPORT, CategoryRoutingName.NOT_FOUND]);
+        }
+        this.data = response;
+      },
+      (error) => {
+          // TODO: with mock data, null was returned
+          // make sure errors like 404 are properly handled
+          // this.router.navigate([CorePath.Find, CategoryRoutingName.TRANSPORT, CategoryRoutingName.NOT_FOUND]);
+      }
+    );
   }
 }

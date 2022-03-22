@@ -163,4 +163,5 @@ export default {
   CHOOSE_FROM_THE_LIST: 'Wybierz z listy',
   MESSAGE_SENT_ALERT_HEADER: 'Twoja odpowiedź została wysłana do osoby pomagającej',
   MESSAGE_SENT_ALERT_CONTENT: 'Potwierdzenie wysłania przesłaliśmy na Twój e-mail.',
+  NOT_FOUND: 'To ogłoszenie nie jest już dostępne.'
 };
