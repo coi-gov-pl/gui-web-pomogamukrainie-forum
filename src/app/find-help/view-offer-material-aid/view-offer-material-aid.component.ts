@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MaterialAidResourceService } from '@app/core/api';
-import { MaterialAidOffer } from '@app/core/api';
+import { MaterialAidOffer, MaterialAidResourceService } from '@app/core/api';
 import { CategoryRoutingName } from '@app/shared/models';
 import { defaults } from '@app/shared/utils';
+import { StoreUrlService } from '@app/core/store-url/store-url.service';
 
 @Component({
   selector: 'app-view-offer-material-help',
@@ -17,7 +17,8 @@ export class ViewOfferMaterialAidComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private materialAidResourceService: MaterialAidResourceService
+    private materialAidResourceService: MaterialAidResourceService,
+    private storeUrlService: StoreUrlService
   ) {}
 
   ngOnInit(): void {
@@ -32,8 +33,10 @@ export class ViewOfferMaterialAidComponent implements OnInit {
       .catch((e) => console.error(e));
   }
 
-  getListUrl(): string {
-    return this.router.url.replace(/\/[^/]+$/, '');
+  navigateBack(): void {
+    this.router.navigate([this.router.url.replace(/\/[^/]+$/, '')], {
+      queryParams: this.storeUrlService.getParams(this.categoryRouteName),
+    });
   }
 
   getMaterialAidOffer() {
