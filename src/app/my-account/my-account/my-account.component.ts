@@ -71,20 +71,17 @@ export class MyAccountComponent implements OnInit {
       if (confirmed) {
         if (announcement.type === TransportOffer.TypeEnum.Transport) {
           this.transportResourceService
-            // https://jira.sysopspolska.pl/browse/POM-321
-            .deleteTransport(announcement.id!)
+            .deleteTransport(announcement.id)
             .pipe(switchMap(() => this.myOffersResource.listMyOffers(this.pageRequest)))
             .subscribe((data) => (this.myAnnouncements = data));
         } else if (announcement.type === AccommodationOffer.TypeEnum.Accommodation) {
           this.accommodationsResourceService
-            // https://jira.sysopspolska.pl/browse/POM-321
-            .deleteAccommodations(announcement.id!)
+            .deleteAccommodations(announcement.id)
             .pipe(switchMap(() => this.myOffersResource.listMyOffers(this.pageRequest)))
             .subscribe((data) => (this.myAnnouncements = data));
         } else if (announcement.type === MaterialAidOffer.TypeEnum.MaterialAid) {
           this.materialAidResourceService
-            // https://jira.sysopspolska.pl/browse/POM-321
-            .deleteMaterialAid(announcement.id!)
+            .deleteMaterialAid(announcement.id)
             .pipe(switchMap(() => this.myOffersResource.listMyOffers(this.pageRequest)))
             .subscribe((data) => (this.myAnnouncements = data));
         }
