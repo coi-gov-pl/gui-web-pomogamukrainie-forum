@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MaterialAidOffer, MaterialAidResourceService } from '@app/core/api';
-import { CategoryRoutingName } from '@app/shared/models';
+import { CategoryRoutingName, CorePath } from '@app/shared/models';
 import { defaults } from '@app/shared/utils';
 import { StoreUrlService } from '@app/core/store-url/store-url.service';
 
@@ -40,8 +40,13 @@ export class ViewOfferMaterialAidComponent implements OnInit {
   }
 
   getMaterialAidOffer() {
-    this.materialAidResourceService.getMaterialAid(this.offerId).subscribe((response) => {
-      this.data = response;
-    });
+    this.materialAidResourceService.getMaterialAid(this.offerId).subscribe(
+      (response) => {
+        this.data = response;
+      },
+      (error) => {
+        this.router.navigate([CorePath.Find, CategoryRoutingName.MATERIAL_HELP, CategoryRoutingName.NOT_FOUND]);
+      }
+    );
   }
 }

@@ -11,7 +11,13 @@ export function accommodationsListGet(req: express.Request, res: express.Respons
 
 export function accommodationGet(req: express.Request, res: express.Response): express.Response {
   const { id } = req.params;
-  return res.json(accommodationsList.content?.find((el) => el.id === +id));
+  const accommodation = accommodationsList.content?.find((el) => el.id === +id);
+  if (accommodation) {
+    return res.json(accommodation);
+  } else {
+    res.status(404);
+    return res.send();
+  }  
 }
 
 export function accommodationDelete(req: express.Request, res: express.Response): express.Response {
