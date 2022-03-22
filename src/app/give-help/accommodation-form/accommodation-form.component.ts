@@ -1,4 +1,4 @@
-import { Component, ViewChild, Input } from '@angular/core';
+import { Component, ViewChild, Input, ElementRef } from '@angular/core';
 import { defaults } from '@app/shared/utils';
 import { PREFIXES, LANGUAGES, LENGTHOFSTAY } from '@app/shared/consts';
 import { AccommodationOfferDefinitionDTO, AccommodationsResourceService } from '@app/core/api';
@@ -6,6 +6,7 @@ import { CorePath, ALERT_TYPES } from '@app/shared/models';
 import { SnackbarService } from '@app/shared/services';
 import { take } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { NON_DIGITS_REGEX, SPACES_REGEX } from '@app/shared/consts';
 
 @Component({
   selector: 'app-accommodation-form',
@@ -22,7 +23,7 @@ export class AccommodationFormComponent {
     hostLanguage: [],
   });
   loading: boolean = false;
-  @ViewChild('phoneInput') phoneInput!: HTMLInputElement;
+  @ViewChild('phoneInput') phoneInput!: ElementRef;
 
   constructor(
     private accommodationsResourceService: AccommodationsResourceService,
@@ -36,8 +37,11 @@ export class AccommodationFormComponent {
 
   onPhoneNumberChange($event: Event) {
     let val = ($event.target as HTMLInputElement).value;
-    val = val.replace(/[^0-9 ]+/g, '');
-    this.phoneInput.value = val;
+    if (val) {
+      val = val.replace(NON_DIGITS_REGEX, '');
+      val = val.replace(SPACES_REGEX, '');
+      this.phoneInput.nativeElement.value = val;
+    }
     this.data.phoneNumber = this.phonePrefix + this.phoneNumber;
   }
 

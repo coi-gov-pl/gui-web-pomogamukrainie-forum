@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { MaterialAidOfferDefinitionDTO, MaterialAidResourceService } from '@app/core/api';
 import { PREFIXES } from '@app/shared/consts';
@@ -6,6 +6,7 @@ import { defaults } from '@app/shared/utils';
 import { SnackbarService } from '@app/shared/services/snackbar.service';
 import { CorePath, ALERT_TYPES } from '@app/shared/models';
 import { take } from 'rxjs/operators';
+import { NON_DIGITS_REGEX, SPACES_REGEX } from '@app/shared/consts';
 
 const CATEGORIES = Object.entries(MaterialAidOfferDefinitionDTO.CategoryEnum).map(([key, value]) => ({
   key,
@@ -24,7 +25,7 @@ export class MaterialAidFormComponent {
   phonePrefix: string = '48';
   phoneNumber: string = '';
   loading: boolean = false;
-  @ViewChild('phoneInput') phoneInput!: HTMLInputElement;
+  @ViewChild('phoneInput') phoneInput!: ElementRef;
 
   constructor(
     private router: Router,
@@ -38,8 +39,11 @@ export class MaterialAidFormComponent {
 
   onPhoneNumberChange($event: Event) {
     let val = ($event.target as HTMLInputElement).value;
-    val = val.replace(/[^0-9 ]+/g, '');
-    this.phoneInput.value = val;
+    if (val) {
+      val = val.replace(NON_DIGITS_REGEX, '');
+      val = val.replace(SPACES_REGEX, '');
+      this.phoneInput.nativeElement.value = val;
+    }
     this.data.phoneNumber = this.phonePrefix + this.phoneNumber;
   }
 

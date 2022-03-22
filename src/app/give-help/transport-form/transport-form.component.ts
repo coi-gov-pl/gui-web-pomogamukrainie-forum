@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { defaults } from '@app/shared/utils';
 import { TransportOfferDefinitionDTO, TransportResourceService } from '@app/core/api';
 import { PREFIXES } from '@app/shared/consts';
@@ -6,6 +6,7 @@ import { SnackbarService } from '@app/shared/services/snackbar.service';
 import { CorePath, ALERT_TYPES } from '@app/shared/models';
 import { take } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { NON_DIGITS_REGEX, SPACES_REGEX } from '@app/shared/consts';
 
 @Component({
   selector: 'app-transport-form',
@@ -19,7 +20,7 @@ export class TransportFormComponent {
   phoneNumber: string = '';
   data = defaults<TransportOfferDefinitionDTO>();
   loading: boolean = false;
-  @ViewChild('phoneInput') phoneInput!: HTMLInputElement;
+  @ViewChild('phoneInput') phoneInput!: ElementRef;
 
   constructor(
     private transportResourceService: TransportResourceService,
@@ -33,8 +34,11 @@ export class TransportFormComponent {
 
   onPhoneNumberChange($event: Event) {
     let val = ($event.target as HTMLInputElement).value;
-    val = val.replace(/[^0-9 ]+/g, '');
-    this.phoneInput.value = val;
+    if (val) {
+      val = val.replace(NON_DIGITS_REGEX, '');
+      val = val.replace(SPACES_REGEX, '');
+      this.phoneInput.nativeElement.value = val;
+    }
     this.data.phoneNumber = this.phonePrefix + this.phoneNumber;
   }
 
