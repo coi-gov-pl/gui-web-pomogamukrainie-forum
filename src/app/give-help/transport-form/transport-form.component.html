@@ -29,20 +29,18 @@
         <div class="col-md-3">
           <app-cities-search
             [(ngModel)]="data.origin"
-            name="location"
+            name="origin"
             [placeholder]="'PLACEHOLDER_LOCATION' | translate"
             [label]="'LOCATION_FROM' | translate"
-            [required]="true"
             [isRegionPicked]="data.origin?.region ? true : false"
           ></app-cities-search>
         </div>
         <div class="col-md-3">
           <app-cities-search
             [(ngModel)]="data.destination"
-            name="location"
+            name="destination"
             [placeholder]="'PLACEHOLDER_LOCATION_2' | translate"
             [label]="'LOCATION_TO' | translate"
-            [required]="true"
             [isRegionPicked]="data.destination?.region ? true : false"
           ></app-cities-search>
         </div>
@@ -50,11 +48,11 @@
           <label
             ><b>{{ "LABEL_DATE" | translate }}</b></label
           >
-          <app-datepicker [(date)]="data.transportDate" [required]="true" [minDate]="minDate"></app-datepicker>
+          <app-datepicker [(date)]="data.transportDate" [minDate]="minDate"></app-datepicker>
         </div>
         <div class="col-md-2">
           <label
-            ><b>{{ "LABEL_HOW_MANY_PEOPLE_UCAN_TAKE" | translate }}</b></label
+            ><b>{{ "LABEL_HOW_MANY_PEOPLE_UCAN_TAKE" | translate }} *</b></label
           >
           <mat-form-field appearance="outline">
             <input
@@ -77,7 +75,7 @@
       </div>
 
       <div class="row">
-        <div class="col-lg-7">
+        <div class="col-lg-7 mb-3">
           <label>
             <b>{{ "LABEL_OFFER_DESCRIPTION" | translate }}</b>
             <span> {{ "LABEL_OFFER_DESCRIPTION_MAXCHARS" | translate }} *</span>
