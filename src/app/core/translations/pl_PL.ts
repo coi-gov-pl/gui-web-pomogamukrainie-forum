@@ -168,4 +168,6 @@ export default {
   PRIVATE_POLICY: 'politykę prywantności',
   CHARS_LEFT: 'Pozostała ilość znaków:',
   NOT_FOUND: 'To ogłoszenie nie jest już dostępne.',
+  NOT_FOUND_NEXT_ACTION: 'Wróć do listy ogłoszeń',
+  NOT_FOUND_NEXT_ACTION_OR: ', lub',
 };
