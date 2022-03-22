@@ -12,11 +12,11 @@
 import { Location } from './location';
 
 export interface MaterialAidOffer {
-  id?: number;
+  id: number;
   userFirstName: string;
   title: string;
   description: string;
-  phoneNumber: string;
+  phoneNumber?: string;
   modifiedDate?: string;
   category: MaterialAidOffer.CategoryEnum;
   location: Location;

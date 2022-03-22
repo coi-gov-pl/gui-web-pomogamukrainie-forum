@@ -16,11 +16,11 @@
   </div>
   <div class="d-sm-flex">
     <a role="button" (click)="onViewOffer()" class="flex-fill link">
-      <h4 class="text-start">{{ title }}</h4>
+      <h4 class="text-start text-break">{{ title }}</h4>
       <div class="attributes">
         <ng-content select="app-search-result-attribute"></ng-content>
       </div>
-      <div class="description text-start">
+      <div class="description text-start text-break">
         {{ description }}
       </div>
     </a>

@@ -61,7 +61,7 @@
           <b>{{ "LABEL_OFFER_DESCRIPTION" | translate }}</b>
           <span> {{ "LABEL_OFFER_DESCRIPTION_MAXCHARS" | translate }} *</span>
         </label>
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" hintLabel="{{ 'CHARS_LEFT' | translate }}">
           <textarea
             matInput
             rows="8"
@@ -73,6 +73,7 @@
             #description="ngModel"
             appOfferDescriptionValidate
           ></textarea>
+          <mat-hint align="end">{{ data.description?.length || 0 }}/2000</mat-hint>
           <mat-error>
             <app-field-error [model]="description"></app-field-error>
           </mat-error>
