@@ -1,0 +1,14 @@
+<div class="not-found-img">
+  <img [src]="'bknpage.png' | path: 'imagesPath'" alt="{{ 'NOT_FOUND_IMG_ALT' | translate }}" />
+</div>
+<div class="not-found">
+  <p>
+    {{ "NOT_FOUND" | translate }}
+  </p>
+  <p>
+    <a [routerLink]="['..']" class="font-blue">{{ "NOT_FOUND_NEXT_ACTION" | translate }}</a
+    >{{ "NOT_FOUND_NEXT_ACTION_OR" | translate }}
+    <a [routerLink]="['/', corePath.Statement]" class="font-blue">{{ "NO_RESULTS_TEXT_LINK" | translate }}</a>
+    {{ "NO_RESULTS_TEXT_END" | translate }}
+  </p>
+</div>

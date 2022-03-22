@@ -11,7 +11,13 @@ export function transportListGet(req: express.Request, res: express.Response): e
 
 export function transportGet(req: express.Request, res: express.Response): express.Response {
   const { id } = req.params;
-  return res.json(transportList.content?.find((el) => el.id === +id));
+  const transport = transportList.content?.find((el) => el.id === +id);
+  if (transport) {
+    return res.json(transport);
+  } else {
+    res.status(404);
+    return res.send();
+  }
 }
 
 export function transportDelete(req: express.Request, res: express.Response): express.Response {

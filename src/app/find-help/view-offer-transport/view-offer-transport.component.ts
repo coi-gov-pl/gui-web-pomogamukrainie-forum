@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TransportOffer, TransportResourceService } from '@app/core/api';
 import { CategoryRoutingName } from '@app/shared/models';
 import { defaults } from '@app/shared/utils';
+import { CorePath } from '@app/shared/models';
 import { StoreUrlService } from '@app/core/store-url/store-url.service';
 
 @Component({
@@ -40,8 +41,13 @@ export class ViewOfferTransportComponent implements OnInit {
   }
 
   getTransportOffer() {
-    this.transportResourceService.getTransport(this.offerId).subscribe((response) => {
-      this.data = response;
-    });
+    this.transportResourceService.getTransport(this.offerId).subscribe(
+      (response) => {
+        this.data = response;
+      },
+      (error) => {
+        this.router.navigate([CorePath.Find, CategoryRoutingName.TRANSPORT, CategoryRoutingName.NOT_FOUND]);
+      }
+    );
   }
 }

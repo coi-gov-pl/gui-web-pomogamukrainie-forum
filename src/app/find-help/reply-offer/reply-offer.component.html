@@ -22,7 +22,7 @@
               placeholder="{{ 'PLACEHOLDER_EMAIL' | translate }}"
               required
               name="title"
-              email
+              appEmailValidate
               #email="ngModel"
               [(ngModel)]="data.replyEmail"
             />
@@ -42,7 +42,7 @@
             required
             matInput
             rows="8"
-            maxlength="1000"
+            maxlength="2000"
             placeholder="{{ 'PLACEHOLDER_REPLY_CONTENT' | translate }}"
             name="description"
             [(ngModel)]="data.text"
@@ -51,7 +51,7 @@
           >
           ></textarea
           >
-          <mat-hint align="end">{{ data.text?.length || 0 }}/1000</mat-hint>
+          <mat-hint align="end">{{ data.text?.length || 0 }}/2000</mat-hint>
           <mat-error>
             <app-field-error [model]="description"></app-field-error>
           </mat-error>

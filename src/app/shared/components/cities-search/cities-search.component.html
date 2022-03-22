@@ -10,6 +10,10 @@
       matInput
       [formControl]="formControl"
       [matAutocomplete]="auto"
+      [required]="required"
+      [readonly]="isRegionPicked"
+      appLocationValidate
+      (input)="onLocationInput($event)"
     />
     <mat-autocomplete
       #auto="matAutocomplete"
@@ -31,5 +35,8 @@
     >
       <mat-icon class="button-icon" fontSet="material-icons-outlined">close</mat-icon>
     </button>
+    <mat-error>
+      <app-field-error [locationControl]="formControl"></app-field-error>
+    </mat-error>
   </mat-form-field>
 </div>

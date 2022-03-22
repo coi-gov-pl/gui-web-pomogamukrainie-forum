@@ -1,34 +1,38 @@
 <form (ngSubmit)="onSubmit()" #form="ngForm">
   <div class="container">
     <div class="row">
-      <div class="col-md-3">
+      <div class="col-md-4 col-lg-3">
         <app-cities-search
           [(ngModel)]="data.origin"
           name="origin"
           [placeholder]="'PLACEHOLDER_LOCATION' | translate"
           [label]="'LOCATION_FROM' | translate"
+          [required]="false"
+          [isRegionPicked]="data.origin?.region ? true : false"
         ></app-cities-search>
       </div>
-      <div class="col-md-3">
+      <div class="col-md-4 col-lg-3">
         <app-cities-search
           [(ngModel)]="data.destination"
           name="destination"
           [placeholder]="'PLACEHOLDER_LOCATION_2' | translate"
           [label]="'LOCATION_TO' | translate"
+          [required]="false"
+          [isRegionPicked]="data.destination?.region ? true : false"
         ></app-cities-search>
       </div>
-      <div class="col-md-2">
+      <div class="col-md-4 col-lg-2">
         <label
           ><b>{{ "DATE" | translate }}</b></label
         >
         <app-datepicker [(date)]="data.transportDate"></app-datepicker>
       </div>
-      <div class="col-md-1">
+      <div class="col-md-4 col-lg-1">
         <label
           ><b>{{ "NUMBER_OF_PEOPLE" | translate }}</b></label
         >
         <mat-form-field appearance="outline">
-          <input matInput min="1" name="capacity" type="number" [(ngModel)]="data.capacity" />
+          <input matInput min="1" max="99" name="capacity" type="number" [(ngModel)]="data.capacity" />
         </mat-form-field>
       </div>
       <div class="col-md-3 search">
