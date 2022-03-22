@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ActivatedRoute, Params, Router, RoutesRecognized } from '@angular/router';
 import { filter, pairwise } from 'rxjs';
 import { CategoryRoutingName } from '@app/shared/models';
+import { SortingOrder } from '@app/shared/models/sortingOrder.model';
 
 @Injectable({
   providedIn: 'root',
@@ -45,7 +46,7 @@ export class StoreUrlService {
       queryParams: {
         page: 0,
         size: localStorage.getItem('pomagamukrainie-size') ?? 5,
-        sort: ['modifiedDate,desc'],
+        sort: [`modifiedDate,${SortingOrder.descending}`],
       },
       queryParamsHandling: 'merge',
     });

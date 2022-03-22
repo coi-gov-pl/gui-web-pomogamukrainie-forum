@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SortingOrder } from '@app/shared/models/sortingOrder.model';
 
 @Component({
   selector: 'app-sorting-header',
@@ -9,7 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class SortingHeaderComponent implements OnInit {
   @Input() total!: number;
   sortField = 'modifiedDate';
-  fieldOrder: string = 'desc';
+  fieldOrder = SortingOrder.descending;
 
   @Output() sortingOrderChange = new EventEmitter<string>();
 
@@ -25,7 +26,7 @@ export class SortingHeaderComponent implements OnInit {
   }
 
   async changeOrder() {
-    this.fieldOrder = this.fieldOrder === 'desc' ? 'asc' : 'desc';
+    this.fieldOrder = this.fieldOrder === SortingOrder.descending ? SortingOrder.ascending : SortingOrder.descending;
     const queryParams = {
       sort: `${this.sortField},${this.fieldOrder}`,
     };
