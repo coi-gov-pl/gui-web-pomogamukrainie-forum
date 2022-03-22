@@ -2,8 +2,8 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Location } from '@app/core/api';
 import { StatementAnchors } from '@app/shared/models';
 import { ActivatedRoute, Router } from '@angular/router';
-import { StoreUrlService } from '@app/core/store-url/store-url.service';
-import { LocalStorage } from '@app/shared/models/storage.model';
+import { StoreUrlService } from '@app/core/store-url';
+import { LocalStorage } from '@app/shared/models';
 
 export interface AccommodationQuery {
   location?: Location;

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ActivatedRoute, Params, Router, RoutesRecognized } from '@angular/router';
 import { filter, pairwise } from 'rxjs';
 import { CategoryRoutingName } from '@app/shared/models';
-import { LocalStorage } from '@app/shared/models/storage.model';
+import { LocalStorage } from '@app/shared/models';
 
 @Injectable({
   providedIn: 'root',

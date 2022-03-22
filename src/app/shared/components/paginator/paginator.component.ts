@@ -3,7 +3,7 @@ import { PageEvent } from '@angular/material/paginator';
 import { Pageable } from '@app/core/api';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { LocalStorage } from '@app/shared/models/storage.model';
+import { LocalStorage } from '@app/shared/models';
 
 @Component({
   selector: 'app-paginator',
