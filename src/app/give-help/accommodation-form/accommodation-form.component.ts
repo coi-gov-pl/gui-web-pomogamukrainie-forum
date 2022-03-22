@@ -38,9 +38,9 @@ export class AccommodationFormComponent {
   onPhoneNumberChange($event: Event) {
     let val = ($event.target as HTMLInputElement).value;
     if (val) {
-      val = val.replace(NON_DIGITS_REGEX, '');
-      val = val.replace(SPACES_REGEX, '');
+      val = val.replace(NON_DIGITS_REGEX, '').replace(SPACES_REGEX, '');
       this.phoneInput.nativeElement.value = val;
+      this.data.phoneNumber = val;
     }
     this.data.phoneNumber = this.phonePrefix + this.phoneNumber;
   }
