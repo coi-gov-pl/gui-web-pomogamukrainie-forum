@@ -53,7 +53,6 @@ export class MyAccountComponent implements OnInit {
     };
     this.myOffersResource.listMyOffers(this.pageRequest).subscribe((results) => {
       this.myAnnouncements = results;
-      console.log(this.myAnnouncements);
     });
   }
 
