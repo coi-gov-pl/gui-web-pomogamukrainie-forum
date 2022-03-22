@@ -22,16 +22,20 @@ export class AccommodationFormComponent {
     hostLanguage: [],
   });
   loading: boolean = false;
-  @ViewChild('phoneInput')
-  phoneInput!: { nativeElement: { value: any } };
+  @ViewChild('phoneInput') phoneInput!: { nativeElement: { value: any } };
+
   constructor(
     private accommodationsResourceService: AccommodationsResourceService,
     private router: Router,
     private snackbarService: SnackbarService
   ) {}
 
-  onPhoneNumberChange($event: any): void {
-    let val = $event.target.value;
+  onPrefixNumberChange() {
+    this.data.phoneNumber = this.phonePrefix + this.phoneNumber;
+  }
+
+  onPhoneNumberChange($event: Event) {
+    let val = ($event.target as HTMLInputElement).value;
     val = val.replace(/[^0-9 ]+/g, '');
     this.phoneInput.nativeElement.value = val;
     this.data.phoneNumber = this.phonePrefix + this.phoneNumber;

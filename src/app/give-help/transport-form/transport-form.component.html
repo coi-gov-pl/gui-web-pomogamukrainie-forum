@@ -106,7 +106,7 @@
           <mat-form-field appearance="outline">
             <mat-select
               placeholder="{{ 'PLACEHOLDER_CHOOSE' | translate }}"
-              (selectionChange)="onPhoneNumberChange($event)"
+              (selectionChange)="onPrefixNumberChange()"
               [(ngModel)]="phonePrefix"
               name="prefix"
             >

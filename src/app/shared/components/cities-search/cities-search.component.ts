@@ -100,8 +100,8 @@ export class CitiesSearchComponent implements OnInit, ControlValueAccessor {
     return this.cityLookupResourceService.getCitiesCityLookup(query);
   }
 
-  onLocationInput($event: any) {
-    let val = $event.target.value;
+  onLocationInput($event: Event) {
+    let val = ($event.target as HTMLInputElement).value;
     val = val.replace(/[0-9]/g, '');
     this.formControl.patchValue(val);
   }
