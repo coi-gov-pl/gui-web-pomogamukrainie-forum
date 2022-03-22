@@ -7,4 +7,5 @@ export enum CategoryRoutingName {
   WORK = 'praca',
   TRANSLATIONS = 'tlumaczenia',
   MISC = 'misc',
+  NOT_FOUND = 'brak-oferty',
 }

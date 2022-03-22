@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AccommodationOffer, AccommodationsResourceService } from '@app/core/api';
-import { CategoryRoutingName } from '@app/shared/models';
+import { CategoryRoutingName, CorePath } from '@app/shared/models';
 import { defaults } from '@app/shared/utils';
 import { StoreUrlService } from '@app/core/store-url/store-url.service';
 
@@ -45,8 +45,13 @@ export class ViewOfferAccommodationComponent implements OnInit {
   }
 
   getAccomodationOffer() {
-    this.accommodationsResourceService.getAccommodations(this.offerId).subscribe((response) => {
-      this.data = response;
-    });
+    this.accommodationsResourceService.getAccommodations(this.offerId).subscribe(
+      (response) => {
+        this.data = response;
+      },
+      (error) => {
+        this.router.navigate([CorePath.Find, CategoryRoutingName.ACCOMMODATION, CategoryRoutingName.NOT_FOUND]);
+      }
+    );
   }
 }
