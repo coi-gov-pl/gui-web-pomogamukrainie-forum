@@ -31,7 +31,9 @@ export class SearchResultComponent implements OnChanges {
   constructor(private router: Router) {}
 
   onViewOffer() {
-    this.router.navigate([CorePath.Find, this.category, this.offerId]);
+    if (this.offerId) {
+      this.router.navigate([CorePath.Find, this.category, this.offerId]);
+    }
   }
 
   ngOnChanges({ posted, location, destination }: SimpleChanges) {

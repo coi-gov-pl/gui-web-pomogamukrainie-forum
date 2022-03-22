@@ -2,16 +2,19 @@ import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import { createProxyMiddleware } from 'http-proxy-middleware';
 import {
+  accommodationDelete,
   accommodationGet,
   accommodationsListGet,
   accommodationsPost,
   cityGet,
+  materialAidDelete,
   materialAidGet,
   materialAidListGet,
   materialAidPost,
   meGet,
   messagePost,
   myOffersGet,
+  transportDelete,
   transportGet,
   transportListGet,
   transportPost,
@@ -44,7 +47,10 @@ router
   .post(`${baseHref}/secure/accommodations`, accommodationsPost)
   .post(`${baseHref}/secure/material-aid`, materialAidPost)
   .post(`${baseHref}/secure/transport`, transportPost)
-  .post(`${baseHref}/message`, messagePost);
+  .post(`${baseHref}/message`, messagePost)
+  .delete(`${baseHref}/secure/transport/:id`, transportDelete)
+  .delete(`${baseHref}/secure/accommodations/:id`, accommodationDelete)
+  .delete(`${baseHref}/secure/material-aid/:id`, materialAidDelete);
 
 app.use(router);
 
