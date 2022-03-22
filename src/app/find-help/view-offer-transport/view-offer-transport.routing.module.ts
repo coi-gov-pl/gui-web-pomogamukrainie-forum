@@ -4,7 +4,7 @@ import { NotFoundComponent } from '@app/shared/components/not-found/not-found.co
 import { CategoryRoutingName } from '@app/shared/models';
 import { ViewOfferTransportComponent } from './view-offer-transport.component';
 
-const routes: Routes = [  
+const routes: Routes = [
   {
     path: '',
     component: ViewOfferTransportComponent,

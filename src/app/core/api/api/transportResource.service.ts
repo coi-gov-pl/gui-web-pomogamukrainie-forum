@@ -22,7 +22,7 @@ import {
   HttpContext,
 } from '@angular/common/http';
 import { CustomHttpParameterCodec } from '../encoder';
-import { map, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 
 // @ts-ignore
 import { OffersTransportOffer } from '../model/offersTransportOffer';

@@ -17,8 +17,7 @@ const routes: Routes = [
   {
     path: CategoryRoutingName.NOT_FOUND,
     component: NotFoundComponent,
-    loadChildren: () =>
-      import('../../shared/components/not-found/not-found.module').then((m) => m.NotFoundModule),
+    loadChildren: () => import('../../shared/components/not-found/not-found.module').then((m) => m.NotFoundModule),
   },
   {
     path: ':id',
