@@ -166,4 +166,5 @@ export default {
   ERROR_MIN_DATE: 'Wprowadź późniejszą datę.',
   AND: 'i',
   PRIVATE_POLICY: 'politykę prywantności',
+  CHARS_LEFT: 'Pozostała ilość znaków:',
 };

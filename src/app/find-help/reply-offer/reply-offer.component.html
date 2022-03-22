@@ -37,7 +37,7 @@
         <label>
           <b>{{ "LABEL_REPLY_CONTENT" | translate }}</b>
         </label>
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" hintLabel="{{ 'CHARS_LEFT' | translate }}">
           <textarea
             required
             matInput
@@ -48,7 +48,10 @@
             [(ngModel)]="data.text"
             #description="ngModel"
             appOfferDescriptionValidate
-          ></textarea>
+          >
+          ></textarea
+          >
+          <mat-hint align="end">{{ data.text?.length || 0 }}/1000</mat-hint>
           <mat-error>
             <app-field-error [model]="description"></app-field-error>
           </mat-error>
