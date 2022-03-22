@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { MaterialAidOfferDefinitionDTO, MaterialAidResourceService } from '@app/core/api';
 import { PREFIXES } from '@app/shared/consts';
@@ -24,13 +24,19 @@ export class MaterialAidFormComponent {
   phonePrefix: string = '48';
   phoneNumber: string = '';
   loading: boolean = false;
+  @ViewChild('phoneInput')
+  phoneInput!: { nativeElement: { value: any } };
+
   constructor(
     private router: Router,
     private materialAidResourceService: MaterialAidResourceService,
     private snackbarService: SnackbarService
   ) {}
 
-  onPhoneNumberChange(): void {
+  onPhoneNumberChange($event: any): void {
+    let val = $event.target.value;
+    val = val.replace(/[^0-9 ]+/g, '');
+    this.phoneInput.nativeElement.value = val;
     this.data.phoneNumber = this.phonePrefix + this.phoneNumber;
   }
 

@@ -7,6 +7,8 @@
           name="location"
           [placeholder]="'PLACEHOLDER_LOCATION' | translate"
           [label]="'LOCATION' | translate"
+          [required]="false"
+          [isRegionPicked]="data.location?.region ? true : false"
         ></app-cities-search>
       </div>
       <div class="col-md-2">

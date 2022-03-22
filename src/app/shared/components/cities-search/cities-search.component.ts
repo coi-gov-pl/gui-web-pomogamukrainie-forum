@@ -22,6 +22,8 @@ export class CitiesSearchComponent implements OnInit, ControlValueAccessor {
 
   @Input() placeholder = '';
   @Input() label = '';
+  @Input() required: boolean = false;
+  @Input() isRegionPicked: boolean = false;
 
   @ViewChild('autoCompleteInput', { read: MatAutocompleteTrigger }) autoComplete?: MatAutocompleteTrigger;
 
@@ -96,5 +98,11 @@ export class CitiesSearchComponent implements OnInit, ControlValueAccessor {
 
   getData(query: string) {
     return this.cityLookupResourceService.getCitiesCityLookup(query);
+  }
+
+  onLocationInput($event: any) {
+    let val = $event.target.value;
+    val = val.replace(/[0-9]/g, '');
+    this.formControl.patchValue(val);
   }
 }

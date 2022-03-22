@@ -4,12 +4,14 @@ import { EmailValidateDirective } from './email-validate.directive';
 import { OfferDescriptionValidateDirective } from './offer-description-validate.directive';
 import { OfferTitleValidateDirective } from './offer-title-validate.directive';
 import { SimplePhoneValidateDirective } from './simple-phone-validate.directive';
+import { LocationValidateDirective } from './location-validate.directive';
 
 const directives = [
   EmailValidateDirective,
   OfferDescriptionValidateDirective,
   OfferTitleValidateDirective,
   SimplePhoneValidateDirective,
+  LocationValidateDirective,
 ];
 
 @NgModule({

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, Input } from '@angular/core';
 import { defaults } from '@app/shared/utils';
 import { PREFIXES, LANGUAGES, LENGTHOFSTAY } from '@app/shared/consts';
 import { AccommodationOfferDefinitionDTO, AccommodationsResourceService } from '@app/core/api';
@@ -22,13 +22,18 @@ export class AccommodationFormComponent {
     hostLanguage: [],
   });
   loading: boolean = false;
+  @ViewChild('phoneInput')
+  phoneInput!: { nativeElement: { value: any } };
   constructor(
     private accommodationsResourceService: AccommodationsResourceService,
     private router: Router,
     private snackbarService: SnackbarService
   ) {}
 
-  onPhoneNumberChange(): void {
+  onPhoneNumberChange($event: any): void {
+    let val = $event.target.value;
+    val = val.replace(/[^0-9 ]+/g, '');
+    this.phoneInput.nativeElement.value = val;
     this.data.phoneNumber = this.phonePrefix + this.phoneNumber;
   }
 

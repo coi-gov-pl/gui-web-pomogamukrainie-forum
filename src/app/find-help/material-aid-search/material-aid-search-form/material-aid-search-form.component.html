@@ -21,9 +21,11 @@
           name="location"
           [placeholder]="'PLACEHOLDER_LOCATION' | translate"
           [label]="'LOCATION' | translate"
+          [required]="false"
+          [isRegionPicked]="data.location?.region ? true : false"
         ></app-cities-search>
       </div>
-      <div class="col-md-3 search">
+      <div class="col-md-4 search">
         <button type="submit" class="btn btn-dark">
           <mat-icon fontSet="material-icons-outlined">search</mat-icon>
           <span>{{ "SEARCH" | translate }}</span>
