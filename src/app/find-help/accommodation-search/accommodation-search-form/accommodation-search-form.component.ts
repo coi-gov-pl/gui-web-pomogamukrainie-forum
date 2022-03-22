@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Location } from '@app/core/api';
 import { StatementAnchors } from '@app/shared/models';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { StoreUrlService } from '@app/core/store-url';
 import { LocalStorage } from '@app/shared/models';
 
@@ -31,7 +31,7 @@ export class AccommodationSearchFormComponent implements OnInit {
   }
 
   async onSubmit(): Promise<void> {
-    const param = {
+    const param: Params = {
       page: 0,
       size: localStorage.getItem(LocalStorage.PageSize) ?? 5,
       capacity: this.data?.capacity,

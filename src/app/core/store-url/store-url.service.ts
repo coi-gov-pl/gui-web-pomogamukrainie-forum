@@ -51,7 +51,7 @@ export class StoreUrlService {
     });
   }
 
-  async setCustomPaginatorParam<T>(param: Record<string, T>): Promise<void> {
+  async setCustomPaginatorParam(param: Params): Promise<void> {
     await this.router.navigate([], {
       relativeTo: this.route,
       queryParams: param,
