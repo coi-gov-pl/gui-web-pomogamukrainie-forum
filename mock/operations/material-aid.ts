@@ -17,7 +17,7 @@ export function materialAidGet(req: express.Request, res: express.Response): exp
   } else {
     res.status(404);
     return res.send();
-  }  
+  }
 }
 
 export function materialAidDelete(req: express.Request, res: express.Response): express.Response {
