@@ -3,6 +3,7 @@ import { Location } from '@app/core/api';
 import { StatementAnchors } from '@app/shared/models';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StoreUrlService } from '@app/core/store-url/store-url.service';
+import { LocalStorage } from '@app/shared/models/storage.model';
 
 export interface AccommodationQuery {
   location?: Location;
@@ -30,7 +31,14 @@ export class AccommodationSearchFormComponent implements OnInit {
   }
 
   async onSubmit(): Promise<void> {
-    await this.storeUrlService.setDefaultPaginatorParam();
+    const param = {
+      page: 0,
+      size: localStorage.getItem(LocalStorage.PageSize) ?? 5,
+      capacity: this.data?.capacity,
+      city: this.data.location?.city,
+      region: this.data.location?.region,
+    };
+    await this.storeUrlService.setCustomPaginatorParam(param);
     this.search.emit(this.data);
   }
 }
