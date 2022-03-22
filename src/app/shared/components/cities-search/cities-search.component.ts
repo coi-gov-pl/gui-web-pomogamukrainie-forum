@@ -4,7 +4,7 @@ import { debounceTime, distinctUntilChanged, filter, switchMap, tap } from 'rxjs
 import { displayLocationOption, Location } from './display-location-option';
 import { CityLookupResourceService } from '@app/core/api';
 import { MatAutocompleteTrigger } from '@angular/material/autocomplete';
-
+import { LETTERS_ONLY_REGEX } from '@app/shared/consts';
 @Component({
   selector: 'app-cities-search',
   templateUrl: './cities-search.component.html',
@@ -102,7 +102,7 @@ export class CitiesSearchComponent implements OnInit, ControlValueAccessor {
 
   onLocationInput($event: Event) {
     let val = ($event.target as HTMLInputElement).value;
-    val = val.replace(/[0-9]/g, '');
+    val = val.replace(LETTERS_ONLY_REGEX, '');
     this.formControl.patchValue(val);
   }
 }
