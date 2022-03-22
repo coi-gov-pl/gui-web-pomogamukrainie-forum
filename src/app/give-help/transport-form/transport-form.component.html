@@ -50,7 +50,7 @@
           <label
             ><b>{{ "LABEL_DATE" | translate }}</b></label
           >
-          <app-datepicker [(date)]="data.transportDate" [required]="true"></app-datepicker>
+          <app-datepicker [(date)]="data.transportDate" [required]="true" [minDate]="minDate"></app-datepicker>
         </div>
         <div class="col-md-2">
           <label

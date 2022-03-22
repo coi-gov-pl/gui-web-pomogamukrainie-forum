@@ -13,6 +13,7 @@ export enum ErrorCode {
   max = 'max',
   matDatepickerParse = 'matDatepickerParse',
   locationIllegalCharacters = 'locationIllegalCharacters',
+  matDatepickerMin = 'matDatepickerMin',
 }
 
 export const ErrorTranslationKey: { [P in keyof typeof ErrorCode]: PL_KEYS } = {
@@ -26,4 +27,5 @@ export const ErrorTranslationKey: { [P in keyof typeof ErrorCode]: PL_KEYS } = {
   max: 'ERROR_MAX_VALUE',
   matDatepickerParse: 'ERROR_INVALID_DATE',
   locationIllegalCharacters: 'ERROR_LOCATION_INVALID',
+  matDatepickerMin: 'ERROR_MIN_DATE',
 };
