@@ -6,11 +6,11 @@ import { BreadcrumbComponent } from './components/breadcrumbs/breadcrumb/breadcr
 import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
-import { ValidatorsDirectivesModule } from './validators';
+import { DirectivesModule } from './directives/directives.module';
 
 @NgModule({
   declarations: [BreadcrumbComponent],
   imports: [CommonModule, RouterModule, MatIconModule, TranslateModule],
-  exports: [MatCardModule, PomCommonPipesModule, BreadcrumbComponent, ValidatorsDirectivesModule],
+  exports: [MatCardModule, PomCommonPipesModule, BreadcrumbComponent, DirectivesModule],
 })
 export class SharedModule {}

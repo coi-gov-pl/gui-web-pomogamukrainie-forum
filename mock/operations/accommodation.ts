@@ -17,7 +17,7 @@ export function accommodationGet(req: express.Request, res: express.Response): e
   } else {
     res.status(404);
     return res.send();
-  }  
+  }
 }
 
 export function accommodationDelete(req: express.Request, res: express.Response): express.Response {
