@@ -170,4 +170,5 @@ export default {
   NOT_FOUND: 'To ogłoszenie nie jest już dostępne.',
   NOT_FOUND_NEXT_ACTION: 'Wróć do listy ogłoszeń',
   NOT_FOUND_NEXT_ACTION_OR: ', lub',
+  NOT_FOUND_IMG_ALT: 'nie znaleziono',
 };
