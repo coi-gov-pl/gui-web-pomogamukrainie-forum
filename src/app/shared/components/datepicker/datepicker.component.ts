@@ -14,6 +14,7 @@ export class DatepickerComponent implements OnInit, OnDestroy {
   @Input()
   date: string | undefined;
   @Input() required = false;
+  @Input() minDate: null | Date = null;
 
   @Output()
   dateChange = new EventEmitter<string>();
