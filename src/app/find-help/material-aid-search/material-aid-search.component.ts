@@ -16,7 +16,6 @@ export class MaterialAidSearchComponent implements OnInit {
   corePath = CorePath;
   searchCriteria: MaterialAidOfferSearchCriteria = {};
   pagination: Pageable | undefined = {};
-  modifiedDateSortOrder: 'asc' | 'desc' = 'desc';
   constructor(private materialAidResourceService: MaterialAidResourceService, private route: ActivatedRoute) {}
 
   ngOnInit() {

@@ -16,7 +16,6 @@ export class TransportSearchComponent implements OnInit {
   corePath = CorePath;
   searchCriteria: TransportOfferSearchCriteria = {};
   pagination: Pageable | undefined;
-  modifiedDateSortOrder: 'asc' | 'desc' = 'desc';
   constructor(private transportResourceService: TransportResourceService, private route: ActivatedRoute) {}
 
   ngOnInit() {

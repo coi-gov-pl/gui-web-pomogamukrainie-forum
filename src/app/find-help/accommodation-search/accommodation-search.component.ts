@@ -17,7 +17,6 @@ export class AccommodationSearchComponent implements OnInit {
   corePath = CorePath;
   searchCriteria: AccommodationQuery = {};
   pagination: Pageable | undefined = {};
-  modifiedDateSortOrder: 'asc' | 'desc' = 'desc';
   constructor(private accommodationsResourceService: AccommodationsResourceService, private route: ActivatedRoute) {}
 
   ngOnInit() {
@@ -51,7 +50,6 @@ export class AccommodationSearchComponent implements OnInit {
     this.loading = true;
 
     const { page, size, sort } = this.route.snapshot.queryParams;
-    this.modifiedDateSortOrder = sort ?? this.modifiedDateSortOrder;
     if (searchCriteria) {
       this.searchCriteria.capacity = searchCriteria?.capacity;
       this.searchCriteria.location = searchCriteria?.location;
@@ -60,7 +58,7 @@ export class AccommodationSearchComponent implements OnInit {
     const pageRequest: Pageable = {
       page,
       size,
-      sort: [`modifiedDate,${this.modifiedDateSortOrder}`],
+      sort,
     };
 
     const { location: { region, city } = {}, capacity } = this.searchCriteria;
