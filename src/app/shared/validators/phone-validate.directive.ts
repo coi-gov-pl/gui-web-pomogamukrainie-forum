@@ -14,7 +14,7 @@ export class PhoneValidateValidateDirective implements Validator {
     }
     const valid = PHONE_NUMBER_REGEX.test(control.value);
     const error: ValidationErrors = {};
-    error[ErrorCode.phoneIllegalCharacters] = { value: control.value };
+    error[ErrorCode.phoneRequiredCharacters] = { value: control.value };
     return valid ? null : error;
   }
 }
