@@ -35,3 +35,7 @@ export const LENGTHOFSTAY: Option[] = [
   { code: AccommodationOffer.LengthOfStayEnum.Month3, label: '3 miesiące' },
   { code: AccommodationOffer.LengthOfStayEnum.Longer, label: 'dłużej' },
 ];
+
+export const NON_DIGITS_REGEX = /[^0-9]+/g;
+export const SPACES_REGEX = /\s/g;
+export const LETTERS_ONLY_REGEX = /[^a-z]/g;

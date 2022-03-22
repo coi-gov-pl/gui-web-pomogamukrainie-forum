@@ -8,11 +8,12 @@ export enum ErrorCode {
   titleIllegalCharacters = 'titleIllegalCharacters',
   descriptionIllegalCharacters = 'descriptionIllegalCharacters',
   emailIllegalCharacters = 'emailIllegalCharacters',
-  phoneIllegalCharacters = 'phoneIllegalCharacters',
+  phoneRequiredCharacters = 'phoneRequiredCharacters',
   min = 'min',
   max = 'max',
   matDatepickerParse = 'matDatepickerParse',
   matDatepickerMin = 'matDatepickerMin',
+  locationIllegalCharacters = 'locationIllegalCharacters',
 }
 
 export const ErrorTranslationKey: { [P in keyof typeof ErrorCode]: PL_KEYS } = {
@@ -21,9 +22,10 @@ export const ErrorTranslationKey: { [P in keyof typeof ErrorCode]: PL_KEYS } = {
   titleIllegalCharacters: 'ERROR_TITLE_ILLEGAL_CHARACTERS',
   descriptionIllegalCharacters: 'ERROR_DESCRIPTION_ILLEGAL_CHARACTERS',
   emailIllegalCharacters: 'EMAIL_ILLEGAL_CHARACTERS',
-  phoneIllegalCharacters: 'PHONE_ILLEGAL_CHARACTERS',
+  phoneRequiredCharacters: 'PHONE_REQUIRED_CHARACTERS',
   min: 'ERROR_MIN_VALUE',
   max: 'ERROR_MAX_VALUE',
   matDatepickerParse: 'ERROR_INVALID_DATE',
   matDatepickerMin: 'ERROR_MIN_DATE',
+  locationIllegalCharacters: 'ERROR_LOCATION_INVALID',
 };

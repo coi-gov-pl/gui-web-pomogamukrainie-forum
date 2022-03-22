@@ -25,7 +25,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-12 col-md-6 col-lg-4">
           <app-cities-search
             [(ngModel)]="data.location"
             name="location"
@@ -34,7 +34,7 @@
             required
           ></app-cities-search>
         </div>
-        <div class="col-md-2">
+        <div class="col-12 col-md-6 col-lg-2">
           <label
             ><b>{{ "NUMBER_OF_PEOPLE" | translate }} *</b></label
           >
@@ -55,7 +55,7 @@
             </mat-error>
           </mat-form-field>
         </div>
-        <div class="col-md-3">
+        <div class="col-12 col-md-6 col-lg-3">
           <label
             ><b>{{ "LABEL_LENGTH_OF_STAY" | translate }} *</b></label
           >
@@ -74,7 +74,7 @@
             </mat-error>
           </mat-form-field>
         </div>
-        <div class="col-md-3">
+        <div class="col-12 col-md-6 col-lg-3">
           <label
             ><b>{{ "LABEL_HOST_LANG" | translate }} *</b></label
           >
@@ -126,7 +126,7 @@
           <mat-form-field appearance="outline">
             <mat-select
               placeholder="{{ 'PLACEHOLDER_CHOOSE' | translate }}"
-              (selectionChange)="onPhoneNumberChange()"
+              (selectionChange)="onPrefixNumberChange()"
               [(ngModel)]="phonePrefix"
               name="prefix"
             >
@@ -142,9 +142,10 @@
               matInput
               type="text"
               name="phone"
-              (input)="onPhoneNumberChange()"
+              #phoneInput
+              (input)="onPhoneNumberChange($event)"
               [(ngModel)]="phoneNumber"
-              simplePhone
+              appPhoneValidate
               inputmode="numeric"
               #phoneNumberModel="ngModel"
             />

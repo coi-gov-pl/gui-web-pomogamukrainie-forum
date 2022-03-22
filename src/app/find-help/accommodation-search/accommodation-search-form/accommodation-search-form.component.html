@@ -7,6 +7,8 @@
           name="location"
           [placeholder]="'PLACEHOLDER_LOCATION' | translate"
           [label]="'LOCATION' | translate"
+          [required]="false"
+          [isRegionPicked]="data.location?.region ? true : false"
         ></app-cities-search>
       </div>
       <div class="col-md-2">
@@ -14,7 +16,7 @@
           ><b>{{ "NUMBER_OF_PEOPLE" | translate }}</b></label
         >
         <mat-form-field appearance="outline">
-          <input matInput min="1" name="guests" type="number" [(ngModel)]="data.capacity" />
+          <input matInput min="1" max="99" name="guests" type="number" [(ngModel)]="data.capacity" />
         </mat-form-field>
       </div>
       <div class="col-md-4 search">

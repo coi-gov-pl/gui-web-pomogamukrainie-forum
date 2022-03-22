@@ -30,16 +30,18 @@
           <app-cities-search
             [(ngModel)]="data.origin"
             name="origin"
-            [placeholder]="'PLACEHOLDER_TYPE' | translate"
+            [placeholder]="'PLACEHOLDER_LOCATION' | translate"
             [label]="'LOCATION_FROM' | translate"
+            [isRegionPicked]="data.origin?.region ? true : false"
           ></app-cities-search>
         </div>
         <div class="col-md-3">
           <app-cities-search
             [(ngModel)]="data.destination"
             name="destination"
-            [placeholder]="'PLACEHOLDER_TYPE' | translate"
+            [placeholder]="'PLACEHOLDER_LOCATION_2' | translate"
             [label]="'LOCATION_TO' | translate"
+            [isRegionPicked]="data.destination?.region ? true : false"
           ></app-cities-search>
         </div>
         <div class="col-md-4">
@@ -103,7 +105,7 @@
           <mat-form-field appearance="outline">
             <mat-select
               placeholder="{{ 'PLACEHOLDER_CHOOSE' | translate }}"
-              (selectionChange)="onPhoneNumberChange()"
+              (selectionChange)="onPrefixNumberChange()"
               [(ngModel)]="phonePrefix"
               name="prefix"
             >
@@ -119,9 +121,10 @@
               matInput
               type="text"
               name="phone"
-              (input)="onPhoneNumberChange()"
+              #phoneInput
+              (input)="onPhoneNumberChange($event)"
               [(ngModel)]="phoneNumber"
-              simplePhone
+              appPhoneValidate
               inputmode="numeric"
               #phoneNumberModel="ngModel"
             />
