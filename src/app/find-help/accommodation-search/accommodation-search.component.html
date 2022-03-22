@@ -3,11 +3,7 @@
 </mat-card>
 <app-no-results *ngIf="total === 0"></app-no-results>
 <div class="results" *ngIf="this.total" [class.loading]="loading">
-  <app-sorting-header
-    [total]="total"
-    [(sortingOrder)]="modifiedDateSortOrder"
-    (sortingOrderChange)="search()"
-  ></app-sorting-header>
+  <app-sorting-header [total]="total" (sortingOrderChange)="search()"></app-sorting-header>
   <div>
     <app-search-result
       *ngFor="let result of results"
@@ -30,5 +26,5 @@
       ></app-search-result-attribute>
     </app-search-result>
   </div>
-  <app-paginator [length]="total" (param)="search(undefined, $event)"></app-paginator>
+  <app-paginator [length]="total" (param)="search()"></app-paginator>
 </div>

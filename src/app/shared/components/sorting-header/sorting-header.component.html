@@ -3,7 +3,7 @@
   <p>
     {{ "SORTING" | translate }}:
     <a class="fw-bold" (click)="changeOrder()">
-      {{ (sortingOrder === "desc" ? "DESCENDING" : "ASCENDING") | translate }}
+      {{ (fieldOrder === "asc" ? "ASCENDING" : "DESCENDING") | translate }}
     </a>
   </p>
 </div>

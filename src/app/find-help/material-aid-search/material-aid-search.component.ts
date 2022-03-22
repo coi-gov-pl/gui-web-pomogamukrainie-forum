@@ -1,13 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MaterialAidOffer, MaterialAidOfferSearchCriteria, MaterialAidResourceService, Pageable } from '@app/core/api';
 import { CategoryRoutingName, CorePath } from '@app/shared/models';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-material-aid-search',
   templateUrl: './material-aid-search.component.html',
   styleUrls: ['./material-aid-search.component.scss'],
 })
-export class MaterialAidSearchComponent {
+export class MaterialAidSearchComponent implements OnInit {
   results: MaterialAidOffer[] = [];
   total?: number = undefined;
   loading = false;
@@ -16,19 +17,36 @@ export class MaterialAidSearchComponent {
   searchCriteria: MaterialAidOfferSearchCriteria = {};
   pagination: Pageable | undefined = {};
   modifiedDateSortOrder: 'asc' | 'desc' = 'desc';
-  constructor(private materialAidResourceService: MaterialAidResourceService) {}
+  constructor(private materialAidResourceService: MaterialAidResourceService, private route: ActivatedRoute) {}
 
-  search(searchCriteria?: MaterialAidOfferSearchCriteria, pagination?: Pageable) {
+  ngOnInit() {
+    const { page, size, category, city, region } = this.route.snapshot.queryParams;
+    const searchCriteria: MaterialAidOfferSearchCriteria = {
+      category,
+      location: {
+        region,
+        city,
+      },
+    };
+    if (page != null || size != null || category != null || city != null || region != null) {
+      this.search(searchCriteria);
+    }
+  }
+
+  search(searchCriteria?: MaterialAidOfferSearchCriteria) {
     this.loading = true;
 
-    this.searchCriteria.category = searchCriteria?.category ?? this.searchCriteria.category;
-    this.searchCriteria.location = searchCriteria?.location ?? this.searchCriteria.location;
-    this.pagination = pagination ?? this.pagination;
+    const { page, size, sort } = this.route.snapshot.queryParams;
+
+    if (searchCriteria) {
+      this.searchCriteria.category = searchCriteria?.category;
+      this.searchCriteria.location = searchCriteria?.location;
+    }
 
     const pageRequest: Pageable = {
-      page: pagination?.page,
-      size: this.pagination?.size,
-      sort: [`modifiedDate,${this.modifiedDateSortOrder}`],
+      page,
+      size,
+      sort,
     };
 
     this.materialAidResourceService.listMaterialAid(pageRequest, this.searchCriteria).subscribe({

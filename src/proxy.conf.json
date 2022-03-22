@@ -1,6 +1,6 @@
 {
   "/ogloszenia/api": {
-    "target": "http://localhost:3000",
+    "target": "http://164.92.143.239:8080",
     "secure": false
   }
 }
