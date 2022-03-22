@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageCode } from '@app/core/translations';
+import { StoreUrlService } from '@app/core/store-url/store-url.service';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,11 @@ import { LanguageCode } from '@app/core/translations';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  constructor(private router: Router, private translateService: TranslateService) {}
+  constructor(
+    private router: Router,
+    private translateService: TranslateService,
+    private storeUrlService: StoreUrlService
+  ) {}
 
   getContentClass() {
     return this.router.url === '/' ? 'only-footer-padding' : 'header-footer-padding';
@@ -17,5 +22,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.translateService.use(LanguageCode.pl_PL);
+    this.storeUrlService.setPreviousUrl();
   }
 }

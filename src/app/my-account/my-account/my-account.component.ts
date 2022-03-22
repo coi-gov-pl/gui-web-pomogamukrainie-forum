@@ -11,10 +11,11 @@ import {
   TransportResourceService,
 } from '@app/core/api';
 import { switchMap, take } from 'rxjs';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CategoryRoutingName, CorePath } from '@app/shared/models';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ConfirmRemoveAdComponent } from '../confirm-remove-ad/confirm-remove-ad.component';
+import { StoreUrlService } from '@app/core/store-url/store-url.service';
 
 @Component({
   selector: 'app-my-account',
@@ -28,14 +29,28 @@ export class MyAccountComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private route: ActivatedRoute,
     private myOffersResource: MyOffersResourceService,
     private dialog: MatDialog,
     private transportResourceService: TransportResourceService,
     private accommodationsResourceService: AccommodationsResourceService,
-    private materialAidResourceService: MaterialAidResourceService
+    private materialAidResourceService: MaterialAidResourceService,
+    private storeUrlService: StoreUrlService
   ) {}
 
-  public ngOnInit() {
+  public async ngOnInit() {
+    await this.storeUrlService.setDefaultPaginatorParam();
+    this.getMyOffers();
+  }
+
+  getMyOffers() {
+    const { page, size, sort } = this.route.snapshot.queryParams;
+
+    this.pageRequest = {
+      page,
+      size,
+      sort,
+    };
     this.myOffersResource.listMyOffers(this.pageRequest).subscribe((results) => {
       this.myAnnouncements = results;
     });
@@ -56,20 +71,17 @@ export class MyAccountComponent implements OnInit {
       if (confirmed) {
         if (announcement.type === TransportOffer.TypeEnum.Transport) {
           this.transportResourceService
-            // https://jira.sysopspolska.pl/browse/POM-321
-            .deleteTransport(announcement.id!)
+            .deleteTransport(announcement.id)
             .pipe(switchMap(() => this.myOffersResource.listMyOffers(this.pageRequest)))
             .subscribe((data) => (this.myAnnouncements = data));
         } else if (announcement.type === AccommodationOffer.TypeEnum.Accommodation) {
           this.accommodationsResourceService
-            // https://jira.sysopspolska.pl/browse/POM-321
-            .deleteAccommodations(announcement.id!)
+            .deleteAccommodations(announcement.id)
             .pipe(switchMap(() => this.myOffersResource.listMyOffers(this.pageRequest)))
             .subscribe((data) => (this.myAnnouncements = data));
         } else if (announcement.type === MaterialAidOffer.TypeEnum.MaterialAid) {
           this.materialAidResourceService
-            // https://jira.sysopspolska.pl/browse/POM-321
-            .deleteMaterialAid(announcement.id!)
+            .deleteMaterialAid(announcement.id)
             .pipe(switchMap(() => this.myOffersResource.listMyOffers(this.pageRequest)))
             .subscribe((data) => (this.myAnnouncements = data));
         }

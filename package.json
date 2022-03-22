@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "start:mock": "nodemon --watch mock/ --exec \"ts-node -P ./mock/tsconfig-mock.json \" ./mock/index.ts",
+    "start:mock": "nodemon --watch mock/ --exec \"npx ts-node -P ./mock/tsconfig-mock.json \" ./mock/index.ts",
     "start:proxy": "npm run start:mock -- --proxy",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",

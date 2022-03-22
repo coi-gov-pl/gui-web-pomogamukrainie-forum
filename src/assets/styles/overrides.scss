@@ -17,6 +17,11 @@ mat-icon {
   }
 }
 
-.mat-error {
+.mat-error,
+.mat-hint {
   margin-left: -0.8em;
+}
+
+.mat-form-field-hint-end {
+  margin-right: -0.8em;
 }

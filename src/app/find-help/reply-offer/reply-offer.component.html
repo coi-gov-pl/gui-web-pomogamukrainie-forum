@@ -37,7 +37,7 @@
         <label>
           <b>{{ "LABEL_REPLY_CONTENT" | translate }}</b>
         </label>
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" hintLabel="{{ 'CHARS_LEFT' | translate }}">
           <textarea
             required
             matInput
@@ -48,13 +48,16 @@
             [(ngModel)]="data.text"
             #description="ngModel"
             appOfferDescriptionValidate
-          ></textarea>
+          >
+          ></textarea
+          >
+          <mat-hint align="end">{{ data.text?.length || 0 }}/1000</mat-hint>
           <mat-error>
             <app-field-error [model]="description"></app-field-error>
           </mat-error>
         </mat-form-field>
       </div>
-      <div class="row">
+      <div class="row mt-3 mb-3">
         <mat-checkbox
           required
           color="primary"
@@ -63,10 +66,16 @@
           (change)="onConsentChange()"
           name="consent"
         >
-          <span>{{ "ACCEPT" | translate }} </span
-          ><a routerLink=""
+          <span>{{ "ACCEPT" | translate }} </span>
+          <a target="_blank" href=""
             ><span>{{ "CONSENT" | translate }}</span></a
           >
+          <span *ngIf="!authService.isLoggedIn()">
+            <span> {{ "AND" | translate }} </span>
+            <a target="_blank" href="https://pomagamukrainie.gov.pl/assets/rodo/politykaprywatnosci.pdf"
+              ><span>{{ "PRIVATE_POLICY" | translate }}</span></a
+            >
+          </span>
         </mat-checkbox>
       </div>
       <div class="d-flex flex-column flex-xl-row">

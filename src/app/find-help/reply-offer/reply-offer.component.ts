@@ -5,6 +5,7 @@ import { SnackbarService } from '@app/shared/services';
 import { ALERT_TYPES } from '@app/shared/models';
 import { switchMap, take } from 'rxjs';
 import { ReCaptchaV3Service } from 'ng-recaptcha';
+import { AuthService } from '@app/core/auth';
 
 @Component({
   selector: 'app-reply-offer',
@@ -19,10 +20,12 @@ export class ReplyOfferComponent implements OnInit {
   @Input() helpersFirstname: string | undefined;
   showPhoneNumber: boolean = false;
   loading: boolean = false;
+
   constructor(
     private messageResourceService: MessageResourceService,
     private snackbarService: SnackbarService,
-    private reCaptchaV3Service: ReCaptchaV3Service
+    private reCaptchaV3Service: ReCaptchaV3Service,
+    public readonly authService: AuthService
   ) {}
 
   ngOnInit(): void {

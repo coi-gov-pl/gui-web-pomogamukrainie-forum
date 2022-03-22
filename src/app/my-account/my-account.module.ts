@@ -12,6 +12,7 @@ import { SharedModule } from '@app/shared/shared.module';
 import { SearchResultComponentModule } from '../find-help/search-result/search-result.module';
 import { MyAccountRoutingModule } from './my-account-routing.module';
 import { ConfirmRemoveAdComponent } from './confirm-remove-ad/confirm-remove-ad.component';
+import { PaginatorModule } from '@app/shared/components/paginator/paginator.module';
 
 @NgModule({
   declarations: [MyAccountComponent, MyAccountSettingsComponent, ConfirmRemoveAdComponent],
@@ -25,6 +26,7 @@ import { ConfirmRemoveAdComponent } from './confirm-remove-ad/confirm-remove-ad.
     TranslateModule,
     SharedModule,
     SearchResultComponentModule,
+    PaginatorModule,
   ],
 })
 export class MyAccountModule {}
