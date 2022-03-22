@@ -19,8 +19,7 @@ export class TransportFormComponent {
   phoneNumber: string = '';
   data = defaults<TransportOfferDefinitionDTO>();
   loading: boolean = false;
-  @ViewChild('phoneInput')
-  phoneInput!: { nativeElement: { value: any } };
+  @ViewChild('phoneInput') phoneInput!: HTMLInputElement;
 
   constructor(
     private transportResourceService: TransportResourceService,

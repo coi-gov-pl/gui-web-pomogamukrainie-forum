@@ -22,7 +22,7 @@ export class AccommodationFormComponent {
     hostLanguage: [],
   });
   loading: boolean = false;
-  @ViewChild('phoneInput') phoneInput!: { nativeElement: { value: any } };
+  @ViewChild('phoneInput') phoneInput!: HTMLInputElement;
 
   constructor(
     private accommodationsResourceService: AccommodationsResourceService,
@@ -37,7 +37,7 @@ export class AccommodationFormComponent {
   onPhoneNumberChange($event: Event) {
     let val = ($event.target as HTMLInputElement).value;
     val = val.replace(/[^0-9 ]+/g, '');
-    this.phoneInput.nativeElement.value = val;
+    this.phoneInput.value = val;
     this.data.phoneNumber = this.phonePrefix + this.phoneNumber;
   }
 
