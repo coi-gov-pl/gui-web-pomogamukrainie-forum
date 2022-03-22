@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TransportResourceService } from '@app/core/api';
-import { TransportOffer } from '@app/core/api';
+import { TransportOffer, TransportResourceService } from '@app/core/api';
 import { CategoryRoutingName } from '@app/shared/models';
 import { defaults } from '@app/shared/utils';
+import { StoreUrlService } from '@app/core/store-url/store-url.service';
 
 @Component({
   selector: 'app-view-offer-transport',
@@ -17,7 +17,8 @@ export class ViewOfferTransportComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private transportResourceService: TransportResourceService
+    private transportResourceService: TransportResourceService,
+    private storeUrlService: StoreUrlService
   ) {}
 
   ngOnInit(): void {
@@ -32,8 +33,10 @@ export class ViewOfferTransportComponent implements OnInit {
       .catch((e) => console.error(e));
   }
 
-  getListUrl(): string {
-    return this.router.url.replace(/\/[^/]+$/, '');
+  navigateBack(): void {
+    this.router.navigate([this.router.url.replace(/\/[^/]+$/, '')], {
+      queryParams: this.storeUrlService.getParams(this.categoryRouteName),
+    });
   }
 
   getTransportOffer() {
