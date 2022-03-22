@@ -30,13 +30,13 @@
             [(ngModel)]="data.location"
             name="location"
             [placeholder]="'PLACEHOLDER_LOCATION' | translate"
-            [label]="'LOCATION' | translate"
+            [label]="('LOCATION' | translate) + ' *'"
             required
           ></app-cities-search>
         </div>
         <div class="col-md-2">
           <label
-            ><b>{{ "NUMBER_OF_PEOPLE" | translate }}</b></label
+            ><b>{{ "NUMBER_OF_PEOPLE" | translate }} *</b></label
           >
           <mat-form-field appearance="outline">
             <input
@@ -57,7 +57,7 @@
         </div>
         <div class="col-md-3">
           <label
-            ><b>{{ "LABEL_LENGTH_OF_STAY" | translate }}</b></label
+            ><b>{{ "LABEL_LENGTH_OF_STAY" | translate }} *</b></label
           >
           <mat-form-field appearance="outline">
             <mat-select
@@ -76,7 +76,7 @@
         </div>
         <div class="col-md-3">
           <label
-            ><b>{{ "LABEL_HOST_LANG" | translate }}</b></label
+            ><b>{{ "LABEL_HOST_LANG" | translate }} *</b></label
           >
           <mat-form-field appearance="outline">
             <mat-select
