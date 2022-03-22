@@ -4,11 +4,10 @@ import { ErrorCode } from '../components/field-error/errors';
 const PHONE_NUMBER_REGEX = /^\d{7,15}$/;
 
 @Directive({
-  // eslint-disable-next-line @angular-eslint/directive-selector
-  selector: '[simplePhone]',
-  providers: [{ provide: NG_VALIDATORS, useExisting: SimplePhoneValidateDirective, multi: true }],
+  selector: '[appPhoneValidate]',
+  providers: [{ provide: NG_VALIDATORS, useExisting: PhoneValidateValidateDirective, multi: true }],
 })
-export class SimplePhoneValidateDirective implements Validator {
+export class PhoneValidateValidateDirective implements Validator {
   validate(control: AbstractControl): ValidationErrors | null {
     if (Validators.required(control)) {
       return null;

@@ -5,8 +5,7 @@ import { ErrorCode } from '../components/field-error/errors';
 const LOCATION_REGEX = /[a-z]/gi;
 
 @Directive({
-  // eslint-disable-next-line @angular-eslint/directive-selector
-  selector: '[locationValidator]',
+  selector: '[appLocationValidate]',
   providers: [{ provide: NG_VALIDATORS, useExisting: LocationValidateDirective, multi: true }],
 })
 export class LocationValidateDirective implements Validator {
