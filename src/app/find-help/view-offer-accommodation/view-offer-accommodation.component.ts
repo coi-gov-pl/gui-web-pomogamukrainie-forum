@@ -33,7 +33,7 @@ export class ViewOfferAccommodationComponent implements OnInit {
 
   copyUrl() {
     navigator.clipboard
-      .writeText(this.router.url)
+      .writeText(window.location.origin + this.router.url)
       .then()
       .catch((e) => console.error(e));
   }
