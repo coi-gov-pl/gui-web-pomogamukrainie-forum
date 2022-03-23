@@ -75,3 +75,12 @@
   display: flex;
   align-items: center;
 }
+
+.link-yellow {
+  color: var(--c-yellow);
+  text-decoration: none;
+  &:hover {
+    color: var(--c-yellow);
+    text-decoration: underline;
+  }
+}
