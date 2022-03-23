@@ -42,14 +42,15 @@
             <input
               matInput
               placeholder="{{ 'PLACEHOLDER_CHOOSE' | translate }}"
-              type="number"
-              min="1"
-              max="99"
+              type="text"
+              appDigitOnly
+              [appMinValidate]="1"
+              [appMaxValidate]="99"
               [(ngModel)]="data.guests"
               name="guests"
               required
               #guests="ngModel"
-              appDigitOnly
+              inputmode="numeric"
             />
             <mat-error>
               <app-field-error [model]="guests"></app-field-error>

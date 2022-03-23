@@ -168,4 +168,5 @@ export default {
   PRIVATE_POLICY: 'politykę prywantności',
   CHARS_LEFT: 'Pozostała ilość znaków:',
   NOT_FOUND: 'To ogłoszenie nie jest już dostępne.',
+  ERROR_NOT_NUMBER: 'To nie jest liczba',
 };
