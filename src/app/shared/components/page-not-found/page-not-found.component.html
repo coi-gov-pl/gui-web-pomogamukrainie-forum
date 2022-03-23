@@ -4,10 +4,10 @@
     <p class="font-small font-yellow fw-bold mb-1">{{ "HELPUA" | translate }}</p>
     <h1 class="header-2 font-darkblue fw-bold">{{ "PAGE_NOT_FOUND" | translate }}</h1>
   </header>
-  <div class="page-not-found-img">
+  <div class="text-center">
     <img [src]="'bknpage.png' | path: 'imagesPath'" alt="{{ 'NOT_FOUND_IMG_ALT' | translate }}" />
   </div>
-  <div class="page-not-found">
+  <div class="fw-bold text-center page-not-found">
     <p>{{ "PAGE_NOT_FOUND_LONG" | translate }}</p>
     <p>
       <a [routerLink]="['/', corePath.Find]" class="font-blue">{{ "PAGE_NOT_FOUND_NEXT_ACTION" | translate }}</a>

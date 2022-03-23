@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CorePath } from '@app/shared/models';
 import { BreadcrumbLabels } from '@app/shared/models';
 import { AuthGuard } from '@app/core/auth';
-import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
+import { PageNotFoundComponent } from '@app/shared/components';
 
 const routes: Routes = [
   {

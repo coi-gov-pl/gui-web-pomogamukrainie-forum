@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
@@ -7,7 +6,7 @@ import { PageNotFoundComponent } from './page-not-found.component';
 import { SharedModule } from '../..';
 
 @NgModule({
-  imports: [CommonModule, RouterModule, SharedModule, TranslateModule, PomCommonPipesModule],
+  imports: [RouterModule, SharedModule, TranslateModule, PomCommonPipesModule],
   declarations: [PageNotFoundComponent],
   exports: [PageNotFoundComponent],
 })
