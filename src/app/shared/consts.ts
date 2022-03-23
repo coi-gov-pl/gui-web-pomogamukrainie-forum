@@ -36,6 +36,6 @@ export const LENGTHOFSTAY: Option[] = [
   { code: AccommodationOffer.LengthOfStayEnum.Longer, label: 'dłużej' },
 ];
 
-export const NON_DIGITS_REGEX = /[^0-9]+/g;
-export const SPACES_REGEX = /\s/g;
-export const LETTERS_ONLY_REGEX = /[^a-z]/gi;
+export const MATCH_NON_DIGITS = /[^0-9]+/g;
+export const MATCH_SPACES = /\s/g;
+export const MATCH_DIGITS = /[0-9]/g;
