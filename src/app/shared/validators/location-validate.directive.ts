@@ -1,8 +1,5 @@
 import { Directive } from '@angular/core';
 import { AbstractControl, NG_VALIDATORS, ValidationErrors, Validator, Validators } from '@angular/forms';
-import { ErrorCode } from '../components/field-error/errors';
-
-const LOCATION_REGEX = /[a-z]/gi;
 
 @Directive({
   selector: '[appLocationValidate]',
@@ -13,9 +10,6 @@ export class LocationValidateDirective implements Validator {
     if (Validators.required(control)) {
       return null;
     }
-    const valid = LOCATION_REGEX.test(control.value);
-    const error: ValidationErrors = {};
-    error[ErrorCode.locationIllegalCharacters] = { value: control.value };
-    return valid ? null : error;
+    return null;
   }
 }
