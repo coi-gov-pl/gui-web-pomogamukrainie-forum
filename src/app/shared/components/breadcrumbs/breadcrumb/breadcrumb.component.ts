@@ -45,7 +45,6 @@ export class BreadcrumbComponent implements OnInit {
       const label: string = route.data['title'];
       const newSegments = route.url.map((segment) => segment.path);
       path.push(...newSegments);
-      console.log(label, path);
       if (label) {
         breadcrumbs.push({ label, url: `/${ path.join('/') }` });
       }
