@@ -23,7 +23,7 @@ export class AccommodationFormComponent {
     hostLanguage: [],
   });
   loading: boolean = false;
-  @ViewChild('phoneInput') phoneInput!: ElementRef;
+  @ViewChild('phoneInput') phoneInput!: ElementRef<HTMLInputElement>;
 
   constructor(
     private accommodationsResourceService: AccommodationsResourceService,

@@ -173,5 +173,7 @@ export default {
   NOT_FOUND_IMG_ALT: 'nie znaleziono',
   ERROR_LOCATION_INVALID: 'Błędna lokalizacja, wybierz z wyświetlonej listy',
   PHONE_REQUIRED_CHARACTERS: 'Numer telefonu powinien zawierać od 7 do 15 cyfr',
+  REPLY_MESSAGE_FORM: 'Napisz wiadomość do osoby pomagającej.',
+  REPLY_MESSAGE_PHONE: 'Jeśli podała swój telefon - znajdziesz go pod przyciskiem',
   MESSAGE_OFFER_REMOVED: 'Ogłoszenie zostało usunięte',
 };

@@ -7,10 +7,13 @@
         >
         <h3>{{ "REPLY_OFFER" | translate }}</h3>
         <p>
-          {{ "REPLY_MESSAGE" | translate }} <b>{{ "SHOW_PHONE" | translate }}</b>
+          {{ "REPLY_MESSAGE_FORM" | translate }}
+          <span *ngIf="helpersPhoneNumber"
+            >{{ "REPLY_MESSAGE_PHONE" | translate }} <b>{{ "SHOW_PHONE" | translate }}</b></span
+          >
         </p>
       </div>
-      <div class="row">
+      <div class="row mt-3">
         <div class="mb-4">
           <label>
             <b>{{ "EMAIL_ADDRESS" | translate }}</b>

@@ -25,7 +25,7 @@ export class MaterialAidFormComponent {
   phonePrefix: string = '48';
   phoneNumber: string = '';
   loading: boolean = false;
-  @ViewChild('phoneInput') phoneInput!: ElementRef;
+  @ViewChild('phoneInput') phoneInput!: ElementRef<HTMLInputElement>;
 
   constructor(
     private router: Router,
