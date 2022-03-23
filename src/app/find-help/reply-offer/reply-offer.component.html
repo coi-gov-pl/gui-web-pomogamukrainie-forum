@@ -7,10 +7,13 @@
         >
         <h3>{{ "REPLY_OFFER" | translate }}</h3>
         <p>
-          {{ "REPLY_MESSAGE" | translate }} <b>{{ "SHOW_PHONE" | translate }}</b>
+          {{ "REPLY_MESSAGE_FORM" | translate }}
+          <span *ngIf="helpersPhoneNumber"
+            >{{ "REPLY_MESSAGE_PHONE" | translate }} <b>{{ "SHOW_PHONE" | translate }}</b></span
+          >
         </p>
       </div>
-      <div class="row">
+      <div class="row mt-3">
         <div class="mb-4">
           <label>
             <b>{{ "EMAIL_ADDRESS" | translate }}</b>
@@ -22,7 +25,7 @@
               placeholder="{{ 'PLACEHOLDER_EMAIL' | translate }}"
               required
               name="title"
-              email
+              appEmailValidate
               #email="ngModel"
               [(ngModel)]="data.replyEmail"
             />
@@ -42,7 +45,7 @@
             required
             matInput
             rows="8"
-            maxlength="1000"
+            maxlength="2000"
             placeholder="{{ 'PLACEHOLDER_REPLY_CONTENT' | translate }}"
             name="description"
             [(ngModel)]="data.text"
@@ -51,7 +54,7 @@
           >
           ></textarea
           >
-          <mat-hint align="end">{{ data.text?.length || 0 }}/1000</mat-hint>
+          <mat-hint align="end">{{ data.text?.length || 0 }}/2000</mat-hint>
           <mat-error>
             <app-field-error [model]="description"></app-field-error>
           </mat-error>

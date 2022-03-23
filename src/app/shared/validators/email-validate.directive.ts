@@ -6,8 +6,7 @@ const EMAIL_REGEX =
   /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 @Directive({
-  // eslint-disable-next-line @angular-eslint/directive-selector
-  selector: '[email]',
+  selector: '[appEmailValidate]',
   providers: [{ provide: NG_VALIDATORS, useExisting: EmailValidateDirective, multi: true }],
 })
 export class EmailValidateDirective implements Validator {

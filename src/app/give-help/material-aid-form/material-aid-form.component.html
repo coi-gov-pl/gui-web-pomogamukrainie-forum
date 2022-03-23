@@ -26,7 +26,7 @@
     <div class="row">
       <div class="col-md-6">
         <label
-          ><b>{{ "TYPE_OF_SUPPORT" | translate }}:</b></label
+          ><b>{{ "TYPE_OF_SUPPORT" | translate }} *</b></label
         >
         <mat-form-field appearance="outline">
           <mat-select
@@ -50,13 +50,13 @@
           [(ngModel)]="data.location"
           name="location"
           [placeholder]="'PLACEHOLDER_LOCATION' | translate"
-          [label]="'LOCATION' | translate"
-          required
+          [label]="('LOCATION' | translate) + ' *'"
+          [required]="true"
         ></app-cities-search>
       </div>
     </div>
     <div class="row">
-      <div class="col-lg-7">
+      <div class="col-lg-7 mb-3">
         <label>
           <b>{{ "LABEL_OFFER_DESCRIPTION" | translate }}</b>
           <span> {{ "LABEL_OFFER_DESCRIPTION_MAXCHARS" | translate }} *</span>
@@ -86,11 +86,11 @@
         <mat-form-field appearance="outline">
           <mat-select
             placeholder="{{ 'PLACEHOLDER_CHOOSE' | translate }}"
-            (selectionChange)="onPhoneNumberChange()"
+            (selectionChange)="onPrefixNumberChange()"
             [(ngModel)]="phonePrefix"
             name="prefix"
           >
-            <mat-option *ngFor="let prefix of PREFIXES" [value]="prefix.prefix">+ {{ prefix.prefix }}</mat-option>
+            <mat-option *ngFor="let prefix of PREFIXES" [value]="prefix.prefix">{{ prefix.prefix }}</mat-option>
           </mat-select>
         </mat-form-field>
       </div>
@@ -100,11 +100,14 @@
           <input
             placeholder="{{ 'PLACEHOLDER_TYPE' | translate }}"
             matInput
+            #phoneInput
             type="text"
             name="phone"
-            (input)="onPhoneNumberChange()"
+            (input)="onPhoneNumberChange($event)"
             [(ngModel)]="phoneNumber"
-            simplePhone
+            appPhoneValidate
+            minlength="7"
+            maxlength="15"
             inputmode="numeric"
             #phoneNumberModel="ngModel"
           />
