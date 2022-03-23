@@ -17,8 +17,7 @@ export class ViewOfferMaterialAidComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private materialAidResourceService: MaterialAidResourceService,
-    private storeUrlService: StoreUrlService
+    private materialAidResourceService: MaterialAidResourceService
   ) {}
 
   ngOnInit(): void {
@@ -31,12 +30,6 @@ export class ViewOfferMaterialAidComponent implements OnInit {
       .writeText(this.router.url)
       .then()
       .catch((e) => console.error(e));
-  }
-
-  navigateBack(): void {
-    this.router.navigate([this.router.url.replace(/\/[^/]+$/, '')], {
-      queryParams: this.storeUrlService.getParams(this.categoryRouteName),
-    });
   }
 
   getMaterialAidOffer() {

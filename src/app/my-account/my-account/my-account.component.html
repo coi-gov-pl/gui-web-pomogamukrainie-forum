@@ -27,6 +27,7 @@
           [posted]="announcement.modifiedDate"
           [offerId]="announcement.id!"
           [category]="categoryRoutingName.ACCOMMODATION"
+          [routePathPrefix]="viewAdRoutePrefix"
         >
           <app-search-result-attribute
             *ngIf="announcement.guests"
@@ -57,6 +58,7 @@
           [posted]="announcement.modifiedDate"
           [offerId]="announcement.id!"
           [category]="categoryRoutingName.MATERIAL_HELP"
+          [routePathPrefix]="viewAdRoutePrefix"
         >
           <app-search-result-attribute
             *ngIf="announcement.category"
@@ -83,6 +85,7 @@
           [posted]="announcement.modifiedDate"
           [offerId]="announcement.id!"
           [category]="categoryRoutingName.TRANSPORT"
+          [routePathPrefix]="viewAdRoutePrefix"
         >
           <app-search-result-attribute
             *ngIf="announcement.transportDate"
