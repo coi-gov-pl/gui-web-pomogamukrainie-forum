@@ -1,5 +1,6 @@
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { ApplicationinsightsAngularpluginErrorService } from '@microsoft/applicationinsights-angularplugin-js';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,5 +12,11 @@ import { CoreModule } from '@app/core/core.module';
   declarations: [AppComponent],
   imports: [BrowserModule, AppRoutingModule, NoopAnimationsModule, SnackbarAlertModule, CoreModule],
   bootstrap: [AppComponent],
+  providers: [
+    {
+      provide: ErrorHandler,
+      useClass: ApplicationinsightsAngularpluginErrorService,
+    },
+  ],
 })
 export class AppModule {}
