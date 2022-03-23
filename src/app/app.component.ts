@@ -18,7 +18,10 @@ export class AppComponent implements OnInit {
     private translateService: TranslateService,
     private storeUrlService: StoreUrlService
   ) {
-    if (environment.applicationInsightsConnectionString) {
+    if (
+      environment.applicationInsightsConnectionString &&
+      environment.applicationInsightsConnectionString !== '%BACKEND_REPLACED_APPLICATION_INSIGHTS_CONNECTION_STRING%'
+    ) {
       const angularPlugin = new AngularPlugin();
       const appInsights = new ApplicationInsights({
         config: {

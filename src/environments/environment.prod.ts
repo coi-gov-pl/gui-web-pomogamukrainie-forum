@@ -9,4 +9,5 @@ export const environment: EnvironmentConfig = {
     redirectUri: `${window.location.origin}/ogloszenia/`,
     logoutUrl: `${window.location.origin}/ogloszenia/`,
   },
+  applicationInsightsConnectionString: '%BACKEND_REPLACED_APPLICATION_INSIGHTS_CONNECTION_STRING%',
 };
