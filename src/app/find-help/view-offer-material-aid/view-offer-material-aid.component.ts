@@ -4,6 +4,7 @@ import { MaterialAidOffer, MaterialAidResourceService } from '@app/core/api';
 import { CategoryRoutingName, CorePath } from '@app/shared/models';
 import { defaults } from '@app/shared/utils';
 import { StoreUrlService } from '@app/core/store-url/store-url.service';
+import { UrlHelperService } from '@app/core/url/url-helper.service';
 
 @Component({
   selector: 'app-view-offer-material-help',
@@ -18,7 +19,8 @@ export class ViewOfferMaterialAidComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private materialAidResourceService: MaterialAidResourceService,
-    private storeUrlService: StoreUrlService
+    private storeUrlService: StoreUrlService,
+    private urlHelperService: UrlHelperService
   ) {}
 
   ngOnInit(): void {
@@ -28,7 +30,7 @@ export class ViewOfferMaterialAidComponent implements OnInit {
 
   copyUrl() {
     navigator.clipboard
-      .writeText(this.router.url)
+      .writeText(this.urlHelperService.basePath(true) + this.router.url.substring(1))
       .then()
       .catch((e) => console.error(e));
   }
