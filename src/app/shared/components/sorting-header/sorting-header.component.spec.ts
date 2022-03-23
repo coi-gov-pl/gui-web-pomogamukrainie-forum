@@ -1,5 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { RouterTestingModule } from '@angular/router/testing';
+import { SortingHeaderModule } from './sorting-header.module';
+import { TranslateModule } from '@ngx-translate/core';
+
 import { SortingHeaderComponent } from './sorting-header.component';
 
 describe('SortingComponent', () => {
@@ -9,6 +13,7 @@ describe('SortingComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [SortingHeaderComponent],
+      imports: [RouterTestingModule, SortingHeaderModule, TranslateModule.forRoot()],
     }).compileComponents();
   });
 

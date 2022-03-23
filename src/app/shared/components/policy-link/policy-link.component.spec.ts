@@ -2,9 +2,10 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateModule } from '@ngx-translate/core';
-import { NotFoundComponent } from './polich-link.component';
 
-describe('NotFoundComponent', () => {
+import { PolicyLinkComponent } from './policy-link.component';
+
+describe('PolicyLinkComponent', () => {
   let component: PolicyLinkComponent;
   let fixture: ComponentFixture<PolicyLinkComponent>;
 
