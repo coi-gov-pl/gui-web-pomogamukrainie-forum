@@ -47,7 +47,7 @@ export class BreadcrumbComponent implements OnInit {
       path.push(...newSegments);
       console.log(label, path);
       if (label) {
-        breadcrumbs.push({ label, url: '/' + path.join('/') });
+        breadcrumbs.push({ label, url: `/${ path.join('/') }` });
       }
       route = route.firstChild;
     }
