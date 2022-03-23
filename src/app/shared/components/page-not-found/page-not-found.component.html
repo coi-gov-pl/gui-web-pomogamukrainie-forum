@@ -1,0 +1,18 @@
+<div class="container">
+  <app-breadcrumb></app-breadcrumb>
+  <header class="text-center mb-4">
+    <p class="font-small font-yellow fw-bold mb-1">{{ "HELPUA" | translate }}</p>
+    <h1 class="header-2 font-darkblue fw-bold">{{ "PAGE_NOT_FOUND" | translate }}</h1>
+  </header>
+  <div class="page-not-found-img">
+    <img [src]="'bknpage.png' | path: 'imagesPath'" alt="{{ 'NOT_FOUND_IMG_ALT' | translate }}" />
+  </div>
+  <div class="page-not-found">
+    <p>{{ "PAGE_NOT_FOUND_LONG" | translate }}</p>
+    <p>
+      <a [routerLink]="['/', corePath.Find]" class="font-blue">{{ "PAGE_NOT_FOUND_NEXT_ACTION" | translate }}</a>
+      {{ "NOT_FOUND_NEXT_ACTION_OR" | translate }}
+      <a [routerLink]="['/', corePath.Statement]" class="font-blue">{{ "NO_RESULTS_TEXT_LINK" | translate }}</a>
+    </p>
+  </div>
+</div>
