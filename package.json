@@ -28,8 +28,6 @@
     "@angular/platform-browser": "~13.2.0",
     "@angular/platform-browser-dynamic": "~13.2.0",
     "@angular/router": "~13.2.0",
-    "@microsoft/applicationinsights-angularplugin-js": "^2.8.0",
-    "@microsoft/applicationinsights-web": "^2.7.4",
     "@ngx-translate/core": "^14.0.0",
     "@popperjs/core": "^2.11.2",
     "angular-oauth2-oidc": "~13.0.1",
