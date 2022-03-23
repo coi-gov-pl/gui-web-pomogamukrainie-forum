@@ -14,7 +14,6 @@ export const environment: EnvironmentConfig = {
     redirectUri: window.location.origin,
     logoutUrl: window.location.origin,
   },
-  applicationInsightsConnectionString: '',
 };
 
 /*
