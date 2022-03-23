@@ -68,6 +68,9 @@ export class AccommodationSearchComponent implements OnInit {
         this.results = results.content ?? [];
         this.total = results.totalElements;
         this.loading = false;
+        setTimeout(() => {
+          document.getElementById('results_start')?.scrollIntoView();
+        }, 0);
       },
       error: () => {
         this.results = [];
