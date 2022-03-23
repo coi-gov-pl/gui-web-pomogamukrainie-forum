@@ -15,8 +15,8 @@ import { CoreModule } from '@app/core/core.module';
   providers: [
     {
       provide: ErrorHandler,
-      useClass: ApplicationinsightsAngularpluginErrorService
-    }
-  ]
+      useClass: ApplicationinsightsAngularpluginErrorService,
+    },
+  ],
 })
 export class AppModule {}

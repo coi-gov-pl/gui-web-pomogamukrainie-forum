@@ -25,9 +25,9 @@ export class AppComponent implements OnInit {
           connectionString: environment.applicationInsightsConnectionString,
           extensions: [angularPlugin],
           extensionConfig: {
-              [angularPlugin.identifier]: { router: this.router }
-          }
-        }
+            [angularPlugin.identifier]: { router: this.router },
+          },
+        },
       });
       appInsights.loadAppInsights();
     }
