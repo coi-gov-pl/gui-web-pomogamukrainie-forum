@@ -4,6 +4,7 @@ export interface EnvironmentConfig {
   production: boolean;
   environmentType: EnvironmentType;
   authConfig: Required<Pick<AuthConfig, 'issuer' | 'showDebugInformation' | 'redirectUri' | 'logoutUrl'>>;
+  applicationInsightsConnectionString: string;
 }
 
 export enum EnvironmentType {
