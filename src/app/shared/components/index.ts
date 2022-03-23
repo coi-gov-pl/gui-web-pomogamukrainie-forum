@@ -8,4 +8,5 @@ export * from './type-of-help/type-of-help.component';
 export * from './category-navigation/category-navigation.component';
 export * from './field-error/';
 export * from './snackbar/snackbar.module';
+export * from './page-not-found/page-not-found.component';
 export * from './sorting-header/sorting-header.module';

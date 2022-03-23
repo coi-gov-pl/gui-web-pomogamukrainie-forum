@@ -169,7 +169,7 @@ export default {
   CHARS_LEFT: 'Pozostała ilość znaków:',
   NOT_FOUND: 'To ogłoszenie nie jest już dostępne.',
   NOT_FOUND_NEXT_ACTION: 'Wróć do listy ogłoszeń',
-  NOT_FOUND_NEXT_ACTION_OR: ', lub',
+  NOT_FOUND_NEXT_ACTION_OR: 'lub',
   NOT_FOUND_IMG_ALT: 'nie znaleziono',
   ERROR_LOCATION_INVALID: 'Błędna lokalizacja, wybierz z wyświetlonej listy',
   PHONE_REQUIRED_CHARACTERS: 'Numer telefonu powinien zawierać od 7 do 15 cyfr',
@@ -181,4 +181,7 @@ export default {
   ASCENDING: 'Od najstarszych',
   DESCENDING: 'Od najnowszych',
   ADVERTISEMENTS_LIST: 'Lista ogłoszeń',
+  PAGE_NOT_FOUND: 'Brak strony',
+  PAGE_NOT_FOUND_LONG: 'Nie znaleziono takiej strony.',
+  PAGE_NOT_FOUND_NEXT_ACTION: 'Wyszukaj ogłoszenie',
 };
