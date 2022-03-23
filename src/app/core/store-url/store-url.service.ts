@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ActivatedRoute, Params, Router, RoutesRecognized } from '@angular/router';
 import { filter, pairwise } from 'rxjs';
 import { CategoryRoutingName } from '@app/shared/models';
-import { LocalStorage } from '@app/shared/models';
+import { LocalStorageKeys } from '@app/shared/models';
 
 @Injectable({
   providedIn: 'root',
@@ -18,19 +18,19 @@ export class StoreUrlService {
       )
       .subscribe((events: RoutesRecognized[]) => {
         if (events[0].urlAfterRedirects.includes('?')) {
-          localStorage.setItem(LocalStorage.PageUrl, events[0].urlAfterRedirects.split('?')[0]);
-          localStorage.setItem(LocalStorage.PageQuery, events[0].urlAfterRedirects.split('?')[1]);
+          localStorage.setItem(LocalStorageKeys.PageUrl, events[0].urlAfterRedirects.split('?')[0]);
+          localStorage.setItem(LocalStorageKeys.PageQuery, events[0].urlAfterRedirects.split('?')[1]);
         }
       });
   }
 
   get getPreviousUrl(): string | null {
-    return localStorage.getItem(LocalStorage.PageUrl);
+    return localStorage.getItem(LocalStorageKeys.PageUrl);
   }
 
   getParams(routing: CategoryRoutingName): Params | null {
     const params = localStorage
-      .getItem(LocalStorage.PageQuery)
+      .getItem(LocalStorageKeys.PageQuery)
       ?.split('&')
       .map((item) => item.split('='))
       .reduce((acc: Record<string, string>, param: string[]) => {
@@ -45,7 +45,7 @@ export class StoreUrlService {
       relativeTo: this.route,
       queryParams: {
         page: 0,
-        size: localStorage.getItem(LocalStorage.PageSize) ?? 5,
+        size: localStorage.getItem(LocalStorageKeys.PageSize) ?? 5,
       },
       queryParamsHandling: 'merge',
     });

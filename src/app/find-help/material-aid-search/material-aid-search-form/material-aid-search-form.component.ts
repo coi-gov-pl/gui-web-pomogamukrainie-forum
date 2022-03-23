@@ -3,7 +3,7 @@ import { MaterialAidOffer, MaterialAidOfferSearchCriteria } from '@app/core/api'
 import { StatementAnchors } from '@app/shared/models';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { StoreUrlService } from '@app/core/store-url';
-import { LocalStorage } from '@app/shared/models';
+import { LocalStorageKeys } from '@app/shared/models';
 
 const categories = Object.entries(MaterialAidOffer.CategoryEnum).map(([key, value]) => ({
   code: key,
@@ -38,7 +38,7 @@ export class MaterialAidSearchFormComponent implements OnInit {
   async onSubmit(): Promise<void> {
     const param: Params = {
       page: 0,
-      size: localStorage.getItem(LocalStorage.PageSize) ?? 5,
+      size: localStorage.getItem(LocalStorageKeys.PageSize) ?? 5,
       category: this.data?.category,
       city: this.data.location?.city,
       region: this.data.location?.region,
