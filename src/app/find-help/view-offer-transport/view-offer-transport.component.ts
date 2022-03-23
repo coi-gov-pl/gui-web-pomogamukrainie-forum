@@ -22,6 +22,7 @@ export class ViewOfferTransportComponent implements OnInit {
     private transportResourceService: TransportResourceService,
     private storeUrlService: StoreUrlService,
     private urlHelperService: UrlHelperService
+    private transportResourceService: TransportResourceService
   ) {}
 
   ngOnInit(): void {
@@ -34,12 +35,6 @@ export class ViewOfferTransportComponent implements OnInit {
       .writeText(this.urlHelperService.basePath(true) + this.router.url.substring(1))
       .then()
       .catch((e) => console.error(e));
-  }
-
-  navigateBack(): void {
-    this.router.navigate([this.router.url.replace(/\/[^/]+$/, '')], {
-      queryParams: this.storeUrlService.getParams(this.categoryRouteName),
-    });
   }
 
   getTransportOffer() {

@@ -33,7 +33,7 @@
       <p>{{ data.description }}</p>
     </div>
     <div class="disclaimer mb-3">{{ "CHANGE_LANG_SITE_DISCLAIMER" | translate }}</div>
-    <a (click)="navigateBack()">&lt; {{ "BACK_TO_LIST" | translate }}</a>
+    <app-back-to-list [categoryRouteName]="categoryRouteName"></app-back-to-list>
   </mat-card>
   <div class="w-100 w-md-50">
     <app-reply-offer

@@ -184,4 +184,5 @@ export default {
   PAGE_NOT_FOUND: 'Brak strony',
   PAGE_NOT_FOUND_LONG: 'Nie znaleziono takiej strony.',
   PAGE_NOT_FOUND_NEXT_ACTION: 'Wyszukaj ogłoszenie',
+  AD: 'Ogłoszenie',
 };

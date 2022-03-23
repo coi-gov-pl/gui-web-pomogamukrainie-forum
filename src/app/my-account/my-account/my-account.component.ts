@@ -28,6 +28,8 @@ export class MyAccountComponent implements OnInit {
   pageRequest: Pageable = {};
   categoryRoutingName = CategoryRoutingName;
 
+  readonly viewAdRoutePrefix = [CorePath.MyAccount];
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
