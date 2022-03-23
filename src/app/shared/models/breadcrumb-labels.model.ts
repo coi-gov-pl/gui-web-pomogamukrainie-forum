@@ -10,4 +10,5 @@ export enum BreadcrumbLabels {
   STATEMENT = 'STATEMENT',
   PAGE_NOT_FOUND = 'PAGE_NOT_FOUND',
   AD = 'AD',
+  ADS = 'ADS',
 }

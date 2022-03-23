@@ -185,6 +185,7 @@ export default {
   PAGE_NOT_FOUND_LONG: 'Nie znaleziono takiej strony.',
   PAGE_NOT_FOUND_NEXT_ACTION: 'Wyszukaj ogłoszenie',
   AD: 'Ogłoszenie',
+  ADS: 'Ogłoszenia',
   API_HTTP_ERROR_SESSION_OR_PERMISSION:
     'Sesja wygasła lub nie masz uprawnień. Odśwież stronę lub zaloguj się ponownie.',
   API_HTTP_ERROR_SERVER_FAILED_CONNECTION: 'Błąd komunikacji z serwerem, spróbuj ponownie później.',
