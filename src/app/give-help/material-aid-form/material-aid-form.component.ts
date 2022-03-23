@@ -56,10 +56,7 @@ export class MaterialAidFormComponent {
     this.materialAidResourceService
       .postMaterialAidOfferMaterialAid(this.data)
       .pipe(take(1))
-      .subscribe(
-        (response) => this.redirectOnSuccess(),
-        (error) => this.snackbarService.openSnack(error.message, ALERT_TYPES.ERROR)
-      )
+      .subscribe(() => this.redirectOnSuccess())
       .add(() => (this.loading = false));
   }
 
