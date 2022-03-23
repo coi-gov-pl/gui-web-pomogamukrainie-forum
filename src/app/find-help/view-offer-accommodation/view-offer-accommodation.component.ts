@@ -39,9 +39,13 @@ export class ViewOfferAccommodationComponent implements OnInit {
   }
 
   navigateBack(): void {
-    this.router.navigate([this.router.url.replace(/\/[^/]+$/, '')], {
-      queryParams: this.storeUrlService.getParams(this.categoryRouteName),
-    });
+    if (window.history.state.redirectFromAccount) {
+      this.router.navigate(['/', CorePath.MyAccount]);
+    } else {
+      this.router.navigate([this.router.url.replace(/\/[^/]+$/, '')], {
+        queryParams: this.storeUrlService.getParams(this.categoryRouteName),
+      });
+    }
   }
 
   getAccomodationOffer() {

@@ -25,6 +25,8 @@ export class SearchResultComponent implements OnChanges {
   posted?: Date | string | undefined;
   @Input()
   origin?: Location;
+  @Input()
+  fromMyAccount: boolean = false;
   postedDate: Date | undefined;
   CategoryRoutingName = CategoryRoutingName;
 
@@ -32,7 +34,9 @@ export class SearchResultComponent implements OnChanges {
 
   onViewOffer() {
     if (this.offerId) {
-      this.router.navigate([CorePath.Find, this.category, this.offerId]);
+      this.router.navigate([CorePath.Find, this.category, this.offerId], {
+        state: { redirectFromAccount: this.fromMyAccount },
+      });
     }
   }
 
