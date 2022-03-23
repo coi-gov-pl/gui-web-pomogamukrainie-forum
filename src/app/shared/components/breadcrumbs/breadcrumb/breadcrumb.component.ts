@@ -12,7 +12,7 @@ export class BreadcrumbComponent implements OnInit {
   public breadcrumbs: Breadcrumb[] = [];
   public mainPage: Breadcrumb = {
     label: BreadcrumbLabels.MAIN_PAGE,
-    url: '',
+    url: '/',
   };
   public ads: Breadcrumb = {
     label: BreadcrumbLabels.ADS,
