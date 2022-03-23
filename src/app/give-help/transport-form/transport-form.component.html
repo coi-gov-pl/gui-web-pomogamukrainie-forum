@@ -57,15 +57,16 @@
           <mat-form-field appearance="outline">
             <input
               matInput
-              type="number"
+              type="text"
               placeholder="{{ 'PLACEHOLDER_CHOOSE' | translate }}"
               [(ngModel)]="data.capacity"
               name="capacity"
-              min="1"
-              max="99"
+              [appMinValidate]="1"
+              [appMaxValidate]="99"
               autocomplete="off"
               required
               #capacity="ngModel"
+              inputmode="numeric"
             />
             <mat-error>
               <app-field-error [model]="capacity"></app-field-error>

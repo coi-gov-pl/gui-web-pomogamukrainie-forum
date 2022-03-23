@@ -1,14 +1,26 @@
-import { Directive, Input } from '@angular/core';
+import { Directive, ElementRef, EventEmitter, HostListener, Input, Output } from '@angular/core';
 import { AbstractControl, NG_VALIDATORS, ValidationErrors, Validator, Validators } from '@angular/forms';
 import { ErrorCode } from '../components/field-error/errors';
 
+const DIGIT_REGEX = /[^0-9]+/g;
 @Directive({
-  selector: '[appMinValidate],[appMaxValidate]',
+  selector: '[ngModel][appMinValidate],[ngModel][appMaxValidate]',
   providers: [{ provide: NG_VALIDATORS, useExisting: MinMaxValidateDirective, multi: true }],
 })
 export class MinMaxValidateDirective implements Validator {
-  @Input('appMinValidate') min = -Infinity;
-  @Input('appMaxValidate') max = Infinity;
+  @Input() appMinValidate = -Infinity;
+  @Input() appMaxValidate = Infinity;
+
+  @Output() ngModelChange: EventEmitter<any> = new EventEmitter();
+
+  constructor(private el: ElementRef) {}
+
+  @HostListener('input', ['$event']) onInputChange(event: any) {
+    const initalValue = this.el.nativeElement.value;
+    const newValue = initalValue.replace(DIGIT_REGEX, '');
+    this.ngModelChange.emit(newValue);
+    this.el.nativeElement.value = newValue;
+  }
 
   validate(control: AbstractControl): ValidationErrors | null {
     if (Validators.required(control)) {
@@ -16,27 +28,26 @@ export class MinMaxValidateDirective implements Validator {
     }
 
     const error: ValidationErrors = {};
-    const value = Number(control.value);
+    const value = control.value.replace(DIGIT_REGEX, '');
+    const valueNumber = Number(value);
 
-    console.log('minmax', control.value);
-
-    if (isNaN(value)) {
-      error[ErrorCode.notNumber] = { value: control.value };
+    if (isNaN(valueNumber)) {
+      error[ErrorCode.notNumber] = { value: value };
       return error;
     }
 
-    if (control.value !== value.toString()) {
-      error[ErrorCode.notNumber] = { value: control.value };
+    if (value !== valueNumber.toString()) {
+      error[ErrorCode.notNumber] = { value: value };
       return error;
     }
 
-    if (this.min !== -Infinity && value < this.min) {
-      error[ErrorCode.min] = { value: control.value };
+    if (this.appMinValidate !== -Infinity && valueNumber < this.appMinValidate) {
+      error[ErrorCode.min] = { value: value };
       return error;
     }
 
-    if (this.max !== Infinity && value > this.max) {
-      error[ErrorCode.max] = { value: control.value };
+    if (this.appMaxValidate !== Infinity && valueNumber > this.appMaxValidate) {
+      error[ErrorCode.max] = { value: value };
       return error;
     }
 

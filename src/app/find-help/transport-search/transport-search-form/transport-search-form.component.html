@@ -28,7 +28,15 @@
           ><b>{{ "NUMBER_OF_PEOPLE" | translate }}</b></label
         >
         <mat-form-field appearance="outline">
-          <input matInput min="1" name="capacity" type="number" [(ngModel)]="data.capacity" />
+          <input
+            matInput
+            [appMinValidate]="1"
+            [appMaxValidate]="99"
+            name="capacity"
+            type="text"
+            [(ngModel)]="data.capacity"
+            inputmode="numeric"
+          />
         </mat-form-field>
       </div>
       <div class="col-md-3 search">
