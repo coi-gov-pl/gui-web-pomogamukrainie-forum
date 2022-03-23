@@ -4,8 +4,8 @@ import { TransportOffer, TransportResourceService } from '@app/core/api';
 import { CategoryRoutingName } from '@app/shared/models';
 import { defaults } from '@app/shared/utils';
 import { CorePath } from '@app/shared/models';
-import { StoreUrlService } from '@app/core/store-url/store-url.service';
 import { UrlHelperService } from '@app/core/url/url-helper.service';
+import { StoreUrlService } from '@app/core/store-url';
 
 @Component({
   selector: 'app-view-offer-transport',

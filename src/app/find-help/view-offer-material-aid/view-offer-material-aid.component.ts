@@ -3,8 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MaterialAidOffer, MaterialAidResourceService } from '@app/core/api';
 import { CategoryRoutingName, CorePath } from '@app/shared/models';
 import { defaults } from '@app/shared/utils';
-import { StoreUrlService } from '@app/core/store-url/store-url.service';
 import { UrlHelperService } from '@app/core/url/url-helper.service';
+import { StoreUrlService } from '@app/core/store-url';
 
 @Component({
   selector: 'app-view-offer-material-help',

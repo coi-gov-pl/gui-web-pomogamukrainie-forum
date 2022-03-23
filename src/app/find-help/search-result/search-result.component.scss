@@ -21,6 +21,9 @@
       flex: 1;
       text-align: right;
     }
+    .first-case-up::first-letter {
+      text-transform: uppercase;
+    }
   }
   h4 {
     font-size: 18px;

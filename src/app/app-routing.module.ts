@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CorePath } from '@app/shared/models';
 import { BreadcrumbLabels } from '@app/shared/models';
 import { AuthGuard } from '@app/core/auth';
+import { PageNotFoundComponent } from '@app/shared/components';
 
 const routes: Routes = [
   {
@@ -44,6 +45,15 @@ const routes: Routes = [
     loadChildren: () => import('./statement/statement.module').then((m) => m.StatementModule),
     data: {
       title: BreadcrumbLabels.STATEMENT,
+    },
+  },
+  {
+    path: '**',
+    component: PageNotFoundComponent,
+    loadChildren: () =>
+      import('./shared/components/page-not-found/page-not-found.module').then((m) => m.PageNotFoundModule),
+    data: {
+      title: BreadcrumbLabels.PAGE_NOT_FOUND,
     },
   },
 ];
