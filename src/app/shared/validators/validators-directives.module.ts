@@ -3,14 +3,14 @@ import { CommonModule } from '@angular/common';
 import { EmailValidateDirective } from './email-validate.directive';
 import { OfferDescriptionValidateDirective } from './offer-description-validate.directive';
 import { OfferTitleValidateDirective } from './offer-title-validate.directive';
-import { PhoneValidateDirective } from './phone-validate.directive';
+import { PhoneValidateValidateDirective } from './phone-validate.directive';
 import { MinMaxValidateDirective } from './min-max-validate.directive';
 
 const directives = [
   EmailValidateDirective,
   OfferDescriptionValidateDirective,
   OfferTitleValidateDirective,
-  PhoneValidateDirective,
+  PhoneValidateValidateDirective,
   MinMaxValidateDirective,
 ];
 
