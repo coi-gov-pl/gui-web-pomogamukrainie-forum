@@ -50,7 +50,8 @@ const routes: Routes = [
   {
     path: '**',
     component: PageNotFoundComponent,
-    loadChildren: () => import('./shared/components/page-not-found/page-not-found.module').then((m) => m.PageNotFoundModule),
+    loadChildren: () =>
+      import('./shared/components/page-not-found/page-not-found.module').then((m) => m.PageNotFoundModule),
     data: {
       title: BreadcrumbLabels.PAGE_NOT_FOUND,
     },
