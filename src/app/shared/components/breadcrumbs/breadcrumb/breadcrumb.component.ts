@@ -14,6 +14,10 @@ export class BreadcrumbComponent implements OnInit {
     label: BreadcrumbLabels.MAIN_PAGE,
     url: '',
   };
+  public ads: Breadcrumb = {
+    label: BreadcrumbLabels.ADS,
+    url: '',
+  };
 
   constructor(private router: Router, private route: ActivatedRoute) {}
 
@@ -33,7 +37,7 @@ export class BreadcrumbComponent implements OnInit {
         if (event instanceof NavigationEnd) {
           this.breadcrumbs = this.buildBreadcrumbs();
         }
-        this.breadcrumbs = [this.mainPage, ...this.breadcrumbs];
+        this.breadcrumbs = [this.mainPage, this.ads, ...this.breadcrumbs];
       });
   }
 
@@ -46,7 +50,7 @@ export class BreadcrumbComponent implements OnInit {
       const newSegments = route.url.map((segment) => segment.path);
       path.push(...newSegments);
       if (label) {
-        breadcrumbs.push({ label, url: `/${ path.join('/') }` });
+        breadcrumbs.push({ label, url: `/${path.join('/')}` });
       }
       route = route.firstChild;
     }
