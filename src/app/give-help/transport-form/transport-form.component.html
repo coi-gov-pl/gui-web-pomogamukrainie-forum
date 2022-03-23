@@ -109,7 +109,7 @@
               [(ngModel)]="phonePrefix"
               name="prefix"
             >
-              <mat-option *ngFor="let prefix of PREFIXES" [value]="prefix.prefix">+ {{ prefix.prefix }}</mat-option>
+              <mat-option *ngFor="let prefix of PREFIXES" [value]="prefix.prefix">{{ prefix.prefix }}</mat-option>
             </mat-select>
           </mat-form-field>
         </div>
@@ -125,6 +125,8 @@
               (input)="onPhoneNumberChange($event)"
               [(ngModel)]="phoneNumber"
               appPhoneValidate
+              minlength="7"
+              maxlength="15"
               inputmode="numeric"
               #phoneNumberModel="ngModel"
             />

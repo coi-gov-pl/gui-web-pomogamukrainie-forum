@@ -34,7 +34,7 @@ export class MaterialAidFormComponent {
   ) {}
 
   onPrefixNumberChange() {
-    this.data.phoneNumber = this.phonePrefix + this.phoneNumber;
+    this.preparePhoneNumber();
   }
 
   onPhoneNumberChange($event: Event) {
@@ -43,7 +43,11 @@ export class MaterialAidFormComponent {
       val = val.replace(NON_DIGITS_REGEX, '').replace(SPACES_REGEX, '');
       this.phoneInput.nativeElement.value = val;
       this.data.phoneNumber = val;
+      this.preparePhoneNumber();
     }
+  }
+
+  preparePhoneNumber() {
     this.data.phoneNumber = this.phonePrefix + this.phoneNumber;
   }
 
