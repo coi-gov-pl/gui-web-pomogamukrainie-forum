@@ -1,3 +1,5 @@
+@import "vars";
+
 .ml-auto {
   margin-left: auto;
 }
@@ -6,11 +8,18 @@
   min-height: 50%;
 }
 
-.clickable {
+.copy-url {
   cursor: pointer;
+  text-decoration: none;
+  color: $c-darkblue;
   &:active {
+    color: grey;
     mat-icon {
       color: grey;
     }
+  }
+  .text {
+    position: relative;
+    top: -6px;
   }
 }

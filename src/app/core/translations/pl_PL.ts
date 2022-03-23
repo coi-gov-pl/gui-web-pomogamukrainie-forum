@@ -163,7 +163,6 @@ export default {
   CHOOSE_FROM_THE_LIST: 'Wybierz z listy',
   MESSAGE_SENT_ALERT_HEADER: 'Twoja odpowiedź została wysłana do osoby pomagającej',
   MESSAGE_SENT_ALERT_CONTENT: 'Potwierdzenie wysłania przesłaliśmy na Twój e-mail.',
-  ADVERTISEMENTS_LIST: 'Lista ogłoszeń',
   ERROR_MIN_DATE: 'Wprowadź późniejszą datę.',
   AND: 'i',
   PRIVATE_POLICY: 'politykę prywantności',
@@ -177,7 +176,9 @@ export default {
   REPLY_MESSAGE_FORM: 'Napisz wiadomość do osoby pomagającej.',
   REPLY_MESSAGE_PHONE: 'Jeśli podała swój telefon - znajdziesz go pod przyciskiem',
   MESSAGE_OFFER_REMOVED: 'Ogłoszenie zostało usunięte',
+  COPY_LINK: 'Kopiuj link',
   SORTING: 'Sortowanie',
   ASCENDING: 'Od najstarszych',
   DESCENDING: 'Od najnowszych',
+  ADVERTISEMENTS_LIST: 'Lista ogłoszeń',
 };
