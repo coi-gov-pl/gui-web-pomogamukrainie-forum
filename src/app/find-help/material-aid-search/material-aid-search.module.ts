@@ -18,6 +18,7 @@ import {
   MoreInfoLinkModule,
   NoResultsModule,
   PaginatorModule,
+  SortingHeaderModule,
 } from '@app/shared/components';
 import { MaterialAidSearchFormComponent } from './material-aid-search-form/material-aid-search-form.component';
 
@@ -42,6 +43,7 @@ import { MaterialAidSearchFormComponent } from './material-aid-search-form/mater
     CategoryNavigationComponentModule,
     NoResultsModule,
     PaginatorModule,
+    SortingHeaderModule,
   ],
 })
 export class MaterialAidSearchModule {}

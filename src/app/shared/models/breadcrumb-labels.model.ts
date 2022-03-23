@@ -8,4 +8,7 @@ export enum BreadcrumbLabels {
   TRANSPORT = 'TRANSPORT',
   ABOUT = 'ABOUT_APP',
   STATEMENT = 'STATEMENT',
+  PAGE_NOT_FOUND = 'PAGE_NOT_FOUND',
+  AD = 'AD',
+  ADS = 'ADS',
 }

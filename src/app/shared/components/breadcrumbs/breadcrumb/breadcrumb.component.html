@@ -1,14 +1,17 @@
 <div>
   <ul class="breadcrumb">
-    <li *ngFor="let breadcrumb of breadcrumbs; let last = last" class="breadcrumb-item">
-      <ng-container *ngIf="breadcrumb.url === activeRoute(); then inactive; else active"> </ng-container>
+    <li *ngFor="let breadcrumb of breadcrumbs; let i = index; let last = last" class="breadcrumb-item">
+      <ng-container *ngIf="breadcrumb.url === activeRoute(); then inactive; else active"></ng-container>
       <ng-template #inactive>
         <span>
           {{ breadcrumb.label | translate }}
         </span>
       </ng-template>
       <ng-template #active>
-        <a routerLink="{{ breadcrumb.url }}">
+        <a *ngIf="i === 0" href="{{ breadcrumb.url }}">
+          {{ breadcrumb.label | translate }}
+        </a>
+        <a *ngIf="i > 0" routerLink="{{ breadcrumb.url }}">
           {{ breadcrumb.label | translate }}
         </a>
       </ng-template>

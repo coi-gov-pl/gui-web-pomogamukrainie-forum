@@ -12,10 +12,11 @@ import {
 } from '@app/core/api';
 import { switchMap, take } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CategoryRoutingName, CorePath } from '@app/shared/models';
+import { ALERT_TYPES, CategoryRoutingName, CorePath } from '@app/shared/models';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ConfirmRemoveAdComponent } from '../confirm-remove-ad/confirm-remove-ad.component';
 import { StoreUrlService } from '@app/core/store-url/store-url.service';
+import { SnackbarService } from '@app/shared/services';
 
 @Component({
   selector: 'app-my-account',
@@ -27,6 +28,8 @@ export class MyAccountComponent implements OnInit {
   pageRequest: Pageable = {};
   categoryRoutingName = CategoryRoutingName;
 
+  readonly viewAdRoutePrefix = [CorePath.MyAccount];
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -35,7 +38,8 @@ export class MyAccountComponent implements OnInit {
     private transportResourceService: TransportResourceService,
     private accommodationsResourceService: AccommodationsResourceService,
     private materialAidResourceService: MaterialAidResourceService,
-    private storeUrlService: StoreUrlService
+    private storeUrlService: StoreUrlService,
+    private snackbarService: SnackbarService
   ) {}
 
   public async ngOnInit() {
@@ -73,17 +77,26 @@ export class MyAccountComponent implements OnInit {
           this.transportResourceService
             .deleteTransport(announcement.id)
             .pipe(switchMap(() => this.myOffersResource.listMyOffers(this.pageRequest)))
-            .subscribe((data) => (this.myAnnouncements = data));
+            .subscribe({
+              next: (data) => this.onRemoveSuccess(data),
+              error: (error) => this.onRemoveError(error.message),
+            });
         } else if (announcement.type === AccommodationOffer.TypeEnum.Accommodation) {
           this.accommodationsResourceService
             .deleteAccommodations(announcement.id)
             .pipe(switchMap(() => this.myOffersResource.listMyOffers(this.pageRequest)))
-            .subscribe((data) => (this.myAnnouncements = data));
+            .subscribe({
+              next: (data) => this.onRemoveSuccess(data),
+              error: (error) => this.onRemoveError(error.message),
+            });
         } else if (announcement.type === MaterialAidOffer.TypeEnum.MaterialAid) {
           this.materialAidResourceService
             .deleteMaterialAid(announcement.id)
             .pipe(switchMap(() => this.myOffersResource.listMyOffers(this.pageRequest)))
-            .subscribe((data) => (this.myAnnouncements = data));
+            .subscribe({
+              next: (data) => this.onRemoveSuccess(data),
+              error: (error) => this.onRemoveError(error.message),
+            });
         }
       }
     });
@@ -96,5 +109,14 @@ export class MyAccountComponent implements OnInit {
 
   public addNewAd(): void {
     this.router.navigate([CorePath.Give, CategoryRoutingName.ACCOMMODATION]);
+  }
+
+  private onRemoveSuccess(data: OffersBaseOffer): void {
+    this.myAnnouncements = data;
+    this.snackbarService.openSnackAlert(ALERT_TYPES.OFFER_REMOVED);
+  }
+
+  private onRemoveError(message: string): void {
+    this.snackbarService.openSnack(message, ALERT_TYPES.ERROR);
   }
 }

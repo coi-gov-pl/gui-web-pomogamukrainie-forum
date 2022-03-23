@@ -6,8 +6,20 @@ import { MyAccountComponent } from './my-account/my-account.component';
 const routes: Routes = [
   {
     path: '',
+    pathMatch: 'full',
     canActivate: [AuthGuard],
     component: MyAccountComponent,
+    data: {
+      title: null,
+    },
+  },
+  {
+    path: '',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('../find-help/find-help.module').then((m) => m.FindHelpModule),
+    data: {
+      title: null,
+    },
   },
 ];
 

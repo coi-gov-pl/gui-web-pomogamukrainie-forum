@@ -25,7 +25,7 @@ export class UrlHelperService {
 
   /** Url absolute/relative */
   public basePath(absolutePath: boolean = false): string {
-    return absolutePath ? this._origin : this._baseHref;
+    return absolutePath ? this._absolutePath : this._baseHref;
   }
 
   /** Url images | absolute/relative */

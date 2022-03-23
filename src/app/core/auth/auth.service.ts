@@ -59,6 +59,12 @@ export class AuthService {
       clientId: 'ogloszenia-fe',
       responseType: 'code',
       showDebugInformation: environment.authConfig.showDebugInformation,
+      openUri: (url: string): void => {
+        // this is a workaround. this.updateProfile() failed to redirect to change email
+        setTimeout(() => {
+          window.location.href = url;
+        });
+      },
     };
   }
 }

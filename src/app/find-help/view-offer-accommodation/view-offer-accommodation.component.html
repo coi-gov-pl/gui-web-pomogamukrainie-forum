@@ -3,8 +3,9 @@
     <div class="d-flex mb-3">
       <div>{{ "MODIFICATION_DATE" | translate }}: {{ data.modifiedDate | date: "dd/MM/yyyy" }}</div>
       <div class="ml-auto">
-        <a role="buton" class="clickable d-block" (click)="copyUrl()">
+        <a role="buton" class="copy-url d-block" (click)="copyUrl()">
           <mat-icon class="yellow-icon clicable" fontSet="material-icons-outlined yellow">copy</mat-icon>
+          <span class="text ms-1">{{ "COPY_LINK" | translate }}</span>
         </a>
       </div>
     </div>
@@ -39,7 +40,7 @@
       <p>{{ data.description }}</p>
     </div>
     <div class="disclaimer mb-3">{{ "CHANGE_LANG_SITE_DISCLAIMER" | translate }}</div>
-    <a (click)="navigateBack()">&lt; {{ "BACK_TO_LIST" | translate }}</a>
+    <app-back-to-list [categoryRouteName]="categoryRouteName"></app-back-to-list>
   </mat-card>
   <div class="w-100 w-md-50">
     <app-reply-offer

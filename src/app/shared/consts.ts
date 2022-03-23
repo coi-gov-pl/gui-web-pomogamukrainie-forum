@@ -6,19 +6,19 @@ import HostLanguageEnum = AccommodationOfferDefinitionDTO.HostLanguageEnum;
 export const PREFIXES: Prefix[] = [
   {
     countryCode: LanguageCode.ru_RU,
-    prefix: '7',
+    prefix: '+7',
   },
   {
     countryCode: LanguageCode.en_GB,
-    prefix: '44',
+    prefix: '+44',
   },
   {
     countryCode: LanguageCode.pl_PL,
-    prefix: '48',
+    prefix: '+8',
   },
   {
     countryCode: LanguageCode.uk_UA,
-    prefix: '380',
+    prefix: '+380',
   },
 ];
 
@@ -35,3 +35,7 @@ export const LENGTHOFSTAY: Option[] = [
   { code: AccommodationOffer.LengthOfStayEnum.Month3, label: '3 miesiące' },
   { code: AccommodationOffer.LengthOfStayEnum.Longer, label: 'dłużej' },
 ];
+
+export const MATCH_NON_DIGITS = /[^0-9]+/g;
+export const MATCH_SPACES = /\s/g;
+export const MATCH_DIGITS = /[0-9]/g;

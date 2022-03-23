@@ -4,7 +4,7 @@ import { debounceTime, distinctUntilChanged, filter, switchMap, tap } from 'rxjs
 import { displayLocationOption, Location } from './display-location-option';
 import { CityLookupResourceService } from '@app/core/api';
 import { MatAutocompleteTrigger } from '@angular/material/autocomplete';
-
+import { MATCH_DIGITS } from '@app/shared/consts';
 @Component({
   selector: 'app-cities-search',
   templateUrl: './cities-search.component.html',
@@ -22,6 +22,8 @@ export class CitiesSearchComponent implements OnInit, ControlValueAccessor {
 
   @Input() placeholder = '';
   @Input() label = '';
+  @Input() required: boolean = false;
+  @Input() isRegionPicked: boolean = false;
 
   @ViewChild('autoCompleteInput', { read: MatAutocompleteTrigger }) autoComplete?: MatAutocompleteTrigger;
 
@@ -46,6 +48,11 @@ export class CitiesSearchComponent implements OnInit, ControlValueAccessor {
       .subscribe((data) => {
         this.options = data.cities ?? [];
       });
+
+    // clear selected value without updating form control to avoid infinite loop
+    this.formControl.valueChanges
+      .pipe(filter((value) => !value))
+      .subscribe(() => this.clearValue({ skipFormControlUpdate: true }));
   }
 
   displayOption(location?: Location) {
@@ -75,9 +82,11 @@ export class CitiesSearchComponent implements OnInit, ControlValueAccessor {
     this.selectedOption = location;
   }
 
-  clearValue(): void {
+  clearValue({ skipFormControlUpdate }: { skipFormControlUpdate?: boolean } = {}): void {
     this.selectedOption = undefined;
-    this.formControl.setValue('');
+    if (!skipFormControlUpdate) {
+      this.formControl.setValue('');
+    }
     this.onChange(undefined);
 
     // This doesn't work without a setTimeout.
@@ -96,5 +105,11 @@ export class CitiesSearchComponent implements OnInit, ControlValueAccessor {
 
   getData(query: string) {
     return this.cityLookupResourceService.getCitiesCityLookup(query);
+  }
+
+  onLocationInput($event: Event) {
+    let val = ($event.target as HTMLInputElement).value;
+    val = val.replace(MATCH_DIGITS, '');
+    this.formControl.patchValue(val);
   }
 }

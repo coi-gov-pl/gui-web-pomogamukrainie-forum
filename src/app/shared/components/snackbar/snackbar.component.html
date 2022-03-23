@@ -8,4 +8,7 @@
     <h5>{{ "MESSAGE_SENT_ALERT_HEADER" | translate }}</h5>
     <p>{{ "MESSAGE_SENT_ALERT_CONTENT" | translate }}</p>
   </div>
+  <div *ngIf="data === ALERT_TYPES.OFFER_REMOVED">
+    <h5>{{ "MESSAGE_OFFER_REMOVED" | translate }}</h5>
+  </div>
 </div>
