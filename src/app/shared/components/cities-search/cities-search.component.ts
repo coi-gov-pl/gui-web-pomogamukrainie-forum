@@ -48,6 +48,11 @@ export class CitiesSearchComponent implements OnInit, ControlValueAccessor {
       .subscribe((data) => {
         this.options = data.cities ?? [];
       });
+
+    // clear selected value without updating form control to avoid infinite loop
+    this.formControl.valueChanges
+      .pipe(filter((value) => !value))
+      .subscribe(() => this.clearValue({ skipFormControlUpdate: true }));
   }
 
   displayOption(location?: Location) {
@@ -77,9 +82,11 @@ export class CitiesSearchComponent implements OnInit, ControlValueAccessor {
     this.selectedOption = location;
   }
 
-  clearValue(): void {
+  clearValue({ skipFormControlUpdate }: { skipFormControlUpdate?: boolean } = {}): void {
     this.selectedOption = undefined;
-    this.formControl.setValue('');
+    if (!skipFormControlUpdate) {
+      this.formControl.setValue('');
+    }
     this.onChange(undefined);
 
     // This doesn't work without a setTimeout.

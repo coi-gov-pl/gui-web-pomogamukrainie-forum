@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { distinctUntilChanged, filter, startWith } from 'rxjs';
 import { Breadcrumb, BreadcrumbLabels } from '@app/shared/models';
+import { UrlHelperService } from '@app/core/url';
 
 @Component({
   selector: 'app-breadcrumb',
@@ -13,7 +14,7 @@ export class BreadcrumbComponent implements OnInit {
   public startPaths: Breadcrumb[] = [
     {
       label: BreadcrumbLabels.MAIN_PAGE,
-      url: '/',
+      url: this.urlHelperService.originPath(),
     },
     {
       label: BreadcrumbLabels.ANNOUNCEMENTS,
@@ -21,7 +22,7 @@ export class BreadcrumbComponent implements OnInit {
     },
   ];
 
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  constructor(private router: Router, private route: ActivatedRoute, private urlHelperService: UrlHelperService) {}
 
   public ngOnInit() {
     const currentUrlAsArray: string[] = this.router.url.split('/').slice(1);
