@@ -20,7 +20,7 @@ export class TransportFormComponent {
   phoneNumber: string = '';
   data = defaults<TransportOfferDefinitionDTO>();
   loading: boolean = false;
-  @ViewChild('phoneInput') phoneInput!: ElementRef;
+  @ViewChild('phoneInput') phoneInput!: ElementRef<HTMLInputElement>;
 
   constructor(
     private transportResourceService: TransportResourceService,
