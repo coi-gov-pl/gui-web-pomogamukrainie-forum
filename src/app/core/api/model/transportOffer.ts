@@ -18,10 +18,10 @@ export interface TransportOffer {
   description: string;
   phoneNumber?: string;
   modifiedDate?: string;
-  origin: Location;
-  destination: Location;
+  origin?: Location;
+  destination?: Location;
   capacity: number;
-  transportDate: string;
+  transportDate?: string;
   type: TransportOffer.TypeEnum;
 }
 export namespace TransportOffer {
