@@ -10,10 +10,16 @@ import { Breadcrumb, BreadcrumbLabels } from '@app/shared/models';
 })
 export class BreadcrumbComponent implements OnInit {
   public breadcrumbs: Breadcrumb[] = [];
-  public mainPage: Breadcrumb = {
-    label: BreadcrumbLabels.MAIN_PAGE,
-    url: '',
-  };
+  public startPaths: Breadcrumb[] = [
+    {
+      label: BreadcrumbLabels.MAIN_PAGE,
+      url: '/',
+    },
+    {
+      label: BreadcrumbLabels.ANNOUNCEMENTS,
+      url: '',
+    },
+  ];
 
   constructor(private router: Router, private route: ActivatedRoute) {}
 
@@ -36,14 +42,16 @@ export class BreadcrumbComponent implements OnInit {
           const currentUrlAsArray: string[] = event.url.split('/').slice(1);
           this.setBreadcrumbs(currentUrlAsArray);
         }
-        this.breadcrumbs = [this.mainPage, ...this.breadcrumbs];
+        this.breadcrumbs = [...this.startPaths, ...this.breadcrumbs];
       });
   }
 
   private setBreadcrumbs(currentUrlAsArray: string[]): void {
     currentUrlAsArray.forEach((el: string, i: number) => {
       this.breadcrumbs.push({
-        label: this.route.snapshot.children[i - 1]?.data['title'] || this.route.snapshot.data['title'],
+        label: !isNaN(+el)
+          ? BreadcrumbLabels.DETAILS
+          : this.route.snapshot.children[i - 1]?.data['title'] || this.route.snapshot.data['title'],
         url: this.router.url
           .split('/')
           .slice(0, i + 2)
