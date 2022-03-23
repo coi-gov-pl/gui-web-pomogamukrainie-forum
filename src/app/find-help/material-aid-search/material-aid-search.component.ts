@@ -55,7 +55,7 @@ export class MaterialAidSearchComponent implements OnInit {
         this.loading = false;
         setTimeout(() => {
           document.getElementById('results_start')?.scrollIntoView();
-        }, 0);        
+        }, 0);
       },
       error: () => {
         this.results = [];
