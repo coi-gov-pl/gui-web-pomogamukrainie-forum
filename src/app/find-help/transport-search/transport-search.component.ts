@@ -70,6 +70,9 @@ export class TransportSearchComponent implements OnInit {
         this.results = results.content ?? [];
         this.total = results.totalElements ?? 0;
         this.loading = false;
+        setTimeout(() => {
+          document.getElementById('results_start')?.scrollIntoView();
+        }, 0);
       },
       error: () => {
         this.results = [];
