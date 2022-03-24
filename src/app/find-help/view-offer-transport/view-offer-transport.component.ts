@@ -15,12 +15,17 @@ export class ViewOfferTransportComponent implements OnInit {
   offerId: number = 0;
   data = defaults<TransportOffer>();
   categoryRouteName = CategoryRoutingName.TRANSPORT;
+  redirectedFromAccount: boolean;
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private transportResourceService: TransportResourceService,
     private urlHelperService: UrlHelperService
-  ) {}
+  ) {
+    // https://stackoverflow.com/questions/54891110/router-getcurrentnavigation-always-returns-null
+    // in constructor, because null will be returned in ngOnInit 
+    this.redirectedFromAccount = this.router.getCurrentNavigation()?.extras?.state!['redirectFromAccount'];
+  }
 
   ngOnInit(): void {
     this.offerId = Number(this.route.snapshot.paramMap.get('id'));
