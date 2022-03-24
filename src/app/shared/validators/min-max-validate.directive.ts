@@ -11,11 +11,11 @@ export class MinMaxValidateDirective implements Validator {
   @Input() appMinValidate = -Infinity;
   @Input() appMaxValidate = Infinity;
 
-  @Output() ngModelChange: EventEmitter<any> = new EventEmitter();
+  @Output() ngModelChange: EventEmitter<number> = new EventEmitter();
 
   constructor(private el: ElementRef) {}
 
-  @HostListener('input', ['$event']) onInputChange(event: any) {
+  @HostListener('input', ['$event']) onInputChange(event: InputEvent) {
     const initalValue = this.el.nativeElement.value;
     const newValue = initalValue.replace(DIGIT_REGEX, '');
     this.ngModelChange.emit(newValue);
