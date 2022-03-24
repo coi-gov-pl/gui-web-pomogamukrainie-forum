@@ -6,6 +6,7 @@ import { StoreUrlService } from '@app/core/store-url';
 import { ApplicationInsights } from '@microsoft/applicationinsights-web';
 import { AngularPlugin } from '@microsoft/applicationinsights-angularplugin-js';
 import { environment } from 'src/environments/environment';
+import { LocalStorageKeys } from '@app/shared/models';
 
 @Component({
   selector: 'app-root',
@@ -41,7 +42,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.translateService.use(LanguageCode.pl_PL);
+    this.translateService.use(localStorage.getItem(LocalStorageKeys.LangOption) || LanguageCode.pl_PL);
     this.storeUrlService.setPreviousUrl();
   }
 }

@@ -74,7 +74,6 @@ export default {
   REPLY_MESSAGE: `Send a message to the helping person. If they shared their phone number, you will find it under the "Show phone number" button.`,
   SHOW_PHONE: `Show phone number`,
   MODIFICATION_DATE: `Published`,
-  CHANGE_LANG_SITE_DISCLAIMER: ``,
   BACK_TO_LIST: `Go back to the list`,
   LANGUAGE: `Language`,
   WHEN: `When`,
