@@ -177,5 +177,6 @@ export default {
   API_HTTP_ERROR_SERVER_BAD_REQUEST: 'Nie udało się przetworzyć żądania, spróbuj ponownie później.',
   POLISH: 'Polski',
   UKRAINIAN: 'Ukraiński',
+  WE_WILL_PUBLISH_YOUR_NAME_IN_AD: 'W ogłoszeniu wyświetlimy również Twoje imię.',
   ERROR_NOT_NUMBER: 'To nie jest liczba',
 };

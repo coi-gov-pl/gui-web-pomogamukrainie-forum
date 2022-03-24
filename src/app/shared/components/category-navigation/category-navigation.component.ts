@@ -28,8 +28,8 @@ export class CategoryNavigationComponent {
 
   constructor(private router: Router) {}
 
-  activeRoute(): string | undefined {
-    return this.router.url.split('/')[2];
+  isActive(category: Category): boolean {
+    return this.router.url.includes(`/${CategoryRoutingName[category.name]}`);
   }
 }
 

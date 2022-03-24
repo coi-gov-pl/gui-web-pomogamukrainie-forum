@@ -25,8 +25,6 @@ export class SearchResultComponent implements OnChanges {
   posted?: Date | string | undefined;
   @Input()
   origin?: Location;
-  @Input()
-  routePathPrefix: string[] = [CorePath.Find];
 
   postedDate: Date | undefined;
   CategoryRoutingName = CategoryRoutingName;
@@ -35,7 +33,7 @@ export class SearchResultComponent implements OnChanges {
 
   onViewOffer() {
     if (this.offerId) {
-      this.router.navigate([...this.routePathPrefix, this.category, this.offerId]);
+      this.router.navigate([CorePath.Find, this.category, this.offerId]);
     }
   }
 
