@@ -87,7 +87,7 @@
               required
               #language="ngModel"
             >
-              <mat-option *ngFor="let it of LANGUAGES" [value]="it.code">{{ it.label }}</mat-option>
+              <mat-option *ngFor="let lang of LANGUAGES" [value]="lang.code">{{ lang.label | translate }}</mat-option>
             </mat-select>
             <mat-error>
               <app-field-error [model]="language"></app-field-error>
