@@ -14,10 +14,10 @@ export enum LanguageCode {
 }
 
 export enum LanguageNames {
-  POLISH = 'Polski',
-  UKRAINIAN = 'український',
-  ENGLISH = 'English',
-  RUSSIAN = 'русский',
+  POLISH = 'POLISH',
+  UKRAINIAN = 'UKRAINIAN',
+  ENGLISH = 'ENGLISH',
+  RUSSIAN = 'RUSSIAN',
 }
 
 export interface Translations {
