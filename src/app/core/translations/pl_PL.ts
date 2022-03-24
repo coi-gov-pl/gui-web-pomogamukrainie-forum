@@ -178,4 +178,5 @@ export default {
   POLISH: 'Polski',
   UKRAINIAN: 'Ukraiński',
   WE_WILL_PUBLISH_YOUR_NAME_IN_AD: 'W ogłoszeniu wyświetlimy również Twoje imię.',
+  ERROR_NOT_NUMBER: 'To nie jest liczba',
 };
