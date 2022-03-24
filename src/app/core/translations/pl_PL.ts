@@ -75,7 +75,6 @@ export default {
   REPLY_MESSAGE: 'Napisz wiadomość do osoby pomagającej. Jeśli podała swój telefon - znajdziesz go pod przyciskiem',
   SHOW_PHONE: 'Pokaż telefon',
   MODIFICATION_DATE: 'Opublikowano',
-  CHANGE_LANG_SITE_DISCLAIMER: 'Zmień język strony, aby automatycznie przetłumaczyć treść ogłoszenia.',
   BACK_TO_LIST: 'Wróć do listy',
   LANGUAGE: 'Język',
   WHEN: 'Kiedy',
