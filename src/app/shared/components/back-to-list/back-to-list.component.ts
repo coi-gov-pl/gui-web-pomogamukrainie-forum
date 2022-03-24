@@ -10,15 +10,15 @@ import { CategoryRoutingName, CorePath } from '@app/shared/models';
 })
 export class BackToListComponent implements OnChanges {
   @Input() categoryRouteName: CategoryRoutingName = CategoryRoutingName.ACCOMMODATION;
-
+  @Input() redirectedFromAccount: boolean = false;
   constructor(private readonly router: Router, private readonly storeUrlService: StoreUrlService) {}
 
   backRoute: string[] = [];
   queryParams: Params | null = null;
 
   ngOnChanges() {
-    // if we are in context of "my account", navigate directly to /my-accout instead of 'my-account/category'.
-    if (this.router.url.split('/').includes(CorePath.MyAccount)) {
+    // if we are in context of "my account", navigate directly to /my-account instead of 'my-account/category'.
+    if (this.redirectedFromAccount) {
       this.backRoute = ['/', CorePath.MyAccount];
       this.queryParams = null;
     } else {

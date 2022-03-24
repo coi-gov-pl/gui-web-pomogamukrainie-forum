@@ -19,12 +19,15 @@ export class ViewOfferAccommodationComponent implements OnInit {
   unbounded = false;
   radius!: number;
   color!: string;
+  redirectedFromAccount: boolean;
   constructor(
     private route: ActivatedRoute,
     private accommodationsResourceService: AccommodationsResourceService,
     private router: Router,
     private urlHelperService: UrlHelperService
-  ) {}
+  ) {
+    this.redirectedFromAccount = this.router.getCurrentNavigation()?.extras?.state!['redirectFromAccount'];
+  }
 
   ngOnInit(): void {
     this.offerId = Number(this.route.snapshot.paramMap.get('id'));

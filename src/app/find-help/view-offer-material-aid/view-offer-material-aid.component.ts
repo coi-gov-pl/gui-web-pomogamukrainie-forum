@@ -14,12 +14,15 @@ export class ViewOfferMaterialAidComponent implements OnInit {
   offerId: number = 0;
   data = defaults<MaterialAidOffer>();
   categoryRouteName = CategoryRoutingName.MATERIAL_HELP;
+  redirectedFromAccount: boolean;
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private materialAidResourceService: MaterialAidResourceService,
     private urlHelperService: UrlHelperService
-  ) {}
+  ) {
+    this.redirectedFromAccount = this.router.getCurrentNavigation()?.extras?.state!['redirectFromAccount'];
+  }
 
   ngOnInit(): void {
     this.offerId = Number(this.route.snapshot.paramMap.get('id'));
