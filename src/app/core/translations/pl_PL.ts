@@ -52,7 +52,7 @@ export default {
   OFFER_PUBLISH: 'Opublikuj ogłoszenie',
   LABEL_OFFER_TITLE: 'Tytuł ogłoszenia',
   LABEL_OFFER_MAXCHARS: '(do 80 znaków)',
-  PLACEHOLDER_OFFER_TITLE: 'Wpisz tytuł ogłosznia...',
+  PLACEHOLDER_OFFER_TITLE: 'Wpisz tytuł ogłoszenia...',
   PLACEHOLDER_OFFER_DESCRIPTION: 'Wpisz swoje ogłoszenie...',
   LABEL_DATE: 'Data',
   LABEL_POINT_LOCALISATION: 'Wskaż lokalizację',
