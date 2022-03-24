@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { AccommodationOffer, AccommodationsResourceService } from '@app/core/api';
 import { CategoryRoutingName, CorePath } from '@app/shared/models';
 import { defaults } from '@app/shared/utils';
@@ -20,6 +20,7 @@ export class ViewOfferAccommodationComponent implements OnInit {
   radius!: number;
   color!: string;
   redirectedFromAccount: boolean;
+  originalAccountQueryParams: Params;
   constructor(
     private route: ActivatedRoute,
     private accommodationsResourceService: AccommodationsResourceService,
@@ -29,6 +30,7 @@ export class ViewOfferAccommodationComponent implements OnInit {
     // https://stackoverflow.com/questions/54891110/router-getcurrentnavigation-always-returns-null
     // in constructor, because null will be returned in ngOnInit
     this.redirectedFromAccount = this.router.getCurrentNavigation()?.extras?.state!['redirectFromAccount'];
+    this.originalAccountQueryParams = this.router.getCurrentNavigation()?.extras?.state!['queryParams'];
   }
 
   ngOnInit(): void {
