@@ -25,23 +25,3 @@ mat-icon {
 .mat-form-field-hint-end {
   margin-right: -0.8em;
 }
-.mat-form-field-appearance-outline {
-  &.mat-focused .mat-form-field-outline-thick {
-    color: $input-border-color;
-  }
-  .mat-form-field-outline {
-    color: $active-input-border-color;
-  }
-
-  .mat-form-field-outline-thick {
-    color: $hover-input-border-color;
-
-    .mat-form-field-outline {
-      &-start,
-      &-end,
-      &-gap {
-        border-width: 1px !important;
-      }
-    }
-  }
-}
