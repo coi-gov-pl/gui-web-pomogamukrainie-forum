@@ -17,7 +17,7 @@ export class AccommodationSearchComponent implements OnInit {
   corePath = CorePath;
   searchCriteria: AccommodationQuery = {};
   pagination: Pageable | undefined = {};
-  @ViewChild('accomodationResultsStart', { read: ElementRef }) resultsStart!: ElementRef;
+  @ViewChild('accomodationResultsStart', { read: ElementRef }) resultsStart!: ElementRef<HTMLElement>;
 
   constructor(private accommodationsResourceService: AccommodationsResourceService, private route: ActivatedRoute) {}
 

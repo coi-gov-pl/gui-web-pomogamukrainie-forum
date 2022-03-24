@@ -16,7 +16,7 @@ export class MaterialAidSearchComponent implements OnInit {
   corePath = CorePath;
   searchCriteria: MaterialAidOfferSearchCriteria = {};
   pagination: Pageable | undefined = {};
-  @ViewChild('materialAidResultsStart', { read: ElementRef }) resultsStart!: ElementRef;
+  @ViewChild('materialAidResultsStart', { read: ElementRef }) resultsStart!: ElementRef<HTMLElement>;
 
   constructor(private materialAidResourceService: MaterialAidResourceService, private route: ActivatedRoute) {}
 

@@ -16,7 +16,7 @@ export class TransportSearchComponent implements OnInit {
   corePath = CorePath;
   searchCriteria: TransportOfferSearchCriteria = {};
   pagination: Pageable | undefined;
-  @ViewChild('transportResultsStart', { read: ElementRef }) resultsStart!: ElementRef;
+  @ViewChild('transportResultsStart', { read: ElementRef }) resultsStart!: ElementRef<HTMLElement>;
 
   constructor(private transportResourceService: TransportResourceService, private route: ActivatedRoute) {}
 
