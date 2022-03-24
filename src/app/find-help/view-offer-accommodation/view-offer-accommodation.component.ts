@@ -3,7 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AccommodationOffer, AccommodationsResourceService } from '@app/core/api';
 import { CategoryRoutingName, CorePath } from '@app/shared/models';
 import { defaults } from '@app/shared/utils';
-import { StoreUrlService } from '@app/core/store-url/store-url.service';
 import { UrlHelperService } from '@app/core/url';
 
 @Component({
@@ -24,7 +23,6 @@ export class ViewOfferAccommodationComponent implements OnInit {
     private route: ActivatedRoute,
     private accommodationsResourceService: AccommodationsResourceService,
     private router: Router,
-    private storeUrlService: StoreUrlService,
     private urlHelperService: UrlHelperService
   ) {}
 
@@ -38,12 +36,6 @@ export class ViewOfferAccommodationComponent implements OnInit {
       .writeText(this.urlHelperService.basePath(true) + this.router.url.substring(1))
       .then()
       .catch((e) => console.error(e));
-  }
-
-  navigateBack(): void {
-    this.router.navigate([this.router.url.replace(/\/[^/]+$/, '')], {
-      queryParams: this.storeUrlService.getParams(this.categoryRouteName),
-    });
   }
 
   getAccomodationOffer() {

@@ -1,10 +1,10 @@
-<mat-card>
+<mat-card #transportResultsStart>
   <app-transport-search-form (search)="search($event)"></app-transport-search-form>
 </mat-card>
 <app-no-results *ngIf="total === 0"></app-no-results>
 <div class="results" *ngIf="this.total" [class.loading]="loading">
   <router-outlet></router-outlet>
-  <div class="total">Lista ogłoszeń ({{ total }}):</div>
+  <app-sorting-header [total]="total" (sortingOrderChange)="search()"></app-sorting-header>
   <div>
     <app-search-result
       *ngFor="let result of results"
