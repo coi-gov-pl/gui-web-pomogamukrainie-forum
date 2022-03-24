@@ -108,7 +108,6 @@ export class CitiesSearchComponent implements OnInit, ControlValueAccessor {
   }
 
   onLocationInput($event: Event) {
-    console.warn('aaa');
     let val = ($event.target as HTMLInputElement).value;
     val = val.replace(LETTERS_ONLY_REGEX, '');
     this.formControl.patchValue(val);
