@@ -157,10 +157,15 @@
           </mat-form-field>
         </div>
         <div class="col-lg-3 publish">
-          <button class="btn btn-dark" [disabled]="accommodationForm.invalid">
-            <mat-icon fontSet="material-icons-outlined">add</mat-icon>
-            <span>{{ "OFFER_PUBLISH" | translate }}</span>
-          </button>
+          <div class="text-center d-inline-block">
+            <label
+              ><small>{{ "WE_WILL_PUBLISH_YOUR_NAME_IN_AD" | translate }}</small></label
+            >
+            <button class="btn btn-dark" [disabled]="accommodationForm.invalid">
+              <mat-icon fontSet="material-icons-outlined">add</mat-icon>
+              <span>{{ "OFFER_PUBLISH" | translate }}</span>
+            </button>
+          </div>
         </div>
       </div>
     </div>
