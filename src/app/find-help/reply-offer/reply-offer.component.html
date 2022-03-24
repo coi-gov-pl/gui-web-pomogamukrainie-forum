@@ -60,7 +60,7 @@
           </mat-error>
         </mat-form-field>
       </div>
-      <div class="row mt-3 mb-3">
+      <div *ngIf="!authService.isLoggedIn()" class="row mt-3 mb-3">
         <mat-checkbox
           required
           color="primary"
@@ -70,14 +70,26 @@
           name="consent"
         >
           <span>{{ "ACCEPT" | translate }} </span>
-          <a target="_blank" href=""
-            ><span>{{ "CONSENT" | translate }}</span></a
-          >
-          <span *ngIf="!authService.isLoggedIn()">
-            <span> {{ "AND" | translate }} </span>
-            <a target="_blank" href="https://pomagamukrainie.gov.pl/assets/rodo/politykaprywatnosci.pdf"
-              ><span>{{ "PRIVATE_POLICY" | translate }}</span></a
-            >
+          <span *ngIf="currentLang === LanguageCode.pl_PL">
+            <a target="_blank" href="https://pomagamukrainie.gov.pl/assets/rodo/politykaprywatnosci.pdf">
+              <span>{{ "PRIVATE_POLICY" | translate }}</span>
+            </a>
+          </span>
+          <span *ngIf="currentLang === LanguageCode.uk_UA">
+            <a target="_blank" href="https://pomagamukrainie.gov.pl/assets/rodo/politykaprywatnosci_UK.pdf">
+              <span>{{ "PRIVATE_POLICY" | translate }}</span>
+            </a>
+          </span>
+          <span *ngIf="currentLang === LanguageCode.en_GB">
+            <a target="_blank" href="https://pomagamukrainie.gov.pl/assets/rodo/politykaprywatnosci_EN.pdf">
+              <span>{{ "PRIVATE_POLICY" | translate }}</span>
+            </a>
+          </span>
+          <span *ngIf="currentLang === LanguageCode.ru_RU">
+            <--! TODO update private policy with RU ver -->
+            <a target="_blank" href="https://pomagamukrainie.gov.pl/assets/rodo/politykaprywatnosci_EN.pdf">
+              <span>{{ "PRIVATE_POLICY" | translate }}</span>
+            </a>
           </span>
         </mat-checkbox>
       </div>
