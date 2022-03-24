@@ -6,7 +6,7 @@ import { CorePath, ALERT_TYPES } from '@app/shared/models';
 import { SnackbarService } from '@app/shared/services';
 import { take } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { NON_DIGITS_REGEX, SPACES_REGEX } from '@app/shared/consts';
+import { MATCH_NON_DIGITS, MATCH_SPACES } from '@app/shared/consts';
 
 @Component({
   selector: 'app-accommodation-form',
@@ -31,29 +31,24 @@ export class AccommodationFormComponent {
     private snackbarService: SnackbarService
   ) {}
 
-  onPrefixNumberChange() {
-    this.data.phoneNumber = this.phonePrefix + this.phoneNumber;
-  }
-
   onPhoneNumberChange($event: Event) {
     let val = ($event.target as HTMLInputElement).value;
-    if (val) {
-      val = val.replace(NON_DIGITS_REGEX, '').replace(SPACES_REGEX, '');
-      this.phoneInput.nativeElement.value = val;
-      this.data.phoneNumber = val;
-    }
+    val = val.replace(MATCH_NON_DIGITS, '').replace(MATCH_SPACES, '');
+    this.phoneInput.nativeElement.value = val;
+    this.phoneNumber = val;
+  }
+
+  preparePhoneNumber() {
     this.data.phoneNumber = this.phonePrefix + this.phoneNumber;
   }
 
   submitOffer(): void {
     this.loading = true;
+    this.phoneNumber ? this.preparePhoneNumber() : null;
     this.accommodationsResourceService
       .createAccommodations(this.data)
       .pipe(take(1))
-      .subscribe(
-        (response) => this.redirectOnSuccess(),
-        (error) => this.snackbarService.openSnack(error.message, ALERT_TYPES.ERROR)
-      )
+      .subscribe(() => this.redirectOnSuccess())
       .add(() => (this.loading = false));
   }
 

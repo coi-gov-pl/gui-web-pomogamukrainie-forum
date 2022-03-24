@@ -1,16 +1,1 @@
-.ml-auto {
-  margin-left: auto;
-}
-
-.content {
-  min-height: 50%;
-}
-
-.clickable {
-  cursor: pointer;
-  &:active {
-    mat-icon {
-      color: grey;
-    }
-  }
-}
+@import "view-offer";

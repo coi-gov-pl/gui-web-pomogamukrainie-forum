@@ -2,8 +2,9 @@ import { Component, Output, EventEmitter, OnInit } from '@angular/core';
 import { TransportOfferSearchCriteria } from '@app/core/api';
 import { CorePath } from '@app/shared/models';
 import { StatementAnchors } from '@app/shared/models';
-import { ActivatedRoute, Router } from '@angular/router';
-import { StoreUrlService } from '@app/core/store-url/store-url.service';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { StoreUrlService } from '@app/core/store-url';
+import { LocalStorageKeys } from '@app/shared/models';
 
 @Component({
   selector: 'app-transport-search-form',
@@ -34,7 +35,17 @@ export class TransportSearchFormComponent implements OnInit {
   }
 
   async onSubmit(): Promise<void> {
-    await this.storeUrlService.setDefaultPaginatorParam();
+    const param: Params = {
+      page: 0,
+      size: localStorage.getItem(LocalStorageKeys.PageSize) ?? 5,
+      capacity: this.data?.capacity,
+      transportDate: this.data.transportDate,
+      destinationRegion: this.data.destination?.region,
+      destinationCity: this.data.destination?.city,
+      originRegion: this.data.origin?.region,
+      originCity: this.data.origin?.city,
+    };
+    await this.storeUrlService.setCustomPaginatorParam(param);
     this.search.emit(this.data);
   }
 }

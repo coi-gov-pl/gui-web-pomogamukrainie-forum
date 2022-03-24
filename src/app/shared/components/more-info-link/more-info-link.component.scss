@@ -5,11 +5,11 @@
 :host a {
   font-size: 12px;
   font-weight: 500;
-  background-color: #cedcf2;
-  color: #052c65;
+  color: #0b52bd;
+  letter-spacing: -0.1px;
 
   mat-icon {
-    font-size: var(--icon-size);
+    font-size: 19px;
     width: var(--icon-size);
     height: var(--icon-size);
   }

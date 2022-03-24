@@ -8,11 +8,17 @@ const routes: Routes = [
   {
     path: '',
     component: FindHelpComponent,
+    data: {
+      title: null,
+    },
     children: [
       {
         path: '',
         redirectTo: CategoryRoutingName.ACCOMMODATION,
         pathMatch: 'full',
+        data: {
+          title: null,
+        },
       },
       {
         path: CategoryRoutingName.ACCOMMODATION,

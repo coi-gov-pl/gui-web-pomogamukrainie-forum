@@ -87,7 +87,7 @@
               required
               #language="ngModel"
             >
-              <mat-option *ngFor="let it of LANGUAGES" [value]="it.code">{{ it.label }}</mat-option>
+              <mat-option *ngFor="let lang of LANGUAGES" [value]="lang.code">{{ lang.label | translate }}</mat-option>
             </mat-select>
             <mat-error>
               <app-field-error [model]="language"></app-field-error>
@@ -124,13 +124,8 @@
             ><b>{{ "LABEL_PHONE_NUMBER" | translate }}</b></label
           >
           <mat-form-field appearance="outline">
-            <mat-select
-              placeholder="{{ 'PLACEHOLDER_CHOOSE' | translate }}"
-              (selectionChange)="onPrefixNumberChange()"
-              [(ngModel)]="phonePrefix"
-              name="prefix"
-            >
-              <mat-option *ngFor="let prefix of PREFIXES" [value]="prefix.prefix">+ {{ prefix.prefix }}</mat-option>
+            <mat-select placeholder="{{ 'PLACEHOLDER_CHOOSE' | translate }}" [(ngModel)]="phonePrefix" name="prefix">
+              <mat-option *ngFor="let prefix of PREFIXES" [value]="prefix.prefix">{{ prefix.prefix }}</mat-option>
             </mat-select>
           </mat-form-field>
         </div>
@@ -146,6 +141,8 @@
               (input)="onPhoneNumberChange($event)"
               [(ngModel)]="phoneNumber"
               appPhoneValidate
+              minlength="7"
+              maxlength="15"
               inputmode="numeric"
               #phoneNumberModel="ngModel"
             />

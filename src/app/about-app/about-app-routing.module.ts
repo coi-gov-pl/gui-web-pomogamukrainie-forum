@@ -6,6 +6,9 @@ const routes: Routes = [
   {
     path: '',
     component: AboutAppComponent,
+    data: {
+      title: null,
+    },
   },
 ];
 
