@@ -1,6 +1,7 @@
 .disclaimer {
-  font-size: 0.7em;
-  color: grey;
+  font-size: 11px;
+  letter-spacing: 0.34px;
+  color: #7e92af;
 }
 
 .container {
@@ -8,5 +9,18 @@
     max-width: 335px;
     margin: 0 auto;
     width: 100%;
+    font-size: 13px;
   }
+
+  h3 {
+    font-size: 20px;
+  }
+
+  p {
+    font-size: 15px;
+  }
+}
+
+.show-phone {
+  cursor: pointer;
 }
