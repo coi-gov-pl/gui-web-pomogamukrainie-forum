@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, filter, switchMap, tap } from 'rxjs';
 import { displayLocationOption, Location } from './display-location-option';
 import { CityLookupResourceService } from '@app/core/api';
@@ -13,6 +13,11 @@ import { MATCH_DIGITS } from '@app/shared/consts';
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
+      multi: true,
+      useExisting: CitiesSearchComponent,
+    },
+    {
+      provide: NG_VALIDATORS,
       multi: true,
       useExisting: CitiesSearchComponent,
     },
@@ -72,6 +77,14 @@ export class CitiesSearchComponent implements OnInit, ControlValueAccessor {
     this.onTouched = fn;
   }
 
+  validate({ value }: FormControl) {
+    return !!this.formControl.value && !value
+      ? {
+          invalid: true,
+        }
+      : undefined;
+  }
+
   markAsTouched() {
     if (!this.touched) {
       this.onTouched();
@@ -113,5 +126,6 @@ export class CitiesSearchComponent implements OnInit, ControlValueAccessor {
     let val = ($event.target as HTMLInputElement).value;
     val = val.replace(MATCH_DIGITS, '');
     this.formControl.patchValue(val);
+    this.onChange(undefined);
   }
 }
