@@ -5,6 +5,7 @@ import { displayLocationOption, Location } from './display-location-option';
 import { CityLookupResourceService } from '@app/core/api';
 import { MatAutocompleteTrigger } from '@angular/material/autocomplete';
 import { MATCH_DIGITS } from '@app/shared/consts';
+
 @Component({
   selector: 'app-cities-search',
   templateUrl: './cities-search.component.html',
@@ -79,6 +80,7 @@ export class CitiesSearchComponent implements OnInit, ControlValueAccessor {
   }
 
   writeValue(location: Location): void {
+    this.formControl.patchValue(location);
     this.selectedOption = location;
   }
 
