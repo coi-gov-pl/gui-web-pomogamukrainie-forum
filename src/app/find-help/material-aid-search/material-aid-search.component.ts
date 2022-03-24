@@ -19,7 +19,7 @@ export class MaterialAidSearchComponent implements OnInit {
   constructor(private materialAidResourceService: MaterialAidResourceService, private route: ActivatedRoute) {}
 
   ngOnInit() {
-    const { page, size, category, city, region } = this.route.snapshot.queryParams;
+    const { category, city, region } = this.route.snapshot.queryParams;
     const searchCriteria: MaterialAidOfferSearchCriteria = {
       category,
       location: {
@@ -27,9 +27,7 @@ export class MaterialAidSearchComponent implements OnInit {
         city,
       },
     };
-    if (page != null || size != null || category != null || city != null || region != null) {
-      this.search(searchCriteria);
-    }
+    this.search(searchCriteria);
   }
 
   search(searchCriteria?: MaterialAidOfferSearchCriteria) {

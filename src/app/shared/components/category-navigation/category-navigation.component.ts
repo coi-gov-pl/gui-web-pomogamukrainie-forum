@@ -5,6 +5,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MatIconModule } from '@angular/material/icon';
 import { Router, RouterModule } from '@angular/router';
 import { TypeOfHelpComponentModule } from '@app/shared/components';
+import { StoreUrlService } from '@app/core/store-url';
 
 @Component({
   selector: 'app-category-navigation',
@@ -26,10 +27,14 @@ export class CategoryNavigationComponent {
     { name: CategoryNameKey.MISC, icon: 'lan', disabled: true },
   ];
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private storeUrlService: StoreUrlService) {}
 
   activeRoute(): string | undefined {
     return this.router.url.split('/')[2];
+  }
+
+  queryParams() {
+    return this.storeUrlService.getDefaultQueryParams();
   }
 }
 
