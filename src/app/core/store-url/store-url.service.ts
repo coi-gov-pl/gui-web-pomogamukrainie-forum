@@ -35,7 +35,7 @@ export class StoreUrlService {
       ?.split('&')
       .map((item) => item.split('='))
       .reduce((acc: Record<string, string>, param: string[]) => {
-        acc[param[0]] = param[1];
+        acc[param[0]] = decodeURI(param[1]);
         return acc;
       }, {});
     return this.getPreviousUrl?.includes(routing) ? (params as Params) : null;
