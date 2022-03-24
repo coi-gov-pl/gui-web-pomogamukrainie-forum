@@ -27,6 +27,7 @@ export class MyAccountComponent implements OnInit {
   public myAnnouncements!: OffersBaseOffer;
   pageRequest: Pageable = {};
   categoryRoutingName = CategoryRoutingName;
+  total?: number = undefined;
 
   constructor(
     private router: Router,
@@ -55,6 +56,7 @@ export class MyAccountComponent implements OnInit {
     };
     this.myOffersResource.listMyOffers(this.pageRequest).subscribe((results) => {
       this.myAnnouncements = results;
+      this.total = results.totalElements;
     });
   }
 

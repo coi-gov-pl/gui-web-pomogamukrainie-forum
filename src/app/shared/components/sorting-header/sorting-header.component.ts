@@ -8,7 +8,8 @@ import { SortingFieldName, SortingOrder } from '@app/shared/models/sortingOrder.
   styleUrls: ['./sorting-header.component.scss'],
 })
 export class SortingHeaderComponent implements OnInit {
-  @Input() total!: number;
+  @Input() total: number | undefined;
+  @Input() header!: string;
   sortField = SortingFieldName;
   fieldOrder = SortingOrder.descending;
 
