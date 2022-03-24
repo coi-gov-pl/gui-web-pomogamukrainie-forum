@@ -2,12 +2,12 @@
   <nav class="navbar navbar-expand-lg">
     <div class="container">
       <div class="d-flex flex-row">
-        <a href="https://gov.pl">
-          <span class="visually-hidden">gov.pl</span>
+        <a href="/">
+          <span class="visually-hidden">{{ "MAIN_PAGE" | translate }}</span>
           <img class="navbar-brand herb" [src]="'herb.png' | path: 'imagesPath'" alt="herb" />
         </a>
-        <a href="https://www.gov.pl/web/premier" class="navbar-brand">
-          <span class="visually-hidden">{{ "CHANCELLERY_OF_PRIME_MINISTER" | translate }}</span>
+        <a href="/" class="navbar-brand">
+          <span class="visually-hidden">{{ "MAIN_PAGE" | translate }}</span>
           <img
             class="logo"
             [src]="'kprm.svg' | path: 'imagesPath'"
@@ -80,6 +80,9 @@
                 <img [src]="lang.code + '.svg' | path: 'imagesPath'" alt="" class="lang-flag" />
                 {{ lang.text }}
               </span>
+            </li>
+            <li class="navbar-item navbar-big">
+              <a class="navbar-link" href="/">{{ "MAIN_PAGE" | translate }}</a>
             </li>
             <li
               (click)="closeMenu()"
