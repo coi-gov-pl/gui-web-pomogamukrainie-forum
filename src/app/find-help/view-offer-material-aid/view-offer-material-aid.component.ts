@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { MaterialAidOffer, MaterialAidResourceService } from '@app/core/api';
 import { CategoryRoutingName, CorePath } from '@app/shared/models';
 import { defaults } from '@app/shared/utils';
@@ -15,6 +15,7 @@ export class ViewOfferMaterialAidComponent implements OnInit {
   data = defaults<MaterialAidOffer>();
   categoryRouteName = CategoryRoutingName.MATERIAL_HELP;
   redirectedFromAccount: boolean;
+  originalAccountQueryParams?: Params;
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -24,6 +25,7 @@ export class ViewOfferMaterialAidComponent implements OnInit {
     // https://stackoverflow.com/questions/54891110/router-getcurrentnavigation-always-returns-null
     // in constructor, because null will be returned in ngOnInit
     this.redirectedFromAccount = !!this.router.getCurrentNavigation()?.extras?.state?.['redirectFromAccount'];
+    this.originalAccountQueryParams = this.router.getCurrentNavigation()?.extras?.state?.['queryParams'];
   }
 
   ngOnInit(): void {
