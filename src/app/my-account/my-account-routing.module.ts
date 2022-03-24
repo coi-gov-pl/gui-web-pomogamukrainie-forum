@@ -13,14 +13,6 @@ const routes: Routes = [
       title: null,
     },
   },
-  {
-    path: '',
-    canActivate: [AuthGuard],
-    loadChildren: () => import('../find-help/find-help.module').then((m) => m.FindHelpModule),
-    data: {
-      title: null,
-    },
-  },
 ];
 
 @NgModule({
