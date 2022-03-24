@@ -9,7 +9,7 @@
       *ngFor="let result of results"
       [location]="result.location"
       [title]="result.title"
-      [description]="result.description"
+      [description]="result.description | slice: 0:200"
       [offerId]="result.id!"
       [posted]="result.modifiedDate"
       [category]="categoryRoutingName.ACCOMMODATION"
