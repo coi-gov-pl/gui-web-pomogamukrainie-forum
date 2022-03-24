@@ -31,7 +31,7 @@ export class MinMaxValidateDirective implements Validator {
     const value = control.value.replace(DIGIT_REGEX, '');
     const valueNumber = Number(value);
 
-    if (isNaN(valueNumber)) {
+    if (Number.isNaN(valueNumber)) {
       error[ErrorCode.notNumber] = { value: value };
       return error;
     }
@@ -41,12 +41,12 @@ export class MinMaxValidateDirective implements Validator {
       return error;
     }
 
-    if (this.appMinValidate !== -Infinity && valueNumber < this.appMinValidate) {
+    if (valueNumber < this.appMinValidate) {
       error[ErrorCode.min] = { value: value };
       return error;
     }
 
-    if (this.appMaxValidate !== Infinity && valueNumber > this.appMaxValidate) {
+    if (valueNumber > this.appMaxValidate) {
       error[ErrorCode.max] = { value: value };
       return error;
     }
