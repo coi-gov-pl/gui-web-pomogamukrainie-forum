@@ -34,7 +34,7 @@ export default {
   SEARCH: 'Wyszukaj',
   SELECT_FROM_THE_LIST: 'Wybierz z listy',
   MORE_SUPPORT_INFORMATION: 'Więcej informacji o pomocy',
-  DASHBOARD_DESCRIPTION: 'Ofertę pomocy potwierdzisz {{ profile }}. W ten sposób chronimy Twoje dane i dbamy o wiarygodną pomoc dla uchodźców.',
+  DASHBOARD_DESCRIPTION: 'Ofertę pomocy potwierdzisz <strong>profilem zaufanym</strong>. W ten sposób chronimy Twoje dane i dbamy o wiarygodną pomoc dla uchodźców.',
   HOUSEHOLD_GOODS: 'artykuły domowe',
   ELECTRONICS: 'elektronika',
   FOR_CHILDREN: 'dla dzieci',
