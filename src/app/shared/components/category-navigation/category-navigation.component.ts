@@ -3,7 +3,7 @@ import { Category, CategoryNameKey, CategoryRoutingName, CorePath } from '@app/s
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatIconModule } from '@angular/material/icon';
-import { Router, RouterModule } from '@angular/router';
+import { Params, Router, RouterModule } from '@angular/router';
 import { TypeOfHelpComponentModule } from '@app/shared/components';
 import { StoreUrlService } from '@app/core/store-url';
 
@@ -33,7 +33,7 @@ export class CategoryNavigationComponent {
     return this.router.url.split('/')[2];
   }
 
-  queryParams() {
+  queryParams(): Params {
     return this.storeUrlService.getDefaultQueryParams();
   }
 }
