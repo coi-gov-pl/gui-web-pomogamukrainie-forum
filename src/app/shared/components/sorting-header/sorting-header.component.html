@@ -1,5 +1,8 @@
 <div class="d-flex justify-content-between sorting">
-  <p class="fw-bold">{{ "ADVERTISEMENTS_LIST" | translate }} ({{ total }}):</p>
+  <p class="fw-bold">
+    {{ header }}
+    <ng-container *ngIf="total">({{ total }})</ng-container>:
+  </p>
   <p>
     {{ "SORTING" | translate }}:
     <a class="fw-bold" (click)="changeOrder()">

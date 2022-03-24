@@ -16,7 +16,11 @@
   </div>
 
   <section *ngIf="myAnnouncements?.content?.length">
-    <p class="text">{{ "YOUR_ANNOUNCEMENT" | translate }}</p>
+    <app-sorting-header
+      [header]="'YOUR_ANNOUNCEMENT' | translate"
+      (sortingOrderChange)="getMyOffers()"
+      [total]="total"
+    ></app-sorting-header>
     <div class="announcements-wrapper">
       <ng-container *ngFor="let announcement of myAnnouncements.content">
         <app-search-result
