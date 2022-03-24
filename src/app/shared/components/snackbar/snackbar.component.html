@@ -1,5 +1,7 @@
-<div *ngIf="data" class="d-flex">
-  <mat-icon class="button-icon mt-2 ps-0 ps-md-2" fontSet="material-icons-outlined">check_circle_outline</mat-icon>
+<div *ngIf="data" class="d-flex align-items-center pe-2">
+  <div class="align-self-start me-2">
+    <mat-icon class="button-icon" fontSet="material-icons-outlined">check_circle_outline</mat-icon>
+  </div>
   <div *ngIf="data === ALERT_TYPES.OFFER_SUCCESS">
     <h5>{{ "OFFER_SENT_ALERT_HEADER" | translate }}</h5>
     <p>{{ "OFFER_SENT_ALERT_CONTENT" | translate }}</p>
