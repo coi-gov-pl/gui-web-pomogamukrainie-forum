@@ -12,6 +12,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MatIconModule } from '@angular/material/icon';
 import { CitiesSearchModule, DatepickerModule, FieldErrorModule } from '@app/shared/components';
 import { ValidatorsDirectivesModule } from '@app/shared/validators';
+import { GiveHelpFormModule } from '../give-help-form/give-help-form.module';
 
 @NgModule({
   declarations: [TransportFormComponent],
@@ -30,6 +31,7 @@ import { ValidatorsDirectivesModule } from '@app/shared/validators';
     FieldErrorModule,
     ValidatorsDirectivesModule,
     CitiesSearchModule,
+    GiveHelpFormModule,
   ],
   exports: [TransportFormComponent],
 })
