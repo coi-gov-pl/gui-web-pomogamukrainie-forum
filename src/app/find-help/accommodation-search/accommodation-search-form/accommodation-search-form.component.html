@@ -20,7 +20,7 @@
         </mat-form-field>
       </div>
       <div class="col-md-4 search">
-        <button type="submit" class="btn btn-dark">
+        <button type="submit" class="btn btn-dark" [disabled]="form.invalid">
           <mat-icon fontSet="material-icons-outlined">search</mat-icon>
           <span>{{ "SEARCH" | translate }}</span>
         </button>
