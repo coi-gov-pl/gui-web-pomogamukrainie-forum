@@ -2,7 +2,7 @@ import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageCode } from '@app/core/translations';
-import { CorePath } from '@app/shared/models';
+import { CorePath, LocalStorageKeys } from '@app/shared/models';
 import { AuthService } from '@app/core/auth';
 
 interface Language {
@@ -36,6 +36,7 @@ export class SiteHeaderComponent {
     public readonly authService: AuthService
   ) {
     this.translateService.onLangChange.subscribe((params) => {
+      localStorage.setItem(LocalStorageKeys.LangOption, params.lang);
       this.activeLanguage = this.getActiveLanguage(params.lang as keyof typeof LanguageCode);
     });
   }
