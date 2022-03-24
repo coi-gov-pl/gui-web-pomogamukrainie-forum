@@ -18,7 +18,8 @@ export class MyAccountSettingsComponent implements OnInit {
     });
   }
 
-  public changeEmail(): void {
+  public changeEmail($event: MouseEvent): void {
+    $event.preventDefault();
     this.authService.updateProfile();
   }
 }
