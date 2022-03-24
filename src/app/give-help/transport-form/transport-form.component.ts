@@ -16,7 +16,7 @@ import { MATCH_NON_DIGITS, MATCH_SPACES } from '@app/shared/consts';
 export class TransportFormComponent {
   minDate: Date = new Date();
   PREFIXES = PREFIXES;
-  phonePrefix: string = '48';
+  phonePrefix: string = 'PL';
   phoneNumber: string = '';
   data = defaults<TransportOfferDefinitionDTO>();
   loading: boolean = false;

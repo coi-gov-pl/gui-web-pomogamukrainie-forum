@@ -20,6 +20,13 @@ export enum LanguageNames {
   RUSSIAN = 'русский',
 }
 
+export enum CountryCodes {
+  PL = 'PL',
+  UA = 'UA',
+  GB = 'GB',
+  RU = 'RU',
+}
+
 export interface Translations {
   [LanguageCode.pl_PL]: {
     [key: string]: string;

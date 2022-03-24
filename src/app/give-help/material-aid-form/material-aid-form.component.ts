@@ -22,7 +22,7 @@ export class MaterialAidFormComponent {
   data = defaults<MaterialAidOfferDefinitionDTO>({});
   CATEGORIES = CATEGORIES;
   PREFIXES = PREFIXES;
-  phonePrefix: string = '48';
+  phonePrefix: string = 'PL';
   phoneNumber: string = '';
   loading: boolean = false;
   @ViewChild('phoneInput') phoneInput!: ElementRef<HTMLInputElement>;

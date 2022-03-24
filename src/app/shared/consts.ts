@@ -1,23 +1,23 @@
 import { Prefix, Option } from './models';
-import { LanguageCode, LanguageNames } from '@app/core/translations';
+import { CountryCodes, LanguageNames } from '@app/core/translations';
 import { AccommodationOffer, AccommodationOfferDefinitionDTO } from '@app/core/api';
 import HostLanguageEnum = AccommodationOfferDefinitionDTO.HostLanguageEnum;
 
 export const PREFIXES: Prefix[] = [
   {
-    countryCode: LanguageCode.ru_RU,
+    countryCode: CountryCodes.RU,
     prefix: '+7',
   },
   {
-    countryCode: LanguageCode.en_GB,
+    countryCode: CountryCodes.GB,
     prefix: '+44',
   },
   {
-    countryCode: LanguageCode.pl_PL,
-    prefix: '+8',
+    countryCode: CountryCodes.PL,
+    prefix: '+48',
   },
   {
-    countryCode: LanguageCode.uk_UA,
+    countryCode: CountryCodes.UA,
     prefix: '+380',
   },
 ];
