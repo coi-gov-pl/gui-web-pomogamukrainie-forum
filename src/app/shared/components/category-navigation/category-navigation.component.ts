@@ -29,7 +29,7 @@ export class CategoryNavigationComponent {
   constructor(private router: Router) {}
 
   activeRoute(): string | undefined {
-    return this.router.url.split('/')[2];
+    return this.router.url.split('?')[0].split('/')[2];
   }
 }
 
