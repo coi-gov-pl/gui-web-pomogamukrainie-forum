@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AccommodationQuery } from './accommodation-search-form/accommodation-search-form.component';
 import { AccommodationsResourceService, AccommodationOffer, Pageable } from '@app/core/api';
 import { CategoryRoutingName, CorePath } from '@app/shared/models';
@@ -17,10 +17,12 @@ export class AccommodationSearchComponent implements OnInit {
   corePath = CorePath;
   searchCriteria: AccommodationQuery = {};
   pagination: Pageable | undefined = {};
+  @ViewChild('accomodationResultsStart', { read: ElementRef }) resultsStart!: ElementRef<HTMLElement>;
+
   constructor(private accommodationsResourceService: AccommodationsResourceService, private route: ActivatedRoute) {}
 
   ngOnInit() {
-    const { page, size, capacity, city, region } = this.route.snapshot.queryParams;
+    const { capacity, city, region } = this.route.snapshot.queryParams;
     const searchCriteria: AccommodationQuery = {
       capacity,
       location: {
@@ -28,9 +30,7 @@ export class AccommodationSearchComponent implements OnInit {
         city,
       },
     };
-    if (page != null || size != null || capacity != null || city != null || region != null) {
-      this.search(searchCriteria);
-    }
+    this.search(searchCriteria);
   }
 
   getResultsObservable(
@@ -68,6 +68,7 @@ export class AccommodationSearchComponent implements OnInit {
         this.results = results.content ?? [];
         this.total = results.totalElements;
         this.loading = false;
+        this.resultsStart?.nativeElement?.scrollIntoView();
       },
       error: () => {
         this.results = [];

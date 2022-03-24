@@ -4,6 +4,7 @@ import { StatementAnchors } from '@app/shared/models';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { StoreUrlService } from '@app/core/store-url';
 import { LocalStorageKeys } from '@app/shared/models';
+import { SortingFieldName, SortingOrder } from '@app/shared/models/sortingOrder.model';
 
 const categories = Object.entries(MaterialAidOffer.CategoryEnum).map(([key, value]) => ({
   code: key,
@@ -39,6 +40,7 @@ export class MaterialAidSearchFormComponent implements OnInit {
     const param: Params = {
       page: 0,
       size: localStorage.getItem(LocalStorageKeys.PageSize) ?? 5,
+      sort: [`${SortingFieldName},${SortingOrder.descending}`],
       category: this.data?.category,
       city: this.data.location?.city,
       region: this.data.location?.region,

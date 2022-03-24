@@ -19,6 +19,7 @@ import {
 } from '@app/shared/components';
 import { TransportSearchFormComponent } from './transport-search-form/transport-search-form.component';
 import { DatepickerModule, NoResultsModule, PaginatorModule } from '@app/shared/components';
+import { ValidatorsDirectivesModule } from '@app/shared/validators';
 
 @NgModule({
   declarations: [TransportSearchComponent, TransportSearchFormComponent],
@@ -42,6 +43,7 @@ import { DatepickerModule, NoResultsModule, PaginatorModule } from '@app/shared/
     DatepickerModule,
     NoResultsModule,
     PaginatorModule,
+    ValidatorsDirectivesModule,
     SortingHeaderModule,
   ],
 })

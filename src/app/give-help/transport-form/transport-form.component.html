@@ -57,15 +57,16 @@
           <mat-form-field appearance="outline">
             <input
               matInput
-              type="number"
+              type="text"
               placeholder="{{ 'PLACEHOLDER_CHOOSE' | translate }}"
               [(ngModel)]="data.capacity"
               name="capacity"
-              min="1"
-              max="99"
+              [appMinValidate]="1"
+              [appMaxValidate]="99"
               autocomplete="off"
               required
               #capacity="ngModel"
+              inputmode="numeric"
             />
             <mat-error>
               <app-field-error [model]="capacity"></app-field-error>
@@ -103,12 +104,7 @@
             ><b>{{ "LABEL_PHONE_NUMBER" | translate }}</b></label
           >
           <mat-form-field appearance="outline">
-            <mat-select
-              placeholder="{{ 'PLACEHOLDER_CHOOSE' | translate }}"
-              (selectionChange)="onPrefixNumberChange()"
-              [(ngModel)]="phonePrefix"
-              name="prefix"
-            >
+            <mat-select placeholder="{{ 'PLACEHOLDER_CHOOSE' | translate }}" [(ngModel)]="phonePrefix" name="prefix">
               <mat-option *ngFor="let prefix of PREFIXES" [value]="prefix.countryCode">{{ prefix.prefix }}</mat-option>
             </mat-select>
           </mat-form-field>
@@ -135,10 +131,15 @@
           </mat-form-field>
         </div>
         <div class="col-lg-3 publish">
-          <button class="btn btn-dark" [disabled]="transportForm.invalid">
-            <mat-icon fontSet="material-icons-outlined">add</mat-icon>
-            <span>{{ "OFFER_PUBLISH" | translate }}</span>
-          </button>
+          <div class="text-center d-inline-block">
+            <label
+              ><small>{{ "WE_WILL_PUBLISH_YOUR_NAME_IN_AD" | translate }}</small></label
+            >
+            <button class="btn btn-dark" [disabled]="transportForm.invalid">
+              <mat-icon fontSet="material-icons-outlined">add</mat-icon>
+              <span>{{ "OFFER_PUBLISH" | translate }}</span>
+            </button>
+          </div>
         </div>
       </div>
     </div>

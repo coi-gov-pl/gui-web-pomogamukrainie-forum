@@ -28,18 +28,11 @@ export class TransportFormComponent {
     private snackbarService: SnackbarService
   ) {}
 
-  onPrefixNumberChange() {
-    this.preparePhoneNumber();
-  }
-
   onPhoneNumberChange($event: Event) {
     let val = ($event.target as HTMLInputElement).value;
-    if (val) {
-      val = val.replace(MATCH_NON_DIGITS, '').replace(MATCH_SPACES, '');
-      this.phoneInput.nativeElement.value = val;
-      this.data.phoneNumber = val;
-      this.preparePhoneNumber();
-    }
+    val = val.replace(MATCH_NON_DIGITS, '').replace(MATCH_SPACES, '');
+    this.phoneInput.nativeElement.value = val;
+    this.phoneNumber = val;
   }
 
   preparePhoneNumber() {
@@ -47,6 +40,8 @@ export class TransportFormComponent {
   }
 
   submitOffer(): void {
+    this.loading = true;
+    this.phoneNumber ? this.preparePhoneNumber() : null;
     this.transportResourceService
       .createTransport(this.data)
       .pipe(take(1))

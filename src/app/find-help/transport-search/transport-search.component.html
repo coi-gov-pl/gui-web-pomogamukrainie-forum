@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card #transportResultsStart>
   <app-transport-search-form (search)="search($event)"></app-transport-search-form>
 </mat-card>
 <app-no-results *ngIf="total === 0"></app-no-results>
@@ -11,7 +11,7 @@
       [origin]="result.origin"
       [destination]="result.destination"
       [title]="result.title"
-      [description]="result.description"
+      [description]="result.description | slice: 0:200"
       [offerId]="result.id!"
       [category]="CategoryRoutingName.TRANSPORT"
       [posted]="result.modifiedDate"

@@ -3,9 +3,13 @@
     <div class="footer-grid">
       <section class="logos mb-4">
         <img class="navbar-item emblem" [src]="'herb.png' | path: 'imagesPath'" alt="emblem" />
+        <img class="navbar-item emblem d-lg-none" [src]="'kprm.png' | path: 'imagesPath'" alt="KPRM" />
+        <img
+          class="navbar-item emblem d-lg-none"
+          [src]="'pomagamyua.png' | path: 'imagesPath'"
+          [alt]="'HELP_FOR_UKRAINE' | translate"
+        />
         <img class="navbar-item emblem" [src]="'coi.svg' | path: 'imagesPath'" alt="COI" />
-        <img class="navbar-item emblem" [src]="'kprm.png' | path: 'imagesPath'" alt="KPRM" />
-        <img class="navbar-item emblem" [src]="'pomagamyua.png' | path: 'imagesPath'" alt="Pomagamy Ukrainie" />
       </section>
 
       <nav class="footer-nav">
