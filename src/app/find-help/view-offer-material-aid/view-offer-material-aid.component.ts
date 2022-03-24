@@ -21,6 +21,8 @@ export class ViewOfferMaterialAidComponent implements OnInit {
     private materialAidResourceService: MaterialAidResourceService,
     private urlHelperService: UrlHelperService
   ) {
+    // https://stackoverflow.com/questions/54891110/router-getcurrentnavigation-always-returns-null
+    // in constructor, because null will be returned in ngOnInit 
     this.redirectedFromAccount = this.router.getCurrentNavigation()?.extras?.state!['redirectFromAccount'];
   }
 
