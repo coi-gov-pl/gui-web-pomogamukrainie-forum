@@ -4,6 +4,7 @@ import { StatementAnchors } from '@app/shared/models';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { StoreUrlService } from '@app/core/store-url';
 import { LocalStorageKeys } from '@app/shared/models';
+import { SortingFieldName, SortingOrder } from '@app/shared/models/sortingOrder.model';
 
 export interface AccommodationQuery {
   location?: Location;
@@ -34,6 +35,7 @@ export class AccommodationSearchFormComponent implements OnInit {
     const param: Params = {
       page: 0,
       size: localStorage.getItem(LocalStorageKeys.PageSize) ?? 5,
+      sort: [`${SortingFieldName},${SortingOrder.descending}`],
       capacity: this.data?.capacity,
       city: this.data.location?.city,
       region: this.data.location?.region,
