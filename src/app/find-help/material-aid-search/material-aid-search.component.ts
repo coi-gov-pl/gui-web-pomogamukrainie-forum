@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MaterialAidOffer, MaterialAidOfferSearchCriteria, MaterialAidResourceService, Pageable } from '@app/core/api';
 import { CategoryRoutingName, CorePath } from '@app/shared/models';
 import { ActivatedRoute } from '@angular/router';
@@ -16,6 +16,8 @@ export class MaterialAidSearchComponent implements OnInit {
   corePath = CorePath;
   searchCriteria: MaterialAidOfferSearchCriteria = {};
   pagination: Pageable | undefined = {};
+  @ViewChild('materialAidResultsStart', { read: ElementRef }) resultsStart!: ElementRef;
+
   constructor(private materialAidResourceService: MaterialAidResourceService, private route: ActivatedRoute) {}
 
   ngOnInit() {
@@ -54,7 +56,7 @@ export class MaterialAidSearchComponent implements OnInit {
         this.total = results.totalElements ?? 0;
         this.loading = false;
         setTimeout(() => {
-          document.getElementById('results_start')?.scrollIntoView();
+          this.resultsStart?.nativeElement?.scrollIntoView();
         }, 0);
       },
       error: () => {

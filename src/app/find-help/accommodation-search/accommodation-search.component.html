@@ -1,4 +1,4 @@
-<mat-card id="results_start">
+<mat-card #accomodationResultsStart>
   <app-accommodation-search-form (search)="search($event)"></app-accommodation-search-form>
 </mat-card>
 <app-no-results *ngIf="total === 0"></app-no-results>

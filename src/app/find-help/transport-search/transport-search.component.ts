@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Pageable, TransportOffer, TransportOfferSearchCriteria, TransportResourceService } from '@app/core/api';
 import { CategoryRoutingName, CorePath } from '@app/shared/models';
 import { ActivatedRoute } from '@angular/router';
@@ -16,6 +16,8 @@ export class TransportSearchComponent implements OnInit {
   corePath = CorePath;
   searchCriteria: TransportOfferSearchCriteria = {};
   pagination: Pageable | undefined;
+  @ViewChild('transportResultsStart', { read: ElementRef }) resultsStart!: ElementRef;
+
   constructor(private transportResourceService: TransportResourceService, private route: ActivatedRoute) {}
 
   ngOnInit() {
@@ -71,7 +73,7 @@ export class TransportSearchComponent implements OnInit {
         this.total = results.totalElements ?? 0;
         this.loading = false;
         setTimeout(() => {
-          document.getElementById('results_start')?.scrollIntoView();
+          this.resultsStart?.nativeElement?.scrollIntoView();
         }, 0);
       },
       error: () => {
