@@ -72,9 +72,7 @@ export class TransportSearchComponent implements OnInit {
         this.results = results.content ?? [];
         this.total = results.totalElements ?? 0;
         this.loading = false;
-        setTimeout(() => {
-          this.resultsStart?.nativeElement?.scrollIntoView();
-        }, 0);
+        this.resultsStart?.nativeElement?.scrollIntoView();
       },
       error: () => {
         this.results = [];
