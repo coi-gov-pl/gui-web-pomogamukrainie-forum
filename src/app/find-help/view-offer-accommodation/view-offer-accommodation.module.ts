@@ -11,6 +11,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ViewOfferAccommodationComponent } from './view-offer-accommodation.component';
 import { ReplyOfferModule } from '../reply-offer/reply-offer.module';
 import { ViewOfferAccomodationModule } from './view-offer-accommodation.routing.module';
+import { BackToListModule } from '@app/shared/components/back-to-list/back-to-list.module';
 
 @NgModule({
   declarations: [ViewOfferAccommodationComponent],
@@ -26,6 +27,7 @@ import { ViewOfferAccomodationModule } from './view-offer-accommodation.routing.
     MatIconModule,
     ReplyOfferModule,
     ViewOfferAccomodationModule,
+    BackToListModule,
   ],
   exports: [ViewOfferAccommodationComponent],
 })

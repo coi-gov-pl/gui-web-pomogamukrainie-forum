@@ -10,11 +10,17 @@ const routes: Routes = [
     path: '',
     component: GiveHelpComponent,
     canActivate: [AuthGuard],
+    data: {
+      title: null,
+    },
     children: [
       {
         path: '',
         redirectTo: CategoryRoutingName.ACCOMMODATION,
         pathMatch: 'full',
+        data: {
+          title: null,
+        },
       },
       {
         path: CategoryRoutingName.ACCOMMODATION,

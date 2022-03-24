@@ -6,7 +6,7 @@ import { CorePath, ALERT_TYPES } from '@app/shared/models';
 import { SnackbarService } from '@app/shared/services';
 import { take } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { NON_DIGITS_REGEX, SPACES_REGEX } from '@app/shared/consts';
+import { MATCH_NON_DIGITS, MATCH_SPACES } from '@app/shared/consts';
 
 @Component({
   selector: 'app-accommodation-form',
@@ -38,7 +38,7 @@ export class AccommodationFormComponent {
   onPhoneNumberChange($event: Event) {
     let val = ($event.target as HTMLInputElement).value;
     if (val) {
-      val = val.replace(NON_DIGITS_REGEX, '').replace(SPACES_REGEX, '');
+      val = val.replace(MATCH_NON_DIGITS, '').replace(MATCH_SPACES, '');
       this.phoneInput.nativeElement.value = val;
       this.data.phoneNumber = val;
       this.preparePhoneNumber();
@@ -54,10 +54,7 @@ export class AccommodationFormComponent {
     this.accommodationsResourceService
       .createAccommodations(this.data)
       .pipe(take(1))
-      .subscribe(
-        (response) => this.redirectOnSuccess(),
-        (error) => this.snackbarService.openSnack(error.message, ALERT_TYPES.ERROR)
-      )
+      .subscribe(() => this.redirectOnSuccess())
       .add(() => (this.loading = false));
   }
 

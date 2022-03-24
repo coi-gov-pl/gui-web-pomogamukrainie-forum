@@ -11,6 +11,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ReplyOfferModule } from '../reply-offer/reply-offer.module';
 import { ViewOfferMaterialAidComponent } from './view-offer-material-aid.component';
 import { ViewOfferMaterialAidRoutingModule } from './view-offer-material-aid.routing.module';
+import { BackToListModule } from '@app/shared/components/back-to-list/back-to-list.module';
 
 @NgModule({
   declarations: [ViewOfferMaterialAidComponent],
@@ -26,6 +27,7 @@ import { ViewOfferMaterialAidRoutingModule } from './view-offer-material-aid.rou
     MatIconModule,
     ReplyOfferModule,
     ViewOfferMaterialAidRoutingModule,
+    BackToListModule,
   ],
   exports: [ViewOfferMaterialAidComponent],
 })
