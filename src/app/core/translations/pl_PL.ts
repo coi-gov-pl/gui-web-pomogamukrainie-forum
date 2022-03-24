@@ -151,7 +151,7 @@ export default {
   MESSAGE_SENT_ALERT_CONTENT: 'Potwierdzenie wysłania przesłaliśmy na Twój e-mail.',
   ERROR_MIN_DATE: 'Wprowadź późniejszą datę.',
   AND: 'i',
-  PRIVATE_POLICY: 'politykę prywantności',
+  PRIVATE_POLICY: 'politykę prywatności',
   CHARS_LEFT: 'Pozostała ilość znaków:',
   NOT_FOUND: 'To ogłoszenie nie jest już dostępne.',
   NOT_FOUND_NEXT_ACTION: 'Wróć do listy ogłoszeń',
