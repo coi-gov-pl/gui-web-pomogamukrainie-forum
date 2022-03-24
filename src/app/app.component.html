@@ -1,7 +1,9 @@
-<app-site-header></app-site-header>
+<div class="page-layout">
+  <app-site-header></app-site-header>
 
-<main [ngClass]="getContentClass()">
-  <router-outlet></router-outlet>
-</main>
+  <main [ngClass]="getContentClass()">
+    <router-outlet></router-outlet>
+  </main>
 
-<app-site-footer></app-site-footer>
+  <app-site-footer></app-site-footer>
+</div>
