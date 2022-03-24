@@ -12,16 +12,17 @@ export class SiteFooterComponent {
   corePath = CorePath;
   constructor() {}
 
-  getSuffixForTranslatedResource() : string{
+  getSuffixForTranslatedResource(): string {
     const code = localStorage.getItem(LocalStorageKeys.LangOption) || LanguageCode.pl_PL;
-    switch(code){
+    switch (code) {
       case LanguageCode.en_GB:
         return '_EN';
       case LanguageCode.uk_UA:
         return '_UK';
       case LanguageCode.ru_RU:
         return '_RU';
-      default: // Polish translation handled as a spec-rule. Aligning: TODO in MVP2.
+      default:
+        // Polish translation handled as a spec-rule. Aligning: TODO in MVP2.
         return '';
     }
   }
