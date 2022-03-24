@@ -1,0 +1,62 @@
+@import "vars";
+
+.ml-auto {
+  margin-left: auto;
+}
+
+.content {
+  min-height: 50%;
+
+  label {
+    font-size: 12px;
+  }
+}
+
+.copy-url {
+  cursor: pointer;
+  text-decoration: none;
+  color: $c-darkblue;
+  font-size: 12px;
+  letter-spacing: 0.37px;
+
+  &:active {
+    color: grey;
+    mat-icon {
+      color: grey;
+    }
+  }
+  .text {
+    position: relative;
+    top: -6px;
+  }
+}
+
+.modification-date {
+  font-size: 13px;
+  letter-spacing: 0.4px;
+  color: #052c65;
+  opacity: 0.5;
+}
+
+.attribute-name {
+  font-size: 12px;
+  letter-spacing: 0.37px;
+}
+
+.attribute-value {
+  font-size: 13px;
+  letter-spacing: 0.4px;
+}
+
+.yellow-icon {
+  &.--smaill-size {
+    font-size: 18px;
+  }
+}
+
+.disclaimer {
+  font-size: 13px;
+  letter-spacing: 0.12px;
+  color: #052c65;
+  opacity: 0.5;
+}

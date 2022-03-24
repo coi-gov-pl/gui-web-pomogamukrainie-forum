@@ -1,10 +1,12 @@
 <div class="d-flex flex-column flex-md-row" *ngIf="data">
   <mat-card class="offer p-4 w-100 w-md-50">
     <div class="d-flex mb-3">
-      <div>{{ "MODIFICATION_DATE" | translate }}: {{ data.modifiedDate | date: "dd/MM/yyyy" }}</div>
+      <div class="modification-date">
+        {{ "MODIFICATION_DATE" | translate }}: {{ data.modifiedDate | date: "dd/MM/yyyy" }}
+      </div>
       <div class="ml-auto">
         <a role="buton" class="copy-url d-block" (click)="copyUrl()">
-          <mat-icon class="yellow-icon clicable" fontSet="material-icons-outlined yellow">copy</mat-icon>
+          <mat-icon class="yellow-icon" fontSet="material-icons-outlined yellow">copy</mat-icon>
           <span class="text ms-1">{{ "COPY_LINK" | translate }}</span>
         </a>
       </div>
@@ -12,34 +14,33 @@
     <h3>{{ data.title }}</h3>
     <div class="row mt-4">
       <div class="attribute col-md-4">
-        <div class="fw-bold">{{ "LOCATION" | translate }}</div>
+        <div class="attribute-name fw-bold">{{ "LOCATION" | translate }}</div>
         <div class="d-flex">
-          <mat-icon class="yellow-icon" fontSet="material-icons-outlined">place</mat-icon>
-          <span class="ms-1">{{ data.location?.city }}</span>
+          <mat-icon class="yellow-icon --smaill-size" fontSet="material-icons-outlined">place</mat-icon>
+          <span class="attribute-value ms-1">{{ data.location?.city }}</span>
         </div>
       </div>
       <div class="attribute col-md-4">
-        <div class="fw-bold">{{ "NUMBER_OF_PEOPLE" | translate }}</div>
+        <div class="attribute-name fw-bold">{{ "NUMBER_OF_PEOPLE" | translate }}</div>
         <div class="d-flex">
-          <mat-icon class="yellow-icon" fontSet="material-icons-outlined">person</mat-icon>
-          <span class="ms-1">{{ data.guests }}</span>
+          <mat-icon class="yellow-icon --smaill-size" fontSet="material-icons-outlined">person</mat-icon>
+          <span class="attribute-value ms-1">{{ data.guests }}</span>
         </div>
       </div>
       <div class="attribute col-md-4">
-        <div class="fw-bold">{{ "LANGUAGE" | translate }}</div>
+        <div class="attribute-name fw-bold">{{ "LANGUAGE" | translate }}</div>
         <div class="d-flex">
-          <mat-icon class="yellow-icon" fontSet="material-icons-outlined">translate</mat-icon>
-          <span class="ms-1">{{ data.hostLanguage }}</span>
+          <mat-icon class="yellow-icon --smaill-size" fontSet="material-icons-outlined">translate</mat-icon>
+          <span class="attribute-value ms-1">{{ data.hostLanguage }}</span>
         </div>
       </div>
     </div>
-    <div class="content mt-5 h-auto">
+    <div class="content my-3 h-auto">
       <label
         ><b>{{ "LABEL_OFFER_DESCRIPTION" | translate }}</b></label
       >
       <p>{{ data.description }}</p>
     </div>
-    <div class="disclaimer mb-3">{{ "CHANGE_LANG_SITE_DISCLAIMER" | translate }}</div>
     <app-back-to-list [categoryRouteName]="categoryRouteName"></app-back-to-list>
   </mat-card>
   <div class="w-100 w-md-50">

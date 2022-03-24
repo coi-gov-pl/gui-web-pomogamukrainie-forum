@@ -14,7 +14,7 @@ export const PREFIXES: Prefix[] = [
   },
   {
     countryCode: LanguageCode.pl_PL,
-    prefix: '+8',
+    prefix: '+48',
   },
   {
     countryCode: LanguageCode.uk_UA,

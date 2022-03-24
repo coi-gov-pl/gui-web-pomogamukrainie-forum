@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AccommodationQuery } from './accommodation-search-form/accommodation-search-form.component';
 import { AccommodationsResourceService, AccommodationOffer, Pageable } from '@app/core/api';
 import { CategoryRoutingName, CorePath } from '@app/shared/models';
@@ -17,6 +17,8 @@ export class AccommodationSearchComponent implements OnInit {
   corePath = CorePath;
   searchCriteria: AccommodationQuery = {};
   pagination: Pageable | undefined = {};
+  @ViewChild('accomodationResultsStart', { read: ElementRef }) resultsStart!: ElementRef<HTMLElement>;
+
   constructor(private accommodationsResourceService: AccommodationsResourceService, private route: ActivatedRoute) {}
 
   ngOnInit() {
@@ -68,6 +70,7 @@ export class AccommodationSearchComponent implements OnInit {
         this.results = results.content ?? [];
         this.total = results.totalElements;
         this.loading = false;
+        this.resultsStart?.nativeElement?.scrollIntoView();
       },
       error: () => {
         this.results = [];
