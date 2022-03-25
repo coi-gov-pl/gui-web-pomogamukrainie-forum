@@ -175,4 +175,5 @@ export default {
   MONTH_3: '3 miesiące',
   LONGER: 'dłużej',
   ERROR_NOT_NUMBER: 'To nie jest liczba',
+  AVAILABLE_SOON: 'Dostępne wkrótce',
 };

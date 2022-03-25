@@ -6,6 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { Params, Router, RouterModule } from '@angular/router';
 import { TypeOfHelpComponentModule } from '@app/shared/components';
 import { StoreUrlService } from '@app/core/store-url';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-category-navigation',
@@ -41,6 +42,6 @@ export class CategoryNavigationComponent {
 @NgModule({
   declarations: [CategoryNavigationComponent],
   exports: [CategoryNavigationComponent],
-  imports: [CommonModule, TranslateModule, MatIconModule, RouterModule, TypeOfHelpComponentModule],
+  imports: [CommonModule, TranslateModule, MatIconModule, RouterModule, TypeOfHelpComponentModule, MatTooltipModule],
 })
 export class CategoryNavigationComponentModule {}

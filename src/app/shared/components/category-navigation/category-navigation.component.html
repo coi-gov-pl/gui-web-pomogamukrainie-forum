@@ -15,7 +15,12 @@
         >
         </app-type-of-help>
       </a>
-      <div *ngIf="category.disabled">
+      <div
+        *ngIf="category.disabled"
+        [matTooltip]="'AVAILABLE_SOON' | translate"
+        matTooltipClass="tooltip-white"
+        matTooltipPosition="before"
+      >
         <app-type-of-help
           [icon]="category.icon"
           [name]="category.name"
