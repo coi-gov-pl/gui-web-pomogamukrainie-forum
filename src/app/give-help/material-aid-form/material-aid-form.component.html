@@ -73,7 +73,7 @@
             #description="ngModel"
             appOfferDescriptionValidate
           ></textarea>
-          <mat-hint align="end">{{ data.description?.length || 0 }}/2000</mat-hint>
+          <mat-hint align="end">{{ data.description ? 2000 - data.description.length : 2000 }}/2000</mat-hint>
           <mat-error>
             <app-field-error [model]="description"></app-field-error>
           </mat-error>
