@@ -1,0 +1,22 @@
+<label>
+  <b>{{ "LABEL_OFFER_DESCRIPTION" | translate }}</b>
+  <span> {{ "LABEL_OFFER_DESCRIPTION_MAXCHARS" | translate }} *</span>
+</label>
+<mat-form-field appearance="outline" hintLabel="{{ 'CHARS_LEFT' | translate }}">
+  <textarea
+    matInput
+    rows="8"
+    maxlength="2000"
+    placeholder="{{ 'PLACEHOLDER_OFFER_DESCRIPTION' | translate }}"
+    name="description"
+    [ngModel]="value"
+    (ngModelChange)="valueChange.emit($event)"
+    required
+    #description="ngModel"
+    appOfferDescriptionValidate
+  ></textarea>
+  <mat-hint align="end">{{ value ? 2000 - value.length : 2000 }}/2000</mat-hint>
+  <mat-error>
+    <app-field-error [model]="description"></app-field-error>
+  </mat-error>
+</mat-form-field>
