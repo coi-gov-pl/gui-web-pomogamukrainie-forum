@@ -6,7 +6,7 @@
           <span class="visually-hidden">{{ "MAIN_PAGE" | translate }}</span>
           <img class="navbar-brand herb" [src]="'herb.png' | path: 'imagesPath'" alt="herb" />
         </a>
-        <span class="desktop-only header-icon">
+        <span class="desktop-only header-element">
           <a href="/" class="navbar-brand">
             <span class="visually-hidden">{{ "MAIN_PAGE" | translate }}</span>
             <img
@@ -16,51 +16,35 @@
             />
           </a>
         </span>
-        <span class="desktop-only header-icon">
+        <span class="desktop-only header-element">
           <a href="/" class="navbar-brand">
             <span class="visually-hidden">{{ "MAIN_PAGE" | translate }}</span>
             <img class="logo" [src]="'pomagamyua.svg' | path: 'imagesPath'" [alt]="'MAIN_PAGE' | translate" />
           </a>
         </span>
       </div>
-      <div class="languages-select dropdown">
-        <a
-          class="navbar-link dropdown-toggle navbar-item"
-          href="#"
-          id="navbarDropdown"
-          role="button"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          <img [src]="activeLanguage?.code + '.svg' | path: 'imagesPath'" alt="" class="lang-flag" />
-          <span>{{ activeLanguage?.text }}</span>
-        </a>
-        <ul class="dropdown-menu navbar-item" aria-labelledby="navbarDropdown">
-          <li *ngFor="let lang of languages">
-            <span *ngIf="lang.code !== activeLanguage?.code" class="dropdown-item" (click)="useLanguage(lang.code)">
-              <img [src]="lang.code + '.svg' | path: 'imagesPath'" alt="" class="lang-flag" />
-              {{ lang.text }}
-            </span>
-          </li>
-        </ul>
-        <button
-          (click)="onToggle()"
-          [ngClass]="getMenuClass()"
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <svg class="cross" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
-            <path d="M2 20 19.854 2M2.146 2 20 20" stroke="#fff" stroke-width="3" stroke-linecap="round" />
-          </svg>
-          <svg class="menu" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 17">
-            <path d="M1.5 15.5h21m-21-7h21m-13-7h13" stroke-width="3" stroke-linecap="round" />
-          </svg>
-        </button>
+      <div class="d-flex flex-row">
+        <div class="navbar-item dropdown header-element">
+          <a
+            class="navbar-link dropdown-toggle"
+            href="#"
+            id="navbarDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <img [src]="activeLanguage?.code + '.svg' | path: 'imagesPath'" alt="" class="lang-flag" />
+            <span>{{ activeLanguage?.text }}</span>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li *ngFor="let lang of languages">
+              <span *ngIf="lang.code !== activeLanguage?.code" class="dropdown-item" (click)="useLanguage(lang.code)">
+                <img [src]="lang.code + '.svg' | path: 'imagesPath'" alt="" class="lang-flag" />
+                {{ lang.text }}
+              </span>
+            </li>
+          </ul>
+        </div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <div class="navbar-wrap">
             <ul class="navbar-nav">
@@ -116,6 +100,24 @@
           </div>
         </div>
       </div>
+      <button
+        (click)="onToggle()"
+        [ngClass]="getMenuClass()"
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <svg class="cross" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
+          <path d="M2 20 19.854 2M2.146 2 20 20" stroke="#fff" stroke-width="3" stroke-linecap="round" />
+        </svg>
+        <svg class="menu" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 17">
+          <path d="M1.5 15.5h21m-21-7h21m-13-7h13" stroke-width="3" stroke-linecap="round" />
+        </svg>
+      </button>
     </div>
   </nav>
 </header>
