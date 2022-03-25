@@ -69,15 +69,9 @@
           (change)="onConsentChange()"
           name="consent"
         >
-          <span>{{ "ACCEPT" | translate }} </span>
-          <a target="_blank" href=""
-            ><span>{{ "CONSENT" | translate }}</span></a
-          >
           <span *ngIf="!authService.isLoggedIn()">
-            <span> {{ "AND" | translate }} </span>
-            <a target="_blank" href="https://pomagamukrainie.gov.pl/assets/rodo/politykaprywatnosci.pdf"
-              ><span>{{ "PRIVATE_POLICY" | translate }}</span></a
-            >
+            {{ "ACCEPT" | translate }}
+            <app-policy-link [denominator]="false"></app-policy-link>
           </span>
         </mat-checkbox>
       </div>
