@@ -13,6 +13,7 @@ import { FieldErrorModule } from '@app/shared/components';
 import { ValidatorsDirectivesModule } from '@app/shared/validators';
 import { RECAPTCHA_V3_SITE_KEY, RecaptchaV3Module, RECAPTCHA_BASE_URL } from 'ng-recaptcha';
 import { environment } from 'src/environments/environment';
+import { PolicyLinkModule } from '@app/shared/components/policy-link/policy-link.module';
 
 @NgModule({
   declarations: [ReplyOfferComponent],
@@ -29,6 +30,7 @@ import { environment } from 'src/environments/environment';
     FieldErrorModule,
     ValidatorsDirectivesModule,
     RecaptchaV3Module,
+    PolicyLinkModule,
   ],
   exports: [ReplyOfferComponent],
   providers: [

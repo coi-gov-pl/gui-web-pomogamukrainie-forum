@@ -18,14 +18,7 @@
         }}</a>
         <a href="https://pomagamukrainie.gov.pl/konwoj" class="navbar-item">{{ "HUMANITY_TRANSPORT" | translate }}</a>
         <a [routerLink]="corePath.Statement" class="navbar-item">{{ "STATEMENT" | translate }}</a>
-        <a
-          [href]="
-            'https://pomagamukrainie.gov.pl/assets/rodo/politykaprywatnosci' + getSuffixForTranslatedResource() + '.pdf'
-          "
-          target="_blank"
-          class="navbar-item"
-          >{{ "POLICY" | translate }}</a
-        >
+        <app-policy-link [denominator]="true"></app-policy-link>
         <a [routerLink]="[corePath.About]" class="navbar-item">{{ "ABOUT_APP" | translate }}</a>
       </nav>
     </div>
