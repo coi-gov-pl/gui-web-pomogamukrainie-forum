@@ -1,9 +1,8 @@
 <a
-[href]="
-  'https://pomagamukrainie.gov.pl/assets/rodo/politykaprywatnosci' + getSuffixForTranslatedResource() + '.pdf'
-"
-target="_blank"
-class="navbar-item">
-<ng-template [ngIf]="denominator">{{ "POLICY" | translate }}</ng-template>
-<ng-template [ngIf]="!denominator">{{ "PRIVATE_POLICY" | translate }}</ng-template>
+  [href]="'https://pomagamukrainie.gov.pl/assets/rodo/politykaprywatnosci' + getSuffixForTranslatedResource() + '.pdf'"
+  target="_blank"
+  class="navbar-item"
+>
+  <ng-template [ngIf]="denominator">{{ "POLICY" | translate }}</ng-template>
+  <ng-template [ngIf]="!denominator">{{ "PRIVATE_POLICY" | translate }}</ng-template>
 </a>
