@@ -3,6 +3,5 @@
   target="_blank"
   class="navbar-item"
 >
-  <ng-template [ngIf]="denominator">{{ "POLICY" | translate }}</ng-template>
-  <ng-template [ngIf]="!denominator">{{ "PRIVATE_POLICY" | translate }}</ng-template>
+  {{ (denominator ? "POLICY" : "PRIVATE_POLICY") | translate }}
 </a>
