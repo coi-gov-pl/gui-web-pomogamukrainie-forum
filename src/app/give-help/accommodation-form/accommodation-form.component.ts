@@ -14,7 +14,7 @@ import { MATCH_NON_DIGITS, MATCH_SPACES } from '@app/shared/consts';
   styleUrls: ['./accommodation-form.component.scss'],
 })
 export class AccommodationFormComponent {
-  phonePrefix: string = '48';
+  phonePrefix: string = '';
   phoneNumber: string = '';
   LENGTHOFSTAY = LENGTHOFSTAY;
   LANGUAGES = LANGUAGES;
@@ -44,7 +44,11 @@ export class AccommodationFormComponent {
 
   submitOffer(): void {
     this.loading = true;
-    this.phoneNumber ? this.preparePhoneNumber() : null;
+    if (this.phoneNumber) {
+      this.preparePhoneNumber();
+    } else {
+      this.data.phoneNumber = undefined;
+    }
     this.accommodationsResourceService
       .createAccommodations(this.data)
       .pipe(take(1))

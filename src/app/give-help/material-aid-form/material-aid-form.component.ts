@@ -22,7 +22,7 @@ export class MaterialAidFormComponent {
   data = defaults<MaterialAidOfferDefinitionDTO>({});
   CATEGORIES = CATEGORIES;
   PREFIXES = PREFIXES;
-  phonePrefix: string = '48';
+  phonePrefix: string = '';
   phoneNumber: string = '';
   loading: boolean = false;
   @ViewChild('phoneInput') phoneInput!: ElementRef<HTMLInputElement>;
@@ -46,7 +46,11 @@ export class MaterialAidFormComponent {
 
   handleSubmit() {
     this.loading = true;
-    this.phoneNumber ? this.preparePhoneNumber() : null;
+    if (this.phoneNumber) {
+      this.preparePhoneNumber();
+    } else {
+      this.data.phoneNumber = undefined;
+    }
     this.materialAidResourceService
       .postMaterialAidOfferMaterialAid(this.data)
       .pipe(take(1))
