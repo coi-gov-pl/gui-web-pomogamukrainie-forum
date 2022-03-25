@@ -12,4 +12,8 @@ export class SnackAlertComponent {
     public sbRef: MatSnackBarRef<SnackAlertComponent>,
     @Inject(MAT_SNACK_BAR_DATA) public data: ALERT_TYPES
   ) {}
+
+  closeModal() {
+    this.sbRef.dismiss();
+  }
 }

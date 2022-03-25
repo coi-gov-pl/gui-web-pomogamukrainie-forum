@@ -26,21 +26,28 @@ snack-bar-container {
     width: 100%;
     background: $c-lightgray;
     z-index: 10000;
-    margin: 20vh auto !important;
     border: 2px solid $c-green;
-    @media (min-width: $max-tab) {
-      margin: 16vh auto !important;
-    }
+    margin: 16vh auto !important;
     h5 {
       font-weight: bold;
     }
     .button-icon {
-      width: 20%;
-      @media (min-width: $max-tab) {
-        width: 10%;
+      width: auto;
+      @include media-breakpoint-up(md) {
+        width: 20%;
       }
       color: $c-green;
       font-size: 3em;
+      height: 100%;
+    }
+    .close-button {
+      top: 0;
+      right: 0;
+    }
+    .close-icon {
+      width: auto;
+      color: $c-gray;
+      font-size: 2em;
     }
   }
 }
