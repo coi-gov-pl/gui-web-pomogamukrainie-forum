@@ -160,7 +160,7 @@ export default {
   ERROR_LOCATION_INVALID: `Wrong location, select from the list`,
   PHONE_REQUIRED_CHARACTERS: `The phone number should include between 7 to 15 digits`,
   REPLY_MESSAGE_FORM: `Contact the helping person.`,
-  REPLY_MESSAGGE_PHONE: `If they provided their phone number - you will find it beneath the button.`,
+  REPLY_MESSAGE_PHONE: `If they provided their phone number - you will find it beneath the button.`,
   MESSAGE_OFFER_REMOVED: `The ad has been removed`,
   COPY_LINK: `Copy link`,
   SORTING: `Sorting`,
