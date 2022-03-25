@@ -64,10 +64,11 @@ export class MyAccountComponent implements OnInit {
 
   removeAnnouncement(announcement: AccommodationOffer | MaterialAidOffer | TransportOffer): void {
     const dialogRef: MatDialogRef<ConfirmRemoveAdComponent> = this.dialog.open(ConfirmRemoveAdComponent, {
-      hasBackdrop: false,
+      hasBackdrop: true,
       width: '100%',
       maxHeight: '450px',
       maxWidth: '720px',
+      disableClose: true,
     });
 
     dialogRef.componentInstance.currentAnnouncement = announcement;
