@@ -68,7 +68,7 @@
               required
               #lengthOfStay="ngModel"
             >
-              <mat-option *ngFor="let it of LENGTHOFSTAY" [value]="it.code">{{ it.label }}</mat-option>
+              <mat-option *ngFor="let it of LENGTH_OF_STAY" [value]="it.code">{{ it.label | translate }}</mat-option>
             </mat-select>
             <mat-error>
               <app-field-error [model]="lengthOfStay"></app-field-error>
