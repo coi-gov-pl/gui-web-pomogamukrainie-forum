@@ -4,12 +4,11 @@ import { ErrorCode } from '../components/field-error/errors';
 
 const DIGIT_REGEX = /[^0-9]+/g;
 @Directive({
-  selector: '[ngModel][appMinValidate],[ngModel][appMaxValidate]',
+  selector: '[ngModel][appMinMaxValidate]',
   providers: [{ provide: NG_VALIDATORS, useExisting: MinMaxValidateDirective, multi: true }],
 })
 export class MinMaxValidateDirective implements Validator {
-  @Input() appMinValidate = -Infinity;
-  @Input() appMaxValidate = Infinity;
+  @Input() appMinMaxValidate: { min?: number; max?: number; required?: boolean } = {};
 
   @Output() ngModelChange: EventEmitter<number> = new EventEmitter();
 
@@ -23,13 +22,19 @@ export class MinMaxValidateDirective implements Validator {
   }
 
   validate(control: AbstractControl): ValidationErrors | null {
-    if (Validators.required(control)) {
+    const { min, max, required } = this.getSettings();
+    const error: ValidationErrors = {};
+    const value = control.value?.replace(DIGIT_REGEX, '');
+    const valueNumber = Number(value);
+
+    if (!value && !required) {
       return null;
     }
 
-    const error: ValidationErrors = {};
-    const value = control.value.replace(DIGIT_REGEX, '');
-    const valueNumber = Number(value);
+    if (!value && required) {
+      error[ErrorCode.required] = {};
+      return error;
+    }
 
     if (Number.isNaN(valueNumber)) {
       error[ErrorCode.notNumber] = { value: value };
@@ -41,16 +46,24 @@ export class MinMaxValidateDirective implements Validator {
       return error;
     }
 
-    if (valueNumber < this.appMinValidate) {
+    if (valueNumber < min) {
       error[ErrorCode.min] = { value: value };
       return error;
     }
 
-    if (valueNumber > this.appMaxValidate) {
+    if (valueNumber > max) {
       error[ErrorCode.max] = { value: value };
       return error;
     }
 
     return null;
+  }
+
+  private getSettings() {
+    return {
+      min: this.appMinMaxValidate.min === undefined ? -Infinity : this.appMinMaxValidate.min,
+      max: this.appMinMaxValidate.max === undefined ? Infinity : this.appMinMaxValidate.max,
+      required: this.appMinMaxValidate.required === undefined ? false : this.appMinMaxValidate.required,
+    };
   }
 }

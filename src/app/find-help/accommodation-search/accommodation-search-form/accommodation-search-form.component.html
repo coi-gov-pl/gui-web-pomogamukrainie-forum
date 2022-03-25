@@ -18,13 +18,16 @@
         <mat-form-field appearance="outline">
           <input
             matInput
-            [appMinValidate]="1"
-            [appMaxValidate]="99"
+            [appMinMaxValidate]="{ min: 1, max: 99 }"
             name="guests"
             type="text"
             [(ngModel)]="data.capacity"
             inputmode="numeric"
+            #capacity="ngModel"
           />
+          <mat-error>
+            <app-field-error [model]="capacity"></app-field-error>
+          </mat-error>
         </mat-form-field>
       </div>
       <div class="col-md-4 search">

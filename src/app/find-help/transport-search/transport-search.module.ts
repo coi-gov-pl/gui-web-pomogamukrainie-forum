@@ -14,6 +14,7 @@ import { SearchResultComponentModule } from '../search-result/search-result.modu
 import {
   CategoryNavigationComponentModule,
   CitiesSearchModule,
+  FieldErrorModule,
   MoreInfoLinkModule,
   SortingHeaderModule,
 } from '@app/shared/components';
@@ -45,6 +46,7 @@ import { ValidatorsDirectivesModule } from '@app/shared/validators';
     PaginatorModule,
     ValidatorsDirectivesModule,
     SortingHeaderModule,
+    FieldErrorModule,
   ],
 })
 export class TransportSearchModule {}
