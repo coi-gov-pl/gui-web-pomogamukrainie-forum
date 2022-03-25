@@ -42,7 +42,9 @@ export class MyAccountComponent implements OnInit {
   ) {}
 
   public async ngOnInit() {
-    await this.storeUrlService.setDefaultPaginatorParam();
+    if (!this.route.snapshot.queryParamMap.keys.includes('page')) {
+      await this.storeUrlService.setDefaultPaginatorParam();
+    }
     this.getMyOffers();
   }
 
