@@ -140,7 +140,7 @@ export default {
   ERROR_MIN_DATE: 'Wprowadź późniejszą datę.',
   AND: 'i',
   PRIVATE_POLICY: 'politykę prywatności',
-  CHARS_LEFT: 'Pozostała ilość znaków:',
+  CHARS_LEFT: 'Pozostała liczba znaków:',
   NOT_FOUND: 'To ogłoszenie nie jest już dostępne.',
   NOT_FOUND_NEXT_ACTION: 'Wróć do listy ogłoszeń',
   NOT_FOUND_NEXT_ACTION_OR: 'lub',
