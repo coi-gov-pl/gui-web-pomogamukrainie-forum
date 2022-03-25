@@ -61,19 +61,19 @@
         </mat-form-field>
       </div>
       <div class="row mt-3 mb-3">
-        <mat-checkbox
-          required
-          color="primary"
-          appearance="outline"
-          [(ngModel)]="data.tosApproved"
-          (change)="onConsentChange()"
-          name="consent"
-        >
-          <span *ngIf="!authService.isLoggedIn()">
+        <span *ngIf="!authService.isLoggedIn()">
+          <mat-checkbox
+            required
+            color="primary"
+            appearance="outline"
+            [(ngModel)]="data.tosApproved"
+            (change)="onConsentChange()"
+            name="consent"
+          >
             {{ "ACCEPT" | translate }}
             <app-policy-link [denominator]="false"></app-policy-link>
-          </span>
-        </mat-checkbox>
+          </mat-checkbox>
+        </span>
       </div>
       <div class="d-flex flex-column flex-xl-row">
         <div *ngIf="helpersPhoneNumber" class="m-2 m-xl-2">

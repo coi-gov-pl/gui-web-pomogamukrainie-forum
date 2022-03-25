@@ -29,7 +29,12 @@ export class ReplyOfferComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.data.tosApproved = false;
+    if (this.authService.isLoggedIn()) {
+      this.data.tosApproved = false;
+    } else {
+      this.data.tosApproved = true;
+    }
+
     this.data.offerId = this.offerId;
   }
 
@@ -43,7 +48,7 @@ export class ReplyOfferComponent implements OnInit {
 
   submitMessage(): void {
     this.loading = true;
-
+    console.log('submit');
     this.reCaptchaV3Service
       .execute('sendMessage')
       .pipe(
