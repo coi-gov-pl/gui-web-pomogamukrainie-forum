@@ -7,9 +7,9 @@
     ></app-search-result-attribute>
     <app-search-result-attribute *ngIf="origin && destination" icon="location_on">
       <span class="text-with-icon">
-        {{ origin.city }}
+        <span class="text-capitalize">{{ origin.city }}</span>
         <mat-icon fontSet="material-icons-outlined" class="mx-3">arrow_forward</mat-icon>
-        {{ destination.city }}
+        <span class="text-capitalize">{{ destination.city }}</span>
       </span>
     </app-search-result-attribute>
     <div class="right opacity-50" *ngIf="posted">{{ postedDate | date: "dd/MM/yyyy" }}</div>
