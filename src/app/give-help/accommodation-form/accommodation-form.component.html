@@ -43,11 +43,9 @@
               matInput
               placeholder="{{ 'PLACEHOLDER_CHOOSE' | translate }}"
               type="text"
-              [appMinValidate]="1"
-              [appMaxValidate]="99"
+              [appMinMaxValidate]="{ min: 1, max: 99, required: true }"
               [(ngModel)]="data.guests"
               name="guests"
-              required
               #guests="ngModel"
               inputmode="numeric"
             />

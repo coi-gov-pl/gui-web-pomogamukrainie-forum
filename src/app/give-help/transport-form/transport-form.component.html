@@ -61,10 +61,8 @@
               placeholder="{{ 'PLACEHOLDER_CHOOSE' | translate }}"
               [(ngModel)]="data.capacity"
               name="capacity"
-              [appMinValidate]="1"
-              [appMaxValidate]="99"
+              [appMinMaxValidate]="{ min: 1, max: 99, required: true }"
               autocomplete="off"
-              required
               #capacity="ngModel"
               inputmode="numeric"
             />
