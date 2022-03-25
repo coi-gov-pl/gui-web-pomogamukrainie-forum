@@ -39,7 +39,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
         try {
           const firstError: ApiErrors = (req.error.errors as ApiErrors[])[0];
           // save offer error
-          if (firstError.type === 'FIELD') {
+          if (firstError.type === 'FIELD' && firstError.field !== 'recaptcha-response') {
             this.listNotifications(req);
             // captcha error
           } else if (firstError.field === 'recaptcha-response') {
