@@ -54,7 +54,7 @@
           >
           ></textarea
           >
-          <mat-hint align="end">{{ data.text?.length || 0 }}/2000</mat-hint>
+          <mat-hint align="end">{{ data.text ? 2000 - data.text.length : 2000 }}/2000</mat-hint>
           <mat-error>
             <app-field-error [model]="description"></app-field-error>
           </mat-error>

@@ -16,7 +16,7 @@ import { MATCH_NON_DIGITS, MATCH_SPACES } from '@app/shared/consts';
 export class TransportFormComponent {
   minDate: Date = new Date();
   PREFIXES = PREFIXES;
-  phonePrefix: string = '48';
+  phonePrefix: string = '';
   phoneNumber: string = '';
   data = defaults<TransportOfferDefinitionDTO>();
   loading: boolean = false;
@@ -36,12 +36,16 @@ export class TransportFormComponent {
   }
 
   preparePhoneNumber() {
-    this.data.phoneNumber = this.phonePrefix + this.phoneNumber;
+    this.phoneNumber ? this.preparePhoneNumber() : (this.data.phoneNumber = undefined);
   }
 
   submitOffer(): void {
     this.loading = true;
-    this.phoneNumber ? this.preparePhoneNumber() : null;
+    if (this.phoneNumber) {
+      this.preparePhoneNumber();
+    } else {
+      this.data.phoneNumber = undefined;
+    }
     this.transportResourceService
       .createTransport(this.data)
       .pipe(take(1))

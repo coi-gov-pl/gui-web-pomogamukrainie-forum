@@ -16,11 +16,22 @@
           ><b>{{ "NUMBER_OF_PEOPLE" | translate }}</b></label
         >
         <mat-form-field appearance="outline">
-          <input matInput min="1" max="99" name="guests" type="number" [(ngModel)]="data.capacity" />
+          <input
+            matInput
+            [appMinMaxValidate]="{ min: 1, max: 99 }"
+            name="guests"
+            type="text"
+            [(ngModel)]="data.capacity"
+            inputmode="numeric"
+            #capacity="ngModel"
+          />
+          <mat-error>
+            <app-field-error [model]="capacity"></app-field-error>
+          </mat-error>
         </mat-form-field>
       </div>
       <div class="col-md-4 search">
-        <button type="submit" class="btn btn-dark">
+        <button type="submit" class="btn btn-dark" [disabled]="form.invalid">
           <mat-icon fontSet="material-icons-outlined">search</mat-icon>
           <span>{{ "SEARCH" | translate }}</span>
         </button>

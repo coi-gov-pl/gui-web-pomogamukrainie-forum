@@ -23,8 +23,8 @@ export class SiteHeaderComponent {
   corePath = CorePath;
 
   languages: Language[] = [
-    { code: LanguageCode.uk_UA, text: 'український' },
-    { code: LanguageCode.ru_RU, text: 'русский' },
+    { code: LanguageCode.uk_UA, text: 'Українська' },
+    { code: LanguageCode.ru_RU, text: 'Русский' },
     { code: LanguageCode.en_GB, text: 'English' },
     { code: LanguageCode.pl_PL, text: 'Polski' },
   ];

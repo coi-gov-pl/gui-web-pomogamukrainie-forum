@@ -6,20 +6,100 @@
           <span class="visually-hidden">{{ "MAIN_PAGE" | translate }}</span>
           <img class="navbar-brand herb" [src]="'herb.png' | path: 'imagesPath'" alt="herb" />
         </a>
-        <a href="/" class="navbar-brand">
-          <span class="visually-hidden">{{ "MAIN_PAGE" | translate }}</span>
-          <img
-            class="logo"
-            [src]="'kprm.svg' | path: 'imagesPath'"
-            [alt]="'CHANCELLERY_OF_PRIME_MINISTER' | translate"
-          />
-        </a>
-        <a href="/" class="navbar-brand">
-          <span class="visually-hidden">{{ "MAIN_PAGE" | translate }}</span>
-          <img class="logo" [src]="'pomagamyua.svg' | path: 'imagesPath'" [alt]="'MAIN_PAGE' | translate" />
-        </a>
+        <span class="desktop-only header-element">
+          <a href="/" class="navbar-brand">
+            <span class="visually-hidden">{{ "MAIN_PAGE" | translate }}</span>
+            <img
+              class="logo"
+              [src]="'kprm.svg' | path: 'imagesPath'"
+              [alt]="'CHANCELLERY_OF_PRIME_MINISTER' | translate"
+            />
+          </a>
+        </span>
+        <span class="desktop-only header-element">
+          <a href="/" class="navbar-brand">
+            <span class="visually-hidden">{{ "MAIN_PAGE" | translate }}</span>
+            <img class="logo" [src]="'pomagamyua.svg' | path: 'imagesPath'" [alt]="'MAIN_PAGE' | translate" />
+          </a>
+        </span>
       </div>
-
+      <div class="d-flex flex-row">
+        <div class="navbar-item dropdown header-element">
+          <a
+            class="navbar-link dropdown-toggle"
+            href="#"
+            id="navbarDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <img [src]="activeLanguage?.code + '.svg' | path: 'imagesPath'" alt="" class="lang-flag" />
+            <span>{{ activeLanguage?.text }}</span>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li *ngFor="let lang of languages">
+              <span *ngIf="lang.code !== activeLanguage?.code" class="dropdown-item" (click)="useLanguage(lang.code)">
+                <img [src]="lang.code + '.svg' | path: 'imagesPath'" alt="" class="lang-flag" />
+                {{ lang.text }}
+              </span>
+            </li>
+          </ul>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <div class="navbar-wrap">
+            <ul class="navbar-nav">
+              <li class="navbar-item navbar-big">
+                <a class="navbar-link" href="/">{{ "MAIN_PAGE" | translate }}</a>
+              </li>
+              <li
+                (click)="closeMenu()"
+                class="navbar-item navbar-big"
+                data-bs-toggle="collapse"
+                data-bs-target=".navbar-collapse.show"
+              >
+                <a class="navbar-link" [routerLink]="[corePath.Statement]">{{ "STATEMENT" | translate }}</a>
+              </li>
+              <li
+                (click)="closeMenu()"
+                class="navbar-item navbar-big mobile-only"
+                data-bs-toggle="collapse"
+                data-bs-target=".navbar-collapse.show"
+              >
+                <a class="navbar-link" href="#">{{ "ANNOUNCEMENTS" | translate }}</a>
+              </li>
+              <li
+                (click)="closeMenu()"
+                class="navbar-item"
+                *ngIf="!authService.isLoggedIn()"
+                data-bs-toggle="collapse"
+                data-bs-target=".navbar-collapse.show"
+              >
+                <a [routerLink]="[corePath.MyAccount]" class="btn btn-outline-light">
+                  <mat-icon class="button-icon" fontSet="material-icons-outlined">account_circle</mat-icon>
+                  <span class="button-title">{{ "LOGIN" | translate }}</span>
+                </a>
+              </li>
+              <li
+                (click)="closeMenu()"
+                class="navbar-item"
+                *ngIf="authService.isLoggedIn() && !this.isAccountUrl"
+                data-bs-toggle="collapse"
+                data-bs-target=".navbar-collapse.show"
+              >
+                <a [routerLink]="[corePath.MyAccount]" class="btn btn-outline-light">
+                  <mat-icon class="button-icon" fontSet="material-icons-outlined">account_circle</mat-icon>
+                  <span class="button-title">{{ "MY_ACCOUNT" | translate }}</span>
+                </a>
+              </li>
+              <li class="navbar-item" *ngIf="authService.isLoggedIn() && this.isAccountUrl">
+                <button (click)="authService.logOut(); closeMenu()" class="btn btn-outline-light">
+                  <span class="button-title">{{ "LOGOUT" | translate }}</span>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
       <button
         (click)="onToggle()"
         [ngClass]="getMenuClass()"
@@ -38,100 +118,6 @@
           <path d="M1.5 15.5h21m-21-7h21m-13-7h13" stroke-width="3" stroke-linecap="round" />
         </svg>
       </button>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <div class="navbar-wrap">
-          <ul class="navbar-nav">
-            <li class="navbar-item dropdown desktop-only">
-              <a
-                class="navbar-link dropdown-toggle"
-                href="#"
-                id="navbarDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <img [src]="activeLanguage?.code + '.svg' | path: 'imagesPath'" alt="" class="lang-flag" />
-                <span>{{ activeLanguage?.text }}</span>
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li *ngFor="let lang of languages">
-                  <span
-                    *ngIf="lang.code !== activeLanguage?.code"
-                    class="dropdown-item"
-                    (click)="useLanguage(lang.code)"
-                  >
-                    <img [src]="lang.code + '.svg' | path: 'imagesPath'" alt="" class="lang-flag" />
-                    {{ lang.text }}
-                  </span>
-                </li>
-              </ul>
-            </li>
-            <li class="navbar-item navbar-big mobile-only mb-3 mt-5">
-              <span class="navbar-link">{{ "SELECT_LANGUAGE" | translate }}</span>
-            </li>
-            <li
-              *ngFor="let lang of languages"
-              class="navbar-item mobile-only"
-              data-bs-toggle="collapse"
-              data-bs-target=".navbar-collapse.show"
-            >
-              <span class="dropdown-item" (click)="useLanguage(lang.code)">
-                <img [src]="lang.code + '.svg' | path: 'imagesPath'" alt="" class="lang-flag" />
-                {{ lang.text }}
-              </span>
-            </li>
-            <li class="navbar-item navbar-big">
-              <a class="navbar-link" href="/">{{ "MAIN_PAGE" | translate }}</a>
-            </li>
-            <li
-              (click)="closeMenu()"
-              class="navbar-item navbar-big"
-              data-bs-toggle="collapse"
-              data-bs-target=".navbar-collapse.show"
-            >
-              <a class="navbar-link" [routerLink]="[corePath.Statement]">{{ "STATEMENT" | translate }}</a>
-            </li>
-            <li
-              (click)="closeMenu()"
-              class="navbar-item navbar-big mobile-only"
-              data-bs-toggle="collapse"
-              data-bs-target=".navbar-collapse.show"
-            >
-              <a class="navbar-link" href="#">{{ "ANNOUNCEMENTS" | translate }}</a>
-            </li>
-            <li
-              (click)="closeMenu()"
-              class="navbar-item"
-              *ngIf="!authService.isLoggedIn()"
-              data-bs-toggle="collapse"
-              data-bs-target=".navbar-collapse.show"
-            >
-              <a [routerLink]="[corePath.MyAccount]" class="btn btn-outline-light">
-                <mat-icon class="button-icon" fontSet="material-icons-outlined">account_circle</mat-icon>
-                <span class="button-title">{{ "LOGIN" | translate }}</span>
-              </a>
-            </li>
-            <li
-              (click)="closeMenu()"
-              class="navbar-item"
-              *ngIf="authService.isLoggedIn() && !this.isAccountUrl"
-              data-bs-toggle="collapse"
-              data-bs-target=".navbar-collapse.show"
-            >
-              <a [routerLink]="[corePath.MyAccount]" class="btn btn-outline-light">
-                <mat-icon class="button-icon" fontSet="material-icons-outlined">account_circle</mat-icon>
-                <span class="button-title">{{ "MY_ACCOUNT" | translate }}</span>
-              </a>
-            </li>
-            <li class="navbar-item" *ngIf="authService.isLoggedIn() && this.isAccountUrl">
-              <button (click)="authService.logOut(); closeMenu()" class="btn btn-outline-light">
-                <span class="button-title">{{ "LOGOUT" | translate }}</span>
-              </button>
-            </li>
-          </ul>
-        </div>
-      </div>
     </div>
   </nav>
 </header>

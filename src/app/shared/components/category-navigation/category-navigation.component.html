@@ -5,11 +5,12 @@
         *ngIf="!category.disabled"
         class="category-link"
         [routerLink]="['/', outputPath, routingCategoryName[category.name]]"
+        [queryParams]="queryParams()"
       >
         <app-type-of-help
           [icon]="category.icon"
           [name]="category.name"
-          [selected]="routingCategoryName[category.name] === activeRoute()"
+          [selected]="isActive(category)"
           [disabled]="category.disabled"
         >
         </app-type-of-help>
@@ -18,7 +19,7 @@
         <app-type-of-help
           [icon]="category.icon"
           [name]="category.name"
-          [selected]="routingCategoryName[category.name] === activeRoute()"
+          [selected]="isActive(category)"
           [disabled]="category.disabled"
         >
         </app-type-of-help>

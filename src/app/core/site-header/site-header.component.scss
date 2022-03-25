@@ -152,7 +152,7 @@
     }
   }
   &-item {
-    background: transparentize($c-darkblue, 0.2);
+    background: $c-darkblue;
     border-bottom: 2px solid transparent;
     color: var(--c-white);
     cursor: pointer;
@@ -177,4 +177,8 @@
     height: 16px;
     margin-right: 4px;
   }
+}
+
+.header-element {
+  align-self: center;
 }

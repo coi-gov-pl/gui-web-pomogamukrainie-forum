@@ -3,25 +3,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <label>
-            <b>{{ "LABEL_OFFER_TITLE" | translate }}</b>
-            <span> {{ "LABEL_OFFER_MAXCHARS" | translate }} *</span>
-          </label>
-          <mat-form-field appearance="outline">
-            <input
-              matInput
-              maxlength="80"
-              placeholder="{{ 'PLACEHOLDER_OFFER_TITLE' | translate }}"
-              required
-              name="title"
-              [(ngModel)]="data.title"
-              #title="ngModel"
-              appOfferTitleValidate
-            />
-            <mat-error>
-              <app-field-error [model]="title"></app-field-error>
-            </mat-error>
-          </mat-form-field>
+          <app-offer-title-input [(value)]="data.title"></app-offer-title-input>
         </div>
       </div>
 
@@ -57,15 +39,14 @@
           <mat-form-field appearance="outline">
             <input
               matInput
-              type="number"
+              type="text"
               placeholder="{{ 'PLACEHOLDER_CHOOSE' | translate }}"
               [(ngModel)]="data.capacity"
               name="capacity"
-              min="1"
-              max="99"
+              [appMinMaxValidate]="{ min: 1, max: 99, required: true }"
               autocomplete="off"
-              required
               #capacity="ngModel"
+              inputmode="numeric"
             />
             <mat-error>
               <app-field-error [model]="capacity"></app-field-error>
@@ -92,7 +73,7 @@
               #description="ngModel"
               appOfferDescriptionValidate
             ></textarea>
-            <mat-hint align="end">{{ data.description?.length || 0 }}/2000</mat-hint>
+            <mat-hint align="end">{{ data.description ? 2000 - data.description.length : 2000 }}/2000</mat-hint>
             <mat-error>
               <app-field-error [model]="description"></app-field-error>
             </mat-error>
@@ -131,10 +112,7 @@
           </mat-form-field>
         </div>
         <div class="col-lg-3 publish">
-          <button class="btn btn-dark" [disabled]="transportForm.invalid">
-            <mat-icon fontSet="material-icons-outlined">add</mat-icon>
-            <span>{{ "OFFER_PUBLISH" | translate }}</span>
-          </button>
+          <app-publish-ad-button></app-publish-ad-button>
         </div>
       </div>
     </div>

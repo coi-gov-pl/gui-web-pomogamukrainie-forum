@@ -1,6 +1,6 @@
 import { Component, ViewChild, Input, ElementRef } from '@angular/core';
 import { defaults } from '@app/shared/utils';
-import { PREFIXES, LANGUAGES, LENGTHOFSTAY } from '@app/shared/consts';
+import { PREFIXES, LANGUAGES, LENGTH_OF_STAY } from '@app/shared/consts';
 import { AccommodationOfferDefinitionDTO, AccommodationsResourceService } from '@app/core/api';
 import { CorePath, ALERT_TYPES } from '@app/shared/models';
 import { SnackbarService } from '@app/shared/services';
@@ -14,9 +14,9 @@ import { MATCH_NON_DIGITS, MATCH_SPACES } from '@app/shared/consts';
   styleUrls: ['./accommodation-form.component.scss'],
 })
 export class AccommodationFormComponent {
-  phonePrefix: string = '48';
+  phonePrefix: string = '';
   phoneNumber: string = '';
-  LENGTHOFSTAY = LENGTHOFSTAY;
+  LENGTH_OF_STAY = LENGTH_OF_STAY;
   LANGUAGES = LANGUAGES;
   PREFIXES = PREFIXES;
   data = defaults<AccommodationOfferDefinitionDTO>({
@@ -44,7 +44,11 @@ export class AccommodationFormComponent {
 
   submitOffer(): void {
     this.loading = true;
-    this.phoneNumber ? this.preparePhoneNumber() : null;
+    if (this.phoneNumber) {
+      this.preparePhoneNumber();
+    } else {
+      this.data.phoneNumber = undefined;
+    }
     this.accommodationsResourceService
       .createAccommodations(this.data)
       .pipe(take(1))

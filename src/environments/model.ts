@@ -5,6 +5,9 @@ export interface EnvironmentConfig {
   environmentType: EnvironmentType;
   authConfig: Required<Pick<AuthConfig, 'issuer' | 'showDebugInformation' | 'redirectUri' | 'logoutUrl'>>;
   applicationInsightsConnectionString?: string;
+  recaptcha: {
+    siteKey: string;
+  };
 }
 
 export enum EnvironmentType {

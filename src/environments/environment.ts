@@ -15,6 +15,9 @@ export const environment: EnvironmentConfig = {
     logoutUrl: window.location.origin,
   },
   applicationInsightsConnectionString: '%BACKEND_REPLACED_APPLICATION_INSIGHTS_CONNECTION_STRING%',
+  recaptcha: {
+    siteKey: '', // @TODO key dev?
+  },
 };
 
 /*
