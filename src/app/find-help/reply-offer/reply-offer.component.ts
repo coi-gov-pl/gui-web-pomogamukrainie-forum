@@ -45,17 +45,14 @@ export class ReplyOfferComponent implements OnInit {
     this.loading = true;
 
     this.reCaptchaV3Service
-      .execute('sendMessageMessage')
+      .execute('sendMessage')
       .pipe(
         switchMap((captchaToken) => {
           return this.messageResourceService.sendMessageMessage(this.data, captchaToken);
         })
       )
       .pipe(take(1))
-      .subscribe(
-        (response) => this.snackbarService.openSnackAlert(ALERT_TYPES.MESSAGE_SENT),
-        (error) => this.snackbarService.openSnack(error.message, ALERT_TYPES.ERROR)
-      )
+      .subscribe(() => this.snackbarService.openSnackAlert(ALERT_TYPES.MESSAGE_SENT))
       .add(() => {
         this.loading = false;
       });

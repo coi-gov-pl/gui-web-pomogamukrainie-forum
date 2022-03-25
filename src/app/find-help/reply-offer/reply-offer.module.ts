@@ -12,6 +12,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FieldErrorModule } from '@app/shared/components';
 import { ValidatorsDirectivesModule } from '@app/shared/validators';
 import { RECAPTCHA_V3_SITE_KEY, RecaptchaV3Module } from 'ng-recaptcha';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [ReplyOfferComponent],
@@ -33,8 +34,7 @@ import { RECAPTCHA_V3_SITE_KEY, RecaptchaV3Module } from 'ng-recaptcha';
   providers: [
     {
       provide: RECAPTCHA_V3_SITE_KEY,
-      // TODO generate new key and replace
-      useValue: '6LdqANUbAAAAAIPOBYv8_eQw8Bti4TVXzAmca1zI',
+      useValue: environment.recaptcha.siteKey,
     },
   ],
 })

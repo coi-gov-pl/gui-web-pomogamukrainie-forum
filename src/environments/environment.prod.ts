@@ -10,4 +10,7 @@ export const environment: EnvironmentConfig = {
     logoutUrl: `${window.location.origin}/ogloszenia/`,
   },
   applicationInsightsConnectionString: '%BACKEND_REPLACED_APPLICATION_INSIGHTS_CONNECTION_STRING%',
+  recaptcha: {
+    siteKey: '6LcdMQkfAAAAAEbSBUhhCJrEGUQIJ8Y_CbLeMOVB',
+  },
 };
