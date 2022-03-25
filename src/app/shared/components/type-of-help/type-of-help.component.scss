@@ -8,23 +8,23 @@ $border-type: solid;
 $border-default: $border-thickness $border-type $color-yellow;
 $border-white: $border-thickness $border-type $color-white;
 
-$card-width: 130px;
-$card-height: 102px;
+$card-width: 121px;
+$card-height: 108px;
 
 $unfold-height: 30px;
 
 :host {
   display: flex;
   flex-direction: column;
-
+  box-shadow: 0px 3px 12px #052c6526;
   cursor: pointer;
 
   mat-card {
     flex: 1;
-
+    padding: 24px 16px 10px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
 
     box-sizing: border-box;
     min-height: $card-height;
@@ -51,6 +51,7 @@ $unfold-height: 30px;
       align-items: center;
       text-align: center;
       font-size: 0.8em;
+      min-height: 36px;
     }
   }
 
