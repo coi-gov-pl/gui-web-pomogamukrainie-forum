@@ -42,7 +42,7 @@ export default {
   FURNITURE: `furniture`,
   SELECT_LANGUAGE: `Choose language`,
   STATEMENT: `Information`,
-  ANNOUNCEMENTS: `Annountements`,
+  ANNOUNCEMENTS: `Announcements`,
   ACCOUNT_SETTINGS: `Account settings`,
   ADD_ANNOUNCEMENT: `Post an ad`,
   YOUR_ANNOUNCEMENT: `Your ads`,
