@@ -1,15 +1,19 @@
-<mat-card>
+<mat-card #materialAidResultsStart>
   <app-material-aid-search-form (search)="search($event)"></app-material-aid-search-form>
 </mat-card>
 <app-no-results *ngIf="total === 0"></app-no-results>
 <div class="results" *ngIf="this.total && this.total >= 0" [class.loading]="loading">
-  <app-sorting-header [total]="total" (sortingOrderChange)="search()"></app-sorting-header>
+  <app-sorting-header
+    [header]="'ADVERTISEMENTS_LIST' | translate"
+    [total]="total"
+    (sortingOrderChange)="search()"
+  ></app-sorting-header>
   <div>
     <app-search-result
       *ngFor="let result of results"
       [location]="result.location"
       [title]="result.title"
-      [description]="result.description"
+      [description]="result.description | slice: 0:200"
       [posted]="result.modifiedDate"
       [offerId]="result.id!"
       [category]="categoryRoutingName.MATERIAL_HELP"

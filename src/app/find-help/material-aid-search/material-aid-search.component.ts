@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MaterialAidOffer, MaterialAidOfferSearchCriteria, MaterialAidResourceService, Pageable } from '@app/core/api';
 import { CategoryRoutingName, CorePath } from '@app/shared/models';
 import { ActivatedRoute } from '@angular/router';
@@ -16,10 +16,12 @@ export class MaterialAidSearchComponent implements OnInit {
   corePath = CorePath;
   searchCriteria: MaterialAidOfferSearchCriteria = {};
   pagination: Pageable | undefined = {};
+  @ViewChild('materialAidResultsStart', { read: ElementRef }) resultsStart!: ElementRef<HTMLElement>;
+
   constructor(private materialAidResourceService: MaterialAidResourceService, private route: ActivatedRoute) {}
 
   ngOnInit() {
-    const { page, size, category, city, region } = this.route.snapshot.queryParams;
+    const { category, city, region } = this.route.snapshot.queryParams;
     const searchCriteria: MaterialAidOfferSearchCriteria = {
       category,
       location: {
@@ -27,9 +29,7 @@ export class MaterialAidSearchComponent implements OnInit {
         city,
       },
     };
-    if (page != null || size != null || category != null || city != null || region != null) {
-      this.search(searchCriteria);
-    }
+    this.search(searchCriteria);
   }
 
   search(searchCriteria?: MaterialAidOfferSearchCriteria) {
@@ -53,6 +53,7 @@ export class MaterialAidSearchComponent implements OnInit {
         this.results = results.content ?? [];
         this.total = results.totalElements ?? 0;
         this.loading = false;
+        this.resultsStart?.nativeElement?.scrollIntoView();
       },
       error: () => {
         this.results = [];

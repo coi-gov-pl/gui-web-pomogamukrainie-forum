@@ -42,13 +42,14 @@
             <input
               matInput
               placeholder="{{ 'PLACEHOLDER_CHOOSE' | translate }}"
-              type="number"
-              min="1"
-              max="99"
+              type="text"
+              [appMinValidate]="1"
+              [appMaxValidate]="99"
               [(ngModel)]="data.guests"
               name="guests"
               required
               #guests="ngModel"
+              inputmode="numeric"
             />
             <mat-error>
               <app-field-error [model]="guests"></app-field-error>
@@ -87,7 +88,7 @@
               required
               #language="ngModel"
             >
-              <mat-option *ngFor="let it of LANGUAGES" [value]="it.code">{{ it.label }}</mat-option>
+              <mat-option *ngFor="let lang of LANGUAGES" [value]="lang.code">{{ lang.label | translate }}</mat-option>
             </mat-select>
             <mat-error>
               <app-field-error [model]="language"></app-field-error>
@@ -152,10 +153,7 @@
           </mat-form-field>
         </div>
         <div class="col-lg-3 publish">
-          <button class="btn btn-dark" [disabled]="accommodationForm.invalid">
-            <mat-icon fontSet="material-icons-outlined">add</mat-icon>
-            <span>{{ "OFFER_PUBLISH" | translate }}</span>
-          </button>
+          <app-publish-ad-button></app-publish-ad-button>
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Pageable, TransportOffer, TransportOfferSearchCriteria, TransportResourceService } from '@app/core/api';
 import { CategoryRoutingName, CorePath } from '@app/shared/models';
 import { ActivatedRoute } from '@angular/router';
@@ -16,10 +16,12 @@ export class TransportSearchComponent implements OnInit {
   corePath = CorePath;
   searchCriteria: TransportOfferSearchCriteria = {};
   pagination: Pageable | undefined;
+  @ViewChild('transportResultsStart', { read: ElementRef }) resultsStart!: ElementRef<HTMLElement>;
+
   constructor(private transportResourceService: TransportResourceService, private route: ActivatedRoute) {}
 
   ngOnInit() {
-    const { page, size, capacity, transportDate, originCity, originRegion, destinationCity, destinationRegion } =
+    const { capacity, transportDate, originCity, originRegion, destinationCity, destinationRegion } =
       this.route.snapshot.queryParams;
     const searchCriteria: TransportOfferSearchCriteria = {
       capacity,
@@ -33,18 +35,7 @@ export class TransportSearchComponent implements OnInit {
         city: destinationCity,
       },
     };
-    if (
-      page != null ||
-      size != null ||
-      capacity != null ||
-      transportDate != null ||
-      originCity != null ||
-      originRegion != null ||
-      destinationCity != null ||
-      destinationRegion != null
-    ) {
-      this.search(searchCriteria);
-    }
+    this.search(searchCriteria);
   }
 
   search(searchCriteria?: TransportOfferSearchCriteria) {
@@ -70,6 +61,7 @@ export class TransportSearchComponent implements OnInit {
         this.results = results.content ?? [];
         this.total = results.totalElements ?? 0;
         this.loading = false;
+        this.resultsStart?.nativeElement?.scrollIntoView();
       },
       error: () => {
         this.results = [];

@@ -27,8 +27,7 @@ export class MyAccountComponent implements OnInit {
   public myAnnouncements!: OffersBaseOffer;
   pageRequest: Pageable = {};
   categoryRoutingName = CategoryRoutingName;
-
-  readonly viewAdRoutePrefix = [CorePath.MyAccount];
+  total?: number = undefined;
 
   constructor(
     private router: Router,
@@ -43,7 +42,9 @@ export class MyAccountComponent implements OnInit {
   ) {}
 
   public async ngOnInit() {
-    await this.storeUrlService.setDefaultPaginatorParam();
+    if (!this.route.snapshot.queryParamMap.keys.includes('page')) {
+      await this.storeUrlService.setDefaultPaginatorParam();
+    }
     this.getMyOffers();
   }
 
@@ -57,6 +58,7 @@ export class MyAccountComponent implements OnInit {
     };
     this.myOffersResource.listMyOffers(this.pageRequest).subscribe((results) => {
       this.myAnnouncements = results;
+      this.total = results.totalElements;
     });
   }
 

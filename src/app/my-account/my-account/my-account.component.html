@@ -16,18 +16,22 @@
   </div>
 
   <section *ngIf="myAnnouncements?.content?.length">
-    <p class="text">{{ "YOUR_ANNOUNCEMENT" | translate }}</p>
+    <app-sorting-header
+      [header]="'YOUR_ANNOUNCEMENT' | translate"
+      (sortingOrderChange)="getMyOffers()"
+      [total]="total"
+    ></app-sorting-header>
     <div class="announcements-wrapper">
       <ng-container *ngFor="let announcement of myAnnouncements.content">
         <app-search-result
           *ngIf="announcement.type === 'ACCOMMODATION'"
           [location]="announcement.location"
           [title]="announcement.title"
-          [description]="announcement.description"
+          [description]="announcement.description | slice: 0:200"
           [posted]="announcement.modifiedDate"
           [offerId]="announcement.id!"
           [category]="categoryRoutingName.ACCOMMODATION"
-          [routePathPrefix]="viewAdRoutePrefix"
+          [fromMyAccount]="true"
         >
           <app-search-result-attribute
             *ngIf="announcement.guests"
@@ -41,9 +45,6 @@
           ></app-search-result-attribute>
 
           <div class="pt-2 pt-sm-0 ps-sm-2" buttons>
-            <button type="button" class="btn btn-secondary mb-2" (click)="editAnnouncement(announcement)">
-              {{ "EDIT_ANNOUNCEMENT" | translate }}
-            </button>
             <button type="button" class="btn btn-link btn-sm" (click)="removeAnnouncement(announcement)">
               {{ "REMOVE_ANNOUNCEMENT" | translate }}
             </button>
@@ -54,11 +55,11 @@
           *ngIf="announcement.type === 'MATERIAL_AID'"
           [location]="announcement.location"
           [title]="announcement.title"
-          [description]="announcement.description"
+          [description]="announcement.description | slice: 0:200"
           [posted]="announcement.modifiedDate"
           [offerId]="announcement.id!"
           [category]="categoryRoutingName.MATERIAL_HELP"
-          [routePathPrefix]="viewAdRoutePrefix"
+          [fromMyAccount]="true"
         >
           <app-search-result-attribute
             *ngIf="announcement.category"
@@ -67,9 +68,6 @@
           ></app-search-result-attribute>
 
           <div class="pt-2 pt-sm-0 ps-sm-2" buttons>
-            <button type="button" class="btn btn-secondary mb-2" (click)="editAnnouncement(announcement)">
-              {{ "EDIT_ANNOUNCEMENT" | translate }}
-            </button>
             <button type="button" class="btn btn-link btn-sm" (click)="removeAnnouncement(announcement)">
               {{ "REMOVE_ANNOUNCEMENT" | translate }}
             </button>
@@ -81,11 +79,11 @@
           [origin]="announcement.origin"
           [destination]="announcement.destination"
           [title]="announcement.title"
-          [description]="announcement.description"
+          [description]="announcement.description | slice: 0:200"
           [posted]="announcement.modifiedDate"
           [offerId]="announcement.id!"
           [category]="categoryRoutingName.TRANSPORT"
-          [routePathPrefix]="viewAdRoutePrefix"
+          [fromMyAccount]="true"
         >
           <app-search-result-attribute
             *ngIf="announcement.transportDate"
@@ -99,9 +97,6 @@
           ></app-search-result-attribute>
 
           <div class="pt-2 pt-sm-0 ps-sm-2" buttons>
-            <button type="button" class="btn btn-secondary mb-2" (click)="editAnnouncement(announcement)">
-              {{ "EDIT_ANNOUNCEMENT" | translate }}
-            </button>
             <button type="button" class="btn btn-link btn-sm" (click)="removeAnnouncement(announcement)">
               {{ "REMOVE_ANNOUNCEMENT" | translate }}
             </button>

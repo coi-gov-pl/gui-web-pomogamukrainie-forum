@@ -1,17 +1,21 @@
-<mat-card>
+<mat-card #transportResultsStart>
   <app-transport-search-form (search)="search($event)"></app-transport-search-form>
 </mat-card>
 <app-no-results *ngIf="total === 0"></app-no-results>
 <div class="results" *ngIf="this.total" [class.loading]="loading">
   <router-outlet></router-outlet>
-  <app-sorting-header [total]="total" (sortingOrderChange)="search()"></app-sorting-header>
+  <app-sorting-header
+    [header]="'ADVERTISEMENTS_LIST' | translate"
+    [total]="total"
+    (sortingOrderChange)="search()"
+  ></app-sorting-header>
   <div>
     <app-search-result
       *ngFor="let result of results"
       [origin]="result.origin"
       [destination]="result.destination"
       [title]="result.title"
-      [description]="result.description"
+      [description]="result.description | slice: 0:200"
       [offerId]="result.id!"
       [category]="CategoryRoutingName.TRANSPORT"
       [posted]="result.modifiedDate"

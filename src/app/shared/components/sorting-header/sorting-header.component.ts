@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SortingOrder } from '@app/shared/models/sortingOrder.model';
+import { SortingFieldName, SortingOrder } from '@app/shared/models/sortingOrder.model';
 
 @Component({
   selector: 'app-sorting-header',
@@ -8,8 +8,9 @@ import { SortingOrder } from '@app/shared/models/sortingOrder.model';
   styleUrls: ['./sorting-header.component.scss'],
 })
 export class SortingHeaderComponent implements OnInit {
-  @Input() total!: number;
-  sortField = 'modifiedDate';
+  @Input() total: number | undefined;
+  @Input() header!: string;
+  sortField = SortingFieldName;
   fieldOrder = SortingOrder.descending;
 
   @Output() sortingOrderChange = new EventEmitter<string>();

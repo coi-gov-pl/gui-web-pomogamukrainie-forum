@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Location } from '@app/core/api';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CategoryRoutingName, CorePath } from '@app/shared/models';
 
 @Component({
@@ -26,16 +26,17 @@ export class SearchResultComponent implements OnChanges {
   @Input()
   origin?: Location;
   @Input()
-  routePathPrefix: string[] = [CorePath.Find];
-
+  fromMyAccount: boolean = false;
   postedDate: Date | undefined;
   CategoryRoutingName = CategoryRoutingName;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private route: ActivatedRoute) {}
 
   onViewOffer() {
     if (this.offerId) {
-      this.router.navigate([...this.routePathPrefix, this.category, this.offerId]);
+      this.router.navigate([CorePath.Find, this.category, this.offerId], {
+        state: { redirectFromAccount: this.fromMyAccount, queryParams: this.route.snapshot.queryParams },
+      });
     }
   }
 

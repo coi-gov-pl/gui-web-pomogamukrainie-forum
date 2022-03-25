@@ -1,5 +1,10 @@
 @import "vars";
 
+.page-layout {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
 .content {
   display: flex;
   margin: 82px auto 32px;
