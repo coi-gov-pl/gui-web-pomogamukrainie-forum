@@ -22,7 +22,7 @@
     >
       <app-search-result-attribute
         *ngIf="result.transportDate"
-        [text]="result.transportDate | date"
+        [text]="result.transportDate | date: 'dd/MM/yyyy'"
         icon="date_range"
       ></app-search-result-attribute>
       <app-search-result-attribute
