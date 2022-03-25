@@ -46,7 +46,7 @@ export class MaterialAidFormComponent {
 
   handleSubmit() {
     this.loading = true;
-    this.phoneNumber ? this.preparePhoneNumber() : null;
+    this.phoneNumber ? this.preparePhoneNumber() : (this.data.phoneNumber = undefined);
     this.materialAidResourceService
       .postMaterialAidOfferMaterialAid(this.data)
       .pipe(take(1))

@@ -36,7 +36,7 @@ export class TransportFormComponent {
   }
 
   preparePhoneNumber() {
-    this.data.phoneNumber = this.phonePrefix + this.phoneNumber;
+    this.phoneNumber ? this.preparePhoneNumber() : (this.data.phoneNumber = undefined);
   }
 
   submitOffer(): void {

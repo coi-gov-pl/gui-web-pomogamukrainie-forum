@@ -44,7 +44,7 @@ export class AccommodationFormComponent {
 
   submitOffer(): void {
     this.loading = true;
-    this.phoneNumber ? this.preparePhoneNumber() : null;
+    this.phoneNumber ? this.preparePhoneNumber() : (this.data.phoneNumber = undefined);
     this.accommodationsResourceService
       .createAccommodations(this.data)
       .pipe(take(1))
