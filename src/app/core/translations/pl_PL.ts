@@ -237,4 +237,6 @@ export default {
   M_WYSZOMIERSKI: 'Mariusz Wyszomierski',
   O_ZDERKO: 'Oleksandr Zderko',
   C_ZDYBEL: 'Celina Zdybel',
+  ENGLISH: 'Angielski',
+  RUSSIAN: 'Rosyjski',
 };

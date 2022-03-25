@@ -25,6 +25,8 @@ export const PREFIXES: Prefix[] = [
 export const LANGUAGES: Option[] = [
   { code: HostLanguageEnum.Pl, label: LanguageNames.POLISH },
   { code: HostLanguageEnum.Ua, label: LanguageNames.UKRAINIAN },
+  { code: HostLanguageEnum.Ru, label: LanguageNames.RUSSIAN },
+  { code: HostLanguageEnum.En, label: LanguageNames.ENGLISH },
 ];
 
 export const LENGTHOFSTAY: Option[] = [
