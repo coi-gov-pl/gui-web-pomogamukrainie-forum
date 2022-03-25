@@ -123,7 +123,7 @@ export default {
   PARTICIPANTS: 'Podmioty biorące udział w projekcie',
   ABOUT_APP_DESCRIPTION_1: 'Wojna na Ukrainie spowodowała napływ uchodźców do Polski. Instytucje rządowe, pozarządowe i zwykli obywatele rzucili się do pomocy - oferują m.in. noclegi, transport i pomoc materialną. Różnego rodzaju akcje oddolne nie są centralnie koordynowane. Brakuje systemu informatycznego, który pozwoli na dodawanie w bezpieczny sposób ogłoszeń przez osoby oferujące pomoc i kontaktowanie się z nimi przez osoby uciekające z Ukrainy.',
   ABOUT_APP_DESCRIPTION_2: 'COI (Centralny Ośrodek Informatyki) wraz z zespołami ze strony publicznej budują serwis ogłoszeniowy, który będzie mapował konkretne osoby potrzebujące pomocy z konkretnymi osobami oferującymi pomoc.',
-  OFFER_SENT_ALERT_HEADER: 'Twoje głoszenie zostało opublikowane',
+  OFFER_SENT_ALERT_HEADER: 'Twoje ogłoszenie zostało opublikowane',
   OFFER_SENT_ALERT_CONTENT: 'Sprawdzaj swoją skrzynkę i – jeśli podajesz numer – odbieraj telefon. W każdej chwili ktoś może odpowiedzieć na twoje ogłoszenie.',
   NO_RESULTS_HEADER: 'Nie znaleźliśmy ogłoszeń spełniających podane kryteria',
   NO_RESULTS_TEXT_START: 'Zmień kryteria wyszukiwania, lub',
