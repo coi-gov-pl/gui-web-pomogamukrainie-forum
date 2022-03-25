@@ -147,7 +147,7 @@ export default {
   PAGE_OF: `of`,
   SELECT_PAGE: `Select page`,
   CHOOSE_FROM_THE_LIST: `Choose from the list`,
-  MESSAGE_SENT_ALERT_HEADER: `Ваша відповідь була надіслана помічнику.`,
+  MESSAGE_SENT_ALERT_HEADER: `Your message has been sent to the helping person.`,
   MESSAGE_SENT_ALERT_CONTENT: `We sent the confirmation to your e-mail address.`,
   ERROR_MIN_DATE: `Please enter a later date.`,
   AND: `and`,
