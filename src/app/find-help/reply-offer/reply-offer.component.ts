@@ -30,9 +30,9 @@ export class ReplyOfferComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.authService.isLoggedIn()) {
-      this.data.tosApproved = false;
-    } else {
       this.data.tosApproved = true;
+    } else {
+      this.data.tosApproved = false;
     }
 
     this.data.offerId = this.offerId;
