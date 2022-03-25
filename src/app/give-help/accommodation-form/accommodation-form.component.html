@@ -3,25 +3,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <label>
-            <b>{{ "LABEL_OFFER_TITLE" | translate }}</b>
-            <span> {{ "LABEL_OFFER_MAXCHARS" | translate }} *</span>
-          </label>
-          <mat-form-field appearance="outline">
-            <input
-              matInput
-              maxlength="80"
-              placeholder="{{ 'PLACEHOLDER_OFFER_TITLE' | translate }}"
-              required
-              name="title"
-              [(ngModel)]="data.title"
-              #title="ngModel"
-              appOfferTitleValidate
-            />
-            <mat-error>
-              <app-field-error [model]="title"></app-field-error>
-            </mat-error>
-          </mat-form-field>
+          <app-offer-title-input [(value)]="data.title"></app-offer-title-input>
         </div>
       </div>
       <div class="row">
