@@ -20,7 +20,7 @@
     >
       <app-search-result-attribute
         *ngIf="result.guests"
-        [text]="result.guests + ' ' + (result.guests | pluralizePolish: 'osoba':'osoby':'osób')"
+        [text]="('NUMBER_OF_PEOPLE' | translate) + ': ' + result.guests"
         icon="person"
       ></app-search-result-attribute>
       <app-search-result-attribute

@@ -27,7 +27,7 @@
       ></app-search-result-attribute>
       <app-search-result-attribute
         *ngIf="result.capacity"
-        [text]="result.capacity + ' ' + (result.capacity | pluralizePolish: 'osoba':'osoby':'osób')"
+        [text]="('NUMBER_OF_PEOPLE' | translate) + ': ' + result.capacity"
         icon="person"
       ></app-search-result-attribute>
     </app-search-result>

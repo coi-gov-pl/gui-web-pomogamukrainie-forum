@@ -20,6 +20,15 @@ export enum LanguageNames {
   RUSSIAN = 'RUSSIAN',
 }
 
+export enum LengthOfStayLabels {
+  WEEK_1 = 'WEEK_1',
+  WEEK_2 = 'WEEK_2',
+  MONTH_1 = 'MONTH_1',
+  MONTH_2 = 'MONTH_2',
+  MONTH_3 = 'MONTH_3',
+  LONGER = 'LONGER',
+}
+
 export interface Translations {
   [LanguageCode.pl_PL]: {
     [key: string]: string;
