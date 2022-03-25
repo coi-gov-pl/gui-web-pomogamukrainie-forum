@@ -14,7 +14,7 @@ import { MATCH_NON_DIGITS, MATCH_SPACES } from '@app/shared/consts';
   styleUrls: ['./accommodation-form.component.scss'],
 })
 export class AccommodationFormComponent {
-  phonePrefix: string = '48';
+  phonePrefix: string = '';
   phoneNumber: string = '';
   LENGTHOFSTAY = LENGTHOFSTAY;
   LANGUAGES = LANGUAGES;
