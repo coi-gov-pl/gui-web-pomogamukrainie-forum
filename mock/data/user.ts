@@ -70,7 +70,47 @@ export const userOffers: OffersBaseOffer = {
       phoneNumber: '48891234567',
       type: 'ACCOMMODATION',
     },
+    {
+      id: 234,
+      userFirstName: 'Stefan',
+      title: 'Darmowy transport na granicę i z granicy z Warszawy i okolic',
+      description:
+        'Darmowy transport z Warszawy i okolic na granicę z Ukraniną i z granicy mam 4 miejsca mam foteliki dla dzieci najleipiej w weekend',
+      modifiedDate: '2022-03-16T14:43:15Z',
+      origin: {
+        region: 'Pomorskie',
+        city: 'Gdańsk',
+      },
+      destination: {
+        region: 'Mazowieckie',
+        city: 'Warszawa',
+      },
+      capacity: 6,
+      transportDate: '2022-03-17',
+      phoneNumber: '48789123457',
+      type: 'TRANSPORT',
+    },
+    {
+      id: 2345,
+      userFirstName: 'Anna',
+      title: 'Darmowy transport na granicę i z granicy z Przemyśla i okolic',
+      description:
+        'Darmowy transport z Przemyśla i okolic na granicę z Ukraniną i z granicy mam 4 miejsca mam foteliki dla dzieci najleipiej w weekend',
+      modifiedDate: '2022-03-16T14:43:15Z',
+      origin: {
+        region: 'Pomorskie',
+        city: 'Gdańsk',
+      },
+      destination: {
+        region: 'Podkarpackie',
+        city: 'Warszawa',
+      },
+      capacity: 5,
+      transportDate: '2022-03-18',
+      phoneNumber: '48789123458',
+      type: 'TRANSPORT',
+    },
   ],
-  totalElements: 3,
-  totalPages: 1,
+  totalElements: 6,
+  totalPages: 2,
 };

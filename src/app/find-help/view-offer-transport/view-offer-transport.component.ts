@@ -16,7 +16,7 @@ export class ViewOfferTransportComponent implements OnInit {
   data = defaults<TransportOffer>();
   categoryRouteName = CategoryRoutingName.TRANSPORT;
   redirectedFromAccount: boolean;
-  originalAccountQueryParams: Params;
+  originalAccountQueryParams?: Params;
   constructor(
     private router: Router,
     private route: ActivatedRoute,
