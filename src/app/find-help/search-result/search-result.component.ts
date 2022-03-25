@@ -34,6 +34,7 @@ export class SearchResultComponent implements OnChanges {
 
   onViewOffer() {
     if (this.offerId) {
+      console.warn(this.route.snapshot);
       this.router.navigate([CorePath.Find, this.category, this.offerId], {
         state: { redirectFromAccount: this.fromMyAccount, queryParams: this.route.snapshot.queryParams },
       });
