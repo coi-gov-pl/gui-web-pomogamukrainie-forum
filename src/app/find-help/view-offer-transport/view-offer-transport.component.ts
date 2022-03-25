@@ -5,7 +5,6 @@ import { CategoryRoutingName } from '@app/shared/models';
 import { defaults } from '@app/shared/utils';
 import { CorePath } from '@app/shared/models';
 import { UrlHelperService } from '@app/core/url';
-import { ViewportScroller } from '@angular/common';
 
 @Component({
   selector: 'app-view-offer-transport',
@@ -22,8 +21,7 @@ export class ViewOfferTransportComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private transportResourceService: TransportResourceService,
-    private urlHelperService: UrlHelperService,
-    private viewportScroller: ViewportScroller
+    private urlHelperService: UrlHelperService
   ) {
     // https://stackoverflow.com/questions/54891110/router-getcurrentnavigation-always-returns-null
     // in constructor, because null will be returned in ngOnInit
@@ -32,7 +30,6 @@ export class ViewOfferTransportComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.viewportScroller.scrollToPosition([0, 0]);
     this.offerId = Number(this.route.snapshot.paramMap.get('id'));
     this.getTransportOffer();
   }
