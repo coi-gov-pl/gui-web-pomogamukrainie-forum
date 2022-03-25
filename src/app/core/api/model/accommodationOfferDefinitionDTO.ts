@@ -30,9 +30,11 @@ export namespace AccommodationOfferDefinitionDTO {
     Month3: 'MONTH_3' as LengthOfStayEnum,
     Longer: 'LONGER' as LengthOfStayEnum,
   };
-  export type HostLanguageEnum = 'UA' | 'PL';
+  export type HostLanguageEnum = 'UA' | 'PL' | 'EN' | 'RU';
   export const HostLanguageEnum = {
     Ua: 'UA' as HostLanguageEnum,
     Pl: 'PL' as HostLanguageEnum,
+    En: 'EN' as HostLanguageEnum,
+    Ru: 'RU' as HostLanguageEnum,
   };
 }
