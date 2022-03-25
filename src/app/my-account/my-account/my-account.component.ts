@@ -62,7 +62,8 @@ export class MyAccountComponent implements OnInit {
     });
   }
 
-  removeAnnouncement(announcement: AccommodationOffer | MaterialAidOffer | TransportOffer): void {
+  removeAnnouncement(announcement: AccommodationOffer | MaterialAidOffer | TransportOffer, $event: MouseEvent): void {
+    $event.stopPropagation();
     const dialogRef: MatDialogRef<ConfirmRemoveAdComponent> = this.dialog.open(ConfirmRemoveAdComponent, {
       hasBackdrop: true,
       width: '100%',
