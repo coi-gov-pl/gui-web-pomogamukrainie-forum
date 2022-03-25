@@ -144,7 +144,7 @@ export default {
   ITEM_OF_PAGE: `Оголошення на сторінці`,
   NEXT_PAGE: `Наступна сторінка`,
   PREVIOUS_PAGE: `Попередня сторінка`,
-  PAGE_OF: `З`,
+  PAGE_OF: `з`,
   SELECT_PAGE: `Обрати сторінку`,
   CHOOSE_FROM_THE_LIST: `Обрати зі списку`,
   MESSAGE_SENT_ALERT_HEADER: `Ваша відповідь була надіслана помічнику.`,
