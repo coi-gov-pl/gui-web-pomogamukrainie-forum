@@ -41,7 +41,11 @@ export class TransportFormComponent {
 
   submitOffer(): void {
     this.loading = true;
-    this.phoneNumber ? this.preparePhoneNumber() : null;
+    if (this.phoneNumber) {
+      this.preparePhoneNumber();
+    } else {
+      this.data.phoneNumber = undefined;
+    }
     this.transportResourceService
       .createTransport(this.data)
       .pipe(take(1))
