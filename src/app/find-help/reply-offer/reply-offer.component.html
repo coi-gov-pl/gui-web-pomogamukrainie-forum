@@ -60,20 +60,18 @@
           </mat-error>
         </mat-form-field>
       </div>
-      <div class="row mt-3 mb-3">
-        <span *ngIf="!authService.isLoggedIn()">
-          <mat-checkbox
-            required
-            color="primary"
-            appearance="outline"
-            [(ngModel)]="data.tosApproved"
-            (change)="onConsentChange()"
-            name="consent"
-          >
-            {{ "ACCEPT" | translate }}
-            <app-policy-link [denominator]="false"></app-policy-link>
-          </mat-checkbox>
-        </span>
+      <div *ngIf="!authService.isLoggedIn()" class="row mt-3 mb-3">
+        <mat-checkbox
+          required
+          color="primary"
+          appearance="outline"
+          [(ngModel)]="data.tosApproved"
+          (change)="onConsentChange()"
+          name="consent"
+        >
+          {{ "ACCEPT" | translate }}
+          <app-policy-link [denominator]="false"></app-policy-link>
+        </mat-checkbox>
       </div>
       <div class="d-flex flex-column flex-xl-row">
         <div *ngIf="helpersPhoneNumber" class="m-2 m-xl-2">
