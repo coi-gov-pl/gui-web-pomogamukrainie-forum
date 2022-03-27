@@ -11,8 +11,6 @@ import { ReplyOfferComponent } from './reply-offer.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FieldErrorModule } from '@app/shared/components';
 import { ValidatorsDirectivesModule } from '@app/shared/validators';
-import { RECAPTCHA_V3_SITE_KEY, RecaptchaV3Module, RECAPTCHA_BASE_URL } from 'ng-recaptcha';
-import { environment } from 'src/environments/environment';
 import { PolicyLinkModule } from '@app/shared/components/policy-link/policy-link.module';
 
 @NgModule({
@@ -29,19 +27,8 @@ import { PolicyLinkModule } from '@app/shared/components/policy-link/policy-link
     MatIconModule,
     FieldErrorModule,
     ValidatorsDirectivesModule,
-    RecaptchaV3Module,
     PolicyLinkModule,
   ],
   exports: [ReplyOfferComponent],
-  providers: [
-    {
-      provide: RECAPTCHA_V3_SITE_KEY,
-      useValue: environment.recaptcha.siteKey,
-    },
-    {
-      provide: RECAPTCHA_BASE_URL,
-      useValue: 'https://www.google.com/recaptcha/enterprise.js',
-    },
-  ],
 })
 export class ReplyOfferModule {}
