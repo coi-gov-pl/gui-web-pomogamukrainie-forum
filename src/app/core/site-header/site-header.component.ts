@@ -46,14 +46,12 @@ export class SiteHeaderComponent implements AfterViewInit {
   @ViewChild('navbarSupportedContent', { read: ElementRef }) navBar!: ElementRef<HTMLElement>;
 
   ngAfterViewInit(): void {
-    const self = this;
-
-    this.navBar.nativeElement.addEventListener('shown.bs.collapse', function () {
-      self.isOpen = true;
+    this.navBar.nativeElement.addEventListener('shown.bs.collapse', () => {
+      this.isOpen = true;
     });
 
-    this.navBar.nativeElement.addEventListener('hidden.bs.collapse', function () {
-      self.isOpen = false;
+    this.navBar.nativeElement.addEventListener('hidden.bs.collapse', () => {
+      this.isOpen = false;
     });
   }
 
