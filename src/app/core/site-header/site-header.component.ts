@@ -4,6 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { LanguageCode } from '@app/core/translations';
 import { CorePath, LocalStorageKeys } from '@app/shared/models';
 import { AuthService } from '@app/core/auth';
+import { ViewportScroller } from '@angular/common';
 
 interface Language {
   code: LanguageCode;
@@ -33,7 +34,8 @@ export class SiteHeaderComponent {
   constructor(
     private router: Router,
     private translateService: TranslateService,
-    public readonly authService: AuthService
+    public readonly authService: AuthService,
+    private viewportScroller: ViewportScroller
   ) {
     this.translateService.onLangChange.subscribe((params) => {
       localStorage.setItem(LocalStorageKeys.LangOption, params.lang);
@@ -78,5 +80,11 @@ export class SiteHeaderComponent {
 
   public get isAccountUrl(): boolean {
     return this.router.url.includes(CorePath.MyAccount);
+  }
+
+  viewStatement() {
+    this.router.navigate([CorePath.Statement]).then(() => {
+      this.viewportScroller.scrollToPosition([0, 0]);
+    });
   }
 }
