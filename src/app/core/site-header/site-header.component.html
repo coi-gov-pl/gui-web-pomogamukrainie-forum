@@ -24,7 +24,11 @@
         </span>
       </div>
       <div class="d-flex flex-row">
-        <div class="navbar-item dropdown header-element">
+        <div
+          class="navbar-item dropdown header-element"
+          [ngClass]="isMobileOrSubPage() ? 'mobile-subpage' : 'desktop'"
+          *ngIf="!this.isOpen"
+        >
           <a
             class="navbar-link dropdown-toggle"
             href="#"
