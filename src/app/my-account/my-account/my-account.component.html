@@ -44,11 +44,9 @@
             icon="translate"
           ></app-search-result-attribute>
 
-          <div class="pt-2 pt-sm-0 ps-sm-2" buttons (click)="removeAnnouncement(announcement, $event)">
-            <button type="button" class="btn btn-light btn-sm">
-              {{ "REMOVE_ANNOUNCEMENT" | translate }}
-            </button>
-          </div>
+          <button type="button" class="btn btn-light btn-sm" (click)="removeAnnouncement(announcement, $event)">
+            {{ "REMOVE_ANNOUNCEMENT" | translate }}
+          </button>
         </app-search-result>
 
         <app-search-result

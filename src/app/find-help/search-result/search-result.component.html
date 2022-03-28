@@ -1,31 +1,33 @@
-<mat-card class="result" (click)="onViewOffer()">
-  <div class="attributes">
-    <app-search-result-attribute
-      *ngIf="location && !destination"
-      [text]="location.city"
-      icon="location_on"
-    ></app-search-result-attribute>
-    <app-search-result-attribute *ngIf="origin && destination" icon="location_on">
-      <span class="text-with-icon">
-        <span class="text-capitalize">{{ origin.city }}</span>
-        <mat-icon fontSet="material-icons-outlined" class="mx-3">arrow_forward</mat-icon>
-        <span class="text-capitalize">{{ destination.city }}</span>
-      </span>
-    </app-search-result-attribute>
-    <div class="right opacity-50" *ngIf="posted">{{ postedDate | date: "dd/MM/yyyy" }}</div>
-  </div>
-  <div class="d-sm-flex">
-    <a role="button" class="flex-fill link">
-      <h4 class="text-start text-break">{{ title }}</h4>
-      <div class="attributes">
-        <ng-content select="app-search-result-attribute"></ng-content>
-      </div>
-      <div class="description text-start text-break">
-        {{ description }}
-      </div>
-    </a>
-    <div>
-      <ng-content select="[buttons]"></ng-content>
+<a (click)="onViewOffer()">
+  <mat-card class="result">
+    <div class="attributes">
+      <app-search-result-attribute
+        *ngIf="location && !destination"
+        [text]="location.city"
+        icon="location_on"
+      ></app-search-result-attribute>
+      <app-search-result-attribute *ngIf="origin && destination" icon="location_on">
+        <span class="text-with-icon">
+          <span class="text-capitalize">{{ origin.city }}</span>
+          <mat-icon fontSet="material-icons-outlined" class="mx-3">arrow_forward</mat-icon>
+          <span class="text-capitalize">{{ destination.city }}</span>
+        </span>
+      </app-search-result-attribute>
+      <div class="right opacity-50" *ngIf="posted">{{ postedDate | date: "dd/MM/yyyy" }}</div>
     </div>
-  </div>
-</mat-card>
+    <div class="d-sm-flex">
+      <div class="flex-fill link">
+        <h4 class="text-start text-break">{{ title }}</h4>
+        <div class="attributes">
+          <ng-content select="app-search-result-attribute"></ng-content>
+        </div>
+        <div class="description text-start text-break">
+          {{ description }}
+        </div>
+      </div>
+      <div>
+        <ng-content select="[buttons]"></ng-content>
+      </div>
+    </div>
+  </mat-card>
+</a>
