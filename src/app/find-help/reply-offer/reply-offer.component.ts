@@ -1,4 +1,13 @@
-import { ChangeDetectorRef, Component, ElementRef, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  Input,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { defaults } from '@app/shared/utils';
 import { SendMessageDTO, MessageResourceService } from '@app/core/api';
 import { SnackbarService } from '@app/shared/services';
@@ -6,14 +15,14 @@ import { ALERT_TYPES } from '@app/shared/models';
 import { AuthService } from '@app/core/auth';
 import { environment } from 'src/environments/environment';
 import { RecaptchaLoaderService, ReCaptchaV3Service } from 'ng-recaptcha';
-import { Subscription } from 'rxjs';
+import { Subject, Subscription, take, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-reply-offer',
   templateUrl: './reply-offer.component.html',
   styleUrls: ['./reply-offer.component.scss'],
 })
-export class ReplyOfferComponent implements OnInit, OnDestroy {
+export class ReplyOfferComponent implements OnInit, OnDestroy, AfterViewInit {
   today: Date = new Date();
   data = defaults<SendMessageDTO>();
   @Input() offerId!: number;
@@ -26,7 +35,7 @@ export class ReplyOfferComponent implements OnInit, OnDestroy {
   @ViewChild('captchaContainer', { read: ElementRef }) public captchaContainer!: ElementRef<HTMLDivElement>;
   widgetId: number | null = null;
   captchaToken!: string;
-  subExecute$!: Subscription;
+  subCaptcha$: Subject<boolean> = new Subject<boolean>();
 
   constructor(
     private messageResourceService: MessageResourceService,
@@ -39,10 +48,13 @@ export class ReplyOfferComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     // we do nothing, service must be included
-    this.subExecute$ = this.reCaptchaV3Service.onExecute.subscribe();
-    this.recaptchaLoaderService.ready.subscribe(() => this.showCaptcha());
+    this.reCaptchaV3Service.onExecute.pipe(takeUntil(this.subCaptcha$)).subscribe();
     this.data.tosApproved = this.authService.isLoggedIn();
     this.data.offerId = this.offerId;
+  }
+
+  ngAfterViewInit(): void {
+    this.recaptchaLoaderService.ready.pipe(takeUntil(this.subCaptcha$)).subscribe(() => this.showCaptcha());
   }
 
   onConsentChange(): void {
@@ -98,8 +110,7 @@ export class ReplyOfferComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if (this.subExecute$) {
-      this.subExecute$.unsubscribe();
-    }
+    this.subCaptcha$.next(true);
+    this.subCaptcha$.unsubscribe();
   }
 }

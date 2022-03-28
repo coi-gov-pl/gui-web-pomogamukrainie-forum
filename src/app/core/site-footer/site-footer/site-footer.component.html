@@ -19,7 +19,7 @@
         <a href="https://pomagamukrainie.gov.pl/konwoj" class="navbar-item">{{ "HUMANITY_TRANSPORT" | translate }}</a>
         <a [routerLink]="corePath.Statement" class="navbar-item">{{ "STATEMENT" | translate }}</a>
         <app-policy-link [denominator]="true"></app-policy-link>
-        <a [routerLink]="[corePath.About]" class="navbar-item">{{ "ABOUT_APP" | translate }}</a>
+        <a (click)="viewAbout()" class="navbar-item">{{ "ABOUT_APP" | translate }}</a>
       </nav>
     </div>
   </div>
