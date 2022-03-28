@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, ElementRef, HostListener, AfterViewInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageCode } from '@app/core/translations';
@@ -16,7 +16,7 @@ interface Language {
   templateUrl: './site-header.component.html',
   styleUrls: ['./site-header.component.scss'],
 })
-export class SiteHeaderComponent {
+export class SiteHeaderComponent implements AfterViewInit {
   isOpen: boolean = false;
   scrolled: boolean = false;
 
@@ -43,6 +43,20 @@ export class SiteHeaderComponent {
     });
   }
 
+  @ViewChild('navbarSupportedContent', { read: ElementRef }) navBar!: ElementRef<HTMLElement>;
+
+  ngAfterViewInit(): void {
+    const self = this;
+
+    this.navBar.nativeElement.addEventListener('shown.bs.collapse', function () {
+      self.isOpen = true;
+    });
+
+    this.navBar.nativeElement.addEventListener('hidden.bs.collapse', function () {
+      self.isOpen = false;
+    });
+  }
+
   getActiveLanguage(langCode: keyof typeof LanguageCode) {
     return this.languages.find((lang: Language) => lang.code === langCode);
   }
@@ -63,10 +77,6 @@ export class SiteHeaderComponent {
     return {
       opened: this.isOpen,
     };
-  }
-
-  onToggle() {
-    this.isOpen = !this.isOpen;
   }
 
   closeMenu() {
