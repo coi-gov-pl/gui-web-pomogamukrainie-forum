@@ -52,9 +52,20 @@ export class SiteHeaderComponent {
 
   getHeaderClass() {
     return {
-      transparent: this.router.url === '/',
+      transparent: !this.isMobileOrSubPage(),
       solid: this.router.url !== '/' || this.isOpen || this.scrolled,
     };
+  }
+
+  public isMobileOrSubPage(): boolean {
+    const isMobile: boolean = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    );
+
+    if (isMobile) {
+      return isMobile;
+    }
+    return this.router.url !== '/';
   }
 
   getMenuClass() {
