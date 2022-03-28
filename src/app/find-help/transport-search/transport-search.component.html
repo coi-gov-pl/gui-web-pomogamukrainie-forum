@@ -1,3 +1,11 @@
+<app-breadcrumb></app-breadcrumb>
+<header class="text-center mb-3">
+  <p class="font-small font-yellow fw-bold mb-1">{{ "HELPUA" | translate }}</p>
+  <h1 class="header-2 font-darkblue fw-bold">{{ "SEARCH_FOR_HELP" | translate }}</h1>
+</header>
+
+<app-category-navigation class="mb-4" [outputPath]="corePath.Find"></app-category-navigation>
+
 <mat-card #transportResultsStart>
   <app-transport-search-form (search)="search($event)"></app-transport-search-form>
 </mat-card>

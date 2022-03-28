@@ -21,6 +21,7 @@ import {
   SortingHeaderModule,
 } from '@app/shared/components';
 import { MaterialAidSearchFormComponent } from './material-aid-search-form/material-aid-search-form.component';
+import { SharedModule } from '@app/shared/shared.module';
 
 @NgModule({
   declarations: [MaterialAidSearchComponent, MaterialAidSearchFormComponent],
@@ -44,6 +45,7 @@ import { MaterialAidSearchFormComponent } from './material-aid-search-form/mater
     NoResultsModule,
     PaginatorModule,
     SortingHeaderModule,
+    SharedModule,
   ],
 })
 export class MaterialAidSearchModule {}
