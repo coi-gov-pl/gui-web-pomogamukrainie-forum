@@ -44,13 +44,6 @@ const routes: Routes = [
     },
   },
   {
-    path: CorePath.Statement,
-    loadChildren: () => import('./statement/statement.module').then((m) => m.StatementModule),
-    data: {
-      title: BreadcrumbLabels.STATEMENT,
-    },
-  },
-  {
     path: '**',
     component: PageNotFoundComponent,
     loadChildren: () =>
