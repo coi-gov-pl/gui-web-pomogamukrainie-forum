@@ -22,7 +22,6 @@ import { CategoryNavigationComponentModule } from '@app/shared/components';
     MaterialAidSearchModule,
     TranslateModule,
     SharedModule,
-    CategoryNavigationComponentModule,
   ],
 })
 export class FindHelpModule {}

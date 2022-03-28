@@ -23,6 +23,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ReplyOfferModule } from '../reply-offer/reply-offer.module';
 import { ValidatorsDirectivesModule } from '@app/shared/validators';
+import { SharedModule } from '@app/shared/shared.module';
 
 @NgModule({
   declarations: [AccommodationSearchFormComponent, AccommodationSearchComponent],
@@ -58,6 +59,7 @@ import { ValidatorsDirectivesModule } from '@app/shared/validators';
     ValidatorsDirectivesModule,
     SortingHeaderModule,
     FieldErrorModule,
+    SharedModule,
   ],
 })
 export class AccommodationSearchModule {}

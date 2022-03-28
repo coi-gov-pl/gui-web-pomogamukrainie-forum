@@ -12,6 +12,7 @@ import { ReplyOfferModule } from '../reply-offer/reply-offer.module';
 import { ViewOfferMaterialAidComponent } from './view-offer-material-aid.component';
 import { ViewOfferMaterialAidRoutingModule } from './view-offer-material-aid.routing.module';
 import { BackToListModule } from '@app/shared/components/back-to-list/back-to-list.module';
+import { SharedModule } from '@app/shared/shared.module';
 
 @NgModule({
   declarations: [ViewOfferMaterialAidComponent],
@@ -28,6 +29,7 @@ import { BackToListModule } from '@app/shared/components/back-to-list/back-to-li
     ReplyOfferModule,
     ViewOfferMaterialAidRoutingModule,
     BackToListModule,
+    SharedModule,
   ],
   exports: [ViewOfferMaterialAidComponent],
 })
