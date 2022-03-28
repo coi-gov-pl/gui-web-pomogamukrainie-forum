@@ -74,7 +74,7 @@
                 data-bs-toggle="collapse"
                 data-bs-target=".navbar-collapse.show"
               >
-                <a (click)="viewStatement()" class="btn btn-outline-light">
+                <a [routerLink]="[corePath.MyAccount]" class="btn btn-outline-light">
                   <mat-icon class="button-icon" fontSet="material-icons-outlined">account_circle</mat-icon>
                   <span class="button-title">{{ "LOGIN" | translate }}</span>
                 </a>
