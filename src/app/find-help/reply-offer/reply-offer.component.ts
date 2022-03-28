@@ -1,20 +1,19 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { defaults } from '@app/shared/utils';
 import { SendMessageDTO, MessageResourceService } from '@app/core/api';
 import { SnackbarService } from '@app/shared/services';
 import { ALERT_TYPES } from '@app/shared/models';
-import { take } from 'rxjs/operators';
 import { AuthService } from '@app/core/auth';
 import { environment } from 'src/environments/environment';
-
-declare var grecaptcha: any;
+import { RecaptchaLoaderService, ReCaptchaV3Service } from 'ng-recaptcha';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-reply-offer',
   templateUrl: './reply-offer.component.html',
   styleUrls: ['./reply-offer.component.scss'],
 })
-export class ReplyOfferComponent implements OnInit {
+export class ReplyOfferComponent implements OnInit, OnDestroy {
   today: Date = new Date();
   data = defaults<SendMessageDTO>();
   @Input() offerId!: number;
@@ -23,17 +22,25 @@ export class ReplyOfferComponent implements OnInit {
   showPhoneNumber: boolean = false;
   loading: boolean = false;
 
+  /** captcha */
   @ViewChild('captchaContainer', { read: ElementRef }) public captchaContainer!: ElementRef<HTMLDivElement>;
   widgetId: number | null = null;
   captchaToken!: string;
+  subExecute$!: Subscription;
 
   constructor(
     private messageResourceService: MessageResourceService,
     private snackbarService: SnackbarService,
-    public readonly authService: AuthService
+    public readonly authService: AuthService,
+    private readonly reCaptchaV3Service: ReCaptchaV3Service,
+    private recaptchaLoaderService: RecaptchaLoaderService,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
+    // we do nothing, service must be included
+    this.subExecute$ = this.reCaptchaV3Service.onExecute.subscribe();
+    this.recaptchaLoaderService.ready.subscribe(() => this.showCaptcha());
     this.data.tosApproved = this.authService.isLoggedIn();
     this.data.offerId = this.offerId;
   }
@@ -43,16 +50,12 @@ export class ReplyOfferComponent implements OnInit {
   }
 
   onPhoneNumberClick(): void {
-    if (this.existWidgetAndToken()) {
-      this.showPhoneNumber = true;
-    } else {
-      this.showCaptcha();
-    }
+    this.showPhoneNumber = true;
   }
 
   resetCaptcha(): void {
     if ('grecaptcha' in window) {
-      grecaptcha.enterprise.reset(this.widgetId);
+      grecaptcha.enterprise.reset(this.widgetId as number);
     }
     this.captchaToken = '';
   }
@@ -65,7 +68,10 @@ export class ReplyOfferComponent implements OnInit {
     if (this.widgetId === null && 'grecaptcha' in window) {
       this.widgetId = grecaptcha.enterprise.render(this.captchaContainer.nativeElement, {
         sitekey: environment.recaptcha.siteKey,
-        callback: (token: string) => (this.captchaToken = token),
+        callback: (token: string) => {
+          this.captchaToken = token;
+          this.cdr.detectChanges();
+        },
         'error-callback': () => (this.captchaToken = ''),
         'expired-callback': () => (this.captchaToken = ''),
       });
@@ -74,17 +80,14 @@ export class ReplyOfferComponent implements OnInit {
 
   submitMessage(): void {
     if (this.existWidgetAndToken()) {
-      this.sendMessage(this.captchaToken);
-    } else {
-      this.showCaptcha();
+      this.sendMessage();
     }
   }
 
-  sendMessage(token: string): void {
+  sendMessage(): void {
     this.loading = true;
     this.messageResourceService
-      .sendMessageMessage(this.data, token)
-      .pipe(take(1))
+      .sendMessageMessage(this.data, this.captchaToken)
       .subscribe(
         () => this.snackbarService.openSnackAlert(ALERT_TYPES.MESSAGE_SENT),
         () => this.resetCaptcha()
@@ -92,5 +95,11 @@ export class ReplyOfferComponent implements OnInit {
       .add(() => {
         this.loading = false;
       });
+  }
+
+  ngOnDestroy(): void {
+    if (this.subExecute$) {
+      this.subExecute$.unsubscribe();
+    }
   }
 }

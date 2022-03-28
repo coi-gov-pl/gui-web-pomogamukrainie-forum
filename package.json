@@ -35,6 +35,7 @@
     "angular-oauth2-oidc": "~13.0.1",
     "bootstrap": "^5.1.3",
     "moment": "^2.29.1",
+    "ng-recaptcha": "^9.0.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

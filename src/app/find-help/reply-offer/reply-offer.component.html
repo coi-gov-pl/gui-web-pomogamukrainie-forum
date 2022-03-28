@@ -74,6 +74,14 @@
         </mat-checkbox>
       </div>
       <div #captchaContainer></div>
+      <button
+        type="button"
+        *ngIf="widgetId !== null"
+        class="btn btn-link h-auto reset-captcha p-0 m-0"
+        (click)="resetCaptcha()"
+      >
+        {{ "RESET_CAPTCHA" | translate }}
+      </button>
       <div class="d-flex flex-column flex-xl-row">
         <div *ngIf="helpersPhoneNumber" class="m-2 m-xl-2">
           <button class="btn btn-secondary phone" type="button" (click)="onPhoneNumberClick()">
@@ -85,7 +93,7 @@
           </button>
         </div>
         <div class="m-2 m-xl-2">
-          <button class="btn btn-primary" type="submit" [disabled]="!messageForm.valid">
+          <button class="btn btn-primary" type="submit" [disabled]="!messageForm.valid || !existWidgetAndToken()">
             <mat-icon fontSet="material-icons-outlined">send</mat-icon>
             <div>{{ "BUTTON_SEND_MESSAGE" | translate }}</div>
           </button>
