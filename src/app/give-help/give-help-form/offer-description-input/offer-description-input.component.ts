@@ -6,7 +6,7 @@ import { ControlContainer, NgForm } from '@angular/forms';
   selector: 'app-offer-description-input',
   templateUrl: './offer-description-input.component.html',
   styleUrls: ['./offer-description-input.component.scss'],
-    // Needed to attach the input to the parent form.
+  // Needed to attach the input to the parent form.
   viewProviders: [{ provide: ControlContainer, useExisting: NgForm }],
 })
 export class OfferDescriptionInputComponent {

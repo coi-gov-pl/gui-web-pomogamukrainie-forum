@@ -9,10 +9,22 @@ import { MatInputModule } from '@angular/material/input';
 import { FieldErrorModule } from '@app/shared/components';
 import { ValidatorsDirectivesModule } from '@app/shared/validators';
 import { OfferDescriptionInputComponent } from './offer-description-input/offer-description-input.component';
+import { OfferPhoneNumberInputComponent } from './offer-phone-number-input/offer-phone-number-input.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
-  declarations: [PublishAdButtonComponent, OfferTitleInputComponent, OfferDescriptionInputComponent],
-  exports: [PublishAdButtonComponent, OfferTitleInputComponent, OfferDescriptionInputComponent],
+  declarations: [
+    PublishAdButtonComponent,
+    OfferTitleInputComponent,
+    OfferDescriptionInputComponent,
+    OfferPhoneNumberInputComponent,
+  ],
+  exports: [
+    PublishAdButtonComponent,
+    OfferTitleInputComponent,
+    OfferDescriptionInputComponent,
+    OfferPhoneNumberInputComponent,
+  ],
   imports: [
     CommonModule,
     FormsModule,
@@ -21,6 +33,7 @@ import { OfferDescriptionInputComponent } from './offer-description-input/offer-
     MatInputModule,
     FieldErrorModule,
     ValidatorsDirectivesModule,
+    MatSelectModule,
   ],
 })
 export class GiveHelpFormModule {}

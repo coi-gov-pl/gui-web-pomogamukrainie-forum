@@ -59,37 +59,8 @@
         <div class="col-lg-7 mb-3">
           <app-offer-description-input [(value)]="data.description"></app-offer-description-input>
         </div>
-        <div class="col-md-2">
-          <label
-            ><b>{{ "LABEL_PHONE_NUMBER" | translate }}</b></label
-          >
-          <mat-form-field appearance="outline">
-            <mat-select placeholder="{{ 'PLACEHOLDER_CHOOSE' | translate }}" [(ngModel)]="phonePrefix" name="prefix">
-              <mat-option *ngFor="let prefix of PREFIXES" [value]="prefix.prefix">{{ prefix.prefix }}</mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
-        <div class="col-md-3">
-          <label>&nbsp;</label>
-          <mat-form-field appearance="outline" class="phoneInut">
-            <input
-              placeholder="{{ 'PLACEHOLDER_TYPE' | translate }}"
-              matInput
-              type="text"
-              name="phone"
-              #phoneInput
-              (input)="onPhoneNumberChange($event)"
-              [(ngModel)]="phoneNumber"
-              appPhoneValidate
-              minlength="7"
-              maxlength="15"
-              inputmode="numeric"
-              #phoneNumberModel="ngModel"
-            />
-            <mat-error>
-              <app-field-error [model]="phoneNumberModel"></app-field-error>
-            </mat-error>
-          </mat-form-field>
+        <div class="col-md-5">
+          <app-offer-phone-number-input (phoneNumberChange)="data.phoneNumber = $event"></app-offer-phone-number-input>
         </div>
         <div class="col-lg-3 publish">
           <app-publish-ad-button></app-publish-ad-button>
