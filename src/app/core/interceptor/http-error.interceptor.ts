@@ -13,7 +13,7 @@ import { AllOffersMapper, offerMapper } from './field-mapper';
  *  type: 'OBJECT' -> (with field 'offer') -> offer not found
  */
 interface ApiErrors {
-  field: 'string' | 'recaptcha-response';
+  field: 'string' | 'recaptcha-response' | 'replyEmail';
   message: string;
   type: 'FIELD' | 'USER' | 'OBJECT';
 }
@@ -39,10 +39,10 @@ export class HttpErrorInterceptor implements HttpInterceptor {
         try {
           const firstError: ApiErrors = (req.error.errors as ApiErrors[])[0];
           // save offer error
-          if (firstError.type === 'FIELD' && firstError.field !== 'recaptcha-response') {
+          if (firstError.type === 'FIELD' && !['replyEmail', 'recaptcha-response'].includes(firstError.field)) {
             this.listNotifications(req);
             // captcha error
-          } else if (firstError.field === 'recaptcha-response') {
+          } else if (firstError.field === 'recaptcha-response' || firstError.field === 'replyEmail') {
             this.snackbarService.openSnack(firstError.message, ALERT_TYPES.ERROR);
           }
         } catch {
