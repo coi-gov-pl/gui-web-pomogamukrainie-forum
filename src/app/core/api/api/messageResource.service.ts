@@ -95,49 +95,35 @@ export class MessageResourceService {
 
   /**
    * @param sendMessageDTO
-   * @param recaptchaResponse
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
   public sendMessageMessage(
     sendMessageDTO: SendMessageDTO,
-    recaptchaResponse?: string,
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: undefined; context?: HttpContext }
   ): Observable<any>;
   public sendMessageMessage(
     sendMessageDTO: SendMessageDTO,
-    recaptchaResponse?: string,
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: undefined; context?: HttpContext }
   ): Observable<HttpResponse<any>>;
   public sendMessageMessage(
     sendMessageDTO: SendMessageDTO,
-    recaptchaResponse?: string,
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: undefined; context?: HttpContext }
   ): Observable<HttpEvent<any>>;
   public sendMessageMessage(
     sendMessageDTO: SendMessageDTO,
-    recaptchaResponse?: string,
     observe: any = 'body',
     reportProgress: boolean = false,
     options?: { httpHeaderAccept?: undefined; context?: HttpContext }
   ): Observable<any> {
     if (sendMessageDTO === null || sendMessageDTO === undefined) {
       throw new Error('Required parameter sendMessageDTO was null or undefined when calling sendMessageMessage.');
-    }
-
-    let localVarQueryParameters = new HttpParams({ encoder: this.encoder });
-    if (recaptchaResponse !== undefined && recaptchaResponse !== null) {
-      localVarQueryParameters = this.addToHttpParams(
-        localVarQueryParameters,
-        <any>recaptchaResponse,
-        'recaptcha-response'
-      );
     }
 
     let localVarHeaders = this.defaultHeaders;
@@ -177,7 +163,6 @@ export class MessageResourceService {
 
     return this.httpClient.post<any>(`${this.configuration.basePath}/api/message`, sendMessageDTO, {
       context: localVarHttpContext,
-      params: localVarQueryParameters,
       responseType: <any>responseType_,
       withCredentials: this.configuration.withCredentials,
       headers: localVarHeaders,
