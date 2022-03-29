@@ -12,6 +12,7 @@ import { ReplyOfferModule } from '../reply-offer/reply-offer.module';
 import { ViewOfferTransportComponent } from './view-offer-transport.component';
 import { ViewOfferTransportRoutingModule } from './view-offer-transport.routing.module';
 import { BackToListModule } from '@app/shared/components/back-to-list/back-to-list.module';
+import { SharedModule } from '@app/shared/shared.module';
 
 @NgModule({
   declarations: [ViewOfferTransportComponent],
@@ -28,6 +29,7 @@ import { BackToListModule } from '@app/shared/components/back-to-list/back-to-li
     ReplyOfferModule,
     ViewOfferTransportRoutingModule,
     BackToListModule,
+    SharedModule,
   ],
   exports: [ViewOfferTransportComponent],
 })

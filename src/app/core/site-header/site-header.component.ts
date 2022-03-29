@@ -92,10 +92,4 @@ export class SiteHeaderComponent {
   public get isAccountUrl(): boolean {
     return this.router.url.includes(CorePath.MyAccount);
   }
-
-  viewStatement() {
-    this.router.navigate([CorePath.Statement]).then(() => {
-      this.viewportScroller.scrollToPosition([0, 0]);
-    });
-  }
 }

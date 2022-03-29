@@ -12,6 +12,7 @@ import { ViewOfferAccommodationComponent } from './view-offer-accommodation.comp
 import { ReplyOfferModule } from '../reply-offer/reply-offer.module';
 import { ViewOfferAccomodationModule } from './view-offer-accommodation.routing.module';
 import { BackToListModule } from '@app/shared/components/back-to-list/back-to-list.module';
+import { SharedModule } from '@app/shared/shared.module';
 
 @NgModule({
   declarations: [ViewOfferAccommodationComponent],
@@ -28,6 +29,7 @@ import { BackToListModule } from '@app/shared/components/back-to-list/back-to-li
     ReplyOfferModule,
     ViewOfferAccomodationModule,
     BackToListModule,
+    SharedModule,
   ],
   exports: [ViewOfferAccommodationComponent],
 })
