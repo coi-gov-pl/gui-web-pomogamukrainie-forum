@@ -15,4 +15,5 @@ export interface SendMessageDTO {
   text?: string;
   replyEmail: string;
   tosApproved: boolean;
+  recaptchaResponse?: string;
 }
