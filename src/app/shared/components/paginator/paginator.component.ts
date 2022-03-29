@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { Pageable } from '@app/core/api';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -12,7 +12,7 @@ import { langChangeSub$ } from './paginator-init';
   styleUrls: ['./paginator.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class PaginatorComponent implements OnInit {
+export class PaginatorComponent implements OnInit, OnDestroy {
   @Input() length: number | undefined;
   @Output() param: EventEmitter<void> = new EventEmitter<void>();
 
