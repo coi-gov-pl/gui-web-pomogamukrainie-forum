@@ -17,7 +17,7 @@ interface Language {
   styleUrls: ['./site-header.component.scss'],
 })
 export class SiteHeaderComponent implements AfterViewInit, OnDestroy {
-  private destroyed$ = new Subject<void>();
+  private destroyed$: Subject<void> = new Subject<void>();
   isOpen: boolean = false;
   scrolled: boolean = false;
 
@@ -61,6 +61,7 @@ export class SiteHeaderComponent implements AfterViewInit, OnDestroy {
 
   ngOnDestroy() {
     this.destroyed$.next();
+    this.destroyed$.unsubscribe();
   }
 
   getActiveLanguage(langCode: keyof typeof LanguageCode) {
