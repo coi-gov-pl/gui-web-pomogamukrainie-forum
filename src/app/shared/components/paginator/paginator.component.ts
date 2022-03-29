@@ -4,6 +4,7 @@ import { Pageable } from '@app/core/api';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { LocalStorageKeys } from '@app/shared/models';
+import { langChangeSub$ } from './paginator-init';
 
 @Component({
   selector: 'app-paginator',
@@ -31,5 +32,9 @@ export class PaginatorComponent implements OnInit {
     localStorage.setItem(LocalStorageKeys.PageSize, JSON.stringify(event.pageSize));
     await this.router.navigate([], { relativeTo: this.route, queryParams: paginator, queryParamsHandling: 'merge' });
     this.param.emit();
+  }
+
+  ngOnDestroy(): void {
+    langChangeSub$.unsubscribe();
   }
 }
