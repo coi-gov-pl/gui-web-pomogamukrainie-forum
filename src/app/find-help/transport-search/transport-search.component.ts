@@ -11,7 +11,6 @@ import { ActivatedRoute } from '@angular/router';
 export class TransportSearchComponent implements OnInit {
   results: TransportOffer[] = [];
   total?: number = undefined;
-  loading = false;
   CategoryRoutingName = CategoryRoutingName;
   corePath = CorePath;
   searchCriteria: TransportOfferSearchCriteria = {};
@@ -39,8 +38,6 @@ export class TransportSearchComponent implements OnInit {
   }
 
   search(searchCriteria?: TransportOfferSearchCriteria) {
-    this.loading = true;
-
     const { page, size, sort } = this.route.snapshot.queryParams;
 
     if (searchCriteria) {
@@ -60,13 +57,11 @@ export class TransportSearchComponent implements OnInit {
       next: (results) => {
         this.results = results.content ?? [];
         this.total = results.totalElements ?? 0;
-        this.loading = false;
         this.resultsStart?.nativeElement?.scrollIntoView();
       },
       error: () => {
         this.results = [];
         this.total = undefined;
-        this.loading = false;
       },
     });
   }

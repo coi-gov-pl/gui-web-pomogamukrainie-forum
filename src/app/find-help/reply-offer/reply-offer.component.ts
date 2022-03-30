@@ -29,7 +29,6 @@ export class ReplyOfferComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input() helpersPhoneNumber?: string | undefined;
   @Input() helpersFirstname: string | undefined;
   showPhoneNumber: boolean = false;
-  loading: boolean = false;
 
   /** captcha */
   @ViewChild('captchaContainer', { read: ElementRef }) public captchaContainer!: ElementRef<HTMLDivElement>;
@@ -97,17 +96,11 @@ export class ReplyOfferComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   sendMessage(): void {
-    this.loading = true;
     this.data.recaptchaResponse = this.captchaToken;
-    this.messageResourceService
-      .sendMessageMessage(this.data)
-      .subscribe(
-        () => this.snackbarService.openSnackAlert(ALERT_TYPES.MESSAGE_SENT),
-        () => this.resetCaptcha()
-      )
-      .add(() => {
-        this.loading = false;
-      });
+    this.messageResourceService.sendMessageMessage(this.data).subscribe(
+      () => this.snackbarService.openSnackAlert(ALERT_TYPES.MESSAGE_SENT),
+      () => this.resetCaptcha()
+    );
   }
 
   ngOnDestroy(): void {

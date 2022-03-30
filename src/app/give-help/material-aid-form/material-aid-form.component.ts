@@ -24,7 +24,6 @@ export class MaterialAidFormComponent {
   PREFIXES = PREFIXES;
   phonePrefix: string = '';
   phoneNumber: string = '';
-  loading: boolean = false;
   @ViewChild('phoneInput') phoneInput!: ElementRef<HTMLInputElement>;
 
   constructor(
@@ -45,7 +44,6 @@ export class MaterialAidFormComponent {
   }
 
   handleSubmit() {
-    this.loading = true;
     if (this.phoneNumber) {
       this.preparePhoneNumber();
     } else {
@@ -54,8 +52,7 @@ export class MaterialAidFormComponent {
     this.materialAidResourceService
       .postMaterialAidOfferMaterialAid(this.data)
       .pipe(take(1))
-      .subscribe(() => this.redirectOnSuccess())
-      .add(() => (this.loading = false));
+      .subscribe(() => this.redirectOnSuccess());
   }
 
   redirectOnSuccess() {
