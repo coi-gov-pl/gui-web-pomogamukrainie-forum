@@ -15,21 +15,28 @@
     </div>
     <h3>{{ data.title }}</h3>
     <div class="row mt-4">
-      <div class="attribute col-md-4">
+      <div class="attribute col-6 col-lg-3">
         <div class="attribute-name fw-bold">{{ "LOCATION" | translate }}</div>
         <div class="d-flex">
           <mat-icon class="yellow-icon --smaill-size" fontSet="material-icons-outlined">place</mat-icon>
           <span class="attribute-value ms-1 text-capitalize">{{ data.location?.city }}</span>
         </div>
       </div>
-      <div class="attribute col-md-4">
+      <div class="attribute col-6 col-lg-3">
         <div class="attribute-name fw-bold">{{ "NUMBER_OF_PEOPLE" | translate }}</div>
         <div class="d-flex">
           <mat-icon class="yellow-icon --smaill-size" fontSet="material-icons-outlined">person</mat-icon>
           <span class="attribute-value ms-1">{{ data.guests }}</span>
         </div>
       </div>
-      <div class="attribute col-md-4">
+      <div class="attribute col-6 col-lg-3">
+        <div class="attribute-name fw-bold">{{ "LABEL_LENGTH_OF_STAY" | translate }}</div>
+        <div class="d-flex">
+          <mat-icon class="yellow-icon --smaill-size" fontSet="material-icons-outlined">timer</mat-icon>
+          <span class="attribute-value ms-1">{{ data.lengthOfStay | translate }}</span>
+        </div>
+      </div>
+      <div class="attribute col-6 col-lg-3">
         <div class="attribute-name fw-bold">{{ "LANGUAGE" | translate }}</div>
         <div class="d-flex">
           <mat-icon class="yellow-icon --smaill-size" fontSet="material-icons-outlined">translate</mat-icon>
