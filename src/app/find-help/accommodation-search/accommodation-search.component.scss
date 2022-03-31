@@ -1,16 +1,7 @@
-.results {
-  &.loading {
-    opacity: 0.3;
-    pointer-events: none;
-  }
-  margin-top: 37px;
-  .total {
-    font-weight: bold;
-    font-size: 12px;
-    margin-bottom: 6px;
-  }
-}
-
 h1 {
   text-align: center;
+}
+
+header {
+  padding: 40px;
 }
