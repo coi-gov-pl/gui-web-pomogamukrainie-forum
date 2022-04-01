@@ -7,10 +7,10 @@ import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
 import { ValidatorsDirectivesModule } from './validators';
-
+import { TruncatePipe } from '@app/shared/pipes';
 @NgModule({
-  declarations: [BreadcrumbComponent],
+  declarations: [BreadcrumbComponent, TruncatePipe],
   imports: [CommonModule, RouterModule, MatIconModule, TranslateModule],
-  exports: [MatCardModule, PomCommonPipesModule, BreadcrumbComponent, ValidatorsDirectivesModule],
+  exports: [MatCardModule, PomCommonPipesModule, BreadcrumbComponent, ValidatorsDirectivesModule, TruncatePipe],
 })
 export class SharedModule {}
