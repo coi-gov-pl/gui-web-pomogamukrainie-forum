@@ -68,7 +68,6 @@ export class MyAccountComponent implements OnInit {
       width: '100%',
       maxHeight: '450px',
       maxWidth: '720px',
-      disableClose: true,
     });
 
     dialogRef.componentInstance.currentAnnouncement = announcement;
