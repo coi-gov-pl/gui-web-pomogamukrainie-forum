@@ -23,8 +23,6 @@ export function displayLocationOption(location?: Location) {
     // ^. - first character of the string
     // \s. - first character after whitespace
     // -. - first character after - (f.e. Kudowa-Zdroj)
-    return value
-      .toLowerCase()
-      .replace(/(^.|\s.|-.)([A-Za-zĄąĆćĘęŁłŃńÓóŚśŹźŻż]*)/g, (_, m1, m2) => m1.toUpperCase() + m2.toLowerCase());
+    return value.toLowerCase().replace(/(^.|\s.|-.)([^-\s]*)/g, (_, m1, m2) => m1.toUpperCase() + m2);
   }
 }
