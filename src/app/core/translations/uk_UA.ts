@@ -18,7 +18,7 @@ export default {
   ADD_AD: `Додай оголошення`,
   WHAT_ARE_YOU_LOOKING_FOR: `Яка вам потрібна допомога?`,
   ACCOMMODATION: `Проживання та житло`,
-  MATERIAL_HELP: `Фінансова допомога`,
+  MATERIAL_HELP: `Матеріальна допомога`,
   TRANSPORT: `Транспорт`,
   HEALTH: `Медицина`,
   LEGAL_HELP: `Юридична допомога`,
