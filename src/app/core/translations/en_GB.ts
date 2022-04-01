@@ -18,7 +18,7 @@ export default {
   ADD_AD: `Post an ad`,
   WHAT_ARE_YOU_LOOKING_FOR: `What do you need?`,
   ACCOMMODATION: `Accomodation and housing`,
-  MATERIAL_HELP: `Financial assistance`,
+  MATERIAL_HELP: `Material aid`,
   TRANSPORT: `Transport`,
   HEALTH: `Health`,
   LEGAL_HELP: `Legal support`,
