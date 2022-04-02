@@ -24,7 +24,7 @@ export class LoadingService {
 
   private show(): void {
     // Hack avoiding `ExpressionChangedAfterItHasBeenCheckedError` error
-    Promise.resolve(null).then(() => {
+    Promise.resolve().then(() => {
       this.overlayRef = this.overlay.create({
         positionStrategy: this.overlay.position().global().centerHorizontally().centerVertically(),
         hasBackdrop: true,

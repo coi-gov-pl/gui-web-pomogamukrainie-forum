@@ -25,3 +25,8 @@ mat-icon {
 .mat-form-field-hint-end {
   margin-right: -0.8em;
 }
+
+.preloader.mat-progress-spinner circle,
+.preloader.mat-spinner circle {
+  stroke: #0c2c65;
+}
