@@ -19,7 +19,6 @@ export class TransportFormComponent {
   phonePrefix: string = '';
   phoneNumber: string = '';
   data = defaults<TransportOfferDefinitionDTO>();
-  loading: boolean = false;
   @ViewChild('phoneInput') phoneInput!: ElementRef<HTMLInputElement>;
 
   constructor(
@@ -40,7 +39,6 @@ export class TransportFormComponent {
   }
 
   submitOffer(): void {
-    this.loading = true;
     if (this.phoneNumber) {
       this.preparePhoneNumber();
     } else {
@@ -49,8 +47,7 @@ export class TransportFormComponent {
     this.transportResourceService
       .createTransport(this.data)
       .pipe(take(1))
-      .subscribe(() => this.redirectOnSuccess())
-      .add(() => (this.loading = false));
+      .subscribe(() => this.redirectOnSuccess());
   }
 
   redirectOnSuccess() {

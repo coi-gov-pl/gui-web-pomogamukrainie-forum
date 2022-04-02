@@ -12,7 +12,6 @@ import { ActivatedRoute } from '@angular/router';
 export class AccommodationSearchComponent implements OnInit {
   results: AccommodationOffer[] = [];
   total?: number = undefined;
-  loading = false;
   categoryRoutingName = CategoryRoutingName;
   corePath = CorePath;
   searchCriteria: AccommodationQuery = {};
@@ -47,8 +46,6 @@ export class AccommodationSearchComponent implements OnInit {
   }
 
   search(searchCriteria?: AccommodationQuery) {
-    this.loading = true;
-
     const { page, size, sort } = this.route.snapshot.queryParams;
     if (searchCriteria) {
       this.searchCriteria.capacity = searchCriteria?.capacity;
@@ -67,13 +64,11 @@ export class AccommodationSearchComponent implements OnInit {
       next: (results) => {
         this.results = results.content ?? [];
         this.total = results.totalElements;
-        this.loading = false;
         this.resultsStart?.nativeElement?.scrollIntoView();
       },
       error: () => {
         this.results = [];
         this.total = undefined;
-        this.loading = false;
       },
     });
   }

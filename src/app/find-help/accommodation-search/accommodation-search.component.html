@@ -10,7 +10,7 @@
   <app-accommodation-search-form (search)="search($event)"></app-accommodation-search-form>
 </mat-card>
 <app-no-results *ngIf="total === 0"></app-no-results>
-<div class="results" *ngIf="this.total" [class.loading]="loading">
+<div class="results" *ngIf="this.total">
   <app-sorting-header
     [header]="'ADVERTISEMENTS_LIST' | translate"
     [total]="total"

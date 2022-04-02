@@ -11,7 +11,6 @@ import { ActivatedRoute } from '@angular/router';
 export class MaterialAidSearchComponent implements OnInit {
   results: MaterialAidOffer[] = [];
   total?: number = undefined;
-  loading = false;
   categoryRoutingName = CategoryRoutingName;
   corePath = CorePath;
   searchCriteria: MaterialAidOfferSearchCriteria = {};
@@ -33,8 +32,6 @@ export class MaterialAidSearchComponent implements OnInit {
   }
 
   search(searchCriteria?: MaterialAidOfferSearchCriteria) {
-    this.loading = true;
-
     const { page, size, sort } = this.route.snapshot.queryParams;
 
     if (searchCriteria) {
@@ -52,13 +49,11 @@ export class MaterialAidSearchComponent implements OnInit {
       next: (results) => {
         this.results = results.content ?? [];
         this.total = results.totalElements ?? 0;
-        this.loading = false;
         this.resultsStart?.nativeElement?.scrollIntoView();
       },
       error: () => {
         this.results = [];
         this.total = undefined;
-        this.loading = false;
       },
     });
   }

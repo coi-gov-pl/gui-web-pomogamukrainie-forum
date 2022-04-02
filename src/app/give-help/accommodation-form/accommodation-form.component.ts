@@ -22,7 +22,6 @@ export class AccommodationFormComponent {
   data = defaults<AccommodationOfferDefinitionDTO>({
     hostLanguage: [],
   });
-  loading: boolean = false;
   @ViewChild('phoneInput') phoneInput!: ElementRef<HTMLInputElement>;
 
   constructor(
@@ -43,7 +42,6 @@ export class AccommodationFormComponent {
   }
 
   submitOffer(): void {
-    this.loading = true;
     if (this.phoneNumber) {
       this.preparePhoneNumber();
     } else {
@@ -52,8 +50,7 @@ export class AccommodationFormComponent {
     this.accommodationsResourceService
       .createAccommodations(this.data)
       .pipe(take(1))
-      .subscribe(() => this.redirectOnSuccess())
-      .add(() => (this.loading = false));
+      .subscribe(() => this.redirectOnSuccess());
   }
 
   redirectOnSuccess() {
