@@ -22,12 +22,25 @@ footer {
     grid-row-gap: 1rem;
     align-items: center;
     img {
-      max-height: 60px;
+      max-height: 50px;
       margin-right: 30px;
     }
     @include media-breakpoint-up(lg) {
       display: flex;
       margin-right: 40px;
+    }
+  }
+
+  .logo-govpl {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--c-black-2);
+    display: inline-block;
+    white-space: nowrap;
+    margin-right: 30px;
+
+    img {
+      margin-right: 11px;
     }
   }
 

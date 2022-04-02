@@ -1,10 +1,10 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, ElementRef, HostListener, ViewChild, OnDestroy, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageCode } from '@app/core/translations';
 import { CorePath, LocalStorageKeys } from '@app/shared/models';
 import { AuthService } from '@app/core/auth';
-import { ViewportScroller } from '@angular/common';
+import { Subject, fromEvent, takeUntil } from 'rxjs';
 
 interface Language {
   code: LanguageCode;
@@ -16,7 +16,8 @@ interface Language {
   templateUrl: './site-header.component.html',
   styleUrls: ['./site-header.component.scss'],
 })
-export class SiteHeaderComponent {
+export class SiteHeaderComponent implements AfterViewInit, OnDestroy {
+  private destroyed$: Subject<void> = new Subject<void>();
   isOpen: boolean = false;
   scrolled: boolean = false;
 
@@ -34,13 +35,33 @@ export class SiteHeaderComponent {
   constructor(
     private router: Router,
     private translateService: TranslateService,
-    public readonly authService: AuthService,
-    private viewportScroller: ViewportScroller
+    public readonly authService: AuthService
   ) {
     this.translateService.onLangChange.subscribe((params) => {
       localStorage.setItem(LocalStorageKeys.LangOption, params.lang);
       this.activeLanguage = this.getActiveLanguage(params.lang as keyof typeof LanguageCode);
     });
+  }
+
+  @ViewChild('navbarSupportedContent', { read: ElementRef }) navBar!: ElementRef<HTMLElement>;
+
+  ngAfterViewInit(): void {
+    fromEvent(this.navBar.nativeElement, 'shown.bs.collapse')
+      .pipe(takeUntil(this.destroyed$))
+      .subscribe(() => {
+        this.isOpen = true;
+      });
+
+    fromEvent(this.navBar.nativeElement, 'hidden.bs.collapse')
+      .pipe(takeUntil(this.destroyed$))
+      .subscribe(() => {
+        this.isOpen = false;
+      });
+  }
+
+  ngOnDestroy() {
+    this.destroyed$.next();
+    this.destroyed$.unsubscribe();
   }
 
   getActiveLanguage(langCode: keyof typeof LanguageCode) {
@@ -74,10 +95,6 @@ export class SiteHeaderComponent {
     return {
       opened: this.isOpen,
     };
-  }
-
-  onToggle() {
-    this.isOpen = !this.isOpen;
   }
 
   closeMenu() {

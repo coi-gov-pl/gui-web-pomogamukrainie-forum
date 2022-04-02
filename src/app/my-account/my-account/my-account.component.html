@@ -1,11 +1,15 @@
-<div class="container">
+<div class="container custom">
   <app-breadcrumb></app-breadcrumb>
   <header>
     <p class="font-small font-yellow fw-bold mb-1">{{ "HELPUA" | translate }}</p>
     <h1 class="header-2 font-darkblue fw-bold">{{ "MY_ACCOUNT" | translate }}</h1>
   </header>
   <section>
-    <p class="text">{{ "ACCOUNT_SETTINGS" | translate }}</p>
+    <div class="container px-0">
+      <div class="col-sm-12">
+        <p class="text">{{ "ACCOUNT_SETTINGS" | translate }}</p>
+      </div>
+    </div>
     <app-my-account-settings></app-my-account-settings>
   </section>
   <div class="d-flex justify-content-center">

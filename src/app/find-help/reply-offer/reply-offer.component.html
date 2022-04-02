@@ -85,7 +85,7 @@
       <div class="d-flex flex-column flex-xl-row">
         <div *ngIf="helpersPhoneNumber" class="m-2 m-xl-2">
           <button class="btn btn-secondary phone" type="button" (click)="onPhoneNumberClick()">
-            <mat-icon class="phone" fontSet="material-icons-outlined">telephone</mat-icon>
+            <mat-icon class="phone me-1" fontSet="material-icons-outlined">telephone</mat-icon>
             <div *ngIf="!showPhoneNumber">{{ "BUTTON_SHOW_TELNO" | translate }}</div>
             <div *ngIf="showPhoneNumber">
               <a href="tel:{{ helpersPhoneNumber }}">{{ helpersPhoneNumber }}</a>
@@ -93,8 +93,8 @@
           </button>
         </div>
         <div class="m-2 m-xl-2">
-          <button class="btn btn-primary" type="submit" [disabled]="!messageForm.valid || !existWidgetAndToken()">
-            <mat-icon fontSet="material-icons-outlined">send</mat-icon>
+          <button class="btn btn-dark" type="submit" [disabled]="!messageForm.valid || !existWidgetAndToken()">
+            <mat-icon fontSet="material-icons-outlined" class="me-1">send</mat-icon>
             <div>{{ "BUTTON_SEND_MESSAGE" | translate }}</div>
           </button>
         </div>

@@ -96,6 +96,7 @@ export class ReplyOfferComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   sendMessage(): void {
+    this.data.replyEmail = this.data.replyEmail.toLowerCase();
     this.data.recaptchaResponse = this.captchaToken;
     this.messageResourceService.sendMessageMessage(this.data).subscribe(
       () => this.snackbarService.openSnackAlert(ALERT_TYPES.MESSAGE_SENT),

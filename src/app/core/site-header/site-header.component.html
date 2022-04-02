@@ -25,12 +25,12 @@
       </div>
       <div class="d-flex flex-row">
         <div
-          class="navbar-item dropdown header-element"
+          class="dropdown header-element"
           [ngClass]="isMobileOrSubPage() ? 'mobile-subpage' : 'desktop'"
           *ngIf="!this.isOpen"
         >
           <a
-            class="navbar-link dropdown-toggle"
+            class="dropdown-link dropdown-toggle"
             href="#"
             id="navbarDropdown"
             role="button"
@@ -49,7 +49,7 @@
             </li>
           </ul>
         </div>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" #navbarSupportedContent>
           <div class="navbar-wrap">
             <ul class="navbar-nav">
               <li class="navbar-item navbar-big">
@@ -97,7 +97,6 @@
         </div>
       </div>
       <button
-        (click)="onToggle()"
         [ngClass]="getMenuClass()"
         class="navbar-toggler"
         type="button"
