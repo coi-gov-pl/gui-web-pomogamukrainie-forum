@@ -29,6 +29,14 @@ const routes: Routes = [
     },
   },
   {
+    path: CorePath.Edit,
+    canLoad: [AuthGuard],
+    loadChildren: () => import('./edit-announcement/edit-announcement.module').then((m) => m.EditAnnouncementModule),
+    data: {
+      title: BreadcrumbLabels.EDIT_ANNOUNCEMENT,
+    },
+  },
+  {
     path: CorePath.MyAccount,
     canLoad: [AuthGuard],
     loadChildren: () => import('./my-account/my-account.module').then((m) => m.MyAccountModule),

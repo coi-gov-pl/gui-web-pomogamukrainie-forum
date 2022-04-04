@@ -106,8 +106,7 @@ export class MyAccountComponent implements OnInit {
   }
 
   editAnnouncement(announcement: AccommodationOffer | MaterialAidOffer | TransportOffer): void {
-    // TODO: modify search-result component, now we have buttons inside <a> tag
-    console.log(announcement);
+    this.router.navigate([CorePath.Edit]);
   }
 
   public addNewAd(): void {
