@@ -16,7 +16,7 @@
       display: grid;
       gap: 1rem;
       grid-template-columns: repeat(auto-fit, minmax(120px, 121px));
-      justify-content: center;
+      justify-content: space-between;
     }
   }
 
