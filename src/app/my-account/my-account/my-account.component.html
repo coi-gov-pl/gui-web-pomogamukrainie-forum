@@ -48,8 +48,11 @@
             icon="translate"
           ></app-search-result-attribute>
 
-          <div class="pt-2 pt-sm-0 ps-sm-2" buttons>
-            <button type="button" class="btn btn-link btn-sm" (click)="removeAnnouncement(announcement)">
+          <div class="w-100 flex-column mt-5 mt-sm-auto mb-sm-auto" buttons>
+            <button type="button" class="btn btn-outline-dark btn-edit" (click)="editAnnouncement(announcement)">
+              {{ "EDIT_ANNOUNCEMENT" | translate }}
+            </button>
+            <button type="button" class="btn btn-link btn-sm btn-remove" (click)="removeAnnouncement(announcement)">
               {{ "REMOVE_ANNOUNCEMENT" | translate }}
             </button>
           </div>
@@ -71,8 +74,11 @@
             icon="interests_outline"
           ></app-search-result-attribute>
 
-          <div class="pt-2 pt-sm-0 ps-sm-2" buttons>
-            <button type="button" class="btn btn-link btn-sm" (click)="removeAnnouncement(announcement)">
+          <div class="w-100 flex-column mt-5 mt-sm-auto mb-sm-auto" buttons>
+            <button type="button" class="btn btn-outline-dark btn-edit" (click)="editAnnouncement(announcement)">
+              {{ "EDIT_ANNOUNCEMENT" | translate }}
+            </button>
+            <button type="button" class="btn btn-link btn-sm btn-remove" (click)="removeAnnouncement(announcement)">
               {{ "REMOVE_ANNOUNCEMENT" | translate }}
             </button>
           </div>
@@ -100,8 +106,11 @@
             icon="person"
           ></app-search-result-attribute>
 
-          <div class="pt-2 pt-sm-0 ps-sm-2" buttons>
-            <button type="button" class="btn btn-link btn-sm" (click)="removeAnnouncement(announcement)">
+          <div class="w-100 flex-column mt-5 mt-sm-auto mb-sm-auto" buttons>
+            <button type="button" class="btn btn-outline-dark btn-edit" (click)="editAnnouncement(announcement)">
+              {{ "EDIT_ANNOUNCEMENT" | translate }}
+            </button>
+            <button type="button" class="btn btn-link btn-sm btn-remove" (click)="removeAnnouncement(announcement)">
               {{ "REMOVE_ANNOUNCEMENT" | translate }}
             </button>
           </div>
