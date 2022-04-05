@@ -2,14 +2,14 @@
   <div class="attributes">
     <app-search-result-attribute
       *ngIf="location && !destination"
-      [text]="location.city"
+      [text]="location.city + ', ' + location.region"
       icon="location_on"
     ></app-search-result-attribute>
     <app-search-result-attribute *ngIf="origin && destination" icon="location_on">
-      <span class="text-with-icon">
-        <span class="text-capitalize">{{ origin.city }}</span>
-        <mat-icon fontSet="material-icons-outlined" class="mx-3">arrow_forward</mat-icon>
-        <span class="text-capitalize">{{ destination.city }}</span>
+      <span class="text-with-icon opacity-50">
+        <span class="">{{ origin.city + ", " + origin.region }}</span>
+        <mat-icon fontSet="material-icons-outlined" class="mx-3 my-1 my-md-0">arrow_forward</mat-icon>
+        <span class="">{{ destination.city + ", " + origin.region }}</span>
       </span>
     </app-search-result-attribute>
     <div class="right opacity-50" *ngIf="posted">{{ postedDate | date: "dd/MM/yyyy" }}</div>

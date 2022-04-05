@@ -19,8 +19,8 @@ export const transportList: OffersTransportOffer = {
       description:
         'Witam, mam busa 8 osobowego jestem wstanie pomóż w transporcie. Mogę też przewieź rzeczy pod granice.',
       modifiedDate: '2022-03-14T10:36:12Z',
-      origin: { region: 'Pomorskie', city: 'Gdynia' },
-      destination: { region: 'Pomorskie', city: 'Gdynia' },
+      origin: { region: 'woj. mazowieckie, pow. Warszawa, gm. Warszawa', city: 'Warszawa' },
+      destination: { region: 'woj. mazowieckie, pow. Warszawa, gm. Warszawa', city: 'Warszawa' },
       capacity: 11,
       transportDate: '2022-03-14',
       phoneNumber: '48123456789',
@@ -33,8 +33,8 @@ export const transportList: OffersTransportOffer = {
       description:
         'Darmowy transport z Ostrowa i okolic na granicę z Ukraniną i z granicy mam 4 miejsca mam foteliki dla dzieci najleipiej w weekend',
       modifiedDate: '2022-03-14T10:36:12Z',
-      origin: { region: 'Pomorskie', city: 'Gdańsk' },
-      destination: { region: 'Mazowieckie', city: 'Warszawa' },
+      origin: { region: 'woj. warmińsko-mazurskie, pow. szczycieński, gm. Szczytno', city: 'Szczytno' },
+      destination: { region: 'woj. pomorskie, pow. Gdańsk, gm. Gdańsk', city: 'Gdańsk' },
       capacity: 10,
       transportDate: '2022-03-14',
       phoneNumber: '48456789123',
