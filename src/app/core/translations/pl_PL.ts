@@ -176,5 +176,7 @@ export default {
   LONGER: 'dłużej',
   ERROR_NOT_NUMBER: 'To nie jest liczba',
   AVAILABLE_SOON: 'Dostępne wkrótce',
-  RESET_CAPTCHA: 'Resetuj'
+  RESET_CAPTCHA: 'Resetuj',
+  PUBLISH_CHANGES: 'Publikuj zmiany',
+  UPDATE_OFFER_SENT_ALERT_HEADER: 'Ogłoszenie zostało poprawione'
 };

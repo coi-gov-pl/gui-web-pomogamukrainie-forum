@@ -6,6 +6,9 @@
     <h5 class="text-center text-md-start">{{ "OFFER_SENT_ALERT_HEADER" | translate }}</h5>
     <p class="text-center text-md-start">{{ "OFFER_SENT_ALERT_CONTENT" | translate }}</p>
   </div>
+  <div *ngIf="data === ALERT_TYPES.UPDATE_OFFER_SUCCESS">
+    <h5 class="text-center text-md-start">{{ "UPDATE_OFFER_SENT_ALERT_HEADER" | translate }}</h5>
+  </div>
   <div *ngIf="data === ALERT_TYPES.MESSAGE_SENT">
     <h5 class="text-center text-md-start">{{ "MESSAGE_SENT_ALERT_HEADER" | translate }}</h5>
     <p class="text-center text-md-start">{{ "MESSAGE_SENT_ALERT_CONTENT" | translate }}</p>
