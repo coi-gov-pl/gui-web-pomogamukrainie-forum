@@ -23,7 +23,7 @@
       [origin]="result.origin"
       [destination]="result.destination"
       [title]="result.title"
-      [description]="result.description | truncate: [200, '...']"
+      [description]="result.description | truncate: 200:'...'"
       [offerId]="result.id!"
       [category]="CategoryRoutingName.TRANSPORT"
       [posted]="result.modifiedDate"

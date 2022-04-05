@@ -21,7 +21,7 @@
       *ngFor="let result of results"
       [location]="result.location"
       [title]="result.title"
-      [description]="result.description | truncate: [200, '...']"
+      [description]="result.description | truncate: 200:'...'"
       [offerId]="result.id!"
       [posted]="result.modifiedDate"
       [category]="categoryRoutingName.ACCOMMODATION"
