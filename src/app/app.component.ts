@@ -7,6 +7,8 @@ import { ApplicationInsights } from '@microsoft/applicationinsights-web';
 import { AngularPlugin } from '@microsoft/applicationinsights-angularplugin-js';
 import { environment } from 'src/environments/environment';
 import { LocalStorageKeys } from '@app/shared/models';
+import { EnvironmentType } from '../environments/model';
+import * as jQuery from 'jquery';
 
 @Component({
   selector: 'app-root',
@@ -35,6 +37,9 @@ export class AppComponent implements OnInit {
       });
       appInsights.loadAppInsights();
     }
+    if (environment.environmentType === EnvironmentType.PRESTAGE) {
+      this.addJiraScript();
+    }
   }
 
   getContentClass() {
@@ -44,5 +49,14 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.translateService.use(localStorage.getItem(LocalStorageKeys.LangOption) || LanguageCode.pl_PL);
     this.storeUrlService.setPreviousUrl();
+  }
+
+  private addJiraScript() {
+    jQuery.ajax({
+      url: 'https://jira.sysopspolska.pl/s/c666388bce7c1fc27eb02b84c763ada2-T/v69598/813018/1am8j4d/4.0.5/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector-embededjs/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector-embededjs.js?locale=en-US&collectorId=dba66ae9',
+      type: 'get',
+      cache: true,
+      dataType: 'script',
+    });
   }
 }
