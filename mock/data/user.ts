@@ -43,14 +43,8 @@ export const userOffers: OffersBaseOffer = {
       description:
         'Darmowy transport z Ostrowa i okolic na granicę z Ukraniną i z granicy mam 4 miejsca mam foteliki dla dzieci najleipiej w weekend',
       modifiedDate: '2022-03-16T14:43:15Z',
-      origin: {
-        region: 'Pomorskie',
-        city: 'Gdańsk',
-      },
-      destination: {
-        region: 'Mazowieckie',
-        city: 'Warszawa',
-      },
+      origin: { region: 'woj. warmińsko-mazurskie, pow. szczycieński, gm. Szczytno', city: 'Szczytno' },
+      destination: { region: 'woj. pomorskie, pow. Gdańsk, gm. Gdańsk', city: 'Gdańsk' },
       capacity: 10,
       transportDate: '2022-03-16',
       phoneNumber: '48789123456',

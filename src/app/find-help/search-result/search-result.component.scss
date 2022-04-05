@@ -16,6 +16,7 @@
     font-size: var(--attribute-font-size);
     display: flex;
     gap: 18px;
+    text-align: left;
 
     .right {
       flex: 1;
@@ -33,6 +34,7 @@
   .text-with-icon {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
 
     .mat-icon {
       margin-left: 0.5em;

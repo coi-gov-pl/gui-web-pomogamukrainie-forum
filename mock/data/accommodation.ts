@@ -19,7 +19,7 @@ export const accommodationsList: OffersAccommodationOffer = {
       description:
         'nocleg noclegmazowieckie transport Dolnośląskie, miejscowość Wrocław - ok. 5 km od Dworca głównego. Kawalerka na wyłączność pomieści 2 osoby + zwierzęta są mile widziane. Okres: 2 miesiące, Bezpłatnie....',
       modifiedDate: '2022-03-14T10:36:12Z',
-      location: { region: 'podkarpackie', city: 'Rzeszów' },
+      location: { region: 'woj. warmińsko-mazurskie, pow. iławski, gm. Iława', city: 'Iława' },
       guests: 2,
       lengthOfStay: 'MONTH_2',
       hostLanguage: ['PL', 'UA'],
@@ -33,7 +33,7 @@ export const accommodationsList: OffersAccommodationOffer = {
       description:
         'Kawalerka na wyłączność pomieści 2 osoby + zwierzęta są mile widziane. Okres: 2 miesiące, Bezpłatnie....Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
       modifiedDate: '2022-03-14T10:36:12Z',
-      location: { region: 'podlaskie', city: 'Międzygórze' },
+      location: { region: 'woj. śląskie, pow. Katowice, gm. Katowice', city: 'katowice' },
       guests: 4,
       lengthOfStay: 'LONGER',
       hostLanguage: ['PL', 'UA'],
