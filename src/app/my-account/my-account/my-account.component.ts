@@ -104,9 +104,25 @@ export class MyAccountComponent implements OnInit {
       }
     });
   }
-
   editAnnouncement(announcement: AccommodationOffer | MaterialAidOffer | TransportOffer): void {
-    this.router.navigate([CorePath.Edit]);
+    // @TODO: extract to separate util
+    let categoryRoute;
+    switch (announcement.type) {
+      case 'ACCOMMODATION': {
+        categoryRoute = CategoryRoutingName.ACCOMMODATION;
+        break;
+      }
+      case 'MATERIAL_AID': {
+        categoryRoute = CategoryRoutingName.MATERIAL_HELP;
+        break;
+      }
+      case 'TRANSPORT': {
+        categoryRoute = CategoryRoutingName.TRANSPORT;
+        break;
+      }
+    }
+
+    this.router.navigate([CorePath.Edit, categoryRoute, announcement.id]);
   }
 
   public addNewAd(): void {

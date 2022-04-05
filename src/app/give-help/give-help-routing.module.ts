@@ -31,6 +31,14 @@ const routes: Routes = [
         },
       },
       {
+        path: `${CategoryRoutingName.ACCOMMODATION}/:announcementId`,
+        loadChildren: () =>
+          import('./accommodation-form/accommodation-form.module').then((m) => m.AccommodationFormComponentModule),
+        data: {
+          title: BreadcrumbLabels.ACCOMMODATION,
+        },
+      },
+      {
         path: CategoryRoutingName.MATERIAL_HELP,
         loadChildren: () => import('./material-aid-form/material-aid-form.module').then((m) => m.MaterialAidFormModule),
         data: {
@@ -38,7 +46,22 @@ const routes: Routes = [
         },
       },
       {
+        path: `${CategoryRoutingName.MATERIAL_HELP}/:announcementId`,
+        loadChildren: () => import('./material-aid-form/material-aid-form.module').then((m) => m.MaterialAidFormModule),
+        data: {
+          title: BreadcrumbLabels.MATERIAL_HELP,
+        },
+      },
+      {
         path: CategoryRoutingName.TRANSPORT,
+        loadChildren: () =>
+          import('./transport-form/transport-form.module').then((m) => m.TransportFormComponentModule),
+        data: {
+          title: BreadcrumbLabels.TRANSPORT,
+        },
+      },
+      {
+        path: `${CategoryRoutingName.TRANSPORT}/:announcementId`,
         loadChildren: () =>
           import('./transport-form/transport-form.module').then((m) => m.TransportFormComponentModule),
         data: {

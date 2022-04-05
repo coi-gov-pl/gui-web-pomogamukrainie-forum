@@ -31,7 +31,7 @@ const routes: Routes = [
   {
     path: CorePath.Edit,
     canLoad: [AuthGuard],
-    loadChildren: () => import('./edit-announcement/edit-announcement.module').then((m) => m.EditAnnouncementModule),
+    loadChildren: () => import('./give-help/give-help.module').then((m) => m.GiveHelpModule),
     data: {
       title: BreadcrumbLabels.EDIT_ANNOUNCEMENT,
     },
