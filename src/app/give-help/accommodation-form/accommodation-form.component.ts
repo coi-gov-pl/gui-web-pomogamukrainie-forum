@@ -7,6 +7,9 @@ import { SnackbarService } from '@app/shared/services';
 import { take } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { MATCH_NON_DIGITS, MATCH_SPACES } from '@app/shared/consts';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { ConfirmCancelDialogComponent } from '@app/shared/components';
+import { DIALOG_BOX_CONFIG } from '@app/shared/consts';
 
 @Component({
   selector: 'app-accommodation-form',
@@ -23,10 +26,12 @@ export class AccommodationFormComponent {
     hostLanguage: [],
   });
   @ViewChild('phoneInput') phoneInput!: ElementRef<HTMLInputElement>;
+  @Input() buttonLabel: string = '';
 
   constructor(
     private accommodationsResourceService: AccommodationsResourceService,
     private router: Router,
+    private dialog: MatDialog,
     private snackbarService: SnackbarService
   ) {}
 
@@ -58,6 +63,20 @@ export class AccommodationFormComponent {
       if (navigated) {
         this.snackbarService.openSnackAlert(ALERT_TYPES.OFFER_SUCCESS);
       }
+    });
+  }
+
+  onCancelButtonClick() {
+    const dialogRef: MatDialogRef<ConfirmCancelDialogComponent> = this.dialog.open(
+      ConfirmCancelDialogComponent,
+      DIALOG_BOX_CONFIG
+    );
+
+    dialogRef.componentInstance.confirm.pipe(take(1)).subscribe((confirm: boolean) => {
+      if (confirm) {
+        this.router.navigate([CorePath.MyAccount]);
+      }
+      dialogRef.close();
     });
   }
 }

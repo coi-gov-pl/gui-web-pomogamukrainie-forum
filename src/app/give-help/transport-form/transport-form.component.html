@@ -1,12 +1,17 @@
 <mat-card>
   <form (ngSubmit)="submitOffer()" #transportForm="ngForm">
     <div class="container">
+      <div class="d-flex">
+        <button class="btn-link ms-auto" type="button" (click)="onCancelButtonClick()">
+          <mat-icon class="button-icon" fontSet="material-icons-outlined">close</mat-icon
+          ><span class="cancel-label">{{ "CANCEL" | translate }}</span>
+        </button>
+      </div>
       <div class="row">
         <div class="col-md-12">
           <app-offer-title-input [(value)]="data.title"></app-offer-title-input>
         </div>
       </div>
-
       <div class="row">
         <div class="col-lg-3 col-md-12">
           <app-cities-search

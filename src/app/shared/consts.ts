@@ -41,3 +41,12 @@ export const LENGTH_OF_STAY: Option[] = [
 export const MATCH_NON_DIGITS = /[^0-9]+/g;
 export const MATCH_SPACES = /\s/g;
 export const MATCH_DIGITS = /[0-9]/g;
+
+export const DIALOG_BOX_CONFIG = {
+  hasBackdrop: true,
+  width: '100%',
+  maxHeight: '450px',
+  maxWidth: '720px',
+  disableClose: false,
+  autoFocus: false,
+};
