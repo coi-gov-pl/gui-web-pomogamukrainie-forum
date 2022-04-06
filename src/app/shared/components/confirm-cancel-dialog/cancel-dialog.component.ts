@@ -10,7 +10,7 @@ export class ConfirmCancelDialogComponent {
 
   constructor() {}
 
-  public confirmAction(confirmed: boolean) {
+  confirmAction(confirmed: boolean) {
     this.confirm.emit(confirmed);
   }
 }
