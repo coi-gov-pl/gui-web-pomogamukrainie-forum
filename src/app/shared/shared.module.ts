@@ -7,9 +7,10 @@ import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
 import { ValidatorsDirectivesModule } from './validators';
+import { ConfirmCancelDialogComponent } from './components/confirm-cancel-dialog/cancel-dialog.component';
 
 @NgModule({
-  declarations: [BreadcrumbComponent],
+  declarations: [BreadcrumbComponent, ConfirmCancelDialogComponent],
   imports: [CommonModule, RouterModule, MatIconModule, TranslateModule],
   exports: [MatCardModule, PomCommonPipesModule, BreadcrumbComponent, ValidatorsDirectivesModule],
 })

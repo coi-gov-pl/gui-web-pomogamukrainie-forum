@@ -107,3 +107,25 @@
     darken($c-darkblue, 30%)
   );
 }
+
+.btn-link {
+  color: $c-darkblue;
+  border-color: transparent;
+  background-color: $c-white;
+  padding-left: 0;
+  padding-right: 0;
+  font-weight: 600;
+  cursor: pointer;
+
+  &:hover {
+    color: $c-grayblue;
+    border-color: transparent;
+    background-color: $c-white;
+  }
+
+  &:disabled {
+    color: $c-gray;
+    background-color: $c-white;
+    border-color: transparent;
+  }
+}
