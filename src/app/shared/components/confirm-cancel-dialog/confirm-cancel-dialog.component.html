@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="icon">
+    <mat-icon fontSet="material-icons-outlined">restore_from_trash</mat-icon>
+  </div>
+  <div class="title">{{ "CONFIRM_CANCEL_OFFER" | translate }}</div>
+  <div class="footer">
+    <button type="submit" class="btn btn-dark" (click)="confirmAction(false)">
+      <span>{{ "NO" | translate }}</span>
+    </button>
+    <button type="submit" class="btn btn-secondary" (click)="confirmAction(true)">
+      <span>{{ "YES" | translate }}</span>
+    </button>
+  </div>
+</div>
