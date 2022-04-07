@@ -6,7 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { Params, Router, RouterModule } from '@angular/router';
 import { TypeOfHelpComponentModule } from '@app/shared/components';
 import { StoreUrlService } from '@app/core/store-url';
-import { MatTooltipModule } from '@angular/material/tooltip';
+import { MAT_TOOLTIP_DEFAULT_OPTIONS, MatTooltipDefaultOptions, MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-category-navigation',
@@ -39,9 +39,19 @@ export class CategoryNavigationComponent {
   }
 }
 
+// tooltip blocks touch actions
+// https://github.com/angular/components/issues/4892#issuecomment-649108017
+export const matTooltipCustomConfig: MatTooltipDefaultOptions = {
+  showDelay: 5,
+  hideDelay: 5,
+  touchendHideDelay: 5,
+  touchGestures: 'off',
+};
+
 @NgModule({
   declarations: [CategoryNavigationComponent],
   exports: [CategoryNavigationComponent],
   imports: [CommonModule, TranslateModule, MatIconModule, RouterModule, TypeOfHelpComponentModule, MatTooltipModule],
+  providers: [{ provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: matTooltipCustomConfig }],
 })
 export class CategoryNavigationComponentModule {}

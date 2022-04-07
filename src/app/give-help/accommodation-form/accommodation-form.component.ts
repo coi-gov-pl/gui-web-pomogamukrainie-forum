@@ -7,6 +7,9 @@ import { SnackbarService } from '@app/shared/services';
 import { take } from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MATCH_NON_DIGITS, MATCH_SPACES } from '@app/shared/consts';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { ConfirmCancelDialogComponent } from '@app/shared/components';
+import { DIALOG_BOX_CONFIG } from '@app/shared/consts';
 
 @Component({
   selector: 'app-accommodation-form',
@@ -24,12 +27,13 @@ export class AccommodationFormComponent implements OnInit {
   });
   @ViewChild('phoneInput') phoneInput!: ElementRef<HTMLInputElement>;
   offerId?: number;
-
+  @Input() buttonLabel: string = '';
   constructor(
     private accommodationsResourceService: AccommodationsResourceService,
     private router: Router,
     private snackbarService: SnackbarService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -88,5 +92,19 @@ export class AccommodationFormComponent implements OnInit {
 
   get isEditRoute(): boolean {
     return this.router.url === `/edycja-ogloszenia/noclegi/${this.offerId}`;
+  }
+
+  onCancelButtonClick() {
+    const dialogRef: MatDialogRef<ConfirmCancelDialogComponent> = this.dialog.open(
+      ConfirmCancelDialogComponent,
+      DIALOG_BOX_CONFIG
+    );
+
+    dialogRef.componentInstance.confirm.pipe(take(1)).subscribe((confirm: boolean) => {
+      if (confirm) {
+        this.router.navigate([CorePath.MyAccount]);
+      }
+      dialogRef.close();
+    });
   }
 }

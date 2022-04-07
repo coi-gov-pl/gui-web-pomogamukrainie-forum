@@ -12,7 +12,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { CitiesSearchModule, FieldErrorModule } from '@app/shared/components';
 import { ValidatorsDirectivesModule } from '@app/shared/validators';
 import { GiveHelpFormModule } from '../give-help-form/give-help-form.module';
-
+import { SharedModule } from '@app/shared/shared.module';
+import { MatDialogModule } from '@angular/material/dialog';
 @NgModule({
   declarations: [AccommodationFormComponent],
   imports: [
@@ -29,6 +30,8 @@ import { GiveHelpFormModule } from '../give-help-form/give-help-form.module';
     ValidatorsDirectivesModule,
     CitiesSearchModule,
     GiveHelpFormModule,
+    SharedModule,
+    MatDialogModule,
   ],
   exports: [AccommodationFormComponent],
 })

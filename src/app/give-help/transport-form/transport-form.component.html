@@ -1,14 +1,19 @@
 <mat-card>
   <form (ngSubmit)="submitOffer()" #transportForm="ngForm">
     <div class="container">
+      <div class="d-flex">
+        <button class="btn-link ms-auto" type="button" (click)="onCancelButtonClick()">
+          <mat-icon class="button-icon" fontSet="material-icons-outlined">close</mat-icon
+          ><span class="cancel-label">{{ "CANCEL" | translate }}</span>
+        </button>
+      </div>
       <div class="row">
         <div class="col-md-12">
           <app-offer-title-input [(value)]="data.title"></app-offer-title-input>
         </div>
       </div>
-
       <div class="row">
-        <div class="col-md-3">
+        <div class="col-lg-3 col-md-12">
           <app-cities-search
             [(ngModel)]="data.origin"
             name="origin"
@@ -17,7 +22,7 @@
             [isRegionPicked]="data.origin?.region ? true : false"
           ></app-cities-search>
         </div>
-        <div class="col-md-3">
+        <div class="col-lg-3 col-md-12">
           <app-cities-search
             [(ngModel)]="data.destination"
             name="destination"
@@ -26,13 +31,13 @@
             [isRegionPicked]="data.destination?.region ? true : false"
           ></app-cities-search>
         </div>
-        <div class="col-md-4">
+        <div class="col-lg-3 col-md-12">
           <label
             ><b>{{ "LABEL_DATE" | translate }}</b></label
           >
           <app-datepicker [(date)]="data.transportDate" [minDate]="minDate"></app-datepicker>
         </div>
-        <div class="col-md-2">
+        <div class="col-lg-3 col-md-12">
           <label
             ><b>{{ "LABEL_HOW_MANY_PEOPLE_UCAN_TAKE" | translate }} *</b></label
           >

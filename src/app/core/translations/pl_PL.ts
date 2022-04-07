@@ -178,5 +178,7 @@ export default {
   AVAILABLE_SOON: 'Dostępne wkrótce',
   RESET_CAPTCHA: 'Resetuj',
   PUBLISH_CHANGES: 'Publikuj zmiany',
-  UPDATE_OFFER_SENT_ALERT_HEADER: 'Ogłoszenie zostało poprawione'
+  UPDATE_OFFER_SENT_ALERT_HEADER: 'Ogłoszenie zostało poprawione',
+  CANCEL: 'Anuluj',
+  CONFIRM_CANCEL_OFFER: 'Anulować wprowadzanie danych?',
 };
