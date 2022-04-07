@@ -11,4 +11,5 @@ export * from './snackbar/snackbar.module';
 export * from './page-not-found/page-not-found.component';
 export * from './sorting-header/sorting-header.module';
 export * from './loading/loading.component';
+export * from './confirm-cancel-dialog/cancel-dialog.component';
 export * from './remove-account-success/remove-account-success.component';

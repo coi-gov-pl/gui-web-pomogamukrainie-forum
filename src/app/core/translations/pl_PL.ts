@@ -177,6 +177,8 @@ export default {
   ERROR_NOT_NUMBER: 'To nie jest liczba',
   AVAILABLE_SOON: 'Dostępne wkrótce',
   RESET_CAPTCHA: 'Resetuj',
+  CANCEL: 'Anuluj',
+  CONFIRM_CANCEL_OFFER: 'Anulować wprowadzanie danych?',
   REMOVE_ACCOUNT_BUTTON: 'Usuń konto',
   CONFIRM_REMOVE_ACCOUNT: 'Czy na pewno chcesz usunąć konto?',
   CONFIRM_REMOVE_ACCOUNT_DESCRIPTION: 'Jeśli posiadasz jakieś ogłoszenia - one również zostaną usunięte.',

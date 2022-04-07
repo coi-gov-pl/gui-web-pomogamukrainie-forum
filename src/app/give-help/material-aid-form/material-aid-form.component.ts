@@ -1,12 +1,14 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { MaterialAidOfferDefinitionDTO, MaterialAidResourceService } from '@app/core/api';
-import { PREFIXES } from '@app/shared/consts';
+import { DIALOG_BOX_CONFIG, PREFIXES } from '@app/shared/consts';
 import { defaults } from '@app/shared/utils';
 import { SnackbarService } from '@app/shared/services/snackbar.service';
 import { CorePath, ALERT_TYPES } from '@app/shared/models';
 import { take } from 'rxjs/operators';
 import { MATCH_NON_DIGITS, MATCH_SPACES } from '@app/shared/consts';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { ConfirmCancelDialogComponent } from '@app/shared/components';
 
 const CATEGORIES = Object.entries(MaterialAidOfferDefinitionDTO.CategoryEnum).map(([key, value]) => ({
   key,
@@ -29,7 +31,8 @@ export class MaterialAidFormComponent {
   constructor(
     private router: Router,
     private materialAidResourceService: MaterialAidResourceService,
-    private snackbarService: SnackbarService
+    private snackbarService: SnackbarService,
+    private dialog: MatDialog
   ) {}
 
   onPhoneNumberChange($event: Event) {
@@ -60,6 +63,20 @@ export class MaterialAidFormComponent {
       if (navigated) {
         this.snackbarService.openSnackAlert(ALERT_TYPES.OFFER_SUCCESS);
       }
+    });
+  }
+
+  onCancelButtonClick() {
+    const dialogRef: MatDialogRef<ConfirmCancelDialogComponent> = this.dialog.open(
+      ConfirmCancelDialogComponent,
+      DIALOG_BOX_CONFIG
+    );
+
+    dialogRef.componentInstance.confirm.pipe(take(1)).subscribe((confirm: boolean) => {
+      if (confirm) {
+        this.router.navigate([CorePath.MyAccount]);
+      }
+      dialogRef.close();
     });
   }
 }
