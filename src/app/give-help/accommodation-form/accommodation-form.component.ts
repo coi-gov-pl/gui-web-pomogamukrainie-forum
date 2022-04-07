@@ -9,7 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MATCH_NON_DIGITS, MATCH_SPACES } from '@app/shared/consts';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ConfirmCancelDialogComponent } from '@app/shared/components';
-import { DIALOG_BOX_CONFIG } from '@app/shared/consts';
+import { DIALOG_CANCEL_OFFER_CONFIG } from '@app/shared/consts';
 
 @Component({
   selector: 'app-accommodation-form',
@@ -40,9 +40,9 @@ export class AccommodationFormComponent implements OnInit {
   ngOnInit(): void {
     this.offerId = Number(this.route.snapshot.paramMap.get('id'));
     if (!this.isEditRoute) {
-      DIALOG_BOX_CONFIG.data.headerText = CANCEL_DIALOG_HEADERS.CONFIRM_CANCEL_OFFER_NEW;
+      DIALOG_CANCEL_OFFER_CONFIG.data.headerText = CANCEL_DIALOG_HEADERS.CONFIRM_CANCEL_OFFER_NEW;
     } else {
-      DIALOG_BOX_CONFIG.data.headerText = CANCEL_DIALOG_HEADERS.CONFIRM_CANCEL_OFFER_EDIT;
+      DIALOG_CANCEL_OFFER_CONFIG.data.headerText = CANCEL_DIALOG_HEADERS.CONFIRM_CANCEL_OFFER_EDIT;
     }
   }
 
@@ -80,7 +80,7 @@ export class AccommodationFormComponent implements OnInit {
   onCancelButtonClick() {
     const dialogRef: MatDialogRef<ConfirmCancelDialogComponent> = this.dialog.open(
       ConfirmCancelDialogComponent,
-      DIALOG_BOX_CONFIG
+      DIALOG_CANCEL_OFFER_CONFIG
     );
 
     dialogRef.componentInstance.confirm.pipe(take(1)).subscribe((confirm: boolean) => {
