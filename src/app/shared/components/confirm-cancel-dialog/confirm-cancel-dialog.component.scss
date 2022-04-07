@@ -6,7 +6,7 @@
 }
 
 .icon {
-  color: #cc0a0a;
+  color: $c-yellow;
   font-size: 24px;
 
   .material-icons-outlined {
@@ -18,11 +18,13 @@
   font-size: 24px;
   font-weight: bold;
   letter-spacing: -0.19px;
-  color: #052c65;
-  margin-bottom: 25px;
+  color: $c-darkblue;
+  max-width: 310px;
+  margin: 15px auto;
 }
 
 .footer {
+  margin-top: 80px;
   display: flex;
   justify-content: space-around;
   padding-top: 35px;
@@ -34,7 +36,7 @@
     span {
       font-size: 14px;
       letter-spacing: 1.25px;
-      color: #052c65;
+      color: $c-darkblue;
       text-transform: uppercase;
     }
   }

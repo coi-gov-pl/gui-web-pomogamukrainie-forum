@@ -46,7 +46,8 @@ export const DIALOG_BOX_CONFIG = {
   hasBackdrop: true,
   width: '100%',
   maxHeight: '450px',
-  maxWidth: '720px',
+  maxWidth: '480px',
   disableClose: false,
   autoFocus: false,
+  data: { headerText: '' },
 };

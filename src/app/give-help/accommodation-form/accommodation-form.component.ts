@@ -1,11 +1,11 @@
-import { Component, ViewChild, Input, ElementRef } from '@angular/core';
+import { Component, ViewChild, Input, ElementRef, OnInit } from '@angular/core';
 import { defaults } from '@app/shared/utils';
 import { PREFIXES, LANGUAGES, LENGTH_OF_STAY } from '@app/shared/consts';
 import { AccommodationOfferDefinitionDTO, AccommodationsResourceService } from '@app/core/api';
-import { CorePath, ALERT_TYPES } from '@app/shared/models';
+import { CorePath, ALERT_TYPES, CANCEL_DIALOG_HEADERS } from '@app/shared/models';
 import { SnackbarService } from '@app/shared/services';
 import { take } from 'rxjs/operators';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MATCH_NON_DIGITS, MATCH_SPACES } from '@app/shared/consts';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ConfirmCancelDialogComponent } from '@app/shared/components';
@@ -16,7 +16,7 @@ import { DIALOG_BOX_CONFIG } from '@app/shared/consts';
   templateUrl: './accommodation-form.component.html',
   styleUrls: ['./accommodation-form.component.scss'],
 })
-export class AccommodationFormComponent {
+export class AccommodationFormComponent implements OnInit {
   phonePrefix: string = '';
   phoneNumber: string = '';
   LENGTH_OF_STAY = LENGTH_OF_STAY;
@@ -27,13 +27,24 @@ export class AccommodationFormComponent {
   });
   @ViewChild('phoneInput') phoneInput!: ElementRef<HTMLInputElement>;
   @Input() buttonLabel: string = '';
+  offerId?: number;
 
   constructor(
     private accommodationsResourceService: AccommodationsResourceService,
     private router: Router,
     private dialog: MatDialog,
-    private snackbarService: SnackbarService
+    private snackbarService: SnackbarService,
+    private route: ActivatedRoute
   ) {}
+
+  ngOnInit(): void {
+    this.offerId = Number(this.route.snapshot.paramMap.get('id'));
+    if (!this.isEditRoute) {
+      DIALOG_BOX_CONFIG.data.headerText = CANCEL_DIALOG_HEADERS.CONFIRM_CANCEL_OFFER_NEW;
+    } else {
+      DIALOG_BOX_CONFIG.data.headerText = CANCEL_DIALOG_HEADERS.CONFIRM_CANCEL_OFFER_EDIT;
+    }
+  }
 
   onPhoneNumberChange($event: Event) {
     let val = ($event.target as HTMLInputElement).value;
@@ -78,5 +89,9 @@ export class AccommodationFormComponent {
       }
       dialogRef.close();
     });
+  }
+
+  get isEditRoute(): boolean {
+    return this.router.url === `/edycja-ogloszenia/noclegi/${this.offerId}`;
   }
 }
