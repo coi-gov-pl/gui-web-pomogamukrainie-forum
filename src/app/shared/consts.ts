@@ -42,11 +42,12 @@ export const MATCH_NON_DIGITS = /[^0-9]+/g;
 export const MATCH_SPACES = /\s/g;
 export const MATCH_DIGITS = /[0-9]/g;
 
-export const DIALOG_BOX_CONFIG = {
+export const DIALOG_CANCEL_OFFER_CONFIG = {
   hasBackdrop: true,
   width: '100%',
   maxHeight: '450px',
-  maxWidth: '720px',
+  maxWidth: '480px',
   disableClose: false,
   autoFocus: false,
+  data: { headerText: '' },
 };
