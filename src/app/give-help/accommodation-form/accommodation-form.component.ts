@@ -2,15 +2,14 @@ import { Component, ViewChild, Input, ElementRef, OnInit } from '@angular/core';
 import { defaults } from '@app/shared/utils';
 import { PREFIXES, LANGUAGES, LENGTH_OF_STAY } from '@app/shared/consts';
 import { AccommodationOfferDefinitionDTO, AccommodationsResourceService } from '@app/core/api';
-import { CorePath, ALERT_TYPES } from '@app/shared/models';
+import { CorePath, ALERT_TYPES, CANCEL_DIALOG_HEADERS } from '@app/shared/models';
 import { SnackbarService } from '@app/shared/services';
 import { take } from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MATCH_NON_DIGITS, MATCH_SPACES } from '@app/shared/consts';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ConfirmCancelDialogComponent } from '@app/shared/components';
-import { DIALOG_BOX_CONFIG } from '@app/shared/consts';
-
+import { DIALOG_CANCEL_OFFER_CONFIG } from '@app/shared/consts';
 @Component({
   selector: 'app-accommodation-form',
   templateUrl: './accommodation-form.component.html',
@@ -26,20 +25,25 @@ export class AccommodationFormComponent implements OnInit {
     hostLanguage: [],
   });
   @ViewChild('phoneInput') phoneInput!: ElementRef<HTMLInputElement>;
-  offerId?: number;
   @Input() buttonLabel: string = '';
+  offerId?: number;
+
   constructor(
     private accommodationsResourceService: AccommodationsResourceService,
     private router: Router,
+    private dialog: MatDialog,
     private snackbarService: SnackbarService,
-    private route: ActivatedRoute,
-    private dialog: MatDialog
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     this.offerId = Number(this.route.snapshot.paramMap.get('id'));
+
     if (this.isEditRoute) {
       this.accommodationsResourceService.getAccommodations(this.offerId).subscribe((resp) => (this.data = resp));
+      DIALOG_CANCEL_OFFER_CONFIG.data.headerText = CANCEL_DIALOG_HEADERS.CONFIRM_CANCEL_OFFER_EDIT;
+    } else {
+      DIALOG_CANCEL_OFFER_CONFIG.data.headerText = CANCEL_DIALOG_HEADERS.CONFIRM_CANCEL_OFFER_NEW;
     }
   }
 
@@ -90,14 +94,10 @@ export class AccommodationFormComponent implements OnInit {
     }
   }
 
-  get isEditRoute(): boolean {
-    return this.router.url === `/edycja-ogloszenia/noclegi/${this.offerId}`;
-  }
-
   onCancelButtonClick() {
     const dialogRef: MatDialogRef<ConfirmCancelDialogComponent> = this.dialog.open(
       ConfirmCancelDialogComponent,
-      DIALOG_BOX_CONFIG
+      DIALOG_CANCEL_OFFER_CONFIG
     );
 
     dialogRef.componentInstance.confirm.pipe(take(1)).subscribe((confirm: boolean) => {
@@ -106,5 +106,9 @@ export class AccommodationFormComponent implements OnInit {
       }
       dialogRef.close();
     });
+  }
+
+  get isEditRoute(): boolean {
+    return this.router.url === `/edycja-ogloszenia/noclegi/${this.offerId}`;
   }
 }

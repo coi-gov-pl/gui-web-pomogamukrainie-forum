@@ -1,0 +1,8 @@
+export interface DialogData {
+  headerText: string;
+}
+
+export enum CANCEL_DIALOG_HEADERS {
+  CONFIRM_CANCEL_OFFER_NEW = 'CONFIRM_CANCEL_OFFER_NEW',
+  CONFIRM_CANCEL_OFFER_EDIT = 'CONFIRM_CANCEL_OFFER_EDIT',
+}

@@ -7,6 +7,24 @@ import { ApplicationInsights } from '@microsoft/applicationinsights-web';
 import { AngularPlugin } from '@microsoft/applicationinsights-angularplugin-js';
 import { environment } from 'src/environments/environment';
 import { LocalStorageKeys } from '@app/shared/models';
+import { EnvironmentType } from '../environments/model';
+
+async function addJiraScript() {
+  // Import jQuery dynamically so that it's only loaded if the JIRA script is needed.
+  const { default: $ } = await import('jquery');
+
+  // Set jQuery globals as the script below depends on it and if jQuery is imported,
+  // the globals are not set by default.
+  (globalThis as any).jQuery = (globalThis as any).$ = $;
+
+  // Load the script.
+  await $.ajax({
+    url: 'https://jira.sysopspolska.pl/s/c666388bce7c1fc27eb02b84c763ada2-T/v69598/813018/1am8j4d/4.0.5/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector-embededjs/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector-embededjs.js?locale=en-US&collectorId=dba66ae9',
+    type: 'get',
+    cache: true,
+    dataType: 'script',
+  });
+}
 
 @Component({
   selector: 'app-root',
@@ -34,6 +52,11 @@ export class AppComponent implements OnInit {
         },
       });
       appInsights.loadAppInsights();
+    }
+    if (environment.environmentType === EnvironmentType.PRESTAGE) {
+      addJiraScript().catch((err) => {
+        console.error('Loading the JIRA script failed:', err);
+      });
     }
   }
 

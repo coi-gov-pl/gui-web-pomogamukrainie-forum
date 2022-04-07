@@ -1,10 +1,10 @@
 import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MaterialAidOfferDefinitionDTO, MaterialAidResourceService } from '@app/core/api';
-import { DIALOG_BOX_CONFIG, PREFIXES } from '@app/shared/consts';
+import { DIALOG_CANCEL_OFFER_CONFIG, PREFIXES } from '@app/shared/consts';
 import { defaults } from '@app/shared/utils';
 import { SnackbarService } from '@app/shared/services/snackbar.service';
-import { CorePath, ALERT_TYPES } from '@app/shared/models';
+import { CorePath, ALERT_TYPES, CANCEL_DIALOG_HEADERS } from '@app/shared/models';
 import { take } from 'rxjs/operators';
 import { MATCH_NON_DIGITS, MATCH_SPACES } from '@app/shared/consts';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
@@ -32,16 +32,21 @@ export class MaterialAidFormComponent implements OnInit {
     private router: Router,
     private materialAidResourceService: MaterialAidResourceService,
     private snackbarService: SnackbarService,
-    private route: ActivatedRoute,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     this.offerId = Number(this.route.snapshot.paramMap.get('id'));
+
     if (this.isEditRoute) {
       this.materialAidResourceService.getMaterialAid(this.offerId).subscribe((resp) => (this.data = resp));
+      DIALOG_CANCEL_OFFER_CONFIG.data.headerText = CANCEL_DIALOG_HEADERS.CONFIRM_CANCEL_OFFER_EDIT;
+    } else {
+      DIALOG_CANCEL_OFFER_CONFIG.data.headerText = CANCEL_DIALOG_HEADERS.CONFIRM_CANCEL_OFFER_NEW;
     }
   }
+
   onPhoneNumberChange($event: Event) {
     let val = ($event.target as HTMLInputElement).value;
     val = val.replace(MATCH_NON_DIGITS, '').replace(MATCH_SPACES, '');
@@ -89,14 +94,10 @@ export class MaterialAidFormComponent implements OnInit {
     }
   }
 
-  get isEditRoute(): boolean {
-    return this.router.url === `/edycja-ogloszenia/pomoc-materialna/${this.offerId}`;
-  }
-
   onCancelButtonClick() {
     const dialogRef: MatDialogRef<ConfirmCancelDialogComponent> = this.dialog.open(
       ConfirmCancelDialogComponent,
-      DIALOG_BOX_CONFIG
+      DIALOG_CANCEL_OFFER_CONFIG
     );
 
     dialogRef.componentInstance.confirm.pipe(take(1)).subscribe((confirm: boolean) => {
@@ -105,5 +106,9 @@ export class MaterialAidFormComponent implements OnInit {
       }
       dialogRef.close();
     });
+  }
+
+  get isEditRoute(): boolean {
+    return this.router.url === `/edycja-ogloszenia/pomoc-materialna/${this.offerId}`;
   }
 }

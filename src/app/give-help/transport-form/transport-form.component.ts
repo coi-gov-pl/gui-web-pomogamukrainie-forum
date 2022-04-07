@@ -1,9 +1,9 @@
 import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
 import { defaults } from '@app/shared/utils';
 import { TransportOfferDefinitionDTO, TransportResourceService } from '@app/core/api';
-import { DIALOG_BOX_CONFIG, PREFIXES } from '@app/shared/consts';
+import { DIALOG_CANCEL_OFFER_CONFIG, PREFIXES } from '@app/shared/consts';
 import { SnackbarService } from '@app/shared/services/snackbar.service';
-import { CorePath, ALERT_TYPES } from '@app/shared/models';
+import { CorePath, ALERT_TYPES, CANCEL_DIALOG_HEADERS } from '@app/shared/models';
 import { take } from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MATCH_NON_DIGITS, MATCH_SPACES } from '@app/shared/consts';
@@ -27,14 +27,17 @@ export class TransportFormComponent implements OnInit {
     private transportResourceService: TransportResourceService,
     private router: Router,
     private snackbarService: SnackbarService,
-    private route: ActivatedRoute,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     this.offerId = Number(this.route.snapshot.paramMap.get('id'));
     if (this.isEditRoute) {
       this.transportResourceService.getTransport(this.offerId).subscribe((resp) => (this.data = resp));
+      DIALOG_CANCEL_OFFER_CONFIG.data.headerText = CANCEL_DIALOG_HEADERS.CONFIRM_CANCEL_OFFER_EDIT;
+    } else {
+      DIALOG_CANCEL_OFFER_CONFIG.data.headerText = CANCEL_DIALOG_HEADERS.CONFIRM_CANCEL_OFFER_NEW;
     }
   }
 
@@ -85,15 +88,8 @@ export class TransportFormComponent implements OnInit {
     }
   }
 
-  get isEditRoute(): boolean {
-    return this.router.url === `/edycja-ogloszenia/transport/${this.offerId}`;
-  }
-
   onCancelButtonClick() {
-    const dialogRef: MatDialogRef<ConfirmCancelDialogComponent> = this.dialog.open(
-      ConfirmCancelDialogComponent,
-      DIALOG_BOX_CONFIG
-    );
+    const dialogRef: MatDialogRef<ConfirmCancelDialogComponent> = this.dialog.open(ConfirmCancelDialogComponent);
 
     dialogRef.componentInstance.confirm.pipe(take(1)).subscribe((confirm: boolean) => {
       if (confirm) {
@@ -101,5 +97,9 @@ export class TransportFormComponent implements OnInit {
       }
       dialogRef.close();
     });
+  }
+
+  get isEditRoute(): boolean {
+    return this.router.url === `/edycja-ogloszenia/transport/${this.offerId}`;
   }
 }
