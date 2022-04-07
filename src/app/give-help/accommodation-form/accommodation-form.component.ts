@@ -10,7 +10,6 @@ import { MATCH_NON_DIGITS, MATCH_SPACES } from '@app/shared/consts';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ConfirmCancelDialogComponent } from '@app/shared/components';
 import { DIALOG_CANCEL_OFFER_CONFIG } from '@app/shared/consts';
-
 @Component({
   selector: 'app-accommodation-form',
   templateUrl: './accommodation-form.component.html',

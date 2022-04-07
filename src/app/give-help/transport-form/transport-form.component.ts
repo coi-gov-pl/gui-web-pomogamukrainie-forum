@@ -72,10 +72,7 @@ export class TransportFormComponent implements OnInit {
   }
 
   onCancelButtonClick() {
-    const dialogRef: MatDialogRef<ConfirmCancelDialogComponent> = this.dialog.open(
-      ConfirmCancelDialogComponent,
-      DIALOG_CANCEL_OFFER_CONFIG
-    );
+    const dialogRef: MatDialogRef<ConfirmCancelDialogComponent> = this.dialog.open(ConfirmCancelDialogComponent);
 
     dialogRef.componentInstance.confirm.pipe(take(1)).subscribe((confirm: boolean) => {
       if (confirm) {

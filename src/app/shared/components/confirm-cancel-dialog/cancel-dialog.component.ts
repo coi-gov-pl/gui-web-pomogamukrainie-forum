@@ -16,6 +16,7 @@ export class ConfirmCancelDialogComponent implements OnInit {
   ngOnInit() {
     this.headerText = this.data.headerText;
   }
+
   confirmAction(confirmed: boolean) {
     this.confirm.emit(confirmed);
   }
