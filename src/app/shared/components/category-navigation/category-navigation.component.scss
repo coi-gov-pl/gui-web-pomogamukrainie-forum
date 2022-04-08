@@ -1,10 +1,10 @@
+@import "vars";
+
 :host {
   width: 100%;
   display: block;
 
   .navigation {
-    text-align: center;
-
     h2 {
       margin-top: 36px;
       margin-bottom: 25px;
@@ -13,14 +13,58 @@
     }
 
     .categories {
+      text-align: center;
       display: grid;
       gap: 1rem;
       grid-template-columns: repeat(auto-fit, minmax(120px, 121px));
       justify-content: space-between;
     }
-  }
 
-  .category-link {
-    text-decoration: none;
+    .categories-mobile {
+      text-align: left;
+
+      .selected-category {
+        position: relative;
+        top: -6px;
+        left: 15px;
+        color: $c-darkblue;
+        font-weight: bold;
+      }
+
+      mat-form-field {
+        width: 100%;
+
+        ::ng-deep {
+          .mat-form-field-outline-start,
+          .mat-form-field-outline-end {
+            background: $c-white;
+            border: 3px solid $c-yellowactiveinput !important;
+          }
+
+          .mat-form-field-outline-start {
+            border-right: 0 !important;
+          }
+
+          .mat-form-field-outline-end {
+            border-left: 0 !important;
+          }
+
+          .mat-select-arrow-wrapper {
+            transform: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+.category-link {
+  text-decoration: none;
+}
+
+::ng-deep {
+  .mat-option-text {
+    font-weight: bold;
+    color: $c-darkblue;
   }
 }

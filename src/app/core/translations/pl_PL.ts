@@ -17,6 +17,7 @@ export default {
   SEARCH_FOR_HELP: 'Znajdź pomoc',
   ADD_AD: 'Dodaj ogłoszenie',
   WHAT_ARE_YOU_LOOKING_FOR: 'Czego potrzebujesz?',
+  CHOOSE_CATEGORY: 'Wybierz kategorię',
   ACCOMMODATION: 'Noclegi i Mieszkania',
   MATERIAL_HELP: 'Pomoc materialna',
   TRANSPORT: 'Transport',
