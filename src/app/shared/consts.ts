@@ -1,7 +1,8 @@
 import { Prefix, Option } from './models';
 import { LanguageCode, LanguageNames, LengthOfStayLabels } from '@app/core/translations';
-import { AccommodationOffer, AccommodationOfferDefinitionDTO } from '@app/core/api';
+import { AccommodationOffer, AccommodationOfferDefinitionDTO, WorkOfferDefinitionDTO } from '@app/core/api';
 import HostLanguageEnum = AccommodationOfferDefinitionDTO.HostLanguageEnum;
+import WorkLanguageEnum = WorkOfferDefinitionDTO.WorkLanguageEnum;
 
 export const PREFIXES: Prefix[] = [
   {
@@ -27,6 +28,13 @@ export const LANGUAGES: Option[] = [
   { code: HostLanguageEnum.Ua, label: LanguageNames.UKRAINIAN },
   { code: HostLanguageEnum.Ru, label: LanguageNames.RUSSIAN },
   { code: HostLanguageEnum.En, label: LanguageNames.ENGLISH },
+];
+
+export const WORK_LANGUAGES: Option[] = [
+  { code: WorkLanguageEnum.Pl, label: LanguageNames.POLISH },
+  { code: WorkLanguageEnum.Ua, label: LanguageNames.UKRAINIAN },
+  { code: WorkLanguageEnum.Ru, label: LanguageNames.RUSSIAN },
+  { code: WorkLanguageEnum.En, label: LanguageNames.ENGLISH },
 ];
 
 export const LENGTH_OF_STAY: Option[] = [

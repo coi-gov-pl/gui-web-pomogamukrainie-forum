@@ -68,6 +68,20 @@ const routes: Routes = [
           title: BreadcrumbLabels.TRANSPORT,
         },
       },
+      {
+        path: CategoryRoutingName.WORK,
+        loadChildren: () => import('./work-form/work-form.module').then((m) => m.WorkFormModule),
+        data: {
+          title: BreadcrumbLabels.WORK,
+        },
+      },
+      {
+        path: `${CategoryRoutingName.WORK}/:id`,
+        loadChildren: () => import('./work-form/work-form.module').then((m) => m.WorkFormModule),
+        data: {
+          title: BreadcrumbLabels.WORK,
+        },
+      },
     ],
   },
 ];
