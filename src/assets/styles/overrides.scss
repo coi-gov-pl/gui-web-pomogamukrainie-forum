@@ -33,15 +33,19 @@ mat-icon {
 
 .selectPrefix {
   .mat-form-field-outline-end {
-    border-bottom-right-radius: 0 !important;
-    border-top-right-radius: 0 !important;
+    @include media-breakpoint-up(sm) {
+      border-bottom-right-radius: 0 !important;
+      border-top-right-radius: 0 !important;
+    }
   }
 }
 
 .phoneInut {
   .mat-form-field-outline-start {
-    border-bottom-left-radius: 0 !important;
-    border-top-left-radius: 0 !important;
-    margin-left: -1px;
+    @include media-breakpoint-up(sm) {
+      border-bottom-left-radius: 0 !important;
+      border-top-left-radius: 0 !important;
+      margin-left: -1px;
+    }
   }
 }
