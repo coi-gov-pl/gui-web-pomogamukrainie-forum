@@ -1,6 +1,6 @@
 <mat-card class="p-4">
   <form (ngSubmit)="submitMessage()" #messageForm="ngForm">
-    <div class="container">
+    <div class="container" #container>
       <div class="header text-center">
         <span
           >{{ "HELPING_PERSON" | translate }}: <b>{{ helpersFirstname }}</b></span
@@ -9,7 +9,8 @@
         <p>
           {{ "REPLY_MESSAGE_FORM" | translate }}
           <span *ngIf="helpersPhoneNumber"
-            >{{ "REPLY_MESSAGE_PHONE" | translate }} <b>{{ "SHOW_PHONE" | translate }}</b></span
+            >{{ "REPLY_MESSAGE_PHONE" | translate }}
+            <a class="show-number" (click)="onPhoneNumberClick(container)">{{ "SHOW_PHONE" | translate }}</a></span
           >
         </p>
       </div>
