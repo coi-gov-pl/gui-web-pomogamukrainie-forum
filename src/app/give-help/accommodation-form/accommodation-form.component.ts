@@ -16,8 +16,8 @@ import { DIALOG_CANCEL_OFFER_CONFIG } from '@app/shared/consts';
   styleUrls: ['./accommodation-form.component.scss'],
 })
 export class AccommodationFormComponent implements OnInit {
-  phonePrefix: string = '';
-  phoneNumber: string = '';
+  phonePrefix: string | undefined = '';
+  phoneNumber: string | undefined = '';
   LENGTH_OF_STAY = LENGTH_OF_STAY;
   LANGUAGES = LANGUAGES;
   PREFIXES = PREFIXES;
@@ -40,11 +40,21 @@ export class AccommodationFormComponent implements OnInit {
     this.offerId = Number(this.route.snapshot.paramMap.get('id'));
 
     if (this.isEditRoute) {
-      this.accommodationsResourceService.getAccommodations(this.offerId).subscribe((resp) => (this.data = resp));
+      this.accommodationsResourceService.getAccommodations(this.offerId).subscribe((resp) => {
+        this.phoneNumber = resp.phoneNumber;
+        if (resp.phoneCountryCode) {
+          this.findPrefix(resp.phoneCountryCode);
+        }
+        this.data = resp;
+      });
       DIALOG_CANCEL_OFFER_CONFIG.data.headerText = CANCEL_DIALOG_HEADERS.CONFIRM_CANCEL_OFFER_EDIT;
     } else {
       DIALOG_CANCEL_OFFER_CONFIG.data.headerText = CANCEL_DIALOG_HEADERS.CONFIRM_CANCEL_OFFER_NEW;
     }
+  }
+
+  findPrefix(phoneCountryCode: string) {
+    this.phonePrefix = PREFIXES.find((v) => v.prefix === phoneCountryCode)?.prefix;
   }
 
   onPhoneNumberChange($event: Event) {
@@ -55,7 +65,7 @@ export class AccommodationFormComponent implements OnInit {
   }
 
   preparePhoneNumber() {
-    this.data.phoneNumber = this.phonePrefix + this.phoneNumber;
+    this.data.phoneNumber = this.phonePrefix! + this.phoneNumber;
   }
 
   submitOffer(): void {

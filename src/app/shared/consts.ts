@@ -6,19 +6,19 @@ import HostLanguageEnum = AccommodationOfferDefinitionDTO.HostLanguageEnum;
 export const PREFIXES: Prefix[] = [
   {
     countryCode: LanguageCode.ru_RU,
-    prefix: '+7',
+    prefix: '7',
   },
   {
     countryCode: LanguageCode.en_GB,
-    prefix: '+44',
+    prefix: '44',
   },
   {
     countryCode: LanguageCode.pl_PL,
-    prefix: '+48',
+    prefix: '48',
   },
   {
     countryCode: LanguageCode.uk_UA,
-    prefix: '+380',
+    prefix: '380',
   },
 ];
 

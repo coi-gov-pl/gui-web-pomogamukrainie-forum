@@ -18,8 +18,8 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 export class TransportFormComponent implements OnInit {
   minDate: Date = new Date();
   PREFIXES = PREFIXES;
-  phonePrefix: string = '';
-  phoneNumber: string = '';
+  phonePrefix: string | undefined = '';
+  phoneNumber: string | undefined = '';
   data = defaults<TransportOfferDefinitionDTO>();
   @ViewChild('phoneInput') phoneInput!: ElementRef<HTMLInputElement>;
   offerId?: number;
@@ -34,11 +34,21 @@ export class TransportFormComponent implements OnInit {
   ngOnInit(): void {
     this.offerId = Number(this.route.snapshot.paramMap.get('id'));
     if (this.isEditRoute) {
-      this.transportResourceService.getTransport(this.offerId).subscribe((resp) => (this.data = resp));
+      this.transportResourceService.getTransport(this.offerId).subscribe((resp) => {
+        this.phoneNumber = resp.phoneNumber;
+        if (resp.phoneCountryCode) {
+          this.findPrefix(resp.phoneCountryCode);
+        }
+        this.data = resp;
+      });
       DIALOG_CANCEL_OFFER_CONFIG.data.headerText = CANCEL_DIALOG_HEADERS.CONFIRM_CANCEL_OFFER_EDIT;
     } else {
       DIALOG_CANCEL_OFFER_CONFIG.data.headerText = CANCEL_DIALOG_HEADERS.CONFIRM_CANCEL_OFFER_NEW;
     }
+  }
+
+  findPrefix(phoneCountryCode: string) {
+    this.phonePrefix = PREFIXES.find((v) => v.prefix === phoneCountryCode)?.prefix;
   }
 
   onPhoneNumberChange($event: Event) {
@@ -49,7 +59,7 @@ export class TransportFormComponent implements OnInit {
   }
 
   preparePhoneNumber() {
-    this.data.phoneNumber = this.phonePrefix + this.phoneNumber;
+    this.data.phoneNumber = this.phonePrefix! + this.phoneNumber;
   }
 
   submitOffer(): void {

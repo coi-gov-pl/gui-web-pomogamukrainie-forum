@@ -24,8 +24,8 @@ export class MaterialAidFormComponent implements OnInit {
   data = defaults<MaterialAidOfferDefinitionDTO>({});
   CATEGORIES = CATEGORIES;
   PREFIXES = PREFIXES;
-  phonePrefix: string = '';
-  phoneNumber: string = '';
+  phonePrefix: string | undefined = '';
+  phoneNumber: string | undefined = '';
   @ViewChild('phoneInput') phoneInput!: ElementRef<HTMLInputElement>;
   offerId?: number;
   constructor(
@@ -40,11 +40,21 @@ export class MaterialAidFormComponent implements OnInit {
     this.offerId = Number(this.route.snapshot.paramMap.get('id'));
 
     if (this.isEditRoute) {
-      this.materialAidResourceService.getMaterialAid(this.offerId).subscribe((resp) => (this.data = resp));
+      this.materialAidResourceService.getMaterialAid(this.offerId).subscribe((resp) => {
+        this.phoneNumber = resp.phoneNumber;
+        if (resp.phoneCountryCode) {
+          this.findPrefix(resp.phoneCountryCode);
+        }
+        this.data = resp;
+      });
       DIALOG_CANCEL_OFFER_CONFIG.data.headerText = CANCEL_DIALOG_HEADERS.CONFIRM_CANCEL_OFFER_EDIT;
     } else {
       DIALOG_CANCEL_OFFER_CONFIG.data.headerText = CANCEL_DIALOG_HEADERS.CONFIRM_CANCEL_OFFER_NEW;
     }
+  }
+
+  findPrefix(phoneCountryCode: string) {
+    this.phonePrefix = PREFIXES.find((v) => v.prefix === phoneCountryCode)?.prefix;
   }
 
   onPhoneNumberChange($event: Event) {
@@ -55,7 +65,7 @@ export class MaterialAidFormComponent implements OnInit {
   }
 
   preparePhoneNumber() {
-    this.data.phoneNumber = this.phonePrefix + this.phoneNumber;
+    this.data.phoneNumber = this.phonePrefix! + this.phoneNumber;
   }
 
   handleSubmit() {
