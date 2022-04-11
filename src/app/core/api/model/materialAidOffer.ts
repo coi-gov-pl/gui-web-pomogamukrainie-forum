@@ -17,6 +17,7 @@ export interface MaterialAidOffer {
   title: string;
   description: string;
   phoneNumber?: string;
+  phoneCountryCode?: string;
   modifiedDate?: string;
   category: MaterialAidOffer.CategoryEnum;
   location: Location;
