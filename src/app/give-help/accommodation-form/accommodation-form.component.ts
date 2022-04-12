@@ -71,7 +71,7 @@ export class AccommodationFormComponent implements OnInit {
   redirectOnSuccess() {
     this.router.navigate([CorePath.MyAccount]).then((navigated: boolean) => {
       if (navigated) {
-        this.snackbarService.openSnackAlert(ALERT_TYPES.OFFER_SUCCESS);
+        this.snackbarService.openUpperSnackAlert(ALERT_TYPES.OFFER_SUCCESS);
       }
     });
   }

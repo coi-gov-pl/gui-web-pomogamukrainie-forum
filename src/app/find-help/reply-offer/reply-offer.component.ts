@@ -93,9 +93,9 @@ export class ReplyOfferComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   submitMessage(): void {
-    // if (this.existWidgetAndToken()) {
-    this.sendMessage();
-    // }
+    if (this.existWidgetAndToken()) {
+      this.sendMessage();
+    }
   }
 
   sendMessage(): void {
@@ -111,7 +111,7 @@ export class ReplyOfferComponent implements OnInit, OnDestroy, AfterViewInit {
     const linkToOffer = this.router.url;
     this.router.navigate([CorePath.Find]).then((navigated: boolean) => {
       if (navigated) {
-        this.snackbarService.openSnackAlert(ALERT_TYPES.MESSAGE_SENT, linkToOffer);
+        this.snackbarService.openUpperSnackAlert(ALERT_TYPES.MESSAGE_SENT, linkToOffer);
       }
     });
   }
