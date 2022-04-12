@@ -21,6 +21,8 @@ export class SnackAlertComponent {
   }
 
   redirectToPath(link: string) {
+    console.log('compo link, link');
     this.router.navigateByUrl(link);
+    //this.router.navigate([link]);
   }
 }

@@ -93,24 +93,25 @@ export class ReplyOfferComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   submitMessage(): void {
-    if (this.existWidgetAndToken()) {
-      this.sendMessage();
-    }
+    // if (this.existWidgetAndToken()) {
+    this.sendMessage();
+    // }
   }
 
   sendMessage(): void {
     this.data.replyEmail = this.data.replyEmail.toLowerCase();
     this.data.recaptchaResponse = this.captchaToken;
-    this.messageResourceService.sendMessageMessage(this.data).subscribe(
-      () => this.snackbarService.openSnackAlert(ALERT_TYPES.MESSAGE_SENT),
-      () => this.resetCaptcha()
-    );
+    this.messageResourceService.sendMessageMessage(this.data).subscribe(() => {
+      this.redirectOnSuccess();
+    });
   }
 
   redirectOnSuccess() {
+    this.resetCaptcha();
+    const linkToOffer = this.router.url;
     this.router.navigate([CorePath.Find]).then((navigated: boolean) => {
       if (navigated) {
-        this.snackbarService.openSnackAlert(ALERT_TYPES.OFFER_SUCCESS, this.router.url);
+        this.snackbarService.openSnackAlert(ALERT_TYPES.MESSAGE_SENT, linkToOffer);
       }
     });
   }
