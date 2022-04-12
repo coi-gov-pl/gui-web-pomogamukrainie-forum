@@ -11,11 +11,12 @@ import {
 import { defaults } from '@app/shared/utils';
 import { SendMessageDTO, MessageResourceService } from '@app/core/api';
 import { SnackbarService } from '@app/shared/services';
-import { ALERT_TYPES } from '@app/shared/models';
+import { ALERT_TYPES, CorePath } from '@app/shared/models';
 import { AuthService } from '@app/core/auth';
 import { environment } from 'src/environments/environment';
 import { RecaptchaLoaderService, ReCaptchaV3Service } from 'ng-recaptcha';
 import { Subject, Subscription, take, takeUntil } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-reply-offer',
@@ -42,7 +43,8 @@ export class ReplyOfferComponent implements OnInit, OnDestroy, AfterViewInit {
     public readonly authService: AuthService,
     private readonly reCaptchaV3Service: ReCaptchaV3Service,
     private recaptchaLoaderService: RecaptchaLoaderService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -103,6 +105,14 @@ export class ReplyOfferComponent implements OnInit, OnDestroy, AfterViewInit {
       () => this.snackbarService.openSnackAlert(ALERT_TYPES.MESSAGE_SENT),
       () => this.resetCaptcha()
     );
+  }
+
+  redirectOnSuccess() {
+    this.router.navigate([CorePath.Find]).then((navigated: boolean) => {
+      if (navigated) {
+        this.snackbarService.openSnackAlert(ALERT_TYPES.OFFER_SUCCESS, this.router.url);
+      }
+    });
   }
 
   ngOnDestroy(): void {

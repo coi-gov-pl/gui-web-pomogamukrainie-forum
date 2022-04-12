@@ -21,9 +21,12 @@ export class SnackbarService {
 
   constructor(private snackbar: MatSnackBar) {}
 
-  openSnackAlert(type: ALERT_TYPES) {
+  openSnackAlert(type: ALERT_TYPES, link?: string) {
     this.snackbar.openFromComponent(SnackAlertComponent, {
-      data: type,
+      data: {
+        type: type,
+        link: link,
+      },
       panelClass: 'snackbar-alert',
       duration: 10000,
       horizontalPosition: 'center',
