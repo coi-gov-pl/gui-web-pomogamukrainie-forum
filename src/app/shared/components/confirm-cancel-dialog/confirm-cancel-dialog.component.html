@@ -1,8 +1,9 @@
 <div class="container">
   <div class="icon">
-    <mat-icon fontSet="material-icons-outlined">cancel</mat-icon>
+    <mat-icon fontSet="material-icons-outlined">help_outline</mat-icon>
   </div>
-  <div class="title">{{ "CONFIRM_CANCEL_OFFER" | translate }}</div>
+  <div class="title">{{ headerText | translate }}</div>
+  <p>{{ "CONFIRM_CANCEL_OFFER_DISC" | translate }}</p>
   <div class="footer">
     <button type="submit" class="btn btn-dark" (click)="confirmAction(false)">
       <span>{{ "NO" | translate }}</span>
