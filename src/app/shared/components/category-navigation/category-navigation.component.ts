@@ -15,6 +15,7 @@ import { MAT_TOOLTIP_DEFAULT_OPTIONS, MatTooltipDefaultOptions, MatTooltipModule
 })
 export class CategoryNavigationComponent {
   @Input() outputPath: CorePath = CorePath.Find;
+  @Input() inactive: boolean = false;
   routingCategoryName = CategoryRoutingName;
 
   categories: Category[] = [
