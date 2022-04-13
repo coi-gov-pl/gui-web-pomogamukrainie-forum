@@ -42,7 +42,7 @@ export class MyAccountSettingsComponent implements OnInit {
       disableClose: true,
     });
 
-    dialogRef.componentInstance.onClosed.pipe(take(1)).subscribe((confirmed: boolean) => {
+    dialogRef.componentInstance.confirm.pipe(take(1)).subscribe((confirmed: boolean) => {
       dialogRef.close();
       if (confirmed) {
         this.userService.removeAccountUsers().subscribe(() => {

@@ -16,7 +16,7 @@ export class WelcomeComponent implements OnInit {
     if (localStorage.getItem(LocalStorageKeys.AccountRemoved)) {
       localStorage.removeItem(LocalStorageKeys.AccountRemoved);
       const dialogRef: MatDialogRef<RemoveAccountSuccessComponent> = this.dialog.open(RemoveAccountSuccessComponent, {
-        panelClass: 'dialog-remove-account-success',
+        panelClass: 'dialog-success',
         hasBackdrop: true,
         width: '100%',
         minHeight: '300px',

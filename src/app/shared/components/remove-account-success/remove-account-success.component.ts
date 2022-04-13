@@ -9,9 +9,6 @@ import { TranslateModule } from '@ngx-translate/core';
   styleUrls: ['./remove-account-success.component.scss'],
 })
 export class RemoveAccountSuccessComponent {
-  // eslint-disable-next-line @angular-eslint/no-output-on-prefix
-  @Output() onClosed: EventEmitter<boolean> = new EventEmitter<boolean>();
-
   constructor() {}
 }
 
