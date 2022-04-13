@@ -43,6 +43,13 @@ const routes: Routes = [
           title: BreadcrumbLabels.TRANSPORT,
         },
       },
+      {
+        path: CategoryRoutingName.JOB,
+        loadChildren: () => import('./job-search/job-search.module').then((m) => m.JobSearchModule),
+        data: {
+          title: BreadcrumbLabels.JOB,
+        },
+      },
     ],
   },
 ];
