@@ -1,0 +1,42 @@
+<app-breadcrumb></app-breadcrumb>
+<header class="text-center mb-3">
+  <p class="font-small font-yellow fw-bold mb-1">{{ "HELPUA" | translate }}</p>
+  <h1 class="header-2 font-darkblue fw-bold">{{ "SEARCH_FOR_HELP" | translate }}</h1>
+</header>
+
+<app-category-navigation class="mb-4" [outputPath]="corePath.Find"></app-category-navigation>
+
+<mat-card #healthResultsStart>
+  <app-health-search-form (search)="search($event)"></app-health-search-form>
+</mat-card>
+<app-no-results *ngIf="total === 0"></app-no-results>
+<div class="results" *ngIf="this.total && this.total >= 0">
+  <app-sorting-header
+    [header]="'ADVERTISEMENTS_LIST' | translate"
+    [total]="total"
+    (sortingOrderChange)="search()"
+  ></app-sorting-header>
+  <div>
+    <app-search-result
+      *ngFor="let result of results"
+      [location]="result.location"
+      [title]="result.title"
+      [description]="result.description | truncate: 200:'...'"
+      [posted]="result.modifiedDate"
+      [offerId]="result.id!"
+      [category]="categoryRoutingName.HEALTH"
+    >
+      <app-search-result-attribute
+        *ngIf="result.mode"
+        [text]="result.mode | translate"
+        icon="person"
+      ></app-search-result-attribute>
+      <app-search-result-attribute
+        *ngIf="result.language"
+        [text]="result.language.join(', ')"
+        icon="translate"
+      ></app-search-result-attribute>
+    </app-search-result>
+  </div>
+  <app-paginator [length]="total" (param)="search()"></app-paginator>
+</div>

@@ -181,4 +181,7 @@ export default {
   CONFIRM_CANCEL_OFFER_NEW: 'Czy na pewno rezygnujesz z dodawania ogłoszenia?',
   CONFIRM_CANCEL_OFFER_EDIT: 'Czy na pewno rezygnujesz z edycji ogłoszenia?',
   CONFIRM_CANCEL_OFFER_DISC: 'Wprowadzone przez Ciebie informacje zostaną usunięte.',
+  LABEL_SPECIALIZATION: 'Specjalizacja',
+  OPTION_ALL: 'Wszystkie',
+  LABEL_HEALTH_MODE: 'Tryb',
 };

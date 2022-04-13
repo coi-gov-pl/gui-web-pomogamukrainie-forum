@@ -1,0 +1,62 @@
+<form (ngSubmit)="onSubmit()" #form="ngForm">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-xl-4">
+        <app-cities-search
+          [(ngModel)]="data.location"
+          name="location"
+          [placeholder]="'PLACEHOLDER_LOCATION' | translate"
+          [label]="'LOCATION' | translate"
+          [required]="false"
+          [isRegionPicked]="data.location?.region ? true : false"
+        ></app-cities-search>
+      </div>
+      <div class="col-md-6 col-xl-2">
+        <label>
+          <b>{{ "LABEL_SPECIALIZATION" | translate }}</b>
+        </label>
+        <mat-form-field appearance="outline">
+          <mat-select [placeholder]="'OPTION_ALL' | translate" [(ngModel)]="data.specialization" name="specialization">
+            <mat-option [value]="null">{{ "OPTION_ALL" | translate }}</mat-option>
+            <mat-option *ngFor="let spec of specializations" [value]="spec.value">
+              {{ spec.value | translate }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-md-6 col-xl-2">
+        <label>
+          <b>{{ "LANGUAGE" | translate }}</b>
+        </label>
+        <mat-form-field appearance="outline">
+          <mat-select
+            [placeholder]="'PLACEHOLDER_CHOOSE' | translate"
+            multiple
+            [(ngModel)]="data.language"
+            name="language"
+          >
+            <mat-option *ngFor="let lang of LANGUAGES" [value]="lang.code">{{ lang.label | translate }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-md-6 col-xl-2">
+        <label>
+          <b>{{ "LABEL_HEALTH_MODE" | translate }}</b>
+        </label>
+        <mat-form-field appearance="outline">
+          <mat-select [placeholder]="'PLACEHOLDER_CHOOSE' | translate" multiple [(ngModel)]="data.mode" name="mode">
+            <mat-option *ngFor="let mode of modes" [value]="mode.value">
+              {{ mode.value | translate }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-xl-2 search">
+        <button type="submit" class="btn btn-dark" [disabled]="form.invalid">
+          <mat-icon fontSet="material-icons-outlined">search</mat-icon>
+          <span>{{ "SEARCH" | translate }}</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</form>
