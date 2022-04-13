@@ -11,6 +11,6 @@ export const environment: EnvironmentConfig = {
   },
   applicationInsightsConnectionString: '%BACKEND_REPLACED_APPLICATION_INSIGHTS_CONNECTION_STRING%',
   recaptcha: {
-    siteKey: '',
+    siteKey: '6LdZ0QwfAAAAAMYzXcb_DMnDX5uTpaXdMf4Ms_YW',
   },
 };
