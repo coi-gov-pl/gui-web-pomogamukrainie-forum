@@ -17,6 +17,7 @@ export interface AccommodationOffer {
   title: string;
   description: string;
   phoneNumber?: string;
+  phoneCountryCode?: string;
   modifiedDate?: string;
   location: Location;
   guests: number;

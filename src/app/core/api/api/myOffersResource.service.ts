@@ -27,6 +27,8 @@ import { Observable } from 'rxjs';
 // @ts-ignore
 import { AccommodationOffer } from '../model/accommodationOffer';
 // @ts-ignore
+import { JobOffer } from '../model/jobOffer';
+// @ts-ignore
 import { MaterialAidOffer } from '../model/materialAidOffer';
 // @ts-ignore
 import { OffersBaseOffer } from '../model/offersBaseOffer';
@@ -111,19 +113,19 @@ export class MyOffersResourceService {
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<AccommodationOffer | MaterialAidOffer | TransportOffer>;
+  ): Observable<AccommodationOffer | JobOffer | MaterialAidOffer | TransportOffer>;
   public getMyOffers(
     id: number,
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<AccommodationOffer | MaterialAidOffer | TransportOffer>>;
+  ): Observable<HttpResponse<AccommodationOffer | JobOffer | MaterialAidOffer | TransportOffer>>;
   public getMyOffers(
     id: number,
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<AccommodationOffer | MaterialAidOffer | TransportOffer>>;
+  ): Observable<HttpEvent<AccommodationOffer | JobOffer | MaterialAidOffer | TransportOffer>>;
   public getMyOffers(
     id: number,
     observe: any = 'body',
@@ -162,7 +164,7 @@ export class MyOffersResourceService {
       }
     }
 
-    return this.httpClient.get<AccommodationOffer | MaterialAidOffer | TransportOffer>(
+    return this.httpClient.get<AccommodationOffer | JobOffer | MaterialAidOffer | TransportOffer>(
       `${this.configuration.basePath}/api/secure/my-offers/${encodeURIComponent(String(id))}`,
       {
         context: localVarHttpContext,
