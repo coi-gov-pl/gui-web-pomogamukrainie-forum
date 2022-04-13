@@ -35,7 +35,7 @@
               required
               #industry="ngModel"
             >
-              <mat-option *ngFor="let industry of INDUSTRIES" [value]="industry.key">
+              <mat-option *ngFor="let industry of INDUSTRIES" [value]="industry.value">
                 {{ industry.value | translate }}
               </mat-option>
             </mat-select>
@@ -48,17 +48,17 @@
       <div class="row">
         <div class="col-lg-3">
           <label>
-            <b>{{ "LABEL_WORK_MODE" | translate }}*</b>
+            <b>{{ "LABEL_JOB_MODE" | translate }}*</b>
           </label>
           <mat-form-field appearance="outline">
             <mat-select
-              placeholder="{{ 'PLACEHOLDER_WORK_MODE' | translate }}"
+              placeholder="{{ 'PLACEHOLDER_JOB_MODE' | translate }}"
               [(ngModel)]="data.mode"
               name="mode"
               required
               #mode="ngModel"
             >
-              <mat-option *ngFor="let mode of WORK_MODES" [value]="mode.key">{{ mode.value | translate }}</mat-option>
+              <mat-option *ngFor="let mode of JOB_MODES" [value]="mode.value">{{ mode.value | translate }}</mat-option>
             </mat-select>
             <mat-error>
               <app-field-error [model]="industry"></app-field-error>
@@ -78,7 +78,7 @@
               required
               #contractType="ngModel"
             >
-              <mat-option *ngFor="let contractType of CONTRACT_TYPE" [value]="contractType.key">
+              <mat-option *ngFor="let contractType of CONTRACT_TYPE" [value]="contractType.value">
                 {{ contractType.value | translate }}
               </mat-option>
             </mat-select>
@@ -89,19 +89,19 @@
         </div>
         <div class="col-lg-3">
           <label>
-            <b>{{ "LABEL_WORKING_TIME" | translate }}*</b>
+            <b>{{ "LABEL_WORK_TIME" | translate }}*</b>
           </label>
           <mat-form-field appearance="outline">
             <mat-select
-              placeholder="{{ 'PLACEHOLDER_WORKING_TIME' | translate }}"
+              placeholder="{{ 'PLACEHOLDER_JOB_TIME' | translate }}"
               multiple
-              [(ngModel)]="data.workingTime"
+              [(ngModel)]="data.workTime"
               name="workingTime"
               required
               #workingTime="ngModel"
             >
-              <mat-option *ngFor="let workingTime of WORKING_TIME" [value]="workingTime.key">
-                {{ workingTime.value | translate }}
+              <mat-option *ngFor="let workTime of WORK_TIME" [value]="workTime.value">
+                {{ workTime.value | translate }}
               </mat-option>
             </mat-select>
             <mat-error>
@@ -111,13 +111,13 @@
         </div>
         <div class="col-lg-3">
           <label>
-            <b>{{ "LABEL_WORK_LANG" | translate }} *</b>
+            <b>{{ "LABEL_JOB_LANG" | translate }} *</b>
           </label>
           <mat-form-field appearance="outline">
             <mat-select
               placeholder="{{ 'PLACEHOLDER_CHOOSE' | translate }}"
               multiple
-              [(ngModel)]="data.workLanguage"
+              [(ngModel)]="data.language"
               name="language"
               required
               #language="ngModel"

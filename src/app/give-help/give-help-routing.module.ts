@@ -69,17 +69,17 @@ const routes: Routes = [
         },
       },
       {
-        path: CategoryRoutingName.WORK,
-        loadChildren: () => import('./work-form/work-form.module').then((m) => m.WorkFormModule),
+        path: CategoryRoutingName.JOB,
+        loadChildren: () => import('./job-form/job-form.module').then((m) => m.JobFormModule),
         data: {
-          title: BreadcrumbLabels.WORK,
+          title: BreadcrumbLabels.JOB,
         },
       },
       {
-        path: `${CategoryRoutingName.WORK}/:id`,
-        loadChildren: () => import('./work-form/work-form.module').then((m) => m.WorkFormModule),
+        path: `${CategoryRoutingName.JOB}/:id`,
+        loadChildren: () => import('./job-form/job-form.module').then((m) => m.JobFormModule),
         data: {
-          title: BreadcrumbLabels.WORK,
+          title: BreadcrumbLabels.JOB,
         },
       },
     ],

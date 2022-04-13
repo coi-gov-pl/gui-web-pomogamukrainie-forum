@@ -4,7 +4,7 @@ export enum CategoryNameKey {
   TRANSPORT = 'TRANSPORT',
   HEALTH = 'HEALTH',
   LEGAL_HELP = 'LEGAL_HELP',
-  WORK = 'WORK',
+  JOB = 'JOB',
   TRANSLATIONS = 'TRANSLATIONS',
   MISC = 'MISC',
 }

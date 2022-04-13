@@ -7,58 +7,56 @@ import {
   MATCH_NON_DIGITS,
   MATCH_SPACES,
   PREFIXES,
-  WORK_LANGUAGES,
+  JOB_LANGUAGES,
 } from '@app/shared/consts';
 import { defaults } from '@app/shared/utils';
 import { ALERT_TYPES, CANCEL_DIALOG_HEADERS, CorePath } from '@app/shared/models';
 import { take } from 'rxjs';
 import { ConfirmCancelDialogComponent } from '@app/shared/components/confirm-cancel-dialog/cancel-dialog.component';
-import { WorkResourceService } from '@app/core/api/api/workResources.service';
-import { WorkOfferDefinitionDTO } from '@app/core/api/model/workOfferDefinitionDTO';
+import { JobResourceService } from '@app/core/api/api/jobResource.service';
+import { JobOfferDefinitionDTO } from '@app/core/api/model/jobOfferDefinitionDTO';
 
-const INDUSTRIES = Object.entries(WorkOfferDefinitionDTO.IndustryEnum).map(([key, value]) => ({
+const INDUSTRIES = Object.entries(JobOfferDefinitionDTO.IndustryEnum).map(([key, value]) => ({
   key,
   value,
 }));
 
-const WORK_MODES = Object.entries(WorkOfferDefinitionDTO.ModeEnum).map(([key, value]) => ({
+const JOB_MODES = Object.entries(JobOfferDefinitionDTO.ModeEnum).map(([key, value]) => ({
   key,
   value,
 }));
 
-const CONTRACT_TYPE = Object.entries(WorkOfferDefinitionDTO.ContractTypeEnum).map(([key, value]) => ({
+const CONTRACT_TYPE = Object.entries(JobOfferDefinitionDTO.ContractTypeEnum).map(([key, value]) => ({
   key,
   value,
 }));
 
-const WORKING_TIME = Object.entries(WorkOfferDefinitionDTO.WorkingTimeEnum).map(([key, value]) => ({
+const WORK_TIME = Object.entries(JobOfferDefinitionDTO.WorkTimeEnum).map(([key, value]) => ({
   key,
   value,
 }));
 
 @Component({
-  selector: 'app-work-form',
-  templateUrl: './work-form.component.html',
-  styleUrls: ['./work-form.component.scss'],
+  selector: 'app-job-form',
+  templateUrl: './job-form.component.html',
+  styleUrls: ['./job-form.component.scss'],
 })
-export class WorkFormComponent implements OnInit {
+export class JobFormComponent implements OnInit {
   phonePrefix: string = '';
   phoneNumber: string = '';
-  LANGUAGES = WORK_LANGUAGES;
+  LANGUAGES = JOB_LANGUAGES;
   PREFIXES = PREFIXES;
   INDUSTRIES = INDUSTRIES;
-  WORK_MODES = WORK_MODES;
+  JOB_MODES = JOB_MODES;
   CONTRACT_TYPE = CONTRACT_TYPE;
-  WORKING_TIME = WORKING_TIME;
-  data = defaults<WorkOfferDefinitionDTO>({
-    workLanguage: [],
-  });
+  WORK_TIME = WORK_TIME;
+  data = defaults<JobOfferDefinitionDTO>({});
   @ViewChild('phoneInput') phoneInput!: ElementRef<HTMLInputElement>;
   @Input() buttonLabel: string = '';
   offerId?: number;
 
   constructor(
-    private workResourceService: WorkResourceService,
+    private jobResourceService: JobResourceService,
     private router: Router,
     private dialog: MatDialog,
     private snackbarService: SnackbarService,
@@ -91,8 +89,8 @@ export class WorkFormComponent implements OnInit {
     } else {
       this.data.phoneNumber = undefined;
     }
-    this.workResourceService
-      .createWork(this.data)
+    this.jobResourceService
+      .createJob(this.data)
       .pipe(take(1))
       .subscribe(() => this.redirectOnSuccess());
   }

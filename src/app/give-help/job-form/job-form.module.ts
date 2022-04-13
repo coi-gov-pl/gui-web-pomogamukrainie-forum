@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { WorkFormRoutingModule } from './work-form-routing.module';
-import { WorkFormComponent } from './work-form.component';
+import { JobFormRoutingModule } from './job-form-routing.module';
+import { JobFormComponent } from './job-form.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
@@ -14,10 +14,10 @@ import { MatSelectModule } from '@angular/material/select';
 import { GiveHelpFormModule } from '../give-help-form/give-help-form.module';
 
 @NgModule({
-  declarations: [WorkFormComponent],
+  declarations: [JobFormComponent],
   imports: [
     CommonModule,
-    WorkFormRoutingModule,
+    JobFormRoutingModule,
     MatCardModule,
     MatIconModule,
     FormsModule,
@@ -30,4 +30,4 @@ import { GiveHelpFormModule } from '../give-help-form/give-help-form.module';
     MatSelectModule,
   ],
 })
-export class WorkFormModule {}
+export class JobFormModule {}

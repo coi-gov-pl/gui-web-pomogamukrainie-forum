@@ -104,10 +104,10 @@ export class StatementComponent implements OnInit, AfterViewInit, OnDestroy {
         icon: 'translate',
       },
       {
-        id: StatementAnchors.WORK,
-        title: this.translateService.instant('WORK'),
+        id: StatementAnchors.JOB,
+        title: this.translateService.instant('JOB'),
         content: this.translateService.instant('INFORMATOR_WORK_DESC'),
-        isExpanded: isExpanded(allExpanded, StatementAnchors.WORK, this.activePanel),
+        isExpanded: isExpanded(allExpanded, StatementAnchors.JOB, this.activePanel),
         icon: 'work_outline',
       },
       {
