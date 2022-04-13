@@ -3,4 +3,5 @@ export enum LocalStorageKeys {
   PageUrl = 'pomagamukrainie-url',
   PageQuery = 'pomagamukrainie-query',
   LangOption = 'pomagamukrainie-lang',
+  AccountRemoved = 'pomagamukrainie-account-removed',
 }

@@ -14,9 +14,15 @@ import { MyAccountRoutingModule } from './my-account-routing.module';
 import { ConfirmRemoveAdComponent } from './confirm-remove-ad/confirm-remove-ad.component';
 import { PaginatorModule } from '@app/shared/components/paginator/paginator.module';
 import { SortingHeaderModule } from '@app/shared/components';
+import { ConfirmRemoveAccountComponent } from './confirm-remove-account/confirm-remove-account.component';
 
 @NgModule({
-  declarations: [MyAccountComponent, MyAccountSettingsComponent, ConfirmRemoveAdComponent],
+  declarations: [
+    MyAccountComponent,
+    MyAccountSettingsComponent,
+    ConfirmRemoveAdComponent,
+    ConfirmRemoveAccountComponent,
+  ],
   imports: [
     CommonModule,
     MyAccountRoutingModule,

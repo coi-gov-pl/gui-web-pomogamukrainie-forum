@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="icon">
+    <mat-icon fontSet="material-icons-outlined">delete_forever</mat-icon>
+  </div>
+  <div class="title">{{ "CONFIRM_REMOVE_ACCOUNT" | translate }}</div>
+  <p>{{ "CONFIRM_REMOVE_ACCOUNT_DESCRIPTION" | translate }}</p>
+
+  <div class="footer">
+    <button type="submit" class="btn btn-dark" (click)="confirmAction(false)">
+      <span>{{ "NO" | translate }}</span>
+    </button>
+    <button type="submit" class="btn btn-secondary" (click)="confirmAction(true)">
+      <span>{{ "YES" | translate }}</span>
+    </button>
+  </div>
+</div>

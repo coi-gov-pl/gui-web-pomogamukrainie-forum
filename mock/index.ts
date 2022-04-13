@@ -1,5 +1,5 @@
-import * as express from 'express';
-import * as bodyParser from 'body-parser';
+import express from 'express';
+import bodyParser from 'body-parser';
 import { createProxyMiddleware } from 'http-proxy-middleware';
 import {
   accommodationDelete,

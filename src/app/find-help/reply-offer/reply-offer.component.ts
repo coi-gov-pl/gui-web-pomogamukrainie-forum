@@ -60,7 +60,8 @@ export class ReplyOfferComponent implements OnInit, OnDestroy, AfterViewInit {
     this.data.tosApproved = !!this.data.tosApproved;
   }
 
-  onPhoneNumberClick(): void {
+  onPhoneNumberClick(el: HTMLElement | null = null): void {
+    el?.scrollIntoView({ block: 'end' });
     this.showPhoneNumber = true;
   }
 

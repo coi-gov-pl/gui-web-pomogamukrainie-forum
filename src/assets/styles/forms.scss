@@ -13,10 +13,10 @@ form {
 
 .mat-form-field-appearance-outline {
   &.mat-focused .mat-form-field-outline-thick {
-    color: $input-border-color;
+    color: $active-input-border-color;
   }
   .mat-form-field-outline {
-    color: $active-input-border-color;
+    color: $input-border-color;
   }
 
   .mat-form-field-outline-thick {
