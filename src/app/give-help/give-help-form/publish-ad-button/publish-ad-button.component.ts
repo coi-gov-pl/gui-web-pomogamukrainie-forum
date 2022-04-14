@@ -1,4 +1,4 @@
-import { Component, Host } from '@angular/core';
+import { Component, Host, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -7,5 +7,6 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./publish-ad-button.component.scss'],
 })
 export class PublishAdButtonComponent {
+  @Input() isEditRoute: boolean = false;
   constructor(@Host() readonly form: NgForm) {}
 }
