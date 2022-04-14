@@ -85,4 +85,15 @@ export class JobSearchFormComponent implements OnInit {
     await this.storeUrlService.setCustomPaginatorParam(param);
     this.search.emit(this.data);
   }
+
+  async clearFilters(): Promise<void> {
+    this.data = {};
+    const param: Params = {
+      page: 0,
+      size: localStorage.getItem(LocalStorageKeys.PageSize) ?? 5,
+      sort: [`${SortingFieldName},${SortingOrder.descending}`],
+    };
+    await this.storeUrlService.setCustomPaginatorParam(param);
+    this.search.emit(this.data);
+  }
 }

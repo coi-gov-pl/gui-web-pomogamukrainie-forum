@@ -32,6 +32,7 @@ export default {
   LOCATION: 'Lokalizacja',
   NUMBER_OF_PEOPLE: 'Liczba osób',
   SEARCH: 'Wyszukaj',
+  CLEAR_FILTERS: `Wyczyść filtry`,
   SELECT_FROM_THE_LIST: 'Wybierz z listy',
   MORE_SUPPORT_INFORMATION: 'Więcej informacji o pomocy',
   DASHBOARD_DESCRIPTION: 'Ofertę pomocy potwierdzisz <strong>profilem zaufanym</strong>. W ten sposób chronimy Twoje dane i dbamy o wiarygodną pomoc dla uchodźców.',
