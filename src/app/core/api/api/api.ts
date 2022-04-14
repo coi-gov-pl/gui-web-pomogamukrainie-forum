@@ -4,6 +4,8 @@ export * from './cityLookupResource.service';
 import { CityLookupResourceService } from './cityLookupResource.service';
 export * from './jobResource.service';
 import { JobResourceService } from './jobResource.service';
+export * from './lawResource.service';
+import { LawResourceService } from './lawResource.service';
 export * from './materialAidResource.service';
 import { MaterialAidResourceService } from './materialAidResource.service';
 export * from './messageResource.service';
@@ -18,6 +20,7 @@ export const APIS = [
   AccommodationsResourceService,
   CityLookupResourceService,
   JobResourceService,
+  LawResourceService,
   MaterialAidResourceService,
   MessageResourceService,
   MyOffersResourceService,

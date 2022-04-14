@@ -4,6 +4,11 @@
   >
   <button type="submit" class="btn btn-dark" [disabled]="form.invalid">
     <mat-icon fontSet="material-icons-outlined">add</mat-icon>
-    <span>{{ "OFFER_PUBLISH" | translate }}</span>
+    <ng-container *ngIf="!isEditRoute; else edit">
+      <span>{{ "OFFER_PUBLISH" | translate }}</span>
+    </ng-container>
+    <ng-template #edit>
+      <span>{{ "PUBLISH_CHANGES" | translate }}</span>
+    </ng-template>
   </button>
 </div>

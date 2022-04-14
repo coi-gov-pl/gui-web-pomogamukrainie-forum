@@ -178,6 +178,8 @@ export default {
   ERROR_NOT_NUMBER: 'To nie jest liczba',
   AVAILABLE_SOON: 'Dostępne wkrótce',
   RESET_CAPTCHA: 'Resetuj',
+  PUBLISH_CHANGES: 'Publikuj zmiany',
+  UPDATE_OFFER_SENT_ALERT_HEADER: 'Ogłoszenie zostało poprawione',
   CANCEL: 'Anuluj',
   CONFIRM_CANCEL_OFFER_NEW: 'Czy na pewno rezygnujesz z dodawania ogłoszenia?',
   CONFIRM_CANCEL_OFFER_EDIT: 'Czy na pewno rezygnujesz z edycji ogłoszenia?',
@@ -227,5 +229,6 @@ export default {
   ONSITE: 'Stacjonarna' ,
   TELEWORK: 'Zdalna',
   MIXED: 'Mieszana',
-  LABEL_PHONE_COUNTRY_CODE: 'Telefoniczny kod kraju',
+  LABEL_PHONE_COUNTRY_CODE: 'Numer kierunkowy',
+  OFFER_LINK: 'Link do ogłoszenia',
 };

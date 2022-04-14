@@ -43,10 +43,10 @@ export class HttpErrorInterceptor implements HttpInterceptor {
             this.listNotifications(req);
             // captcha error
           } else if (firstError.field === 'recaptcha-response' || firstError.field === 'replyEmail') {
-            this.snackbarService.openSnack(firstError.message, ALERT_TYPES.ERROR);
+            this.snackbarService.openBottomSnackAlert(firstError.message, ALERT_TYPES.ERROR);
           }
         } catch {
-          this.snackbarService.openSnack(
+          this.snackbarService.openBottomSnackAlert(
             this.translateService.instant('API_HTTP_ERROR_SERVER_BAD_REQUEST'),
             ALERT_TYPES.ERROR
           );
@@ -54,7 +54,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
         break;
       case 401:
       case 403:
-        this.snackbarService.openSnack(
+        this.snackbarService.openBottomSnackAlert(
           this.translateService.instant('API_HTTP_ERROR_SESSION_OR_PERMISSION'),
           ALERT_TYPES.ERROR
         );
@@ -64,14 +64,14 @@ export class HttpErrorInterceptor implements HttpInterceptor {
           const firstError: ApiErrors = (req.error.errors as ApiErrors[])[0];
           // user is not associated with the offer
           if (firstError.type === 'USER') {
-            this.snackbarService.openSnack(firstError.message, ALERT_TYPES.ERROR);
+            this.snackbarService.openBottomSnackAlert(firstError.message, ALERT_TYPES.ERROR);
           }
         } catch {}
         break;
       case 500:
       case 0:
       default:
-        this.snackbarService.openSnack(
+        this.snackbarService.openBottomSnackAlert(
           this.translateService.instant('API_HTTP_ERROR_SERVER_FAILED_CONNECTION'),
           ALERT_TYPES.ERROR
         );
@@ -88,7 +88,10 @@ export class HttpErrorInterceptor implements HttpInterceptor {
         // translate the key
         const translatedField: string = this.translateService.instant(offerMapper[fieldName as keyof AllOffersMapper]);
         // show info
-        this.snackbarService.openSnack(`${translatedField} ${(el.message || '').toLowerCase()}`, ALERT_TYPES.ERROR);
+        this.snackbarService.openBottomSnackAlert(
+          `${translatedField} ${(el.message || '').toLowerCase()}`,
+          ALERT_TYPES.ERROR
+        );
       }
     });
   }
