@@ -18,8 +18,8 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 export class TransportFormComponent implements OnInit {
   minDate: Date = new Date();
   PREFIXES = PREFIXES;
-  phonePrefix: string | undefined = '';
-  phoneNumber: string | undefined = '';
+  phonePrefix: string = '';
+  phoneNumber: string = '';
   data = defaults<TransportOfferDefinitionDTO>();
   @ViewChild('phoneInput') phoneInput!: ElementRef<HTMLInputElement>;
   offerId?: number;
@@ -35,7 +35,7 @@ export class TransportFormComponent implements OnInit {
     this.offerId = Number(this.route.snapshot.paramMap.get('id'));
     if (this.isEditRoute) {
       this.transportResourceService.getTransport(this.offerId).subscribe((resp) => {
-        this.phoneNumber = resp.phoneNumber;
+        this.phoneNumber = resp.phoneNumber || '';
         if (resp.phoneCountryCode) {
           this.findPrefix(resp.phoneCountryCode);
         }
@@ -48,7 +48,7 @@ export class TransportFormComponent implements OnInit {
   }
 
   findPrefix(phoneCountryCode: string) {
-    this.phonePrefix = PREFIXES.find((v) => v.prefix === phoneCountryCode)?.prefix;
+    this.phonePrefix = PREFIXES.find((v) => v.prefix === phoneCountryCode)?.prefix || '';
   }
 
   onPhoneNumberChange($event: Event) {

@@ -24,8 +24,8 @@ export class MaterialAidFormComponent implements OnInit {
   data = defaults<MaterialAidOfferDefinitionDTO>({});
   CATEGORIES = CATEGORIES;
   PREFIXES = PREFIXES;
-  phonePrefix: string | undefined = '';
-  phoneNumber: string | undefined = '';
+  phonePrefix: string = '';
+  phoneNumber: string = '';
   @ViewChild('phoneInput') phoneInput!: ElementRef<HTMLInputElement>;
   offerId?: number;
   constructor(
@@ -41,7 +41,7 @@ export class MaterialAidFormComponent implements OnInit {
 
     if (this.isEditRoute) {
       this.materialAidResourceService.getMaterialAid(this.offerId).subscribe((resp) => {
-        this.phoneNumber = resp.phoneNumber;
+        this.phoneNumber = resp.phoneNumber || '';
         if (resp.phoneCountryCode) {
           this.findPrefix(resp.phoneCountryCode);
         }
@@ -54,7 +54,7 @@ export class MaterialAidFormComponent implements OnInit {
   }
 
   findPrefix(phoneCountryCode: string) {
-    this.phonePrefix = PREFIXES.find((v) => v.prefix === phoneCountryCode)?.prefix;
+    this.phonePrefix = PREFIXES.find((v) => v.prefix === phoneCountryCode)?.prefix || '';
   }
 
   onPhoneNumberChange($event: Event) {

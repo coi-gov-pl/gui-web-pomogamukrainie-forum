@@ -16,8 +16,8 @@ import { DIALOG_CANCEL_OFFER_CONFIG } from '@app/shared/consts';
   styleUrls: ['./accommodation-form.component.scss'],
 })
 export class AccommodationFormComponent implements OnInit {
-  phonePrefix: string | undefined = '';
-  phoneNumber: string | undefined = '';
+  phonePrefix: string = '';
+  phoneNumber: string = '';
   LENGTH_OF_STAY = LENGTH_OF_STAY;
   LANGUAGES = LANGUAGES;
   PREFIXES = PREFIXES;
@@ -41,7 +41,7 @@ export class AccommodationFormComponent implements OnInit {
 
     if (this.isEditRoute) {
       this.accommodationsResourceService.getAccommodations(this.offerId).subscribe((resp) => {
-        this.phoneNumber = resp.phoneNumber;
+        this.phoneNumber = resp.phoneNumber || '';
         if (resp.phoneCountryCode) {
           this.findPrefix(resp.phoneCountryCode);
         }
@@ -54,7 +54,7 @@ export class AccommodationFormComponent implements OnInit {
   }
 
   findPrefix(phoneCountryCode: string) {
-    this.phonePrefix = PREFIXES.find((v) => v.prefix === phoneCountryCode)?.prefix;
+    this.phonePrefix = PREFIXES.find((v) => v.prefix === phoneCountryCode)?.prefix || '';
   }
 
   onPhoneNumberChange($event: Event) {
