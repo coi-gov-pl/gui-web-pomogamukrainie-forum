@@ -7,3 +7,8 @@ export enum ALERT_TYPES {
   OFFER_REMOVED = 'OFFER_REMOVED',
   UPDATE_OFFER_SUCCESS = 'UPDATE_OFFER_SUCCESS',
 }
+
+export interface SNACKBAR_DATA {
+  type: ALERT_TYPES;
+  link: string;
+}

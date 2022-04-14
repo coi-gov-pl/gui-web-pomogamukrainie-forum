@@ -92,13 +92,13 @@ export class AccommodationFormComponent implements OnInit {
     if (!this.isEditRoute) {
       this.router.navigate([CorePath.MyAccount]).then((navigated: boolean) => {
         if (navigated) {
-          this.snackbarService.openSnackAlert(ALERT_TYPES.OFFER_SUCCESS);
+          this.snackbarService.openUpperSnackAlert(ALERT_TYPES.OFFER_SUCCESS);
         }
       });
     } else {
       this.router.navigate([CorePath.MyAccount]).then((navigated: boolean) => {
         if (navigated) {
-          this.snackbarService.openSnackAlert(ALERT_TYPES.UPDATE_OFFER_SUCCESS);
+          this.snackbarService.openUpperSnackAlert(ALERT_TYPES.UPDATE_OFFER_SUCCESS);
         }
       });
     }
