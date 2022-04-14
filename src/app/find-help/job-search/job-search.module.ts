@@ -11,7 +11,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatNativeDateModule } from '@angular/material/core';
-import { MaterialAidSearchRoutingModule } from '../material-aid-search/material-aid-search.routing.module';
 import { PomCommonPipesModule } from '@app/shared/pipes';
 import { TranslateModule } from '@ngx-translate/core';
 import {
@@ -24,7 +23,6 @@ import {
 } from '@app/shared/components';
 import { SearchResultComponentModule } from '../search-result/search-result.module';
 import { SharedModule } from '@app/shared/shared.module';
-import { AccommodationSearchComponent } from '../accommodation-search/accommodation-search.component';
 
 @NgModule({
   declarations: [JobSearchComponent, JobSearchFormComponent],

@@ -26,35 +26,35 @@
         <div class="attribute-name fw-bold">{{ "LABEL_INDUSTRY" | translate }}</div>
         <div class="d-flex">
           <mat-icon class="yellow-icon --smaill-size" fontSet="material-icons-outlined">work_outline</mat-icon>
-          <span class="attribute-value ms-1">{{ data.industry }}</span>
+          <span class="attribute-value ms-1">{{ data.industry | translateArray: " / " }}</span>
         </div>
       </div>
       <div class="attribute col-6 col-lg-4">
         <div class="attribute-name fw-bold">{{ "LABEL_JOB_MODE" | translate }}</div>
         <div class="d-flex">
           <mat-icon class="yellow-icon --smaill-size" fontSet="material-icons-outlined">business</mat-icon>
-          <span class="attribute-value ms-1">{{ data.mode }}</span>
+          <span class="attribute-value ms-1">{{ data.mode | translate }}</span>
         </div>
       </div>
       <div class="attribute col-6 col-lg-4">
         <div class="attribute-name fw-bold">{{ "LABEL_CONTRACT_TYPE" | translate }}</div>
         <div class="d-flex">
           <mat-icon class="yellow-icon --smaill-size" fontSet="material-icons-outlined">translate</mat-icon>
-          <span class="attribute-value ms-1">{{ data.contractType?.join(", ") }}</span>
+          <span class="attribute-value ms-1">{{ data.contractType | translateArray: " / " }}</span>
         </div>
       </div>
       <div class="attribute col-6 col-lg-4">
         <div class="attribute-name fw-bold">{{ "LABEL_WORK_TIME" | translate }}</div>
         <div class="d-flex">
           <mat-icon class="yellow-icon --smaill-size" fontSet="material-icons-outlined">translate</mat-icon>
-          <span class="attribute-value ms-1">{{ data.workTime?.join(", ") }}</span>
+          <span class="attribute-value ms-1">{{ data.workTime | translateArray: " / " }}</span>
         </div>
       </div>
       <div class="attribute col-6 col-lg-4">
         <div class="attribute-name fw-bold">{{ "LANGUAGE" | translate }}</div>
         <div class="d-flex">
           <mat-icon class="yellow-icon --smaill-size" fontSet="material-icons-outlined">translate</mat-icon>
-          <span class="attribute-value ms-1">{{ data.language?.join(", ") }}</span>
+          <span class="attribute-value ms-1">{{ data.language | translateArray: " / " }}</span>
         </div>
       </div>
     </div>

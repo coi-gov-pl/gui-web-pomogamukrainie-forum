@@ -30,7 +30,7 @@ const routes: Routes = [
         path: ':id',
         loadChildren: () => import('../view-offer-job/view-offer-job.module').then((m) => m.ViewOfferJobModule),
         data: {
-          title: BreadcrumbLabels.JOB,
+          title: BreadcrumbLabels.AD,
         },
       },
     ],

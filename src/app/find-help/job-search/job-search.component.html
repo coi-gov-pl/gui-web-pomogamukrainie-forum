@@ -1,5 +1,5 @@
 <app-breadcrumb></app-breadcrumb>
-<header class="text-center mb-3">
+<header class="text-center helpua mb-3">
   <p class="font-small font-yellow fw-bold mb-1">{{ "HELPUA" | translate }}</p>
   <h1 class="header-2 font-darkblue fw-bold">{{ "SEARCH_FOR_HELP" | translate }}</h1>
 </header>
@@ -28,27 +28,27 @@
     >
       <app-search-result-attribute
         *ngIf="result.industry"
-        [text]="result.industry?.join(', ')"
+        [text]="result.industry | translateArray: ' / '"
         icon="work_outline"
       ></app-search-result-attribute>
       <app-search-result-attribute
         *ngIf="result.mode"
-        [text]="result.mode"
+        [text]="result.mode | translate"
         icon="business"
       ></app-search-result-attribute>
       <app-search-result-attribute
         *ngIf="result.contractType"
-        [text]="result.contractType?.join(', ')"
+        [text]="result.contractType | translateArray: ' / '"
         icon="assignment"
       ></app-search-result-attribute>
       <app-search-result-attribute
         *ngIf="result.workTime"
-        [text]="result.workTime?.join(', ')"
+        [text]="result.workTime | translateArray: ' / '"
         icon="schedule"
       ></app-search-result-attribute>
       <app-search-result-attribute
         *ngIf="result.language"
-        [text]="result.language?.join(', ')"
+        [text]="result.language | translateArray: ', '"
         icon="translate"
       ></app-search-result-attribute>
     </app-search-result>

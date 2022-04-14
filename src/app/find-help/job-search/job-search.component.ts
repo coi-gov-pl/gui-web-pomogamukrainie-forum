@@ -16,7 +16,6 @@ export class JobSearchComponent implements OnInit {
   corePath = CorePath;
   searchCriteria: JobQuery = {};
   @ViewChild('jobResultsStart', { read: ElementRef }) resultsStart!: ElementRef<HTMLElement>;
-  JobOffer = JobOffer;
 
   constructor(private jobResourceService: JobResourceService, private route: ActivatedRoute) {}
 
