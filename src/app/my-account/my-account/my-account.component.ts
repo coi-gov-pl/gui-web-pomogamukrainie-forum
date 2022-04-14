@@ -131,10 +131,10 @@ export class MyAccountComponent implements OnInit {
 
   private onRemoveSuccess(data: OffersBaseOffer): void {
     this.myAnnouncements = data;
-    this.snackbarService.openSnackAlert(ALERT_TYPES.OFFER_REMOVED);
+    this.snackbarService.openUpperSnackAlert(ALERT_TYPES.OFFER_REMOVED);
   }
 
   private onRemoveError(message: string): void {
-    this.snackbarService.openSnack(message, ALERT_TYPES.ERROR);
+    this.snackbarService.openBottomSnackAlert(message, ALERT_TYPES.ERROR);
   }
 }

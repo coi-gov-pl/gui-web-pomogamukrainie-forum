@@ -6,3 +6,8 @@ export enum ALERT_TYPES {
   MESSAGE_SENT = 'MESSAGE_SENT',
   OFFER_REMOVED = 'OFFER_REMOVED',
 }
+
+export interface SNACKBAR_DATA {
+  type: ALERT_TYPES;
+  link: string;
+}

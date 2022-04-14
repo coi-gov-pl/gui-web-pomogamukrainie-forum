@@ -186,4 +186,5 @@ export default {
   CONFIRM_REMOVE_ACCOUNT: 'Czy na pewno chcesz usunąć konto?',
   CONFIRM_REMOVE_ACCOUNT_DESCRIPTION: 'Jeśli posiadasz jakieś ogłoszenia - one również zostaną usunięte.',
   REMOVE_ACCOUNT_SUCCESS: 'Twoje konto zostało usunięte',
+  OFFER_LINK: 'Link do ogłoszenia'
 };
