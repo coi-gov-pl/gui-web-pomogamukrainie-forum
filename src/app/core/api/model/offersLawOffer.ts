@@ -9,14 +9,10 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { JobOffer } from './jobOffer';
-import { AccommodationOffer } from './accommodationOffer';
 import { LawOffer } from './lawOffer';
-import { TransportOffer } from './transportOffer';
-import { MaterialAidOffer } from './materialAidOffer';
 
-export interface OffersBaseOffer {
-  content?: Array<AccommodationOffer | JobOffer | LawOffer | MaterialAidOffer | TransportOffer>;
+export interface OffersLawOffer {
+  content?: Array<LawOffer>;
   totalElements?: number;
   totalPages?: number;
 }
