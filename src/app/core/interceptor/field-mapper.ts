@@ -30,7 +30,6 @@ export const offerMapper: AllOffersMapper = {
   description: 'LABEL_OFFER_DESCRIPTION',
   phoneCountryCode: 'LABEL_PHONE_COUNTRY_CODE',
   phoneNumber: 'LABEL_PHONE_NUMBER',
-  phoneCountryCode: 'LABEL_PHONE_COUNTRY_CODE',
   guests: 'NUMBER_OF_PEOPLE',
   lengthOfStay: 'LABEL_LENGTH_OF_STAY',
   hostLanguage: 'LABEL_HOST_LANG',
