@@ -65,7 +65,7 @@ export class AccommodationFormComponent implements OnInit {
   }
 
   preparePhoneNumber() {
-    this.data.phoneNumber = this.phonePrefix! + this.phoneNumber;
+    this.data.phoneNumber = this.phonePrefix + this.phoneNumber;
   }
 
   submitOffer(): void {
