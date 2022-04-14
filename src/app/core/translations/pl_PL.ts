@@ -181,5 +181,10 @@ export default {
   CONFIRM_CANCEL_OFFER_NEW: 'Czy na pewno rezygnujesz z dodawania ogłoszenia?',
   CONFIRM_CANCEL_OFFER_EDIT: 'Czy na pewno rezygnujesz z edycji ogłoszenia?',
   CONFIRM_CANCEL_OFFER_DISC: 'Wprowadzone przez Ciebie informacje zostaną usunięte.',
+  CONFIRM_CANCEL_OFFER: 'Anulować wprowadzanie danych?',
+  REMOVE_ACCOUNT_BUTTON: 'Usuń konto',
+  CONFIRM_REMOVE_ACCOUNT: 'Czy na pewno chcesz usunąć konto?',
+  CONFIRM_REMOVE_ACCOUNT_DESCRIPTION: 'Jeśli posiadasz jakieś ogłoszenia - one również zostaną usunięte.',
+  REMOVE_ACCOUNT_SUCCESS: 'Twoje konto zostało usunięte',
   OFFER_LINK: 'Link do ogłoszenia'
 };
