@@ -1,6 +1,6 @@
 export interface Prefix {
-  countryCode: string;
-  prefix: string;
+  countryCode: string | undefined;
+  prefix: string | undefined;
 }
 
 export interface Accommodation {
