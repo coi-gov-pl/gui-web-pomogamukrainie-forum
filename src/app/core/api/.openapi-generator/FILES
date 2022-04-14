@@ -5,6 +5,8 @@ api.module.ts
 api/accommodationsResource.service.ts
 api/api.ts
 api/cityLookupResource.service.ts
+api/jobResource.service.ts
+api/lawResource.service.ts
 api/materialAidResource.service.ts
 api/messageResource.service.ts
 api/myOffersResource.service.ts
@@ -18,6 +20,12 @@ model/accommodationOffer.ts
 model/accommodationOfferDefinitionDTO.ts
 model/cityLookupDto.ts
 model/cityLookupResponse.ts
+model/jobOffer.ts
+model/jobOfferDefinitionDTO.ts
+model/jobOfferSearchCriteria.ts
+model/lawOffer.ts
+model/lawOfferDefinitionDTO.ts
+model/lawOfferSearchCriteria.ts
 model/location.ts
 model/materialAidOffer.ts
 model/materialAidOfferDefinitionDTO.ts
@@ -25,6 +33,8 @@ model/materialAidOfferSearchCriteria.ts
 model/models.ts
 model/offersAccommodationOffer.ts
 model/offersBaseOffer.ts
+model/offersJobOffer.ts
+model/offersLawOffer.ts
 model/offersMaterialAidOffer.ts
 model/offersTransportOffer.ts
 model/pageable.ts
