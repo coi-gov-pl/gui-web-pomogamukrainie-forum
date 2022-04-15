@@ -111,7 +111,7 @@
 .btn-link {
   color: $c-darkblue;
   border-color: transparent;
-  background-color: $c-white;
+  background-color: transparent;
   padding-left: 0;
   padding-right: 0;
   font-weight: 600;
@@ -120,12 +120,12 @@
   &:hover {
     color: $c-grayblue;
     border-color: transparent;
-    background-color: $c-white;
+    background-color: transparent;
   }
 
   &:disabled {
     color: $c-gray;
-    background-color: $c-white;
+    background-color: transparent;
     border-color: transparent;
   }
 }
