@@ -10,14 +10,9 @@
  * Do not edit the class manually.
  */
 import { JobOffer } from './jobOffer';
-import { AccommodationOffer } from './accommodationOffer';
-import { LawOffer } from './lawOffer';
-import { TransportOffer } from './transportOffer';
-import { HealthOffer } from './healthOffer';
-import { MaterialAidOffer } from './materialAidOffer';
 
-export interface OffersBaseOffer {
-  content?: Array<AccommodationOffer | HealthOffer | JobOffer | LawOffer | MaterialAidOffer | TransportOffer>;
+export interface OffersJobOffer {
+  content?: Array<JobOffer>;
   totalElements?: number;
   totalPages?: number;
 }

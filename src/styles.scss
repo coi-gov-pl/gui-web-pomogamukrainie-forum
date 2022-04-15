@@ -42,4 +42,10 @@ p {
   margin: 0;
 }
 
+header {
+  &.helpua {
+    margin: 2em auto 3em;
+  }
+}
+
 @import "./assets/styles/buttons";

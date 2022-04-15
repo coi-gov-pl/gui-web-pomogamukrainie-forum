@@ -17,6 +17,7 @@ export interface TransportOffer {
   title: string;
   description: string;
   phoneNumber?: string;
+  phoneCountryCode?: string;
   modifiedDate?: string;
   origin?: Location;
   destination?: Location;

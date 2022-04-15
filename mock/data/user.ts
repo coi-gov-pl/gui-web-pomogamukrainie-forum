@@ -1,6 +1,6 @@
 import { UserInfo, OffersBaseOffer } from '@app/core/api';
 
-export const loggedUserInfo: UserInfo = { email: 'john@email.invalid', firstName: 'John', phoneNumber: undefined };
+export const loggedUserInfo: UserInfo = { email: 'john@email.invalid', firstName: 'John' };
 
 export const userOffers: OffersBaseOffer = {
   content: [

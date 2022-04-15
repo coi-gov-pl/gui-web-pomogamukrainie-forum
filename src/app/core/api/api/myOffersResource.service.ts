@@ -27,6 +27,12 @@ import { Observable } from 'rxjs';
 // @ts-ignore
 import { AccommodationOffer } from '../model/accommodationOffer';
 // @ts-ignore
+import { HealthOffer } from '../model/healthOffer';
+// @ts-ignore
+import { JobOffer } from '../model/jobOffer';
+// @ts-ignore
+import { LawOffer } from '../model/lawOffer';
+// @ts-ignore
 import { MaterialAidOffer } from '../model/materialAidOffer';
 // @ts-ignore
 import { OffersBaseOffer } from '../model/offersBaseOffer';
@@ -111,19 +117,21 @@ export class MyOffersResourceService {
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<AccommodationOffer | MaterialAidOffer | TransportOffer>;
+  ): Observable<AccommodationOffer | HealthOffer | JobOffer | LawOffer | MaterialAidOffer | TransportOffer>;
   public getMyOffers(
     id: number,
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<AccommodationOffer | MaterialAidOffer | TransportOffer>>;
+  ): Observable<
+    HttpResponse<AccommodationOffer | HealthOffer | JobOffer | LawOffer | MaterialAidOffer | TransportOffer>
+  >;
   public getMyOffers(
     id: number,
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<AccommodationOffer | MaterialAidOffer | TransportOffer>>;
+  ): Observable<HttpEvent<AccommodationOffer | HealthOffer | JobOffer | LawOffer | MaterialAidOffer | TransportOffer>>;
   public getMyOffers(
     id: number,
     observe: any = 'body',
@@ -162,17 +170,16 @@ export class MyOffersResourceService {
       }
     }
 
-    return this.httpClient.get<AccommodationOffer | MaterialAidOffer | TransportOffer>(
-      `${this.configuration.basePath}/api/secure/my-offers/${encodeURIComponent(String(id))}`,
-      {
-        context: localVarHttpContext,
-        responseType: <any>responseType_,
-        withCredentials: this.configuration.withCredentials,
-        headers: localVarHeaders,
-        observe: observe,
-        reportProgress: reportProgress,
-      }
-    );
+    return this.httpClient.get<
+      AccommodationOffer | HealthOffer | JobOffer | LawOffer | MaterialAidOffer | TransportOffer
+    >(`${this.configuration.basePath}/api/secure/my-offers/${encodeURIComponent(String(id))}`, {
+      context: localVarHttpContext,
+      responseType: <any>responseType_,
+      withCredentials: this.configuration.withCredentials,
+      headers: localVarHeaders,
+      observe: observe,
+      reportProgress: reportProgress,
+    });
   }
 
   /**
