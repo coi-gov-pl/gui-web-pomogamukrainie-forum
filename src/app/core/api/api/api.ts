@@ -2,6 +2,8 @@ export * from './accommodationsResource.service';
 import { AccommodationsResourceService } from './accommodationsResource.service';
 export * from './cityLookupResource.service';
 import { CityLookupResourceService } from './cityLookupResource.service';
+export * from './healthResource.service';
+import { HealthResourceService } from './healthResource.service';
 export * from './jobResource.service';
 import { JobResourceService } from './jobResource.service';
 export * from './lawResource.service';
@@ -19,6 +21,7 @@ import { UsersResourceService } from './usersResource.service';
 export const APIS = [
   AccommodationsResourceService,
   CityLookupResourceService,
+  HealthResourceService,
   JobResourceService,
   LawResourceService,
   MaterialAidResourceService,
