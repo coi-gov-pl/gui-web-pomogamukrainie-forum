@@ -16,8 +16,11 @@
           <b>{{ "LABEL_SPECIALIZATION" | translate }}</b>
         </label>
         <mat-form-field appearance="outline">
-          <mat-select [placeholder]="'OPTION_ALL' | translate" [(ngModel)]="data.specialization" name="specialization">
-            <mat-option [value]="null">{{ "OPTION_ALL" | translate }}</mat-option>
+          <mat-select
+            [placeholder]="'PLACEHOLDER_CHOOSE' | translate"
+            [(ngModel)]="data.specialization"
+            name="specialization"
+          >
             <mat-option *ngFor="let spec of specializations" [value]="spec.value">
               {{ spec.value | translate }}
             </mat-option>

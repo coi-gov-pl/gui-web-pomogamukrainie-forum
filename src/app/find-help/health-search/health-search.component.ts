@@ -2,7 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Pageable } from '@app/core/api';
 import { CategoryRoutingName, CorePath } from '@app/shared/models';
 import { ActivatedRoute } from '@angular/router';
-import { HealthOffer } from '@app/core/api/model/HealthOffer';
+import { HealthOffer } from '@app/core/api/model/healthOffer';
 import { HealthOfferSearchCriteria } from '@app/core/api/model/healthOfferSearchCriteria';
 import { HealthResourceService } from '@app/core/api/api/healthResource.service';
 
