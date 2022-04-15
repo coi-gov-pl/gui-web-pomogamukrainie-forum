@@ -13,6 +13,7 @@ import { ViewOfferMaterialAidComponent } from './view-offer-material-aid.compone
 import { ViewOfferMaterialAidRoutingModule } from './view-offer-material-aid.routing.module';
 import { BackToListModule } from '@app/shared/components/back-to-list/back-to-list.module';
 import { SharedModule } from '@app/shared/shared.module';
+import { ReadMoreModule } from '@app/shared/components';
 
 @NgModule({
   declarations: [ViewOfferMaterialAidComponent],
@@ -30,6 +31,7 @@ import { SharedModule } from '@app/shared/shared.module';
     ViewOfferMaterialAidRoutingModule,
     BackToListModule,
     SharedModule,
+    ReadMoreModule,
   ],
   exports: [ViewOfferMaterialAidComponent],
 })

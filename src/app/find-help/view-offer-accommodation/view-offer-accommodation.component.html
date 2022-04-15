@@ -48,7 +48,7 @@
       <label
         ><b>{{ "LABEL_OFFER_DESCRIPTION" | translate }}</b></label
       >
-      <p>{{ data.description }}</p>
+      <app-read-more [text]="data.description"></app-read-more>
     </div>
     <app-back-to-list
       [categoryRouteName]="categoryRouteName"

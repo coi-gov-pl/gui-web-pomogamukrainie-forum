@@ -190,4 +190,5 @@ export default {
   REMOVE_ACCOUNT_SUCCESS: 'Twoje konto zostało usunięte',
   LABEL_PHONE_COUNTRY_CODE: 'Numer kierunkowy',
   OFFER_LINK: 'Link do ogłoszenia',
+  READ_MORE: 'Zobacz więcej',
 };
