@@ -33,4 +33,4 @@ import { ViewOfferHealthRoutingModule } from './view-offer-health-care.routing.m
   ],
   exports: [ViewOfferHealthCareComponent],
 })
-export class ViewOfferTransportModule {}
+export class ViewOfferHealthCareModule {}
