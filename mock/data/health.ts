@@ -13,10 +13,10 @@ export const healthOffer = (body: HealthOfferDefinitionDTO): HealthOffer => {
 export const healthList: OffersHealthOffer = {
   content: [
     {
-      id: 79,
-      userFirstName: 'Marta',
-      title: 'Pomoc prawna dla obywateli Ukrainy',
-      description: 'Oferuję pomoc prawną dla obywateli Ukrainy. Udzielę porad prawnych w zakresie prawa karnego.',
+      id: 7,
+      userFirstName: 'Grzegorz',
+      title: 'Pomoc psychologiczna',
+      description: 'Oferuję pomoc psychologiczną dla obywateli Ukrainy.',
       modifiedDate: '2022-03-14T10:36:12Z',
       location: { region: 'woj. mazowieckie, pow. Warszawa, gm. Warszawa', city: 'Warszawa' },
       mode: ['ONLINE', 'BY_PHONE'],
