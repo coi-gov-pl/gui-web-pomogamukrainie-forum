@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { GiveHelpComponent } from './give-help.component';
-import { CategoryRoutingName } from '@app/shared/models';
-import { BreadcrumbLabels } from '@app/shared/models';
 import { AuthGuard } from '@app/core/auth';
+import { BreadcrumbLabels, CategoryRoutingName } from '@app/shared/models';
+import { GiveHelpComponent } from './give-help.component';
 
 const routes: Routes = [
   {
@@ -94,6 +93,20 @@ const routes: Routes = [
         loadChildren: () => import('./job-form/job-form.module').then((m) => m.JobFormModule),
         data: {
           title: BreadcrumbLabels.JOB,
+        },
+      },
+      {
+        path: CategoryRoutingName.LEGAL_HELP,
+        loadChildren: () => import('./legal-help-form/legal-help-form.module').then((m) => m.LegalHelpFormModule),
+        data: {
+          title: BreadcrumbLabels.LEGAL_HELP,
+        },
+      },
+      {
+        path: `${CategoryRoutingName.LEGAL_HELP}/:id`,
+        loadChildren: () => import('./legal-help-form/legal-help-form.module').then((m) => m.LegalHelpFormModule),
+        data: {
+          title: BreadcrumbLabels.LEGAL_HELP,
         },
       },
     ],
