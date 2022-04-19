@@ -256,4 +256,8 @@ export default {
   STATIONARY: 'Stacjonarny (w biurze)',
   WITH_ACCESS: 'Dojazd do potrzebującego',
   BY_EMAIL: 'E-mail',
+  PLACEHOLDER_HELP_KIND: 'Wybierz temat porady',
+  PLACEHOLDER_HELP_MODE: 'Wybierz tryb',
+  LAW_HELP: 'Pomoc prawna',
+  OPTION_ALL: 'Wszystkie',
 };

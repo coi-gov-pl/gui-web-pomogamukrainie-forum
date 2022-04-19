@@ -1,6 +1,10 @@
 import * as express from 'express';
 import { lawList } from '../data';
 
+export function lawListGet(req: express.Request, res: express.Response): express.Response {
+  return res.json(lawList);
+}
+
 export function lawGet(req: express.Request, res: express.Response): express.Response {
   const { id } = req.params;
   const law = lawList.content?.find((el) => el.id === Number(id));

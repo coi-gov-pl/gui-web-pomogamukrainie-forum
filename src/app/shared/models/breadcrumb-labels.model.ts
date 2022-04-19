@@ -14,4 +14,5 @@ export enum BreadcrumbLabels {
   EDIT_ANNOUNCEMENT = 'EDIT_ANNOUNCEMENT',
   JOB = 'JOB',
   HEALTH = 'HEALTH',
+  LAW_HELP = 'LAW_HELP',
 }
