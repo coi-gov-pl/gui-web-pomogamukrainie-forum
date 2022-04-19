@@ -32,6 +32,7 @@ export default {
   LOCATION: `Местоположение`,
   NUMBER_OF_PEOPLE: `Колличество человек`,
   SEARCH: `Поиск`,
+  CLEAR_FILTERS: `Очистить фильтры`,
   SELECT_FROM_THE_LIST: `Выберите из списка`,
   MORE_SUPPORT_INFORMATION: `Больше информации о помощи`,
   DASHBOARD_DESCRIPTION: `ам будет предложено подтвердить свою готовность помочь через <strong>доверенный профиль</strong>. Таким образом, мы защищаем ваши данные и оказываем надежную помощь беженцам.`,

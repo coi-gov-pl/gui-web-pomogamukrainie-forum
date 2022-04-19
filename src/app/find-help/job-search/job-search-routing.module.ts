@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { NotFoundComponent } from '@app/shared/components/not-found/not-found.component';
 import { BreadcrumbLabels, CategoryRoutingName } from '@app/shared/models';
-import { HealthSearchComponent } from './health-search.component';
+import { NotFoundComponent } from '@app/shared/components/not-found/not-found.component';
+import { JobSearchComponent } from './job-search.component';
 
 const routes: Routes = [
   {
@@ -13,7 +13,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: HealthSearchComponent,
+        component: JobSearchComponent,
         data: {
           title: null,
         },
@@ -28,8 +28,7 @@ const routes: Routes = [
       },
       {
         path: ':id',
-        loadChildren: () =>
-          import('../view-offer-health-care/view-offer-health-care.module').then((m) => m.ViewOfferHealthCareModule),
+        loadChildren: () => import('../view-offer-job/view-offer-job.module').then((m) => m.ViewOfferJobModule),
         data: {
           title: BreadcrumbLabels.AD,
         },
@@ -42,4 +41,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class HealthSearchRoutingModule {}
+export class JobSearchRoutingModule {}
