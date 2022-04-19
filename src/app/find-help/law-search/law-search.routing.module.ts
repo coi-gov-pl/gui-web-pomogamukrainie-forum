@@ -26,17 +26,6 @@ const routes: Routes = [
           title: null,
         },
       },
-      // TODO: view law in separate PR
-      // {
-      //   path: ':id',
-      //   loadChildren: () =>
-      //     import('../view-offer-law/view-offer-law.module').then(
-      //       (m) => m.ViewOfferLawModule
-      //     ),
-      //   data: {
-      //     title: BreadcrumbLabels.AD,
-      //   },
-      // },
     ],
   },
 ];
