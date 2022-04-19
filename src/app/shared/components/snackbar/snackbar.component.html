@@ -2,19 +2,23 @@
   <mat-icon class="button-icon mb-3 mb-md-0 ps-0 ps-md-2" fontSet="material-icons-outlined"
     >check_circle_outline</mat-icon
   >
-  <div *ngIf="data === ALERT_TYPES.OFFER_SUCCESS">
+  <div *ngIf="data.type === ALERT_TYPES.OFFER_SUCCESS">
     <h5 class="text-center text-md-start">{{ "OFFER_SENT_ALERT_HEADER" | translate }}</h5>
     <p class="text-center text-md-start">{{ "OFFER_SENT_ALERT_CONTENT" | translate }}</p>
   </div>
-  <div *ngIf="data === ALERT_TYPES.MESSAGE_SENT">
+  <div *ngIf="data.type === ALERT_TYPES.UPDATE_OFFER_SUCCESS">
+    <h5 class="text-center text-md-start">{{ "UPDATE_OFFER_SENT_ALERT_HEADER" | translate }}</h5>
+  </div>
+  <div *ngIf="data.type === ALERT_TYPES.MESSAGE_SENT">
     <h5 class="text-center text-md-start">{{ "MESSAGE_SENT_ALERT_HEADER" | translate }}</h5>
     <p class="text-center text-md-start">{{ "MESSAGE_SENT_ALERT_CONTENT" | translate }}</p>
+    <button (click)="redirectToPath(data.link)" class="btn-link">{{ "OFFER_LINK" | translate }}</button>
   </div>
-  <div *ngIf="data === ALERT_TYPES.OFFER_REMOVED">
+  <div *ngIf="data.type === ALERT_TYPES.OFFER_REMOVED">
     <h5 class="text-center text-md-start">{{ "MESSAGE_OFFER_REMOVED" | translate }}</h5>
   </div>
   <button
-    class="close-button d-md-none position-absolute"
+    class="close-button position-absolute"
     type="button"
     mat-icon-button
     aria-label="Close"

@@ -31,6 +31,25 @@ mat-icon {
   stroke: $c-darkblue;
 }
 
+.selectPrefix {
+  .mat-form-field-outline-end {
+    @include media-breakpoint-up(sm) {
+      border-bottom-right-radius: 0 !important;
+      border-top-right-radius: 0 !important;
+    }
+  }
+}
+
+.phoneInut {
+  .mat-form-field-outline-start {
+    @include media-breakpoint-up(sm) {
+      border-bottom-left-radius: 0 !important;
+      border-top-left-radius: 0 !important;
+      margin-left: -1px;
+    }
+  }
+}
+
 .categories-mobile {
   .mat-form-field-outline-start,
   .mat-form-field-outline-end {
