@@ -3,7 +3,7 @@ import { lawList } from '../data';
 
 export function lawGet(req: express.Request, res: express.Response): express.Response {
   const { id } = req.params;
-  const law = lawList.content?.find((el) => el.id === +id);
+  const law = lawList.content?.find((el) => el.id === Number(id));
   if (law) {
     return res.json(law);
   } else {

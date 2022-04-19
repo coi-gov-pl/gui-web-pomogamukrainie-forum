@@ -6,7 +6,7 @@ export const lawOffer = (body: LawOfferDefinitionDTO): LawOffer => {
     id: 1,
     userFirstName: 'example',
     modifiedDate: new Date().toISOString(),
-    type: 'LAW',
+    type: LawOffer.TypeEnum.Law,
   };
 };
 
@@ -19,12 +19,25 @@ export const lawList: OffersLawOffer = {
       description: 'Oferuję pomoc prawną dla obywateli Ukrainy. Udzielę porad prawnych w zakresie prawa karnego.',
       modifiedDate: '2022-03-14T10:36:12Z',
       location: { region: 'woj. mazowieckie, pow. Warszawa, gm. Warszawa', city: 'Warszawa' },
-      helpMode: ['STATIONARY', 'WITH_ACCESS', 'ONLINE', 'BY_EMAIL', 'BY_PHONE'],
-      helpKind: ['LABOUR_LAW', 'IMMIGRATION_LAW', 'FAMILY_LAW', 'TAX_LAW', 'CIVIL_LAW', 'OTHER'],
-      language: ['PL', 'UA'],
+      helpMode: [
+        LawOffer.HelpModeEnum.Stationary,
+        LawOffer.HelpModeEnum.WithAccess,
+        LawOffer.HelpModeEnum.Online,
+        LawOffer.HelpModeEnum.ByEmail,
+        LawOffer.HelpModeEnum.ByPhone,
+      ],
+      helpKind: [
+        LawOffer.HelpKindEnum.LabourLaw,
+        LawOffer.HelpKindEnum.ImmigrationLaw,
+        LawOffer.HelpKindEnum.FamilyLaw,
+        LawOffer.HelpKindEnum.TaxLaw,
+        LawOffer.HelpKindEnum.CivilLaw,
+        LawOffer.HelpKindEnum.Other,
+      ],
+      language: [LawOffer.LanguageEnum.Pl, LawOffer.LanguageEnum.Ua],
       phoneCountryCode: '48',
       phoneNumber: '48123456789',
-      type: 'LAW',
+      type: LawOffer.TypeEnum.Law,
     },
   ],
   totalElements: 1,
