@@ -35,4 +35,4 @@ import { HealthCareFormComponent } from './health-care-form.component';
   ],
   exports: [HealthCareFormComponent],
 })
-export class HealthCareFormComponentModule {}
+export class HealthCareFormModule {}

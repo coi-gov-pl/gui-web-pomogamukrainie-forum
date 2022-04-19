@@ -4,7 +4,6 @@ import { GiveHelpComponent } from './give-help.component';
 import { CategoryRoutingName } from '@app/shared/models';
 import { BreadcrumbLabels } from '@app/shared/models';
 import { AuthGuard } from '@app/core/auth';
-import { HealthCareFormComponent } from './health-care-form/health-care-form.component';
 
 const routes: Routes = [
   {
@@ -70,9 +69,15 @@ const routes: Routes = [
         },
       },
       {
+        path: CategoryRoutingName.HEALTH,
+        loadChildren: () => import('./health-care-form/health-care-form.module').then((m) => m.HealthCareFormModule),
+        data: {
+          title: BreadcrumbLabels.HEALTH,
+        },
+      },
+      {
         path: `${CategoryRoutingName.HEALTH}/:id`,
-        loadChildren: () =>
-          import('./health-care-form/health-care-form.module').then((m) => m.HealthCareFormComponentModule),
+        loadChildren: () => import('./health-care-form/health-care-form.module').then((m) => m.HealthCareFormModule),
         data: {
           title: BreadcrumbLabels.HEALTH,
         },
