@@ -1,7 +1,14 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ReplyOfferComponent } from './reply-offer.component';
+import { AuthModule } from '@app/core/auth';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { ReplyOfferModule } from './reply-offer.module';
 import { RouterTestingModule } from '@angular/router/testing';
+import { TranslateModule } from '@ngx-translate/core';
+
+import { ReplyOfferComponent } from './reply-offer.component';
 
 describe('ReplyOfferComponent', () => {
   let component: ReplyOfferComponent;
@@ -10,7 +17,15 @@ describe('ReplyOfferComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ReplyOfferComponent],
-      imports: [RouterTestingModule],
+      imports: [
+        AuthModule,
+        HttpClientTestingModule,
+        MatSnackBarModule,
+        NoopAnimationsModule,
+        ReplyOfferModule,
+        RouterTestingModule,
+        TranslateModule.forRoot(),
+      ],
     }).compileComponents();
   });
 

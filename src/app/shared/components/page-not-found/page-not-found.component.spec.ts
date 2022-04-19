@@ -1,7 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { APP_BASE_HREF } from '@angular/common';
+import { PageNotFoundModule } from './page-not-found.module';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateModule } from '@ngx-translate/core';
+
 import { PageNotFoundComponent } from './page-not-found.component';
 
 describe('PageNotFoundComponent', () => {
@@ -10,8 +13,14 @@ describe('PageNotFoundComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule, TranslateModule.forRoot()],
       declarations: [PageNotFoundComponent],
+      imports: [PageNotFoundModule, RouterTestingModule, TranslateModule.forRoot()],
+      providers: [
+        {
+          provide: APP_BASE_HREF,
+          useValue: '/',
+        },
+      ],
     }).compileComponents();
   });
 
