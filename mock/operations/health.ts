@@ -11,3 +11,7 @@ export function healthGet(req: express.Request, res: express.Response): express.
     return res.send();
   }
 }
+
+export function healthListGet(req: express.Request, res: express.Response): express.Response {
+  return res.json(healthList);
+}

@@ -1,12 +1,11 @@
-$color-white: #fff;
-$color-yellow: #ffd700;
+@import "vars";
 
 $border-radius: 4px;
 $border-thickness: 3px;
 $border-type: solid;
 
-$border-default: $border-thickness $border-type $color-yellow;
-$border-white: $border-thickness $border-type $color-white;
+$border-default: $border-thickness $border-type $c-yellowactiveinput;
+$border-white: $border-thickness $border-type $c-white;
 
 $card-width: 121px;
 $card-height: 108px;
@@ -61,7 +60,7 @@ $unfold-height: 30px;
   .top-unfold {
     height: $unfold-height;
     width: $card-width;
-    background: $color-white;
+    background: $c-white;
 
     border: $border-default;
     border-bottom: none;
