@@ -264,4 +264,5 @@ export default {
   CHOOSE_MODE: 'Wybierz tryb',
   LABEL_SPECIALISATION: "Specializacja",
   CHOOSE_SPECIALISATION: "Wybierz specjalizację",
+  READ_MORE: 'Zobacz więcej',
 };

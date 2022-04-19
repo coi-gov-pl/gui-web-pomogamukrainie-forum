@@ -1,0 +1,10 @@
+@import "vars";
+
+.text-btn {
+  color: var(--c-blue);
+  font-weight: bold;
+  text-decoration: none;
+  padding: 0;
+  border: none;
+  background: inherit;
+}
