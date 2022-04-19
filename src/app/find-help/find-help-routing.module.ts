@@ -44,6 +44,13 @@ const routes: Routes = [
         },
       },
       {
+        path: CategoryRoutingName.HEALTH,
+        loadChildren: () => import('./health-search/health-search.module').then((m) => m.HealthSearchModule),
+        data: {
+          title: BreadcrumbLabels.HEALTH,
+        },
+      },
+      {
         path: CategoryRoutingName.LEGAL_HELP,
         loadChildren: () => import('./law-search/law-search.module').then((m) => m.LawSearchModule),
         data: {

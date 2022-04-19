@@ -7,6 +7,6 @@ export enum StatementAnchors {
   HEALTH = 'zdrowie',
   LEGAL_HELP = 'pomoc-prawna',
   TRANSLATIONS = 'tlumaczenia',
-  WORK = 'praca',
+  JOB = 'praca',
   EDUCATION = 'edukacja',
 }
