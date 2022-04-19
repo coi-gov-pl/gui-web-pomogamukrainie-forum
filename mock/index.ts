@@ -18,6 +18,7 @@ import {
   transportGet,
   transportListGet,
   transportPost,
+  jobPost,
 } from './operations';
 
 const port = process.env['PORT'] || 3000;
@@ -47,6 +48,7 @@ router
   .post(`${baseHref}/secure/accommodations`, accommodationsPost)
   .post(`${baseHref}/secure/material-aid`, materialAidPost)
   .post(`${baseHref}/secure/transport`, transportPost)
+  .post(`${baseHref}/secure/job`, jobPost)
   .post(`${baseHref}/message`, messagePost)
   .delete(`${baseHref}/secure/transport/:id`, transportDelete)
   .delete(`${baseHref}/secure/accommodations/:id`, accommodationDelete)
