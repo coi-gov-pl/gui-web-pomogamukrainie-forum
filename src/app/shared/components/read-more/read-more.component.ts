@@ -23,7 +23,7 @@ export class ReadMoreComponent implements OnChanges {
       this.isCollapsed = false;
       return;
     }
-    this.currentText = this.isCollapsed ? this.text.substring(0, this.maxLength).concat('&hellip;') : this.text;
+    this.currentText = this.isCollapsed ? this.text.substring(0, this.maxLength).concat('...') : this.text;
   }
 
   ngOnChanges() {
