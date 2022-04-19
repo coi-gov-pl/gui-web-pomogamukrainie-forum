@@ -1,10 +1,10 @@
+@import "vars";
+
 :host {
   width: 100%;
   display: block;
 
   .navigation {
-    text-align: center;
-
     h2 {
       margin-top: 36px;
       margin-bottom: 25px;
@@ -13,14 +13,31 @@
     }
 
     .categories {
+      text-align: center;
       display: grid;
       gap: 1rem;
       grid-template-columns: repeat(auto-fit, minmax(120px, 121px));
       justify-content: space-between;
     }
-  }
 
-  .category-link {
-    text-decoration: none;
+    .categories-mobile {
+      text-align: left;
+
+      .selected-category {
+        position: relative;
+        top: -6px;
+        left: 15px;
+        color: $c-darkblue;
+        font-weight: bold;
+      }
+
+      mat-form-field {
+        width: 100%;
+      }
+    }
   }
+}
+
+.category-link {
+  text-decoration: none;
 }

@@ -43,6 +43,13 @@ const routes: Routes = [
           title: BreadcrumbLabels.TRANSPORT,
         },
       },
+      {
+        path: CategoryRoutingName.HEALTH,
+        loadChildren: () => import('./health-search/health-search.module').then((m) => m.HealthSearchModule),
+        data: {
+          title: BreadcrumbLabels.HEALTH,
+        },
+      },
     ],
   },
 ];

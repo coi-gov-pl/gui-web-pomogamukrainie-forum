@@ -49,3 +49,28 @@ mat-icon {
     }
   }
 }
+
+.categories-mobile {
+  .mat-form-field-outline-start,
+  .mat-form-field-outline-end {
+    background: $c-white;
+    border: 3px solid $c-yellowactiveinput !important;
+  }
+
+  .mat-form-field-outline-start {
+    border-right: 0 !important;
+  }
+
+  .mat-form-field-outline-end {
+    border-left: 0 !important;
+  }
+
+  .mat-select-arrow-wrapper {
+    transform: none;
+  }
+}
+
+.mat-option-text {
+  font-weight: bold;
+  color: $c-darkblue;
+}

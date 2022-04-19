@@ -77,6 +77,20 @@ const routes: Routes = [
           title: BreadcrumbLabels.HEALTH,
         },
       },
+      {
+        path: CategoryRoutingName.JOB,
+        loadChildren: () => import('./job-form/job-form.module').then((m) => m.JobFormModule),
+        data: {
+          title: BreadcrumbLabels.JOB,
+        },
+      },
+      {
+        path: `${CategoryRoutingName.JOB}/:id`,
+        loadChildren: () => import('./job-form/job-form.module').then((m) => m.JobFormModule),
+        data: {
+          title: BreadcrumbLabels.JOB,
+        },
+      },
     ],
   },
 ];
