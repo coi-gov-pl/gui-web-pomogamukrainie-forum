@@ -11,7 +11,7 @@ export function materialAidListGet(req: express.Request, res: express.Response):
 
 export function materialAidGet(req: express.Request, res: express.Response): express.Response {
   const { id } = req.params;
-  const materialAid = materialAidList.content?.find((el) => el.id === +id);
+  const materialAid = materialAidList.content?.find((el) => el.id === Number(id));
   if (materialAid) {
     return res.json(materialAid);
   } else {
@@ -23,6 +23,6 @@ export function materialAidGet(req: express.Request, res: express.Response): exp
 export function materialAidDelete(req: express.Request, res: express.Response): express.Response {
   const { id } = req.params;
   res.status(204);
-  userOffers.content = userOffers.content?.filter((el) => el.id !== +id);
+  userOffers.content = userOffers.content?.filter((el) => el.id !== Number(id));
   return res.send();
 }
