@@ -9,7 +9,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ValidatorsDirectivesModule } from './validators';
 import { ConfirmCancelDialogComponent } from './components/confirm-cancel-dialog/cancel-dialog.component';
 import { TruncatePipe } from '@app/shared/pipes';
-import { TranslateArrayPipe } from '@app/shared/pipes/translate-array.pipe';
+import { TranslateArrayPipe } from './pipes/translate-array.pipe';
 @NgModule({
   declarations: [BreadcrumbComponent, TruncatePipe, ConfirmCancelDialogComponent, TranslateArrayPipe],
   imports: [CommonModule, RouterModule, MatIconModule, TranslateModule],

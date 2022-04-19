@@ -50,6 +50,13 @@ const routes: Routes = [
           title: BreadcrumbLabels.JOB,
         },
       },
+      {
+        path: CategoryRoutingName.HEALTH,
+        loadChildren: () => import('./health-search/health-search.module').then((m) => m.HealthSearchModule),
+        data: {
+          title: BreadcrumbLabels.HEALTH,
+        },
+      },
     ],
   },
 ];
