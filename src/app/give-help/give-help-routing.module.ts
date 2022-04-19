@@ -4,6 +4,7 @@ import { GiveHelpComponent } from './give-help.component';
 import { CategoryRoutingName } from '@app/shared/models';
 import { BreadcrumbLabels } from '@app/shared/models';
 import { AuthGuard } from '@app/core/auth';
+import { HealthCareFormComponent } from './health-care-form/health-care-form.component';
 
 const routes: Routes = [
   {
@@ -66,6 +67,14 @@ const routes: Routes = [
           import('./transport-form/transport-form.module').then((m) => m.TransportFormComponentModule),
         data: {
           title: BreadcrumbLabels.TRANSPORT,
+        },
+      },
+      {
+        path: `${CategoryRoutingName.HEALTH}/:id`,
+        loadChildren: () =>
+          import('./health-care-form/health-care-form.module').then((m) => m.HealthCareFormComponentModule),
+        data: {
+          title: BreadcrumbLabels.HEALTH,
         },
       },
     ],

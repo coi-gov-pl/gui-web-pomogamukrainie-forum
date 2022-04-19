@@ -29,6 +29,13 @@ export const LANGUAGES: Option[] = [
   { code: HostLanguageEnum.En, label: LanguageNames.ENGLISH },
 ];
 
+export const HEALTH_MODES: Option[] = [
+  { code: HostLanguageEnum.Pl, label: LanguageNames.POLISH },
+  { code: HostLanguageEnum.Ua, label: LanguageNames.UKRAINIAN },
+  { code: HostLanguageEnum.Ru, label: LanguageNames.RUSSIAN },
+  { code: HostLanguageEnum.En, label: LanguageNames.ENGLISH },
+];
+
 export const LENGTH_OF_STAY: Option[] = [
   { code: AccommodationOffer.LengthOfStayEnum.Week1, label: LengthOfStayLabels.WEEK_1 },
   { code: AccommodationOffer.LengthOfStayEnum.Week2, label: LengthOfStayLabels.WEEK_2 },
