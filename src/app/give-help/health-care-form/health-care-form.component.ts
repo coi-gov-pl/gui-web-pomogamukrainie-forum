@@ -29,7 +29,6 @@ export class HealthCareFormComponent implements OnInit {
   @ViewChild('phoneInput') phoneInput!: ElementRef<HTMLInputElement>;
   @Input() buttonLabel: string = '';
   offerId?: number;
-  // MODE_ENUM: Array<HealthOfferDefinitionDTO.ModeEnum> = HealthOfferDefinitionDTO.ModeEnum;
   MODE_ENUM = Object.values(HealthOfferDefinitionDTO.ModeEnum);
   SPECIALIZATION_ENUM = Object.values(HealthOfferDefinitionDTO.SpecializationEnum);
   constructor(

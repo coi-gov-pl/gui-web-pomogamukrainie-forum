@@ -1,5 +1,5 @@
 <nav class="navigation">
-  <div class="categories d-none d-sm-grid">
+  <div class="categories d-none d-md-grid">
     <ng-container *ngFor="let category of categories">
       <ng-container *ngIf="!category.disabled && !(inactive && !isActive(category)); else disabledCategory">
         <a
@@ -33,7 +33,7 @@
       </ng-template>
     </ng-container>
   </div>
-  <div class="categories-mobile d-sm-none d-md-block">
+  <div class="categories-mobile d-block d-md-none">
     <label
       ><b>{{ "CHOOSE_CATEGORY" | translate }}</b></label
     >
