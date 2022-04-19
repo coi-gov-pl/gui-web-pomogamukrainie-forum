@@ -1,0 +1,47 @@
+<app-breadcrumb></app-breadcrumb>
+<header class="text-center helpua">
+  <p class="font-small font-yellow fw-bold mb-1">{{ "HELPUA" | translate }}</p>
+  <h1 class="header-2 font-darkblue fw-bold">{{ "SEARCH_FOR_HELP" | translate }}</h1>
+</header>
+
+<app-category-navigation class="mb-4" [outputPath]="corePath.Find"></app-category-navigation>
+
+<mat-card #lawResultsStart>
+  <app-law-search-form (search)="search($event)"></app-law-search-form>
+</mat-card>
+<app-no-results *ngIf="total === 0"></app-no-results>
+<div class="results" *ngIf="this.total">
+  <app-sorting-header
+    [header]="'ADVERTISEMENTS_LIST' | translate"
+    [total]="total"
+    (sortingOrderChange)="search()"
+  ></app-sorting-header>
+  <div>
+    <app-search-result
+      *ngFor="let result of results"
+      [location]="result.location"
+      [title]="result.title"
+      [description]="result.description | truncate: 200:'...'"
+      [offerId]="result.id!"
+      [posted]="result.modifiedDate"
+      [category]="categoryRoutingName.LEGAL_HELP"
+    >
+      <app-search-result-attribute
+        *ngIf="result.helpKind"
+        [text]="result.helpKind | translateArray: ', '"
+        icon="gavel"
+      ></app-search-result-attribute>
+      <app-search-result-attribute
+        *ngIf="result.language"
+        [text]="result.language.join(', ')"
+        icon="translate"
+      ></app-search-result-attribute>
+      <app-search-result-attribute
+        *ngIf="result.helpMode"
+        [text]="result.helpMode | translateArray: ', '"
+        icon="corporate_fare"
+      ></app-search-result-attribute>
+    </app-search-result>
+  </div>
+  <app-paginator [length]="total" (param)="search()"></app-paginator>
+</div>

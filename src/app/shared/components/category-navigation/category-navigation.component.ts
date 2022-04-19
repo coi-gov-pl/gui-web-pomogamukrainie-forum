@@ -7,6 +7,10 @@ import { Params, Router, RouterModule } from '@angular/router';
 import { TypeOfHelpComponentModule } from '@app/shared/components';
 import { StoreUrlService } from '@app/core/store-url';
 import { MAT_TOOLTIP_DEFAULT_OPTIONS, MatTooltipDefaultOptions, MatTooltipModule } from '@angular/material/tooltip';
+import { MatOptionModule } from '@angular/material/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-category-navigation',
@@ -22,14 +26,19 @@ export class CategoryNavigationComponent {
     { name: CategoryNameKey.ACCOMMODATION, icon: 'bed' },
     { name: CategoryNameKey.MATERIAL_HELP, icon: 'interests_outline' },
     { name: CategoryNameKey.TRANSPORT, icon: 'directions_car_outline' },
-    { name: CategoryNameKey.HEALTH, icon: 'local_hospital', disabled: true },
-    { name: CategoryNameKey.LEGAL_HELP, icon: 'gavel', disabled: true },
-    { name: CategoryNameKey.WORK, icon: 'work_outline', disabled: true },
+    { name: CategoryNameKey.HEALTH, icon: 'local_hospital' },
+    { name: CategoryNameKey.LEGAL_HELP, icon: 'gavel' },
+    { name: CategoryNameKey.JOB, icon: 'work_outline' },
     { name: CategoryNameKey.TRANSLATIONS, icon: 'translate', disabled: true },
     { name: CategoryNameKey.MISC, icon: 'lan', disabled: true },
   ];
 
-  constructor(private router: Router, private storeUrlService: StoreUrlService) {}
+  selectedCategory: Category | { name: string; icon: string };
+
+  constructor(private router: Router, private storeUrlService: StoreUrlService) {
+    const selectedCategory = this.categories.find((category) => this.isActive(category));
+    this.selectedCategory = selectedCategory ? { ...selectedCategory } : { name: '', icon: '' };
+  }
 
   isActive(category: Category): boolean {
     return this.router.url.includes(`/${CategoryRoutingName[category.name]}`);
@@ -52,7 +61,18 @@ export const matTooltipCustomConfig: MatTooltipDefaultOptions = {
 @NgModule({
   declarations: [CategoryNavigationComponent],
   exports: [CategoryNavigationComponent],
-  imports: [CommonModule, TranslateModule, MatIconModule, RouterModule, TypeOfHelpComponentModule, MatTooltipModule],
+  imports: [
+    CommonModule,
+    TranslateModule,
+    MatIconModule,
+    RouterModule,
+    TypeOfHelpComponentModule,
+    MatTooltipModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatOptionModule,
+  ],
   providers: [{ provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: matTooltipCustomConfig }],
 })
 export class CategoryNavigationComponentModule {}

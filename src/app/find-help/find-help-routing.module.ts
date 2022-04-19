@@ -43,6 +43,27 @@ const routes: Routes = [
           title: BreadcrumbLabels.TRANSPORT,
         },
       },
+      {
+        path: CategoryRoutingName.JOB,
+        loadChildren: () => import('./job-search/job-search.module').then((m) => m.JobSearchModule),
+        data: {
+          title: BreadcrumbLabels.JOB,
+        },
+      },
+      {
+        path: CategoryRoutingName.HEALTH,
+        loadChildren: () => import('./health-search/health-search.module').then((m) => m.HealthSearchModule),
+        data: {
+          title: BreadcrumbLabels.HEALTH,
+        },
+      },
+      {
+        path: CategoryRoutingName.LEGAL_HELP,
+        loadChildren: () => import('./law-search/law-search.module').then((m) => m.LawSearchModule),
+        data: {
+          title: BreadcrumbLabels.LAW_HELP,
+        },
+      },
     ],
   },
 ];

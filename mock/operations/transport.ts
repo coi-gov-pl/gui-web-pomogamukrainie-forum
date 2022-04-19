@@ -11,7 +11,7 @@ export function transportListGet(req: express.Request, res: express.Response): e
 
 export function transportGet(req: express.Request, res: express.Response): express.Response {
   const { id } = req.params;
-  const transport = transportList.content?.find((el) => el.id === +id);
+  const transport = transportList.content?.find((el) => el.id === Number(id));
   if (transport) {
     return res.json(transport);
   } else {
@@ -22,7 +22,7 @@ export function transportGet(req: express.Request, res: express.Response): expre
 
 export function transportDelete(req: express.Request, res: express.Response): express.Response {
   const { id } = req.params;
-  userOffers.content = userOffers.content?.filter((el) => el.id !== +id);
+  userOffers.content = userOffers.content?.filter((el) => el.id !== Number(id));
 
   res.status(204);
   return res.send();
