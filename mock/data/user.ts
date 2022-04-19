@@ -1,4 +1,4 @@
-import { UserInfo, OffersBaseOffer } from '@app/core/api';
+import { UserInfo, OffersBaseOffer, LawOffer } from '@app/core/api';
 
 export const loggedUserInfo: UserInfo = { email: 'john@email.invalid', firstName: 'John' };
 
@@ -104,7 +104,34 @@ export const userOffers: OffersBaseOffer = {
       phoneNumber: '48789123458',
       type: 'TRANSPORT',
     },
+    {
+      id: 79,
+      userFirstName: 'Marta',
+      title: 'Pomoc prawna dla obywateli Ukrainy',
+      description: 'Oferuję pomoc prawną dla obywateli Ukrainy. Udzielę porad prawnych w zakresie prawa karnego.',
+      modifiedDate: '2022-03-14T10:36:12Z',
+      location: { region: 'woj. mazowieckie, pow. Warszawa, gm. Warszawa', city: 'Warszawa' },
+      helpMode: [
+        LawOffer.HelpModeEnum.Stationary,
+        LawOffer.HelpModeEnum.WithAccess,
+        LawOffer.HelpModeEnum.Online,
+        LawOffer.HelpModeEnum.ByEmail,
+        LawOffer.HelpModeEnum.ByPhone,
+      ],
+      helpKind: [
+        LawOffer.HelpKindEnum.LabourLaw,
+        LawOffer.HelpKindEnum.ImmigrationLaw,
+        LawOffer.HelpKindEnum.FamilyLaw,
+        LawOffer.HelpKindEnum.TaxLaw,
+        LawOffer.HelpKindEnum.CivilLaw,
+        LawOffer.HelpKindEnum.Other,
+      ],
+      language: [LawOffer.LanguageEnum.Pl, LawOffer.LanguageEnum.Ua],
+      phoneCountryCode: '48',
+      phoneNumber: '48123456789',
+      type: LawOffer.TypeEnum.Law,
+    },
   ],
-  totalElements: 6,
+  totalElements: 7,
   totalPages: 2,
 };

@@ -57,6 +57,13 @@ const routes: Routes = [
           title: BreadcrumbLabels.HEALTH,
         },
       },
+      {
+        path: CategoryRoutingName.LEGAL_HELP,
+        loadChildren: () => import('./law-search/law-search.module').then((m) => m.LawSearchModule),
+        data: {
+          title: BreadcrumbLabels.LAW_HELP,
+        },
+      },
     ],
   },
 ];

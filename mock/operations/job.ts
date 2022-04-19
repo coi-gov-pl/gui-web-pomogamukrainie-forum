@@ -9,7 +9,7 @@ export function jobsListGet(req: express.Request, res: express.Response): expres
 }
 export function jobGet(req: express.Request, res: express.Response): express.Response {
   const { id } = req.params;
-  const job = jobsList.content?.find((el) => el.id === +id);
+  const job = jobsList.content?.find((el) => el.id === Number(id));
   if (job) {
     return res.json(job);
   } else {
