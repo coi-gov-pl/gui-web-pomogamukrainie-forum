@@ -28,8 +28,8 @@ export type AllOffersMapper = FieldAccommodationOfferMapper &
 export const offerMapper: AllOffersMapper = {
   title: 'LABEL_OFFER_TITLE',
   description: 'LABEL_OFFER_DESCRIPTION',
-  phoneNumber: 'LABEL_PHONE_NUMBER',
   phoneCountryCode: 'LABEL_PHONE_COUNTRY_CODE',
+  phoneNumber: 'LABEL_PHONE_NUMBER',
   guests: 'NUMBER_OF_PEOPLE',
   lengthOfStay: 'LABEL_LENGTH_OF_STAY',
   hostLanguage: 'LABEL_HOST_LANG',
