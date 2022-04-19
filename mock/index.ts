@@ -19,6 +19,8 @@ import {
   transportListGet,
   transportPost,
   jobPost,
+  jobsListGet,
+  jobGet,
   healthGet,
   healthListGet,
 } from './operations';
@@ -41,6 +43,8 @@ router
   .get(`${baseHref}/dictionaries/city`, cityGet)
   .get(`${baseHref}/accommodations`, accommodationsListGet)
   .get(`${baseHref}/accommodations/:id`, accommodationGet)
+  .get(`${baseHref}/job`, jobsListGet)
+  .get(`${baseHref}/job/:id`, jobGet)
   .get(`${baseHref}/material-aid`, materialAidListGet)
   .get(`${baseHref}/material-aid/:id`, materialAidGet)
   .get(`${baseHref}/transport`, transportListGet)

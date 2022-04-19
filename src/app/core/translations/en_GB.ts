@@ -32,6 +32,7 @@ export default {
   LOCATION: `Location`,
   NUMBER_OF_PEOPLE: `Number of people`,
   SEARCH: `Search`,
+  CLEAR_FILTERS: `Clear filters`,
   SELECT_FROM_THE_LIST: `Choose from the list`,
   MORE_SUPPORT_INFORMATION: `More information about getting help`,
   DASHBOARD_DESCRIPTION: `You will be asked to confirm your willingness to help with a <strong>trusted profile</strong>. In this way, we protect your data and provide reliable assistance to refugees.`,

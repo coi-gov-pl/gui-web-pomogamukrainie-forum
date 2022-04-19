@@ -1,0 +1,94 @@
+<form class="d-flex flex-column flex-md-row align-items-center" (ngSubmit)="onSubmit()" #form="ngForm">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <app-cities-search
+          [(ngModel)]="data.location"
+          name="location"
+          [placeholder]="'PLACEHOLDER_LOCATION' | translate"
+          [label]="'LOCATION' | translate"
+          [required]="false"
+          [isRegionPicked]="data.location?.region ? true : false"
+        ></app-cities-search>
+      </div>
+      <div class="col-md-6">
+        <label>
+          <b>{{ "LABEL_INDUSTRY" | translate }}</b>
+        </label>
+        <mat-form-field appearance="outline">
+          <mat-select [placeholder]="'PLACEHOLDER_INDUSTRY' | translate" [(ngModel)]="data.industry" name="industry">
+            <mat-option *ngFor="let industry of industries" [value]="industry.value">{{
+              industry.value | translate
+            }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <label>
+          <b>{{ "LABEL_JOB_MODE" | translate }}</b>
+        </label>
+        <mat-form-field appearance="outline">
+          <mat-select [placeholder]="'PLACEHOLDER_JOB_MODE' | translate" [(ngModel)]="data.mode" name="mode">
+            <mat-option *ngFor="let mode of modes" [value]="mode.value">{{ mode.value | translate }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-md-3">
+        <label>
+          <b>{{ "LABEL_CONTRACT_TYPE" | translate }}</b>
+        </label>
+        <mat-form-field appearance="outline">
+          <mat-select
+            [placeholder]="'PLACEHOLDER_CONTRACT_TYPE' | translate"
+            [(ngModel)]="data.contractType"
+            name="contractType"
+          >
+            <mat-option *ngFor="let contractType of contractTypes" [value]="contractType.value">{{
+              contractType.value | translate
+            }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-md-3">
+        <label>
+          <b>{{ "LABEL_WORK_TIME" | translate }}</b>
+        </label>
+        <mat-form-field appearance="outline">
+          <mat-select [placeholder]="'PLACEHOLDER_JOB_TIME' | translate" [(ngModel)]="data.workTime" name="workTime">
+            <mat-option *ngFor="let workTime of workTimes" [value]="workTime.value">{{
+              workTime.value | translate
+            }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-md-3">
+        <label>
+          <b>{{ "LABEL_JOB_LANG" | translate }}</b>
+        </label>
+        <mat-form-field appearance="outline">
+          <mat-select
+            multiple
+            [placeholder]="'CHOOSE_FROM_THE_LIST' | translate"
+            [(ngModel)]="data.language"
+            name="languages"
+          >
+            <mat-option *ngFor="let language of languages" [value]="language.value">{{
+              language.value | translate
+            }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <div class="search d-flex flex-column align-items-center ms-4">
+    <button type="submit" class="btn btn-dark" [disabled]="form.invalid">
+      <mat-icon fontSet="material-icons-outlined">search</mat-icon>
+      <span>{{ "SEARCH" | translate }}</span>
+    </button>
+    <button type="button" class="clear-filters btn btn-link" (click)="clearFilters()">
+      <span>{{ "CLEAR_FILTERS" | translate }}</span>
+    </button>
+  </div>
+</form>
