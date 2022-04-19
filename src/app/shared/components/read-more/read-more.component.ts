@@ -12,7 +12,7 @@ export class ReadMoreComponent implements OnChanges {
 
   public isCollapsed: boolean = true;
 
-  toggleView() {
+  toggleVisibility() {
     this.isCollapsed = !this.isCollapsed;
     this.determineView();
   }
@@ -23,7 +23,7 @@ export class ReadMoreComponent implements OnChanges {
       this.isCollapsed = false;
       return;
     }
-    this.currentText = this.isCollapsed ? this.text.substring(0, this.maxLength) + '...' : this.text;
+    this.currentText = this.isCollapsed ? this.text.substring(0, this.maxLength).concat('&hellip;') : this.text;
   }
 
   ngOnChanges() {
