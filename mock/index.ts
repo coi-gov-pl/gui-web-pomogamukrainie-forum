@@ -19,6 +19,8 @@ import {
   transportListGet,
   transportPost,
   jobPost,
+  jobsListGet,
+  jobGet,
   healthGet,
   healthListGet,
   lawGet,
@@ -43,16 +45,18 @@ router
   .get(`${baseHref}/dictionaries/city`, cityGet)
   .get(`${baseHref}/accommodations`, accommodationsListGet)
   .get(`${baseHref}/accommodations/:id`, accommodationGet)
+  .get(`${baseHref}/job`, jobsListGet)
+  .get(`${baseHref}/job/:id`, jobGet)
   .get(`${baseHref}/material-aid`, materialAidListGet)
   .get(`${baseHref}/material-aid/:id`, materialAidGet)
   .get(`${baseHref}/transport`, transportListGet)
   .get(`${baseHref}/transport/:id`, transportGet)
   .get(`${baseHref}/secure/me`, meGet)
   .get(`${baseHref}/secure/my-offers`, myOffersGet)
-  .get(`${baseHref}/health-care`, healthListGet)
   .get(`${baseHref}/health-care/:id`, healthGet)
-  .get(`${baseHref}/law`, lawListGet)
+  .get(`${baseHref}/health-care`, healthListGet)
   .get(`${baseHref}/law/:id`, lawGet)
+  .get(`${baseHref}/law`, lawListGet)
   .post(`${baseHref}/secure/accommodations`, accommodationsPost)
   .post(`${baseHref}/secure/material-aid`, materialAidPost)
   .post(`${baseHref}/secure/transport`, transportPost)
