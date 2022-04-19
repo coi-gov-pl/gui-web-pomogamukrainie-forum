@@ -26,7 +26,7 @@ export class CategoryNavigationComponent {
     { name: CategoryNameKey.ACCOMMODATION, icon: 'bed' },
     { name: CategoryNameKey.MATERIAL_HELP, icon: 'interests_outline' },
     { name: CategoryNameKey.TRANSPORT, icon: 'directions_car_outline' },
-    { name: CategoryNameKey.HEALTH, icon: 'local_hospital', disabled: true },
+    { name: CategoryNameKey.HEALTH, icon: 'local_hospital' },
     { name: CategoryNameKey.LEGAL_HELP, icon: 'gavel', disabled: true },
     { name: CategoryNameKey.JOB, icon: 'work_outline' },
     { name: CategoryNameKey.TRANSLATIONS, icon: 'translate', disabled: true },
