@@ -23,6 +23,7 @@ import {
   jobGet,
   healthGet,
   healthListGet,
+  lawGet,
 } from './operations';
 
 const port = process.env['PORT'] || 3000;
@@ -53,6 +54,7 @@ router
   .get(`${baseHref}/secure/my-offers`, myOffersGet)
   .get(`${baseHref}/health-care/:id`, healthGet)
   .get(`${baseHref}/health-care`, healthListGet)
+  .get(`${baseHref}/law/:id`, lawGet)
   .post(`${baseHref}/secure/accommodations`, accommodationsPost)
   .post(`${baseHref}/secure/material-aid`, materialAidPost)
   .post(`${baseHref}/secure/transport`, transportPost)
