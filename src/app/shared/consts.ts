@@ -30,13 +30,6 @@ export const LANGUAGES: Option[] = [
   { code: HostLanguageEnum.En, label: LanguageNames.ENGLISH },
 ];
 
-export const HEALTH_MODES: Option[] = [
-  { code: HostLanguageEnum.Pl, label: LanguageNames.POLISH },
-  { code: HostLanguageEnum.Ua, label: LanguageNames.UKRAINIAN },
-  { code: HostLanguageEnum.Ru, label: LanguageNames.RUSSIAN },
-  { code: HostLanguageEnum.En, label: LanguageNames.ENGLISH },
-];
-
 export const JOB_LANGUAGES: Option[] = [
   { code: JobLanguageEnum.Pl, label: LanguageNames.POLISH },
   { code: JobLanguageEnum.Ua, label: LanguageNames.UKRAINIAN },
