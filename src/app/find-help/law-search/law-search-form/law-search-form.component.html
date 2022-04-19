@@ -8,7 +8,7 @@
           [placeholder]="'PLACEHOLDER_LOCATION' | translate"
           [label]="'LOCATION' | translate"
           [required]="false"
-          [isRegionPicked]="data.location?.region ? true : false"
+          [isRegionPicked]="!!data.location?.region"
         ></app-cities-search>
       </div>
       <div class="col-md-6 col-xl-2">
