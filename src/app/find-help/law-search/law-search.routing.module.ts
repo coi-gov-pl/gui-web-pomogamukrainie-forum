@@ -26,6 +26,13 @@ const routes: Routes = [
           title: null,
         },
       },
+      {
+        path: ':id',
+        loadChildren: () => import('../view-offer-law/view-offer-law.module').then((m) => m.ViewOfferLawModule),
+        data: {
+          title: BreadcrumbLabels.AD,
+        },
+      },
     ],
   },
 ];
