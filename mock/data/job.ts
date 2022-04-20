@@ -30,7 +30,7 @@ export const jobsList: OffersJobOffer = {
       type: 'JOB',
     },
     {
-      id: 1,
+      id: 888,
       userFirstName: 'User First Name',
       title: 'Programista Java',
       description:
