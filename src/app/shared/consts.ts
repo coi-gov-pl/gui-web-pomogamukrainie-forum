@@ -72,3 +72,13 @@ export const DIALOG_CANCEL_OFFER_CONFIG = {
   autoFocus: false,
   data: { headerText: '' },
 };
+
+//based on bootstrap brekpoints ref
+//https://getbootstrap.com/docs/5.0/layout/breakpoints/
+export const BOOTSTRAP5_BREAKPOINTS = {
+  s: 576,
+  md: 768,
+  lg: 992,
+  xl: 1200,
+  xxl: 1440,
+};

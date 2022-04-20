@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { LawOffer, LawOfferSearchCriteria, LawResourceService, Pageable } from '@app/core/api';
 import { CategoryRoutingName, CorePath } from '@app/shared/models';
 import { ActivatedRoute } from '@angular/router';
+import { MobileViewportDetectService } from '@app/shared/services';
 
 @Component({
   selector: 'app-law-search',
@@ -17,7 +18,11 @@ export class LawSearchComponent implements OnInit {
   pagination: Pageable | undefined = {};
   @ViewChild('lawResultsStart', { read: ElementRef }) resultsStart!: ElementRef<HTMLElement>;
 
-  constructor(private lawResourceService: LawResourceService, private route: ActivatedRoute) {}
+  constructor(
+    private lawResourceService: LawResourceService,
+    private route: ActivatedRoute,
+    private mobileViewportDetect: MobileViewportDetectService
+  ) {}
 
   ngOnInit() {
     const { city, region, lawMode, lawKind, language } = this.route.snapshot.queryParams;
@@ -53,7 +58,9 @@ export class LawSearchComponent implements OnInit {
       next: (results) => {
         this.results = results.content ?? [];
         this.total = results.totalElements ?? 0;
-        this.resultsStart?.nativeElement?.scrollIntoView();
+        if (this.mobileViewportDetect.isMobileView) {
+          this.resultsStart?.nativeElement?.scrollIntoView();
+        }
       },
       error: () => {
         this.results = [];

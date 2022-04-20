@@ -3,6 +3,7 @@ import { AccommodationQuery } from './accommodation-search-form/accommodation-se
 import { AccommodationsResourceService, AccommodationOffer, Pageable } from '@app/core/api';
 import { CategoryRoutingName, CorePath } from '@app/shared/models';
 import { ActivatedRoute } from '@angular/router';
+import { MobileViewportDetectService } from '@app/shared/services';
 
 @Component({
   selector: 'app-accommodation-search',
@@ -18,7 +19,11 @@ export class AccommodationSearchComponent implements OnInit {
   pagination: Pageable | undefined = {};
   @ViewChild('accomodationResultsStart', { read: ElementRef }) resultsStart!: ElementRef<HTMLElement>;
 
-  constructor(private accommodationsResourceService: AccommodationsResourceService, private route: ActivatedRoute) {}
+  constructor(
+    private accommodationsResourceService: AccommodationsResourceService,
+    private route: ActivatedRoute,
+    public mobileViewportDetect: MobileViewportDetectService
+  ) {}
 
   ngOnInit() {
     const { capacity, city, region } = this.route.snapshot.queryParams;
@@ -64,7 +69,9 @@ export class AccommodationSearchComponent implements OnInit {
       next: (results) => {
         this.results = results.content ?? [];
         this.total = results.totalElements;
-        this.resultsStart?.nativeElement?.scrollIntoView();
+        if (this.mobileViewportDetect.isMobileView) {
+          this.resultsStart?.nativeElement?.scrollIntoView();
+        }
       },
       error: () => {
         this.results = [];

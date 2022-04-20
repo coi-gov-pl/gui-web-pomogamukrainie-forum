@@ -11,6 +11,7 @@ import { LoadingInterceptor } from '@app/shared/services';
 import { LoadingService } from '@app/shared/services';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MobileViewportDetectService } from './shared/services/mobile-viewport-detect.service';
 
 @NgModule({
   declarations: [AppComponent, LoadingComponent],
@@ -36,6 +37,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
       provide: ErrorHandler,
       useClass: ApplicationinsightsAngularpluginErrorService,
     },
+    MobileViewportDetectService,
   ],
 })
 export class AppModule {}
