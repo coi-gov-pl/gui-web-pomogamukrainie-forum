@@ -265,4 +265,6 @@ export default {
   LABEL_SPECIALISATION: "Specializacja",
   CHOOSE_SPECIALISATION: "Wybierz specjalizację",
   READ_MORE: 'Zobacz więcej',
+  LAW_HELP_MODES: 'Tryby udzielanej pomocy',
+  LAW_HELP_KINDS: 'Obszary udzielanej pomocy',
 };

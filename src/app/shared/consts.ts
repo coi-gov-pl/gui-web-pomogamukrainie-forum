@@ -4,7 +4,13 @@ import {
   JobOfferDefinitionDTO,
   LawOfferDefinitionDTO,
 } from '@app/core/api';
-import { LanguageCode, LanguageNames, LengthOfStayLabels } from '@app/core/translations';
+import {
+  LanguageCode,
+  LanguageNames,
+  LawHelpKindLabels,
+  LawHelpModeLabels,
+  LengthOfStayLabels,
+} from '@app/core/translations';
 import { Option, Prefix } from './models';
 import HostLanguageEnum = AccommodationOfferDefinitionDTO.HostLanguageEnum;
 import JobLanguageEnum = JobOfferDefinitionDTO.LanguageEnum;
@@ -62,20 +68,20 @@ export const LENGTH_OF_STAY: Option[] = [
 ];
 
 export const LAW_HELP_MODES: Option[] = [
-  { code: LawHelpModeEnum.Stationary, label: 'Stacjonarny' },
-  { code: LawHelpModeEnum.WithAccess, label: 'Test' },
-  { code: LawHelpModeEnum.Online, label: 'Online' },
-  { code: LawHelpModeEnum.ByEmail, label: 'Email' },
-  { code: LawHelpModeEnum.ByPhone, label: 'Telefonicznie' },
+  { code: LawHelpModeEnum.Stationary, label: LawHelpModeLabels.Stationary },
+  { code: LawHelpModeEnum.WithAccess, label: LawHelpModeLabels.WithAccess },
+  { code: LawHelpModeEnum.Online, label: LawHelpModeLabels.Online },
+  { code: LawHelpModeEnum.ByEmail, label: LawHelpModeLabels.Email },
+  { code: LawHelpModeEnum.ByPhone, label: LawHelpModeLabels.Phone },
 ];
 
 export const LAW_HELP_KINDS: Option[] = [
-  { code: LawHelpKindEnum.LabourLaw, label: 'Prawo pracy' },
-  { code: LawHelpKindEnum.ImmigrationLaw, label: 'Prawo imigracyjne' },
-  { code: LawHelpKindEnum.FamilyLaw, label: 'Prawo rodzinne' },
-  { code: LawHelpKindEnum.TaxLaw, label: 'Prawo podatkowe' },
-  { code: LawHelpKindEnum.CivilLaw, label: 'Prawo obywatelskie' },
-  { code: LawHelpKindEnum.Other, label: 'Inne' },
+  { code: LawHelpKindEnum.LabourLaw, label: LawHelpKindLabels.Labour },
+  { code: LawHelpKindEnum.ImmigrationLaw, label: LawHelpKindLabels.Immigration },
+  { code: LawHelpKindEnum.FamilyLaw, label: LawHelpKindLabels.Family },
+  { code: LawHelpKindEnum.TaxLaw, label: LawHelpKindLabels.Tax },
+  { code: LawHelpKindEnum.CivilLaw, label: LawHelpKindLabels.Civil },
+  { code: LawHelpKindEnum.Other, label: LawHelpKindLabels.Other },
 ];
 
 export const MATCH_NON_DIGITS = /[^0-9]+/g;

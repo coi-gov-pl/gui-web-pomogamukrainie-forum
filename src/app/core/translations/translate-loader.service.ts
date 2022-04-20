@@ -1,10 +1,10 @@
-import { Observable, of } from 'rxjs';
-import { TranslateLoader } from '@ngx-translate/core';
 import { Injectable } from '@angular/core';
-import plPlTranslations from './pl_PL';
-import ukUATranslations from './uk_UA';
+import { TranslateLoader } from '@ngx-translate/core';
+import { Observable, of } from 'rxjs';
 import enGBTranslations from './en_GB';
+import plPlTranslations from './pl_PL';
 import ruRUTranslations from './ru_RU';
+import ukUATranslations from './uk_UA';
 
 export enum LanguageCode {
   pl_PL = 'pl_PL',
@@ -27,6 +27,23 @@ export enum LengthOfStayLabels {
   MONTH_2 = 'MONTH_2',
   MONTH_3 = 'MONTH_3',
   LONGER = 'LONGER',
+}
+
+export enum LawHelpModeLabels {
+  Stationary = 'IN_FACILITY',
+  WithAccess = 'WITH_ACCESS',
+  Online = 'ONLINE',
+  Email = 'BY_EMAIL',
+  Phone = 'BY_PHONE',
+}
+
+export enum LawHelpKindLabels {
+  Labour = 'LABOUR_LAW',
+  Immigration = 'IMMIGRATION_LAW',
+  Family = 'FAMILY_LAW',
+  Tax = 'TAX_LAW',
+  Civil = 'CIVIL_LAW',
+  Other = 'OTHER',
 }
 
 export interface Translations {
