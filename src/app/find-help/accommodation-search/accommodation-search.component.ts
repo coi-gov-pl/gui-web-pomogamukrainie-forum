@@ -22,7 +22,7 @@ export class AccommodationSearchComponent implements OnInit {
   constructor(
     private accommodationsResourceService: AccommodationsResourceService,
     private route: ActivatedRoute,
-    public mobileViewportDetect: MobileViewportDetectService
+    private mobileViewportDetect: MobileViewportDetectService
   ) {}
 
   ngOnInit() {
