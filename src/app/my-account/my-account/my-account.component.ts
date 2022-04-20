@@ -9,6 +9,12 @@ import {
   OffersBaseOffer,
   TransportOffer,
   TransportResourceService,
+  LawOffer,
+  HealthOffer,
+  HealthResourceService,
+  JobOffer,
+  JobResourceService,
+  LawResourceService,
 } from '@app/core/api';
 import { switchMap, take } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -38,7 +44,10 @@ export class MyAccountComponent implements OnInit {
     private accommodationsResourceService: AccommodationsResourceService,
     private materialAidResourceService: MaterialAidResourceService,
     private storeUrlService: StoreUrlService,
-    private snackbarService: SnackbarService
+    private snackbarService: SnackbarService,
+    private healthResourceService: HealthResourceService,
+    private jobResourceService: JobResourceService,
+    private lawResourceService: LawResourceService
   ) {}
 
   public async ngOnInit() {
@@ -62,7 +71,9 @@ export class MyAccountComponent implements OnInit {
     });
   }
 
-  removeAnnouncement(announcement: AccommodationOffer | MaterialAidOffer | TransportOffer): void {
+  removeAnnouncement(
+    announcement: AccommodationOffer | MaterialAidOffer | TransportOffer | HealthOffer | JobOffer | LawOffer
+  ): void {
     const dialogRef: MatDialogRef<ConfirmRemoveAdComponent> = this.dialog.open(ConfirmRemoveAdComponent, {
       hasBackdrop: true,
       width: '100%',
@@ -100,11 +111,37 @@ export class MyAccountComponent implements OnInit {
               next: (data) => this.onRemoveSuccess(data),
               error: (error) => this.onRemoveError(error.message),
             });
+        } else if (announcement.type === HealthOffer.TypeEnum.Health) {
+          this.healthResourceService
+            .deleteHealth(announcement.id)
+            .pipe(switchMap(() => this.myOffersResource.listMyOffers(this.pageRequest)))
+            .subscribe({
+              next: (data) => this.onRemoveSuccess(data),
+              error: (error) => this.onRemoveError(error.message),
+            });
+        } else if (announcement.type === JobOffer.TypeEnum.Job) {
+          this.jobResourceService
+            .deleteJob(announcement.id)
+            .pipe(switchMap(() => this.myOffersResource.listMyOffers(this.pageRequest)))
+            .subscribe({
+              next: (data) => this.onRemoveSuccess(data),
+              error: (error) => this.onRemoveError(error.message),
+            });
+        } else if (announcement.type === LawOffer.TypeEnum.Law) {
+          this.lawResourceService
+            .deleteLaw(announcement.id)
+            .pipe(switchMap(() => this.myOffersResource.listMyOffers(this.pageRequest)))
+            .subscribe({
+              next: (data) => this.onRemoveSuccess(data),
+              error: (error) => this.onRemoveError(error.message),
+            });
         }
       }
     });
   }
-  editAnnouncement(announcement: AccommodationOffer | MaterialAidOffer | TransportOffer): void {
+  editAnnouncement(
+    announcement: AccommodationOffer | MaterialAidOffer | TransportOffer | HealthOffer | JobOffer | LawOffer
+  ): void {
     // @TODO: extract to separate util
     let categoryRoute;
     switch (announcement.type) {
@@ -118,6 +155,18 @@ export class MyAccountComponent implements OnInit {
       }
       case 'TRANSPORT': {
         categoryRoute = CategoryRoutingName.TRANSPORT;
+        break;
+      }
+      case 'HEALTH': {
+        categoryRoute = CategoryRoutingName.HEALTH;
+        break;
+      }
+      case 'JOB': {
+        categoryRoute = CategoryRoutingName.JOB;
+        break;
+      }
+      case 'LAW': {
+        categoryRoute = CategoryRoutingName.LEGAL_HELP;
         break;
       }
     }

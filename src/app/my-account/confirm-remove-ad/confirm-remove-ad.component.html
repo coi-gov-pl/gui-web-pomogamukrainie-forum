@@ -55,6 +55,85 @@
     ></app-search-result-attribute>
   </app-search-result>
 
+  <app-search-result
+    *ngIf="currentAnnouncement.type === 'HEALTH'"
+    [location]="currentAnnouncement.location"
+    [title]="currentAnnouncement.title"
+    [description]="currentAnnouncement.description"
+    [posted]="currentAnnouncement.modifiedDate"
+    class="item-wrapper"
+  >
+    <app-search-result-attribute
+      *ngIf="currentAnnouncement.mode"
+      [text]="currentAnnouncement.mode | translateArray: ', '"
+      icon="person"
+    ></app-search-result-attribute>
+    <app-search-result-attribute
+      *ngIf="currentAnnouncement.language"
+      [text]="currentAnnouncement.language.join(', ')"
+      icon="translate"
+    ></app-search-result-attribute>
+  </app-search-result>
+
+  <app-search-result
+    *ngIf="currentAnnouncement.type === 'JOB'"
+    [location]="currentAnnouncement.location"
+    [title]="currentAnnouncement.title"
+    [description]="currentAnnouncement.description"
+    [posted]="currentAnnouncement.modifiedDate"
+    class="item-wrapper"
+  >
+    <app-search-result-attribute
+      *ngIf="currentAnnouncement.industry"
+      [text]="currentAnnouncement.industry | translateArray: ', '"
+      icon="work_outline"
+    ></app-search-result-attribute>
+    <app-search-result-attribute
+      *ngIf="currentAnnouncement.mode"
+      [text]="currentAnnouncement.mode | translate"
+      icon="business"
+    ></app-search-result-attribute>
+    <app-search-result-attribute
+      *ngIf="currentAnnouncement.contractType"
+      [text]="currentAnnouncement.contractType | translateArray: ', '"
+      icon="assignment"
+    ></app-search-result-attribute>
+    <app-search-result-attribute
+      *ngIf="currentAnnouncement.workTime"
+      [text]="currentAnnouncement.workTime | translateArray: ', '"
+      icon="schedule"
+    ></app-search-result-attribute>
+    <app-search-result-attribute
+      *ngIf="currentAnnouncement.language"
+      [text]="currentAnnouncement.language | translateArray: ', '"
+      icon="translate"
+    ></app-search-result-attribute>
+  </app-search-result>
+
+  <app-search-result
+    *ngIf="currentAnnouncement.type === 'LAW'"
+    [location]="currentAnnouncement.location"
+    [title]="currentAnnouncement.title"
+    [description]="currentAnnouncement.description"
+    [posted]="currentAnnouncement.modifiedDate"
+  >
+    <app-search-result-attribute
+      *ngIf="currentAnnouncement.helpKind"
+      [text]="currentAnnouncement.helpKind | translateArray: ', '"
+      icon="gavel"
+    ></app-search-result-attribute>
+    <app-search-result-attribute
+      *ngIf="currentAnnouncement.language"
+      [text]="currentAnnouncement.language.join(', ')"
+      icon="translate"
+    ></app-search-result-attribute>
+    <app-search-result-attribute
+      *ngIf="currentAnnouncement.helpMode"
+      [text]="currentAnnouncement.helpMode | translateArray: ', '"
+      icon="corporate_fare"
+    ></app-search-result-attribute>
+  </app-search-result>
+
   <div class="footer">
     <button type="submit" class="btn btn-dark" (click)="confirmAction(false)">
       <span>{{ "NO" | translate }}</span>
