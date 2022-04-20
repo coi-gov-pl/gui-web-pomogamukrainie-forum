@@ -4,7 +4,7 @@
     <p class="font-small font-yellow fw-bold mb-1">{{ "HELPUA" | translate }}</p>
     <h1 class="header-2 font-darkblue fw-bold">{{ "MY_ACCOUNT" | translate }}</h1>
   </header>
-  <section>
+  <section class="container-section">
     <div class="container px-0">
       <div class="col-sm-12">
         <p class="text">{{ "ACCOUNT_SETTINGS" | translate }}</p>
@@ -19,7 +19,7 @@
     </button>
   </div>
 
-  <section *ngIf="myAnnouncements?.content?.length">
+  <section class="container-section" *ngIf="myAnnouncements?.content?.length">
     <app-sorting-header
       [header]="'YOUR_ANNOUNCEMENT' | translate"
       (sortingOrderChange)="getMyOffers()"

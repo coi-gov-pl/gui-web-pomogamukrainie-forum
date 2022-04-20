@@ -48,4 +48,12 @@ header {
   }
 }
 
+.container-section {
+  margin: 2em 0;
+
+  @media (min-width: $breakpoint-md) {
+    margin: 2em 1em;
+  }
+}
+
 @import "./assets/styles/buttons";
