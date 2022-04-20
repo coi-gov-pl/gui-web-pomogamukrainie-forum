@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { HealthOffer } from '@app/core/api/model/healthOffer';
 import { HealthOfferSearchCriteria } from '@app/core/api/model/healthOfferSearchCriteria';
 import { HealthResourceService } from '@app/core/api/api/healthResource.service';
+import { MobileViewportDetectService } from '@app/shared/services';
 
 @Component({
   selector: 'app-health-search',
@@ -20,7 +21,11 @@ export class HealthSearchComponent implements OnInit {
   pagination: Pageable | undefined = {};
   @ViewChild('healthResultsStart', { read: ElementRef }) resultsStart!: ElementRef<HTMLElement>;
 
-  constructor(private healthResourceService: HealthResourceService, private route: ActivatedRoute) {}
+  constructor(
+    private healthResourceService: HealthResourceService,
+    private route: ActivatedRoute,
+    private mobileViewportDetect: MobileViewportDetectService
+  ) {}
 
   ngOnInit() {
     const { city, region, specialization, language, healthMode } = this.route.snapshot.queryParams;
@@ -56,7 +61,9 @@ export class HealthSearchComponent implements OnInit {
       next: (results) => {
         this.results = results.content ?? [];
         this.total = results.totalElements ?? 0;
-        this.resultsStart?.nativeElement?.scrollIntoView();
+        if (this.mobileViewportDetect.isMobileView) {
+          this.resultsStart?.nativeElement?.scrollIntoView();
+        }
       },
       error: () => {
         this.results = [];

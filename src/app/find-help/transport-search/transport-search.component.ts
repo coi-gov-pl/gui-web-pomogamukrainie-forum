@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Pageable, TransportOffer, TransportOfferSearchCriteria, TransportResourceService } from '@app/core/api';
 import { CategoryRoutingName, CorePath } from '@app/shared/models';
 import { ActivatedRoute } from '@angular/router';
+import { MobileViewportDetectService } from '@app/shared/services';
 
 @Component({
   selector: 'app-transport-search',
@@ -17,7 +18,11 @@ export class TransportSearchComponent implements OnInit {
   pagination: Pageable | undefined;
   @ViewChild('transportResultsStart', { read: ElementRef }) resultsStart!: ElementRef<HTMLElement>;
 
-  constructor(private transportResourceService: TransportResourceService, private route: ActivatedRoute) {}
+  constructor(
+    private transportResourceService: TransportResourceService,
+    private route: ActivatedRoute,
+    private mobileViewportDetect: MobileViewportDetectService
+  ) {}
 
   ngOnInit() {
     const { capacity, transportDate, originCity, originRegion, destinationCity, destinationRegion } =
@@ -57,7 +62,9 @@ export class TransportSearchComponent implements OnInit {
       next: (results) => {
         this.results = results.content ?? [];
         this.total = results.totalElements ?? 0;
-        this.resultsStart?.nativeElement?.scrollIntoView();
+        if (this.mobileViewportDetect.isMobileView) {
+          this.resultsStart?.nativeElement?.scrollIntoView();
+        }
       },
       error: () => {
         this.results = [];

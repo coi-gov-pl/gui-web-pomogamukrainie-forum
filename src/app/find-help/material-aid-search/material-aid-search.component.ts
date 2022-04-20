@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MaterialAidOffer, MaterialAidOfferSearchCriteria, MaterialAidResourceService, Pageable } from '@app/core/api';
 import { CategoryRoutingName, CorePath } from '@app/shared/models';
 import { ActivatedRoute } from '@angular/router';
+import { MobileViewportDetectService } from '@app/shared/services';
 
 @Component({
   selector: 'app-material-aid-search',
@@ -17,7 +18,11 @@ export class MaterialAidSearchComponent implements OnInit {
   pagination: Pageable | undefined = {};
   @ViewChild('materialAidResultsStart', { read: ElementRef }) resultsStart!: ElementRef<HTMLElement>;
 
-  constructor(private materialAidResourceService: MaterialAidResourceService, private route: ActivatedRoute) {}
+  constructor(
+    private materialAidResourceService: MaterialAidResourceService,
+    private route: ActivatedRoute,
+    private mobileViewportDetect: MobileViewportDetectService
+  ) {}
 
   ngOnInit() {
     const { category, city, region } = this.route.snapshot.queryParams;
@@ -49,7 +54,9 @@ export class MaterialAidSearchComponent implements OnInit {
       next: (results) => {
         this.results = results.content ?? [];
         this.total = results.totalElements ?? 0;
-        this.resultsStart?.nativeElement?.scrollIntoView();
+        if (this.mobileViewportDetect.isMobileView) {
+          this.resultsStart?.nativeElement?.scrollIntoView();
+        }
       },
       error: () => {
         this.results = [];
