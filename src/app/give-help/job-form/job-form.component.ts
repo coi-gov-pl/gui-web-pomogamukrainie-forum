@@ -65,11 +65,22 @@ export class JobFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.offerId = Number(this.route.snapshot.paramMap.get('id'));
+    this.jobResourceService.getJob(this.offerId).subscribe((resp) => {
+      this.phoneNumber = resp.phoneNumber || '';
+      if (resp.phoneCountryCode) {
+        this.findPrefix(resp.phoneCountryCode);
+      }
+      this.data = resp;
+    });
     if (!this.isEditRoute) {
       DIALOG_CANCEL_OFFER_CONFIG.data.headerText = CANCEL_DIALOG_HEADERS.CONFIRM_CANCEL_OFFER_NEW;
     } else {
       DIALOG_CANCEL_OFFER_CONFIG.data.headerText = CANCEL_DIALOG_HEADERS.CONFIRM_CANCEL_OFFER_EDIT;
     }
+  }
+
+  findPrefix(phoneCountryCode: string) {
+    this.phonePrefix = PREFIXES.find((v) => v.prefix === phoneCountryCode)?.prefix || '';
   }
 
   onPhoneNumberChange($event: Event) {

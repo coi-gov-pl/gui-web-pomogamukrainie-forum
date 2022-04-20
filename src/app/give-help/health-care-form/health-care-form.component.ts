@@ -120,6 +120,6 @@ export class HealthCareFormComponent implements OnInit {
   }
 
   get isEditRoute(): boolean {
-    return this.router.url === `/edycja-ogloszenia/noclegi/${this.offerId}`;
+    return this.router.url === `/edycja-ogloszenia/zdrowie/${this.offerId}`;
   }
 }
