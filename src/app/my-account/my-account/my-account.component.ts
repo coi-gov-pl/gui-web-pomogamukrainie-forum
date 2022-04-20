@@ -84,7 +84,7 @@ export class MyAccountComponent implements OnInit {
 
     dialogRef.componentInstance.currentAnnouncement = announcement;
 
-    dialogRef.componentInstance.onClosed.pipe(take(1)).subscribe((confirmed: boolean) => {
+    dialogRef.componentInstance.confirm.pipe(take(1)).subscribe((confirmed: boolean) => {
       dialogRef.close();
       if (confirmed) {
         if (announcement.type === TransportOffer.TypeEnum.Transport) {
@@ -145,27 +145,27 @@ export class MyAccountComponent implements OnInit {
     // @TODO: extract to separate util
     let categoryRoute;
     switch (announcement.type) {
-      case 'ACCOMMODATION': {
+      case AccommodationOffer.TypeEnum.Accommodation: {
         categoryRoute = CategoryRoutingName.ACCOMMODATION;
         break;
       }
-      case 'MATERIAL_AID': {
+      case MaterialAidOffer.TypeEnum.MaterialAid: {
         categoryRoute = CategoryRoutingName.MATERIAL_HELP;
         break;
       }
-      case 'TRANSPORT': {
+      case TransportOffer.TypeEnum.Transport: {
         categoryRoute = CategoryRoutingName.TRANSPORT;
         break;
       }
-      case 'HEALTH': {
+      case HealthOffer.TypeEnum.Health: {
         categoryRoute = CategoryRoutingName.HEALTH;
         break;
       }
-      case 'JOB': {
+      case JobOffer.TypeEnum.Job: {
         categoryRoute = CategoryRoutingName.JOB;
         break;
       }
-      case 'LAW': {
+      case LawOffer.TypeEnum.Law: {
         categoryRoute = CategoryRoutingName.LEGAL_HELP;
         break;
       }
