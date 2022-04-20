@@ -4,19 +4,11 @@ import {
   JobOfferDefinitionDTO,
   LawOfferDefinitionDTO,
 } from '@app/core/api';
-import {
-  LanguageCode,
-  LanguageNames,
-  LawHelpKindLabels,
-  LawHelpModeLabels,
-  LengthOfStayLabels,
-} from '@app/core/translations';
+import { LanguageCode, LanguageNames, LengthOfStayLabels } from '@app/core/translations';
 import { Option, Prefix } from './models';
 import HostLanguageEnum = AccommodationOfferDefinitionDTO.HostLanguageEnum;
 import JobLanguageEnum = JobOfferDefinitionDTO.LanguageEnum;
 import LawLanguageEnum = LawOfferDefinitionDTO.LanguageEnum;
-import LawHelpModeEnum = LawOfferDefinitionDTO.HelpModeEnum;
-import LawHelpKindEnum = LawOfferDefinitionDTO.HelpKindEnum;
 
 export const PREFIXES: Prefix[] = [
   {
@@ -65,23 +57,6 @@ export const LENGTH_OF_STAY: Option[] = [
   { code: AccommodationOffer.LengthOfStayEnum.Month2, label: LengthOfStayLabels.MONTH_2 },
   { code: AccommodationOffer.LengthOfStayEnum.Month3, label: LengthOfStayLabels.MONTH_3 },
   { code: AccommodationOffer.LengthOfStayEnum.Longer, label: LengthOfStayLabels.LONGER },
-];
-
-export const LAW_HELP_MODES: Option[] = [
-  { code: LawHelpModeEnum.Stationary, label: LawHelpModeLabels.Stationary },
-  { code: LawHelpModeEnum.WithAccess, label: LawHelpModeLabels.WithAccess },
-  { code: LawHelpModeEnum.Online, label: LawHelpModeLabels.Online },
-  { code: LawHelpModeEnum.ByEmail, label: LawHelpModeLabels.Email },
-  { code: LawHelpModeEnum.ByPhone, label: LawHelpModeLabels.Phone },
-];
-
-export const LAW_HELP_KINDS: Option[] = [
-  { code: LawHelpKindEnum.LabourLaw, label: LawHelpKindLabels.Labour },
-  { code: LawHelpKindEnum.ImmigrationLaw, label: LawHelpKindLabels.Immigration },
-  { code: LawHelpKindEnum.FamilyLaw, label: LawHelpKindLabels.Family },
-  { code: LawHelpKindEnum.TaxLaw, label: LawHelpKindLabels.Tax },
-  { code: LawHelpKindEnum.CivilLaw, label: LawHelpKindLabels.Civil },
-  { code: LawHelpKindEnum.Other, label: LawHelpKindLabels.Other },
 ];
 
 export const MATCH_NON_DIGITS = /[^0-9]+/g;

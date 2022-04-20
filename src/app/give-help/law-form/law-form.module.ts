@@ -12,18 +12,18 @@ import { SharedModule } from '@app/shared/shared.module';
 import { ValidatorsDirectivesModule } from '@app/shared/validators';
 import { TranslateModule } from '@ngx-translate/core';
 import { GiveHelpFormModule } from '../give-help-form/give-help-form.module';
-import { LegalHelpFormComponent } from './legal-help-form.component';
-import { LegalHelpFormRoutingModule } from './legal-help-form.routing.module';
+import { LawFormComponent } from './law-form.component';
+import { LawFormRoutingModule } from './law-form.routing.module';
 
 @NgModule({
-  declarations: [LegalHelpFormComponent],
+  declarations: [LawFormComponent],
   imports: [
     CitiesSearchModule,
     CommonModule,
     FieldErrorModule,
     FormsModule,
     GiveHelpFormModule,
-    LegalHelpFormRoutingModule,
+    LawFormRoutingModule,
     MatCardModule,
     MatDialogModule,
     MatFormFieldModule,
@@ -35,4 +35,4 @@ import { LegalHelpFormRoutingModule } from './legal-help-form.routing.module';
     ValidatorsDirectivesModule,
   ],
 })
-export class LegalHelpFormModule {}
+export class LawFormModule {}

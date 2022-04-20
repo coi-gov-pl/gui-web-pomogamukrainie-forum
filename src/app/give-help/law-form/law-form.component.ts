@@ -1,37 +1,45 @@
 import { ChangeDetectionStrategy, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LawOfferDefinitionDTO, LawResourceService } from '@app/core/api';
+import { LawOffer, LawOfferDefinitionDTO, LawResourceService } from '@app/core/api';
 import { ConfirmCancelDialogComponent } from '@app/shared/components';
 import {
   DIALOG_CANCEL_OFFER_CONFIG,
-  LAW_HELP_KINDS,
-  LAW_HELP_MODES,
   LAW_LANGUAGES,
   LENGTH_OF_STAY,
   MATCH_NON_DIGITS,
   MATCH_SPACES,
   PREFIXES,
 } from '@app/shared/consts';
-import { ALERT_TYPES, CANCEL_DIALOG_HEADERS, CorePath } from '@app/shared/models';
+import { ALERT_TYPES, CANCEL_DIALOG_HEADERS, CorePath, Option } from '@app/shared/models';
 import { SnackbarService } from '@app/shared/services';
 import { defaults } from '@app/shared/utils';
 import { take } from 'rxjs';
 
+const HELP_KIND = Object.entries(LawOffer.HelpKindEnum).map(([key, value]) => ({
+  code: value,
+  label: value,
+}));
+
+const HELP_MODE = Object.entries(LawOffer.HelpModeEnum).map(([key, value]) => ({
+  code: value,
+  label: value,
+}));
+
 @Component({
-  selector: 'app-legal-help-form',
-  templateUrl: './legal-help-form.component.html',
-  styleUrls: ['./legal-help-form.component.scss'],
+  selector: 'app-law-form',
+  templateUrl: './law-form.component.html',
+  styleUrls: ['./law-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LegalHelpFormComponent implements OnInit {
+export class LawFormComponent implements OnInit {
   phonePrefix: string = '';
   phoneNumber: string = '';
   LENGTH_OF_STAY = LENGTH_OF_STAY;
   LAW_LANGUAGES = LAW_LANGUAGES;
   PREFIXES = PREFIXES;
-  LAW_HELP_MODES = LAW_HELP_MODES;
-  LAW_HELP_KINDS = LAW_HELP_KINDS;
+  HELP_KIND: Option[] = HELP_KIND;
+  HELP_MODE: Option[] = HELP_MODE;
   data = defaults<LawOfferDefinitionDTO>({
     helpMode: [],
     helpKind: [],

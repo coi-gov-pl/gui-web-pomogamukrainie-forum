@@ -58,7 +58,7 @@
               required
               #helpMode="ngModel"
             >
-              <mat-option *ngFor="let helpMode of LAW_HELP_MODES" [value]="helpMode.code">{{
+              <mat-option *ngFor="let helpMode of HELP_MODE" [value]="helpMode.code">{{
                 helpMode.label | translate
               }}</mat-option>
             </mat-select>
@@ -81,7 +81,7 @@
               required
               #helpKind="ngModel"
             >
-              <mat-option *ngFor="let helpKind of LAW_HELP_KINDS" [value]="helpKind.code">{{
+              <mat-option *ngFor="let helpKind of HELP_KIND" [value]="helpKind.code">{{
                 helpKind.label | translate
               }}</mat-option>
             </mat-select>

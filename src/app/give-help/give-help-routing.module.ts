@@ -97,14 +97,14 @@ const routes: Routes = [
       },
       {
         path: CategoryRoutingName.LEGAL_HELP,
-        loadChildren: () => import('./legal-help-form/legal-help-form.module').then((m) => m.LegalHelpFormModule),
+        loadChildren: () => import('./law-form/law-form.module').then((m) => m.LawFormModule),
         data: {
           title: BreadcrumbLabels.LEGAL_HELP,
         },
       },
       {
         path: `${CategoryRoutingName.LEGAL_HELP}/:id`,
-        loadChildren: () => import('./legal-help-form/legal-help-form.module').then((m) => m.LegalHelpFormModule),
+        loadChildren: () => import('./law-form/law-form.module').then((m) => m.LawFormModule),
         data: {
           title: BreadcrumbLabels.LEGAL_HELP,
         },

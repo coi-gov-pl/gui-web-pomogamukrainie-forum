@@ -9,5 +9,4 @@ export enum StatementAnchors {
   PHONES = 'telefony',
   TRANSLATIONS = 'tlumaczenia',
   TRANSPORT = 'transport',
-  WORK = 'praca',
 }

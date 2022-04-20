@@ -8,5 +8,4 @@ export enum CategoryRoutingName {
   NOT_FOUND = 'brak-oferty',
   TRANSLATIONS = 'tlumaczenia',
   TRANSPORT = 'transport',
-  WORK = 'praca',
 }

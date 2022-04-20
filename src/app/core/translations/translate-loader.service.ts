@@ -29,23 +29,6 @@ export enum LengthOfStayLabels {
   LONGER = 'LONGER',
 }
 
-export enum LawHelpModeLabels {
-  Stationary = 'IN_FACILITY',
-  WithAccess = 'WITH_ACCESS',
-  Online = 'ONLINE',
-  Email = 'BY_EMAIL',
-  Phone = 'BY_PHONE',
-}
-
-export enum LawHelpKindLabels {
-  Labour = 'LABOUR_LAW',
-  Immigration = 'IMMIGRATION_LAW',
-  Family = 'FAMILY_LAW',
-  Tax = 'TAX_LAW',
-  Civil = 'CIVIL_LAW',
-  Other = 'OTHER',
-}
-
 export interface Translations {
   [LanguageCode.pl_PL]: {
     [key: string]: string;
