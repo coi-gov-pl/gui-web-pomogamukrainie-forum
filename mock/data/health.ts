@@ -6,7 +6,7 @@ export const healthOffer = (body: HealthOfferDefinitionDTO): HealthOffer => {
     id: 1,
     userFirstName: 'example',
     modifiedDate: new Date().toISOString(),
-    type: HealthOffer.TypeEnum.Health,
+    type: 'HEALTH',
   };
 };
 
