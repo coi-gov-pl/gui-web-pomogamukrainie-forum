@@ -1,14 +1,16 @@
-import { Prefix, Option } from './models';
-import { LanguageCode, LanguageNames, LengthOfStayLabels } from '@app/core/translations';
 import {
   AccommodationOffer,
   AccommodationOfferDefinitionDTO,
   JobOfferDefinitionDTO,
   LawOfferDefinitionDTO,
 } from '@app/core/api';
+import { LanguageCode, LanguageNames, LengthOfStayLabels } from '@app/core/translations';
+import { Option, Prefix } from './models';
 import HostLanguageEnum = AccommodationOfferDefinitionDTO.HostLanguageEnum;
 import JobLanguageEnum = JobOfferDefinitionDTO.LanguageEnum;
 import LawLanguageEnum = LawOfferDefinitionDTO.LanguageEnum;
+import LawHelpModeEnum = LawOfferDefinitionDTO.HelpModeEnum;
+import LawHelpKindEnum = LawOfferDefinitionDTO.HelpKindEnum;
 
 export const PREFIXES: Prefix[] = [
   {
@@ -57,6 +59,23 @@ export const LENGTH_OF_STAY: Option[] = [
   { code: AccommodationOffer.LengthOfStayEnum.Month2, label: LengthOfStayLabels.MONTH_2 },
   { code: AccommodationOffer.LengthOfStayEnum.Month3, label: LengthOfStayLabels.MONTH_3 },
   { code: AccommodationOffer.LengthOfStayEnum.Longer, label: LengthOfStayLabels.LONGER },
+];
+
+export const LAW_HELP_MODES: Option[] = [
+  { code: LawHelpModeEnum.Stationary, label: 'Stacjonarny' },
+  { code: LawHelpModeEnum.WithAccess, label: 'Test' },
+  { code: LawHelpModeEnum.Online, label: 'Online' },
+  { code: LawHelpModeEnum.ByEmail, label: 'Email' },
+  { code: LawHelpModeEnum.ByPhone, label: 'Telefonicznie' },
+];
+
+export const LAW_HELP_KINDS: Option[] = [
+  { code: LawHelpKindEnum.LabourLaw, label: 'Prawo pracy' },
+  { code: LawHelpKindEnum.ImmigrationLaw, label: 'Prawo imigracyjne' },
+  { code: LawHelpKindEnum.FamilyLaw, label: 'Prawo rodzinne' },
+  { code: LawHelpKindEnum.TaxLaw, label: 'Prawo podatkowe' },
+  { code: LawHelpKindEnum.CivilLaw, label: 'Prawo obywatelskie' },
+  { code: LawHelpKindEnum.Other, label: 'Inne' },
 ];
 
 export const MATCH_NON_DIGITS = /[^0-9]+/g;
