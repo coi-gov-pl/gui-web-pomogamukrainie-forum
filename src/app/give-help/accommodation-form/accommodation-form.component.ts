@@ -1,4 +1,4 @@
-import { Component, ViewChild, Input, ElementRef, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { defaults } from '@app/shared/utils';
 import { PREFIXES, LANGUAGES, LENGTH_OF_STAY } from '@app/shared/consts';
 import { AccommodationOfferDefinitionDTO, AccommodationsResourceService } from '@app/core/api';
@@ -6,26 +6,24 @@ import { CorePath, ALERT_TYPES, CANCEL_DIALOG_HEADERS } from '@app/shared/models
 import { SnackbarService } from '@app/shared/services';
 import { take } from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MATCH_NON_DIGITS, MATCH_SPACES } from '@app/shared/consts';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ConfirmCancelDialogComponent } from '@app/shared/components';
 import { DIALOG_CANCEL_OFFER_CONFIG } from '@app/shared/consts';
+import { PhoneNumber } from '@app/shared/models';
 @Component({
   selector: 'app-accommodation-form',
   templateUrl: './accommodation-form.component.html',
   styleUrls: ['./accommodation-form.component.scss'],
 })
 export class AccommodationFormComponent implements OnInit {
-  phonePrefix: string = '';
-  phoneNumber: string = '';
   LENGTH_OF_STAY = LENGTH_OF_STAY;
   LANGUAGES = LANGUAGES;
   PREFIXES = PREFIXES;
   data = defaults<AccommodationOfferDefinitionDTO>({
     hostLanguage: [],
   });
-  @ViewChild('phoneInput') phoneInput!: ElementRef<HTMLInputElement>;
   @Input() buttonLabel: string = '';
+  phone = defaults<PhoneNumber>();
   offerId?: number;
 
   constructor(
@@ -41,9 +39,9 @@ export class AccommodationFormComponent implements OnInit {
 
     if (this.isEditRoute) {
       this.accommodationsResourceService.getAccommodations(this.offerId).subscribe((resp) => {
-        this.phoneNumber = resp.phoneNumber || '';
+        this.phone.phoneNumber = resp.phoneNumber || '';
         if (resp.phoneCountryCode) {
-          this.findPrefix(resp.phoneCountryCode);
+          this.phone.prefix = this.findPrefix(resp.phoneCountryCode);
         }
         this.data = resp;
       });
@@ -53,23 +51,20 @@ export class AccommodationFormComponent implements OnInit {
     }
   }
 
-  findPrefix(phoneCountryCode: string) {
-    this.phonePrefix = PREFIXES.find((v) => v.prefix === phoneCountryCode)?.prefix || '';
+  phoneNumberChange(phone: PhoneNumber) {
+    this.phone = phone;
   }
 
-  onPhoneNumberChange($event: Event) {
-    let val = ($event.target as HTMLInputElement).value;
-    val = val.replace(MATCH_NON_DIGITS, '').replace(MATCH_SPACES, '');
-    this.phoneInput.nativeElement.value = val;
-    this.phoneNumber = val;
+  findPrefix(prefix: string) {
+    return PREFIXES.find((v) => v.prefix === prefix)?.prefix || '';
   }
 
   preparePhoneNumber() {
-    this.data.phoneNumber = this.phonePrefix + this.phoneNumber;
+    this.data.phoneNumber = this.phone.prefix + this.phone.phoneNumber;
   }
 
   submitOffer(): void {
-    if (this.phoneNumber) {
+    if (this.phone.phoneNumber) {
       this.preparePhoneNumber();
     } else {
       this.data.phoneNumber = undefined;

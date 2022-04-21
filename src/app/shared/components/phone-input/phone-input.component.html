@@ -1,0 +1,39 @@
+<div class="d-flex flex-column flex-md-row">
+  <div class="col-sm-4 selectPrefix mb-n4 mb-md-0">
+    <label
+      ><b>{{ "LABEL_PHONE_NUMBER" | translate }}</b></label
+    >
+    <mat-form-field appearance="outline">
+      <mat-select
+        placeholder="{{ 'PLACEHOLDER_CHOOSE' | translate }}"
+        [(ngModel)]="phone.prefix"
+        (selectionChange)="onPrefixChange()"
+        name="prefix"
+      >
+        <mat-option *ngFor="let prefix of PREFIXES" [value]="prefix.prefix">+ {{ prefix.prefix }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="col-sm-8 phoneInut">
+    <label>&nbsp;</label>
+    <mat-form-field appearance="outline">
+      <input
+        placeholder="{{ 'PLACEHOLDER_TYPE' | translate }}"
+        matInput
+        type="text"
+        name="phone"
+        #phoneInput
+        (input)="onPhoneNumberChange($event)"
+        [(ngModel)]="phone.phoneNumber"
+        appPhoneValidate
+        minlength="7"
+        maxlength="15"
+        inputmode="numeric"
+        #phoneNumberModel="ngModel"
+      />
+      <mat-error>
+        <app-field-error [model]="phoneNumberModel"></app-field-error>
+      </mat-error>
+    </mat-form-field>
+  </div>
+</div>

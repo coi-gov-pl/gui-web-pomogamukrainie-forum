@@ -9,10 +9,11 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ValidatorsDirectivesModule } from './validators';
 import { ConfirmCancelDialogComponent } from './components/confirm-cancel-dialog/cancel-dialog.component';
 import { TruncatePipe, TranslateArrayPipe } from '@app/shared/pipes';
-
+import { PhoneInputModule } from './components/phone-input/phone-input.module';
+import { PhoneInputComponent } from './components/phone-input/phone-input.component';
 @NgModule({
   declarations: [BreadcrumbComponent, TruncatePipe, ConfirmCancelDialogComponent, TranslateArrayPipe],
-  imports: [CommonModule, RouterModule, MatIconModule, TranslateModule],
+  imports: [CommonModule, RouterModule, MatIconModule, TranslateModule, PhoneInputModule],
   exports: [
     MatCardModule,
     PomCommonPipesModule,
@@ -20,6 +21,7 @@ import { TruncatePipe, TranslateArrayPipe } from '@app/shared/pipes';
     ValidatorsDirectivesModule,
     TruncatePipe,
     TranslateArrayPipe,
+    PhoneInputComponent,
   ],
 })
 export class SharedModule {}
