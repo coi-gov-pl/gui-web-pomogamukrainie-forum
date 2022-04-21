@@ -30,9 +30,11 @@
   padding-top: 35px;
 
   button {
-    width: 172px;
     height: 43px;
-
+    width: 100%;
+    @media (min-width: $breakpoint-md) {
+      width: 40%;
+    }
     span {
       font-size: 14px;
       letter-spacing: 1.25px;
