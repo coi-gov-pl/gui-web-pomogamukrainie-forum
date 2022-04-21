@@ -1,11 +1,11 @@
-import { Prefix, Option } from './models';
-import { LanguageCode, LanguageNames, LengthOfStayLabels } from '@app/core/translations';
 import {
   AccommodationOffer,
   AccommodationOfferDefinitionDTO,
   JobOfferDefinitionDTO,
   LawOfferDefinitionDTO,
 } from '@app/core/api';
+import { LanguageCode, LanguageNames, LengthOfStayLabels } from '@app/core/translations';
+import { Option, Prefix } from './models';
 import HostLanguageEnum = AccommodationOfferDefinitionDTO.HostLanguageEnum;
 import JobLanguageEnum = JobOfferDefinitionDTO.LanguageEnum;
 import LawLanguageEnum = LawOfferDefinitionDTO.LanguageEnum;
