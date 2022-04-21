@@ -5,6 +5,15 @@ import { StoreUrlService } from '@app/core/store-url';
 import { CorePath, LocalStorageKeys, StatementAnchors } from '@app/shared/models';
 import { SortingFieldName, SortingOrder } from '@app/shared/models/sortingOrder.model';
 
+const cleanForm = {
+  capacity: undefined,
+  transportDate: undefined,
+  destinationRegion: undefined,
+  destinationCity: undefined,
+  originRegion: undefined,
+  originCity: undefined,
+};
+
 @Component({
   selector: 'app-transport-search-form',
   templateUrl: './transport-search-form.component.html',
@@ -51,10 +60,12 @@ export class TransportSearchFormComponent implements OnInit {
 
   async clearFilters(): Promise<void> {
     this.data = {};
+    const { page, size, sort } = this.route.snapshot.queryParams;
     const param: Params = {
-      page: 0,
-      size: localStorage.getItem(LocalStorageKeys.PageSize) ?? 5,
-      sort: [`${SortingFieldName},${SortingOrder.descending}`],
+      page,
+      size,
+      sort,
+      ...cleanForm,
     };
     await this.storeUrlService.setCustomPaginatorParam(param);
     this.search.emit(this.data);

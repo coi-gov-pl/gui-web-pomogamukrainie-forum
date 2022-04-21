@@ -10,6 +10,13 @@ export interface AccommodationQuery {
   capacity?: number;
 }
 
+const cleanForm = {
+  capacity: undefined,
+  city: undefined,
+  region: undefined,
+  location: undefined,
+};
+
 @Component({
   selector: 'app-accommodation-search-form',
   templateUrl: './accommodation-search-form.component.html',
@@ -45,10 +52,12 @@ export class AccommodationSearchFormComponent implements OnInit {
 
   async clearFilters(): Promise<void> {
     this.data = {};
+    const { page, size, sort } = this.route.snapshot.queryParams;
     const param: Params = {
-      page: 0,
-      size: localStorage.getItem(LocalStorageKeys.PageSize) ?? 5,
-      sort: [`${SortingFieldName},${SortingOrder.descending}`],
+      page,
+      size,
+      sort,
+      ...cleanForm,
     };
     await this.storeUrlService.setCustomPaginatorParam(param);
     this.search.emit(this.data);

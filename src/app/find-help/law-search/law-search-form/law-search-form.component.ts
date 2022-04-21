@@ -16,6 +16,15 @@ const HELP_MODE = Object.entries(LawOffer.HelpModeEnum).map(([key, value]) => ({
   label: value,
 }));
 
+const cleanForm = {
+  location: undefined,
+  city: undefined,
+  region: undefined,
+  lawMode: undefined,
+  lawKind: undefined,
+  language: undefined,
+};
+
 @Component({
   selector: 'app-law-search-form',
   templateUrl: './law-search-form.component.html',
@@ -56,10 +65,12 @@ export class LawSearchFormComponent implements OnInit {
 
   async clearFilters(): Promise<void> {
     this.data = {};
+    const { page, size, sort } = this.route.snapshot.queryParams;
     const param: Params = {
-      page: 0,
-      size: localStorage.getItem(LocalStorageKeys.PageSize) ?? 5,
-      sort: [`${SortingFieldName},${SortingOrder.descending}`],
+      page,
+      size,
+      sort,
+      ...cleanForm,
     };
     await this.storeUrlService.setCustomPaginatorParam(param);
     this.search.emit(this.data);

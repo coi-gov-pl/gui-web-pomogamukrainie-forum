@@ -14,6 +14,14 @@ interface Option {
   code: string;
   value: string;
 }
+
+const cleanForm = {
+  location: undefined,
+  category: undefined,
+  city: undefined,
+  region: undefined,
+};
+
 @Component({
   selector: 'app-material-aid-search-form',
   templateUrl: './material-aid-search-form.component.html',
@@ -50,10 +58,12 @@ export class MaterialAidSearchFormComponent implements OnInit {
 
   async clearFilters(): Promise<void> {
     this.data = {};
+    const { page, size, sort } = this.route.snapshot.queryParams;
     const param: Params = {
-      page: 0,
-      size: localStorage.getItem(LocalStorageKeys.PageSize) ?? 5,
-      sort: [`${SortingFieldName},${SortingOrder.descending}`],
+      page,
+      size,
+      sort,
+      ...cleanForm,
     };
     await this.storeUrlService.setCustomPaginatorParam(param);
     this.search.emit(this.data);
