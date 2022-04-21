@@ -17,7 +17,7 @@ const cleanForm = {
 @Component({
   selector: 'app-transport-search-form',
   templateUrl: './transport-search-form.component.html',
-  styleUrls: ['./transport-search-form.component.scss', '../../common-styles/find-help.styles.scss'],
+  styleUrls: ['./transport-search-form.component.scss'],
 })
 export class TransportSearchFormComponent implements OnInit {
   data: TransportOfferSearchCriteria = {};

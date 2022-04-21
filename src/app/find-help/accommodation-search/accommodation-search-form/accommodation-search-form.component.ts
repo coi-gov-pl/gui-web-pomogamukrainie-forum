@@ -20,7 +20,7 @@ const cleanForm = {
 @Component({
   selector: 'app-accommodation-search-form',
   templateUrl: './accommodation-search-form.component.html',
-  styleUrls: ['./accommodation-search-form.component.scss', '../../common-styles/find-help.styles.scss'],
+  styleUrls: ['./accommodation-search-form.component.scss'],
 })
 export class AccommodationSearchFormComponent implements OnInit {
   data: AccommodationQuery = {};

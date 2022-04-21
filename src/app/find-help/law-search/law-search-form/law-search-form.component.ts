@@ -28,7 +28,7 @@ const cleanForm = {
 @Component({
   selector: 'app-law-search-form',
   templateUrl: './law-search-form.component.html',
-  styleUrls: ['./law-search-form.component.scss', '../../common-styles/find-help.styles.scss'],
+  styleUrls: ['./law-search-form.component.scss'],
 })
 export class LawSearchFormComponent implements OnInit {
   data: LawOfferSearchCriteria = {};

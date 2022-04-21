@@ -58,7 +58,7 @@ const cleanForm = {
 @Component({
   selector: 'app-job-search-form',
   templateUrl: './job-search-form.component.html',
-  styleUrls: ['./job-search-form.component.scss', '../../common-styles/find-help.styles.scss'],
+  styleUrls: ['./job-search-form.component.scss'],
 })
 export class JobSearchFormComponent implements OnInit {
   data: JobOfferSearchCriteria = {};

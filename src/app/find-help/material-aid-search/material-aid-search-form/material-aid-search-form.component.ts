@@ -25,7 +25,7 @@ const cleanForm = {
 @Component({
   selector: 'app-material-aid-search-form',
   templateUrl: './material-aid-search-form.component.html',
-  styleUrls: ['./material-aid-search-form.component.scss', '../../common-styles/find-help.styles.scss'],
+  styleUrls: ['./material-aid-search-form.component.scss'],
 })
 export class MaterialAidSearchFormComponent implements OnInit {
   data: MaterialAidOfferSearchCriteria = {};

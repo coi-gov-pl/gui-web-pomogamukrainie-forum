@@ -33,7 +33,7 @@ const cleanForm = {
 @Component({
   selector: 'app-health-search-form',
   templateUrl: './health-search-form.component.html',
-  styleUrls: ['./health-search-form.component.scss', '../../common-styles/find-help.styles.scss'],
+  styleUrls: ['./health-search-form.component.scss'],
 })
 export class HealthSearchFormComponent implements OnInit {
   data: HealthOfferSearchCriteria = {};
