@@ -265,4 +265,5 @@ export default {
   LABEL_SPECIALISATION: "Specializacja",
   CHOOSE_SPECIALISATION: "Wybierz specjalizację",
   READ_MORE: 'Zobacz więcej',
+  TYPE_NUMBER: 'Wpisz numer'
 };
