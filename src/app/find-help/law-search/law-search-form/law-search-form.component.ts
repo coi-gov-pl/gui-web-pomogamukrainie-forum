@@ -1,10 +1,12 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
 import { LawOffer, LawOfferSearchCriteria } from '@app/core/api';
 import { StoreUrlService } from '@app/core/store-url';
 import { LAW_LANGUAGES } from '@app/shared/consts';
 import { LocalStorageKeys, Option, StatementAnchors } from '@app/shared/models';
 import { SortingFieldName, SortingOrder } from '@app/shared/models/sortingOrder.model';
+import { Subscription } from 'rxjs';
 
 const HELP_KIND = Object.entries(LawOffer.HelpKindEnum).map(([key, value]) => ({
   code: value,
@@ -30,7 +32,11 @@ const cleanForm = {
   templateUrl: './law-search-form.component.html',
   styleUrls: ['./law-search-form.component.scss'],
 })
-export class LawSearchFormComponent implements OnInit {
+export class LawSearchFormComponent implements OnInit, OnDestroy {
+  @ViewChild('form', { static: true })
+  ngForm: NgForm = new NgForm([], []);
+  formChangesSubscription = new Subscription();
+  showClearBtn = false;
   data: LawOfferSearchCriteria = {};
   LANGUAGES = LAW_LANGUAGES;
   HELP_KIND: Option[] = HELP_KIND;
@@ -46,6 +52,14 @@ export class LawSearchFormComponent implements OnInit {
       const { city, region, lawMode, lawKind, language } = this.route.snapshot.queryParams;
       this.data = { location: city ? { city, region } : undefined, helpMode: lawMode, helpKind: lawKind, language };
     }
+
+    this.formChangesSubscription = this.ngForm.form.valueChanges.subscribe((form) => {
+      this.showClearBtn = Object.values(form).some((el) => el !== undefined);
+    });
+  }
+
+  ngOnDestroy() {
+    this.formChangesSubscription.unsubscribe();
   }
 
   async onSubmit(): Promise<void> {

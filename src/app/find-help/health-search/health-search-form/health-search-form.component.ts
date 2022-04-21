@@ -1,10 +1,12 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
 import { HealthOfferSearchCriteria } from '@app/core/api/model/healthOfferSearchCriteria';
 import { StoreUrlService } from '@app/core/store-url';
 import { LANGUAGES } from '@app/shared/consts'; // TODO: define languages for Health or global ones?
 import { LocalStorageKeys, StatementAnchors } from '@app/shared/models';
 import { SortingFieldName, SortingOrder } from '@app/shared/models/sortingOrder.model';
+import { Subscription } from 'rxjs';
 
 const specializations = Object.entries(HealthOfferSearchCriteria.SpecializationEnum).map(([key, value]) => ({
   code: key,
@@ -35,7 +37,11 @@ const cleanForm = {
   templateUrl: './health-search-form.component.html',
   styleUrls: ['./health-search-form.component.scss'],
 })
-export class HealthSearchFormComponent implements OnInit {
+export class HealthSearchFormComponent implements OnInit, OnDestroy {
+  @ViewChild('form', { static: true })
+  ngForm: NgForm = new NgForm([], []);
+  formChangesSubscription = new Subscription();
+  showClearBtn = false;
   data: HealthOfferSearchCriteria = {};
   specializations: Option[] = specializations;
   modes: Option[] = modes;
@@ -56,6 +62,14 @@ export class HealthSearchFormComponent implements OnInit {
         mode: healthMode,
       };
     }
+
+    this.formChangesSubscription = this.ngForm.form.valueChanges.subscribe((form) => {
+      this.showClearBtn = Object.values(form).some((el) => el !== undefined);
+    });
+  }
+
+  ngOnDestroy() {
+    this.formChangesSubscription.unsubscribe();
   }
 
   async onSubmit(): Promise<void> {

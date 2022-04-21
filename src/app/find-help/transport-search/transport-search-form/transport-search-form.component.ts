@@ -1,9 +1,11 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { TransportOfferSearchCriteria } from '@app/core/api';
 import { StoreUrlService } from '@app/core/store-url';
 import { CorePath, LocalStorageKeys, StatementAnchors } from '@app/shared/models';
 import { SortingFieldName, SortingOrder } from '@app/shared/models/sortingOrder.model';
+import { Subscription } from 'rxjs';
 
 const cleanForm = {
   capacity: undefined,
@@ -19,9 +21,12 @@ const cleanForm = {
   templateUrl: './transport-search-form.component.html',
   styleUrls: ['./transport-search-form.component.scss'],
 })
-export class TransportSearchFormComponent implements OnInit {
+export class TransportSearchFormComponent implements OnInit, OnDestroy {
+  @ViewChild('form', { static: true })
+  ngForm: NgForm = new NgForm([], []);
+  formChangesSubscription = new Subscription();
+  showClearBtn = false;
   data: TransportOfferSearchCriteria = {};
-
   @Output()
   search = new EventEmitter<TransportOfferSearchCriteria>();
   corePath = CorePath;
@@ -40,6 +45,14 @@ export class TransportSearchFormComponent implements OnInit {
         destination: destinationCity ? { region: destinationRegion, city: destinationCity } : undefined,
       };
     }
+
+    this.formChangesSubscription = this.ngForm.form.valueChanges.subscribe((form) => {
+      this.showClearBtn = Object.values(form).some((el) => el !== undefined);
+    });
+  }
+
+  ngOnDestroy() {
+    this.formChangesSubscription.unsubscribe();
   }
 
   async onSubmit(): Promise<void> {

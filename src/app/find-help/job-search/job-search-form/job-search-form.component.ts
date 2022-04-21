@@ -1,9 +1,11 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { JobOffer, JobOfferSearchCriteria, Location } from '@app/core/api';
 import { StoreUrlService } from '@app/core/store-url';
 import { LocalStorageKeys, StatementAnchors } from '@app/shared/models';
 import { SortingFieldName, SortingOrder } from '@app/shared/models/sortingOrder.model';
+import { Subscription } from 'rxjs';
 
 export interface JobQuery {
   location?: Location;
@@ -60,7 +62,11 @@ const cleanForm = {
   templateUrl: './job-search-form.component.html',
   styleUrls: ['./job-search-form.component.scss'],
 })
-export class JobSearchFormComponent implements OnInit {
+export class JobSearchFormComponent implements OnInit, OnDestroy {
+  @ViewChild('form', { static: true })
+  ngForm: NgForm = new NgForm([], []);
+  formChangesSubscription = new Subscription();
+  showClearBtn = false;
   data: JobOfferSearchCriteria = {};
   industries: Option[] = industries;
   modes: Option[] = modes;
@@ -78,6 +84,14 @@ export class JobSearchFormComponent implements OnInit {
       const { industry, mode, contractType, workTime, city, region } = this.route.snapshot.queryParams;
       this.data = { industry, mode, contractType, workTime, location: city ? { city, region } : undefined };
     }
+
+    this.formChangesSubscription = this.ngForm.form.valueChanges.subscribe((form) => {
+      this.showClearBtn = Object.values(form).some((el) => el !== undefined);
+    });
+  }
+
+  ngOnDestroy() {
+    this.formChangesSubscription.unsubscribe();
   }
 
   async onSubmit(): Promise<void> {

@@ -88,7 +88,7 @@
         <mat-icon fontSet="material-icons-outlined">search</mat-icon>
         <span>{{ "SEARCH" | translate }}</span>
       </button>
-      <button type="button" class="form-clear-filters btn btn-link" (click)="clearFilters()">
+      <button *ngIf="showClearBtn" type="button" class="form-clear-filters btn btn-link" (click)="clearFilters()">
         <span>{{ "CLEAR_FILTERS" | translate }}</span>
       </button>
     </div>
