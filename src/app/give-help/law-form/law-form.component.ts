@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LawOffer, LawOfferDefinitionDTO, LawResourceService } from '@app/core/api';
+import { LawOfferDefinitionDTO, LawResourceService } from '@app/core/api';
 import { ConfirmCancelDialogComponent } from '@app/shared/components';
 import {
   DIALOG_CANCEL_OFFER_CONFIG,
@@ -11,20 +11,10 @@ import {
   MATCH_SPACES,
   PREFIXES,
 } from '@app/shared/consts';
-import { ALERT_TYPES, CANCEL_DIALOG_HEADERS, CorePath, Option } from '@app/shared/models';
+import { ALERT_TYPES, CANCEL_DIALOG_HEADERS, CorePath } from '@app/shared/models';
 import { SnackbarService } from '@app/shared/services';
 import { defaults } from '@app/shared/utils';
 import { take } from 'rxjs';
-
-const HELP_KIND = Object.entries(LawOffer.HelpKindEnum).map(([key, value]) => ({
-  code: value,
-  label: value,
-}));
-
-const HELP_MODE = Object.entries(LawOffer.HelpModeEnum).map(([key, value]) => ({
-  code: value,
-  label: value,
-}));
 
 @Component({
   selector: 'app-law-form',
@@ -38,8 +28,8 @@ export class LawFormComponent implements OnInit {
   LENGTH_OF_STAY = LENGTH_OF_STAY;
   LAW_LANGUAGES = LAW_LANGUAGES;
   PREFIXES = PREFIXES;
-  HELP_KIND: Option[] = HELP_KIND;
-  HELP_MODE: Option[] = HELP_MODE;
+  HELP_KIND = Object.values(LawOfferDefinitionDTO.HelpKindEnum);
+  HELP_MODE = Object.values(LawOfferDefinitionDTO.HelpModeEnum);
   data = defaults<LawOfferDefinitionDTO>({
     helpMode: [],
     helpKind: [],

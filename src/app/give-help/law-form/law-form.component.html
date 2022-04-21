@@ -58,9 +58,7 @@
               required
               #helpMode="ngModel"
             >
-              <mat-option *ngFor="let helpMode of HELP_MODE" [value]="helpMode.code">{{
-                helpMode.label | translate
-              }}</mat-option>
+              <mat-option *ngFor="let helpMode of HELP_MODE" [value]="helpMode">{{ helpMode | translate }}</mat-option>
             </mat-select>
             <mat-error>
               <app-field-error [model]="helpMode"></app-field-error>
@@ -81,9 +79,7 @@
               required
               #helpKind="ngModel"
             >
-              <mat-option *ngFor="let helpKind of HELP_KIND" [value]="helpKind.code">{{
-                helpKind.label | translate
-              }}</mat-option>
+              <mat-option *ngFor="let helpKind of HELP_KIND" [value]="helpKind">{{ helpKind | translate }}</mat-option>
             </mat-select>
             <mat-error>
               <app-field-error [model]="helpKind"></app-field-error>
