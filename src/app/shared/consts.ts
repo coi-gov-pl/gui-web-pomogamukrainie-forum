@@ -65,6 +65,7 @@ export const MATCH_DIGITS = /[0-9]/g;
 
 export const DIALOG_CANCEL_OFFER_CONFIG = {
   hasBackdrop: true,
+  backdropClass: 'backdrop-blur',
   width: '100%',
   maxHeight: '450px',
   maxWidth: '480px',
