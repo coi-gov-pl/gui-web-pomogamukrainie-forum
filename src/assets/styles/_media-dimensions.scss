@@ -1,6 +1,7 @@
-$min-bg-mob: 31.25rem; //500px
-$max-mob: 43.6875rem; //699px
-$min-tab: 43.75rem; //700px
-$max-tab: 79.9375rem; //1279px
-$min-desk: 80rem; //1280px
-$full-desk: 93.75rem; //1500px
+// grid-breakpoints from node_modules/bootstrap/scss/_variables.scss
+$breakpoint-xs: 0;
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+$breakpoint-xxl: 1400px;
