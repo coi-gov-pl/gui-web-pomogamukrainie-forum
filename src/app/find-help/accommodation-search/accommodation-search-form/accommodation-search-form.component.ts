@@ -1,9 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Location } from '@app/core/api';
-import { StatementAnchors } from '@app/shared/models';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Location } from '@app/core/api';
 import { StoreUrlService } from '@app/core/store-url';
-import { LocalStorageKeys } from '@app/shared/models';
+import { LocalStorageKeys, StatementAnchors } from '@app/shared/models';
 import { SortingFieldName, SortingOrder } from '@app/shared/models/sortingOrder.model';
 
 export interface AccommodationQuery {
@@ -14,7 +13,7 @@ export interface AccommodationQuery {
 @Component({
   selector: 'app-accommodation-search-form',
   templateUrl: './accommodation-search-form.component.html',
-  styleUrls: ['./accommodation-search-form.component.scss'],
+  styleUrls: ['./accommodation-search-form.component.scss', '../../common-styles/find-help.styles.scss'],
 })
 export class AccommodationSearchFormComponent implements OnInit {
   data: AccommodationQuery = {};
@@ -39,6 +38,17 @@ export class AccommodationSearchFormComponent implements OnInit {
       capacity: this.data?.capacity,
       city: this.data.location?.city,
       region: this.data.location?.region,
+    };
+    await this.storeUrlService.setCustomPaginatorParam(param);
+    this.search.emit(this.data);
+  }
+
+  async clearFilters(): Promise<void> {
+    this.data = {};
+    const param: Params = {
+      page: 0,
+      size: localStorage.getItem(LocalStorageKeys.PageSize) ?? 5,
+      sort: [`${SortingFieldName},${SortingOrder.descending}`],
     };
     await this.storeUrlService.setCustomPaginatorParam(param);
     this.search.emit(this.data);

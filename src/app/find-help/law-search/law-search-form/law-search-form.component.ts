@@ -1,11 +1,10 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { LawOffer, LawOfferSearchCriteria } from '@app/core/api';
-import { Option, StatementAnchors } from '@app/shared/models';
 import { ActivatedRoute, Params } from '@angular/router';
+import { LawOffer, LawOfferSearchCriteria } from '@app/core/api';
 import { StoreUrlService } from '@app/core/store-url';
-import { LocalStorageKeys } from '@app/shared/models';
-import { SortingFieldName, SortingOrder } from '@app/shared/models/sortingOrder.model';
 import { LAW_LANGUAGES } from '@app/shared/consts';
+import { LocalStorageKeys, Option, StatementAnchors } from '@app/shared/models';
+import { SortingFieldName, SortingOrder } from '@app/shared/models/sortingOrder.model';
 
 const HELP_KIND = Object.entries(LawOffer.HelpKindEnum).map(([key, value]) => ({
   code: value,
@@ -20,7 +19,7 @@ const HELP_MODE = Object.entries(LawOffer.HelpModeEnum).map(([key, value]) => ({
 @Component({
   selector: 'app-law-search-form',
   templateUrl: './law-search-form.component.html',
-  styleUrls: ['./law-search-form.component.scss'],
+  styleUrls: ['./law-search-form.component.scss', '../../common-styles/find-help.styles.scss'],
 })
 export class LawSearchFormComponent implements OnInit {
   data: LawOfferSearchCriteria = {};
@@ -50,6 +49,17 @@ export class LawSearchFormComponent implements OnInit {
       lawMode: this.data.helpMode,
       lawKind: this.data.helpKind,
       language: this.data.language,
+    };
+    await this.storeUrlService.setCustomPaginatorParam(param);
+    this.search.emit(this.data);
+  }
+
+  async clearFilters(): Promise<void> {
+    this.data = {};
+    const param: Params = {
+      page: 0,
+      size: localStorage.getItem(LocalStorageKeys.PageSize) ?? 5,
+      sort: [`${SortingFieldName},${SortingOrder.descending}`],
     };
     await this.storeUrlService.setCustomPaginatorParam(param);
     this.search.emit(this.data);

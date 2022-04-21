@@ -1,16 +1,14 @@
-import { Component, Output, EventEmitter, OnInit } from '@angular/core';
-import { TransportOfferSearchCriteria } from '@app/core/api';
-import { CorePath } from '@app/shared/models';
-import { StatementAnchors } from '@app/shared/models';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { TransportOfferSearchCriteria } from '@app/core/api';
 import { StoreUrlService } from '@app/core/store-url';
-import { LocalStorageKeys } from '@app/shared/models';
+import { CorePath, LocalStorageKeys, StatementAnchors } from '@app/shared/models';
 import { SortingFieldName, SortingOrder } from '@app/shared/models/sortingOrder.model';
 
 @Component({
   selector: 'app-transport-search-form',
   templateUrl: './transport-search-form.component.html',
-  styleUrls: ['./transport-search-form.component.scss'],
+  styleUrls: ['./transport-search-form.component.scss', '../../common-styles/find-help.styles.scss'],
 })
 export class TransportSearchFormComponent implements OnInit {
   data: TransportOfferSearchCriteria = {};
@@ -46,6 +44,17 @@ export class TransportSearchFormComponent implements OnInit {
       destinationCity: this.data.destination?.city,
       originRegion: this.data.origin?.region,
       originCity: this.data.origin?.city,
+    };
+    await this.storeUrlService.setCustomPaginatorParam(param);
+    this.search.emit(this.data);
+  }
+
+  async clearFilters(): Promise<void> {
+    this.data = {};
+    const param: Params = {
+      page: 0,
+      size: localStorage.getItem(LocalStorageKeys.PageSize) ?? 5,
+      sort: [`${SortingFieldName},${SortingOrder.descending}`],
     };
     await this.storeUrlService.setCustomPaginatorParam(param);
     this.search.emit(this.data);

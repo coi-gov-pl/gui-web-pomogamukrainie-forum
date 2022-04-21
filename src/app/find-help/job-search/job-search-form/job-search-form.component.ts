@@ -1,8 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { JobOffer, JobOfferSearchCriteria, Location } from '@app/core/api';
-import { LocalStorageKeys, StatementAnchors } from '@app/shared/models';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { JobOffer, JobOfferSearchCriteria, Location } from '@app/core/api';
 import { StoreUrlService } from '@app/core/store-url';
+import { LocalStorageKeys, StatementAnchors } from '@app/shared/models';
 import { SortingFieldName, SortingOrder } from '@app/shared/models/sortingOrder.model';
 
 export interface JobQuery {
@@ -47,7 +47,7 @@ interface Option {
 @Component({
   selector: 'app-job-search-form',
   templateUrl: './job-search-form.component.html',
-  styleUrls: ['./job-search-form.component.scss'],
+  styleUrls: ['./job-search-form.component.scss', '../../common-styles/find-help.styles.scss'],
 })
 export class JobSearchFormComponent implements OnInit {
   data: JobOfferSearchCriteria = {};
