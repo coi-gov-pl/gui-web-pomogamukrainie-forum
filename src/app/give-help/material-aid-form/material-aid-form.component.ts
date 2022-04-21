@@ -4,9 +4,8 @@ import { MaterialAidOfferDefinitionDTO, MaterialAidResourceService } from '@app/
 import { DIALOG_CANCEL_OFFER_CONFIG, PREFIXES } from '@app/shared/consts';
 import { defaults } from '@app/shared/utils';
 import { SnackbarService } from '@app/shared/services/snackbar.service';
-import { CorePath, ALERT_TYPES, CANCEL_DIALOG_HEADERS } from '@app/shared/models';
+import { CorePath, ALERT_TYPES, CANCEL_DIALOG_HEADERS, PhoneNumber } from '@app/shared/models';
 import { take } from 'rxjs/operators';
-import { MATCH_NON_DIGITS, MATCH_SPACES } from '@app/shared/consts';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ConfirmCancelDialogComponent } from '@app/shared/components';
 
@@ -24,10 +23,8 @@ export class MaterialAidFormComponent implements OnInit {
   data = defaults<MaterialAidOfferDefinitionDTO>({});
   CATEGORIES = CATEGORIES;
   PREFIXES = PREFIXES;
-  phonePrefix: string = '';
-  phoneNumber: string = '';
-  @ViewChild('phoneInput') phoneInput!: ElementRef<HTMLInputElement>;
   offerId?: number;
+  phone = defaults<PhoneNumber>();
   constructor(
     private router: Router,
     private materialAidResourceService: MaterialAidResourceService,
@@ -41,9 +38,9 @@ export class MaterialAidFormComponent implements OnInit {
 
     if (this.isEditRoute) {
       this.materialAidResourceService.getMaterialAid(this.offerId).subscribe((resp) => {
-        this.phoneNumber = resp.phoneNumber || '';
+        this.phone.phoneNumber = resp.phoneNumber || '';
         if (resp.phoneCountryCode) {
-          this.findPrefix(resp.phoneCountryCode);
+          this.phone.prefix = this.findPrefix(resp.phoneCountryCode);
         }
         this.data = resp;
       });
@@ -53,23 +50,20 @@ export class MaterialAidFormComponent implements OnInit {
     }
   }
 
-  findPrefix(phoneCountryCode: string) {
-    this.phonePrefix = PREFIXES.find((v) => v.prefix === phoneCountryCode)?.prefix || '';
+  phoneNumberChange(phone: PhoneNumber) {
+    this.phone = phone;
   }
 
-  onPhoneNumberChange($event: Event) {
-    let val = ($event.target as HTMLInputElement).value;
-    val = val.replace(MATCH_NON_DIGITS, '').replace(MATCH_SPACES, '');
-    this.phoneInput.nativeElement.value = val;
-    this.phoneNumber = val;
+  findPrefix(prefix: string) {
+    return PREFIXES.find((v) => v.prefix === prefix)?.prefix || '';
   }
 
   preparePhoneNumber() {
-    this.data.phoneNumber = this.phonePrefix + this.phoneNumber;
+    this.data.phoneNumber = this.phone.prefix + this.phone.phoneNumber;
   }
 
   handleSubmit() {
-    if (this.phoneNumber) {
+    if (this.phone.phoneNumber) {
       this.preparePhoneNumber();
     } else {
       this.data.phoneNumber = undefined;

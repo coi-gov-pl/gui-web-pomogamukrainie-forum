@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Input, Output, ViewChild, OnInit } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { ControlContainer, NgForm } from '@angular/forms';
 import { MATCH_NON_DIGITS, MATCH_SPACES, PREFIXES } from '@app/shared/consts';
 import { PhoneNumber } from '@app/shared/models';
@@ -27,16 +27,4 @@ export class PhoneInputComponent {
     this.phone.phoneNumber = val;
     this.phoneNumberChange.emit(this.phone);
   }
-
-  // findPrefix(prefix: string) {
-  //   this.phone.prefix = PREFIXES.find((v) => v.prefix === prefix)?.prefix || '';
-  // }
-
-  // emitPhoneNumber() {
-  //   if (this.phone.phoneNumber) {
-  //     this.phoneNumberChange.emit(this.phone);
-  //   } else {
-  //     this.phoneNumberChange.emit(undefined);
-  //   }
-  // }
 }

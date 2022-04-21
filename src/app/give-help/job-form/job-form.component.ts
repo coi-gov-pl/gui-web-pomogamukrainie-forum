@@ -1,16 +1,10 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SnackbarService } from '@app/shared/services';
-import {
-  DIALOG_CANCEL_OFFER_CONFIG,
-  MATCH_NON_DIGITS,
-  MATCH_SPACES,
-  PREFIXES,
-  JOB_LANGUAGES,
-} from '@app/shared/consts';
+import { DIALOG_CANCEL_OFFER_CONFIG, PREFIXES, JOB_LANGUAGES } from '@app/shared/consts';
 import { defaults } from '@app/shared/utils';
-import { ALERT_TYPES, CANCEL_DIALOG_HEADERS, CorePath } from '@app/shared/models';
+import { ALERT_TYPES, CANCEL_DIALOG_HEADERS, CorePath, PhoneNumber } from '@app/shared/models';
 import { take } from 'rxjs';
 import { ConfirmCancelDialogComponent } from '@app/shared/components/confirm-cancel-dialog/cancel-dialog.component';
 import { JobResourceService } from '@app/core/api/api/jobResource.service';
@@ -42,8 +36,6 @@ const WORK_TIME = Object.entries(JobOfferDefinitionDTO.WorkTimeEnum).map(([key, 
   styleUrls: ['./job-form.component.scss'],
 })
 export class JobFormComponent implements OnInit {
-  phonePrefix: string = '';
-  phoneNumber: string = '';
   LANGUAGES = JOB_LANGUAGES;
   PREFIXES = PREFIXES;
   INDUSTRIES = INDUSTRIES;
@@ -51,10 +43,9 @@ export class JobFormComponent implements OnInit {
   CONTRACT_TYPE = CONTRACT_TYPE;
   WORK_TIME = WORK_TIME;
   data = defaults<JobOfferDefinitionDTO>({});
-  @ViewChild('phoneInput') phoneInput!: ElementRef<HTMLInputElement>;
   @Input() buttonLabel: string = '';
   offerId?: number;
-
+  phone = defaults<PhoneNumber>();
   constructor(
     private jobResourceService: JobResourceService,
     private router: Router,
@@ -66,9 +57,9 @@ export class JobFormComponent implements OnInit {
   ngOnInit(): void {
     this.offerId = Number(this.route.snapshot.paramMap.get('id'));
     this.jobResourceService.getJob(this.offerId).subscribe((resp) => {
-      this.phoneNumber = resp.phoneNumber || '';
+      this.phone.phoneNumber = resp.phoneNumber || '';
       if (resp.phoneCountryCode) {
-        this.findPrefix(resp.phoneCountryCode);
+        this.phone.prefix = this.findPrefix(resp.phoneCountryCode);
       }
       this.data = resp;
     });
@@ -79,23 +70,20 @@ export class JobFormComponent implements OnInit {
     }
   }
 
-  findPrefix(phoneCountryCode: string) {
-    this.phonePrefix = PREFIXES.find((v) => v.prefix === phoneCountryCode)?.prefix || '';
+  phoneNumberChange(phone: PhoneNumber) {
+    this.phone = phone;
   }
 
-  onPhoneNumberChange($event: Event) {
-    let val = ($event.target as HTMLInputElement).value;
-    val = val.replace(MATCH_NON_DIGITS, '').replace(MATCH_SPACES, '');
-    this.phoneInput.nativeElement.value = val;
-    this.phoneNumber = val;
+  findPrefix(prefix: string) {
+    return PREFIXES.find((v) => v.prefix === prefix)?.prefix || '';
   }
 
   preparePhoneNumber() {
-    this.data.phoneNumber = this.phonePrefix + this.phoneNumber;
+    this.data.phoneNumber = this.phone.prefix + this.phone.phoneNumber;
   }
 
   submitOffer(): void {
-    if (this.phoneNumber) {
+    if (this.phone.phoneNumber) {
       this.preparePhoneNumber();
     } else {
       this.data.phoneNumber = undefined;
