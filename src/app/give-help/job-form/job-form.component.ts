@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { SnackbarService } from '@app/shared/services';
 import { DIALOG_CANCEL_OFFER_CONFIG, PREFIXES, JOB_LANGUAGES } from '@app/shared/consts';
 import { defaults } from '@app/shared/utils';
-import { ALERT_TYPES, CANCEL_DIALOG_HEADERS, CorePath, PhoneNumber } from '@app/shared/models';
+import { ALERT_TYPES, CANCEL_DIALOG_HEADERS, CategoryNameKey, CorePath, PhoneNumber } from '@app/shared/models';
 import { take } from 'rxjs';
 import { ConfirmCancelDialogComponent } from '@app/shared/components/confirm-cancel-dialog/cancel-dialog.component';
 import { JobResourceService } from '@app/core/api/api/jobResource.service';
@@ -57,7 +57,7 @@ export class JobFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.offerId = Number(this.route.snapshot.paramMap.get('id'));
-    PHONE_HELPER.initPhoneOnEdit(this);
+    PHONE_HELPER.initPhoneOnEdit(this, CategoryNameKey.JOB);
     if (!this.isEditRoute) {
       DIALOG_CANCEL_OFFER_CONFIG.data.headerText = CANCEL_DIALOG_HEADERS.CONFIRM_CANCEL_OFFER_NEW;
     } else {

@@ -3,7 +3,7 @@ import { defaults } from '@app/shared/utils';
 import { TransportOfferDefinitionDTO, TransportResourceService } from '@app/core/api';
 import { DIALOG_CANCEL_OFFER_CONFIG, PREFIXES } from '@app/shared/consts';
 import { SnackbarService } from '@app/shared/services/snackbar.service';
-import { CorePath, ALERT_TYPES, CANCEL_DIALOG_HEADERS, PhoneNumber } from '@app/shared/models';
+import { CorePath, ALERT_TYPES, CANCEL_DIALOG_HEADERS, CategoryNameKey, PhoneNumber } from '@app/shared/models';
 import { take } from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MATCH_NON_DIGITS, MATCH_SPACES } from '@app/shared/consts';
@@ -33,7 +33,7 @@ export class TransportFormComponent implements OnInit {
   ngOnInit(): void {
     this.offerId = Number(this.route.snapshot.paramMap.get('id'));
     if (this.isEditRoute) {
-      PHONE_HELPER.initPhoneOnEdit(this);
+      PHONE_HELPER.initPhoneOnEdit(this, CategoryNameKey.TRANSPORT);
       DIALOG_CANCEL_OFFER_CONFIG.data.headerText = CANCEL_DIALOG_HEADERS.CONFIRM_CANCEL_OFFER_EDIT;
     } else {
       DIALOG_CANCEL_OFFER_CONFIG.data.headerText = CANCEL_DIALOG_HEADERS.CONFIRM_CANCEL_OFFER_NEW;

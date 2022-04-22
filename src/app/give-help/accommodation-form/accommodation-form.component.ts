@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { defaults } from '@app/shared/utils';
 import { PREFIXES, LANGUAGES, LENGTH_OF_STAY } from '@app/shared/consts';
 import { AccommodationOfferDefinitionDTO, AccommodationsResourceService } from '@app/core/api';
-import { CorePath, ALERT_TYPES, CANCEL_DIALOG_HEADERS } from '@app/shared/models';
+import { CorePath, ALERT_TYPES, CANCEL_DIALOG_HEADERS, CategoryNameKey } from '@app/shared/models';
 import { SnackbarService } from '@app/shared/services';
 import { take } from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -40,7 +40,7 @@ export class AccommodationFormComponent implements OnInit {
     this.offerId = Number(this.route.snapshot.paramMap.get('id'));
 
     if (this.isEditRoute) {
-      PHONE_HELPER.initPhoneOnEdit(this);
+      PHONE_HELPER.initPhoneOnEdit(this, CategoryNameKey.ACCOMMODATION);
       DIALOG_CANCEL_OFFER_CONFIG.data.headerText = CANCEL_DIALOG_HEADERS.CONFIRM_CANCEL_OFFER_EDIT;
     } else {
       DIALOG_CANCEL_OFFER_CONFIG.data.headerText = CANCEL_DIALOG_HEADERS.CONFIRM_CANCEL_OFFER_NEW;

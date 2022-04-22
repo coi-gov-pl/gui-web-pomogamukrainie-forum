@@ -4,7 +4,7 @@ import { MaterialAidOfferDefinitionDTO, MaterialAidResourceService } from '@app/
 import { DIALOG_CANCEL_OFFER_CONFIG, PREFIXES } from '@app/shared/consts';
 import { defaults } from '@app/shared/utils';
 import { SnackbarService } from '@app/shared/services/snackbar.service';
-import { CorePath, ALERT_TYPES, CANCEL_DIALOG_HEADERS, PhoneNumber } from '@app/shared/models';
+import { CorePath, ALERT_TYPES, CANCEL_DIALOG_HEADERS, PhoneNumber, CategoryNameKey } from '@app/shared/models';
 import { take } from 'rxjs/operators';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ConfirmCancelDialogComponent } from '@app/shared/components';
@@ -38,7 +38,7 @@ export class MaterialAidFormComponent implements OnInit {
     this.offerId = Number(this.route.snapshot.paramMap.get('id'));
 
     if (this.isEditRoute) {
-      PHONE_HELPER.initPhoneOnEdit(this);
+      PHONE_HELPER.initPhoneOnEdit(this, CategoryNameKey.MATERIAL_HELP);
       DIALOG_CANCEL_OFFER_CONFIG.data.headerText = CANCEL_DIALOG_HEADERS.CONFIRM_CANCEL_OFFER_EDIT;
     } else {
       DIALOG_CANCEL_OFFER_CONFIG.data.headerText = CANCEL_DIALOG_HEADERS.CONFIRM_CANCEL_OFFER_NEW;

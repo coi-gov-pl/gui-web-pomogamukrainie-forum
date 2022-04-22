@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { LawOfferDefinitionDTO, LawResourceService } from '@app/core/api';
 import { ConfirmCancelDialogComponent } from '@app/shared/components';
 import { DIALOG_CANCEL_OFFER_CONFIG, LAW_LANGUAGES, LENGTH_OF_STAY, PREFIXES } from '@app/shared/consts';
-import { ALERT_TYPES, CANCEL_DIALOG_HEADERS, CorePath, PhoneNumber } from '@app/shared/models';
+import { ALERT_TYPES, CANCEL_DIALOG_HEADERS, CategoryNameKey, CorePath, PhoneNumber } from '@app/shared/models';
 import { SnackbarService } from '@app/shared/services';
 import { defaults } from '@app/shared/utils';
 import { PHONE_HELPER } from '@app/shared/utils/phone-helper';
@@ -42,7 +42,7 @@ export class LawFormComponent implements OnInit {
     this.offerId = Number(this.route.snapshot.paramMap.get('id'));
 
     if (this.isEditRoute) {
-      PHONE_HELPER.initPhoneOnEdit(this);
+      PHONE_HELPER.initPhoneOnEdit(this, CategoryNameKey.LEGAL_HELP);
       DIALOG_CANCEL_OFFER_CONFIG.data.headerText = CANCEL_DIALOG_HEADERS.CONFIRM_CANCEL_OFFER_EDIT;
     } else {
       DIALOG_CANCEL_OFFER_CONFIG.data.headerText = CANCEL_DIALOG_HEADERS.CONFIRM_CANCEL_OFFER_NEW;
