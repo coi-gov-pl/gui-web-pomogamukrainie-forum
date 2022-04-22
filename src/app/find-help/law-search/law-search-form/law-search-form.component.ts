@@ -1,11 +1,12 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { LawOffer, LawOfferSearchCriteria } from '@app/core/api';
-import { Option, StatementAnchors } from '@app/shared/models';
+import { Component, EventEmitter, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
+import { LawOffer, LawOfferSearchCriteria } from '@app/core/api';
 import { StoreUrlService } from '@app/core/store-url';
-import { LocalStorageKeys } from '@app/shared/models';
-import { SortingFieldName, SortingOrder } from '@app/shared/models/sortingOrder.model';
 import { LAW_LANGUAGES } from '@app/shared/consts';
+import { LocalStorageKeys, Option, StatementAnchors } from '@app/shared/models';
+import { SortingFieldName, SortingOrder } from '@app/shared/models/sortingOrder.model';
+import { Subscription } from 'rxjs';
 
 const HELP_KIND = Object.entries(LawOffer.HelpKindEnum).map(([key, value]) => ({
   code: value,
@@ -17,12 +18,25 @@ const HELP_MODE = Object.entries(LawOffer.HelpModeEnum).map(([key, value]) => ({
   label: value,
 }));
 
+const cleanForm = {
+  location: undefined,
+  city: undefined,
+  region: undefined,
+  lawMode: undefined,
+  lawKind: undefined,
+  language: undefined,
+};
+
 @Component({
   selector: 'app-law-search-form',
   templateUrl: './law-search-form.component.html',
   styleUrls: ['./law-search-form.component.scss'],
 })
-export class LawSearchFormComponent implements OnInit {
+export class LawSearchFormComponent implements OnInit, OnDestroy {
+  @ViewChild('form', { static: true })
+  ngForm: NgForm = new NgForm([], []);
+  formChangesSubscription = new Subscription();
+  showClearBtn = false;
   data: LawOfferSearchCriteria = {};
   LANGUAGES = LAW_LANGUAGES;
   HELP_KIND: Option[] = HELP_KIND;
@@ -38,6 +52,14 @@ export class LawSearchFormComponent implements OnInit {
       const { city, region, lawMode, lawKind, language } = this.route.snapshot.queryParams;
       this.data = { location: city ? { city, region } : undefined, helpMode: lawMode, helpKind: lawKind, language };
     }
+
+    this.formChangesSubscription = this.ngForm.form.valueChanges.subscribe((form) => {
+      this.showClearBtn = Object.values(form).some((el) => el !== undefined);
+    });
+  }
+
+  ngOnDestroy() {
+    this.formChangesSubscription.unsubscribe();
   }
 
   async onSubmit(): Promise<void> {
@@ -50,6 +72,19 @@ export class LawSearchFormComponent implements OnInit {
       lawMode: this.data.helpMode,
       lawKind: this.data.helpKind,
       language: this.data.language,
+    };
+    await this.storeUrlService.setCustomPaginatorParam(param);
+    this.search.emit(this.data);
+  }
+
+  async clearFilters(): Promise<void> {
+    this.data = {};
+    const { page, size, sort } = this.route.snapshot.queryParams;
+    const param: Params = {
+      page,
+      size,
+      sort,
+      ...cleanForm,
     };
     await this.storeUrlService.setCustomPaginatorParam(param);
     this.search.emit(this.data);
