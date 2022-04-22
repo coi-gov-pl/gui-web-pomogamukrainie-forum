@@ -1,16 +1,16 @@
-import { Component, Input, NgModule } from '@angular/core';
-import { Category, CategoryNameKey, CategoryRoutingName, CorePath } from '@app/shared/models';
 import { CommonModule } from '@angular/common';
-import { TranslateModule } from '@ngx-translate/core';
-import { MatIconModule } from '@angular/material/icon';
-import { Params, Router, RouterModule } from '@angular/router';
-import { TypeOfHelpComponentModule } from '@app/shared/components';
-import { StoreUrlService } from '@app/core/store-url';
-import { MAT_TOOLTIP_DEFAULT_OPTIONS, MatTooltipDefaultOptions, MatTooltipModule } from '@angular/material/tooltip';
+import { Component, Input, NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { MatOptionModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
-import { FormsModule } from '@angular/forms';
+import { MatTooltipDefaultOptions, MatTooltipModule, MAT_TOOLTIP_DEFAULT_OPTIONS } from '@angular/material/tooltip';
+import { Params, Router, RouterModule } from '@angular/router';
+import { StoreUrlService } from '@app/core/store-url';
+import { Category, CategoryNameKey, CategoryRoutingName, CorePath } from '@app/shared/models';
+import { TranslateModule } from '@ngx-translate/core';
+import { TypeOfHelpComponentModule } from '../type-of-help/type-of-help.component';
 
 @Component({
   selector: 'app-category-navigation',
@@ -63,15 +63,15 @@ export const matTooltipCustomConfig: MatTooltipDefaultOptions = {
   exports: [CategoryNavigationComponent],
   imports: [
     CommonModule,
-    TranslateModule,
-    MatIconModule,
-    RouterModule,
-    TypeOfHelpComponentModule,
-    MatTooltipModule,
     FormsModule,
     MatFormFieldModule,
-    MatSelectModule,
+    MatIconModule,
     MatOptionModule,
+    MatSelectModule,
+    MatTooltipModule,
+    RouterModule,
+    TranslateModule,
+    TypeOfHelpComponentModule,
   ],
   providers: [{ provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: matTooltipCustomConfig }],
 })

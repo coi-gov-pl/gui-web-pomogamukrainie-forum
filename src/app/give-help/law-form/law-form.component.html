@@ -1,5 +1,5 @@
 <mat-card>
-  <form (ngSubmit)="submitOffer()" #healthcareForm="ngForm">
+  <form (ngSubmit)="submitOffer()" #legalForm="ngForm">
     <div class="container">
       <div class="d-flex">
         <button class="btn-link ms-auto" type="button" (click)="onCancelButtonClick()">
@@ -18,70 +18,76 @@
             [(ngModel)]="data.location"
             name="location"
             [placeholder]="'PLACEHOLDER_LOCATION' | translate"
-            [label]="('LOCATION' | translate) + ' *'"
-            [required]="true"
+            [label]="'LOCATION' | translate"
           ></app-cities-search>
         </div>
+
         <div class="col-12 col-md-6 col-lg-2">
-          <label
-            ><b>{{ "MODE" | translate }} *</b></label
-          >
-          <mat-form-field appearance="outline">
-            <mat-select
-              placeholder="{{ 'CHOOSE_MODE' | translate }}"
-              multiple
-              [(ngModel)]="data.mode"
-              name="mode"
-              required
-              #mode="ngModel"
-            >
-              <mat-option *ngFor="let mode of MODE_ENUM" [value]="mode">{{ mode | translate }}</mat-option>
-            </mat-select>
-            <mat-error>
-              <app-field-error [model]="mode"></app-field-error>
-            </mat-error>
-          </mat-form-field>
-        </div>
-        <div class="col-12 col-md-6 col-lg-3">
-          <label
-            ><b>{{ "LABEL_SPECIALISATION" | translate }} *</b></label
-          >
-          <mat-form-field appearance="outline">
-            <mat-select
-              placeholder="{{ 'CHOOSE_SPECIALISATION' | translate }}"
-              [(ngModel)]="data.specialization"
-              name="specialization"
-              required
-              #specialization="ngModel"
-            >
-              <mat-option *ngFor="let spec of SPECIALIZATION_ENUM" [value]="spec">{{ spec | translate }}</mat-option>
-            </mat-select>
-            <mat-error>
-              <app-field-error [model]="specialization"></app-field-error>
-            </mat-error>
-          </mat-form-field>
-        </div>
-        <div class="col-12 col-md-6 col-lg-3">
           <label
             ><b>{{ "LANGUAGE" | translate }} *</b></label
           >
           <mat-form-field appearance="outline">
             <mat-select
-              placeholder="{{ 'SELECT_LANGUAGE' | translate }}"
+              placeholder="{{ 'PLACEHOLDER_CHOOSE' | translate }}"
               multiple
               [(ngModel)]="data.language"
               name="language"
               required
               #language="ngModel"
             >
-              <mat-option *ngFor="let lang of LANGUAGES" [value]="lang.code">{{ lang.label | translate }}</mat-option>
+              <mat-option *ngFor="let lang of LAW_LANGUAGES" [value]="lang.code">{{
+                lang.label | translate
+              }}</mat-option>
             </mat-select>
             <mat-error>
               <app-field-error [model]="language"></app-field-error>
             </mat-error>
           </mat-form-field>
         </div>
+
+        <div class="col-12 col-md-6 col-lg-3">
+          <label
+            ><b>{{ "LAW_HELP_MODES" | translate }} *</b></label
+          >
+          <mat-form-field appearance="outline">
+            <mat-select
+              placeholder="{{ 'PLACEHOLDER_CHOOSE' | translate }}"
+              multiple
+              [(ngModel)]="data.helpMode"
+              name="helpMode"
+              required
+              #helpMode="ngModel"
+            >
+              <mat-option *ngFor="let helpMode of HELP_MODE" [value]="helpMode">{{ helpMode | translate }}</mat-option>
+            </mat-select>
+            <mat-error>
+              <app-field-error [model]="helpMode"></app-field-error>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-3">
+          <label
+            ><b>{{ "LAW_HELP_KINDS" | translate }} *</b></label
+          >
+          <mat-form-field appearance="outline">
+            <mat-select
+              placeholder="{{ 'PLACEHOLDER_CHOOSE' | translate }}"
+              multiple
+              [(ngModel)]="data.helpKind"
+              name="helpKind"
+              required
+              #helpKind="ngModel"
+            >
+              <mat-option *ngFor="let helpKind of HELP_KIND" [value]="helpKind">{{ helpKind | translate }}</mat-option>
+            </mat-select>
+            <mat-error>
+              <app-field-error [model]="helpKind"></app-field-error>
+            </mat-error>
+          </mat-form-field>
+        </div>
       </div>
+
       <div class="row">
         <div class="col-lg-7 mb-3">
           <label>
@@ -108,7 +114,44 @@
         </div>
         <div class="col-lg-5">
           <div class="row">
-            <app-phone-input (phoneNumberChange)="phoneNumberChange($event)" [phone]="phone"> </app-phone-input>
+            <div class="d-flex flex-column flex-md-row">
+              <div class="col-sm-4 selectPrefix mb-n4 mb-md-0">
+                <label
+                  ><b>{{ "LABEL_PHONE_NUMBER" | translate }}</b></label
+                >
+                <mat-form-field appearance="outline">
+                  <mat-select
+                    placeholder="{{ 'PLACEHOLDER_CHOOSE' | translate }}"
+                    [(ngModel)]="phonePrefix"
+                    name="prefix"
+                  >
+                    <mat-option *ngFor="let prefix of PREFIXES" [value]="prefix.prefix">{{ prefix.prefix }}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-sm-8 phoneInut">
+                <label>&nbsp;</label>
+                <mat-form-field appearance="outline">
+                  <input
+                    placeholder="{{ 'PLACEHOLDER_TYPE' | translate }}"
+                    matInput
+                    type="text"
+                    name="phone"
+                    #phoneInput
+                    (input)="onPhoneNumberChange($event)"
+                    [(ngModel)]="phoneNumber"
+                    appPhoneValidate
+                    minlength="7"
+                    maxlength="15"
+                    inputmode="numeric"
+                    #phoneNumberModel="ngModel"
+                  />
+                  <mat-error>
+                    <app-field-error [model]="phoneNumberModel"></app-field-error>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
           </div>
           <div class="row">
             <div class="col-lg-12 publish">

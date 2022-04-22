@@ -70,3 +70,11 @@ mat-icon {
   font-weight: bold;
   color: $c-darkblue;
 }
+
+.cdk-overlay-backdrop {
+  &.backdrop-blur {
+    -webkit-backdrop-filter: blur(5px); /* Use for Safari 9+, Edge 17+ (not a mistake) and iOS Safari 9.2+ */
+    backdrop-filter: blur(5px); /* Supported in Chrome 76 */
+    opacity: 1;
+  }
+}
