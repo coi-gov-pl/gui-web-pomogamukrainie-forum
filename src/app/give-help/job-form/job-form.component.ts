@@ -56,6 +56,7 @@ export class JobFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.offerId = Number(this.route.snapshot.paramMap.get('id'));
+
     this.jobResourceService.getJob(this.offerId).subscribe((resp) => {
       this.phone.phoneNumber = resp.phoneNumber || '';
       if (resp.phoneCountryCode) {
@@ -88,18 +89,34 @@ export class JobFormComponent implements OnInit {
     } else {
       this.data.phoneNumber = undefined;
     }
-    this.jobResourceService
-      .createJob(this.data)
-      .pipe(take(1))
-      .subscribe(() => this.redirectOnSuccess());
+
+    if (!this.isEditRoute) {
+      this.jobResourceService
+        .createJob(this.data)
+        .pipe(take(1))
+        .subscribe(() => this.redirectOnSuccess());
+    } else {
+      this.jobResourceService
+        .updateJob(this.offerId!, this.data)
+        .pipe(take(1))
+        .subscribe(() => this.redirectOnSuccess());
+    }
   }
 
   redirectOnSuccess() {
-    this.router.navigate([CorePath.MyAccount]).then((navigated: boolean) => {
-      if (navigated) {
-        this.snackbarService.openUpperSnackAlert(ALERT_TYPES.OFFER_SUCCESS);
-      }
-    });
+    if (!this.isEditRoute) {
+      this.router.navigate([CorePath.MyAccount]).then((navigated: boolean) => {
+        if (navigated) {
+          this.snackbarService.openUpperSnackAlert(ALERT_TYPES.OFFER_SUCCESS);
+        }
+      });
+    } else {
+      this.router.navigate([CorePath.MyAccount]).then((navigated: boolean) => {
+        if (navigated) {
+          this.snackbarService.openUpperSnackAlert(ALERT_TYPES.UPDATE_OFFER_SUCCESS);
+        }
+      });
+    }
   }
 
   onCancelButtonClick() {
