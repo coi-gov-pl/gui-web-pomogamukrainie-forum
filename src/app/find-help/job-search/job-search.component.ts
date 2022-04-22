@@ -44,6 +44,7 @@ export class JobSearchComponent implements OnInit {
       this.searchCriteria.contractType = searchCriteria?.contractType;
       this.searchCriteria.workTime = searchCriteria?.workTime;
       this.searchCriteria.language = searchCriteria?.language;
+      this.searchCriteria.location = searchCriteria?.location;
     }
 
     const pageRequest: Pageable = {
