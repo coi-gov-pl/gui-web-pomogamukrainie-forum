@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LawOfferDefinitionDTO, LawResourceService } from '@app/core/api';
@@ -14,7 +14,6 @@ import { take } from 'rxjs';
   selector: 'app-law-form',
   templateUrl: './law-form.component.html',
   styleUrls: ['./law-form.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LawFormComponent implements OnInit {
   LENGTH_OF_STAY = LENGTH_OF_STAY;

@@ -82,13 +82,20 @@
       </div>
     </div>
   </div>
-  <div class="search d-flex flex-column align-items-center ms-4">
-    <button type="submit" class="btn btn-dark" [disabled]="form.invalid">
-      <mat-icon fontSet="material-icons-outlined">search</mat-icon>
-      <span>{{ "SEARCH" | translate }}</span>
-    </button>
-    <button type="button" class="clear-filters btn btn-link" (click)="clearFilters()">
-      <span>{{ "CLEAR_FILTERS" | translate }}</span>
-    </button>
+  <div class="form-search-wrapper">
+    <div class="d-flex flex-column align-items-center ms-4">
+      <button type="submit" class="btn btn-dark" [disabled]="form.invalid">
+        <mat-icon fontSet="material-icons-outlined">search</mat-icon>
+        <span>{{ "SEARCH" | translate }}</span>
+      </button>
+      <button
+        [ngStyle]="{ visibility: showClearBtn ? 'visible' : 'hidden' }"
+        type="button"
+        class="form-clear-filters btn btn-link"
+        (click)="clearFilters()"
+      >
+        <span>{{ "CLEAR_FILTERS" | translate }}</span>
+      </button>
+    </div>
   </div>
 </form>
