@@ -128,4 +128,11 @@ export class CitiesSearchComponent implements OnInit, ControlValueAccessor {
     this.formControl.patchValue(val);
     this.onChange(undefined);
   }
+
+  onKeydown($event: KeyboardEvent) {
+    console.log($event);
+    if ($event.key === 'Backspace' || $event.key === 'Delete') {
+      this.formControl.patchValue('');
+    }
+  }
 }
