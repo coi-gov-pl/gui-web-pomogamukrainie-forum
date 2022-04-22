@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { ViewportScroller } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { CorePath } from '@app/shared/models';
 
 @Component({
@@ -6,6 +7,11 @@ import { CorePath } from '@app/shared/models';
   templateUrl: './give-help.component.html',
   styleUrls: ['./give-help.component.scss'],
 })
-export class GiveHelpComponent {
+export class GiveHelpComponent implements OnInit {
+  constructor(private viewportScroller: ViewportScroller) {}
+
+  ngOnInit() {
+    this.viewportScroller.scrollToPosition([0, 0]);
+  }
   corePath = CorePath;
 }
