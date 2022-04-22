@@ -46,6 +46,9 @@
 .attribute-value {
   font-size: 13px;
   letter-spacing: 0.4px;
+  text-overflow: ellipsis;
+  overflow: auto;
+  max-height: 58.5px;
 }
 
 .yellow-icon {
