@@ -27,16 +27,4 @@ export class PhoneInputComponent {
     this.phone.phoneNumber = val;
     this.phoneChange.emit(this.phone);
   }
-
-  // findPrefix(prefix: string) {
-  //   this.phone.prefix = PREFIXES.find((v) => v.prefix === prefix)?.prefix || '';
-  // }
-
-  // emitPhoneNumber() {
-  //   if (this.phone.phoneNumber) {
-  //     this.phoneNumberChange.emit(this.phone);
-  //   } else {
-  //     this.phoneNumberChange.emit(undefined);
-  //   }
-  // }
 }
