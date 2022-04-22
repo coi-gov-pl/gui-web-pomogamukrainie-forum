@@ -9,6 +9,7 @@ import { take } from 'rxjs';
 import { ConfirmCancelDialogComponent } from '@app/shared/components/confirm-cancel-dialog/cancel-dialog.component';
 import { JobResourceService } from '@app/core/api/api/jobResource.service';
 import { JobOfferDefinitionDTO } from '@app/core/api/model/jobOfferDefinitionDTO';
+import { PHONE_HELPER } from '@app/shared/utils/phone-helper';
 
 const INDUSTRIES = Object.entries(JobOfferDefinitionDTO.IndustryEnum).map(([key, value]) => ({
   key,
@@ -56,14 +57,7 @@ export class JobFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.offerId = Number(this.route.snapshot.paramMap.get('id'));
-
-    this.jobResourceService.getJob(this.offerId).subscribe((resp) => {
-      this.phone.phoneNumber = resp.phoneNumber || '';
-      if (resp.phoneCountryCode) {
-        this.phone.prefix = this.findPrefix(resp.phoneCountryCode);
-      }
-      this.data = resp;
-    });
+    PHONE_HELPER.initPhoneOnEdit(this);
     if (!this.isEditRoute) {
       DIALOG_CANCEL_OFFER_CONFIG.data.headerText = CANCEL_DIALOG_HEADERS.CONFIRM_CANCEL_OFFER_NEW;
     } else {
@@ -71,25 +65,8 @@ export class JobFormComponent implements OnInit {
     }
   }
 
-  phoneNumberChange(phone: PhoneNumber) {
-    this.phone = phone;
-  }
-
-  findPrefix(prefix: string) {
-    return PREFIXES.find((v) => v.prefix === prefix)?.prefix || '';
-  }
-
-  preparePhoneNumber() {
-    this.data.phoneNumber = this.phone.prefix + this.phone.phoneNumber;
-  }
-
   submitOffer(): void {
-    if (this.phone.phoneNumber) {
-      this.preparePhoneNumber();
-    } else {
-      this.data.phoneNumber = undefined;
-    }
-
+    PHONE_HELPER.preparePhoneNumber(this);
     if (!this.isEditRoute) {
       this.jobResourceService
         .createJob(this.data)

@@ -9,6 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ConfirmCancelDialogComponent } from '@app/shared/components';
 import { DIALOG_CANCEL_OFFER_CONFIG } from '@app/shared/consts';
+import { PHONE_HELPER } from '@app/shared/utils/phone-helper';
 
 @Component({
   selector: 'app-health-care-form',
@@ -41,38 +42,15 @@ export class HealthCareFormComponent implements OnInit {
     this.offerId = Number(this.route.snapshot.paramMap.get('id'));
 
     if (this.isEditRoute) {
-      this.HealthResourceService.getHealth(this.offerId).subscribe((resp) => {
-        this.phone.phoneNumber = resp.phoneNumber || '';
-        if (resp.phoneCountryCode) {
-          this.phone.prefix = this.findPrefix(resp.phoneCountryCode);
-        }
-        this.data = resp;
-      });
+      PHONE_HELPER.initPhoneOnEdit(this);
       DIALOG_CANCEL_OFFER_CONFIG.data.headerText = CANCEL_DIALOG_HEADERS.CONFIRM_CANCEL_OFFER_EDIT;
     } else {
       DIALOG_CANCEL_OFFER_CONFIG.data.headerText = CANCEL_DIALOG_HEADERS.CONFIRM_CANCEL_OFFER_NEW;
     }
   }
 
-  phoneNumberChange(phone: PhoneNumber) {
-    this.phone = phone;
-  }
-
-  findPrefix(prefix: string) {
-    return PREFIXES.find((v) => v.prefix === prefix)?.prefix || '';
-  }
-
-  preparePhoneNumber() {
-    this.data.phoneNumber = this.phone.prefix + this.phone.phoneNumber;
-  }
-
   submitOffer(): void {
-    if (this.phone.phoneNumber) {
-      this.preparePhoneNumber();
-    } else {
-      this.data.phoneNumber = undefined;
-    }
-
+    PHONE_HELPER.preparePhoneNumber(this);
     if (!this.isEditRoute) {
       this.HealthResourceService.createHealth(this.data)
         .pipe(take(1))

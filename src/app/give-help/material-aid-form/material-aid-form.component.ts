@@ -8,6 +8,7 @@ import { CorePath, ALERT_TYPES, CANCEL_DIALOG_HEADERS, PhoneNumber } from '@app/
 import { take } from 'rxjs/operators';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ConfirmCancelDialogComponent } from '@app/shared/components';
+import { PHONE_HELPER } from '@app/shared/utils/phone-helper';
 
 const CATEGORIES = Object.entries(MaterialAidOfferDefinitionDTO.CategoryEnum).map(([key, value]) => ({
   key,
@@ -37,38 +38,15 @@ export class MaterialAidFormComponent implements OnInit {
     this.offerId = Number(this.route.snapshot.paramMap.get('id'));
 
     if (this.isEditRoute) {
-      this.materialAidResourceService.getMaterialAid(this.offerId).subscribe((resp) => {
-        this.phone.phoneNumber = resp.phoneNumber || '';
-        if (resp.phoneCountryCode) {
-          this.phone.prefix = this.findPrefix(resp.phoneCountryCode);
-        }
-        this.data = resp;
-      });
+      PHONE_HELPER.initPhoneOnEdit(this);
       DIALOG_CANCEL_OFFER_CONFIG.data.headerText = CANCEL_DIALOG_HEADERS.CONFIRM_CANCEL_OFFER_EDIT;
     } else {
       DIALOG_CANCEL_OFFER_CONFIG.data.headerText = CANCEL_DIALOG_HEADERS.CONFIRM_CANCEL_OFFER_NEW;
     }
   }
 
-  phoneNumberChange(phone: PhoneNumber) {
-    this.phone = phone;
-  }
-
-  findPrefix(prefix: string) {
-    return PREFIXES.find((v) => v.prefix === prefix)?.prefix || '';
-  }
-
-  preparePhoneNumber() {
-    this.data.phoneNumber = this.phone.prefix + this.phone.phoneNumber;
-  }
-
   handleSubmit() {
-    if (this.phone.phoneNumber) {
-      this.preparePhoneNumber();
-    } else {
-      this.data.phoneNumber = undefined;
-    }
-
+    PHONE_HELPER.preparePhoneNumber(this);
     if (!this.isEditRoute) {
       this.materialAidResourceService
         .postMaterialAidOfferMaterialAid(this.data)
