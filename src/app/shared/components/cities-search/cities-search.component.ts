@@ -1,10 +1,10 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, filter, switchMap, tap } from 'rxjs';
 import { displayLocationOption, Location } from './display-location-option';
 import { CityLookupResourceService } from '@app/core/api';
 import { MatAutocompleteTrigger } from '@angular/material/autocomplete';
-import { MATCH_DIGITS } from '@app/shared/consts';
+import { MATCH_DIGITS_AND_SPECIAL_EXCLUDING_COMMA_AND_FULLSTOP } from '@app/shared/consts';
 
 @Component({
   selector: 'app-cities-search',
@@ -30,7 +30,7 @@ export class CitiesSearchComponent implements OnInit, ControlValueAccessor {
   @Input() label = '';
   @Input() required: boolean = false;
   @Input() isRegionPicked: boolean = false;
-
+  @ViewChild('autoCompleteInput') locationInput!: ElementRef<HTMLInputElement>;
   @ViewChild('autoCompleteInput', { read: MatAutocompleteTrigger }) autoComplete?: MatAutocompleteTrigger;
 
   options: Location[] = [];
@@ -124,7 +124,8 @@ export class CitiesSearchComponent implements OnInit, ControlValueAccessor {
 
   onLocationInput($event: Event) {
     let val = ($event.target as HTMLInputElement).value;
-    val = val.replace(MATCH_DIGITS, '');
+    val = val.replace(MATCH_DIGITS_AND_SPECIAL_EXCLUDING_COMMA_AND_FULLSTOP, '');
+    this.locationInput.nativeElement.value = val;
     this.formControl.patchValue(val);
     this.onChange(undefined);
   }
