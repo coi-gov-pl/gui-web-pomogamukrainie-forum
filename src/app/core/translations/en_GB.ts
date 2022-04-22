@@ -16,6 +16,7 @@ export default {
   SUPPORT_REFUGEES: `Do you want to help?`,
   SEARCH_FOR_HELP: `Find help`,
   ADD_AD: `Post an ad`,
+  EDIT_AD: 'Edit an ad',
   WHAT_ARE_YOU_LOOKING_FOR: `What do you need?`,
   ACCOMMODATION: `Accomodation and housing`,
   MATERIAL_HELP: `Material aid`,
