@@ -31,14 +31,14 @@ mat-icon {
   stroke: $c-darkblue;
 }
 
-.selectPrefix {
+.selectPrefixWrap {
   .mat-form-field-outline-end {
     border-bottom-right-radius: 0 !important;
     border-top-right-radius: 0 !important;
   }
 }
 
-.phoneInut {
+.phoneNumberWrap {
   .mat-form-field-outline-start {
     border-bottom-left-radius: 0 !important;
     border-top-left-radius: 0 !important;

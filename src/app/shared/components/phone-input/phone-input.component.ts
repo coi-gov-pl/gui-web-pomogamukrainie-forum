@@ -21,10 +21,10 @@ export class PhoneInputComponent {
   }
 
   onPhoneNumberChange($event: Event) {
-    let val = ($event.target as HTMLInputElement).value;
-    val = val.replace(MATCH_NON_DIGITS, '').replace(MATCH_SPACES, '');
-    this.phoneInput.nativeElement.value = val;
-    this.phone.phoneNumber = val;
+    const val = ($event.target as HTMLInputElement).value;
+    const replacedVal = val.replace(MATCH_NON_DIGITS, '').replace(MATCH_SPACES, '');
+    this.phoneInput.nativeElement.value = replacedVal;
+    this.phone.phoneNumber = replacedVal;
     this.phoneChange.emit(this.phone);
   }
 }
