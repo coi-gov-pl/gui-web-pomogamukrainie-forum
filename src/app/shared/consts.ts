@@ -62,7 +62,7 @@ export const LENGTH_OF_STAY: Option[] = [
 export const MATCH_NON_DIGITS = /[^0-9]+/g;
 export const MATCH_SPACES = /\s/g;
 export const MATCH_DIGITS = /[0-9]/g;
-export const MATCH_DIGITS_AND_SPECIAL_EXCLUDING_COMMA = /[0-9!@#\$%\^\&*\)\/\\?`~<>;:"{}[|\](+=._-]+/g;
+export const MATCH_DIGITS_AND_SPECIAL_EXCLUDING_COMMA_AND_FULLSTOP = /[^0-9!@#$%^&*\/\\?`~<>;:"'(){}[\]|+=_-]+/g;
 
 export const DIALOG_CANCEL_OFFER_CONFIG = {
   hasBackdrop: true,
