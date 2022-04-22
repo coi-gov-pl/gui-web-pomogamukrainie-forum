@@ -1,38 +1,45 @@
-import { Component, ViewChild, Input, ElementRef, OnInit } from '@angular/core';
-import { defaults } from '@app/shared/utils';
-import { PREFIXES, LANGUAGES, LENGTH_OF_STAY } from '@app/shared/consts';
-import { HealthResourceService, HealthOfferDefinitionDTO } from '@app/core/api';
-import { CorePath, ALERT_TYPES, CANCEL_DIALOG_HEADERS } from '@app/shared/models';
-import { SnackbarService } from '@app/shared/services';
-import { take } from 'rxjs/operators';
-import { ActivatedRoute, Router } from '@angular/router';
-import { MATCH_NON_DIGITS, MATCH_SPACES } from '@app/shared/consts';
+import { ChangeDetectionStrategy, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { ActivatedRoute, Router } from '@angular/router';
+import { LawOfferDefinitionDTO, LawResourceService } from '@app/core/api';
 import { ConfirmCancelDialogComponent } from '@app/shared/components';
-import { DIALOG_CANCEL_OFFER_CONFIG } from '@app/shared/consts';
+import {
+  DIALOG_CANCEL_OFFER_CONFIG,
+  LAW_LANGUAGES,
+  LENGTH_OF_STAY,
+  MATCH_NON_DIGITS,
+  MATCH_SPACES,
+  PREFIXES,
+} from '@app/shared/consts';
+import { ALERT_TYPES, CANCEL_DIALOG_HEADERS, CorePath } from '@app/shared/models';
+import { SnackbarService } from '@app/shared/services';
+import { defaults } from '@app/shared/utils';
+import { take } from 'rxjs';
 
 @Component({
-  selector: 'app-health-care-form',
-  templateUrl: './health-care-form.component.html',
-  styleUrls: ['./health-care-form.component.scss'],
+  selector: 'app-law-form',
+  templateUrl: './law-form.component.html',
+  styleUrls: ['./law-form.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HealthCareFormComponent implements OnInit {
+export class LawFormComponent implements OnInit {
   phonePrefix: string = '';
   phoneNumber: string = '';
   LENGTH_OF_STAY = LENGTH_OF_STAY;
-  LANGUAGES = LANGUAGES;
+  LAW_LANGUAGES = LAW_LANGUAGES;
   PREFIXES = PREFIXES;
-  data = defaults<HealthOfferDefinitionDTO>({
-    mode: [],
+  HELP_KIND = Object.values(LawOfferDefinitionDTO.HelpKindEnum);
+  HELP_MODE = Object.values(LawOfferDefinitionDTO.HelpModeEnum);
+  data = defaults<LawOfferDefinitionDTO>({
+    helpMode: [],
+    helpKind: [],
     language: [],
   });
-  @ViewChild('phoneInput') phoneInput!: ElementRef<HTMLInputElement>;
-  @Input() buttonLabel: string = '';
   offerId?: number;
-  MODE_ENUM = Object.values(HealthOfferDefinitionDTO.ModeEnum);
-  SPECIALIZATION_ENUM = Object.values(HealthOfferDefinitionDTO.SpecializationEnum);
+  @ViewChild('phoneInput') phoneInput!: ElementRef<HTMLInputElement>;
+
   constructor(
-    private HealthResourceService: HealthResourceService,
+    private LawResourceService: LawResourceService,
     private router: Router,
     private dialog: MatDialog,
     private snackbarService: SnackbarService,
@@ -43,7 +50,7 @@ export class HealthCareFormComponent implements OnInit {
     this.offerId = Number(this.route.snapshot.paramMap.get('id'));
 
     if (this.isEditRoute) {
-      this.HealthResourceService.getHealth(this.offerId).subscribe((resp) => {
+      this.LawResourceService.getLaw(this.offerId).subscribe((resp) => {
         this.phoneNumber = resp.phoneNumber || '';
         if (resp.phoneCountryCode) {
           this.findPrefix(resp.phoneCountryCode);
@@ -56,22 +63,7 @@ export class HealthCareFormComponent implements OnInit {
     }
   }
 
-  findPrefix(phoneCountryCode: string) {
-    this.phonePrefix = PREFIXES.find((v) => v.prefix === phoneCountryCode)?.prefix || '';
-  }
-
-  onPhoneNumberChange($event: Event) {
-    let val = ($event.target as HTMLInputElement).value;
-    val = val.replace(MATCH_NON_DIGITS, '').replace(MATCH_SPACES, '');
-    this.phoneInput.nativeElement.value = val;
-    this.phoneNumber = val;
-  }
-
-  preparePhoneNumber() {
-    this.data.phoneNumber = this.phonePrefix + this.phoneNumber;
-  }
-
-  submitOffer(): void {
+  submitOffer() {
     if (this.phoneNumber) {
       this.preparePhoneNumber();
     } else {
@@ -79,11 +71,11 @@ export class HealthCareFormComponent implements OnInit {
     }
 
     if (!this.isEditRoute) {
-      this.HealthResourceService.createHealth(this.data)
+      this.LawResourceService.createLaw(this.data)
         .pipe(take(1))
         .subscribe(() => this.redirectOnSuccess());
     } else {
-      this.HealthResourceService.updateHealth(this.offerId!, this.data)
+      this.LawResourceService.updateLaw(this.offerId!, this.data)
         .pipe(take(1))
         .subscribe(() => this.redirectOnSuccess());
     }
@@ -119,7 +111,22 @@ export class HealthCareFormComponent implements OnInit {
     });
   }
 
+  findPrefix(phoneCountryCode: string) {
+    this.phonePrefix = PREFIXES.find((v) => v.prefix === phoneCountryCode)?.prefix || '';
+  }
+
+  onPhoneNumberChange($event: Event) {
+    let val = ($event.target as HTMLInputElement).value;
+    val = val.replace(MATCH_NON_DIGITS, '').replace(MATCH_SPACES, '');
+    this.phoneInput.nativeElement.value = val;
+    this.phoneNumber = val;
+  }
+
+  preparePhoneNumber() {
+    this.data.phoneNumber = this.phonePrefix + this.phoneNumber;
+  }
+
   get isEditRoute(): boolean {
-    return this.router.url === `/edycja-ogloszenia/zdrowie/${this.offerId}`;
+    return this.router.url === `/edycja-ogloszenia/pomoc-prawna/${this.offerId}`;
   }
 }

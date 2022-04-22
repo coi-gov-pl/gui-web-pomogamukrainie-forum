@@ -1,11 +1,11 @@
-import { Prefix, Option } from './models';
-import { LanguageCode, LanguageNames, LengthOfStayLabels } from '@app/core/translations';
 import {
   AccommodationOffer,
   AccommodationOfferDefinitionDTO,
   JobOfferDefinitionDTO,
   LawOfferDefinitionDTO,
 } from '@app/core/api';
+import { LanguageCode, LanguageNames, LengthOfStayLabels } from '@app/core/translations';
+import { Option, Prefix } from './models';
 import HostLanguageEnum = AccommodationOfferDefinitionDTO.HostLanguageEnum;
 import JobLanguageEnum = JobOfferDefinitionDTO.LanguageEnum;
 import LawLanguageEnum = LawOfferDefinitionDTO.LanguageEnum;
@@ -65,6 +65,7 @@ export const MATCH_DIGITS = /[0-9]/g;
 
 export const DIALOG_CANCEL_OFFER_CONFIG = {
   hasBackdrop: true,
+  backdropClass: 'backdrop-blur',
   width: '100%',
   maxHeight: '450px',
   maxWidth: '480px',
