@@ -1,10 +1,10 @@
 import { AccommodationOffer, JobOffer } from '@app/core/api';
-import { PREFIXES } from '../consts';
-import { CategoryNameKey } from '../models';
-import { HealthOffer } from '../../core/api/model/healthOffer';
-import { LawOffer } from '../../core/api/model/lawOffer';
-import { MaterialAidOffer } from '../../core/api/model/materialAidOffer';
-import { TransportOffer } from '../../core/api/model/transportOffer';
+import { PREFIXES } from '@app/shared/consts';
+import { CategoryNameKey } from '@app/shared/models';
+import { HealthOffer } from '@app/core/api/model/healthOffer';
+import { LawOffer } from '@app/core/api/model/lawOffer';
+import { MaterialAidOffer } from '@app/core/api/model/materialAidOffer';
+import { TransportOffer } from '@app/core/api/model/transportOffer';
 
 export const PHONE_HELPER = {
   initPhoneOnEdit: (context: any, category: CategoryNameKey) => {
