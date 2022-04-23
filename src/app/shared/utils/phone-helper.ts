@@ -8,7 +8,7 @@ import { TransportOffer } from '@app/core/api/model/transportOffer';
 
 export const PHONE_HELPER = {
   initPhoneOnEdit: (context: any, category: CategoryNameKey) => {
-    if (category == CategoryNameKey.ACCOMMODATION) {
+    if (category === CategoryNameKey.ACCOMMODATION) {
       context.accommodationsResourceService.getAccommodations(context.offerId).subscribe((resp: AccommodationOffer) => {
         context.phone.phoneNumber = resp.phoneNumber || '';
         if (resp.phoneCountryCode) {
@@ -16,7 +16,7 @@ export const PHONE_HELPER = {
         }
         context.data = resp;
       });
-    } else if (category == CategoryNameKey.HEALTH) {
+    } else if (category === CategoryNameKey.HEALTH) {
       context.HealthResourceService.getHealth(context.offerId).subscribe((resp: HealthOffer) => {
         context.phone.phoneNumber = resp.phoneNumber || '';
         if (resp.phoneCountryCode) {
@@ -24,7 +24,7 @@ export const PHONE_HELPER = {
         }
         context.data = resp;
       });
-    } else if (category == CategoryNameKey.JOB) {
+    } else if (category === CategoryNameKey.JOB) {
       context.jobResourceService.getJob(context.offerId).subscribe((resp: JobOffer) => {
         context.phone.phoneNumber = resp.phoneNumber || '';
         if (resp.phoneCountryCode) {
@@ -32,7 +32,7 @@ export const PHONE_HELPER = {
         }
         context.data = resp;
       });
-    } else if (category == CategoryNameKey.LEGAL_HELP) {
+    } else if (category === CategoryNameKey.LEGAL_HELP) {
       context.LawResourceService.getLaw(context.offerId).subscribe((resp: LawOffer) => {
         context.phone.phoneNumber = resp.phoneNumber || '';
         if (resp.phoneCountryCode) {
@@ -40,7 +40,7 @@ export const PHONE_HELPER = {
         }
         context.data = resp;
       });
-    } else if (category == CategoryNameKey.MATERIAL_HELP) {
+    } else if (category === CategoryNameKey.MATERIAL_HELP) {
       context.materialAidResourceService.getMaterialAid(context.offerId).subscribe((resp: MaterialAidOffer) => {
         context.phone.phoneNumber = resp.phoneNumber || '';
         if (resp.phoneCountryCode) {
@@ -48,7 +48,7 @@ export const PHONE_HELPER = {
         }
         context.data = resp;
       });
-    } else if (category == CategoryNameKey.TRANSPORT) {
+    } else if (category === CategoryNameKey.TRANSPORT) {
       context.transportResourceService.getTransport(context.offerId).subscribe((resp: TransportOffer) => {
         context.phone.phoneNumber = resp.phoneNumber || '';
         if (resp.phoneCountryCode) {
