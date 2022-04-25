@@ -3,13 +3,12 @@ import { defaults } from '@app/shared/utils';
 import { PREFIXES, LANGUAGES, LENGTH_OF_STAY } from '@app/shared/consts';
 import { HealthResourceService, HealthOfferDefinitionDTO } from '@app/core/api';
 import { CorePath, ALERT_TYPES, CANCEL_DIALOG_HEADERS, PhoneNumber, CategoryNameKey } from '@app/shared/models';
-import { SnackbarService } from '@app/shared/services';
+import { OfferDataInitService, SnackbarService } from '@app/shared/services';
 import { take } from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ConfirmCancelDialogComponent } from '@app/shared/components';
 import { DIALOG_CANCEL_OFFER_CONFIG } from '@app/shared/consts';
-import { OFFER_DATA_HELPER } from '@app/shared/utils/phone-helper';
 
 @Component({
   selector: 'app-health-care-form',
@@ -35,14 +34,15 @@ export class HealthCareFormComponent implements OnInit {
     private router: Router,
     private dialog: MatDialog,
     private snackbarService: SnackbarService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private offerDataInitService: OfferDataInitService
   ) {}
 
   ngOnInit(): void {
     this.offerId = Number(this.route.snapshot.paramMap.get('id'));
 
     if (this.isEditRoute) {
-      OFFER_DATA_HELPER.initOfferDataForEdit(this, CategoryNameKey.HEALTH);
+      this.offerDataInitService.initOfferDataForEdit(this, CategoryNameKey.HEALTH);
       DIALOG_CANCEL_OFFER_CONFIG.data.headerText = CANCEL_DIALOG_HEADERS.CONFIRM_CANCEL_OFFER_EDIT;
     } else {
       DIALOG_CANCEL_OFFER_CONFIG.data.headerText = CANCEL_DIALOG_HEADERS.CONFIRM_CANCEL_OFFER_NEW;
@@ -50,7 +50,7 @@ export class HealthCareFormComponent implements OnInit {
   }
 
   submitOffer(): void {
-    OFFER_DATA_HELPER.preparePhoneNumber(this);
+    this.offerDataInitService.preparePhoneNumber(this);
     if (!this.isEditRoute) {
       this.HealthResourceService.createHealth(this.data)
         .pipe(take(1))

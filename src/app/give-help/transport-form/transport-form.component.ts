@@ -6,10 +6,9 @@ import { SnackbarService } from '@app/shared/services/snackbar.service';
 import { CorePath, ALERT_TYPES, CANCEL_DIALOG_HEADERS, CategoryNameKey, PhoneNumber } from '@app/shared/models';
 import { take } from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MATCH_NON_DIGITS, MATCH_SPACES } from '@app/shared/consts';
 import { ConfirmCancelDialogComponent } from '@app/shared/components';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { OFFER_DATA_HELPER } from '@app/shared/utils/phone-helper';
+import { OfferDataInitService } from '@app/shared/services';
 
 @Component({
   selector: 'app-transport-form',
@@ -27,13 +26,14 @@ export class TransportFormComponent implements OnInit {
     private router: Router,
     private snackbarService: SnackbarService,
     private dialog: MatDialog,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private offerDataInitService: OfferDataInitService
   ) {}
 
   ngOnInit(): void {
     this.offerId = Number(this.route.snapshot.paramMap.get('id'));
     if (this.isEditRoute) {
-      OFFER_DATA_HELPER.initOfferDataForEdit(this, CategoryNameKey.TRANSPORT);
+      this.offerDataInitService.initOfferDataForEdit(this, CategoryNameKey.TRANSPORT);
       DIALOG_CANCEL_OFFER_CONFIG.data.headerText = CANCEL_DIALOG_HEADERS.CONFIRM_CANCEL_OFFER_EDIT;
     } else {
       DIALOG_CANCEL_OFFER_CONFIG.data.headerText = CANCEL_DIALOG_HEADERS.CONFIRM_CANCEL_OFFER_NEW;
@@ -41,7 +41,7 @@ export class TransportFormComponent implements OnInit {
   }
 
   submitOffer(): void {
-    OFFER_DATA_HELPER.preparePhoneNumber(this);
+    this.offerDataInitService.preparePhoneNumber(this);
     if (!this.isEditRoute) {
       this.transportResourceService
         .createTransport(this.data)

@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SnackbarService } from '@app/shared/services';
+import { OfferDataInitService, SnackbarService } from '@app/shared/services';
 import { DIALOG_CANCEL_OFFER_CONFIG, PREFIXES, JOB_LANGUAGES } from '@app/shared/consts';
 import { defaults } from '@app/shared/utils';
 import { ALERT_TYPES, CANCEL_DIALOG_HEADERS, CategoryNameKey, CorePath, PhoneNumber } from '@app/shared/models';
@@ -9,7 +9,6 @@ import { take } from 'rxjs';
 import { ConfirmCancelDialogComponent } from '@app/shared/components/confirm-cancel-dialog/cancel-dialog.component';
 import { JobResourceService } from '@app/core/api/api/jobResource.service';
 import { JobOfferDefinitionDTO } from '@app/core/api/model/jobOfferDefinitionDTO';
-import { OFFER_DATA_HELPER } from '@app/shared/utils/phone-helper';
 
 const INDUSTRIES = Object.entries(JobOfferDefinitionDTO.IndustryEnum).map(([key, value]) => ({
   key,
@@ -52,12 +51,13 @@ export class JobFormComponent implements OnInit {
     private router: Router,
     private dialog: MatDialog,
     private snackbarService: SnackbarService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private offerDataInitService: OfferDataInitService
   ) {}
 
   ngOnInit(): void {
     this.offerId = Number(this.route.snapshot.paramMap.get('id'));
-    OFFER_DATA_HELPER.initOfferDataForEdit(this, CategoryNameKey.JOB);
+    this.offerDataInitService.initOfferDataForEdit(this, CategoryNameKey.JOB);
     if (!this.isEditRoute) {
       DIALOG_CANCEL_OFFER_CONFIG.data.headerText = CANCEL_DIALOG_HEADERS.CONFIRM_CANCEL_OFFER_NEW;
     } else {
@@ -66,7 +66,7 @@ export class JobFormComponent implements OnInit {
   }
 
   submitOffer(): void {
-    OFFER_DATA_HELPER.preparePhoneNumber(this);
+    this.offerDataInitService.preparePhoneNumber(this);
     if (!this.isEditRoute) {
       this.jobResourceService
         .createJob(this.data)

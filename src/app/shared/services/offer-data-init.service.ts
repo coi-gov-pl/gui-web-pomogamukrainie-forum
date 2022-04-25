@@ -1,3 +1,4 @@
+import { Injectable } from '@angular/core';
 import { AccommodationOffer, JobOffer } from '@app/core/api';
 import { PREFIXES } from '@app/shared/consts';
 import { CategoryNameKey } from '@app/shared/models';
@@ -6,8 +7,9 @@ import { LawOffer } from '@app/core/api/model/lawOffer';
 import { MaterialAidOffer } from '@app/core/api/model/materialAidOffer';
 import { TransportOffer } from '@app/core/api/model/transportOffer';
 
-export const OFFER_DATA_HELPER = {
-  initOfferDataForEdit: (context: any, category: CategoryNameKey) => {
+@Injectable()
+export class OfferDataInitService {
+  initOfferDataForEdit(context: any, category: CategoryNameKey) {
     if (category === CategoryNameKey.ACCOMMODATION) {
       context.accommodationsResourceService.getAccommodations(context.offerId).subscribe((resp: AccommodationOffer) => {
         context.phone.phoneNumber = resp.phoneNumber || '';
@@ -57,13 +59,13 @@ export const OFFER_DATA_HELPER = {
         context.data = resp;
       });
     }
-  },
+  }
 
-  preparePhoneNumber: (context: any) => {
+  preparePhoneNumber(context: any) {
     if (context.phone.phoneNumber) {
       context.data.phoneNumber = `${context.phone.prefix}${context.phone.phoneNumber}`;
     } else {
       context.data.phoneNumber = undefined;
     }
-  },
-};
+  }
+}
