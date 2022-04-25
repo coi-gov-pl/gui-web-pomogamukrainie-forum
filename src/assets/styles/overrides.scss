@@ -31,22 +31,18 @@ mat-icon {
   stroke: $c-darkblue;
 }
 
-.selectPrefix {
+.selectPrefixWrap {
   .mat-form-field-outline-end {
-    @include media-breakpoint-up(sm) {
-      border-bottom-right-radius: 0 !important;
-      border-top-right-radius: 0 !important;
-    }
+    border-bottom-right-radius: 0 !important;
+    border-top-right-radius: 0 !important;
   }
 }
 
-.phoneInut {
+.phoneNumberWrap {
   .mat-form-field-outline-start {
-    @include media-breakpoint-up(sm) {
-      border-bottom-left-radius: 0 !important;
-      border-top-left-radius: 0 !important;
-      margin-left: -1px;
-    }
+    border-bottom-left-radius: 0 !important;
+    border-top-left-radius: 0 !important;
+    margin-left: -1px;
   }
 }
 
