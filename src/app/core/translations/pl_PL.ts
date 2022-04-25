@@ -268,4 +268,5 @@ export default {
   READ_MORE: 'Zobacz więcej',
   LAW_HELP_MODES: 'Tryby udzielanej pomocy',
   LAW_HELP_KINDS: 'Obszary udzielanej pomocy',
+  TYPE_NUMBER: 'Wpisz numer'
 };

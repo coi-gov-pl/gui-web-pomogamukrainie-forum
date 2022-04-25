@@ -52,11 +52,16 @@
           </mat-select>
         </mat-form-field>
       </div>
-      <div class="col-xl-2 search">
-        <button type="submit" class="btn btn-dark" [disabled]="form.invalid">
-          <mat-icon fontSet="material-icons-outlined">search</mat-icon>
-          <span>{{ "SEARCH" | translate }}</span>
-        </button>
+      <div class="form-search-wrapper col-xl-2">
+        <div class="d-flex flex-column align-items-center ms-4">
+          <button type="submit" class="btn btn-dark" [disabled]="form.invalid">
+            <mat-icon fontSet="material-icons-outlined">search</mat-icon>
+            <span>{{ "SEARCH" | translate }}</span>
+          </button>
+          <button *ngIf="showClearBtn" type="button" class="form-clear-filters btn btn-link" (click)="clearFilters()">
+            <span>{{ "CLEAR_FILTERS" | translate }}</span>
+          </button>
+        </div>
       </div>
     </div>
   </div>

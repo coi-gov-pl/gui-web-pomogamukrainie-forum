@@ -1,3 +1,4 @@
+import { ViewportScroller } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { CorePath } from '@app/shared/models';
 import { Router } from '@angular/router';
@@ -11,9 +12,10 @@ export class GiveHelpComponent implements OnInit {
   corePath = CorePath;
   editMode = false;
 
-  constructor(private router: Router) {}
+  constructor(private viewportScroller: ViewportScroller, private router: Router) {}
 
   ngOnInit() {
     this.editMode = this.router.url?.includes(CorePath.Edit);
+    this.viewportScroller.scrollToPosition([0, 0]);
   }
 }

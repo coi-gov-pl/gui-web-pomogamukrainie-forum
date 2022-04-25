@@ -14,7 +14,7 @@ import { CitiesSearchModule, DatepickerModule, FieldErrorModule } from '@app/sha
 import { ValidatorsDirectivesModule } from '@app/shared/validators';
 import { GiveHelpFormModule } from '../give-help-form/give-help-form.module';
 import { MatDialogModule } from '@angular/material/dialog';
-
+import { SharedModule } from '@app/shared/shared.module';
 @NgModule({
   declarations: [TransportFormComponent],
   imports: [
@@ -34,6 +34,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     CitiesSearchModule,
     GiveHelpFormModule,
     MatDialogModule,
+    SharedModule,
   ],
   exports: [TransportFormComponent],
 })

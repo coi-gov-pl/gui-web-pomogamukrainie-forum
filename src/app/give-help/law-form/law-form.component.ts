@@ -1,18 +1,11 @@
-import { ChangeDetectionStrategy, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LawOfferDefinitionDTO, LawResourceService } from '@app/core/api';
 import { ConfirmCancelDialogComponent } from '@app/shared/components';
-import {
-  DIALOG_CANCEL_OFFER_CONFIG,
-  LAW_LANGUAGES,
-  LENGTH_OF_STAY,
-  MATCH_NON_DIGITS,
-  MATCH_SPACES,
-  PREFIXES,
-} from '@app/shared/consts';
-import { ALERT_TYPES, CANCEL_DIALOG_HEADERS, CorePath } from '@app/shared/models';
-import { SnackbarService } from '@app/shared/services';
+import { DIALOG_CANCEL_OFFER_CONFIG, LAW_LANGUAGES, LENGTH_OF_STAY, PREFIXES } from '@app/shared/consts';
+import { ALERT_TYPES, CANCEL_DIALOG_HEADERS, CategoryNameKey, CorePath, PhoneNumber } from '@app/shared/models';
+import { OfferDataInitService, SnackbarService } from '@app/shared/services';
 import { defaults } from '@app/shared/utils';
 import { take } from 'rxjs';
 
@@ -20,11 +13,8 @@ import { take } from 'rxjs';
   selector: 'app-law-form',
   templateUrl: './law-form.component.html',
   styleUrls: ['./law-form.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LawFormComponent implements OnInit {
-  phonePrefix: string = '';
-  phoneNumber: string = '';
   LENGTH_OF_STAY = LENGTH_OF_STAY;
   LAW_LANGUAGES = LAW_LANGUAGES;
   PREFIXES = PREFIXES;
@@ -36,40 +26,30 @@ export class LawFormComponent implements OnInit {
     language: [],
   });
   offerId?: number;
-  @ViewChild('phoneInput') phoneInput!: ElementRef<HTMLInputElement>;
+  phone = defaults<PhoneNumber>();
 
   constructor(
     private LawResourceService: LawResourceService,
     private router: Router,
     private dialog: MatDialog,
     private snackbarService: SnackbarService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private offerDataInitService: OfferDataInitService
   ) {}
 
   ngOnInit(): void {
     this.offerId = Number(this.route.snapshot.paramMap.get('id'));
 
     if (this.isEditRoute) {
-      this.LawResourceService.getLaw(this.offerId).subscribe((resp) => {
-        this.phoneNumber = resp.phoneNumber || '';
-        if (resp.phoneCountryCode) {
-          this.findPrefix(resp.phoneCountryCode);
-        }
-        this.data = resp;
-      });
+      this.offerDataInitService.initOfferDataForEdit(this, CategoryNameKey.LEGAL_HELP);
       DIALOG_CANCEL_OFFER_CONFIG.data.headerText = CANCEL_DIALOG_HEADERS.CONFIRM_CANCEL_OFFER_EDIT;
     } else {
       DIALOG_CANCEL_OFFER_CONFIG.data.headerText = CANCEL_DIALOG_HEADERS.CONFIRM_CANCEL_OFFER_NEW;
     }
   }
 
-  submitOffer() {
-    if (this.phoneNumber) {
-      this.preparePhoneNumber();
-    } else {
-      this.data.phoneNumber = undefined;
-    }
-
+  submitOffer(): void {
+    this.offerDataInitService.preparePhoneNumber(this);
     if (!this.isEditRoute) {
       this.LawResourceService.createLaw(this.data)
         .pipe(take(1))
@@ -109,21 +89,6 @@ export class LawFormComponent implements OnInit {
       }
       dialogRef.close();
     });
-  }
-
-  findPrefix(phoneCountryCode: string) {
-    this.phonePrefix = PREFIXES.find((v) => v.prefix === phoneCountryCode)?.prefix || '';
-  }
-
-  onPhoneNumberChange($event: Event) {
-    let val = ($event.target as HTMLInputElement).value;
-    val = val.replace(MATCH_NON_DIGITS, '').replace(MATCH_SPACES, '');
-    this.phoneInput.nativeElement.value = val;
-    this.phoneNumber = val;
-  }
-
-  preparePhoneNumber() {
-    this.data.phoneNumber = this.phonePrefix + this.phoneNumber;
   }
 
   get isEditRoute(): boolean {

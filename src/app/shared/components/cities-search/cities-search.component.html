@@ -8,6 +8,7 @@
       #autoCompleteInput
       [placeholder]="placeholder"
       matInput
+      (keydown)="onKeydown($event)"
       [formControl]="formControl"
       [matAutocomplete]="auto"
       [required]="required"

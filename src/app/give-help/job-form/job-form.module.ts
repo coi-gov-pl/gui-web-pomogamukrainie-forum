@@ -12,7 +12,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { GiveHelpFormModule } from '../give-help-form/give-help-form.module';
-
+import { SharedModule } from '@app/shared/shared.module';
 @NgModule({
   declarations: [JobFormComponent],
   imports: [
@@ -28,6 +28,7 @@ import { GiveHelpFormModule } from '../give-help-form/give-help-form.module';
     MatInputModule,
     MatFormFieldModule,
     MatSelectModule,
+    SharedModule,
   ],
 })
 export class JobFormModule {}
