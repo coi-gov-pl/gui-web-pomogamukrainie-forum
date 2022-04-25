@@ -9,7 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ConfirmCancelDialogComponent } from '@app/shared/components';
 import { DIALOG_CANCEL_OFFER_CONFIG } from '@app/shared/consts';
-import { PHONE_HELPER } from '@app/shared/utils/phone-helper';
+import { OFFER_DATA_HELPER } from '@app/shared/utils/phone-helper';
 
 @Component({
   selector: 'app-health-care-form',
@@ -42,7 +42,7 @@ export class HealthCareFormComponent implements OnInit {
     this.offerId = Number(this.route.snapshot.paramMap.get('id'));
 
     if (this.isEditRoute) {
-      PHONE_HELPER.initPhoneOnEdit(this, CategoryNameKey.HEALTH);
+      OFFER_DATA_HELPER.initOfferDataForEdit(this, CategoryNameKey.HEALTH);
       DIALOG_CANCEL_OFFER_CONFIG.data.headerText = CANCEL_DIALOG_HEADERS.CONFIRM_CANCEL_OFFER_EDIT;
     } else {
       DIALOG_CANCEL_OFFER_CONFIG.data.headerText = CANCEL_DIALOG_HEADERS.CONFIRM_CANCEL_OFFER_NEW;
@@ -50,7 +50,7 @@ export class HealthCareFormComponent implements OnInit {
   }
 
   submitOffer(): void {
-    PHONE_HELPER.preparePhoneNumber(this);
+    OFFER_DATA_HELPER.preparePhoneNumber(this);
     if (!this.isEditRoute) {
       this.HealthResourceService.createHealth(this.data)
         .pipe(take(1))

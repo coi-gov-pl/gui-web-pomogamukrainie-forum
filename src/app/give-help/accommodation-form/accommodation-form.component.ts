@@ -10,7 +10,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ConfirmCancelDialogComponent } from '@app/shared/components';
 import { DIALOG_CANCEL_OFFER_CONFIG } from '@app/shared/consts';
 import { PhoneNumber } from '@app/shared/models';
-import { PHONE_HELPER } from '@app/shared/utils/phone-helper';
+import { OFFER_DATA_HELPER } from '@app/shared/utils/phone-helper';
 
 @Component({
   selector: 'app-accommodation-form',
@@ -40,7 +40,7 @@ export class AccommodationFormComponent implements OnInit {
     this.offerId = Number(this.route.snapshot.paramMap.get('id'));
 
     if (this.isEditRoute) {
-      PHONE_HELPER.initPhoneOnEdit(this, CategoryNameKey.ACCOMMODATION);
+      OFFER_DATA_HELPER.initOfferDataForEdit(this, CategoryNameKey.ACCOMMODATION);
       DIALOG_CANCEL_OFFER_CONFIG.data.headerText = CANCEL_DIALOG_HEADERS.CONFIRM_CANCEL_OFFER_EDIT;
     } else {
       DIALOG_CANCEL_OFFER_CONFIG.data.headerText = CANCEL_DIALOG_HEADERS.CONFIRM_CANCEL_OFFER_NEW;
@@ -48,7 +48,7 @@ export class AccommodationFormComponent implements OnInit {
   }
 
   submitOffer(): void {
-    PHONE_HELPER.preparePhoneNumber(this);
+    OFFER_DATA_HELPER.preparePhoneNumber(this);
     if (!this.isEditRoute) {
       this.accommodationsResourceService
         .createAccommodations(this.data)

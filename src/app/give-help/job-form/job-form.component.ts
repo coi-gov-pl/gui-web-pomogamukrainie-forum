@@ -9,7 +9,7 @@ import { take } from 'rxjs';
 import { ConfirmCancelDialogComponent } from '@app/shared/components/confirm-cancel-dialog/cancel-dialog.component';
 import { JobResourceService } from '@app/core/api/api/jobResource.service';
 import { JobOfferDefinitionDTO } from '@app/core/api/model/jobOfferDefinitionDTO';
-import { PHONE_HELPER } from '@app/shared/utils/phone-helper';
+import { OFFER_DATA_HELPER } from '@app/shared/utils/phone-helper';
 
 const INDUSTRIES = Object.entries(JobOfferDefinitionDTO.IndustryEnum).map(([key, value]) => ({
   key,
@@ -57,7 +57,7 @@ export class JobFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.offerId = Number(this.route.snapshot.paramMap.get('id'));
-    PHONE_HELPER.initPhoneOnEdit(this, CategoryNameKey.JOB);
+    OFFER_DATA_HELPER.initOfferDataForEdit(this, CategoryNameKey.JOB);
     if (!this.isEditRoute) {
       DIALOG_CANCEL_OFFER_CONFIG.data.headerText = CANCEL_DIALOG_HEADERS.CONFIRM_CANCEL_OFFER_NEW;
     } else {
@@ -66,7 +66,7 @@ export class JobFormComponent implements OnInit {
   }
 
   submitOffer(): void {
-    PHONE_HELPER.preparePhoneNumber(this);
+    OFFER_DATA_HELPER.preparePhoneNumber(this);
     if (!this.isEditRoute) {
       this.jobResourceService
         .createJob(this.data)

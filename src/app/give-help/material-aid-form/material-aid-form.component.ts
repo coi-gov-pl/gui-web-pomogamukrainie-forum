@@ -8,7 +8,7 @@ import { CorePath, ALERT_TYPES, CANCEL_DIALOG_HEADERS, PhoneNumber, CategoryName
 import { take } from 'rxjs/operators';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ConfirmCancelDialogComponent } from '@app/shared/components';
-import { PHONE_HELPER } from '@app/shared/utils/phone-helper';
+import { OFFER_DATA_HELPER } from '@app/shared/utils/phone-helper';
 
 const CATEGORIES = Object.entries(MaterialAidOfferDefinitionDTO.CategoryEnum).map(([key, value]) => ({
   key,
@@ -38,7 +38,7 @@ export class MaterialAidFormComponent implements OnInit {
     this.offerId = Number(this.route.snapshot.paramMap.get('id'));
 
     if (this.isEditRoute) {
-      PHONE_HELPER.initPhoneOnEdit(this, CategoryNameKey.MATERIAL_HELP);
+      OFFER_DATA_HELPER.initOfferDataForEdit(this, CategoryNameKey.MATERIAL_HELP);
       DIALOG_CANCEL_OFFER_CONFIG.data.headerText = CANCEL_DIALOG_HEADERS.CONFIRM_CANCEL_OFFER_EDIT;
     } else {
       DIALOG_CANCEL_OFFER_CONFIG.data.headerText = CANCEL_DIALOG_HEADERS.CONFIRM_CANCEL_OFFER_NEW;
@@ -46,7 +46,7 @@ export class MaterialAidFormComponent implements OnInit {
   }
 
   handleSubmit() {
-    PHONE_HELPER.preparePhoneNumber(this);
+    OFFER_DATA_HELPER.preparePhoneNumber(this);
     if (!this.isEditRoute) {
       this.materialAidResourceService
         .postMaterialAidOfferMaterialAid(this.data)

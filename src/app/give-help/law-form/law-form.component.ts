@@ -7,7 +7,7 @@ import { DIALOG_CANCEL_OFFER_CONFIG, LAW_LANGUAGES, LENGTH_OF_STAY, PREFIXES } f
 import { ALERT_TYPES, CANCEL_DIALOG_HEADERS, CategoryNameKey, CorePath, PhoneNumber } from '@app/shared/models';
 import { SnackbarService } from '@app/shared/services';
 import { defaults } from '@app/shared/utils';
-import { PHONE_HELPER } from '@app/shared/utils/phone-helper';
+import { OFFER_DATA_HELPER } from '@app/shared/utils/phone-helper';
 import { take } from 'rxjs';
 
 @Component({
@@ -41,7 +41,7 @@ export class LawFormComponent implements OnInit {
     this.offerId = Number(this.route.snapshot.paramMap.get('id'));
 
     if (this.isEditRoute) {
-      PHONE_HELPER.initPhoneOnEdit(this, CategoryNameKey.LEGAL_HELP);
+      OFFER_DATA_HELPER.initOfferDataForEdit(this, CategoryNameKey.LEGAL_HELP);
       DIALOG_CANCEL_OFFER_CONFIG.data.headerText = CANCEL_DIALOG_HEADERS.CONFIRM_CANCEL_OFFER_EDIT;
     } else {
       DIALOG_CANCEL_OFFER_CONFIG.data.headerText = CANCEL_DIALOG_HEADERS.CONFIRM_CANCEL_OFFER_NEW;
@@ -49,7 +49,7 @@ export class LawFormComponent implements OnInit {
   }
 
   submitOffer(): void {
-    PHONE_HELPER.preparePhoneNumber(this);
+    OFFER_DATA_HELPER.preparePhoneNumber(this);
     if (!this.isEditRoute) {
       this.LawResourceService.createLaw(this.data)
         .pipe(take(1))

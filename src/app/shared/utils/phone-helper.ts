@@ -6,8 +6,8 @@ import { LawOffer } from '@app/core/api/model/lawOffer';
 import { MaterialAidOffer } from '@app/core/api/model/materialAidOffer';
 import { TransportOffer } from '@app/core/api/model/transportOffer';
 
-export const PHONE_HELPER = {
-  initPhoneOnEdit: (context: any, category: CategoryNameKey) => {
+export const OFFER_DATA_HELPER = {
+  initOfferDataForEdit: (context: any, category: CategoryNameKey) => {
     if (category === CategoryNameKey.ACCOMMODATION) {
       context.accommodationsResourceService.getAccommodations(context.offerId).subscribe((resp: AccommodationOffer) => {
         context.phone.phoneNumber = resp.phoneNumber || '';

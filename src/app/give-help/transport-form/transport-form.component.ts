@@ -9,7 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MATCH_NON_DIGITS, MATCH_SPACES } from '@app/shared/consts';
 import { ConfirmCancelDialogComponent } from '@app/shared/components';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { PHONE_HELPER } from '@app/shared/utils/phone-helper';
+import { OFFER_DATA_HELPER } from '@app/shared/utils/phone-helper';
 
 @Component({
   selector: 'app-transport-form',
@@ -33,7 +33,7 @@ export class TransportFormComponent implements OnInit {
   ngOnInit(): void {
     this.offerId = Number(this.route.snapshot.paramMap.get('id'));
     if (this.isEditRoute) {
-      PHONE_HELPER.initPhoneOnEdit(this, CategoryNameKey.TRANSPORT);
+      OFFER_DATA_HELPER.initOfferDataForEdit(this, CategoryNameKey.TRANSPORT);
       DIALOG_CANCEL_OFFER_CONFIG.data.headerText = CANCEL_DIALOG_HEADERS.CONFIRM_CANCEL_OFFER_EDIT;
     } else {
       DIALOG_CANCEL_OFFER_CONFIG.data.headerText = CANCEL_DIALOG_HEADERS.CONFIRM_CANCEL_OFFER_NEW;
@@ -41,7 +41,7 @@ export class TransportFormComponent implements OnInit {
   }
 
   submitOffer(): void {
-    PHONE_HELPER.preparePhoneNumber(this);
+    OFFER_DATA_HELPER.preparePhoneNumber(this);
     if (!this.isEditRoute) {
       this.transportResourceService
         .createTransport(this.data)
