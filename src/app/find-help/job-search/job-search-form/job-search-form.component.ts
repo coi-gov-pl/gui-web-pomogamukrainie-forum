@@ -16,11 +16,6 @@ export interface JobQuery {
   language?: Array<JobOfferSearchCriteria.LanguageEnum>;
 }
 
-const industries = Object.entries(JobOffer.IndustryEnum).map(([key, value]) => ({
-  code: key,
-  value,
-}));
-
 const modes = Object.entries(JobOffer.ModeEnum).map(([key, value]) => ({
   code: key,
   value,
