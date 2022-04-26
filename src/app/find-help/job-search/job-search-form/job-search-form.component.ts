@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { JobOffer, JobOfferSearchCriteria, Location } from '@app/core/api';
 import { StoreUrlService } from '@app/core/store-url';
+import { JOB_LANGUAGES } from '@app/shared/consts';
 import { LocalStorageKeys, StatementAnchors } from '@app/shared/models';
 import { SortingFieldName, SortingOrder } from '@app/shared/models/sortingOrder.model';
 import { Subscription } from 'rxjs';
@@ -27,11 +28,6 @@ const contractTypes = Object.entries(JobOffer.ContractTypeEnum).map(([key, value
 }));
 
 const workTimes = Object.entries(JobOffer.WorkTimeEnum).map(([key, value]) => ({
-  code: key,
-  value,
-}));
-
-const languages = Object.entries(JobOffer.LanguageEnum).map(([key, value]) => ({
   code: key,
   value,
 }));
@@ -67,7 +63,7 @@ export class JobSearchFormComponent implements OnInit, OnDestroy {
   modes: Option[] = modes;
   contractTypes: Option[] = contractTypes;
   workTimes: Option[] = workTimes;
-  languages: Option[] = languages;
+  languages = JOB_LANGUAGES;
   @Output()
   search = new EventEmitter<JobOfferSearchCriteria>();
   statementAnchor: string = StatementAnchors.JOB;
