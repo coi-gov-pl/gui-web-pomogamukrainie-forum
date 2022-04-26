@@ -64,11 +64,12 @@
       [originalAccountQueryParams]="originalAccountQueryParams"
     ></app-back-to-list>
   </mat-card>
-  <div class="w-100 w-md-50">
+  <div class="reply-offer-mat-card w-100 w-md-50">
     <app-reply-offer
       [offerId]="offerId"
       [helpersPhoneNumber]="data.phoneNumber"
       [helpersFirstname]="data.userFirstName"
+      [descLength]="data.description.length"
     ></app-reply-offer>
   </div>
 </div>

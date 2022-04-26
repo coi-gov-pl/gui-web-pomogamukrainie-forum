@@ -2,4 +2,9 @@ mat-card {
   &.mat-card {
     color: inherit;
   }
+  &.clear-matcard-styles {
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+  }
 }

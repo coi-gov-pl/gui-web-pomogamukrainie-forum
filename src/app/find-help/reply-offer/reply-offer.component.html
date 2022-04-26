@@ -1,4 +1,4 @@
-<mat-card class="p-4">
+<mat-card class="clear-matcard-styles p-4">
   <form (ngSubmit)="submitMessage()" #messageForm="ngForm">
     <div class="container" #container>
       <div class="header text-center">
@@ -45,7 +45,7 @@
           <textarea
             required
             matInput
-            rows="8"
+            rows="{{ descLength < 1000 ? 8 : 16 }}"
             maxlength="2000"
             placeholder="{{ 'PLACEHOLDER_REPLY_CONTENT' | translate }}"
             name="description"
@@ -53,6 +53,7 @@
             #description="ngModel"
             appOfferDescriptionValidate
           >
+
           ></textarea
           >
           <mat-hint align="end">{{ data.text ? 2000 - data.text.length : 2000 }}/2000</mat-hint>
