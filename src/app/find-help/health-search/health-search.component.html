@@ -27,14 +27,19 @@
       [category]="categoryRoutingName.HEALTH"
     >
       <app-search-result-attribute
-        *ngIf="result.mode"
-        [text]="result.mode | translateArray: ', '"
-        icon="person"
+        *ngIf="result.specialization"
+        [text]="result.specialization | translateArray: ', '"
+        icon="business_center"
       ></app-search-result-attribute>
       <app-search-result-attribute
         *ngIf="result.language"
         [text]="result.language.join(', ')"
         icon="translate"
+      ></app-search-result-attribute>
+      <app-search-result-attribute
+        *ngIf="result.mode"
+        [text]="result.mode | translateArray: ', '"
+        icon="corporate_fare"
       ></app-search-result-attribute>
     </app-search-result>
   </div>
