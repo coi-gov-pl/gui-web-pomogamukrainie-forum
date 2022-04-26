@@ -16,11 +16,6 @@ export interface JobQuery {
   language?: Array<JobOfferSearchCriteria.LanguageEnum>;
 }
 
-const industries = Object.entries(JobOffer.IndustryEnum).map(([key, value]) => ({
-  code: key,
-  value,
-}));
-
 const modes = Object.entries(JobOffer.ModeEnum).map(([key, value]) => ({
   code: key,
   value,
@@ -68,7 +63,7 @@ export class JobSearchFormComponent implements OnInit, OnDestroy {
   formChangesSubscription = new Subscription();
   showClearBtn = false;
   data: JobOfferSearchCriteria = {};
-  industries: Option[] = industries;
+  industries = Object.values(JobOffer.IndustryEnum);
   modes: Option[] = modes;
   contractTypes: Option[] = contractTypes;
   workTimes: Option[] = workTimes;
