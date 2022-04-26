@@ -17,9 +17,7 @@
         </label>
         <mat-form-field appearance="outline">
           <mat-select [placeholder]="'PLACEHOLDER_INDUSTRY' | translate" [(ngModel)]="data.industry" name="industry">
-            <mat-option *ngFor="let industry of industries" [value]="industry.value">{{
-              industry.value | translate
-            }}</mat-option>
+            <mat-option *ngFor="let industry of industries" [value]="industry">{{ industry | translate }}</mat-option>
           </mat-select>
         </mat-form-field>
       </div>

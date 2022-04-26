@@ -68,7 +68,7 @@ export class JobSearchFormComponent implements OnInit, OnDestroy {
   formChangesSubscription = new Subscription();
   showClearBtn = false;
   data: JobOfferSearchCriteria = {};
-  industries: Option[] = industries;
+  industries = Object.values(JobOffer.IndustryEnum);
   modes: Option[] = modes;
   contractTypes: Option[] = contractTypes;
   workTimes: Option[] = workTimes;
