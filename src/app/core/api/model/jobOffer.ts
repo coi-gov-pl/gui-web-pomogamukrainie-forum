@@ -21,7 +21,7 @@ export interface JobOffer {
   modifiedDate?: string;
   mode: JobOffer.ModeEnum;
   location?: Location;
-  industry: Array<JobOffer.IndustryEnum>;
+  industry: JobOffer.IndustryEnum;
   workTime: Array<JobOffer.WorkTimeEnum>;
   contractType: Array<JobOffer.ContractTypeEnum>;
   language: Array<JobOffer.LanguageEnum>;
@@ -35,46 +35,58 @@ export namespace JobOffer {
     Mixed: 'MIXED' as ModeEnum,
   };
   export type IndustryEnum =
-    | 'FINANCES'
-    | 'HEALTH_AND_SAFETY'
-    | 'ENGINEERING'
+    | 'RESEARCH'
+    | 'BANKING'
+    | 'CONSTRUCTION'
+    | 'CALL_CENTER'
+    | 'E_COMMERCE'
     | 'EDUCATION'
+    | 'ENERGETICS'
+    | 'FINANCES'
+    | 'BEAUTY'
+    | 'GASTRONOMY'
     | 'HOTEL'
-    | 'INTERNET'
+    | 'HR'
+    | 'ENGINEERING'
     | 'IT'
-    | 'ENTERTAINMENT'
+    | 'LOGISTICS'
+    | 'MARKETING'
     | 'REAL_ASSETS'
     | 'CUSTOMER_SERVICE'
-    | 'DESK_JOB'
     | 'MANUAL_JOB'
     | 'CONSULTING'
     | 'MANUFACTURING'
-    | 'MARKETING'
     | 'PUBLIC_SECTOR'
-    | 'LOGISTICS'
-    | 'TRADE'
-    | 'HEALTH_AND_BEAUTY'
+    | 'SALES'
+    | 'TRANSPORT'
+    | 'HEALTH'
     | 'MISC';
   export const IndustryEnum = {
-    Finances: 'FINANCES' as IndustryEnum,
-    HealthAndSafety: 'HEALTH_AND_SAFETY' as IndustryEnum,
-    Engineering: 'ENGINEERING' as IndustryEnum,
+    Research: 'RESEARCH' as IndustryEnum,
+    Banking: 'BANKING' as IndustryEnum,
+    Construction: 'CONSTRUCTION' as IndustryEnum,
+    CallCenter: 'CALL_CENTER' as IndustryEnum,
+    ECommerce: 'E_COMMERCE' as IndustryEnum,
     Education: 'EDUCATION' as IndustryEnum,
+    Energetics: 'ENERGETICS' as IndustryEnum,
+    Finances: 'FINANCES' as IndustryEnum,
+    Beauty: 'BEAUTY' as IndustryEnum,
+    Gastronomy: 'GASTRONOMY' as IndustryEnum,
     Hotel: 'HOTEL' as IndustryEnum,
-    Internet: 'INTERNET' as IndustryEnum,
+    Hr: 'HR' as IndustryEnum,
+    Engineering: 'ENGINEERING' as IndustryEnum,
     It: 'IT' as IndustryEnum,
-    Entertainment: 'ENTERTAINMENT' as IndustryEnum,
+    Logistics: 'LOGISTICS' as IndustryEnum,
+    Marketing: 'MARKETING' as IndustryEnum,
     RealAssets: 'REAL_ASSETS' as IndustryEnum,
     CustomerService: 'CUSTOMER_SERVICE' as IndustryEnum,
-    DeskJob: 'DESK_JOB' as IndustryEnum,
     ManualJob: 'MANUAL_JOB' as IndustryEnum,
     Consulting: 'CONSULTING' as IndustryEnum,
     Manufacturing: 'MANUFACTURING' as IndustryEnum,
-    Marketing: 'MARKETING' as IndustryEnum,
     PublicSector: 'PUBLIC_SECTOR' as IndustryEnum,
-    Logistics: 'LOGISTICS' as IndustryEnum,
-    Trade: 'TRADE' as IndustryEnum,
-    HealthAndBeauty: 'HEALTH_AND_BEAUTY' as IndustryEnum,
+    Sales: 'SALES' as IndustryEnum,
+    Transport: 'TRANSPORT' as IndustryEnum,
+    Health: 'HEALTH' as IndustryEnum,
     Misc: 'MISC' as IndustryEnum,
   };
   export type WorkTimeEnum = 'FULL_TIME' | 'PART_TIME' | 'TEMPORARY';
