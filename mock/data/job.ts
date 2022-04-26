@@ -1,4 +1,4 @@
-import { JobOfferDefinitionDTO, JobOffer, OffersAccommodationOffer, OffersJobOffer, Location } from '@app/core/api';
+import { JobOffer, JobOfferDefinitionDTO, OffersJobOffer } from '@app/core/api';
 
 export const jobOffer = (body: JobOfferDefinitionDTO): JobOffer => {
   return {
@@ -23,7 +23,7 @@ export const jobsList: OffersJobOffer = {
       modifiedDate: '2022-03-16T14:43:15Z',
       mode: 'ONSITE',
       location: { region: 'podkarpackie', city: 'Rzeszów' },
-      industry: ['IT'],
+      industry: 'IT',
       workTime: ['FULL_TIME', 'PART_TIME'],
       contractType: ['B2B'],
       language: ['PL', 'UA'],
@@ -40,7 +40,7 @@ export const jobsList: OffersJobOffer = {
       modifiedDate: '2022-03-16T14:43:15Z',
       mode: 'ONSITE',
       location: { region: 'podkarpackie', city: 'Rzeszów' },
-      industry: ['IT'],
+      industry: 'IT',
       workTime: ['FULL_TIME', 'PART_TIME'],
       contractType: ['B2B'],
       language: ['PL', 'UA'],
