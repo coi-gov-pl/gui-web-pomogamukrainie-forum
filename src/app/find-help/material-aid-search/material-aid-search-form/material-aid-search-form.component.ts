@@ -5,6 +5,7 @@ import { MaterialAidOffer, MaterialAidOfferSearchCriteria } from '@app/core/api'
 import { StoreUrlService } from '@app/core/store-url';
 import { LocalStorageKeys, StatementAnchors } from '@app/shared/models';
 import { SortingFieldName, SortingOrder } from '@app/shared/models/sortingOrder.model';
+import { formFieldEmpty } from '@app/shared/utils';
 import { Subscription } from 'rxjs';
 
 const categories = Object.entries(MaterialAidOffer.CategoryEnum).map(([key, value]) => ({
@@ -49,7 +50,7 @@ export class MaterialAidSearchFormComponent implements OnInit, OnDestroy {
     }
 
     this.formChangesSubscription = this.ngForm.form.valueChanges.subscribe((form) => {
-      this.showClearBtn = Object.values(form).some((el) => el !== undefined);
+      this.showClearBtn = Object.values(form).some((el) => !formFieldEmpty(el));
     });
   }
 

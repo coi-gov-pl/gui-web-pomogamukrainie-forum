@@ -25,7 +25,11 @@
         <label
           ><b>{{ "DATE" | translate }}</b></label
         >
-        <app-datepicker [(date)]="data.transportDate"></app-datepicker>
+        <app-datepicker
+          [(date)]="data.transportDate"
+          (dateChange)="onDatePickerChange($event)"
+          #datepicker
+        ></app-datepicker>
       </div>
       <div class="col-md-4 col-lg-1">
         <label
