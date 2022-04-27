@@ -36,20 +36,6 @@ export const LANGUAGES: Option[] = [
   { code: HostLanguageEnum.En, label: LanguageNames.ENGLISH },
 ];
 
-export const LAW_LANGUAGES: Option[] = [
-  { code: LawLanguageEnum.Pl, label: LanguageNames.POLISH },
-  { code: LawLanguageEnum.Ua, label: LanguageNames.UKRAINIAN },
-  { code: LawLanguageEnum.Ru, label: LanguageNames.RUSSIAN },
-  { code: LawLanguageEnum.En, label: LanguageNames.ENGLISH },
-];
-
-export const JOB_LANGUAGES: Option[] = [
-  { code: JobLanguageEnum.Pl, label: LanguageNames.POLISH },
-  { code: JobLanguageEnum.Ua, label: LanguageNames.UKRAINIAN },
-  { code: JobLanguageEnum.Ru, label: LanguageNames.RUSSIAN },
-  { code: JobLanguageEnum.En, label: LanguageNames.ENGLISH },
-];
-
 export const LENGTH_OF_STAY: Option[] = [
   { code: AccommodationOffer.LengthOfStayEnum.Week1, label: LengthOfStayLabels.WEEK_1 },
   { code: AccommodationOffer.LengthOfStayEnum.Week2, label: LengthOfStayLabels.WEEK_2 },

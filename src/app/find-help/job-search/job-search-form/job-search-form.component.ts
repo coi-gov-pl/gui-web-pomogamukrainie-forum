@@ -3,8 +3,10 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { JobOffer, JobOfferSearchCriteria, Location } from '@app/core/api';
 import { StoreUrlService } from '@app/core/store-url';
+import { LANGUAGES } from '@app/shared/consts';
 import { LocalStorageKeys, StatementAnchors } from '@app/shared/models';
 import { SortingFieldName, SortingOrder } from '@app/shared/models/sortingOrder.model';
+import { formFieldEmpty } from '@app/shared/utils';
 import { Subscription } from 'rxjs';
 
 export interface JobQuery {
@@ -15,11 +17,6 @@ export interface JobQuery {
   mode?: JobOfferSearchCriteria.ModeEnum;
   language?: Array<JobOfferSearchCriteria.LanguageEnum>;
 }
-
-const industries = Object.entries(JobOffer.IndustryEnum).map(([key, value]) => ({
-  code: key,
-  value,
-}));
 
 const modes = Object.entries(JobOffer.ModeEnum).map(([key, value]) => ({
   code: key,
@@ -32,11 +29,6 @@ const contractTypes = Object.entries(JobOffer.ContractTypeEnum).map(([key, value
 }));
 
 const workTimes = Object.entries(JobOffer.WorkTimeEnum).map(([key, value]) => ({
-  code: key,
-  value,
-}));
-
-const languages = Object.entries(JobOffer.LanguageEnum).map(([key, value]) => ({
   code: key,
   value,
 }));
@@ -68,11 +60,11 @@ export class JobSearchFormComponent implements OnInit, OnDestroy {
   formChangesSubscription = new Subscription();
   showClearBtn = false;
   data: JobOfferSearchCriteria = {};
-  industries: Option[] = industries;
+  industries = Object.values(JobOffer.IndustryEnum);
   modes: Option[] = modes;
   contractTypes: Option[] = contractTypes;
   workTimes: Option[] = workTimes;
-  languages: Option[] = languages;
+  LANGUAGES = LANGUAGES;
   @Output()
   search = new EventEmitter<JobOfferSearchCriteria>();
   statementAnchor: string = StatementAnchors.JOB;
@@ -86,7 +78,7 @@ export class JobSearchFormComponent implements OnInit, OnDestroy {
     }
 
     this.formChangesSubscription = this.ngForm.form.valueChanges.subscribe((form) => {
-      this.showClearBtn = Object.values(form).some((el) => el !== undefined);
+      this.showClearBtn = Object.values(form).some((el) => !formFieldEmpty(el));
     });
   }
 

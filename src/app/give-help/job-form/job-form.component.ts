@@ -1,14 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { OfferDataInitService, SnackbarService } from '@app/shared/services';
-import { DIALOG_CANCEL_OFFER_CONFIG, PREFIXES, JOB_LANGUAGES } from '@app/shared/consts';
-import { defaults } from '@app/shared/utils';
-import { ALERT_TYPES, CANCEL_DIALOG_HEADERS, CategoryNameKey, CorePath, PhoneNumber } from '@app/shared/models';
-import { take } from 'rxjs';
-import { ConfirmCancelDialogComponent } from '@app/shared/components/confirm-cancel-dialog/cancel-dialog.component';
 import { JobResourceService } from '@app/core/api/api/jobResource.service';
 import { JobOfferDefinitionDTO } from '@app/core/api/model/jobOfferDefinitionDTO';
+import { ConfirmCancelDialogComponent } from '@app/shared/components/confirm-cancel-dialog/cancel-dialog.component';
+import { DIALOG_CANCEL_OFFER_CONFIG, LANGUAGES, PREFIXES } from '@app/shared/consts';
+import { ALERT_TYPES, CANCEL_DIALOG_HEADERS, CategoryNameKey, CorePath, PhoneNumber } from '@app/shared/models';
+import { OfferDataInitService, SnackbarService } from '@app/shared/services';
+import { defaults } from '@app/shared/utils';
+import { take } from 'rxjs';
 
 const INDUSTRIES = Object.entries(JobOfferDefinitionDTO.IndustryEnum).map(([key, value]) => ({
   key,
@@ -36,7 +36,7 @@ const WORK_TIME = Object.entries(JobOfferDefinitionDTO.WorkTimeEnum).map(([key, 
   styleUrls: ['./job-form.component.scss'],
 })
 export class JobFormComponent implements OnInit {
-  LANGUAGES = JOB_LANGUAGES;
+  LANGUAGES = LANGUAGES;
   PREFIXES = PREFIXES;
   INDUSTRIES = INDUSTRIES;
   JOB_MODES = JOB_MODES;
@@ -57,10 +57,11 @@ export class JobFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.offerId = Number(this.route.snapshot.paramMap.get('id'));
-    this.offerDataInitService.initOfferDataForEdit(this, CategoryNameKey.JOB);
+
     if (!this.isEditRoute) {
       DIALOG_CANCEL_OFFER_CONFIG.data.headerText = CANCEL_DIALOG_HEADERS.CONFIRM_CANCEL_OFFER_NEW;
     } else {
+      this.offerDataInitService.initOfferDataForEdit(this, CategoryNameKey.JOB);
       DIALOG_CANCEL_OFFER_CONFIG.data.headerText = CANCEL_DIALOG_HEADERS.CONFIRM_CANCEL_OFFER_EDIT;
     }
   }

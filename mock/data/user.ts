@@ -1,4 +1,4 @@
-import { UserInfo, OffersBaseOffer } from '@app/core/api';
+import { OffersBaseOffer, UserInfo } from '@app/core/api';
 
 export const loggedUserInfo: UserInfo = { email: 'john@email.invalid', firstName: 'John' };
 
@@ -143,7 +143,7 @@ export const userOffers: OffersBaseOffer = {
       modifiedDate: '2022-03-16T14:43:15Z',
       mode: 'ONSITE',
       location: { region: 'podkarpackie', city: 'Rzeszów' },
-      industry: ['IT'],
+      industry: 'IT',
       workTime: ['FULL_TIME', 'PART_TIME'],
       contractType: ['B2B'],
       language: ['PL', 'UA'],

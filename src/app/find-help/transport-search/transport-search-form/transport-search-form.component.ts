@@ -3,8 +3,10 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { TransportOfferSearchCriteria } from '@app/core/api';
 import { StoreUrlService } from '@app/core/store-url';
+import { DatepickerComponent } from '@app/shared/components';
 import { CorePath, LocalStorageKeys, StatementAnchors } from '@app/shared/models';
 import { SortingFieldName, SortingOrder } from '@app/shared/models/sortingOrder.model';
+import { formFieldEmpty } from '@app/shared/utils';
 import { Subscription } from 'rxjs';
 
 const cleanForm = {
@@ -24,6 +26,8 @@ const cleanForm = {
 export class TransportSearchFormComponent implements OnInit, OnDestroy {
   @ViewChild('form', { static: true })
   ngForm: NgForm = new NgForm([], []);
+  @ViewChild('datepicker', { static: true })
+  datepicker!: DatepickerComponent;
   formChangesSubscription = new Subscription();
   showClearBtn = false;
   data: TransportOfferSearchCriteria = {};
@@ -31,6 +35,7 @@ export class TransportSearchFormComponent implements OnInit, OnDestroy {
   search = new EventEmitter<TransportOfferSearchCriteria>();
   corePath = CorePath;
   statementAnchor: string = StatementAnchors.TRANSPORT;
+  formCopy = {};
 
   constructor(private router: Router, private route: ActivatedRoute, private storeUrlService: StoreUrlService) {}
 
@@ -47,7 +52,8 @@ export class TransportSearchFormComponent implements OnInit, OnDestroy {
     }
 
     this.formChangesSubscription = this.ngForm.form.valueChanges.subscribe((form) => {
-      this.showClearBtn = Object.values(form).some((el) => el !== undefined);
+      this.formCopy = { ...form };
+      this.showClearBtn = Object.values(form).some((el) => !formFieldEmpty(el));
     });
   }
 
@@ -82,5 +88,11 @@ export class TransportSearchFormComponent implements OnInit, OnDestroy {
     };
     await this.storeUrlService.setCustomPaginatorParam(param);
     this.search.emit(this.data);
+    this.datepicker.dateModel = undefined;
+    this.showClearBtn = false;
+  }
+
+  onDatePickerChange(val: string | undefined) {
+    this.showClearBtn = !formFieldEmpty(val) || Object.values(this.formCopy).some((el) => !formFieldEmpty(el));
   }
 }
