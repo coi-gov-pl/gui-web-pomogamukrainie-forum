@@ -34,6 +34,7 @@ const routes: Routes = [
     loadChildren: () => import('./give-help/give-help.module').then((m) => m.GiveHelpModule),
     data: {
       title: BreadcrumbLabels.EDIT_ANNOUNCEMENT,
+      disabled: true,
     },
   },
   {
