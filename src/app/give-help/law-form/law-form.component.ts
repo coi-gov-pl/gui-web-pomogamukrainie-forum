@@ -3,7 +3,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LawOfferDefinitionDTO, LawResourceService } from '@app/core/api';
 import { ConfirmCancelDialogComponent } from '@app/shared/components';
-import { DIALOG_CANCEL_OFFER_CONFIG, LAW_LANGUAGES, LENGTH_OF_STAY, PREFIXES } from '@app/shared/consts';
+import { DIALOG_CANCEL_OFFER_CONFIG, LANGUAGES, LENGTH_OF_STAY, PREFIXES } from '@app/shared/consts';
 import { ALERT_TYPES, CANCEL_DIALOG_HEADERS, CategoryNameKey, CorePath, PhoneNumber } from '@app/shared/models';
 import { OfferDataInitService, SnackbarService } from '@app/shared/services';
 import { defaults } from '@app/shared/utils';
@@ -16,7 +16,7 @@ import { take } from 'rxjs';
 })
 export class LawFormComponent implements OnInit {
   LENGTH_OF_STAY = LENGTH_OF_STAY;
-  LAW_LANGUAGES = LAW_LANGUAGES;
+  LAW_LANGUAGES = LANGUAGES;
   PREFIXES = PREFIXES;
   HELP_KIND = Object.values(LawOfferDefinitionDTO.HelpKindEnum);
   HELP_MODE = Object.values(LawOfferDefinitionDTO.HelpModeEnum);
