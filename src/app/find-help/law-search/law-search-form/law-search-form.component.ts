@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
 import { LawOffer, LawOfferSearchCriteria } from '@app/core/api';
 import { StoreUrlService } from '@app/core/store-url';
-import { LAW_LANGUAGES } from '@app/shared/consts';
+import { LANGUAGES } from '@app/shared/consts';
 import { LocalStorageKeys, Option, StatementAnchors } from '@app/shared/models';
 import { SortingFieldName, SortingOrder } from '@app/shared/models/sortingOrder.model';
 import { Subscription } from 'rxjs';
@@ -38,7 +38,7 @@ export class LawSearchFormComponent implements OnInit, OnDestroy {
   formChangesSubscription = new Subscription();
   showClearBtn = false;
   data: LawOfferSearchCriteria = {};
-  LANGUAGES = LAW_LANGUAGES;
+  LANGUAGES = LANGUAGES;
   HELP_KIND: Option[] = HELP_KIND;
   HELP_MODE: Option[] = HELP_MODE;
   @Output()

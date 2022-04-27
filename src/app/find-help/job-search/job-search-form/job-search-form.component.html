@@ -72,7 +72,7 @@
             [(ngModel)]="data.language"
             name="languages"
           >
-            <mat-option *ngFor="let language of languages" [value]="language.code">{{
+            <mat-option *ngFor="let language of LANGUAGES" [value]="language.code">{{
               language.label | translate
             }}</mat-option>
           </mat-select>
