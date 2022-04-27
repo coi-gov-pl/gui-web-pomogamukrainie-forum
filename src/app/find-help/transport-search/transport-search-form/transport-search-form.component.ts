@@ -52,7 +52,7 @@ export class TransportSearchFormComponent implements OnInit, OnDestroy {
     }
 
     this.formChangesSubscription = this.ngForm.form.valueChanges.subscribe((form) => {
-      this.formCopy = Object.assign({}, form);
+      this.formCopy = { ...form };
       this.showClearBtn = Object.values(form).some((el) => !formFieldEmpty(el));
     });
   }
@@ -93,6 +93,6 @@ export class TransportSearchFormComponent implements OnInit, OnDestroy {
   }
 
   onDatePickerChange(val: string | undefined) {
-    this.showClearBtn = Object.values(this.formCopy).some((el) => !formFieldEmpty(el)) || !formFieldEmpty(val);
+    this.showClearBtn = !formFieldEmpty(val) || Object.values(this.formCopy).some((el) => !formFieldEmpty(el));
   }
 }
