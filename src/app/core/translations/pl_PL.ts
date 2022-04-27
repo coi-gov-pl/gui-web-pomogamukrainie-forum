@@ -16,6 +16,7 @@ export default {
   SUPPORT_REFUGEES: 'Chcesz wesprzeć uchodźców?',
   SEARCH_FOR_HELP: 'Znajdź pomoc',
   ADD_AD: 'Dodaj ogłoszenie',
+  EDT_AD: 'Edycja ogłoszenia',
   WHAT_ARE_YOU_LOOKING_FOR: 'Czego potrzebujesz?',
   CHOOSE_CATEGORY: 'Wybierz kategorię',
   ACCOMMODATION: 'Noclegi i Mieszkania',
@@ -267,5 +268,5 @@ export default {
   READ_MORE: 'Zobacz więcej',
   LAW_HELP_MODES: 'Tryby udzielanej pomocy',
   LAW_HELP_KINDS: 'Obszary udzielanej pomocy',
-  TYPE_NUMBER: 'Wpisz numer'
+  TYPE_NUMBER: 'Wpisz numer',
 };

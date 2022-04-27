@@ -16,6 +16,7 @@ export default {
   SUPPORT_REFUGEES: `Хотите помочь?`,
   SEARCH_FOR_HELP: `Найти помощь`,
   ADD_AD: `Разместить объявление`,
+  EDT_AD: 'Редактирование объявления',
   WHAT_ARE_YOU_LOOKING_FOR: `Какая помощь вам нужна?`,
   ACCOMMODATION: `Ночлег и проживание`,
   MATERIAL_HELP: `Материальная помощь`,
@@ -187,4 +188,5 @@ export default {
   MONTH_2: '2 месяца',
   MONTH_3: '3 месяца',
   LONGER: 'дольше',
+
 };
