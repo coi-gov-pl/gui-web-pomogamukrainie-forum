@@ -6,6 +6,7 @@ import { StoreUrlService } from '@app/core/store-url';
 import { LANGUAGES } from '@app/shared/consts'; // TODO: define languages for Health or global ones?
 import { LocalStorageKeys, StatementAnchors } from '@app/shared/models';
 import { SortingFieldName, SortingOrder } from '@app/shared/models/sortingOrder.model';
+import { formFieldEmpty } from '@app/shared/utils';
 import { Subscription } from 'rxjs';
 
 const specializations = Object.entries(HealthOfferSearchCriteria.SpecializationEnum).map(([key, value]) => ({
@@ -64,7 +65,7 @@ export class HealthSearchFormComponent implements OnInit, OnDestroy {
     }
 
     this.formChangesSubscription = this.ngForm.form.valueChanges.subscribe((form) => {
-      this.showClearBtn = Object.values(form).some((el) => el !== undefined);
+      this.showClearBtn = Object.values(form).some((el) => !formFieldEmpty(el));
     });
   }
 
