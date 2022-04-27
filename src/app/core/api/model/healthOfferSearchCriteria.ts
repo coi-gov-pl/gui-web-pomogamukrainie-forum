@@ -19,7 +19,6 @@ export interface HealthOfferSearchCriteria {
 }
 export namespace HealthOfferSearchCriteria {
   export type SpecializationEnum =
-    | 'ALL'
     | 'GENERAL'
     | 'PEDIATRICS'
     | 'PSYCHOLOGY'
@@ -28,7 +27,6 @@ export namespace HealthOfferSearchCriteria {
     | 'STOMATOLOGY'
     | 'MISC';
   export const SpecializationEnum = {
-    All: 'ALL' as SpecializationEnum,
     General: 'GENERAL' as SpecializationEnum,
     Pediatrics: 'PEDIATRICS' as SpecializationEnum,
     Psychology: 'PSYCHOLOGY' as SpecializationEnum,

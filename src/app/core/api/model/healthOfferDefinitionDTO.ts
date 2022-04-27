@@ -29,7 +29,6 @@ export namespace HealthOfferDefinitionDTO {
     ByPhone: 'BY_PHONE' as ModeEnum,
   };
   export type SpecializationEnum =
-    | 'ALL'
     | 'GENERAL'
     | 'PEDIATRICS'
     | 'PSYCHOLOGY'
@@ -38,7 +37,6 @@ export namespace HealthOfferDefinitionDTO {
     | 'STOMATOLOGY'
     | 'MISC';
   export const SpecializationEnum = {
-    All: 'ALL' as SpecializationEnum,
     General: 'GENERAL' as SpecializationEnum,
     Pediatrics: 'PEDIATRICS' as SpecializationEnum,
     Psychology: 'PSYCHOLOGY' as SpecializationEnum,
