@@ -53,12 +53,17 @@
         </mat-form-field>
       </div>
       <div class="form-search-wrapper d-xl-flex col-xl-2">
-        <div class="d-flex flex-column align-items-stretch align-items-md-center ms-xl-4">
+        <div class="d-flex flex-column align-items-stretch align-items-md-center ms-xl-4 buttons-mt-xl">
           <button type="submit" class="btn btn-dark" [disabled]="form.invalid">
             <mat-icon fontSet="material-icons-outlined">search</mat-icon>
             <span>{{ "SEARCH" | translate }}</span>
           </button>
-          <button *ngIf="showClearBtn" type="button" class="form-clear-filters btn btn-link" (click)="clearFilters()">
+          <button
+            [ngStyle]="{ visibility: showClearBtn ? 'visible' : 'hidden' }"
+            type="button"
+            class="form-clear-filters btn btn-link"
+            (click)="clearFilters()"
+          >
             <span>{{ "CLEAR_FILTERS" | translate }}</span>
           </button>
         </div>

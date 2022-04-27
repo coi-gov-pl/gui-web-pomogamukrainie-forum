@@ -48,4 +48,16 @@ form {
 .form-search-wrapper {
   align-items: center;
   justify-content: flex-end;
+
+  .buttons-mt-xl {
+    @media (min-width: $breakpoint-xl) {
+      margin-top: 1.42rem;
+    }
+  }
+
+  .buttons-mt-md {
+    @media (min-width: $breakpoint-md) {
+      margin-top: 1.42rem;
+    }
+  }
 }
