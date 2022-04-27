@@ -260,7 +260,7 @@ export default {
   LABEL_HELP_KIND: 'Юридична проблема',
   LABEL_HELP_MODE: 'Режим',
   LABOUR_LAW: 'Трудове право',
-  IMMIGRATION_LAW: 'Закон про іноземців',
+  IMMIGRATION_LAW: 'Міграційне право',
   FAMILY_LAW: 'Сімейне право',
   TAX_LAW: 'Податкове право',
   CIVIL_LAW: 'Цивільне право',
