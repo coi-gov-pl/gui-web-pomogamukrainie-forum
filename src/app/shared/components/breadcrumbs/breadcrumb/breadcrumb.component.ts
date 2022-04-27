@@ -47,10 +47,11 @@ export class BreadcrumbComponent implements OnInit {
     let path = [];
     while (route) {
       const label: string = route.data['title'];
+      const disabled = !!route.data['disabled'];
       const newSegments = route.url.map((segment) => segment.path);
       path.push(...newSegments);
       if (label) {
-        breadcrumbs.push({ label, url: `/${path.join('/')}` });
+        breadcrumbs.push({ label, url: `/${path.join('/')}`, disabled });
       }
       route = route.firstChild;
     }
