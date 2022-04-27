@@ -16,7 +16,7 @@ export default {
   SUPPORT_REFUGEES: `Хочете підтримати біженців?`,
   SEARCH_FOR_HELP: `Знайди допомогу`,
   ADD_AD: `Додай оголошення`,
-  EDIT_AD: `Редагувати оголошення`,
+  EDIT_AD: 'Редагування оголошення',
   WHAT_ARE_YOU_LOOKING_FOR: `Яка вам потрібна допомога?`,
   ACCOMMODATION: `Проживання та житло`,
   MATERIAL_HELP: `Матеріальна допомога`,
