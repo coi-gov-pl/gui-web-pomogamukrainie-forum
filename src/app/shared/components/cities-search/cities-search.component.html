@@ -8,10 +8,10 @@
       #autoCompleteInput
       [placeholder]="placeholder"
       matInput
+      (keydown)="onKeydown($event)"
       [formControl]="formControl"
       [matAutocomplete]="auto"
       [required]="required"
-      [readonly]="isRegionPicked"
       (input)="onLocationInput($event)"
     />
     <mat-autocomplete

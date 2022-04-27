@@ -1,0 +1,171 @@
+<mat-card>
+  <form (ngSubmit)="submitOffer()" #transportForm="ngForm">
+    <div class="container">
+      <div class="d-flex">
+        <button class="btn-link ms-auto" type="button" (click)="onCancelButtonClick()">
+          <mat-icon class="button-icon" fontSet="material-icons-outlined">close</mat-icon
+          ><span class="cancel-label">{{ "CANCEL" | translate }}</span>
+        </button>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <app-offer-title-input [(value)]="data.title"></app-offer-title-input>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 col-md-12">
+          <app-cities-search
+            [(ngModel)]="data.location"
+            name="origin"
+            [placeholder]="'PLACEHOLDER_LOCATION' | translate"
+            [label]="'LOCATION' | translate"
+            [isRegionPicked]="data.location?.region ? true : false"
+          ></app-cities-search>
+        </div>
+        <div class="col-lg-6 col-md-12">
+          <label>
+            <b>{{ "LABEL_INDUSTRY" | translate }}*</b>
+          </label>
+          <mat-form-field appearance="outline">
+            <mat-select
+              placeholder="{{ 'PLACEHOLDER_INDUSTRY' | translate }}"
+              multiple
+              [(ngModel)]="data.industry"
+              name="industry"
+              required
+              #industry="ngModel"
+            >
+              <mat-option *ngFor="let industry of INDUSTRIES" [value]="industry.value">
+                {{ industry.value | translate }}
+              </mat-option>
+            </mat-select>
+            <mat-error>
+              <app-field-error [model]="industry"></app-field-error>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-3">
+          <label>
+            <b>{{ "LABEL_JOB_MODE" | translate }}*</b>
+          </label>
+          <mat-form-field appearance="outline">
+            <mat-select
+              placeholder="{{ 'PLACEHOLDER_JOB_MODE' | translate }}"
+              [(ngModel)]="data.mode"
+              name="mode"
+              required
+              #mode="ngModel"
+            >
+              <mat-option *ngFor="let mode of JOB_MODES" [value]="mode.value">{{ mode.value | translate }}</mat-option>
+            </mat-select>
+            <mat-error>
+              <app-field-error [model]="industry"></app-field-error>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-lg-3">
+          <label>
+            <b>{{ "LABEL_CONTRACT_TYPE" | translate }}*</b>
+          </label>
+          <mat-form-field appearance="outline">
+            <mat-select
+              placeholder="{{ 'PLACEHOLDER_CONTRACT_TYPE' | translate }}"
+              multiple
+              [(ngModel)]="data.contractType"
+              name="contractType"
+              required
+              #contractType="ngModel"
+            >
+              <mat-option *ngFor="let contractType of CONTRACT_TYPE" [value]="contractType.value">
+                {{ contractType.value | translate }}
+              </mat-option>
+            </mat-select>
+            <mat-error>
+              <app-field-error [model]="contractType"></app-field-error>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-lg-3">
+          <label>
+            <b>{{ "LABEL_WORK_TIME" | translate }}*</b>
+          </label>
+          <mat-form-field appearance="outline">
+            <mat-select
+              placeholder="{{ 'PLACEHOLDER_JOB_TIME' | translate }}"
+              multiple
+              [(ngModel)]="data.workTime"
+              name="workingTime"
+              required
+              #workingTime="ngModel"
+            >
+              <mat-option *ngFor="let workTime of WORK_TIME" [value]="workTime.value">
+                {{ workTime.value | translate }}
+              </mat-option>
+            </mat-select>
+            <mat-error>
+              <app-field-error [model]="workingTime"></app-field-error>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-lg-3">
+          <label>
+            <b>{{ "LABEL_JOB_LANG" | translate }} *</b>
+          </label>
+          <mat-form-field appearance="outline">
+            <mat-select
+              placeholder="{{ 'PLACEHOLDER_CHOOSE' | translate }}"
+              multiple
+              [(ngModel)]="data.language"
+              name="language"
+              required
+              #language="ngModel"
+            >
+              <mat-option *ngFor="let lang of LANGUAGES" [value]="lang.code">{{ lang.label | translate }}</mat-option>
+            </mat-select>
+            <mat-error>
+              <app-field-error [model]="language"></app-field-error>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-7 mb-3">
+          <label>
+            <b>{{ "LABEL_OFFER_DESCRIPTION" | translate }}</b>
+            <span> {{ "LABEL_OFFER_DESCRIPTION_MAXCHARS" | translate }} *</span>
+          </label>
+          <mat-form-field appearance="outline" hintLabel="{{ 'CHARS_LEFT' | translate }}">
+            <textarea
+              matInput
+              rows="8"
+              maxlength="2000"
+              placeholder="{{ 'PLACEHOLDER_OFFER_DESCRIPTION' | translate }}"
+              name="description"
+              [(ngModel)]="data.description"
+              required
+              #description="ngModel"
+              appOfferDescriptionValidate
+            ></textarea>
+            <mat-hint align="end">{{ data.description ? 2000 - data.description.length : 2000 }}/2000</mat-hint>
+            <mat-error>
+              <app-field-error [model]="description"></app-field-error>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-lg-5">
+          <div class="row">
+            <app-phone-input [(phone)]="phone"></app-phone-input>
+          </div>
+          <div class="row>">
+            <div class="col-lg-12 publish">
+              <app-publish-ad-button [isEditRoute]="isEditRoute"></app-publish-ad-button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</mat-card>

@@ -9,7 +9,7 @@
       <span class="text-with-icon opacity-50">
         <span class="">{{ origin.city + ", " + origin.region }}</span>
         <mat-icon fontSet="material-icons-outlined" class="mx-3 my-1 my-md-0">arrow_forward</mat-icon>
-        <span class="">{{ destination.city + ", " + origin.region }}</span>
+        <span class="">{{ destination.city + ", " + destination.region }}</span>
       </span>
     </app-search-result-attribute>
     <div class="right opacity-50" *ngIf="posted">{{ postedDate | date: "dd/MM/yyyy" }}</div>
@@ -17,7 +17,7 @@
   <div class="d-sm-flex">
     <a role="button" (click)="onViewOffer()" class="flex-fill link">
       <h4 class="text-start text-break">{{ title }}</h4>
-      <div class="attributes">
+      <div class="attributes flex-wrap flex-md-nowrap">
         <ng-content select="app-search-result-attribute"></ng-content>
       </div>
       <div class="description text-start text-break">

@@ -1,5 +1,5 @@
 <nav class="navigation">
-  <div class="categories">
+  <div class="categories d-none d-md-grid">
     <ng-container *ngFor="let category of categories">
       <ng-container *ngIf="!category.disabled && !(inactive && !isActive(category)); else disabledCategory">
         <a
@@ -32,5 +32,31 @@
         </div>
       </ng-template>
     </ng-container>
+  </div>
+  <div class="categories-mobile d-block d-md-none">
+    <label
+      ><b>{{ "CHOOSE_CATEGORY" | translate }}</b></label
+    >
+    <mat-form-field appearance="outline">
+      <mat-select [placeholder]="'CHOOSE_FROM_THE_LIST' | translate" [(ngModel)]="selectedCategory.name">
+        <mat-select-trigger *ngIf="selectedCategory">
+          <mat-icon class="material-icons-outlined">{{ selectedCategory.icon }}</mat-icon
+          ><span class="selected-category">{{ selectedCategory.name | translate }}</span>
+        </mat-select-trigger>
+        <ng-container *ngFor="let category of categories">
+          <a
+            *ngIf="!category.disabled"
+            class="category-link"
+            [routerLink]="['/', outputPath, routingCategoryName[category.name]]"
+            [queryParams]="queryParams()"
+          >
+            <mat-option [value]="category.name"
+              ><mat-icon class="material-icons-outlined">{{ category.icon }}</mat-icon>
+              {{ category.name | translate }}</mat-option
+            >
+          </a>
+        </ng-container>
+      </mat-select>
+    </mat-form-field>
   </div>
 </nav>

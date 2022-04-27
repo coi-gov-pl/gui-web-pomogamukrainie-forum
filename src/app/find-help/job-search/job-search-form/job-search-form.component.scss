@@ -1,0 +1,12 @@
+@import "src/assets/styles/vars";
+
+.form-search-wrapper {
+  @media (max-width: $breakpoint-md) {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: var(--bs-gutter-x, 0.75rem);
+    padding-left: var(--bs-gutter-x, 0.75rem);
+    max-width: 540px;
+  }
+}

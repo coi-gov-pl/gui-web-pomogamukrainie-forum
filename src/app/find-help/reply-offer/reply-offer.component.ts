@@ -29,6 +29,7 @@ export class ReplyOfferComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input() offerId!: number;
   @Input() helpersPhoneNumber?: string | undefined;
   @Input() helpersFirstname: string | undefined;
+  @Input() descLength: number = 0;
   showPhoneNumber: boolean = false;
 
   /** captcha */

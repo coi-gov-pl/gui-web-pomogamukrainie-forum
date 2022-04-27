@@ -1,0 +1,128 @@
+<mat-card>
+  <form (ngSubmit)="submitOffer()" #legalForm="ngForm">
+    <div class="container">
+      <div class="d-flex">
+        <button class="btn-link ms-auto" type="button" (click)="onCancelButtonClick()">
+          <mat-icon class="button-icon" fontSet="material-icons-outlined">close</mat-icon
+          ><span class="cancel-label">{{ "CANCEL" | translate }}</span>
+        </button>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <app-offer-title-input [(value)]="data.title"></app-offer-title-input>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-md-6 col-lg-4">
+          <app-cities-search
+            [(ngModel)]="data.location"
+            name="location"
+            [placeholder]="'PLACEHOLDER_LOCATION' | translate"
+            [label]="'LOCATION' | translate"
+          ></app-cities-search>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-2">
+          <label
+            ><b>{{ "LANGUAGE" | translate }} *</b></label
+          >
+          <mat-form-field appearance="outline">
+            <mat-select
+              placeholder="{{ 'PLACEHOLDER_CHOOSE' | translate }}"
+              multiple
+              [(ngModel)]="data.language"
+              name="language"
+              required
+              #language="ngModel"
+            >
+              <mat-option *ngFor="let lang of LAW_LANGUAGES" [value]="lang.code">{{
+                lang.label | translate
+              }}</mat-option>
+            </mat-select>
+            <mat-error>
+              <app-field-error [model]="language"></app-field-error>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-3">
+          <label
+            ><b>{{ "LAW_HELP_MODES" | translate }} *</b></label
+          >
+          <mat-form-field appearance="outline">
+            <mat-select
+              placeholder="{{ 'PLACEHOLDER_CHOOSE' | translate }}"
+              multiple
+              [(ngModel)]="data.helpMode"
+              name="helpMode"
+              required
+              #helpMode="ngModel"
+            >
+              <mat-option *ngFor="let helpMode of HELP_MODE" [value]="helpMode">{{ helpMode | translate }}</mat-option>
+            </mat-select>
+            <mat-error>
+              <app-field-error [model]="helpMode"></app-field-error>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-3">
+          <label
+            ><b>{{ "LAW_HELP_KINDS" | translate }} *</b></label
+          >
+          <mat-form-field appearance="outline">
+            <mat-select
+              placeholder="{{ 'PLACEHOLDER_CHOOSE' | translate }}"
+              multiple
+              [(ngModel)]="data.helpKind"
+              name="helpKind"
+              required
+              #helpKind="ngModel"
+            >
+              <mat-option *ngFor="let helpKind of HELP_KIND" [value]="helpKind">{{ helpKind | translate }}</mat-option>
+            </mat-select>
+            <mat-error>
+              <app-field-error [model]="helpKind"></app-field-error>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-7 mb-3">
+          <label>
+            <b>{{ "LABEL_OFFER_DESCRIPTION" | translate }}</b>
+            <span> {{ "LABEL_OFFER_DESCRIPTION_MAXCHARS" | translate }} *</span>
+          </label>
+          <mat-form-field appearance="outline" hintLabel="{{ 'CHARS_LEFT' | translate }}">
+            <textarea
+              matInput
+              rows="8"
+              maxlength="2000"
+              placeholder="{{ 'PLACEHOLDER_OFFER_DESCRIPTION' | translate }}"
+              name="description"
+              [(ngModel)]="data.description"
+              required
+              #description="ngModel"
+              appOfferDescriptionValidate
+            ></textarea>
+            <mat-hint align="end">{{ data.description ? 2000 - data.description.length : 2000 }}/2000</mat-hint>
+            <mat-error>
+              <app-field-error [model]="description"></app-field-error>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-lg-5">
+          <div class="row">
+            <app-phone-input [(phone)]="phone"></app-phone-input>
+          </div>
+          <div class="row">
+            <div class="col-lg-12 publish">
+              <app-publish-ad-button [isEditRoute]="isEditRoute"></app-publish-ad-button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</mat-card>

@@ -1,7 +1,14 @@
-import { Prefix, Option } from './models';
+import {
+  AccommodationOffer,
+  AccommodationOfferDefinitionDTO,
+  JobOfferDefinitionDTO,
+  LawOfferDefinitionDTO,
+} from '@app/core/api';
 import { LanguageCode, LanguageNames, LengthOfStayLabels } from '@app/core/translations';
-import { AccommodationOffer, AccommodationOfferDefinitionDTO } from '@app/core/api';
+import { Option, Prefix } from './models';
 import HostLanguageEnum = AccommodationOfferDefinitionDTO.HostLanguageEnum;
+import JobLanguageEnum = JobOfferDefinitionDTO.LanguageEnum;
+import LawLanguageEnum = LawOfferDefinitionDTO.LanguageEnum;
 
 export const PREFIXES: Prefix[] = [
   {
@@ -29,6 +36,20 @@ export const LANGUAGES: Option[] = [
   { code: HostLanguageEnum.En, label: LanguageNames.ENGLISH },
 ];
 
+export const LAW_LANGUAGES: Option[] = [
+  { code: LawLanguageEnum.Pl, label: LanguageNames.POLISH },
+  { code: LawLanguageEnum.Ua, label: LanguageNames.UKRAINIAN },
+  { code: LawLanguageEnum.Ru, label: LanguageNames.RUSSIAN },
+  { code: LawLanguageEnum.En, label: LanguageNames.ENGLISH },
+];
+
+export const JOB_LANGUAGES: Option[] = [
+  { code: JobLanguageEnum.Pl, label: LanguageNames.POLISH },
+  { code: JobLanguageEnum.Ua, label: LanguageNames.UKRAINIAN },
+  { code: JobLanguageEnum.Ru, label: LanguageNames.RUSSIAN },
+  { code: JobLanguageEnum.En, label: LanguageNames.ENGLISH },
+];
+
 export const LENGTH_OF_STAY: Option[] = [
   { code: AccommodationOffer.LengthOfStayEnum.Week1, label: LengthOfStayLabels.WEEK_1 },
   { code: AccommodationOffer.LengthOfStayEnum.Week2, label: LengthOfStayLabels.WEEK_2 },
@@ -41,13 +62,25 @@ export const LENGTH_OF_STAY: Option[] = [
 export const MATCH_NON_DIGITS = /[^0-9]+/g;
 export const MATCH_SPACES = /\s/g;
 export const MATCH_DIGITS = /[0-9]/g;
+export const MATCH_DIGITS_AND_SPECIAL_EXCLUDING_COMMA_AND_FULLSTOP = /[0-9!@#$%^&*\/\\?`~<>;:"'(){}[\]|+=_-]/g;
 
 export const DIALOG_CANCEL_OFFER_CONFIG = {
   hasBackdrop: true,
+  backdropClass: 'backdrop-blur',
   width: '100%',
   maxHeight: '450px',
   maxWidth: '480px',
   disableClose: false,
   autoFocus: false,
   data: { headerText: '' },
+};
+
+//based on bootstrap brekpoints ref
+//https://getbootstrap.com/docs/5.0/layout/breakpoints/
+export const BOOTSTRAP5_BREAKPOINTS = {
+  s: 576,
+  md: 768,
+  lg: 992,
+  xl: 1200,
+  xxl: 1440,
 };

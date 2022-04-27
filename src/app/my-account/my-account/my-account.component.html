@@ -1,10 +1,10 @@
 <div class="container custom">
-  <app-breadcrumb></app-breadcrumb>
+  <section class="container-section"><app-breadcrumb></app-breadcrumb></section>
   <header>
     <p class="font-small font-yellow fw-bold mb-1">{{ "HELPUA" | translate }}</p>
     <h1 class="header-2 font-darkblue fw-bold">{{ "MY_ACCOUNT" | translate }}</h1>
   </header>
-  <section>
+  <section class="container-section">
     <div class="container px-0">
       <div class="col-sm-12">
         <p class="text">{{ "ACCOUNT_SETTINGS" | translate }}</p>
@@ -19,7 +19,7 @@
     </button>
   </div>
 
-  <section *ngIf="myAnnouncements?.content?.length">
+  <section class="container-section" *ngIf="myAnnouncements?.content?.length">
     <app-sorting-header
       [header]="'YOUR_ANNOUNCEMENT' | translate"
       (sortingOrderChange)="getMyOffers()"
@@ -104,6 +104,124 @@
             *ngIf="announcement.capacity"
             [text]="('NUMBER_OF_PEOPLE' | translate) + ': ' + announcement.capacity"
             icon="person"
+          ></app-search-result-attribute>
+
+          <div class="w-100 flex-column mt-5 mt-sm-auto mb-sm-auto" buttons>
+            <button type="button" class="btn btn-outline-dark btn-edit" (click)="editAnnouncement(announcement)">
+              {{ "EDIT_ANNOUNCEMENT" | translate }}
+            </button>
+            <button type="button" class="btn btn-link btn-sm btn-remove" (click)="removeAnnouncement(announcement)">
+              {{ "REMOVE_ANNOUNCEMENT" | translate }}
+            </button>
+          </div>
+        </app-search-result>
+
+        <app-search-result
+          *ngIf="announcement.type === 'HEALTH'"
+          [location]="announcement.location"
+          [title]="announcement.title"
+          [description]="announcement.description | truncate: 200:'...'"
+          [posted]="announcement.modifiedDate"
+          [offerId]="announcement.id!"
+          [category]="categoryRoutingName.HEALTH"
+          [fromMyAccount]="true"
+        >
+          <app-search-result-attribute
+            *ngIf="announcement.specialization"
+            [text]="announcement.specialization | translateArray: ', '"
+            icon="business_center"
+          ></app-search-result-attribute>
+          <app-search-result-attribute
+            *ngIf="announcement.language"
+            [text]="announcement.language.join(', ')"
+            icon="translate"
+          ></app-search-result-attribute>
+          <app-search-result-attribute
+            *ngIf="announcement.mode"
+            [text]="announcement.mode | translateArray: ', '"
+            icon="corporate_fare"
+          ></app-search-result-attribute>
+
+          <div class="w-100 flex-column mt-5 mt-sm-auto mb-sm-auto" buttons>
+            <button type="button" class="btn btn-outline-dark btn-edit" (click)="editAnnouncement(announcement)">
+              {{ "EDIT_ANNOUNCEMENT" | translate }}
+            </button>
+            <button type="button" class="btn btn-link btn-sm btn-remove" (click)="removeAnnouncement(announcement)">
+              {{ "REMOVE_ANNOUNCEMENT" | translate }}
+            </button>
+          </div>
+        </app-search-result>
+
+        <app-search-result
+          *ngIf="announcement.type === 'JOB'"
+          [location]="announcement.location"
+          [title]="announcement.title"
+          [description]="announcement.description | truncate: 200:'...'"
+          [offerId]="announcement.id!"
+          [posted]="announcement.modifiedDate"
+          [category]="categoryRoutingName.JOB"
+          [fromMyAccount]="true"
+        >
+          <app-search-result-attribute
+            *ngIf="announcement.industry"
+            [text]="announcement.industry | translateArray: ', '"
+            icon="work_outline"
+          ></app-search-result-attribute>
+          <app-search-result-attribute
+            *ngIf="announcement.mode"
+            [text]="announcement.mode | translate"
+            icon="business"
+          ></app-search-result-attribute>
+          <app-search-result-attribute
+            *ngIf="announcement.contractType"
+            [text]="announcement.contractType | translateArray: ', '"
+            icon="assignment"
+          ></app-search-result-attribute>
+          <app-search-result-attribute
+            *ngIf="announcement.workTime"
+            [text]="announcement.workTime | translateArray: ', '"
+            icon="schedule"
+          ></app-search-result-attribute>
+          <app-search-result-attribute
+            *ngIf="announcement.language"
+            [text]="announcement.language | translateArray: ', '"
+            icon="translate"
+          ></app-search-result-attribute>
+
+          <div class="w-100 flex-column mt-5 mt-sm-auto mb-sm-auto" buttons>
+            <button type="button" class="btn btn-outline-dark btn-edit" (click)="editAnnouncement(announcement)">
+              {{ "EDIT_ANNOUNCEMENT" | translate }}
+            </button>
+            <button type="button" class="btn btn-link btn-sm btn-remove" (click)="removeAnnouncement(announcement)">
+              {{ "REMOVE_ANNOUNCEMENT" | translate }}
+            </button>
+          </div>
+        </app-search-result>
+
+        <app-search-result
+          *ngIf="announcement.type === 'LAW'"
+          [location]="announcement.location"
+          [title]="announcement.title"
+          [description]="announcement.description | truncate: 200:'...'"
+          [offerId]="announcement.id!"
+          [posted]="announcement.modifiedDate"
+          [category]="categoryRoutingName.LEGAL_HELP"
+          [fromMyAccount]="true"
+        >
+          <app-search-result-attribute
+            *ngIf="announcement.helpKind"
+            [text]="announcement.helpKind | translateArray: ', '"
+            icon="gavel"
+          ></app-search-result-attribute>
+          <app-search-result-attribute
+            *ngIf="announcement.language"
+            [text]="announcement.language.join(', ')"
+            icon="translate"
+          ></app-search-result-attribute>
+          <app-search-result-attribute
+            *ngIf="announcement.helpMode"
+            [text]="announcement.helpMode | translateArray: ', '"
+            icon="corporate_fare"
           ></app-search-result-attribute>
 
           <div class="w-100 flex-column mt-5 mt-sm-auto mb-sm-auto" buttons>

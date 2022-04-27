@@ -13,6 +13,7 @@ import { ViewOfferTransportComponent } from './view-offer-transport.component';
 import { ViewOfferTransportRoutingModule } from './view-offer-transport.routing.module';
 import { BackToListModule } from '@app/shared/components/back-to-list/back-to-list.module';
 import { SharedModule } from '@app/shared/shared.module';
+import { ReadMoreModule } from '@app/shared/components';
 
 @NgModule({
   declarations: [ViewOfferTransportComponent],
@@ -30,6 +31,7 @@ import { SharedModule } from '@app/shared/shared.module';
     ViewOfferTransportRoutingModule,
     BackToListModule,
     SharedModule,
+    ReadMoreModule,
   ],
   exports: [ViewOfferTransportComponent],
 })

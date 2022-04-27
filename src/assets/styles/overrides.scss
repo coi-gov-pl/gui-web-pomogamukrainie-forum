@@ -31,21 +31,50 @@ mat-icon {
   stroke: $c-darkblue;
 }
 
-.selectPrefix {
+.selectPrefixWrap {
   .mat-form-field-outline-end {
-    @include media-breakpoint-up(sm) {
-      border-bottom-right-radius: 0 !important;
-      border-top-right-radius: 0 !important;
-    }
+    border-bottom-right-radius: 0 !important;
+    border-top-right-radius: 0 !important;
   }
 }
 
-.phoneInut {
+.phoneNumberWrap {
   .mat-form-field-outline-start {
-    @include media-breakpoint-up(sm) {
-      border-bottom-left-radius: 0 !important;
-      border-top-left-radius: 0 !important;
-      margin-left: -1px;
-    }
+    border-bottom-left-radius: 0 !important;
+    border-top-left-radius: 0 !important;
+    margin-left: -1px;
+  }
+}
+
+.categories-mobile {
+  .mat-form-field-outline-start,
+  .mat-form-field-outline-end {
+    background: $c-white;
+    border: 3px solid $c-yellowactiveinput !important;
+  }
+
+  .mat-form-field-outline-start {
+    border-right: 0 !important;
+  }
+
+  .mat-form-field-outline-end {
+    border-left: 0 !important;
+  }
+
+  .mat-select-arrow-wrapper {
+    transform: none;
+  }
+}
+
+.mat-option-text {
+  font-weight: bold;
+  color: $c-darkblue;
+}
+
+.cdk-overlay-backdrop {
+  &.backdrop-blur {
+    -webkit-backdrop-filter: blur(5px); /* Use for Safari 9+, Edge 17+ (not a mistake) and iOS Safari 9.2+ */
+    backdrop-filter: blur(5px); /* Supported in Chrome 76 */
+    opacity: 1;
   }
 }

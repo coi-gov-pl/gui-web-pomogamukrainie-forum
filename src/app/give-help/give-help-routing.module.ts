@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { GiveHelpComponent } from './give-help.component';
-import { CategoryRoutingName } from '@app/shared/models';
-import { BreadcrumbLabels } from '@app/shared/models';
 import { AuthGuard } from '@app/core/auth';
+import { BreadcrumbLabels, CategoryRoutingName } from '@app/shared/models';
+import { GiveHelpComponent } from './give-help.component';
 
 const routes: Routes = [
   {
@@ -66,6 +65,48 @@ const routes: Routes = [
           import('./transport-form/transport-form.module').then((m) => m.TransportFormComponentModule),
         data: {
           title: BreadcrumbLabels.TRANSPORT,
+        },
+      },
+      {
+        path: CategoryRoutingName.HEALTH,
+        loadChildren: () => import('./health-care-form/health-care-form.module').then((m) => m.HealthCareFormModule),
+        data: {
+          title: BreadcrumbLabels.HEALTH,
+        },
+      },
+      {
+        path: `${CategoryRoutingName.HEALTH}/:id`,
+        loadChildren: () => import('./health-care-form/health-care-form.module').then((m) => m.HealthCareFormModule),
+        data: {
+          title: BreadcrumbLabels.HEALTH,
+        },
+      },
+      {
+        path: CategoryRoutingName.JOB,
+        loadChildren: () => import('./job-form/job-form.module').then((m) => m.JobFormModule),
+        data: {
+          title: BreadcrumbLabels.JOB,
+        },
+      },
+      {
+        path: `${CategoryRoutingName.JOB}/:id`,
+        loadChildren: () => import('./job-form/job-form.module').then((m) => m.JobFormModule),
+        data: {
+          title: BreadcrumbLabels.JOB,
+        },
+      },
+      {
+        path: CategoryRoutingName.LEGAL_HELP,
+        loadChildren: () => import('./law-form/law-form.module').then((m) => m.LawFormModule),
+        data: {
+          title: BreadcrumbLabels.LEGAL_HELP,
+        },
+      },
+      {
+        path: `${CategoryRoutingName.LEGAL_HELP}/:id`,
+        loadChildren: () => import('./law-form/law-form.module').then((m) => m.LawFormModule),
+        data: {
+          title: BreadcrumbLabels.LEGAL_HELP,
         },
       },
     ],

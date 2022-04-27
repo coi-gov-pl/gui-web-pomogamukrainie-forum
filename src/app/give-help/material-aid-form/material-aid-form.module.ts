@@ -13,6 +13,7 @@ import { CitiesSearchModule, FieldErrorModule } from '@app/shared/components';
 import { ValidatorsDirectivesModule } from '@app/shared/validators';
 import { GiveHelpFormModule } from '../give-help-form/give-help-form.module';
 import { MatDialogModule } from '@angular/material/dialog';
+import { SharedModule } from '@app/shared/shared.module';
 @NgModule({
   declarations: [MaterialAidFormComponent],
   imports: [
@@ -30,6 +31,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     CitiesSearchModule,
     GiveHelpFormModule,
     MatDialogModule,
+    SharedModule,
   ],
 })
 export class MaterialAidFormModule {}

@@ -1,10 +1,10 @@
-import { Observable, of } from 'rxjs';
-import { TranslateLoader } from '@ngx-translate/core';
 import { Injectable } from '@angular/core';
-import plPlTranslations from './pl_PL';
-import ukUATranslations from './uk_UA';
+import { TranslateLoader } from '@ngx-translate/core';
+import { Observable, of } from 'rxjs';
 import enGBTranslations from './en_GB';
+import plPlTranslations from './pl_PL';
 import ruRUTranslations from './ru_RU';
+import ukUATranslations from './uk_UA';
 
 export enum LanguageCode {
   pl_PL = 'pl_PL',
