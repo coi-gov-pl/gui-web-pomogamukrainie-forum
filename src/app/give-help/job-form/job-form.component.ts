@@ -57,10 +57,11 @@ export class JobFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.offerId = Number(this.route.snapshot.paramMap.get('id'));
-    this.offerDataInitService.initOfferDataForEdit(this, CategoryNameKey.JOB);
+
     if (!this.isEditRoute) {
       DIALOG_CANCEL_OFFER_CONFIG.data.headerText = CANCEL_DIALOG_HEADERS.CONFIRM_CANCEL_OFFER_NEW;
     } else {
+      this.offerDataInitService.initOfferDataForEdit(this, CategoryNameKey.JOB);
       DIALOG_CANCEL_OFFER_CONFIG.data.headerText = CANCEL_DIALOG_HEADERS.CONFIRM_CANCEL_OFFER_EDIT;
     }
   }
