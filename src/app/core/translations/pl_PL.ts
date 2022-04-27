@@ -16,6 +16,7 @@ export default {
   SUPPORT_REFUGEES: 'Chcesz wesprzeć uchodźców?',
   SEARCH_FOR_HELP: 'Znajdź pomoc',
   ADD_AD: 'Dodaj ogłoszenie',
+  EDIT_AD: 'Edytuj ogłoszenie',
   WHAT_ARE_YOU_LOOKING_FOR: 'Czego potrzebujesz?',
   CHOOSE_CATEGORY: 'Wybierz kategorię',
   ACCOMMODATION: 'Noclegi i Mieszkania',
