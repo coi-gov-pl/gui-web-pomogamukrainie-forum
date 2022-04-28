@@ -249,7 +249,7 @@ export default {
   LABEL_HELP_KIND: 'Temat porady prawnej',
   LABEL_HELP_MODE: 'Tryb',
   LABOUR_LAW: 'Prawo pracy',
-  IMMIGRATION_LAW: 'Prawo cudzoziemców',
+  IMMIGRATION_LAW: 'Prawo migracyjne',
   FAMILY_LAW: 'Prawo rodzinne',
   TAX_LAW: 'Prawo podatkowe',
   CIVIL_LAW: 'Prawo cywilne',

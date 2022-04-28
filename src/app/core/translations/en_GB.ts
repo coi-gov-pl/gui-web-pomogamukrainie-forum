@@ -260,7 +260,7 @@ export default {
   LABEL_HELP_KIND: 'Legal issue',
   LABEL_HELP_MODE: 'Mode',
   LABOUR_LAW: 'Labour law',
-  IMMIGRATION_LAW: 'Foreigners law',
+  IMMIGRATION_LAW: 'Migration law',
   FAMILY_LAW: 'Family law',
   TAX_LAW: 'Tax law',
   CIVIL_LAW: 'Civil law',
