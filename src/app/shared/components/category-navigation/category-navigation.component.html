@@ -1,3 +1,6 @@
+<p *ngIf="outputPath === corePath.Give && !inactive" class="d-none d-md-block font-small mb-2 text-center">
+  <b>{{ "CHOOSE_CATEGORY" | translate }}</b>
+</p>
 <nav class="navigation">
   <div class="categories d-none d-md-grid">
     <ng-container *ngFor="let category of categories">

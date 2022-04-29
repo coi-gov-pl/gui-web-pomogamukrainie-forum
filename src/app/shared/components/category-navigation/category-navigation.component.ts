@@ -21,6 +21,7 @@ export class CategoryNavigationComponent {
   @Input() outputPath: CorePath = CorePath.Find;
   @Input() inactive: boolean = false;
   routingCategoryName = CategoryRoutingName;
+  corePath = CorePath;
 
   categories: Category[] = [
     { name: CategoryNameKey.ACCOMMODATION, icon: 'bed' },
