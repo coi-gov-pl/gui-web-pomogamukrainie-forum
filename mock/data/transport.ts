@@ -23,7 +23,6 @@ export const transportList: OffersTransportOffer = {
       destination: { region: 'woj. mazowieckie, pow. Warszawa, gm. Warszawa', city: 'Warszawa' },
       capacity: 11,
       transportDate: '2022-03-14',
-      phoneNumber: '48123456789',
       type: 'TRANSPORT',
     },
     {
@@ -37,7 +36,8 @@ export const transportList: OffersTransportOffer = {
       destination: { region: 'woj. pomorskie, pow. Gdańsk, gm. Gdańsk', city: 'Gdańsk' },
       capacity: 10,
       transportDate: '2022-03-14',
-      phoneNumber: '48456789123',
+      phoneCountryCode: '48',
+      phoneNumber: '456789123',
       type: 'TRANSPORT',
     },
     {
@@ -51,7 +51,8 @@ export const transportList: OffersTransportOffer = {
       destination: { region: 'Pomorskie', city: 'Gdynia' },
       capacity: 11,
       transportDate: '2022-03-16',
-      phoneNumber: '48789123456',
+      phoneCountryCode: '48',
+      phoneNumber: '789123456',
       type: 'TRANSPORT',
     },
     {
@@ -65,7 +66,8 @@ export const transportList: OffersTransportOffer = {
       destination: { region: 'Mazowieckie', city: 'Warszawa' },
       capacity: 10,
       transportDate: '2022-03-16',
-      phoneNumber: '48891234567',
+      phoneCountryCode: '48',
+      phoneNumber: '891234567',
       type: 'TRANSPORT',
     },
     {
@@ -85,7 +87,8 @@ export const transportList: OffersTransportOffer = {
       },
       capacity: 6,
       transportDate: '2022-03-17',
-      phoneNumber: '48789123457',
+      phoneCountryCode: '48',
+      phoneNumber: '789123457',
       type: 'TRANSPORT',
     },
     {

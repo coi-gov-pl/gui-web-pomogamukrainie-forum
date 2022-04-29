@@ -28,6 +28,7 @@ export class ReplyOfferComponent implements OnInit, OnDestroy, AfterViewInit {
   data = defaults<SendMessageDTO>();
   @Input() offerId!: number;
   @Input() helpersPhoneNumber?: string | undefined;
+  @Input() helpersPhoneCountryCode?: string | undefined;
   @Input() helpersFirstname: string | undefined;
   @Input() descLength: number = 0;
   showPhoneNumber: boolean = false;

@@ -18,7 +18,8 @@ export const userOffers: OffersBaseOffer = {
       guests: 2,
       lengthOfStay: 'MONTH_2',
       hostLanguage: ['PL', 'UA'],
-      phoneNumber: '48123456789',
+      phoneCountryCode: '48',
+      phoneNumber: '123456789',
       type: 'ACCOMMODATION',
     },
     {
@@ -33,7 +34,8 @@ export const userOffers: OffersBaseOffer = {
         region: 'Mazowieckie',
         city: 'Warszawa',
       },
-      phoneNumber: '48456789123',
+      phoneCountryCode: '48',
+      phoneNumber: '456789123',
       type: 'MATERIAL_AID',
     },
     {
@@ -47,7 +49,8 @@ export const userOffers: OffersBaseOffer = {
       destination: { region: 'woj. pomorskie, pow. Gdańsk, gm. Gdańsk', city: 'Gdańsk' },
       capacity: 10,
       transportDate: '2022-03-16',
-      phoneNumber: '48789123456',
+      phoneCountryCode: '48',
+      phoneNumber: '789123456',
       type: 'TRANSPORT',
     },
     {
@@ -61,7 +64,8 @@ export const userOffers: OffersBaseOffer = {
       guests: 4,
       lengthOfStay: 'LONGER',
       hostLanguage: ['PL', 'UA'],
-      phoneNumber: '48891234567',
+      phoneCountryCode: '48',
+      phoneNumber: '891234567',
       type: 'ACCOMMODATION',
     },
     {
@@ -81,7 +85,8 @@ export const userOffers: OffersBaseOffer = {
       },
       capacity: 6,
       transportDate: '2022-03-17',
-      phoneNumber: '48789123457',
+      phoneCountryCode: '48',
+      phoneNumber: '789123457',
       type: 'TRANSPORT',
     },
     {
@@ -101,7 +106,8 @@ export const userOffers: OffersBaseOffer = {
       },
       capacity: 5,
       transportDate: '2022-03-18',
-      phoneNumber: '48789123458',
+      phoneCountryCode: '48',
+      phoneNumber: '789123458',
       type: 'TRANSPORT',
     },
     {
@@ -139,7 +145,7 @@ export const userOffers: OffersBaseOffer = {
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       phoneNumber: '516999666',
-      phoneCountryCode: '+48',
+      phoneCountryCode: '48',
       modifiedDate: '2022-03-16T14:43:15Z',
       mode: 'ONSITE',
       location: { region: 'podkarpackie', city: 'Rzeszów' },

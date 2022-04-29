@@ -85,12 +85,14 @@
         {{ "RESET_CAPTCHA" | translate }}
       </button>
       <div class="d-flex flex-column flex-xl-row">
-        <div *ngIf="helpersPhoneNumber" class="m-2 m-xl-2">
+        <div *ngIf="helpersPhoneNumber && helpersPhoneCountryCode" class="m-2 m-xl-2">
           <button class="btn btn-secondary phone" type="button" (click)="onPhoneNumberClick()">
             <mat-icon class="phone me-1" fontSet="material-icons-outlined">telephone</mat-icon>
             <div *ngIf="!showPhoneNumber">{{ "BUTTON_SHOW_TELNO" | translate }}</div>
             <div *ngIf="showPhoneNumber">
-              <a href="tel:{{ helpersPhoneNumber }}">{{ helpersPhoneNumber }}</a>
+              <a href="tel:{{ '+' + helpersPhoneCountryCode + helpersPhoneNumber }}">
+                {{ "+" + helpersPhoneCountryCode + helpersPhoneNumber }}
+              </a>
             </div>
           </button>
         </div>
