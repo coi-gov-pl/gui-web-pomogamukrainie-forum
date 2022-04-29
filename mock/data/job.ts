@@ -18,8 +18,8 @@ export const jobsList: OffersJobOffer = {
       title: 'Programista Angular',
       description:
         "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
+      phoneCountryCode: '48',
       phoneNumber: '516999666',
-      phoneCountryCode: '+48',
       modifiedDate: '2022-03-16T14:43:15Z',
       mode: 'ONSITE',
       location: { region: 'podkarpackie', city: 'Rzeszów' },
@@ -35,8 +35,8 @@ export const jobsList: OffersJobOffer = {
       title: 'Programista Java',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      phoneCountryCode: '48',
       phoneNumber: '516999666',
-      phoneCountryCode: '+48',
       modifiedDate: '2022-03-16T14:43:15Z',
       mode: 'ONSITE',
       location: { region: 'podkarpackie', city: 'Rzeszów' },
