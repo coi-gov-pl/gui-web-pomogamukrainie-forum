@@ -3,6 +3,11 @@
 
 :host {
   position: relative;
+
+  .right-side {
+    margin-right: -16px;
+  }
+
   header {
     display: flex;
     align-items: center;
@@ -73,6 +78,8 @@
     }
   }
   &-toggler {
+    margin-right: -12px;
+
     .menu {
       display: block;
     }
