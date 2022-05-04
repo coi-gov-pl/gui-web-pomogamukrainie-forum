@@ -18,6 +18,7 @@ export default {
   ADD_AD: `Разместить объявление`,
   EDIT_AD: 'Редактирование объявления',
   WHAT_ARE_YOU_LOOKING_FOR: `Какая помощь вам нужна?`,
+  CHOOSE_CATEGORY: 'Выберите категорию',
   ACCOMMODATION: `Ночлег и проживание`,
   MATERIAL_HELP: `Материальная помощь`,
   TRANSPORT: `Транспорт`,
