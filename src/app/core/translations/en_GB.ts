@@ -18,6 +18,7 @@ export default {
   ADD_AD: `Post an ad`,
   EDIT_AD: `Editing an ad`,
   WHAT_ARE_YOU_LOOKING_FOR: `What do you need?`,
+  CHOOSE_CATEGORY: 'Choose category',
   ACCOMMODATION: `Accomodation and housing`,
   MATERIAL_HELP: `Material aid`,
   TRANSPORT: `Transport`,
