@@ -174,10 +174,12 @@
   }
 
   &-menu {
-    background: transparent;
+    background-color: var(--c-darkblue);
+    border-radius: 0;
     border: none;
-    padding-left: 0;
-    min-width: 115px;
+    padding: 0;
+    min-width: 140px;
+    margin-top: 25px;
   }
   &-toggle {
     border: none;
@@ -198,7 +200,7 @@
     cursor: pointer;
     font-size: 18px;
     font-weight: 700;
-    padding: 0.4rem 0.625rem;
+    padding: 8px 15px;
 
     &:hover {
       border-color: var(--c-lightblue);
