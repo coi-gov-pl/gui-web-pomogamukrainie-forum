@@ -5,7 +5,12 @@
   position: relative;
 
   .right-side {
-    margin-right: -16px;
+    margin-left: auto;
+    margin-right: 35px;
+
+    @include media-breakpoint-up(lg) {
+      margin-right: -16px;
+    }
   }
 
   header {
@@ -25,18 +30,21 @@
     width: 100%;
     .logo,
     .herb {
-      width: 45px;
+      width: 51px;
+    }
+    .kprm {
+      width: 60px;
     }
     &-brand {
       display: flex;
       align-items: center;
+      margin-right: 36px;
     }
   }
 }
 
 .navbar {
   &-item {
-    border-bottom: 2px solid transparent;
     font-size: 18px;
     font-weight: 700;
     padding: 0.4rem 1rem;
