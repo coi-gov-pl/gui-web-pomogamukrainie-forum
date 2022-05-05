@@ -1,4 +1,3 @@
-@import "node_modules/bootstrap/scss/bootstrap-grid";
 @import "vars";
 
 :host {
@@ -42,11 +41,11 @@
     padding: 0.4rem 1rem;
     max-width: 280px;
     &.navbar-big {
-      @include media-breakpoint-down(lg) {
+      @media (max-width: $breakpoint-md-max) {
         font-size: 21px;
       }
     }
-    @include media-breakpoint-up(lg) {
+    @media (min-width: $breakpoint-lg) {
       font-size: 13px;
     }
   }
@@ -70,12 +69,7 @@
   &-nav {
     margin: 0 auto;
     text-align: center;
-    @include media-breakpoint-down(lg) {
-      align-items: center;
-    }
-    @include media-breakpoint-up(lg) {
-      align-items: center;
-    }
+    align-items: center;
   }
   &-toggler {
     margin-right: -12px;
@@ -109,7 +103,7 @@
   &-collapse {
     transition: height 200ms ease-in;
     justify-content: flex-end;
-    @include media-breakpoint-down(lg) {
+    @media (max-width: $breakpoint-md-max) {
       align-items: center;
       background: var(--c-darkblue);
       position: fixed;
@@ -195,7 +189,7 @@
     &:hover {
       border-color: var(--c-lightblue);
     }
-    @include media-breakpoint-up(lg) {
+    @media (min-width: $breakpoint-lg) {
       font-size: 13px;
     }
   }
