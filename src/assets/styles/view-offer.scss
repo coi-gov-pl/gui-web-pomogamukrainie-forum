@@ -12,25 +12,6 @@
   }
 }
 
-.copy-url {
-  cursor: pointer;
-  text-decoration: none;
-  color: $c-darkblue;
-  font-size: 12px;
-  letter-spacing: 0.37px;
-
-  &:active {
-    color: grey;
-    mat-icon {
-      color: grey;
-    }
-  }
-  .text {
-    position: relative;
-    top: -6px;
-  }
-}
-
 .modification-date {
   font-size: 13px;
   letter-spacing: 0.4px;

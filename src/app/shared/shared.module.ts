@@ -11,8 +11,9 @@ import { ConfirmCancelDialogComponent } from './components/confirm-cancel-dialog
 import { TruncatePipe, TranslateArrayPipe } from '@app/shared/pipes';
 import { PhoneInputModule } from './components/phone-input/phone-input.module';
 import { PhoneInputComponent } from './components/phone-input/phone-input.component';
+import { CopyUrlComponent } from './components/copy-url/copy-url.component';
 @NgModule({
-  declarations: [BreadcrumbComponent, TruncatePipe, ConfirmCancelDialogComponent, TranslateArrayPipe],
+  declarations: [BreadcrumbComponent, TruncatePipe, ConfirmCancelDialogComponent, TranslateArrayPipe, CopyUrlComponent],
   imports: [CommonModule, RouterModule, MatIconModule, TranslateModule, PhoneInputModule],
   exports: [
     MatCardModule,
@@ -22,6 +23,7 @@ import { PhoneInputComponent } from './components/phone-input/phone-input.compon
     TruncatePipe,
     TranslateArrayPipe,
     PhoneInputComponent,
+    CopyUrlComponent,
   ],
 })
 export class SharedModule {}

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { defaults } from '@app/shared/utils';
 import { CategoryRoutingName, CorePath } from '@app/shared/models';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { UrlHelperService } from '@app/core/url';
 import { JobOffer, JobResourceService } from '@app/core/api';
 
 @Component({
@@ -22,12 +21,7 @@ export class ViewOfferJobComponent implements OnInit {
   redirectedFromAccount: boolean;
   originalAccountQueryParams?: Params;
 
-  constructor(
-    private route: ActivatedRoute,
-    private jobsResourceService: JobResourceService,
-    private router: Router,
-    private urlHelperService: UrlHelperService
-  ) {
+  constructor(private route: ActivatedRoute, private jobsResourceService: JobResourceService, private router: Router) {
     // https://stackoverflow.com/questions/54891110/router-getcurrentnavigation-always-returns-null
     // in constructor, because null will be returned in ngOnInit
     this.redirectedFromAccount = !!this.router.getCurrentNavigation()?.extras?.state?.['redirectFromAccount'];
@@ -37,13 +31,6 @@ export class ViewOfferJobComponent implements OnInit {
   ngOnInit(): void {
     this.offerId = Number(this.route.snapshot.paramMap.get('id'));
     this.getJobOffer();
-  }
-
-  copyUrl() {
-    navigator.clipboard
-      .writeText(this.urlHelperService.basePath(true) + this.router.url.substring(1))
-      .then()
-      .catch((e) => console.error(e));
   }
 
   getJobOffer() {

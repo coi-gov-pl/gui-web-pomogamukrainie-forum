@@ -3,7 +3,6 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { AccommodationOffer, AccommodationsResourceService } from '@app/core/api';
 import { CategoryRoutingName, CorePath } from '@app/shared/models';
 import { defaults } from '@app/shared/utils';
-import { UrlHelperService } from '@app/core/url';
 
 @Component({
   selector: 'app-view-offer-accommodation',
@@ -24,8 +23,7 @@ export class ViewOfferAccommodationComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private accommodationsResourceService: AccommodationsResourceService,
-    private router: Router,
-    private urlHelperService: UrlHelperService
+    private router: Router
   ) {
     // https://stackoverflow.com/questions/54891110/router-getcurrentnavigation-always-returns-null
     // in constructor, because null will be returned in ngOnInit
@@ -36,13 +34,6 @@ export class ViewOfferAccommodationComponent implements OnInit {
   ngOnInit(): void {
     this.offerId = Number(this.route.snapshot.paramMap.get('id'));
     this.getAccomodationOffer();
-  }
-
-  copyUrl() {
-    navigator.clipboard
-      .writeText(this.urlHelperService.basePath(true) + this.router.url.substring(1))
-      .then()
-      .catch((e) => console.error(e));
   }
 
   getAccomodationOffer() {
