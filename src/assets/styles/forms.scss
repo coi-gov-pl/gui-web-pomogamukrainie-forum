@@ -60,4 +60,10 @@ form {
       margin-top: 1.42rem;
     }
   }
+
+  .buttons-mt-lg {
+    @media (min-width: $breakpoint-lg) {
+      margin-top: 1.42rem;
+    }
+  }
 }

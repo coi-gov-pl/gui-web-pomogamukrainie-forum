@@ -16,6 +16,7 @@ export * from './myOffersResource.service';
 import { MyOffersResourceService } from './myOffersResource.service';
 export * from './transportResource.service';
 import { TransportResourceService } from './transportResource.service';
+import { TranslationsResourceService } from './translationsResource.service';
 export * from './usersResource.service';
 import { UsersResourceService } from './usersResource.service';
 export const APIS = [
@@ -29,4 +30,5 @@ export const APIS = [
   MyOffersResourceService,
   TransportResourceService,
   UsersResourceService,
+  TranslationsResourceService
 ];
