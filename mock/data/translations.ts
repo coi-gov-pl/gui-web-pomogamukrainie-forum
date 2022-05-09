@@ -1,4 +1,18 @@
 import { OffersTranslationsOffer } from '@app/core/api/api/translationsResource.service';
+import {
+  TranslationsOffer,
+  TranslationsOfferDefinitionDTO,
+} from 'src/app/find-help/translations-search/translations-search-form/translations-search-form.component';
+
+export const translationsOffer = (body: TranslationsOfferDefinitionDTO): TranslationsOffer => {
+  return {
+    ...body,
+    id: 1,
+    userFirstName: 'example',
+    modifiedDate: new Date().toISOString(),
+    type: 'TRANSLATIONS',
+  };
+};
 
 export const translationsList: OffersTranslationsOffer = {
   content: [

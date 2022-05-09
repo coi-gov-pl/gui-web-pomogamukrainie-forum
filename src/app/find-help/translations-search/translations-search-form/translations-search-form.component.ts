@@ -15,6 +15,15 @@ export interface TranslationsOfferSearchCriteria {
   language?: Array<TranslationsOfferSearchCriteria.LanguageEnum>;
   mode?: Array<TranslationsOfferSearchCriteria.ModeEnum>;
 }
+
+export interface TranslationsOfferDefinitionDTO {
+  title: string;
+  description: string;
+  location: Location;
+  mode: Array<TranslationsOffer.ModeEnum>;
+  language: Array<TranslationsOffer.LanguageEnum>;
+  phoneNumber?: string;
+}
 export interface TranslationsOffer {
   id: number;
   userFirstName: string;
