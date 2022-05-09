@@ -30,5 +30,5 @@ export const APIS = [
   MyOffersResourceService,
   TransportResourceService,
   UsersResourceService,
-  TranslationsResourceService
+  TranslationsResourceService,
 ];

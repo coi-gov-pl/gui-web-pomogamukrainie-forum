@@ -39,4 +39,13 @@ export class TranslationsResourceService {
   ): Observable<OffersTranslationsOffer> {
     return this.httpClient.get<OffersTranslationsOffer>(`/ogloszenia/api/translations`);
   }
+
+  public getTranslation(
+    id: number,
+    observe?: 'body',
+    reportProgress?: boolean,
+    options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
+  ): Observable<TranslationsOffer> {
+    return this.httpClient.get<TranslationsOffer>(`/ogloszenia/api/translations/${encodeURIComponent(String(id))}`);
+  }
 }

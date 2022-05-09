@@ -26,14 +26,16 @@ const routes: Routes = [
           title: null,
         },
       },
-      // {
-      //   path: ':id',
-      //   loadChildren: () =>
-      //     import('../view-offer-material-aid/view-offer-material-aid.module').then((m) => m.ViewOfferMaterialAidModule),
-      //   data: {
-      //     title: BreadcrumbLabels.AD,
-      //   },
-      // },
+      {
+        path: ':id',
+        loadChildren: () =>
+          import('../view-offer-translations/view-offer-translations.module').then(
+            (m) => m.ViewOfferTranslationsModule
+          ),
+        data: {
+          title: BreadcrumbLabels.AD,
+        },
+      },
     ],
   },
 ];
