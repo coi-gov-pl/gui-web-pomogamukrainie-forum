@@ -15,9 +15,12 @@ import { LawOffer } from './lawOffer';
 import { TransportOffer } from './transportOffer';
 import { HealthOffer } from './healthOffer';
 import { MaterialAidOffer } from './materialAidOffer';
+import { TranslationsOffer } from 'src/app/find-help/translations-search/translations-search-form/translations-search-form.component';
 
 export interface OffersBaseOffer {
-  content?: Array<AccommodationOffer | HealthOffer | JobOffer | LawOffer | MaterialAidOffer | TransportOffer>;
+  content?: Array<
+    AccommodationOffer | HealthOffer | JobOffer | LawOffer | MaterialAidOffer | TransportOffer | TranslationsOffer
+  >;
   totalElements?: number;
   totalPages?: number;
 }

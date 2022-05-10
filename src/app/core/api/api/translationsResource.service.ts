@@ -39,4 +39,13 @@ export class TranslationsResourceService {
   ): Observable<OffersTranslationsOffer> {
     return this.httpClient.get<OffersTranslationsOffer>(`/ogloszenia/api/translations`);
   }
+
+  public deleteTranslation(
+    id: number,
+    observe?: 'body',
+    reportProgress?: boolean,
+    options?: { httpHeaderAccept?: undefined; context?: HttpContext }
+  ): Observable<any> {
+    return this.httpClient.delete<any>(`/ogloszenia/api/secure/translations/${encodeURIComponent(String(id))}`);
+  }
 }

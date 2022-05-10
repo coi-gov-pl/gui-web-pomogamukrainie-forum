@@ -26,7 +26,7 @@ export interface TranslationsOffer {
   mode: Array<TranslationsOffer.ModeEnum>;
   location: Location;
   language: Array<TranslationsOffer.LanguageEnum>;
-  type: string;
+  type: TranslationsOffer.TypeEnum;
 }
 export namespace TranslationsOffer {
   export type ModeEnum = 'ONSITE' | 'TELEWORK' | 'MIXED';
@@ -41,6 +41,10 @@ export namespace TranslationsOffer {
     Pl: 'PL' as LanguageEnum,
     En: 'EN' as LanguageEnum,
     Ru: 'RU' as LanguageEnum,
+  };
+  export type TypeEnum = 'TRANSLATIONS';
+  export const TypeEnum = {
+    Translations: 'TRANSLATIONS' as TypeEnum,
   };
 }
 export namespace TranslationsOfferSearchCriteria {

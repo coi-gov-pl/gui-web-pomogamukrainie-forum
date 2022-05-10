@@ -26,6 +26,7 @@ import {
   lawGet,
   lawListGet,
   translationsListGet,
+  translationDelete,
 } from './operations';
 
 const port = process.env['PORT'] || 3000;
@@ -66,7 +67,8 @@ router
   .post(`${baseHref}/message`, messagePost)
   .delete(`${baseHref}/secure/transport/:id`, transportDelete)
   .delete(`${baseHref}/secure/accommodations/:id`, accommodationDelete)
-  .delete(`${baseHref}/secure/material-aid/:id`, materialAidDelete);
+  .delete(`${baseHref}/secure/material-aid/:id`, materialAidDelete)
+  .delete(`${baseHref}/secure/translations/:id`, translationDelete);
 
 app.use(router);
 
