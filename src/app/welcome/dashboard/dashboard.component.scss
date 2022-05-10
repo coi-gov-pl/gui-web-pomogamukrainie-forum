@@ -1,4 +1,4 @@
-@import "node_modules/bootstrap/scss/bootstrap-grid";
+@import "vars";
 
 .dashboard {
   background-image: linear-gradient(-66.4045498763deg, rgba(5, 44, 101, 0), #052c65 83.1595525064%),
@@ -25,7 +25,7 @@
     position: relative;
     z-index: 1;
     text-align: center;
-    @include media-breakpoint-up(lg) {
+    @media (min-width: $breakpoint-lg) {
       text-align: left;
     }
   }
@@ -33,7 +33,7 @@
   &-desc {
     max-width: 500px;
     margin: 0 auto;
-    @include media-breakpoint-up(lg) {
+    @media (min-width: $breakpoint-lg) {
       margin-left: 0;
     }
   }
@@ -47,7 +47,7 @@
       width: 260px;
       margin-bottom: 16px;
     }
-    @include media-breakpoint-up(lg) {
+    @media (min-width: $breakpoint-lg) {
       flex-direction: row;
       .btn + .btn {
         margin-left: 12px;
