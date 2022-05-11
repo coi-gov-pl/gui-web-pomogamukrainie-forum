@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NotFoundComponent } from '@app/shared/components/not-found/not-found.component';
 import { BreadcrumbLabels, CategoryRoutingName } from '@app/shared/models';
-import { TranslationsSearchComponent } from './translations-search.component';
+import { TranslationSearchComponent } from './translation-search.component';
 
 const routes: Routes = [
   {
@@ -13,7 +13,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: TranslationsSearchComponent,
+        component: TranslationSearchComponent,
         data: {
           title: null,
         },
@@ -26,14 +26,6 @@ const routes: Routes = [
           title: null,
         },
       },
-      // {
-      //   path: ':id',
-      //   loadChildren: () =>
-      //     import('../view-offer-material-aid/view-offer-material-aid.module').then((m) => m.ViewOfferMaterialAidModule),
-      //   data: {
-      //     title: BreadcrumbLabels.AD,
-      //   },
-      // },
     ],
   },
 ];
@@ -42,4 +34,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class TranslationsSearchRoutingModule {}
+export class TranslationSearchRoutingModule {}

@@ -6,8 +6,8 @@
 
 <app-category-navigation class="mb-4" [outputPath]="corePath.Find"></app-category-navigation>
 
-<mat-card #translationsResultsStart>
-  <app-translations-search-form (search)="search($event)"></app-translations-search-form>
+<mat-card #translationResultsStart>
+  <app-translation-search-form (search)="search($event)"></app-translation-search-form>
 </mat-card>
 <app-no-results *ngIf="total === 0"></app-no-results>
 <div class="results" *ngIf="this.total && this.total >= 0">

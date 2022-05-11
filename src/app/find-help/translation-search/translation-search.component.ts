@@ -1,24 +1,23 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Pageable, TranslationResourceService } from '@app/core/api';
+import { Pageable, TranslationResourceService, TranslationOffer } from '@app/core/api';
 import { CategoryRoutingName, CorePath } from '@app/shared/models';
 import { ActivatedRoute } from '@angular/router';
 import { MobileViewportDetectService } from '@app/shared/services';
-import { TranslationsOfferSearchCriteria } from './translations-search-form/translations-search-form.component'; // TODO import from API
-import { TranslationsOffer } from './translations-search-form/translations-search-form.component';
+import { TranslationsOfferSearchCriteria } from './translation-search-form/translation-search-form.component'; // TODO import from API
 
 @Component({
-  selector: 'app-translations-search',
-  templateUrl: './translations-search.component.html',
-  styleUrls: ['./translations-search.component.scss'],
+  selector: 'app-translation-search',
+  templateUrl: './translation-search.component.html',
+  styleUrls: ['./translation-search.component.scss'],
 })
-export class TranslationsSearchComponent implements OnInit {
-  results: TranslationsOffer[] = [];
+export class TranslationSearchComponent implements OnInit {
+  results: TranslationOffer[] = [];
   total?: number = undefined;
   categoryRoutingName = CategoryRoutingName;
   corePath = CorePath;
   searchCriteria: TranslationsOfferSearchCriteria = {};
   pagination: Pageable | undefined = {};
-  @ViewChild('translationsResultsStart', { read: ElementRef }) resultsStart!: ElementRef<HTMLElement>;
+  @ViewChild('translationResultsStart', { read: ElementRef }) resultsStart!: ElementRef<HTMLElement>;
 
   constructor(
     private translationResourceService: TranslationResourceService,

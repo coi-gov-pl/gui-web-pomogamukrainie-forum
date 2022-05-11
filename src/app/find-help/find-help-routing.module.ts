@@ -67,7 +67,7 @@ const routes: Routes = [
       {
         path: CategoryRoutingName.TRANSLATIONS,
         loadChildren: () =>
-          import('./translations-search/translations-search.module').then((m) => m.TranslationsSearchModule),
+          import('./translation-search/translation-search.module').then((m) => m.TranslationSearchModule),
         data: {
           title: BreadcrumbLabels.TRANSLATIONS,
         },

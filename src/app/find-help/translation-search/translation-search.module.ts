@@ -7,10 +7,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { TranslationsSearchRoutingModule } from './translations-search.routing.module';
+import { TranslationSearchRoutingModule } from './translation-search.routing.module';
 import { PomCommonPipesModule } from '@app/shared/pipes';
 import { TranslateModule } from '@ngx-translate/core';
-import { TranslationsSearchComponent } from './translations-search.component';
+import { TranslationSearchComponent } from './translation-search.component';
 import { SearchResultComponentModule } from '../search-result/search-result.module';
 import {
   CategoryNavigationComponentModule,
@@ -20,12 +20,12 @@ import {
   PaginatorModule,
   SortingHeaderModule,
 } from '@app/shared/components';
-import { TranslationsSearchFormComponent } from './translations-search-form/translations-search-form.component';
+import { TranslationSearchFormComponent } from './translation-search-form/translation-search-form.component';
 import { SharedModule } from '@app/shared/shared.module';
 
 @NgModule({
-  declarations: [TranslationsSearchComponent, TranslationsSearchFormComponent],
-  exports: [TranslationsSearchComponent],
+  declarations: [TranslationSearchComponent, TranslationSearchFormComponent],
+  exports: [TranslationSearchComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -35,7 +35,7 @@ import { SharedModule } from '@app/shared/shared.module';
     MatInputModule,
     MatSelectModule,
     MatNativeDateModule,
-    TranslationsSearchRoutingModule,
+    TranslationSearchRoutingModule,
     PomCommonPipesModule,
     TranslateModule,
     CitiesSearchModule,
@@ -48,4 +48,4 @@ import { SharedModule } from '@app/shared/shared.module';
     SharedModule,
   ],
 })
-export class TranslationsSearchModule {}
+export class TranslationSearchModule {}

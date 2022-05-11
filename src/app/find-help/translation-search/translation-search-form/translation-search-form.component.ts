@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
+import { TranslationOffer } from '@app/core/api';
 import { StoreUrlService } from '@app/core/store-url';
 import { LANGUAGES } from '@app/shared/consts';
 import { LocalStorageKeys, StatementAnchors } from '@app/shared/models';
@@ -14,34 +15,6 @@ export interface TranslationsOfferSearchCriteria {
   location?: Location;
   language?: Array<TranslationsOfferSearchCriteria.LanguageEnum>;
   mode?: Array<TranslationsOfferSearchCriteria.ModeEnum>;
-}
-export interface TranslationsOffer {
-  id: number;
-  userFirstName: string;
-  title: string;
-  description: string;
-  phoneNumber?: string;
-  phoneCountryCode?: string;
-  modifiedDate?: string;
-  mode: Array<TranslationsOffer.ModeEnum>;
-  location: Location;
-  language: Array<TranslationsOffer.LanguageEnum>;
-  type: string;
-}
-export namespace TranslationsOffer {
-  export type ModeEnum = 'ONSITE' | 'TELEWORK' | 'MIXED';
-  export const ModeEnum = {
-    Onsite: 'ONSITE' as ModeEnum,
-    Telework: 'TELEWORK' as ModeEnum,
-    Mixed: 'MIXED' as ModeEnum,
-  };
-  export type LanguageEnum = 'UA' | 'PL' | 'EN' | 'RU';
-  export const LanguageEnum = {
-    Ua: 'UA' as LanguageEnum,
-    Pl: 'PL' as LanguageEnum,
-    En: 'EN' as LanguageEnum,
-    Ru: 'RU' as LanguageEnum,
-  };
 }
 export namespace TranslationsOfferSearchCriteria {
   export type ModeEnum = 'ONSITE' | 'TELEWORK' | 'MIXED';
@@ -67,17 +40,17 @@ const cleanForm = {
 };
 
 @Component({
-  selector: 'app-translations-search-form',
-  templateUrl: './translations-search-form.component.html',
-  styleUrls: ['./translations-search-form.component.scss'],
+  selector: 'app-translation-search-form',
+  templateUrl: './translation-search-form.component.html',
+  styleUrls: ['./translation-search-form.component.scss'],
 })
-export class TranslationsSearchFormComponent implements OnInit, OnDestroy {
+export class TranslationSearchFormComponent implements OnInit, OnDestroy {
   @ViewChild('form', { static: true })
   ngForm: NgForm = new NgForm([], []);
   formChangesSubscription = new Subscription();
   showClearBtn = false;
   data: TranslationsOfferSearchCriteria = {};
-  modes = Object.values(TranslationsOffer.ModeEnum);
+  modes = Object.values(TranslationOffer.ModeEnum);
   languages = LANGUAGES;
   @Output()
   search = new EventEmitter<TranslationsOfferSearchCriteria>();
