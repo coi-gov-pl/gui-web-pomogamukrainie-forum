@@ -18,7 +18,6 @@ export * from './translationResource.service';
 import { TranslationResourceService } from './translationResource.service';
 export * from './transportResource.service';
 import { TransportResourceService } from './transportResource.service';
-import { TranslationsResourceService } from './translationsResource.service';
 export * from './usersResource.service';
 import { UsersResourceService } from './usersResource.service';
 export const APIS = [
@@ -33,5 +32,4 @@ export const APIS = [
   TranslationResourceService,
   TransportResourceService,
   UsersResourceService,
-  TranslationsResourceService
 ];

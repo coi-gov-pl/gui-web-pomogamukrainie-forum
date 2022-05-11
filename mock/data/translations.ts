@@ -1,6 +1,6 @@
-import { OffersTranslationsOffer } from '@app/core/api/api/translationsResource.service';
+import { OffersTranslationOffer } from '@app/core/api;
 
-export const translationsList: OffersTranslationsOffer = {
+export const translationsList: OffersTranslationOffer = {
   content: [
     {
       id: 9999,
@@ -10,8 +10,8 @@ export const translationsList: OffersTranslationsOffer = {
       modifiedDate: '2022-03-14T10:36:12Z',
       location: { region: 'woj. mazowieckie, pow. Warszawa, gm. Warszawa', city: 'Warszawa' },
       language: ['PL', 'EN'],
-      mode: ['TELEWORK'],
-      type: 'TRANSLATIONS',
+      mode: ['BY_PHONE'],
+      type: 'TRANSLATION',
     },
     {
       id: 10000,
@@ -21,8 +21,8 @@ export const translationsList: OffersTranslationsOffer = {
       modifiedDate: '2022-03-14T10:36:12Z',
       location: { region: 'woj. mazowieckie, pow. Warszawa, gm. Warszawa', city: 'Warszawa' },
       language: ['PL', 'UA'],
-      mode: ['TELEWORK'],
-      type: 'TRANSLATIONS',
+      mode: ['BY_PHONE'],
+      type: 'TRANSLATION',
     },
   ],
   totalElements: 2,
