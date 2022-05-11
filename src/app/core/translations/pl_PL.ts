@@ -279,4 +279,5 @@ export default {
   GASTRONOMY: 'Gastronomia',
   HR: 'HR',
   SALES: 'Sprzedaż',
+  COPIED_URL: 'Link skopiowany do schowka'
 };

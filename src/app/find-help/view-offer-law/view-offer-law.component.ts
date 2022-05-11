@@ -3,7 +3,6 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { LawOffer, LawResourceService } from '@app/core/api';
 import { CategoryRoutingName, CorePath } from '@app/shared/models';
 import { defaults } from '@app/shared/utils';
-import { UrlHelperService } from '@app/core/url';
 
 @Component({
   selector: 'app-view-offer-law',
@@ -16,12 +15,7 @@ export class ViewOfferLawComponent implements OnInit {
   categoryRouteName = CategoryRoutingName.LEGAL_HELP;
   redirectedFromAccount: boolean;
   originalAccountQueryParams?: Params;
-  constructor(
-    private route: ActivatedRoute,
-    private lawResourceService: LawResourceService,
-    private router: Router,
-    private urlHelperService: UrlHelperService
-  ) {
+  constructor(private route: ActivatedRoute, private lawResourceService: LawResourceService, private router: Router) {
     // https://stackoverflow.com/questions/54891110/router-getcurrentnavigation-always-returns-null
     // in constructor, because null will be returned in ngOnInit
     this.redirectedFromAccount = !!this.router.getCurrentNavigation()?.extras?.state?.['redirectFromAccount'];
@@ -31,13 +25,6 @@ export class ViewOfferLawComponent implements OnInit {
   ngOnInit(): void {
     this.offerId = Number(this.route.snapshot.paramMap.get('id'));
     this.getLawOffer();
-  }
-
-  copyUrl() {
-    navigator.clipboard
-      .writeText(this.urlHelperService.basePath(true) + this.router.url.substring(1))
-      .then()
-      .catch((e) => console.error(e));
   }
 
   getLawOffer() {
