@@ -11,6 +11,7 @@ api/lawResource.service.ts
 api/materialAidResource.service.ts
 api/messageResource.service.ts
 api/myOffersResource.service.ts
+api/translationResource.service.ts
 api/transportResource.service.ts
 api/usersResource.service.ts
 configuration.ts
@@ -41,9 +42,12 @@ model/offersHealthOffer.ts
 model/offersJobOffer.ts
 model/offersLawOffer.ts
 model/offersMaterialAidOffer.ts
+model/offersTranslationOffer.ts
 model/offersTransportOffer.ts
 model/pageable.ts
 model/sendMessageDTO.ts
+model/translationOffer.ts
+model/translationOfferDefinitionDTO.ts
 model/transportOffer.ts
 model/transportOfferDefinitionDTO.ts
 model/transportOfferSearchCriteria.ts

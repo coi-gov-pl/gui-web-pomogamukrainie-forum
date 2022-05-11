@@ -6,6 +6,7 @@ import { TranslatePipe } from '@ngx-translate/core';
  */
 @Pipe({
   name: 'translateArray',
+  pure: false,
 })
 export class TranslateArrayPipe extends TranslatePipe implements PipeTransform {
   override transform(value: string | string[], ...args: unknown[]): string {

@@ -1,4 +1,4 @@
-@import "node_modules/bootstrap/scss/bootstrap-grid";
+@import "vars";
 
 :host::ng-deep {
   .mat-expansion-indicator::after {
@@ -8,7 +8,7 @@
   .mat-icon {
     color: var(--c-blue);
     margin-right: 10px;
-    @include media-breakpoint-up(lg) {
+    @media (min-width: $breakpoint-lg) {
       margin-right: 16px;
     }
   }

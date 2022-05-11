@@ -1,7 +1,13 @@
 @import "vars";
 
-.mat-form-field-appearance-outline .mat-form-field-infix {
-  padding-top: 0.5em;
+.mat-form-field-appearance-outline {
+  .mat-form-field-infix {
+    padding-top: 0.5em;
+  }
+
+  .mat-select-trigger .mat-select-arrow-wrapper {
+    transform: translateY(0%);
+  }
 }
 
 mat-icon {
