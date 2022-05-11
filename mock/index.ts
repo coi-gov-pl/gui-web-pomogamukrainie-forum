@@ -60,7 +60,7 @@ router
   .get(`${baseHref}/law/:id`, lawGet)
   .get(`${baseHref}/law`, lawListGet)
   .get(`${baseHref}/translations`, translationsListGet)
-  .get(`${baseHref}/translations/:id`, translationsGet)
+  .get(`${baseHref}/translation/:id`, translationsGet)
   .post(`${baseHref}/secure/accommodations`, accommodationsPost)
   .post(`${baseHref}/secure/material-aid`, materialAidPost)
   .post(`${baseHref}/secure/transport`, transportPost)

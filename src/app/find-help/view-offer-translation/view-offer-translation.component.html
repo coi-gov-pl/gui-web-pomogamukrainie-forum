@@ -7,10 +7,7 @@
         {{ "MODIFICATION_DATE" | translate }}: {{ data.modifiedDate | date: "dd/MM/yyyy" }}
       </div>
       <div class="ml-auto">
-        <a role="button" class="copy-url d-block" (click)="copyUrl()">
-          <mat-icon class="yellow-icon clicable" fontSet="material-icons-outlined yellow">copy</mat-icon>
-          <span class="text ms-1">{{ "COPY_LINK" | translate }}</span>
-        </a>
+        <app-copy-url></app-copy-url>
       </div>
     </div>
     <h3>{{ data.title }}</h3>

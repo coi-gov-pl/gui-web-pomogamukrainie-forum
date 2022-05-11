@@ -9,14 +9,14 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ReplyOfferModule } from '../reply-offer/reply-offer.module';
-import { ViewOfferTranslationsComponent } from './view-offer-translations.component';
-import { ViewOfferTranslationsRoutingModule } from './view-offer-translations.routing.module';
+import { ViewOfferTranslationComponent } from './view-offer-translation.component';
+import { ViewOfferTranslationRoutingModule } from './view-offer-translation.routing.module';
 import { BackToListModule } from '@app/shared/components/back-to-list/back-to-list.module';
 import { SharedModule } from '@app/shared/shared.module';
 import { ReadMoreModule } from '@app/shared/components';
 
 @NgModule({
-  declarations: [ViewOfferTranslationsComponent],
+  declarations: [ViewOfferTranslationComponent],
   imports: [
     CommonModule,
     MatFormFieldModule,
@@ -28,11 +28,11 @@ import { ReadMoreModule } from '@app/shared/components';
     TranslateModule,
     MatIconModule,
     ReplyOfferModule,
-    ViewOfferTranslationsRoutingModule,
+    ViewOfferTranslationRoutingModule,
     BackToListModule,
     SharedModule,
     ReadMoreModule,
   ],
-  exports: [ViewOfferTranslationsComponent],
+  exports: [ViewOfferTranslationComponent],
 })
-export class ViewOfferTranslationsModule {}
+export class ViewOfferTranslationModule {}
