@@ -1,4 +1,4 @@
-import { OffersTranslationOffer } from '@app/core/api;
+import { OffersTranslationOffer } from '@app/core/api';
 
 export const translationsList: OffersTranslationOffer = {
   content: [
