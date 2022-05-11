@@ -39,6 +39,8 @@ import { OffersBaseOffer } from '../model/offersBaseOffer';
 // @ts-ignore
 import { Pageable } from '../model/pageable';
 // @ts-ignore
+import { TranslationOffer } from '../model/translationOffer';
+// @ts-ignore
 import { TransportOffer } from '../model/transportOffer';
 
 // @ts-ignore
@@ -117,21 +119,29 @@ export class MyOffersResourceService {
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<AccommodationOffer | HealthOffer | JobOffer | LawOffer | MaterialAidOffer | TransportOffer>;
+  ): Observable<
+    AccommodationOffer | HealthOffer | JobOffer | LawOffer | MaterialAidOffer | TranslationOffer | TransportOffer
+  >;
   public getMyOffers(
     id: number,
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<
-    HttpResponse<AccommodationOffer | HealthOffer | JobOffer | LawOffer | MaterialAidOffer | TransportOffer>
+    HttpResponse<
+      AccommodationOffer | HealthOffer | JobOffer | LawOffer | MaterialAidOffer | TranslationOffer | TransportOffer
+    >
   >;
   public getMyOffers(
     id: number,
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<AccommodationOffer | HealthOffer | JobOffer | LawOffer | MaterialAidOffer | TransportOffer>>;
+  ): Observable<
+    HttpEvent<
+      AccommodationOffer | HealthOffer | JobOffer | LawOffer | MaterialAidOffer | TranslationOffer | TransportOffer
+    >
+  >;
   public getMyOffers(
     id: number,
     observe: any = 'body',
@@ -171,7 +181,7 @@ export class MyOffersResourceService {
     }
 
     return this.httpClient.get<
-      AccommodationOffer | HealthOffer | JobOffer | LawOffer | MaterialAidOffer | TransportOffer
+      AccommodationOffer | HealthOffer | JobOffer | LawOffer | MaterialAidOffer | TranslationOffer | TransportOffer
     >(`${this.configuration.basePath}/api/secure/my-offers/${encodeURIComponent(String(id))}`, {
       context: localVarHttpContext,
       responseType: <any>responseType_,

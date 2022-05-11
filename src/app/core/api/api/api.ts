@@ -14,6 +14,8 @@ export * from './messageResource.service';
 import { MessageResourceService } from './messageResource.service';
 export * from './myOffersResource.service';
 import { MyOffersResourceService } from './myOffersResource.service';
+export * from './translationResource.service';
+import { TranslationResourceService } from './translationResource.service';
 export * from './transportResource.service';
 import { TransportResourceService } from './transportResource.service';
 import { TranslationsResourceService } from './translationsResource.service';
@@ -28,6 +30,7 @@ export const APIS = [
   MaterialAidResourceService,
   MessageResourceService,
   MyOffersResourceService,
+  TranslationResourceService,
   TransportResourceService,
   UsersResourceService,
   TranslationsResourceService
