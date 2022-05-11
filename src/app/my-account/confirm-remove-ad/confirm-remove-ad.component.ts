@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { AccommodationOffer, HealthOffer, JobOffer, LawOffer, MaterialAidOffer, TransportOffer } from '@app/core/api';
-import { TranslationsOffer } from 'src/app/find-help/translations-search/translations-search-form/translations-search-form.component';
+import { TranslationOffer } from '@app/core/api/model/translationOffer';
 
 @Component({
   selector: 'app-confirm-remove-ad',
@@ -15,7 +15,7 @@ export class ConfirmRemoveAdComponent {
     | HealthOffer
     | JobOffer
     | LawOffer
-    | TranslationsOffer;
+    | TranslationOffer;
   @Output() confirm: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor() {}

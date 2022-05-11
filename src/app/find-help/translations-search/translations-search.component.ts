@@ -1,11 +1,10 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Pageable } from '@app/core/api';
+import { Pageable, TranslationResourceService } from '@app/core/api';
 import { CategoryRoutingName, CorePath } from '@app/shared/models';
 import { ActivatedRoute } from '@angular/router';
 import { MobileViewportDetectService } from '@app/shared/services';
 import { TranslationsOfferSearchCriteria } from './translations-search-form/translations-search-form.component'; // TODO import from API
 import { TranslationsOffer } from './translations-search-form/translations-search-form.component';
-import { TranslationsResourceService } from '@app/core/api/api/translationsResource.service';
 
 @Component({
   selector: 'app-translations-search',
@@ -22,7 +21,7 @@ export class TranslationsSearchComponent implements OnInit {
   @ViewChild('translationsResultsStart', { read: ElementRef }) resultsStart!: ElementRef<HTMLElement>;
 
   constructor(
-    private translationsResourceService: TranslationsResourceService,
+    private translationResourceService: TranslationResourceService,
     private route: ActivatedRoute,
     private mobileViewportDetect: MobileViewportDetectService
   ) {}
@@ -55,18 +54,18 @@ export class TranslationsSearchComponent implements OnInit {
       sort,
     };
 
-    this.translationsResourceService.listTranslations(pageRequest, this.searchCriteria).subscribe({
-      next: (results) => {
-        this.results = results.content ?? [];
-        this.total = results.totalElements ?? 0;
-        if (this.mobileViewportDetect.isMobileView) {
-          this.resultsStart?.nativeElement?.scrollIntoView();
-        }
-      },
-      error: () => {
-        this.results = [];
-        this.total = undefined;
-      },
-    });
+    // this.translationResourceService.listTranslation(pageRequest, this.searchCriteria).subscribe({
+    //   next: (results) => {
+    //     this.results = results.content ?? [];
+    //     this.total = results.totalElements ?? 0;
+    //     if (this.mobileViewportDetect.isMobileView) {
+    //       this.resultsStart?.nativeElement?.scrollIntoView();
+    //     }
+    //   },
+    //   error: () => {
+    //     this.results = [];
+    //     this.total = undefined;
+    //   },
+    // });
   }
 }

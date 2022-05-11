@@ -234,7 +234,7 @@
           </div>
         </app-search-result>
         <app-search-result
-          *ngIf="announcement.type === 'TRANSLATIONS'"
+          *ngIf="announcement.type === 'TRANSLATION'"
           [location]="announcement.location"
           [title]="announcement.title"
           [description]="announcement.description | truncate: 200:'...'"
