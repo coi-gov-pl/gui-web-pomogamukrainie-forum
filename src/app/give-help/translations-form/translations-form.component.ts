@@ -8,11 +8,7 @@ import { take } from 'rxjs/operators';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ConfirmCancelDialogComponent } from '@app/shared/components';
 import { OfferDataInitService } from '@app/shared/services';
-import {
-  TranslationsOffer,
-  TranslationsOfferDefinitionDTO,
-} from 'src/app/find-help/translations-search/translations-search-form/translations-search-form.component';
-import { TranslationsResourceService } from '@app/core/api/api/translationsResource.service';
+import { TranslationOffer, TranslationOfferDefinitionDTO, TranslationResourceService } from '@app/core/api';
 
 @Component({
   selector: 'app-translations-form',
@@ -20,15 +16,15 @@ import { TranslationsResourceService } from '@app/core/api/api/translationsResou
   styleUrls: ['./translations-form.component.scss'],
 })
 export class TranslationsFormComponent implements OnInit {
-  data = defaults<TranslationsOfferDefinitionDTO>({});
-  modes = Object.values(TranslationsOffer.ModeEnum);
+  data = defaults<TranslationOfferDefinitionDTO>({});
+  modes = Object.values(TranslationOffer.ModeEnum);
   LANGUAGES = LANGUAGES;
   PREFIXES = PREFIXES;
   offerId?: number;
   phone = defaults<PhoneNumber>();
   constructor(
     private router: Router,
-    private translationsResourceService: TranslationsResourceService,
+    private translationResourceService: TranslationResourceService,
     private snackbarService: SnackbarService,
     private dialog: MatDialog,
     private route: ActivatedRoute,
@@ -49,13 +45,13 @@ export class TranslationsFormComponent implements OnInit {
   handleSubmit() {
     this.offerDataInitService.preparePhoneNumber(this);
     if (!this.isEditRoute) {
-      this.translationsResourceService
-        .postTranslationsOfferTranslations(this.data)
+      this.translationResourceService
+        .createTranslation(this.data)
         .pipe(take(1))
         .subscribe(() => this.redirectOnSuccess());
     } else {
-      this.translationsResourceService
-        .updateTranslate(this.offerId!, this.data)
+      this.translationResourceService
+        .updateTranslation(this.offerId!, this.data)
         .pipe(take(1))
         .subscribe(() => this.redirectOnSuccess());
     }
