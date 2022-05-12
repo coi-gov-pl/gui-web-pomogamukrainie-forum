@@ -4,7 +4,7 @@ import { PREFIXES, LANGUAGES, LENGTH_OF_STAY } from '@app/shared/consts';
 import { AccommodationOfferDefinitionDTO, AccommodationsResourceService } from '@app/core/api';
 import { CorePath, ALERT_TYPES, CANCEL_DIALOG_HEADERS, CategoryNameKey } from '@app/shared/models';
 import { SnackbarService } from '@app/shared/services';
-import { take } from 'rxjs/operators';
+import { switchMap, take } from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ConfirmCancelDialogComponent } from '@app/shared/components';
@@ -83,17 +83,7 @@ export class AccommodationFormComponent implements OnInit {
   }
 
   onCancelButtonClick() {
-    const dialogRef: MatDialogRef<ConfirmCancelDialogComponent> = this.dialog.open(
-      ConfirmCancelDialogComponent,
-      DIALOG_CANCEL_OFFER_CONFIG
-    );
-
-    dialogRef.componentInstance.confirm.pipe(take(1)).subscribe((confirm: boolean) => {
-      if (confirm) {
-        this.router.navigate([CorePath.MyAccount]);
-      }
-      dialogRef.close();
-    });
+    this.router.navigate([CorePath.MyAccount]);
   }
 
   get isEditRoute(): boolean {
@@ -107,12 +97,13 @@ export class AccommodationFormComponent implements OnInit {
         DIALOG_CANCEL_OFFER_CONFIG
       );
 
-      const result = dialogRef.componentInstance.confirm.pipe(take(1)).subscribe((confirm: boolean) => {
-        dialogRef.close();
-        this.cancelDialog = confirm;
-      });
-      console.log('this.cancelDialog', this.cancelDialog);
-      return of(this.cancelDialog);
+      const result = dialogRef.componentInstance.confirm.pipe(
+        switchMap((confirm) => {
+          dialogRef.close();
+          return of(confirm);
+        })
+      );
+      return result;
     }
     return of(true);
   }
