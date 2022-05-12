@@ -6,3 +6,4 @@ export * from './user';
 export * from './job';
 export * from './health';
 export * from './law';
+export * from './translation';

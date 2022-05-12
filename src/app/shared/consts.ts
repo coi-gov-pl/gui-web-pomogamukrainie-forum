@@ -7,8 +7,6 @@ import {
 import { LanguageCode, LanguageNames, LengthOfStayLabels } from '@app/core/translations';
 import { Option, Prefix } from './models';
 import HostLanguageEnum = AccommodationOfferDefinitionDTO.HostLanguageEnum;
-import JobLanguageEnum = JobOfferDefinitionDTO.LanguageEnum;
-import LawLanguageEnum = LawOfferDefinitionDTO.LanguageEnum;
 
 export const PREFIXES: Prefix[] = [
   {
