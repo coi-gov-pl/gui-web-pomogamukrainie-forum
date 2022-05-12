@@ -60,7 +60,7 @@ export class OfferDataInitService {
         context.data = resp;
       });
     } else if (category === CategoryNameKey.TRANSLATIONS) {
-      context.translationsResourceService.getTranslation(context.offerId).subscribe((resp: TranslationOffer) => {
+      context.translationResourceService.getTranslation(context.offerId).subscribe((resp: TranslationOffer) => {
         context.phone.phoneNumber = resp.phoneNumber || '';
         if (resp.phoneCountryCode) {
           context.phone.prefix = PREFIXES.find((v) => v.prefix === resp.phoneCountryCode)?.prefix || '';

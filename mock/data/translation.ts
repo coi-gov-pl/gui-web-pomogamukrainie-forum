@@ -30,6 +30,8 @@ export const translationList: OffersTranslationOffer = {
       description: 'Witam, jestem tłumaczem przysięgłeym pomogę w tłumaczeniach dokumentów z języka Ukrainskiego.',
       modifiedDate: '2022-03-14T10:36:12Z',
       location: { region: 'woj. mazowieckie, pow. Warszawa, gm. Warszawa', city: 'Warszawa' },
+      phoneCountryCode: '48',
+      phoneNumber: '789123456',
       language: ['PL', 'UA'],
       mode: ['BY_PHONE'],
       type: 'TRANSLATION',
