@@ -32,6 +32,8 @@ import { Pageable } from '../model/pageable';
 import { TranslationOffer } from '../model/translationOffer';
 // @ts-ignore
 import { TranslationOfferDefinitionDTO } from '../model/translationOfferDefinitionDTO';
+// @ts-ignore
+import { TranslationOfferSearchCriteria } from '../model/translationOfferSearchCriteria';
 
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS } from '../variables';
@@ -333,29 +335,34 @@ export class TranslationResourceService {
 
   /**
    * @param pageRequest
+   * @param searchCriteria
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
   public listTranslation(
     pageRequest: Pageable,
+    searchCriteria: TranslationOfferSearchCriteria,
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<OffersTranslationOffer>;
   public listTranslation(
     pageRequest: Pageable,
+    searchCriteria: TranslationOfferSearchCriteria,
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<HttpResponse<OffersTranslationOffer>>;
   public listTranslation(
     pageRequest: Pageable,
+    searchCriteria: TranslationOfferSearchCriteria,
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<HttpEvent<OffersTranslationOffer>>;
   public listTranslation(
     pageRequest: Pageable,
+    searchCriteria: TranslationOfferSearchCriteria,
     observe: any = 'body',
     reportProgress: boolean = false,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
@@ -363,10 +370,16 @@ export class TranslationResourceService {
     if (pageRequest === null || pageRequest === undefined) {
       throw new Error('Required parameter pageRequest was null or undefined when calling listTranslation.');
     }
+    if (searchCriteria === null || searchCriteria === undefined) {
+      throw new Error('Required parameter searchCriteria was null or undefined when calling listTranslation.');
+    }
 
     let localVarQueryParameters = new HttpParams({ encoder: this.encoder });
     if (pageRequest !== undefined && pageRequest !== null) {
       localVarQueryParameters = this.addToHttpParams(localVarQueryParameters, <any>pageRequest, 'pageRequest');
+    }
+    if (searchCriteria !== undefined && searchCriteria !== null) {
+      localVarQueryParameters = this.addToHttpParams(localVarQueryParameters, <any>searchCriteria, 'searchCriteria');
     }
 
     let localVarHeaders = this.defaultHeaders;

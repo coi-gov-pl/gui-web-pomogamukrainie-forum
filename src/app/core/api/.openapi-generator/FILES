@@ -48,6 +48,7 @@ model/pageable.ts
 model/sendMessageDTO.ts
 model/translationOffer.ts
 model/translationOfferDefinitionDTO.ts
+model/translationOfferSearchCriteria.ts
 model/transportOffer.ts
 model/transportOfferDefinitionDTO.ts
 model/transportOfferSearchCriteria.ts
