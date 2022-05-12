@@ -11,6 +11,7 @@ import { ConfirmCancelDialogComponent } from '@app/shared/components';
 import { DIALOG_CANCEL_OFFER_CONFIG } from '@app/shared/consts';
 import { PhoneNumber } from '@app/shared/models';
 import { OfferDataInitService } from '@app/shared/services';
+import { Observable, of } from 'rxjs';
 @Component({
   selector: 'app-accommodation-form',
   templateUrl: './accommodation-form.component.html',
@@ -26,6 +27,8 @@ export class AccommodationFormComponent implements OnInit {
   @Input() buttonLabel: string = '';
   phone = defaults<PhoneNumber>();
   offerId?: number;
+  isSaved = false;
+  cancelDialog?: boolean;
 
   constructor(
     private accommodationsResourceService: AccommodationsResourceService,
@@ -76,6 +79,7 @@ export class AccommodationFormComponent implements OnInit {
         }
       });
     }
+    this.isSaved = true;
   }
 
   onCancelButtonClick() {
@@ -94,5 +98,22 @@ export class AccommodationFormComponent implements OnInit {
 
   get isEditRoute(): boolean {
     return this.router.url === `/edycja-ogloszenia/noclegi/${this.offerId}`;
+  }
+
+  canDeactivate(): Observable<boolean | undefined> {
+    if (!this.isSaved) {
+      const dialogRef: MatDialogRef<ConfirmCancelDialogComponent> = this.dialog.open(
+        ConfirmCancelDialogComponent,
+        DIALOG_CANCEL_OFFER_CONFIG
+      );
+
+      const result = dialogRef.componentInstance.confirm.pipe(take(1)).subscribe((confirm: boolean) => {
+        dialogRef.close();
+        this.cancelDialog = confirm;
+      });
+      console.log('this.cancelDialog', this.cancelDialog);
+      return of(this.cancelDialog);
+    }
+    return of(true);
   }
 }
