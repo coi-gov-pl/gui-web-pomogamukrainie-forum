@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TranslationsFormRoutingModule } from './translations-form-routing.module';
-import { TranslationsFormComponent } from './translations-form.component';
+import { TranslationFormRoutingModule } from './translation-form-routing.module';
+import { TranslationFormComponent } from './translation-form.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -15,14 +15,14 @@ import { GiveHelpFormModule } from '../give-help-form/give-help-form.module';
 import { MatDialogModule } from '@angular/material/dialog';
 import { SharedModule } from '@app/shared/shared.module';
 @NgModule({
-  declarations: [TranslationsFormComponent],
+  declarations: [TranslationFormComponent],
   imports: [
     CommonModule,
     MatFormFieldModule,
     FormsModule,
     MatSelectModule,
     MatInputModule,
-    TranslationsFormRoutingModule,
+    TranslationFormRoutingModule,
     MatCardModule,
     TranslateModule,
     MatIconModule,
@@ -34,4 +34,4 @@ import { SharedModule } from '@app/shared/shared.module';
     SharedModule,
   ],
 })
-export class TranslationsFormModule {}
+export class TranslationFormModule {}

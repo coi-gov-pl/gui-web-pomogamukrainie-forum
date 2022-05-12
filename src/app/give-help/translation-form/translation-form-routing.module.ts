@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { TranslationsFormComponent } from './translations-form.component';
+import { TranslationFormComponent } from './translation-form.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: TranslationsFormComponent,
+    component: TranslationFormComponent,
     data: {
       title: null,
     },
@@ -16,4 +16,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class TranslationsFormRoutingModule {}
+export class TranslationFormRoutingModule {}

@@ -11,11 +11,11 @@ import { OfferDataInitService } from '@app/shared/services';
 import { TranslationOffer, TranslationOfferDefinitionDTO, TranslationResourceService } from '@app/core/api';
 
 @Component({
-  selector: 'app-translations-form',
-  templateUrl: './translations-form.component.html',
-  styleUrls: ['./translations-form.component.scss'],
+  selector: 'app-translation-form',
+  templateUrl: './translation-form.component.html',
+  styleUrls: ['./translation-form.component.scss'],
 })
-export class TranslationsFormComponent implements OnInit {
+export class TranslationFormComponent implements OnInit {
   data = defaults<TranslationOfferDefinitionDTO>({});
   modes = Object.values(TranslationOffer.ModeEnum);
   LANGUAGES = LANGUAGES;

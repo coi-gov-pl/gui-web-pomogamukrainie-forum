@@ -112,16 +112,14 @@ const routes: Routes = [
 
       {
         path: CategoryRoutingName.TRANSLATIONS,
-        loadChildren: () =>
-          import('./translations-form/translations-form.module').then((m) => m.TranslationsFormModule),
+        loadChildren: () => import('./translation-form/translation-form.module').then((m) => m.TranslationFormModule),
         data: {
           title: BreadcrumbLabels.TRANSLATIONS,
         },
       },
       {
         path: `${CategoryRoutingName.TRANSLATIONS}/:id`,
-        loadChildren: () =>
-          import('./translations-form/translations-form.module').then((m) => m.TranslationsFormModule),
+        loadChildren: () => import('./translation-form/translation-form.module').then((m) => m.TranslationFormModule),
         data: {
           title: BreadcrumbLabels.TRANSLATIONS,
         },
