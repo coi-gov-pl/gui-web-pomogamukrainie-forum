@@ -1,9 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Pageable, TranslationResourceService, TranslationOffer } from '@app/core/api';
+import { Pageable, TranslationResourceService, TranslationOffer, TranslationOfferSearchCriteria } from '@app/core/api';
 import { CategoryRoutingName, CorePath } from '@app/shared/models';
 import { ActivatedRoute } from '@angular/router';
 import { MobileViewportDetectService } from '@app/shared/services';
-import { TranslationsOfferSearchCriteria } from './translation-search-form/translation-search-form.component'; // TODO import from API
 
 @Component({
   selector: 'app-translation-search',
@@ -15,7 +14,7 @@ export class TranslationSearchComponent implements OnInit {
   total?: number = undefined;
   categoryRoutingName = CategoryRoutingName;
   corePath = CorePath;
-  searchCriteria: TranslationsOfferSearchCriteria = {};
+  searchCriteria: TranslationOfferSearchCriteria = {};
   pagination: Pageable | undefined = {};
   @ViewChild('translationResultsStart', { read: ElementRef }) resultsStart!: ElementRef<HTMLElement>;
 
@@ -27,7 +26,7 @@ export class TranslationSearchComponent implements OnInit {
 
   ngOnInit() {
     const { city, region, language, mode } = this.route.snapshot.queryParams;
-    const searchCriteria: TranslationsOfferSearchCriteria = {
+    const searchCriteria: TranslationOfferSearchCriteria = {
       location: {
         region,
         city,
@@ -38,7 +37,7 @@ export class TranslationSearchComponent implements OnInit {
     this.search(searchCriteria);
   }
 
-  search(searchCriteria?: TranslationsOfferSearchCriteria) {
+  search(searchCriteria?: TranslationOfferSearchCriteria) {
     const { page, size, sort } = this.route.snapshot.queryParams;
 
     if (searchCriteria) {
@@ -53,18 +52,18 @@ export class TranslationSearchComponent implements OnInit {
       sort,
     };
 
-    // this.translationResourceService.listTranslation(pageRequest, this.searchCriteria).subscribe({
-    //   next: (results) => {
-    //     this.results = results.content ?? [];
-    //     this.total = results.totalElements ?? 0;
-    //     if (this.mobileViewportDetect.isMobileView) {
-    //       this.resultsStart?.nativeElement?.scrollIntoView();
-    //     }
-    //   },
-    //   error: () => {
-    //     this.results = [];
-    //     this.total = undefined;
-    //   },
-    // });
+    this.translationResourceService.listTranslation(pageRequest, this.searchCriteria).subscribe({
+      next: (results) => {
+        this.results = results.content ?? [];
+        this.total = results.totalElements ?? 0;
+        if (this.mobileViewportDetect.isMobileView) {
+          this.resultsStart?.nativeElement?.scrollIntoView();
+        }
+      },
+      error: () => {
+        this.results = [];
+        this.total = undefined;
+      },
+    });
   }
 }
