@@ -100,6 +100,7 @@ export class JobFormComponent implements OnInit {
         }
       });
     }
+    this.isSaved = true;
   }
 
   onCancelButtonClick() {

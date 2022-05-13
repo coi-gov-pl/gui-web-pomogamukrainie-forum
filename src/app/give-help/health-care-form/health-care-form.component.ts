@@ -81,6 +81,7 @@ export class HealthCareFormComponent implements OnInit {
         }
       });
     }
+    this.isSaved = true;
   }
 
   onCancelButtonClick() {

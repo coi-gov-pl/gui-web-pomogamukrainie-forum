@@ -81,6 +81,7 @@ export class MaterialAidFormComponent implements OnInit {
         }
       });
     }
+    this.isSaved = true;
   }
 
   onCancelButtonClick() {
