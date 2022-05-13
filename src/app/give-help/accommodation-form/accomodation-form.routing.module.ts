@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AccommodationFormComponent } from './accommodation-form.component';
-import { CanDeactivateGuard } from '../can-deactivate.guard';
+import { CanDeactivateGuard } from '@app/shared/guards/';
 
 const routes: Routes = [
   {
