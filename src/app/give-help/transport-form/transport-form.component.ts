@@ -4,11 +4,13 @@ import { TransportOfferDefinitionDTO, TransportResourceService } from '@app/core
 import { DIALOG_CANCEL_OFFER_CONFIG, PREFIXES } from '@app/shared/consts';
 import { SnackbarService } from '@app/shared/services/snackbar.service';
 import { CorePath, ALERT_TYPES, CANCEL_DIALOG_HEADERS, CategoryNameKey, PhoneNumber } from '@app/shared/models';
-import { take } from 'rxjs/operators';
+import { switchMap, take } from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmCancelDialogComponent } from '@app/shared/components';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { OfferDataInitService } from '@app/shared/services';
+import { Observable, of } from 'rxjs';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-transport-form',
@@ -21,6 +23,10 @@ export class TransportFormComponent implements OnInit {
   phone = defaults<PhoneNumber>();
   data = defaults<TransportOfferDefinitionDTO>();
   offerId?: number;
+  isSaved = false;
+  @ViewChild('transportForm', { static: true })
+  ngForm: NgForm = new NgForm([], []);
+
   constructor(
     private transportResourceService: TransportResourceService,
     private router: Router,
@@ -72,17 +78,28 @@ export class TransportFormComponent implements OnInit {
   }
 
   onCancelButtonClick() {
-    const dialogRef: MatDialogRef<ConfirmCancelDialogComponent> = this.dialog.open(ConfirmCancelDialogComponent);
-
-    dialogRef.componentInstance.confirm.pipe(take(1)).subscribe((confirm: boolean) => {
-      if (confirm) {
-        this.router.navigate([CorePath.MyAccount]);
-      }
-      dialogRef.close();
-    });
+    this.router.navigate([CorePath.MyAccount]);
   }
 
   get isEditRoute(): boolean {
     return this.router.url === `/edycja-ogloszenia/transport/${this.offerId}`;
+  }
+
+  canDeactivate(): Observable<boolean | undefined> {
+    if (!this.isSaved && this.ngForm.form.touched) {
+      const dialogRef: MatDialogRef<ConfirmCancelDialogComponent> = this.dialog.open(
+        ConfirmCancelDialogComponent,
+        DIALOG_CANCEL_OFFER_CONFIG
+      );
+
+      const result = dialogRef.componentInstance.confirm.pipe(
+        switchMap((confirm) => {
+          dialogRef.close();
+          return of(confirm);
+        })
+      );
+      return result;
+    }
+    return of(true);
   }
 }

@@ -34,7 +34,6 @@ export class BreadcrumbComponent implements OnInit {
         startWith(undefined)
       )
       .subscribe((event) => {
-        // console.log('event', event);
         if (event instanceof NavigationEnd) {
           this.breadcrumbs = this.buildBreadcrumbs();
         }

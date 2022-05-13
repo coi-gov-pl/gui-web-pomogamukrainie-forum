@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { defaults } from '@app/shared/utils';
 import { PREFIXES, LANGUAGES, LENGTH_OF_STAY } from '@app/shared/consts';
 import { AccommodationOfferDefinitionDTO, AccommodationsResourceService } from '@app/core/api';
@@ -12,6 +12,7 @@ import { DIALOG_CANCEL_OFFER_CONFIG } from '@app/shared/consts';
 import { PhoneNumber } from '@app/shared/models';
 import { OfferDataInitService } from '@app/shared/services';
 import { Observable, of } from 'rxjs';
+import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-accommodation-form',
   templateUrl: './accommodation-form.component.html',
@@ -28,7 +29,8 @@ export class AccommodationFormComponent implements OnInit {
   phone = defaults<PhoneNumber>();
   offerId?: number;
   isSaved = false;
-  cancelDialog?: boolean;
+  @ViewChild('accommodationForm', { static: true })
+  ngForm: NgForm = new NgForm([], []);
 
   constructor(
     private accommodationsResourceService: AccommodationsResourceService,
@@ -91,7 +93,7 @@ export class AccommodationFormComponent implements OnInit {
   }
 
   canDeactivate(): Observable<boolean | undefined> {
-    if (!this.isSaved) {
+    if (!this.isSaved && this.ngForm.form.touched) {
       const dialogRef: MatDialogRef<ConfirmCancelDialogComponent> = this.dialog.open(
         ConfirmCancelDialogComponent,
         DIALOG_CANCEL_OFFER_CONFIG
