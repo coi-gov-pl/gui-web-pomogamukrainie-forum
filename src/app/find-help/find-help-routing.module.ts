@@ -64,6 +64,14 @@ const routes: Routes = [
           title: BreadcrumbLabels.LAW_HELP,
         },
       },
+      {
+        path: CategoryRoutingName.TRANSLATIONS,
+        loadChildren: () =>
+          import('./translation-search/translation-search.module').then((m) => m.TranslationSearchModule),
+        data: {
+          title: BreadcrumbLabels.TRANSLATIONS,
+        },
+      },
     ],
   },
 ];
