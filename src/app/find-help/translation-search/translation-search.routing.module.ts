@@ -26,6 +26,14 @@ const routes: Routes = [
           title: null,
         },
       },
+      {
+        path: ':id',
+        loadChildren: () =>
+          import('../view-offer-translation/view-offer-translation.module').then((m) => m.ViewOfferTranslationModule),
+        data: {
+          title: BreadcrumbLabels.AD,
+        },
+      },
     ],
   },
 ];
