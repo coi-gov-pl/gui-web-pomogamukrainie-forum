@@ -29,10 +29,10 @@ export class ViewOfferTranslationComponent implements OnInit {
 
   ngOnInit(): void {
     this.offerId = Number(this.route.snapshot.paramMap.get('id'));
-    this.getTranslationsOffer();
+    this.getTranslationOffer();
   }
 
-  getTranslationsOffer() {
+  getTranslationOffer() {
     this.translationResourceService.getTranslation(this.offerId).subscribe(
       (response) => {
         this.data = response;
