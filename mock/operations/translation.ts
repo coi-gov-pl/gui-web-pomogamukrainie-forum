@@ -1,5 +1,5 @@
 import * as express from 'express';
-import { translationList, translationOffer } from '../data';
+import { translationList, translationOffer, userOffers } from '../data';
 
 export function translationListGet(req: express.Request, res: express.Response): express.Response {
   return res.json(translationList);
@@ -18,4 +18,11 @@ export function translationGet(req: express.Request, res: express.Response): exp
 
 export function translationPost(req: express.Request, res: express.Response): express.Response {
   return res.json(translationOffer(req.body));
+}
+
+export function translationDelete(req: express.Request, res: express.Response): express.Response {
+  const { id } = req.params;
+  res.status(204);
+  userOffers.content = userOffers.content?.filter((el) => el.id !== Number(id));
+  return res.send();
 }

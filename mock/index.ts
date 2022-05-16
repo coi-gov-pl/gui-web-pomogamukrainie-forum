@@ -72,7 +72,7 @@ router
   .delete(`${baseHref}/secure/transport/:id`, transportDelete)
   .delete(`${baseHref}/secure/accommodations/:id`, accommodationDelete)
   .delete(`${baseHref}/secure/material-aid/:id`, materialAidDelete)
-  .delete(`${baseHref}/secure/translations/:id`, translationDelete);
+  .delete(`${baseHref}/secure/translation/:id`, translationDelete);
 
 app.use(router);
 
