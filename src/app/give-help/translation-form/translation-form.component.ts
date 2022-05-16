@@ -1,35 +1,36 @@
-import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
-import { defaults } from '@app/shared/utils';
-import { TransportOfferDefinitionDTO, TransportResourceService } from '@app/core/api';
-import { DIALOG_CANCEL_OFFER_CONFIG, PREFIXES } from '@app/shared/consts';
-import { SnackbarService } from '@app/shared/services/snackbar.service';
-import { CorePath, ALERT_TYPES, CANCEL_DIALOG_HEADERS, CategoryNameKey, PhoneNumber } from '@app/shared/models';
-import { switchMap, take } from 'rxjs/operators';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ConfirmCancelDialogComponent } from '@app/shared/components';
+import { DIALOG_CANCEL_OFFER_CONFIG, LANGUAGES, PREFIXES } from '@app/shared/consts';
+import { defaults } from '@app/shared/utils';
+import { SnackbarService } from '@app/shared/services/snackbar.service';
+import { CorePath, ALERT_TYPES, CANCEL_DIALOG_HEADERS, PhoneNumber, CategoryNameKey } from '@app/shared/models';
+import { switchMap, take } from 'rxjs/operators';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { ConfirmCancelDialogComponent } from '@app/shared/components';
 import { OfferDataInitService } from '@app/shared/services';
-import { Observable, of } from 'rxjs';
+import { TranslationOffer, TranslationOfferDefinitionDTO, TranslationResourceService } from '@app/core/api';
 import { NgForm } from '@angular/forms';
+import { Observable, of } from 'rxjs';
 
 @Component({
-  selector: 'app-transport-form',
-  templateUrl: './transport-form.component.html',
-  styleUrls: ['./transport-form.component.scss'],
+  selector: 'app-translation-form',
+  templateUrl: './translation-form.component.html',
+  styleUrls: ['./translation-form.component.scss'],
 })
-export class TransportFormComponent implements OnInit {
-  minDate: Date = new Date();
+export class TranslationFormComponent implements OnInit {
+  data = defaults<TranslationOfferDefinitionDTO>({});
+  modes = Object.values(TranslationOffer.ModeEnum);
+  LANGUAGES = LANGUAGES;
   PREFIXES = PREFIXES;
-  phone = defaults<PhoneNumber>();
-  data = defaults<TransportOfferDefinitionDTO>();
   offerId?: number;
+  phone = defaults<PhoneNumber>();
   isSaved = false;
-  @ViewChild('transportForm', { static: true })
+  @ViewChild('translationForm', { static: true })
   ngForm: NgForm = new NgForm([], []);
 
   constructor(
-    private transportResourceService: TransportResourceService,
     private router: Router,
+    private translationResourceService: TranslationResourceService,
     private snackbarService: SnackbarService,
     private dialog: MatDialog,
     private route: ActivatedRoute,
@@ -38,24 +39,25 @@ export class TransportFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.offerId = Number(this.route.snapshot.paramMap.get('id'));
+
     if (this.isEditRoute) {
-      this.offerDataInitService.initOfferDataForEdit(this, CategoryNameKey.TRANSPORT);
+      this.offerDataInitService.initOfferDataForEdit(this, CategoryNameKey.TRANSLATIONS);
       DIALOG_CANCEL_OFFER_CONFIG.data.headerText = CANCEL_DIALOG_HEADERS.CONFIRM_CANCEL_OFFER_EDIT;
     } else {
       DIALOG_CANCEL_OFFER_CONFIG.data.headerText = CANCEL_DIALOG_HEADERS.CONFIRM_CANCEL_OFFER_NEW;
     }
   }
 
-  submitOffer(): void {
+  handleSubmit() {
     this.offerDataInitService.preparePhoneNumber(this);
     if (!this.isEditRoute) {
-      this.transportResourceService
-        .createTransport(this.data)
+      this.translationResourceService
+        .createTranslation(this.data)
         .pipe(take(1))
         .subscribe(() => this.redirectOnSuccess());
     } else {
-      this.transportResourceService
-        .updateTransport(this.offerId!, this.data)
+      this.translationResourceService
+        .updateTranslation(this.offerId!, this.data)
         .pipe(take(1))
         .subscribe(() => this.redirectOnSuccess());
     }
@@ -83,7 +85,7 @@ export class TransportFormComponent implements OnInit {
   }
 
   get isEditRoute(): boolean {
-    return this.router.url === `/edycja-ogloszenia/transport/${this.offerId}`;
+    return this.router.url === `/edycja-ogloszenia/tlumaczenia/${this.offerId}`;
   }
 
   canDeactivate(): Observable<boolean | undefined> {
