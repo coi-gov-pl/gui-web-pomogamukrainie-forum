@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { JobResourceService } from '@app/core/api/api/jobResource.service';
@@ -8,7 +9,7 @@ import { DIALOG_CANCEL_OFFER_CONFIG, LANGUAGES, PREFIXES } from '@app/shared/con
 import { ALERT_TYPES, CANCEL_DIALOG_HEADERS, CategoryNameKey, CorePath, PhoneNumber } from '@app/shared/models';
 import { OfferDataInitService, SnackbarService } from '@app/shared/services';
 import { defaults } from '@app/shared/utils';
-import { take } from 'rxjs';
+import { Observable, of, switchMap, take } from 'rxjs';
 
 const INDUSTRIES = Object.entries(JobOfferDefinitionDTO.IndustryEnum).map(([key, value]) => ({
   key,
@@ -46,6 +47,10 @@ export class JobFormComponent implements OnInit {
   @Input() buttonLabel: string = '';
   offerId?: number;
   phone = defaults<PhoneNumber>();
+  isSaved = false;
+  @ViewChild('jobForm', { static: true })
+  ngForm: NgForm = new NgForm([], []);
+
   constructor(
     private jobResourceService: JobResourceService,
     private router: Router,
@@ -95,23 +100,32 @@ export class JobFormComponent implements OnInit {
         }
       });
     }
+    this.isSaved = true;
   }
 
   onCancelButtonClick() {
-    const dialogRef: MatDialogRef<ConfirmCancelDialogComponent> = this.dialog.open(
-      ConfirmCancelDialogComponent,
-      DIALOG_CANCEL_OFFER_CONFIG
-    );
-
-    dialogRef.componentInstance.confirm.pipe(take(1)).subscribe((confirm: boolean) => {
-      if (confirm) {
-        this.router.navigate([CorePath.MyAccount]);
-      }
-      dialogRef.close();
-    });
+    this.router.navigate([CorePath.MyAccount]);
   }
 
   get isEditRoute(): boolean {
     return this.router.url === `/edycja-ogloszenia/praca/${this.offerId}`;
+  }
+
+  canDeactivate(): Observable<boolean | undefined> {
+    if (!this.isSaved && this.ngForm.form.touched) {
+      const dialogRef: MatDialogRef<ConfirmCancelDialogComponent> = this.dialog.open(
+        ConfirmCancelDialogComponent,
+        DIALOG_CANCEL_OFFER_CONFIG
+      );
+
+      const result = dialogRef.componentInstance.confirm.pipe(
+        switchMap((confirm) => {
+          dialogRef.close();
+          return of(confirm);
+        })
+      );
+      return result;
+    }
+    return of(true);
   }
 }

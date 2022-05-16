@@ -1,14 +1,16 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { defaults } from '@app/shared/utils';
 import { PREFIXES, LANGUAGES, LENGTH_OF_STAY } from '@app/shared/consts';
 import { HealthResourceService, HealthOfferDefinitionDTO } from '@app/core/api';
 import { CorePath, ALERT_TYPES, CANCEL_DIALOG_HEADERS, PhoneNumber, CategoryNameKey } from '@app/shared/models';
 import { OfferDataInitService, SnackbarService } from '@app/shared/services';
-import { take } from 'rxjs/operators';
+import { switchMap, take } from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ConfirmCancelDialogComponent } from '@app/shared/components';
 import { DIALOG_CANCEL_OFFER_CONFIG } from '@app/shared/consts';
+import { Observable, of } from 'rxjs';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-health-care-form',
@@ -28,6 +30,9 @@ export class HealthCareFormComponent implements OnInit {
   MODE_ENUM = Object.values(HealthOfferDefinitionDTO.ModeEnum);
   SPECIALIZATION_ENUM = Object.values(HealthOfferDefinitionDTO.SpecializationEnum);
   phone = defaults<PhoneNumber>();
+  isSaved = false;
+  @ViewChild('healthCareForm', { static: true })
+  ngForm: NgForm = new NgForm([], []);
 
   constructor(
     private HealthResourceService: HealthResourceService,
@@ -76,23 +81,32 @@ export class HealthCareFormComponent implements OnInit {
         }
       });
     }
+    this.isSaved = true;
   }
 
   onCancelButtonClick() {
-    const dialogRef: MatDialogRef<ConfirmCancelDialogComponent> = this.dialog.open(
-      ConfirmCancelDialogComponent,
-      DIALOG_CANCEL_OFFER_CONFIG
-    );
-
-    dialogRef.componentInstance.confirm.pipe(take(1)).subscribe((confirm: boolean) => {
-      if (confirm) {
-        this.router.navigate([CorePath.MyAccount]);
-      }
-      dialogRef.close();
-    });
+    this.router.navigate([CorePath.MyAccount]);
   }
 
   get isEditRoute(): boolean {
     return this.router.url === `/edycja-ogloszenia/zdrowie/${this.offerId}`;
+  }
+
+  canDeactivate(): Observable<boolean | undefined> {
+    if (!this.isSaved && this.ngForm.form.touched) {
+      const dialogRef: MatDialogRef<ConfirmCancelDialogComponent> = this.dialog.open(
+        ConfirmCancelDialogComponent,
+        DIALOG_CANCEL_OFFER_CONFIG
+      );
+
+      const result = dialogRef.componentInstance.confirm.pipe(
+        switchMap((confirm) => {
+          dialogRef.close();
+          return of(confirm);
+        })
+      );
+      return result;
+    }
+    return of(true);
   }
 }
