@@ -109,6 +109,21 @@ const routes: Routes = [
           title: BreadcrumbLabels.LEGAL_HELP,
         },
       },
+
+      {
+        path: CategoryRoutingName.TRANSLATIONS,
+        loadChildren: () => import('./translation-form/translation-form.module').then((m) => m.TranslationFormModule),
+        data: {
+          title: BreadcrumbLabels.TRANSLATIONS,
+        },
+      },
+      {
+        path: `${CategoryRoutingName.TRANSLATIONS}/:id`,
+        loadChildren: () => import('./translation-form/translation-form.module').then((m) => m.TranslationFormModule),
+        data: {
+          title: BreadcrumbLabels.TRANSLATIONS,
+        },
+      },
     ],
   },
 ];

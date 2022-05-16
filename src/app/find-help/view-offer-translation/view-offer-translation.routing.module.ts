@@ -1,13 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AccommodationFormComponent } from './accommodation-form.component';
-import { CanDeactivateGuard } from '@app/shared/guards/';
+import { ViewOfferTranslationComponent } from './view-offer-translation.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: AccommodationFormComponent,
-    canDeactivate: [CanDeactivateGuard],
+    component: ViewOfferTranslationComponent,
     data: {
       title: null,
     },
@@ -18,4 +16,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class AccommodationSearchRoutingModule {}
+export class ViewOfferTranslationRoutingModule {}

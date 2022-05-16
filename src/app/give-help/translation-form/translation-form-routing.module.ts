@@ -1,14 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CanDeactivateGuard } from '@app/shared/guards';
-import { JobFormComponent } from './job-form.component';
+import { TranslationFormComponent } from './translation-form.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: JobFormComponent,
+    component: TranslationFormComponent,
     canDeactivate: [CanDeactivateGuard],
-    data: { title: null },
+    data: {
+      title: null,
+    },
   },
 ];
 
@@ -16,4 +18,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class JobFormRoutingModule {}
+export class TranslationFormRoutingModule {}

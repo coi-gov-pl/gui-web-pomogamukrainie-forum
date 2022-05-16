@@ -1,5 +1,5 @@
 <mat-card>
-  <form (ngSubmit)="submitOffer()" #healthCareForm="ngForm">
+  <form (submit)="handleSubmit()" #translationForm="ngForm">
     <div class="container">
       <div class="d-flex">
         <button class="btn-link ms-auto" type="button" (click)="onCancelButtonClick()">
@@ -13,70 +13,52 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-12 col-md-6 col-lg-4">
+        <div class="col-lg-6">
           <app-cities-search
             [(ngModel)]="data.location"
             name="location"
             [placeholder]="'PLACEHOLDER_LOCATION' | translate"
             [label]="'LOCATION' | translate"
+            [required]="false"
           ></app-cities-search>
         </div>
-        <div class="col-12 col-md-6 col-lg-2">
-          <label
-            ><b>{{ "MODE" | translate }} *</b></label
-          >
-          <mat-form-field appearance="outline">
-            <mat-select
-              placeholder="{{ 'CHOOSE_MODE' | translate }}"
-              multiple
-              [(ngModel)]="data.mode"
-              name="mode"
-              required
-              #mode="ngModel"
-            >
-              <mat-option *ngFor="let mode of MODE_ENUM" [value]="mode">{{ mode | translate }}</mat-option>
-            </mat-select>
-            <mat-error>
-              <app-field-error [model]="mode"></app-field-error>
-            </mat-error>
-          </mat-form-field>
-        </div>
-        <div class="col-12 col-md-6 col-lg-3">
-          <label
-            ><b>{{ "LABEL_SPECIALISATION" | translate }} *</b></label
-          >
-          <mat-form-field appearance="outline">
-            <mat-select
-              placeholder="{{ 'CHOOSE_SPECIALISATION' | translate }}"
-              [(ngModel)]="data.specialization"
-              name="specialization"
-              required
-              #specialization="ngModel"
-            >
-              <mat-option *ngFor="let spec of SPECIALIZATION_ENUM" [value]="spec">{{ spec | translate }}</mat-option>
-            </mat-select>
-            <mat-error>
-              <app-field-error [model]="specialization"></app-field-error>
-            </mat-error>
-          </mat-form-field>
-        </div>
-        <div class="col-12 col-md-6 col-lg-3">
-          <label
-            ><b>{{ "LANGUAGE" | translate }} *</b></label
-          >
+        <div class="col-md-6 col-lg-3">
+          <label for="language">
+            <b>{{ "LANGUAGE" | translate }} *</b>
+          </label>
           <mat-form-field appearance="outline">
             <mat-select
               placeholder="{{ 'SELECT_LANGUAGE' | translate }}"
-              multiple
               [(ngModel)]="data.language"
               name="language"
               required
               #language="ngModel"
+              multiple
             >
-              <mat-option *ngFor="let lang of LANGUAGES" [value]="lang.code">{{ lang.label | translate }}</mat-option>
+              <mat-option *ngFor="let it of LANGUAGES" [value]="it.code">{{ it.label | translate }}</mat-option>
             </mat-select>
             <mat-error>
               <app-field-error [model]="language"></app-field-error>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <label for="mode">
+            <b>{{ "MODE" | translate }} *</b>
+          </label>
+          <mat-form-field appearance="outline">
+            <mat-select
+              placeholder="{{ 'CHOOSE_MODE' | translate }}"
+              [(ngModel)]="data.mode"
+              name="mode"
+              required
+              #mode="ngModel"
+              multiple
+            >
+              <mat-option *ngFor="let it of modes" [value]="it">{{ it | translate }}</mat-option>
+            </mat-select>
+            <mat-error>
+              <app-field-error [model]="mode"></app-field-error>
             </mat-error>
           </mat-form-field>
         </div>

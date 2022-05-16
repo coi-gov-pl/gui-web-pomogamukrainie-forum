@@ -27,6 +27,7 @@ export * from './pageable';
 export * from './sendMessageDTO';
 export * from './translationOffer';
 export * from './translationOfferDefinitionDTO';
+export * from './translationOfferSearchCriteria';
 export * from './transportOffer';
 export * from './transportOfferDefinitionDTO';
 export * from './transportOfferSearchCriteria';
