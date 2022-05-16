@@ -134,6 +134,25 @@
     ></app-search-result-attribute>
   </app-search-result>
 
+  <app-search-result
+    *ngIf="currentAnnouncement.type === 'TRANSLATION'"
+    [location]="currentAnnouncement.location"
+    [title]="currentAnnouncement.title"
+    [description]="currentAnnouncement.description"
+    [posted]="currentAnnouncement.modifiedDate"
+  >
+    <app-search-result-attribute
+      *ngIf="currentAnnouncement.language"
+      [text]="currentAnnouncement.language | translateArray: ', '"
+      icon="translate"
+    ></app-search-result-attribute>
+    <app-search-result-attribute
+      *ngIf="currentAnnouncement.mode"
+      [text]="currentAnnouncement.mode | translateArray: ', '"
+      icon="corporate_fare"
+    ></app-search-result-attribute>
+  </app-search-result>
+
   <div class="footer">
     <button type="submit" class="btn btn-dark" (click)="confirmAction(false)">
       <span>{{ "NO" | translate }}</span>

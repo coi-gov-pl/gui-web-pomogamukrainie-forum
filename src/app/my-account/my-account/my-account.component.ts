@@ -15,6 +15,7 @@ import {
   JobOffer,
   JobResourceService,
   LawResourceService,
+  TranslationResourceService,
 } from '@app/core/api';
 import { switchMap, take } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -23,6 +24,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ConfirmRemoveAdComponent } from '../confirm-remove-ad/confirm-remove-ad.component';
 import { StoreUrlService } from '@app/core/store-url/store-url.service';
 import { SnackbarService } from '@app/shared/services';
+import { TranslationOffer } from '@app/core/api/model/translationOffer';
 
 @Component({
   selector: 'app-my-account',
@@ -47,7 +49,8 @@ export class MyAccountComponent implements OnInit {
     private snackbarService: SnackbarService,
     private healthResourceService: HealthResourceService,
     private jobResourceService: JobResourceService,
-    private lawResourceService: LawResourceService
+    private lawResourceService: LawResourceService,
+    private translationResourceService: TranslationResourceService
   ) {}
 
   public async ngOnInit() {
@@ -72,7 +75,14 @@ export class MyAccountComponent implements OnInit {
   }
 
   removeAnnouncement(
-    announcement: AccommodationOffer | MaterialAidOffer | TransportOffer | HealthOffer | JobOffer | LawOffer
+    announcement:
+      | AccommodationOffer
+      | MaterialAidOffer
+      | TransportOffer
+      | HealthOffer
+      | JobOffer
+      | LawOffer
+      | TranslationOffer
   ): void {
     const dialogRef: MatDialogRef<ConfirmRemoveAdComponent> = this.dialog.open(ConfirmRemoveAdComponent, {
       hasBackdrop: true,
@@ -135,12 +145,27 @@ export class MyAccountComponent implements OnInit {
               next: (data) => this.onRemoveSuccess(data),
               error: (error) => this.onRemoveError(error.message),
             });
+        } else if (announcement.type === TranslationOffer.TypeEnum.Translation) {
+          this.translationResourceService
+            .deleteTranslation(announcement.id)
+            .pipe(switchMap(() => this.myOffersResource.listMyOffers(this.pageRequest)))
+            .subscribe({
+              next: (data) => this.onRemoveSuccess(data),
+              error: (error) => this.onRemoveError(error.message),
+            });
         }
       }
     });
   }
   editAnnouncement(
-    announcement: AccommodationOffer | MaterialAidOffer | TransportOffer | HealthOffer | JobOffer | LawOffer
+    announcement:
+      | AccommodationOffer
+      | MaterialAidOffer
+      | TransportOffer
+      | HealthOffer
+      | JobOffer
+      | LawOffer
+      | TranslationOffer
   ): void {
     // @TODO: extract to separate util
     let categoryRoute;
@@ -167,6 +192,10 @@ export class MyAccountComponent implements OnInit {
       }
       case LawOffer.TypeEnum.Law: {
         categoryRoute = CategoryRoutingName.LEGAL_HELP;
+        break;
+      }
+      case TranslationOffer.TypeEnum.Translation: {
+        categoryRoute = CategoryRoutingName.TRANSLATIONS;
         break;
       }
     }

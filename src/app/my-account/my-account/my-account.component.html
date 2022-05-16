@@ -233,6 +233,36 @@
             </button>
           </div>
         </app-search-result>
+        <app-search-result
+          *ngIf="announcement.type === 'TRANSLATION'"
+          [location]="announcement.location"
+          [title]="announcement.title"
+          [description]="announcement.description | truncate: 200:'...'"
+          [posted]="announcement.modifiedDate"
+          [offerId]="announcement.id!"
+          [category]="categoryRoutingName.TRANSLATIONS"
+          [fromMyAccount]="true"
+        >
+          <app-search-result-attribute
+            *ngIf="announcement.language"
+            [text]="announcement.language | translateArray: ', '"
+            icon="translate"
+          ></app-search-result-attribute>
+          <app-search-result-attribute
+            *ngIf="announcement.mode"
+            [text]="announcement.mode | translateArray: ', '"
+            icon="corporate_fare"
+          ></app-search-result-attribute>
+
+          <div class="w-100 flex-column mt-5 mt-sm-auto mb-sm-auto" buttons>
+            <button type="button" class="btn btn-outline-dark btn-edit" (click)="editAnnouncement(announcement)">
+              {{ "EDIT_ANNOUNCEMENT" | translate }}
+            </button>
+            <button type="button" class="btn btn-link btn-sm btn-remove" (click)="removeAnnouncement(announcement)">
+              {{ "REMOVE_ANNOUNCEMENT" | translate }}
+            </button>
+          </div>
+        </app-search-result>
       </ng-container>
       <app-paginator [length]="myAnnouncements.totalElements" (param)="getMyOffers()"></app-paginator>
     </div>
