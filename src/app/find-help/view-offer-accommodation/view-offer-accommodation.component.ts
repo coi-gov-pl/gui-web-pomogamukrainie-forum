@@ -5,11 +5,21 @@ import { CategoryRoutingName, CorePath } from '@app/shared/models';
 import { defaults } from '@app/shared/utils';
 import { AccommodationQuery } from '../accommodation-search/accommodation-search-form/accommodation-search-form.component';
 import { OffersAccommodationOffer } from '@app/core/api';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-view-offer-accommodation',
   templateUrl: './view-offer-accommodation.component.html',
   styleUrls: ['./view-offer-accommodation.component.scss'],
+  animations: [
+    // Each unique animation requires its own trigger. The first argument of the trigger function is the name
+    trigger('rotatedState', [
+      state('default', style({ transform: 'rotate(0)' })),
+      state('rotated', style({ transform: 'rotate(-360deg)' })),
+      transition('rotated => default', animate('400ms ease-out')),
+      transition('default => rotated', animate('400ms ease-out')),
+    ]),
+  ],
 })
 export class ViewOfferAccommodationComponent implements OnInit {
   offerId!: number;
@@ -29,6 +39,8 @@ export class ViewOfferAccommodationComponent implements OnInit {
   searchCriteria: AccommodationQuery = {};
   total?: number = undefined;
   activeIndex: number = 0;
+  state: string = 'default';
+  blurClass = '';
   constructor(
     private route: ActivatedRoute,
     private accommodationsResourceService: AccommodationsResourceService,
@@ -106,7 +118,7 @@ export class ViewOfferAccommodationComponent implements OnInit {
           this.activeOffer = this.offerResults.find((x) => x.id === this.offerId);
           this.activeIndex = this.offerResults.findIndex((x) => x.id === this.offerId);
           console.log('this.activeOffer', this.activeOffer);
-          console.log('this.index', this.activeIndex);
+          // console.log('this.index', this.activeIndex);
         },
         error: () => {
           this.offerResults = [];
@@ -123,13 +135,11 @@ export class ViewOfferAccommodationComponent implements OnInit {
 
     if (direction === 'prev') {
       // this.getAccomodationOffer(this.offerId);
-
       const SLIDE_PREV_DATA: AccommodationOffer = this.offerResults[index - 1];
       this.router.navigate([CorePath.Find, CategoryRoutingName.ACCOMMODATION, SLIDE_PREV_DATA.id]);
       this.activeIndex = index >= 0 ? index - 1 : index;
       this.offerId = this.activeIndex;
       this.data = SLIDE_PREV_DATA;
-
       // this.router.navigate([CorePath.Find, CategoryRoutingName.ACCOMMODATION, SLIDE_PREV_ID]).then((page) => {
       //   window.location.reload();
       // });
@@ -139,10 +149,18 @@ export class ViewOfferAccommodationComponent implements OnInit {
       this.activeIndex = index >= 0 ? index + 1 : index;
       this.offerId = this.activeIndex;
       this.data = SLIDE_NEXT_DATA;
-
       // this.router.navigate([CorePath.Find, CategoryRoutingName.ACCOMMODATION, SLIDE_NEXT_ID]).then((page) => {
       //   window.location.reload();
       // });
     }
+    console.log('this.index', this.activeIndex);
+  }
+
+  rotate() {
+    // this.state = this.state === 'default' ? 'rotated' : 'default';
+    this.blurClass = 'blurClass';
+    setTimeout(() => {
+      this.blurClass = '';
+    }, 300);
   }
 }
