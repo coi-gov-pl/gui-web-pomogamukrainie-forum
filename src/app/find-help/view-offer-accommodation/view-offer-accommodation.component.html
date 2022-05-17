@@ -1,4 +1,6 @@
 <app-breadcrumb></app-breadcrumb>
+<button class="btn-link" (click)="slideOffer(activeIndex, 'prev')">PREV</button>
+<button class="btn-link" (click)="slideOffer(activeIndex, 'next')">NEXT</button>
 
 <div class="d-flex flex-column flex-md-row" *ngIf="data">
   <mat-card class="offer p-4 w-100 w-md-50 d-flex flex-column">
