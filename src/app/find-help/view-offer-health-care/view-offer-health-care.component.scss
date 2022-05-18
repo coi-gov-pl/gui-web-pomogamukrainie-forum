@@ -1,1 +1,27 @@
 @import "view-offer";
+
+.blurClass {
+  transition: all 0.3s ease-out;
+  filter: blur(3px);
+}
+
+.dot {
+  position: absolute;
+  height: 35px;
+  width: 35px;
+  background-color: white;
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.9;
+  top: 50vh;
+  z-index: 10;
+  &.prev {
+    left: -20px;
+  }
+  &.next {
+    right: -20px;
+  }
+  mat-icon {
+    margin-top: 2px;
+  }
+}
