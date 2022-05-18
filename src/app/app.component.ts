@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageCode } from '@app/core/translations';
 import { StoreUrlService } from '@app/core/store-url';
@@ -8,6 +8,13 @@ import { AngularPlugin } from '@microsoft/applicationinsights-angularplugin-js';
 import { environment } from 'src/environments/environment';
 import { LocalStorageKeys } from '@app/shared/models';
 import { EnvironmentType } from '../environments/model';
+import { filter, Subject, takeUntil } from 'rxjs';
+
+declare global {
+  interface Window {
+    _paq: any;
+  }
+}
 
 async function addJiraScript() {
   // Import jQuery dynamically so that it's only loaded if the JIRA script is needed.
@@ -32,6 +39,8 @@ async function addJiraScript() {
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
+  private destroyed$: Subject<void> = new Subject<void>();
+
   constructor(
     private router: Router,
     private translateService: TranslateService,
@@ -58,6 +67,8 @@ export class AppComponent implements OnInit {
         console.error('Loading the JIRA script failed:', err);
       });
     }
+
+    this.trackUrl();
   }
 
   getContentClass() {
@@ -67,5 +78,23 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.translateService.use(localStorage.getItem(LocalStorageKeys.LangOption) || LanguageCode.pl_PL);
     this.storeUrlService.setPreviousUrl();
+  }
+
+  trackUrl(): void {
+    this.router.events
+      .pipe(
+        takeUntil(this.destroyed$),
+        filter((event) => event instanceof NavigationEnd)
+      )
+      .subscribe((event) => {
+        let url = this.router.url;
+        window._paq.push(['setCustomUrl', url]);
+        window._paq.push(['trackPageView']);
+      });
+  }
+
+  ngOnDestroy() {
+    this.destroyed$.next();
+    this.destroyed$.unsubscribe();
   }
 }
