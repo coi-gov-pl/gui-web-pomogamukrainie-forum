@@ -1,9 +1,9 @@
 <app-breadcrumb></app-breadcrumb>
-<button class="btn-link" (click)="slideOffer(activeIndex, 'prev'); rotate()">PREV</button>
-<button class="btn-link" (click)="slideOffer(activeIndex, 'next'); rotate()">NEXT</button>
-
-<div class="d-flex flex-column flex-md-row" [ngClass]="blurClass" *ngIf="data" [@rotatedState]="state">
+<div class="d-flex flex-column flex-md-row" [ngClass]="blurClass" *ngIf="data">
   <mat-card class="offer p-4 w-100 w-md-50 d-flex flex-column">
+    <button class="btn-link dot prev" [disabled]="activeIndex === 0" (click)="slideOffer(activeIndex, 'prev')">
+      <mat-icon fontSet="material-icons-outlined">navigate_before</mat-icon>
+    </button>
     <div class="d-flex mb-3">
       <div class="modification-date">
         {{ "MODIFICATION_DATE" | translate }}: {{ data.modifiedDate | date: "dd/MM/yyyy" }}
@@ -55,7 +55,15 @@
       [originalAccountQueryParams]="originalAccountQueryParams"
     ></app-back-to-list>
   </mat-card>
+
   <div class="reply-offer-mat-card w-100 w-md-50">
+    <button
+      class="btn-link dot next"
+      [disabled]="activeIndex === offerResults.length - 1"
+      (click)="slideOffer(activeIndex, 'next')"
+    >
+      <mat-icon fontSet="material-icons-outlined">navigate_next</mat-icon>
+    </button>
     <app-reply-offer
       [offerId]="offerId"
       [helpersPhoneNumber]="data.phoneNumber"
