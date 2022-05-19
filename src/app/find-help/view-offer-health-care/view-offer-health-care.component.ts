@@ -65,7 +65,6 @@ export class ViewOfferHealthCareComponent implements OnInit {
     };
 
     this.healthResourceService.listHealth(PAGEREQUEST, this.searchCriteria).subscribe((results) => {
-      console.log('results', results);
       this.offerResults = results.content ?? [];
       this.activeOffer = this.offerResults.find((x) => x.id === this.offerId);
       this.activeIndex = this.offerResults.findIndex((x) => x.id === this.offerId);

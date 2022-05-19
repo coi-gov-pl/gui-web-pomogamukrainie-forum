@@ -1,7 +1,7 @@
 <app-breadcrumb></app-breadcrumb>
 <div class="d-flex flex-column flex-md-row" [ngClass]="blurClass" *ngIf="data">
   <mat-card class="offer p-4 w-100 w-md-50 d-flex flex-column">
-    <button class="btn-link dot prev" [disabled]="activeIndex === 0" (click)="slideOffer(activeIndex, 'prev')">
+    <button class="btn-link dot-nav prev" [disabled]="activeIndex === 0" (click)="slideOffer(activeIndex, 'prev')">
       <mat-icon fontSet="material-icons-outlined">navigate_before</mat-icon>
     </button>
     <div class="d-flex mb-3">
@@ -58,7 +58,7 @@
 
   <div class="reply-offer-mat-card w-100 w-md-50">
     <button
-      class="btn-link dot next"
+      class="btn-link dot-nav next"
       [disabled]="activeIndex === offerResults.length - 1"
       (click)="slideOffer(activeIndex, 'next')"
     >
