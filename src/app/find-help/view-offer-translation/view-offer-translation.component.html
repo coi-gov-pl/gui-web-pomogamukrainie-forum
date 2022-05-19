@@ -5,6 +5,13 @@
     <button class="btn-link dot-nav prev" [disabled]="activeIndex === 0" (click)="slideOffer(activeIndex, 'prev')">
       <mat-icon fontSet="material-icons-outlined">navigate_before</mat-icon>
     </button>
+    <button
+      class="d-block d-md-none btn-link dot-nav next"
+      [disabled]="activeIndex === offerResults.length - 1"
+      (click)="slideOffer(activeIndex, 'next')"
+    >
+      <mat-icon fontSet="material-icons-outlined">navigate_next</mat-icon>
+    </button>
     <div class="d-flex mb-3">
       <div class="modification-date">
         {{ "MODIFICATION_DATE" | translate }}: {{ data.modifiedDate | date: "dd/MM/yyyy" }}
@@ -51,7 +58,7 @@
   </mat-card>
   <div class="reply-offer-mat-card w-100 w-md-50">
     <button
-      class="btn-link dot-nav next"
+      class="d-none d-md-block btn-link dot-nav next"
       [disabled]="activeIndex === offerResults.length - 1"
       (click)="slideOffer(activeIndex, 'next')"
     >
