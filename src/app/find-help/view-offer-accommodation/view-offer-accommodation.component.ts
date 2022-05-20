@@ -84,13 +84,13 @@ export class ViewOfferAccommodationComponent implements OnInit {
       const SLIDE_PREV_DATA: AccommodationOffer = this.offerResults[index - 1];
       this.router.navigate([CorePath.Find, CategoryRoutingName.ACCOMMODATION, SLIDE_PREV_DATA.id]);
       this.activeIndex = index >= 0 ? index - 1 : index;
-      this.offerId = this.activeIndex;
+      this.offerId = SLIDE_PREV_DATA.id;
       this.data = SLIDE_PREV_DATA;
     } else {
       const SLIDE_NEXT_DATA: AccommodationOffer = this.offerResults[index + 1];
       this.router.navigate([CorePath.Find, CategoryRoutingName.ACCOMMODATION, SLIDE_NEXT_DATA.id]);
       this.activeIndex = index >= 0 ? index + 1 : index;
-      this.offerId = this.activeIndex;
+      this.offerId = SLIDE_NEXT_DATA.id;
       this.data = SLIDE_NEXT_DATA;
     }
   }
