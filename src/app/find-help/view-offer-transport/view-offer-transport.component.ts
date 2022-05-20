@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { TransportOffer, TransportResourceService } from '@app/core/api';
+import { Pageable, TransportOffer, TransportResourceService } from '@app/core/api';
 import { CategoryRoutingName } from '@app/shared/models';
 import { defaults } from '@app/shared/utils';
 import { CorePath } from '@app/shared/models';
+import { TransportOfferSearchCriteria } from '../../core/api/model/transportOfferSearchCriteria';
+import { transportOffer } from '../../../../mock/data/transport';
 
 @Component({
   selector: 'app-view-offer-transport',
@@ -16,6 +18,11 @@ export class ViewOfferTransportComponent implements OnInit {
   categoryRouteName = CategoryRoutingName.TRANSPORT;
   redirectedFromAccount: boolean;
   originalAccountQueryParams?: Params;
+  offerResults: TransportOffer[] = [];
+  activeOffer: TransportOffer | undefined;
+  activeIndex: number = 0;
+  blurClass = '';
+  searchCriteria = defaults<TransportOfferSearchCriteria>();
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -30,6 +37,7 @@ export class ViewOfferTransportComponent implements OnInit {
   ngOnInit(): void {
     this.offerId = Number(this.route.snapshot.paramMap.get('id'));
     this.getTransportOffer();
+    this.getResults();
   }
 
   getTransportOffer() {
@@ -38,8 +46,50 @@ export class ViewOfferTransportComponent implements OnInit {
         this.data = response;
       },
       (error) => {
-        this.router.navigate([CorePath.Find, CategoryRoutingName.TRANSPORT, CategoryRoutingName.NOT_FOUND]);
+        this.router.navigate([CorePath.Find, this.categoryRouteName, CategoryRoutingName.NOT_FOUND]);
       }
     );
+  }
+
+  getResults() {
+    this.searchCriteria.origin = this.originalAccountQueryParams?.['origin'];
+    this.searchCriteria.destination = this.originalAccountQueryParams?.['destination'];
+    this.searchCriteria.capacity = this.originalAccountQueryParams?.['capacity'];
+    this.searchCriteria.transportDate = this.originalAccountQueryParams?.['transportDate'];
+    const PAGEREQUEST: Pageable = {
+      page: undefined,
+      size: 999999999,
+      sort: undefined,
+    };
+
+    this.transportResourceService.listTransport(PAGEREQUEST, this.searchCriteria).subscribe((results) => {
+      this.offerResults = results.content ?? [];
+      this.activeOffer = this.offerResults.find((x) => x.id === this.offerId);
+      this.activeIndex = this.offerResults.findIndex((x) => x.id === this.offerId);
+    });
+  }
+
+  slideOffer(index: number, direction: 'prev' | 'next') {
+    this.blurAnimate();
+    if (direction === 'prev') {
+      const SLIDE_PREV_DATA: TransportOffer = this.offerResults[index - 1];
+      this.router.navigate([CorePath.Find, this.categoryRouteName, SLIDE_PREV_DATA.id]);
+      this.activeIndex = index >= 0 ? index - 1 : index;
+      this.offerId = SLIDE_PREV_DATA.id;
+      this.data = SLIDE_PREV_DATA;
+    } else {
+      const SLIDE_NEXT_DATA: TransportOffer = this.offerResults[index + 1];
+      this.router.navigate([CorePath.Find, this.categoryRouteName, SLIDE_NEXT_DATA.id]);
+      this.activeIndex = index >= 0 ? index + 1 : index;
+      this.offerId = SLIDE_NEXT_DATA.id;
+      this.data = SLIDE_NEXT_DATA;
+    }
+  }
+
+  blurAnimate() {
+    this.blurClass = 'blurClass';
+    setTimeout(() => {
+      this.blurClass = '';
+    }, 300);
   }
 }

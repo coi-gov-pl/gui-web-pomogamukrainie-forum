@@ -14,7 +14,6 @@ import { ViewOfferAccomodationModule } from './view-offer-accommodation.routing.
 import { BackToListModule } from '@app/shared/components/back-to-list/back-to-list.module';
 import { SharedModule } from '@app/shared/shared.module';
 import { ReadMoreModule } from '@app/shared/components';
-
 @NgModule({
   declarations: [ViewOfferAccommodationComponent],
   imports: [
