@@ -31,7 +31,7 @@ export class CategoryNavigationComponent {
     { name: CategoryNameKey.LEGAL_HELP, icon: 'gavel' },
     { name: CategoryNameKey.JOB, icon: 'work_outline' },
     { name: CategoryNameKey.TRANSLATIONS, icon: 'translate' },
-    { name: CategoryNameKey.MISC, icon: 'lan', disabled: true },
+    { name: CategoryNameKey.OTHER, icon: 'lan' },
   ];
 
   selectedCategory: Category | { name: string; icon: string };

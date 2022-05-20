@@ -124,6 +124,13 @@ const routes: Routes = [
           title: BreadcrumbLabels.TRANSLATIONS,
         },
       },
+      {
+        path: CategoryRoutingName.OTHER,
+        loadChildren: () => import('./other-form/other-form.module').then((m) => m.OtherFormModule),
+        data: {
+          title: BreadcrumbLabels.OTHER,
+        },
+      },
     ],
   },
 ];

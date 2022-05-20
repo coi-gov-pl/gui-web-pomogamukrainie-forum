@@ -17,4 +17,5 @@ export enum BreadcrumbLabels {
   STATEMENT = 'STATEMENT',
   TRANSPORT = 'TRANSPORT',
   TRANSLATIONS = 'TRANSLATIONS',
+  OTHER = 'OTHER',
 }
