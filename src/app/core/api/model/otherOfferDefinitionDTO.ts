@@ -11,12 +11,9 @@
  */
 import { Location } from './location';
 
-export interface TransportOfferDefinitionDTO {
+export interface OtherOfferDefinitionDTO {
   title: string;
   description: string;
   phoneNumber?: string;
-  origin?: Location;
-  destination?: Location;
-  capacity: number;
-  transportDate?: string;
+  location?: Location;
 }
