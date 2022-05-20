@@ -10,6 +10,7 @@ import { LawResourceService } from './api/lawResource.service';
 import { MaterialAidResourceService } from './api/materialAidResource.service';
 import { MessageResourceService } from './api/messageResource.service';
 import { MyOffersResourceService } from './api/myOffersResource.service';
+import { OtherResourceService } from './api/otherResource.service';
 import { TranslationResourceService } from './api/translationResource.service';
 import { TransportResourceService } from './api/transportResource.service';
 import { UsersResourceService } from './api/usersResource.service';

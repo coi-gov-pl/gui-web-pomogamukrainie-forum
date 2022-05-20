@@ -37,6 +37,8 @@ import { MaterialAidOffer } from '../model/materialAidOffer';
 // @ts-ignore
 import { OffersBaseOffer } from '../model/offersBaseOffer';
 // @ts-ignore
+import { OtherOffer } from '../model/otherOffer';
+// @ts-ignore
 import { Pageable } from '../model/pageable';
 // @ts-ignore
 import { TranslationOffer } from '../model/translationOffer';
@@ -120,7 +122,14 @@ export class MyOffersResourceService {
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<
-    AccommodationOffer | HealthOffer | JobOffer | LawOffer | MaterialAidOffer | TranslationOffer | TransportOffer
+    | AccommodationOffer
+    | HealthOffer
+    | JobOffer
+    | LawOffer
+    | MaterialAidOffer
+    | OtherOffer
+    | TranslationOffer
+    | TransportOffer
   >;
   public getMyOffers(
     id: number,
@@ -129,7 +138,14 @@ export class MyOffersResourceService {
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<
     HttpResponse<
-      AccommodationOffer | HealthOffer | JobOffer | LawOffer | MaterialAidOffer | TranslationOffer | TransportOffer
+      | AccommodationOffer
+      | HealthOffer
+      | JobOffer
+      | LawOffer
+      | MaterialAidOffer
+      | OtherOffer
+      | TranslationOffer
+      | TransportOffer
     >
   >;
   public getMyOffers(
@@ -139,7 +155,14 @@ export class MyOffersResourceService {
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<
     HttpEvent<
-      AccommodationOffer | HealthOffer | JobOffer | LawOffer | MaterialAidOffer | TranslationOffer | TransportOffer
+      | AccommodationOffer
+      | HealthOffer
+      | JobOffer
+      | LawOffer
+      | MaterialAidOffer
+      | OtherOffer
+      | TranslationOffer
+      | TransportOffer
     >
   >;
   public getMyOffers(
@@ -181,7 +204,14 @@ export class MyOffersResourceService {
     }
 
     return this.httpClient.get<
-      AccommodationOffer | HealthOffer | JobOffer | LawOffer | MaterialAidOffer | TranslationOffer | TransportOffer
+      | AccommodationOffer
+      | HealthOffer
+      | JobOffer
+      | LawOffer
+      | MaterialAidOffer
+      | OtherOffer
+      | TranslationOffer
+      | TransportOffer
     >(`${this.configuration.basePath}/api/secure/my-offers/${encodeURIComponent(String(id))}`, {
       context: localVarHttpContext,
       responseType: <any>responseType_,

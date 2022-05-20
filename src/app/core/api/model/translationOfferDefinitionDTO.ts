@@ -14,10 +14,10 @@ import { Location } from './location';
 export interface TranslationOfferDefinitionDTO {
   title: string;
   description: string;
+  phoneNumber?: string;
   mode: Array<TranslationOfferDefinitionDTO.ModeEnum>;
   location?: Location;
   language: Array<TranslationOfferDefinitionDTO.LanguageEnum>;
-  phoneNumber?: string;
 }
 export namespace TranslationOfferDefinitionDTO {
   export type ModeEnum = 'STATIONARY' | 'WITH_ACCESS' | 'ONLINE' | 'BY_EMAIL' | 'BY_PHONE';

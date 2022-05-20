@@ -9,14 +9,10 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { Location } from './location';
+import { OtherOffer } from './otherOffer';
 
-export interface TransportOfferDefinitionDTO {
-  title: string;
-  description: string;
-  phoneNumber?: string;
-  origin?: Location;
-  destination?: Location;
-  capacity: number;
-  transportDate?: string;
+export interface OffersOtherOffer {
+  content?: Array<OtherOffer>;
+  totalElements?: number;
+  totalPages?: number;
 }

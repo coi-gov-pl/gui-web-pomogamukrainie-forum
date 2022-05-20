@@ -14,11 +14,11 @@ import { Location } from './location';
 export interface LawOfferDefinitionDTO {
   title: string;
   description: string;
+  phoneNumber?: string;
   location?: Location;
   helpMode: Array<LawOfferDefinitionDTO.HelpModeEnum>;
   helpKind: Array<LawOfferDefinitionDTO.HelpKindEnum>;
   language: Array<LawOfferDefinitionDTO.LanguageEnum>;
-  phoneNumber?: string;
 }
 export namespace LawOfferDefinitionDTO {
   export type HelpModeEnum = 'STATIONARY' | 'WITH_ACCESS' | 'ONLINE' | 'BY_EMAIL' | 'BY_PHONE';

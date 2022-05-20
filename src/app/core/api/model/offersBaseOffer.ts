@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 import { JobOffer } from './jobOffer';
+import { OtherOffer } from './otherOffer';
 import { AccommodationOffer } from './accommodationOffer';
 import { LawOffer } from './lawOffer';
 import { TransportOffer } from './transportOffer';
@@ -19,7 +20,14 @@ import { TranslationOffer } from './translationOffer';
 
 export interface OffersBaseOffer {
   content?: Array<
-    AccommodationOffer | HealthOffer | JobOffer | LawOffer | MaterialAidOffer | TranslationOffer | TransportOffer
+    | AccommodationOffer
+    | HealthOffer
+    | JobOffer
+    | LawOffer
+    | MaterialAidOffer
+    | OtherOffer
+    | TranslationOffer
+    | TransportOffer
   >;
   totalElements?: number;
   totalPages?: number;

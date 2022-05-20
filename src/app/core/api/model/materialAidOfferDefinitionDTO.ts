@@ -14,9 +14,9 @@ import { Location } from './location';
 export interface MaterialAidOfferDefinitionDTO {
   title: string;
   description: string;
+  phoneNumber?: string;
   location: Location;
   category: MaterialAidOfferDefinitionDTO.CategoryEnum;
-  phoneNumber?: string;
 }
 export namespace MaterialAidOfferDefinitionDTO {
   export type CategoryEnum =

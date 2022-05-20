@@ -11,12 +11,20 @@
  */
 import { Location } from './location';
 
-export interface TransportOfferDefinitionDTO {
+export interface OtherOffer {
+  id: number;
+  userFirstName: string;
   title: string;
   description: string;
   phoneNumber?: string;
-  origin?: Location;
-  destination?: Location;
-  capacity: number;
-  transportDate?: string;
+  phoneCountryCode?: string;
+  modifiedDate?: string;
+  location?: Location;
+  type: OtherOffer.TypeEnum;
+}
+export namespace OtherOffer {
+  export type TypeEnum = 'OTHER';
+  export const TypeEnum = {
+    Other: 'OTHER' as TypeEnum,
+  };
 }
