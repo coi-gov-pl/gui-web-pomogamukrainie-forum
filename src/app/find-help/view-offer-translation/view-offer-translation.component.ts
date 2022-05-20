@@ -46,7 +46,7 @@ export class ViewOfferTranslationComponent implements OnInit {
         this.data = response;
       },
       (error) => {
-        this.router.navigate([CorePath.Find, CategoryRoutingName.TRANSLATIONS, CategoryRoutingName.NOT_FOUND]);
+        this.router.navigate([CorePath.Find, this.categoryRouteName, CategoryRoutingName.NOT_FOUND]);
       }
     );
   }
@@ -73,13 +73,13 @@ export class ViewOfferTranslationComponent implements OnInit {
     this.blurAnimate();
     if (direction === 'prev') {
       const SLIDE_PREV_DATA: TranslationOffer = this.offerResults[index - 1];
-      this.router.navigate([CorePath.Find, CategoryRoutingName.ACCOMMODATION, SLIDE_PREV_DATA.id]);
+      this.router.navigate([CorePath.Find, this.categoryRouteName, SLIDE_PREV_DATA.id]);
       this.activeIndex = index >= 0 ? index - 1 : index;
       this.offerId = SLIDE_PREV_DATA.id;
       this.data = SLIDE_PREV_DATA;
     } else {
       const SLIDE_NEXT_DATA: TranslationOffer = this.offerResults[index + 1];
-      this.router.navigate([CorePath.Find, CategoryRoutingName.ACCOMMODATION, SLIDE_NEXT_DATA.id]);
+      this.router.navigate([CorePath.Find, this.categoryRouteName, SLIDE_NEXT_DATA.id]);
       this.activeIndex = index >= 0 ? index + 1 : index;
       this.offerId = SLIDE_NEXT_DATA.id;
       this.data = SLIDE_NEXT_DATA;
