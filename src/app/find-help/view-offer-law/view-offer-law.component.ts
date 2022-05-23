@@ -49,11 +49,13 @@ export class ViewOfferLawComponent implements OnInit {
     this.searchCriteria.helpKind = this.originalAccountQueryParams?.['helpKind'];
     this.searchCriteria.helpMode = this.originalAccountQueryParams?.['helpMode'];
     this.searchCriteria.language = this.originalAccountQueryParams?.['language'];
-
+    const SORT = this.originalAccountQueryParams?.['sort']
+      ? this.originalAccountQueryParams?.['sort']
+      : 'modifiedDate,asc';
     const PAGEREQUEST: Pageable = {
       page: undefined,
       size: 999999999,
-      sort: undefined,
+      sort: SORT,
     };
 
     this.lawResourceService.listLaw(PAGEREQUEST, this.searchCriteria).subscribe((results) => {

@@ -56,10 +56,13 @@ export class ViewOfferTransportComponent implements OnInit {
     this.searchCriteria.destination = this.originalAccountQueryParams?.['destination'];
     this.searchCriteria.capacity = this.originalAccountQueryParams?.['capacity'];
     this.searchCriteria.transportDate = this.originalAccountQueryParams?.['transportDate'];
+    const SORT = this.originalAccountQueryParams?.['sort']
+      ? this.originalAccountQueryParams?.['sort']
+      : 'modifiedDate,asc';
     const PAGEREQUEST: Pageable = {
       page: undefined,
       size: 999999999,
-      sort: undefined,
+      sort: SORT,
     };
 
     this.transportResourceService.listTransport(PAGEREQUEST, this.searchCriteria).subscribe((results) => {

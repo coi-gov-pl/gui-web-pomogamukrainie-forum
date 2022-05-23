@@ -52,10 +52,13 @@ export class ViewOfferAccommodationComponent implements OnInit {
     const CAPACITY = this.originalAccountQueryParams?.['capacity'];
     const REGION = this.originalAccountQueryParams?.['region'];
     const CITY = this.originalAccountQueryParams?.['city'];
+    const SORT = this.originalAccountQueryParams?.['sort']
+      ? this.originalAccountQueryParams?.['sort']
+      : 'modifiedDate,asc';
     const PAGEREQUEST: Pageable = {
       page: undefined,
       size: 999999999,
-      sort: undefined,
+      sort: SORT,
     };
 
     this.getResultsObservable(REGION, CITY, PAGEREQUEST, CAPACITY).subscribe((results) => {

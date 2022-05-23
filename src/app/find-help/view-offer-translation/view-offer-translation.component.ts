@@ -55,11 +55,13 @@ export class ViewOfferTranslationComponent implements OnInit {
     this.searchCriteria.location = this.originalAccountQueryParams?.['location'];
     this.searchCriteria.language = this.originalAccountQueryParams?.['language'];
     this.searchCriteria.mode = this.originalAccountQueryParams?.['mode'];
-
+    const SORT = this.originalAccountQueryParams?.['sort']
+      ? this.originalAccountQueryParams?.['sort']
+      : 'modifiedDate,asc';
     const PAGEREQUEST: Pageable = {
       page: undefined,
       size: 999999999,
-      sort: undefined,
+      sort: SORT,
     };
 
     this.translationResourceService.listTranslation(PAGEREQUEST, this.searchCriteria).subscribe((results) => {

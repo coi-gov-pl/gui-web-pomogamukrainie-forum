@@ -57,11 +57,13 @@ export class ViewOfferHealthCareComponent implements OnInit {
     this.searchCriteria.specialization = this.originalAccountQueryParams?.['specialization'];
     this.searchCriteria.language = this.originalAccountQueryParams?.['language'];
     this.searchCriteria.mode = this.originalAccountQueryParams?.['mode'];
-
+    const SORT = this.originalAccountQueryParams?.['sort']
+      ? this.originalAccountQueryParams?.['sort']
+      : 'modifiedDate,asc';
     const PAGEREQUEST: Pageable = {
       page: undefined,
       size: 999999999,
-      sort: undefined,
+      sort: SORT,
     };
 
     this.healthResourceService.listHealth(PAGEREQUEST, this.searchCriteria).subscribe((results) => {
