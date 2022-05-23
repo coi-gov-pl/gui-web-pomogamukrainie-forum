@@ -53,11 +53,13 @@ export class ViewOfferJobComponent implements OnInit {
     this.searchCriteria.workTime = this.originalAccountQueryParams?.['workTime'];
     this.searchCriteria.language = this.originalAccountQueryParams?.['language'];
     this.searchCriteria.location = this.originalAccountQueryParams?.['location'];
-
+    const SORT = this.originalAccountQueryParams?.['sort']
+      ? this.originalAccountQueryParams?.['sort']
+      : 'modifiedDate,asc';
     const PAGEREQUEST: Pageable = {
       page: undefined,
       size: 999999999,
-      sort: undefined,
+      sort: SORT,
     };
 
     this.jobsResourceService.listJob(PAGEREQUEST, this.searchCriteria).subscribe((results) => {
