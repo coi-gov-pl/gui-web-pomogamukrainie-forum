@@ -128,3 +128,15 @@
     border-color: transparent;
   }
 }
+
+.btn-cancel {
+  .mat-icon {
+    font-size: 13px;
+  }
+
+  .label {
+    position: relative;
+    top: -2px;
+    font-size: 13px;
+  }
+}

@@ -2,9 +2,9 @@
   <form (submit)="handleSubmit()" #otherForm="ngForm">
     <div class="container">
       <div class="d-flex">
-        <button class="btn-link ms-auto" type="button" (click)="onCancelButtonClick()">
-          <mat-icon class="button-icon" fontSet="material-icons-outlined">close</mat-icon
-          ><span class="cancel-label">{{ "CANCEL" | translate }}</span>
+        <button class="btn-link btn-cancel ms-auto" type="button" (click)="onCancelButtonClick()">
+          <mat-icon fontSet="material-icons-outlined">close</mat-icon
+          ><span class="label">{{ "CANCEL" | translate }}</span>
         </button>
       </div>
       <div class="row">
