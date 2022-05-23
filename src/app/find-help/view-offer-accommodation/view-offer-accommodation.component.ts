@@ -29,10 +29,6 @@ export class ViewOfferAccommodationComponent implements OnInit {
     // in constructor, because null will be returned in ngOnInit
     this.redirectedFromAccount = !!this.router.getCurrentNavigation()?.extras?.state?.['redirectFromAccount'];
     this.originalAccountQueryParams = this.router.getCurrentNavigation()?.extras?.state?.['queryParams'];
-    // console.log(
-    //   'this.this.router.getCurrentNavigation()?.extras?.state',
-    //   this.router.getCurrentNavigation()?.extras?.state?['sort'];
-    // );
   }
 
   ngOnInit(): void {
