@@ -1,5 +1,5 @@
 <mat-card>
-  <form (ngSubmit)="submitOffer()" #transportForm="ngForm">
+  <form (submit)="handleSubmit()" #otherForm="ngForm">
     <div class="container">
       <div class="d-flex">
         <button class="btn-link btn-cancel ms-auto" type="button" (click)="onCancelButtonClick()">
@@ -8,58 +8,21 @@
         </button>
       </div>
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-12">
           <app-offer-title-input [(value)]="data.title"></app-offer-title-input>
         </div>
       </div>
       <div class="row">
-        <div class="col-lg-3 col-md-12">
+        <div class="col-12">
           <app-cities-search
-            [(ngModel)]="data.origin"
-            name="origin"
+            [(ngModel)]="data.location"
+            name="location"
             [placeholder]="'PLACEHOLDER_LOCATION' | translate"
-            [label]="'LOCATION_FROM' | translate"
-            [isRegionPicked]="data.origin?.region ? true : false"
+            [label]="('LOCATION' | translate) + ' *'"
+            [required]="true"
           ></app-cities-search>
-        </div>
-        <div class="col-lg-3 col-md-12">
-          <app-cities-search
-            [(ngModel)]="data.destination"
-            name="destination"
-            [placeholder]="'PLACEHOLDER_LOCATION_2' | translate"
-            [label]="'LOCATION_TO' | translate"
-            [isRegionPicked]="data.destination?.region ? true : false"
-          ></app-cities-search>
-        </div>
-        <div class="col-lg-3 col-md-12">
-          <label
-            ><b>{{ "LABEL_DATE" | translate }}</b></label
-          >
-          <app-datepicker [(date)]="data.transportDate" [minDate]="minDate"></app-datepicker>
-        </div>
-        <div class="col-lg-3 col-md-12">
-          <label
-            ><b>{{ "LABEL_HOW_MANY_PEOPLE_UCAN_TAKE" | translate }} *</b></label
-          >
-          <mat-form-field appearance="outline">
-            <input
-              matInput
-              type="text"
-              placeholder="{{ 'PLACEHOLDER_CHOOSE' | translate }}"
-              [(ngModel)]="data.capacity"
-              name="capacity"
-              [appMinMaxValidate]="{ min: 1, max: 99, required: true }"
-              autocomplete="off"
-              #capacity="ngModel"
-              inputmode="numeric"
-            />
-            <mat-error>
-              <app-field-error [model]="capacity"></app-field-error>
-            </mat-error>
-          </mat-form-field>
         </div>
       </div>
-
       <div class="row">
         <div class="col-lg-7 col-xl-8 mb-3">
           <label>
@@ -88,7 +51,7 @@
           <div class="row">
             <app-phone-input [(phone)]="phone"></app-phone-input>
           </div>
-          <div class="row>">
+          <div class="row">
             <div class="col-lg-12 publish">
               <app-publish-ad-button [isEditRoute]="isEditRoute"></app-publish-ad-button>
             </div>

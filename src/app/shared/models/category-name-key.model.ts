@@ -6,5 +6,5 @@ export enum CategoryNameKey {
   LEGAL_HELP = 'LEGAL_HELP',
   JOB = 'JOB',
   TRANSLATIONS = 'TRANSLATIONS',
-  MISC = 'MISC',
+  OTHER = 'OTHER',
 }

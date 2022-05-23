@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AccommodationOffer, JobOffer } from '@app/core/api';
+import { AccommodationOffer, JobOffer, OtherOffer } from '@app/core/api';
 import { PREFIXES } from '@app/shared/consts';
 import { CategoryNameKey } from '@app/shared/models';
 import { HealthOffer } from '@app/core/api/model/healthOffer';
@@ -61,6 +61,14 @@ export class OfferDataInitService {
       });
     } else if (category === CategoryNameKey.TRANSLATIONS) {
       context.translationResourceService.getTranslation(context.offerId).subscribe((resp: TranslationOffer) => {
+        context.phone.phoneNumber = resp.phoneNumber || '';
+        if (resp.phoneCountryCode) {
+          context.phone.prefix = PREFIXES.find((v) => v.prefix === resp.phoneCountryCode)?.prefix || '';
+        }
+        context.data = resp;
+      });
+    } else if (category === CategoryNameKey.OTHER) {
+      context.otherResourceService.getOther(context.offerId).subscribe((resp: OtherOffer) => {
         context.phone.phoneNumber = resp.phoneNumber || '';
         if (resp.phoneCountryCode) {
           context.phone.prefix = PREFIXES.find((v) => v.prefix === resp.phoneCountryCode)?.prefix || '';
