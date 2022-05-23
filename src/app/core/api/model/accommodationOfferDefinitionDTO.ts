@@ -14,11 +14,11 @@ import { Location } from './location';
 export interface AccommodationOfferDefinitionDTO {
   title: string;
   description: string;
+  phoneNumber?: string;
   location: Location;
   guests: number;
   lengthOfStay: AccommodationOfferDefinitionDTO.LengthOfStayEnum;
   hostLanguage: Array<AccommodationOfferDefinitionDTO.HostLanguageEnum>;
-  phoneNumber?: string;
 }
 export namespace AccommodationOfferDefinitionDTO {
   export type LengthOfStayEnum = 'WEEK_1' | 'WEEK_2' | 'MONTH_1' | 'MONTH_2' | 'MONTH_3' | 'LONGER';

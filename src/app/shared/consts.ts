@@ -1,9 +1,4 @@
-import {
-  AccommodationOffer,
-  AccommodationOfferDefinitionDTO,
-  JobOfferDefinitionDTO,
-  LawOfferDefinitionDTO,
-} from '@app/core/api';
+import { AccommodationOffer, AccommodationOfferDefinitionDTO } from '@app/core/api';
 import { LanguageCode, LanguageNames, LengthOfStayLabels } from '@app/core/translations';
 import { Option, Prefix } from './models';
 import HostLanguageEnum = AccommodationOfferDefinitionDTO.HostLanguageEnum;
@@ -50,7 +45,6 @@ export const MATCH_DIGITS_AND_SPECIAL_EXCLUDING_COMMA_AND_FULLSTOP = /[0-9!@#$%^
 
 export const DIALOG_CANCEL_OFFER_CONFIG = {
   hasBackdrop: true,
-  backdropClass: 'backdrop-blur',
   width: '100%',
   maxHeight: '450px',
   maxWidth: '480px',
@@ -58,6 +52,8 @@ export const DIALOG_CANCEL_OFFER_CONFIG = {
   autoFocus: false,
   data: { headerText: '' },
 };
+export const PAGE_LAYOUT_SELECTOR = '#page-layout';
+export const BLUR_CSS_CLASS = 'background-blur';
 
 //based on bootstrap brekpoints ref
 //https://getbootstrap.com/docs/5.0/layout/breakpoints/

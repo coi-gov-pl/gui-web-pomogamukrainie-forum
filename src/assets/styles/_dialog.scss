@@ -31,3 +31,7 @@
     right: 15px;
   }
 }
+
+.page-layout.background-blur {
+  filter: $blur-filter;
+}

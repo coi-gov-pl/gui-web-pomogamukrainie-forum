@@ -14,11 +14,11 @@ import { Location } from './location';
 export interface HealthOfferDefinitionDTO {
   title: string;
   description: string;
+  phoneNumber?: string;
   mode: Array<HealthOfferDefinitionDTO.ModeEnum>;
   specialization: HealthOfferDefinitionDTO.SpecializationEnum;
   location?: Location;
   language: Array<HealthOfferDefinitionDTO.LanguageEnum>;
-  phoneNumber?: string;
 }
 export namespace HealthOfferDefinitionDTO {
   export type ModeEnum = 'IN_FACILITY' | 'AT_HOME' | 'ONLINE' | 'BY_PHONE';

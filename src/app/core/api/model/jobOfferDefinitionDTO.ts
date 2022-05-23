@@ -14,13 +14,13 @@ import { Location } from './location';
 export interface JobOfferDefinitionDTO {
   title: string;
   description: string;
+  phoneNumber?: string;
   mode: JobOfferDefinitionDTO.ModeEnum;
   location?: Location;
   industry: JobOfferDefinitionDTO.IndustryEnum;
   workTime: Array<JobOfferDefinitionDTO.WorkTimeEnum>;
   contractType: Array<JobOfferDefinitionDTO.ContractTypeEnum>;
   language: Array<JobOfferDefinitionDTO.LanguageEnum>;
-  phoneNumber?: string;
 }
 export namespace JobOfferDefinitionDTO {
   export type ModeEnum = 'ONSITE' | 'TELEWORK' | 'MIXED';
