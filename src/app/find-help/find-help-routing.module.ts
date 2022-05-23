@@ -9,7 +9,7 @@ const routes: Routes = [
     path: '',
     component: FindHelpComponent,
     data: {
-      title: null,
+      title: BreadcrumbLabels.ACCOMMODATION,
     },
     children: [
       {
@@ -17,7 +17,7 @@ const routes: Routes = [
         redirectTo: CategoryRoutingName.ACCOMMODATION,
         pathMatch: 'full',
         data: {
-          title: null,
+          title: BreadcrumbLabels.ACCOMMODATION,
         },
       },
       {
