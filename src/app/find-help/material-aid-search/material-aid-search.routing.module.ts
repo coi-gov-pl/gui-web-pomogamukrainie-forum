@@ -8,7 +8,6 @@ const routes: Routes = [
   {
     path: '',
     data: {
-      title: null,
       breadcrumb: { alias: null },
     },
     children: [
@@ -16,7 +15,6 @@ const routes: Routes = [
         path: '',
         component: MaterialAidSearchComponent,
         data: {
-          title: null,
           breadcrumb: { alias: null },
         },
       },
@@ -25,7 +23,7 @@ const routes: Routes = [
         component: NotFoundComponent,
         loadChildren: () => import('../../shared/components/not-found/not-found.module').then((m) => m.NotFoundModule),
         data: {
-          title: null,
+          title: 'PAGE_NOT_FOUND',
           breadcrumb: { alias: null },
         },
       },
@@ -34,7 +32,6 @@ const routes: Routes = [
         loadChildren: () =>
           import('../view-offer-material-aid/view-offer-material-aid.module').then((m) => m.ViewOfferMaterialAidModule),
         data: {
-          title: BreadcrumbLabels.AD,
           breadcrumb: { alias: BreadcrumbLabels.AD },
         },
       },

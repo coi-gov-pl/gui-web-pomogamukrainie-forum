@@ -6,7 +6,7 @@ const routes: Routes = [
   {
     path: '',
     component: ReplyOfferComponent,
-    data: { title: null, breadcrumb: { alias: null } },
+    data: { breadcrumb: { alias: null } },
   },
 ];
 

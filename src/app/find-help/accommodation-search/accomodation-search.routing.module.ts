@@ -8,7 +8,6 @@ const routes: Routes = [
   {
     path: '',
     data: {
-      title: null,
       breadcrumb: { alias: null },
     },
     children: [
@@ -16,7 +15,6 @@ const routes: Routes = [
         path: '',
         component: AccommodationSearchComponent,
         data: {
-          title: null,
           breadcrumb: { alias: null },
         },
       },
@@ -25,7 +23,7 @@ const routes: Routes = [
         component: NotFoundComponent,
         loadChildren: () => import('../../shared/components/not-found/not-found.module').then((m) => m.NotFoundModule),
         data: {
-          title: null,
+          title: 'PAGE_NOT_FOUND',
           breadcrumb: { alias: null },
         },
       },
@@ -36,8 +34,7 @@ const routes: Routes = [
             (m) => m.ViewOfferAccommodationModule
           ),
         data: {
-          title: BreadcrumbLabels.AD,
-          breadcrumb: { alias: BreadcrumbLabels.AD },
+          breadcrumb: { title: 'xxx', alias: BreadcrumbLabels.AD },
         },
       },
     ],

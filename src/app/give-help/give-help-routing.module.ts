@@ -10,8 +10,7 @@ const routes: Routes = [
     component: GiveHelpComponent,
     canActivate: [AuthGuard],
     data: {
-      title: BreadcrumbLabels.ACCOMMODATION,
-      breadcrumb: { alias: null },
+      breadcrumb: { alias: BreadcrumbLabels.ADD_AD },
     },
     children: [
       {
@@ -19,7 +18,6 @@ const routes: Routes = [
         redirectTo: CategoryRoutingName.ACCOMMODATION,
         pathMatch: 'full',
         data: {
-          title: null,
           breadcrumb: { alias: null },
         },
       },
@@ -28,7 +26,6 @@ const routes: Routes = [
         loadChildren: () =>
           import('./accommodation-form/accommodation-form.module').then((m) => m.AccommodationFormComponentModule),
         data: {
-          title: BreadcrumbLabels.ACCOMMODATION,
           breadcrumb: { alias: BreadcrumbLabels.ACCOMMODATION },
         },
       },
@@ -37,7 +34,6 @@ const routes: Routes = [
         loadChildren: () =>
           import('./accommodation-form/accommodation-form.module').then((m) => m.AccommodationFormComponentModule),
         data: {
-          title: BreadcrumbLabels.ACCOMMODATION,
           breadcrumb: { alias: BreadcrumbLabels.ACCOMMODATION },
         },
       },
@@ -45,7 +41,6 @@ const routes: Routes = [
         path: CategoryRoutingName.MATERIAL_HELP,
         loadChildren: () => import('./material-aid-form/material-aid-form.module').then((m) => m.MaterialAidFormModule),
         data: {
-          title: BreadcrumbLabels.MATERIAL_HELP,
           breadcrumb: { alias: BreadcrumbLabels.MATERIAL_HELP },
         },
       },
@@ -53,7 +48,6 @@ const routes: Routes = [
         path: `${CategoryRoutingName.MATERIAL_HELP}/:id`,
         loadChildren: () => import('./material-aid-form/material-aid-form.module').then((m) => m.MaterialAidFormModule),
         data: {
-          title: BreadcrumbLabels.MATERIAL_HELP,
           breadcrumb: { alias: BreadcrumbLabels.MATERIAL_HELP },
         },
       },
@@ -62,7 +56,6 @@ const routes: Routes = [
         loadChildren: () =>
           import('./transport-form/transport-form.module').then((m) => m.TransportFormComponentModule),
         data: {
-          title: BreadcrumbLabels.TRANSPORT,
           breadcrumb: { alias: BreadcrumbLabels.TRANSPORT },
         },
       },
@@ -71,7 +64,6 @@ const routes: Routes = [
         loadChildren: () =>
           import('./transport-form/transport-form.module').then((m) => m.TransportFormComponentModule),
         data: {
-          title: BreadcrumbLabels.TRANSPORT,
           breadcrumb: { alias: BreadcrumbLabels.TRANSPORT },
         },
       },
@@ -79,7 +71,6 @@ const routes: Routes = [
         path: CategoryRoutingName.HEALTH,
         loadChildren: () => import('./health-care-form/health-care-form.module').then((m) => m.HealthCareFormModule),
         data: {
-          title: BreadcrumbLabels.HEALTH,
           breadcrumb: { alias: BreadcrumbLabels.HEALTH },
         },
       },
@@ -87,7 +78,6 @@ const routes: Routes = [
         path: `${CategoryRoutingName.HEALTH}/:id`,
         loadChildren: () => import('./health-care-form/health-care-form.module').then((m) => m.HealthCareFormModule),
         data: {
-          title: BreadcrumbLabels.HEALTH,
           breadcrumb: { alias: BreadcrumbLabels.HEALTH },
         },
       },
@@ -95,7 +85,6 @@ const routes: Routes = [
         path: CategoryRoutingName.JOB,
         loadChildren: () => import('./job-form/job-form.module').then((m) => m.JobFormModule),
         data: {
-          title: BreadcrumbLabels.JOB,
           breadcrumb: { alias: BreadcrumbLabels.JOB },
         },
       },
@@ -103,7 +92,6 @@ const routes: Routes = [
         path: `${CategoryRoutingName.JOB}/:id`,
         loadChildren: () => import('./job-form/job-form.module').then((m) => m.JobFormModule),
         data: {
-          title: BreadcrumbLabels.JOB,
           breadcrumb: { alias: BreadcrumbLabels.JOB },
         },
       },
@@ -111,7 +99,6 @@ const routes: Routes = [
         path: CategoryRoutingName.LEGAL_HELP,
         loadChildren: () => import('./law-form/law-form.module').then((m) => m.LawFormModule),
         data: {
-          title: BreadcrumbLabels.LEGAL_HELP,
           breadcrumb: { alias: BreadcrumbLabels.LEGAL_HELP },
         },
       },
@@ -119,7 +106,6 @@ const routes: Routes = [
         path: `${CategoryRoutingName.LEGAL_HELP}/:id`,
         loadChildren: () => import('./law-form/law-form.module').then((m) => m.LawFormModule),
         data: {
-          title: BreadcrumbLabels.LEGAL_HELP,
           breadcrumb: { alias: BreadcrumbLabels.LEGAL_HELP },
         },
       },
@@ -128,7 +114,6 @@ const routes: Routes = [
         path: CategoryRoutingName.TRANSLATIONS,
         loadChildren: () => import('./translation-form/translation-form.module').then((m) => m.TranslationFormModule),
         data: {
-          title: BreadcrumbLabels.TRANSLATIONS,
           breadcrumb: { alias: BreadcrumbLabels.TRANSLATIONS },
         },
       },
@@ -136,7 +121,6 @@ const routes: Routes = [
         path: `${CategoryRoutingName.TRANSLATIONS}/:id`,
         loadChildren: () => import('./translation-form/translation-form.module').then((m) => m.TranslationFormModule),
         data: {
-          title: BreadcrumbLabels.TRANSLATIONS,
           breadcrumb: { alias: BreadcrumbLabels.TRANSLATIONS },
         },
       },
@@ -144,7 +128,6 @@ const routes: Routes = [
         path: CategoryRoutingName.OTHER,
         loadChildren: () => import('./other-form/other-form.module').then((m) => m.OtherFormModule),
         data: {
-          title: BreadcrumbLabels.OTHER,
           breadcrumb: { alias: BreadcrumbLabels.OTHER },
         },
       },

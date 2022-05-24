@@ -8,7 +8,7 @@ const routes: Routes = [
   {
     path: '',
     component: ViewOfferHealthCareComponent,
-    data: { title: null, breadcrumb: { alias: null } },
+    data: { title: 'VIEW_HEALTH_TITLE', breadcrumb: { alias: null } },
   },
 ];
 

@@ -9,7 +9,7 @@ const routes: Routes = [
     component: HealthCareFormComponent,
     canDeactivate: [CanDeactivateGuard],
     data: {
-      title: null,
+      title: 'GIVE_HEALTH_TITLE',
       breadcrumb: { alias: null },
     },
   },

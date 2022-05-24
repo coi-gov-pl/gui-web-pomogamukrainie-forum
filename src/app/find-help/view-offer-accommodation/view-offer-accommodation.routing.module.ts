@@ -6,7 +6,7 @@ const routes: Routes = [
   {
     path: '',
     component: ViewOfferAccommodationComponent,
-    data: { title: null, breadcrumb: { alias: null } },
+    data: { title: 'VIEW_ACCOMODATION_TITLE', breadcrumb: { alias: null } },
   },
 ];
 

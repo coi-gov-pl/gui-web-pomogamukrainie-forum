@@ -7,7 +7,7 @@ const routes: Routes = [
     path: '',
     component: ViewOfferTranslationComponent,
     data: {
-      title: null,
+      title: 'VIEW_TRANSLATION_TITLE',
       breadcrumb: { alias: null },
     },
   },

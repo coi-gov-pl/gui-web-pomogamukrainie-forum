@@ -9,7 +9,7 @@ const routes: Routes = [
     component: LawFormComponent,
     canDeactivate: [CanDeactivateGuard],
     data: {
-      title: null,
+      title: 'GIVE_LAW_TITLE',
       breadcrumb: { alias: null },
     },
   },

@@ -9,7 +9,7 @@ const routes: Routes = [
     component: MaterialAidFormComponent,
     canDeactivate: [CanDeactivateGuard],
     data: {
-      title: null,
+      title: 'GIVE_MATERIAL_TITLE',
       breadcrumb: { alias: null },
     },
   },
