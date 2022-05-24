@@ -9,6 +9,7 @@ const routes: Routes = [
     path: '',
     data: {
       title: null,
+      breadcrumb: { alias: null },
     },
     children: [
       {
@@ -16,6 +17,7 @@ const routes: Routes = [
         component: TranslationSearchComponent,
         data: {
           title: null,
+          breadcrumb: { alias: null },
         },
       },
       {
@@ -24,6 +26,7 @@ const routes: Routes = [
         loadChildren: () => import('../../shared/components/not-found/not-found.module').then((m) => m.NotFoundModule),
         data: {
           title: null,
+          breadcrumb: { alias: null },
         },
       },
       {
@@ -32,6 +35,7 @@ const routes: Routes = [
           import('../view-offer-translation/view-offer-translation.module').then((m) => m.ViewOfferTranslationModule),
         data: {
           title: BreadcrumbLabels.AD,
+          breadcrumb: { alias: BreadcrumbLabels.AD },
         },
       },
     ],

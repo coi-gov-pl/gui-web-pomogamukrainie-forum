@@ -9,6 +9,7 @@ const routes: Routes = [
     path: '',
     data: {
       title: null,
+      breadcrumb: { alias: null },
     },
     children: [
       {
@@ -16,6 +17,7 @@ const routes: Routes = [
         component: LawSearchComponent,
         data: {
           title: null,
+          breadcrumb: { alias: null },
         },
       },
       {
@@ -24,6 +26,7 @@ const routes: Routes = [
         loadChildren: () => import('../../shared/components/not-found/not-found.module').then((m) => m.NotFoundModule),
         data: {
           title: null,
+          breadcrumb: { alias: null },
         },
       },
       {
@@ -31,6 +34,7 @@ const routes: Routes = [
         loadChildren: () => import('../view-offer-law/view-offer-law.module').then((m) => m.ViewOfferLawModule),
         data: {
           title: BreadcrumbLabels.AD,
+          breadcrumb: { alias: BreadcrumbLabels.AD },
         },
       },
     ],

@@ -8,6 +8,7 @@ const routes: Routes = [
     component: ViewOfferMaterialAidComponent,
     data: {
       title: null,
+      breadcrumb: { alias: null },
     },
   },
 ];

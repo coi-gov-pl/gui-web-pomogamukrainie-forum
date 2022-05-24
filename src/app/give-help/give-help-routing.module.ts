@@ -10,7 +10,8 @@ const routes: Routes = [
     component: GiveHelpComponent,
     canActivate: [AuthGuard],
     data: {
-      title: null,
+      title: BreadcrumbLabels.ACCOMMODATION,
+      breadcrumb: { alias: null },
     },
     children: [
       {
@@ -19,6 +20,7 @@ const routes: Routes = [
         pathMatch: 'full',
         data: {
           title: null,
+          breadcrumb: { alias: null },
         },
       },
       {
@@ -27,6 +29,7 @@ const routes: Routes = [
           import('./accommodation-form/accommodation-form.module').then((m) => m.AccommodationFormComponentModule),
         data: {
           title: BreadcrumbLabels.ACCOMMODATION,
+          breadcrumb: { alias: BreadcrumbLabels.ACCOMMODATION },
         },
       },
       {
@@ -35,6 +38,7 @@ const routes: Routes = [
           import('./accommodation-form/accommodation-form.module').then((m) => m.AccommodationFormComponentModule),
         data: {
           title: BreadcrumbLabels.ACCOMMODATION,
+          breadcrumb: { alias: BreadcrumbLabels.ACCOMMODATION },
         },
       },
       {
@@ -42,6 +46,7 @@ const routes: Routes = [
         loadChildren: () => import('./material-aid-form/material-aid-form.module').then((m) => m.MaterialAidFormModule),
         data: {
           title: BreadcrumbLabels.MATERIAL_HELP,
+          breadcrumb: { alias: BreadcrumbLabels.MATERIAL_HELP },
         },
       },
       {
@@ -49,6 +54,7 @@ const routes: Routes = [
         loadChildren: () => import('./material-aid-form/material-aid-form.module').then((m) => m.MaterialAidFormModule),
         data: {
           title: BreadcrumbLabels.MATERIAL_HELP,
+          breadcrumb: { alias: BreadcrumbLabels.MATERIAL_HELP },
         },
       },
       {
@@ -57,6 +63,7 @@ const routes: Routes = [
           import('./transport-form/transport-form.module').then((m) => m.TransportFormComponentModule),
         data: {
           title: BreadcrumbLabels.TRANSPORT,
+          breadcrumb: { alias: BreadcrumbLabels.TRANSPORT },
         },
       },
       {
@@ -65,6 +72,7 @@ const routes: Routes = [
           import('./transport-form/transport-form.module').then((m) => m.TransportFormComponentModule),
         data: {
           title: BreadcrumbLabels.TRANSPORT,
+          breadcrumb: { alias: BreadcrumbLabels.TRANSPORT },
         },
       },
       {
@@ -72,6 +80,7 @@ const routes: Routes = [
         loadChildren: () => import('./health-care-form/health-care-form.module').then((m) => m.HealthCareFormModule),
         data: {
           title: BreadcrumbLabels.HEALTH,
+          breadcrumb: { alias: BreadcrumbLabels.HEALTH },
         },
       },
       {
@@ -79,6 +88,7 @@ const routes: Routes = [
         loadChildren: () => import('./health-care-form/health-care-form.module').then((m) => m.HealthCareFormModule),
         data: {
           title: BreadcrumbLabels.HEALTH,
+          breadcrumb: { alias: BreadcrumbLabels.HEALTH },
         },
       },
       {
@@ -86,6 +96,7 @@ const routes: Routes = [
         loadChildren: () => import('./job-form/job-form.module').then((m) => m.JobFormModule),
         data: {
           title: BreadcrumbLabels.JOB,
+          breadcrumb: { alias: BreadcrumbLabels.JOB },
         },
       },
       {
@@ -93,6 +104,7 @@ const routes: Routes = [
         loadChildren: () => import('./job-form/job-form.module').then((m) => m.JobFormModule),
         data: {
           title: BreadcrumbLabels.JOB,
+          breadcrumb: { alias: BreadcrumbLabels.JOB },
         },
       },
       {
@@ -100,6 +112,7 @@ const routes: Routes = [
         loadChildren: () => import('./law-form/law-form.module').then((m) => m.LawFormModule),
         data: {
           title: BreadcrumbLabels.LEGAL_HELP,
+          breadcrumb: { alias: BreadcrumbLabels.LEGAL_HELP },
         },
       },
       {
@@ -107,6 +120,7 @@ const routes: Routes = [
         loadChildren: () => import('./law-form/law-form.module').then((m) => m.LawFormModule),
         data: {
           title: BreadcrumbLabels.LEGAL_HELP,
+          breadcrumb: { alias: BreadcrumbLabels.LEGAL_HELP },
         },
       },
 
@@ -115,6 +129,7 @@ const routes: Routes = [
         loadChildren: () => import('./translation-form/translation-form.module').then((m) => m.TranslationFormModule),
         data: {
           title: BreadcrumbLabels.TRANSLATIONS,
+          breadcrumb: { alias: BreadcrumbLabels.TRANSLATIONS },
         },
       },
       {
@@ -122,6 +137,7 @@ const routes: Routes = [
         loadChildren: () => import('./translation-form/translation-form.module').then((m) => m.TranslationFormModule),
         data: {
           title: BreadcrumbLabels.TRANSLATIONS,
+          breadcrumb: { alias: BreadcrumbLabels.TRANSLATIONS },
         },
       },
       {
@@ -129,6 +145,7 @@ const routes: Routes = [
         loadChildren: () => import('./other-form/other-form.module').then((m) => m.OtherFormModule),
         data: {
           title: BreadcrumbLabels.OTHER,
+          breadcrumb: { alias: BreadcrumbLabels.OTHER },
         },
       },
     ],

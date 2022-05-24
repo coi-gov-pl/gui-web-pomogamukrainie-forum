@@ -47,7 +47,8 @@ export class AppComponent implements OnInit, OnDestroy {
     private translateService: TranslateService,
     private storeUrlService: StoreUrlService,
     private titleService: Title,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private translate: TranslateService
   ) {
     if (
       environment.applicationInsightsConnectionString &&
@@ -92,7 +93,7 @@ export class AppComponent implements OnInit, OnDestroy {
             child = child.firstChild;
           }
           if (child?.snapshot.data['title']) {
-            return child.snapshot.data['title'];
+            return this.translate.instant(child.snapshot.data['title']);
           }
           return appTitle;
         })

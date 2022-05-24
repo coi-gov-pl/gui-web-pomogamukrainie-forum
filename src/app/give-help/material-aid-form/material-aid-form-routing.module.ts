@@ -10,6 +10,7 @@ const routes: Routes = [
     canDeactivate: [CanDeactivateGuard],
     data: {
       title: null,
+      breadcrumb: { alias: null },
     },
   },
 ];

@@ -9,7 +9,7 @@ const routes: Routes = [
     path: '',
     component: FindHelpComponent,
     data: {
-      title: BreadcrumbLabels.ACCOMMODATION,
+      title: null,
     },
     children: [
       {
@@ -17,7 +17,7 @@ const routes: Routes = [
         redirectTo: CategoryRoutingName.ACCOMMODATION,
         pathMatch: 'full',
         data: {
-          title: BreadcrumbLabels.ACCOMMODATION,
+          title: null,
         },
       },
       {
@@ -26,6 +26,7 @@ const routes: Routes = [
           import('./accommodation-search/accommodation-search.module').then((m) => m.AccommodationSearchModule),
         data: {
           title: BreadcrumbLabels.ACCOMMODATION,
+          breadcrumb: { alias: BreadcrumbLabels.ACCOMMODATION },
         },
       },
       {
@@ -34,6 +35,7 @@ const routes: Routes = [
           import('./material-aid-search/material-aid-search.module').then((m) => m.MaterialAidSearchModule),
         data: {
           title: BreadcrumbLabels.MATERIAL_HELP,
+          breadcrumb: { alias: BreadcrumbLabels.MATERIAL_HELP },
         },
       },
       {
@@ -41,6 +43,7 @@ const routes: Routes = [
         loadChildren: () => import('./transport-search/transport-search.module').then((m) => m.TransportSearchModule),
         data: {
           title: BreadcrumbLabels.TRANSPORT,
+          breadcrumb: { alias: BreadcrumbLabels.TRANSPORT },
         },
       },
       {
@@ -48,6 +51,7 @@ const routes: Routes = [
         loadChildren: () => import('./job-search/job-search.module').then((m) => m.JobSearchModule),
         data: {
           title: BreadcrumbLabels.JOB,
+          breadcrumb: { alias: BreadcrumbLabels.JOB },
         },
       },
       {
@@ -55,6 +59,7 @@ const routes: Routes = [
         loadChildren: () => import('./health-search/health-search.module').then((m) => m.HealthSearchModule),
         data: {
           title: BreadcrumbLabels.HEALTH,
+          breadcrumb: { alias: BreadcrumbLabels.HEALTH },
         },
       },
       {
@@ -62,6 +67,7 @@ const routes: Routes = [
         loadChildren: () => import('./law-search/law-search.module').then((m) => m.LawSearchModule),
         data: {
           title: BreadcrumbLabels.LAW_HELP,
+          breadcrumb: { alias: BreadcrumbLabels.LAW_HELP },
         },
       },
       {
@@ -70,6 +76,7 @@ const routes: Routes = [
           import('./translation-search/translation-search.module').then((m) => m.TranslationSearchModule),
         data: {
           title: BreadcrumbLabels.TRANSLATIONS,
+          breadcrumb: { alias: BreadcrumbLabels.TRANSLATIONS },
         },
       },
     ],

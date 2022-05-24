@@ -6,7 +6,7 @@ const routes: Routes = [
   {
     path: '',
     component: ViewOfferLawComponent,
-    data: { title: null },
+    data: { title: null, breadcrumb: { alias: null } },
   },
 ];
 

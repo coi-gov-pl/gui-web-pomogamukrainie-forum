@@ -8,7 +8,7 @@ const routes: Routes = [
     path: '',
     component: JobFormComponent,
     canDeactivate: [CanDeactivateGuard],
-    data: { title: null },
+    data: { title: null, breadcrumb: { alias: null } },
   },
 ];
 

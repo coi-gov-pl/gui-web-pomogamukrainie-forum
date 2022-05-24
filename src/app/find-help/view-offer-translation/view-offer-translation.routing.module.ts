@@ -8,6 +8,7 @@ const routes: Routes = [
     component: ViewOfferTranslationComponent,
     data: {
       title: null,
+      breadcrumb: { alias: null },
     },
   },
 ];
