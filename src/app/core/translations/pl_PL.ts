@@ -279,5 +279,7 @@ export default {
   GASTRONOMY: 'Gastronomia',
   HR: 'HR',
   SALES: 'Sprzedaż',
-  COPIED_URL: 'Link skopiowany do schowka'
+  COPIED_URL: 'Link skopiowany do schowka',
+  WHAT_ARE_YOU_LOOKING_FOR_2: 'Czego szukasz',
+  WHAT_ARE_YOU_LOOKING_FOR_2_PLACEHOLDER: 'Wpisz, czego szukasz',
 };
