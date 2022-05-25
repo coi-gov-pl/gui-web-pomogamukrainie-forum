@@ -296,4 +296,5 @@ export default {
   GIVE_MATERIAL_TITLE: 'Dodaj Ogłoszenie: Materialna - Pomagam Ukrainie',
   GIVE_TRANSLATION_TITLE: 'Dodaj Ogłoszenie: Tłumaczenie - Pomagam Ukrainie',
   GIVE_TRANSPORT_TITLE: 'Dodaj Ogłoszenie: Transport - Pomagam Ukrainie',
+  PAGINATOR_ARIA_LABEL: 'Wybierz stronę oraz ilość wyników na stronę (aktulanie: {{size}})',
 };

@@ -15,13 +15,14 @@ import { langChangeSub$ } from './paginator-init';
 export class PaginatorComponent implements OnInit, OnDestroy {
   @Input() length: number | undefined;
   @Output() param: EventEmitter<void> = new EventEmitter<void>();
-
+  params = {};
   public params$: Observable<Pageable> | undefined;
 
   constructor(private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.params$ = this.route.queryParams;
+    this.params = { size: localStorage.getItem(LocalStorageKeys.PageSize) };
   }
 
   async handlePageEvent(event: PageEvent) {
@@ -29,6 +30,7 @@ export class PaginatorComponent implements OnInit, OnDestroy {
       page: event.pageIndex,
       size: event.pageSize,
     };
+    this.params = { size: paginator.size };
     localStorage.setItem(LocalStorageKeys.PageSize, JSON.stringify(event.pageSize));
     await this.router.navigate([], { relativeTo: this.route, queryParams: paginator, queryParamsHandling: 'merge' });
     this.param.emit();
