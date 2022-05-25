@@ -29,7 +29,7 @@
           <mat-form-field appearance="outline">
             <input
               matInput
-              placeholder="{{ 'PLACEHOLDER_CHOOSE' | translate }}"
+              placeholder="{{ 'PLACEHOLDER_TYPE' | translate }}"
               type="text"
               [appMinMaxValidate]="{ min: 1, max: 99, required: true }"
               [(ngModel)]="data.guests"
@@ -67,7 +67,7 @@
           >
           <mat-form-field appearance="outline">
             <mat-select
-              placeholder="{{ 'PLACEHOLDER_CHOOSE' | translate }}"
+              placeholder="{{ 'SELECT_LANGUAGE' | translate }}"
               multiple
               [(ngModel)]="data.hostLanguage"
               name="language"
