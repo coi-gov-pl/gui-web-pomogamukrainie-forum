@@ -279,5 +279,13 @@ export default {
   GASTRONOMY: 'Gastronomia',
   HR: 'HR',
   SALES: 'Sprzedaż',
-  COPIED_URL: 'Link skopiowany do schowka'
+  COPIED_URL: 'Link skopiowany do schowka',
+  PLACEHOLDER_OFFER_DESCRIPTION_ACCOMMODATION: 'Napisz: daty dostępności, zwierzęta - czy są w domu i czy możesz przyjąć, czy jest dostępne dla osób z niepełnosprawnościami.\n\nNapisz ogłoszenie po polsku. Strona przetłumaczy treść osobom, które przeglądają ogłoszenia w innym języku.',
+  PLACEHOLDER_OFFER_DESCRIPTION_HEALTH: 'W opisie podaj najważniejsze informacje dotyczące pomocy, którą oferujesz\n\nNapisz ogłoszenie po polsku. Strona przetłumaczy treść osobom, które przeglądają ogłoszenia w innym języku.',
+  PLACEHOLDER_OFFER_DESCRIPTION_JOB: 'W opisie podaj najważniejsze informacje o pracy, którą oferujesz.\n\nNapisz ogłoszenie po polsku. Strona przetłumaczy treść osobom, które przeglądają ogłoszenia w innym języku.',
+  PLACEHOLDER_OFFER_DESCRIPTION_LEGAL_HELP: 'W opisie podaj najważniejsze informacje dotyczące pomocy, którą oferujesz\n\nNapisz ogłoszenie po polsku. Strona przetłumaczy treść osobom, które przeglądają ogłoszenia w innym języku.',
+  PLACEHOLDER_OFFER_DESCRIPTION_MATERIAL_HELP: 'W opisie podaj rodzaj odzieży i jej rozmiar.\n\nNapisz ogłoszenie po polsku. Strona przetłumaczy treść osobom, które przeglądają ogłoszenia w innym języku.',
+  PLACEHOLDER_OFFER_DESCRIPTION_OTHER: 'W opisie podaj najważniejsze informacje o tym, co oferujesz. Dzięki temu potrzebujący pomocy znajdą Twoje ogłoszenie.\n\nNapisz ogłoszenie po polsku. Strona przetłumaczy treść osobom, które przeglądają ogłoszenia w innym języku.',
+  PLACEHOLDER_OFFER_DESCRIPTION_TRANSLATIONS: 'W opisie podaj najważniejsze informacje dotyczące pomocy, którą oferujesz\n\nNapisz ogłoszenie po polsku. Strona przetłumaczy treść osobom, które przeglądają ogłoszenia w innym języku.',
+  PLACEHOLDER_OFFER_DESCRIPTION_TRANSPORT: 'W opisie zaznacz:\n- ile bagaży możesz zabrać,\n- czy masz fotelik dziecięcy,\n- czy możesz przewieźć zwierzęta.\n\nNapisz ogłoszenie po polsku. Strona przetłumaczy treść osobom, które przeglądają ogłoszenia w innym języku.',
 };
