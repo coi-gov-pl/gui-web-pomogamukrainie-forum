@@ -23,7 +23,7 @@
         </div>
 
         <div class="col-12 col-md-6 col-lg-2">
-          <label
+          <label for="language"
             ><b>{{ "LANGUAGE" | translate }} *</b></label
           >
           <mat-form-field appearance="outline">
@@ -32,6 +32,7 @@
               multiple
               [(ngModel)]="data.language"
               name="language"
+              id="language"
               required
               #language="ngModel"
             >
@@ -46,7 +47,7 @@
         </div>
 
         <div class="col-12 col-md-6 col-lg-3">
-          <label
+          <label for="helpMode"
             ><b>{{ "LAW_HELP_MODES" | translate }} *</b></label
           >
           <mat-form-field appearance="outline">
@@ -55,6 +56,7 @@
               multiple
               [(ngModel)]="data.helpMode"
               name="helpMode"
+              id="helpMode"
               required
               #helpMode="ngModel"
             >
@@ -67,7 +69,7 @@
         </div>
 
         <div class="col-12 col-md-6 col-lg-3">
-          <label
+          <label for="helpKind"
             ><b>{{ "LAW_HELP_KINDS" | translate }} *</b></label
           >
           <mat-form-field appearance="outline">
@@ -76,6 +78,7 @@
               multiple
               [(ngModel)]="data.helpKind"
               name="helpKind"
+              id="helpKind"
               required
               #helpKind="ngModel"
             >
@@ -90,7 +93,7 @@
 
       <div class="row">
         <div class="col-lg-7 col-xl-8 mb-3">
-          <label>
+          <label for="description">
             <b>{{ "LABEL_OFFER_DESCRIPTION" | translate }}</b>
             <span> {{ "LABEL_OFFER_DESCRIPTION_MAXCHARS" | translate }} *</span>
           </label>
@@ -101,6 +104,7 @@
               maxlength="2000"
               placeholder="{{ 'PLACEHOLDER_OFFER_DESCRIPTION' | translate }}"
               name="description"
+              id="description"
               [(ngModel)]="data.description"
               required
               #description="ngModel"

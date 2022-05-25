@@ -37,11 +37,15 @@
     </ng-container>
   </div>
   <div class="categories-mobile d-block d-md-none">
-    <label
+    <label for="selectedCategory"
       ><b>{{ "CHOOSE_CATEGORY" | translate }}</b></label
     >
     <mat-form-field appearance="outline">
-      <mat-select [placeholder]="'CHOOSE_FROM_THE_LIST' | translate" [(ngModel)]="selectedCategory.name">
+      <mat-select
+        [placeholder]="'CHOOSE_FROM_THE_LIST' | translate"
+        [(ngModel)]="selectedCategory.name"
+        id="selectedCategory"
+      >
         <mat-select-trigger *ngIf="selectedCategory">
           <mat-icon class="material-icons-outlined">{{ selectedCategory.icon }}</mat-icon
           ><span class="selected-category">{{ selectedCategory.name | translate }}</span>
