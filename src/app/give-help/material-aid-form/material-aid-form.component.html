@@ -47,7 +47,7 @@
       </div>
       <div class="row">
         <div class="col-lg-7 col-xl-8 mb-3">
-          <label for="description">
+          <label for="description" [attr.aria-label]="'LABEL_OFFER_DESCRIPTION_MAXCHARS' | translate">
             <b>{{ "LABEL_OFFER_DESCRIPTION" | translate }}</b>
             <span> {{ "LABEL_OFFER_DESCRIPTION_MAXCHARS" | translate }} *</span>
           </label>

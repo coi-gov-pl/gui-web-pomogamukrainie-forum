@@ -39,7 +39,7 @@
         </div>
       </div>
       <div class="row">
-        <label for="description">
+        <label for="description" [attr.aria-label]="'LABEL_OFFER_DESCRIPTION_MAXCHARS' | translate">
           <b>{{ "LABEL_REPLY_CONTENT" | translate }} *</b>
         </label>
         <mat-form-field appearance="outline" hintLabel="{{ 'CHARS_LEFT' | translate }}">
