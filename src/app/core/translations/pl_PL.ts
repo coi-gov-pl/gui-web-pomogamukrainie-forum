@@ -297,4 +297,8 @@ export default {
   GIVE_TRANSLATION_TITLE: 'Dodaj Ogłoszenie: Tłumaczenie - Pomagam Ukrainie',
   GIVE_TRANSPORT_TITLE: 'Dodaj Ogłoszenie: Transport - Pomagam Ukrainie',
   PAGINATOR_ARIA_LABEL: 'Wybierz stronę oraz ilość wyników na stronę (aktulanie: {{size}})',
+  POLISH_CREST: 'godło Polski',
+  HELP_UA_LOGO: 'Logo Pomagamy Ukrainie - Strona główna',
+  CLEAR: 'Wyczyść'
+
 };

@@ -21,7 +21,7 @@
       [displayWith]="displayOption"
       (optionSelected)="onSelected($event.option.value)"
     >
-      <mat-option *ngFor="let option of options" [value]="option">
+      <mat-option role="listitem" *ngFor="let option of options" [value]="option">
         {{ option | displayLocationOption }}
       </mat-option>
     </mat-autocomplete>
@@ -31,7 +31,7 @@
       mat-button
       matSuffix
       mat-icon-button
-      aria-label="Clear"
+      [attr.aria-label]="'CLEAR' | translate"
       (click)="clearValue()"
     >
       <mat-icon class="button-icon" fontSet="material-icons-outlined">close</mat-icon>

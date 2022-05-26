@@ -17,12 +17,13 @@
         </label>
         <mat-form-field appearance="outline">
           <mat-select
+            role="list"
             [placeholder]="'PLACEHOLDER_CHOOSE' | translate"
             [(ngModel)]="data.specialization"
             name="specialization"
             id="specialization"
           >
-            <mat-option *ngFor="let spec of specializations" [value]="spec.value">
+            <mat-option role="listitem" *ngFor="let spec of specializations" [value]="spec.value">
               {{ spec.value | translate }}
             </mat-option>
           </mat-select>
@@ -34,13 +35,16 @@
         </label>
         <mat-form-field appearance="outline">
           <mat-select
+            role="list"
             [placeholder]="'PLACEHOLDER_CHOOSE' | translate"
             multiple
             [(ngModel)]="data.language"
             name="language"
             id="language"
           >
-            <mat-option *ngFor="let lang of LANGUAGES" [value]="lang.code">{{ lang.label | translate }}</mat-option>
+            <mat-option role="listitem" *ngFor="let lang of LANGUAGES" [value]="lang.code">{{
+              lang.label | translate
+            }}</mat-option>
           </mat-select>
         </mat-form-field>
       </div>
@@ -50,13 +54,14 @@
         </label>
         <mat-form-field appearance="outline">
           <mat-select
+            role="list"
             [placeholder]="'PLACEHOLDER_CHOOSE' | translate"
             multiple
             [(ngModel)]="data.mode"
             name="mode"
             id="mode"
           >
-            <mat-option *ngFor="let mode of modes" [value]="mode.value">
+            <mat-option role="listitem" *ngFor="let mode of modes" [value]="mode.value">
               {{ mode.value | translate }}
             </mat-option>
           </mat-select>

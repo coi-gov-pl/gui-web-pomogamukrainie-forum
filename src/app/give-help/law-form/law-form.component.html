@@ -28,6 +28,7 @@
           >
           <mat-form-field appearance="outline">
             <mat-select
+              role="list"
               placeholder="{{ 'PLACEHOLDER_CHOOSE' | translate }}"
               multiple
               [(ngModel)]="data.language"
@@ -36,7 +37,7 @@
               required
               #language="ngModel"
             >
-              <mat-option *ngFor="let lang of LAW_LANGUAGES" [value]="lang.code">{{
+              <mat-option role="listitem" *ngFor="let lang of LAW_LANGUAGES" [value]="lang.code">{{
                 lang.label | translate
               }}</mat-option>
             </mat-select>
@@ -52,6 +53,7 @@
           >
           <mat-form-field appearance="outline">
             <mat-select
+              role="list"
               placeholder="{{ 'PLACEHOLDER_CHOOSE' | translate }}"
               multiple
               [(ngModel)]="data.helpMode"
@@ -60,7 +62,9 @@
               required
               #helpMode="ngModel"
             >
-              <mat-option *ngFor="let helpMode of HELP_MODE" [value]="helpMode">{{ helpMode | translate }}</mat-option>
+              <mat-option role="listitem" *ngFor="let helpMode of HELP_MODE" [value]="helpMode">{{
+                helpMode | translate
+              }}</mat-option>
             </mat-select>
             <mat-error>
               <app-field-error [model]="helpMode"></app-field-error>
@@ -74,6 +78,7 @@
           >
           <mat-form-field appearance="outline">
             <mat-select
+              role="list"
               placeholder="{{ 'PLACEHOLDER_CHOOSE' | translate }}"
               multiple
               [(ngModel)]="data.helpKind"
@@ -82,7 +87,9 @@
               required
               #helpKind="ngModel"
             >
-              <mat-option *ngFor="let helpKind of HELP_KIND" [value]="helpKind">{{ helpKind | translate }}</mat-option>
+              <mat-option role="listitem" *ngFor="let helpKind of HELP_KIND" [value]="helpKind">{{
+                helpKind | translate
+              }}</mat-option>
             </mat-select>
             <mat-error>
               <app-field-error [model]="helpKind"></app-field-error>

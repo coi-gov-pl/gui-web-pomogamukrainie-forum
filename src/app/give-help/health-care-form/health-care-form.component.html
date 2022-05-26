@@ -27,6 +27,7 @@
           >
           <mat-form-field appearance="outline">
             <mat-select
+              role="list"
               placeholder="{{ 'CHOOSE_MODE' | translate }}"
               multiple
               [(ngModel)]="data.mode"
@@ -35,7 +36,9 @@
               required
               #mode="ngModel"
             >
-              <mat-option *ngFor="let mode of MODE_ENUM" [value]="mode">{{ mode | translate }}</mat-option>
+              <mat-option role="listitem" *ngFor="let mode of MODE_ENUM" [value]="mode">{{
+                mode | translate
+              }}</mat-option>
             </mat-select>
             <mat-error>
               <app-field-error [model]="mode"></app-field-error>
@@ -48,6 +51,7 @@
           >
           <mat-form-field appearance="outline">
             <mat-select
+              role="list"
               placeholder="{{ 'CHOOSE_SPECIALISATION' | translate }}"
               [(ngModel)]="data.specialization"
               name="specialization"
@@ -55,7 +59,9 @@
               required
               #specialization="ngModel"
             >
-              <mat-option *ngFor="let spec of SPECIALIZATION_ENUM" [value]="spec">{{ spec | translate }}</mat-option>
+              <mat-option role="listitem" *ngFor="let spec of SPECIALIZATION_ENUM" [value]="spec">{{
+                spec | translate
+              }}</mat-option>
             </mat-select>
             <mat-error>
               <app-field-error [model]="specialization"></app-field-error>
@@ -68,6 +74,7 @@
           >
           <mat-form-field appearance="outline">
             <mat-select
+              role="list"
               placeholder="{{ 'SELECT_LANGUAGE' | translate }}"
               multiple
               [(ngModel)]="data.language"
@@ -76,7 +83,9 @@
               required
               #language="ngModel"
             >
-              <mat-option *ngFor="let lang of LANGUAGES" [value]="lang.code">{{ lang.label | translate }}</mat-option>
+              <mat-option role="listitem" *ngFor="let lang of LANGUAGES" [value]="lang.code">{{
+                lang.label | translate
+              }}</mat-option>
             </mat-select>
             <mat-error>
               <app-field-error [model]="language"></app-field-error>

@@ -42,6 +42,7 @@
     >
     <mat-form-field appearance="outline">
       <mat-select
+        role="list"
         [placeholder]="'CHOOSE_FROM_THE_LIST' | translate"
         [(ngModel)]="selectedCategory.name"
         id="selectedCategory"
@@ -57,7 +58,7 @@
             [routerLink]="['/', outputPath, routingCategoryName[category.name]]"
             [queryParams]="queryParams()"
           >
-            <mat-option [value]="category.name"
+            <mat-option role="listitem" [value]="category.name"
               ><mat-icon class="material-icons-outlined">{{ category.icon }}</mat-icon>
               {{ category.name | translate }}</mat-option
             >

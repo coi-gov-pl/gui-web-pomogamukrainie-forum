@@ -28,6 +28,7 @@
           </label>
           <mat-form-field appearance="outline">
             <mat-select
+              role="list"
               placeholder="{{ 'SELECT_LANGUAGE' | translate }}"
               [(ngModel)]="data.language"
               name="language"
@@ -35,7 +36,9 @@
               #language="ngModel"
               multiple
             >
-              <mat-option *ngFor="let it of LANGUAGES" [value]="it.code">{{ it.label | translate }}</mat-option>
+              <mat-option role="listitem" *ngFor="let it of LANGUAGES" [value]="it.code">{{
+                it.label | translate
+              }}</mat-option>
             </mat-select>
             <mat-error>
               <app-field-error [model]="language"></app-field-error>
@@ -48,6 +51,7 @@
           </label>
           <mat-form-field appearance="outline">
             <mat-select
+              role="list"
               placeholder="{{ 'CHOOSE_MODE' | translate }}"
               [(ngModel)]="data.mode"
               name="mode"
@@ -55,7 +59,7 @@
               #mode="ngModel"
               multiple
             >
-              <mat-option *ngFor="let it of modes" [value]="it">{{ it | translate }}</mat-option>
+              <mat-option role="listitem" *ngFor="let it of modes" [value]="it">{{ it | translate }}</mat-option>
             </mat-select>
             <mat-error>
               <app-field-error [model]="mode"></app-field-error>
