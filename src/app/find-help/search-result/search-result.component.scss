@@ -23,12 +23,12 @@
       text-align: right;
     }
   }
-  h4 {
+  h2 {
     font-size: 18px;
     color: var(--c-darkblue);
   }
   .description {
-    font-size: 15px;
+    font-size: 16px;
     color: var(--c-darkblue);
   }
   .text-with-icon {
@@ -45,5 +45,7 @@
   .link {
     color: inherit;
     text-decoration: none;
+    background: transparent;
+    border: none;
   }
 }
