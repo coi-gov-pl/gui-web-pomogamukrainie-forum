@@ -23,9 +23,9 @@
           ></app-cities-search>
         </div>
         <div class="col-12 col-md-6 col-lg-2">
-          <div class="attribute-name">
+          <label for="guests" class="attribute-name">
             <b>{{ "NUMBER_OF_PEOPLE" | translate }} *</b>
-          </div>
+          </label>
           <mat-form-field appearance="outline">
             <input
               matInput
@@ -34,6 +34,7 @@
               [appMinMaxValidate]="{ min: 1, max: 99, required: true }"
               [(ngModel)]="data.guests"
               name="guests"
+              id="guests"
               #guests="ngModel"
               inputmode="numeric"
             />

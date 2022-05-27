@@ -301,7 +301,7 @@ export default {
   GIVE_HEALTH_TITLE: 'Dodaj Ogłoszenie: Zdrowie - Pomagam Ukrainie',
   GIVE_JOB_TITLE: 'Dodaj Ogłoszenie: Praca - Pomagam Ukrainie',
   GIVE_LAW_TITLE: 'Dodaj Ogłoszenie: Prawo - Pomagam Ukrainie',
-  GIVE_MATERIAL_TITLE: 'Dodaj Ogłoszenie: Materialna - Pomagam Ukrainie',
+  GIVE_MATERIAL_TITLE: 'Dodaj Ogłoszenie: Pomoc Materialna - Pomagam Ukrainie',
   GIVE_TRANSLATION_TITLE: 'Dodaj Ogłoszenie: Tłumaczenie - Pomagam Ukrainie',
   GIVE_TRANSPORT_TITLE: 'Dodaj Ogłoszenie: Transport - Pomagam Ukrainie',
   PAGINATOR_ARIA_LABEL: 'Wybierz stronę oraz ilość wyników na stronę (aktulanie: {{size}})',
