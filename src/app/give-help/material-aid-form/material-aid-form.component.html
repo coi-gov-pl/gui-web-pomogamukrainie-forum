@@ -19,7 +19,6 @@
           >
           <mat-form-field appearance="outline">
             <mat-select
-              role="list"
               placeholder="{{ 'PLACEHOLDER_CHOOSE' | translate }}"
               [(ngModel)]="data.category"
               name="aidType"
@@ -27,7 +26,7 @@
               required
               #category="ngModel"
             >
-              <mat-option role="listitem" *ngFor="let it of CATEGORIES" [value]="it.value">{{
+              <mat-option *ngFor="let it of CATEGORIES" [value]="it.value">{{
                 it.value | translate | lowercase
               }}</mat-option>
             </mat-select>

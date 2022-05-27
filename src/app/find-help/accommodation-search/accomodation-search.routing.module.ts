@@ -34,7 +34,7 @@ const routes: Routes = [
             (m) => m.ViewOfferAccommodationModule
           ),
         data: {
-          breadcrumb: { title: 'xxx', alias: BreadcrumbLabels.AD },
+          breadcrumb: { alias: BreadcrumbLabels.AD },
         },
       },
     ],

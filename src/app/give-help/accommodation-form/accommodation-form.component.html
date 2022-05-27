@@ -48,7 +48,6 @@
           >
           <mat-form-field appearance="outline">
             <mat-select
-              role="list"
               placeholder="{{ 'PLACEHOLDER_CHOOSE' | translate }}"
               [(ngModel)]="data.lengthOfStay"
               name="lengthOfStay"
@@ -56,9 +55,7 @@
               required
               #lengthOfStay="ngModel"
             >
-              <mat-option role="listitem" *ngFor="let it of LENGTH_OF_STAY" [value]="it.code">{{
-                it.label | translate
-              }}</mat-option>
+              <mat-option *ngFor="let it of LENGTH_OF_STAY" [value]="it.code">{{ it.label | translate }}</mat-option>
             </mat-select>
             <mat-error>
               <app-field-error [model]="lengthOfStay"></app-field-error>
@@ -71,7 +68,6 @@
           >
           <mat-form-field appearance="outline">
             <mat-select
-              role="list"
               placeholder="{{ 'SELECT_LANGUAGE' | translate }}"
               multiple
               [(ngModel)]="data.hostLanguage"
@@ -80,9 +76,7 @@
               required
               #language="ngModel"
             >
-              <mat-option role="listitem" *ngFor="let lang of LANGUAGES" [value]="lang.code">{{
-                lang.label | translate
-              }}</mat-option>
+              <mat-option *ngFor="let lang of LANGUAGES" [value]="lang.code">{{ lang.label | translate }}</mat-option>
             </mat-select>
             <mat-error>
               <app-field-error [model]="language"></app-field-error>

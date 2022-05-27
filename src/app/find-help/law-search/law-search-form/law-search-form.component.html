@@ -17,16 +17,13 @@
         </label>
         <mat-form-field appearance="outline">
           <mat-select
-            role="list"
             [placeholder]="'OPTION_ALL' | translate"
             [(ngModel)]="data.helpKind"
             name="helpKind"
             id="helpKind"
           >
-            <mat-option role="listitem" [value]="null">{{ "OPTION_ALL" | translate }}</mat-option>
-            <mat-option role="listitem" *ngFor="let kind of HELP_KIND" [value]="kind.code">{{
-              kind.label | translate
-            }}</mat-option>
+            <mat-option [value]="null">{{ "OPTION_ALL" | translate }}</mat-option>
+            <mat-option *ngFor="let kind of HELP_KIND" [value]="kind.code">{{ kind.label | translate }}</mat-option>
           </mat-select>
         </mat-form-field>
       </div>
@@ -36,16 +33,13 @@
         </label>
         <mat-form-field appearance="outline">
           <mat-select
-            role="list"
             [placeholder]="'PLACEHOLDER_CHOOSE' | translate"
             multiple
             [(ngModel)]="data.language"
             name="language"
             id="language"
           >
-            <mat-option role="listitem" *ngFor="let lang of LANGUAGES" [value]="lang.code">{{
-              lang.label | translate
-            }}</mat-option>
+            <mat-option *ngFor="let lang of LANGUAGES" [value]="lang.code">{{ lang.label | translate }}</mat-option>
           </mat-select>
         </mat-form-field>
       </div>
@@ -55,16 +49,13 @@
         </label>
         <mat-form-field appearance="outline">
           <mat-select
-            role="list"
             [placeholder]="'PLACEHOLDER_HELP_MODE' | translate"
             multiple
             [(ngModel)]="data.helpMode"
             name="helpMode"
             id="helpMode"
           >
-            <mat-option role="listitem" *ngFor="let mode of HELP_MODE" [value]="mode.code">{{
-              mode.label | translate
-            }}</mat-option>
+            <mat-option *ngFor="let mode of HELP_MODE" [value]="mode.code">{{ mode.label | translate }}</mat-option>
           </mat-select>
         </mat-form-field>
       </div>

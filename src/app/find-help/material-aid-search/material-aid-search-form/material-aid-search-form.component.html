@@ -7,15 +7,12 @@
         >
         <mat-form-field appearance="outline">
           <mat-select
-            role="list"
             [placeholder]="'CHOOSE_FROM_THE_LIST' | translate"
             [(ngModel)]="data.category"
             name="categories"
             id="categories"
           >
-            <mat-option role="listitem" *ngFor="let cat of categories" [value]="cat.value">{{
-              cat.value | translate
-            }}</mat-option>
+            <mat-option *ngFor="let cat of categories" [value]="cat.value">{{ cat.value | translate }}</mat-option>
           </mat-select>
         </mat-form-field>
       </div>

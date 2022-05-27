@@ -21,7 +21,7 @@
       [displayWith]="displayOption"
       (optionSelected)="onSelected($event.option.value)"
     >
-      <mat-option role="listitem" *ngFor="let option of options" [value]="option">
+      <mat-option *ngFor="let option of options" [value]="option">
         {{ option | displayLocationOption }}
       </mat-option>
     </mat-autocomplete>

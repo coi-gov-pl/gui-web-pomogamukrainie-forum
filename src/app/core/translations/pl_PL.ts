@@ -293,7 +293,7 @@ export default {
   VIEW_HEALTH_TITLE: 'Ogłoszenie: Zdrowie - Pomagam Ukrainie',
   VIEW_JOB_TITLE: 'Ogłoszenie: Praca - Pomagam Ukrainie',
   VIEW_LAW_TITLE: 'Ogłoszenie: Prawo - Pomagam Ukrainie',
-  VIEW_MATERIAL_TITLE: 'Ogłoszenie: Materialna - Pomagam Ukrainie',
+  VIEW_MATERIAL_TITLE: 'Ogłoszenie: Pomoc Materialna - Pomagam Ukrainie',
   VIEW_TRANSLATION_TITLE: 'Ogłoszenie: Tłumaczenie - Pomagam Ukrainie',
   VIEW_TRANSPORT_TITLE: 'Ogłoszenie: Transport - Pomagam Ukrainie',
   GIVE_HELP_TITLE: 'Dodaj ogłoszenie - Pomagam Ukrainie',
