@@ -22,8 +22,8 @@
           ></app-cities-search>
         </div>
         <div class="col-12 col-md-6 col-lg-2">
-          <label
-            ><b>{{ "MODE" | translate }} *</b></label
+          <label for="mode">
+            <b>{{ "MODE" | translate }} *</b></label
           >
           <mat-form-field appearance="outline">
             <mat-select
@@ -31,6 +31,7 @@
               multiple
               [(ngModel)]="data.mode"
               name="mode"
+              id="mode"
               required
               #mode="ngModel"
             >
@@ -42,7 +43,7 @@
           </mat-form-field>
         </div>
         <div class="col-12 col-md-6 col-lg-3">
-          <label
+          <label for="specialization"
             ><b>{{ "LABEL_SPECIALISATION" | translate }} *</b></label
           >
           <mat-form-field appearance="outline">
@@ -50,6 +51,7 @@
               placeholder="{{ 'CHOOSE_SPECIALISATION' | translate }}"
               [(ngModel)]="data.specialization"
               name="specialization"
+              id="specialization"
               required
               #specialization="ngModel"
             >
@@ -61,7 +63,7 @@
           </mat-form-field>
         </div>
         <div class="col-12 col-md-6 col-lg-3">
-          <label
+          <label for="language"
             ><b>{{ "LANGUAGE" | translate }} *</b></label
           >
           <mat-form-field appearance="outline">
@@ -70,6 +72,7 @@
               multiple
               [(ngModel)]="data.language"
               name="language"
+              id="language"
               required
               #language="ngModel"
             >
@@ -83,7 +86,7 @@
       </div>
       <div class="row">
         <div class="col-lg-7 col-xl-8 mb-3">
-          <label>
+          <label for="description" [attr.aria-label]="'LABEL_OFFER_DESCRIPTION_MAXCHARS' | translate">
             <b>{{ "LABEL_OFFER_DESCRIPTION" | translate }}</b>
             <span> {{ "LABEL_OFFER_DESCRIPTION_MAXCHARS" | translate }} *</span>
           </label>
@@ -94,6 +97,7 @@
               maxlength="2000"
               placeholder="{{ 'PLACEHOLDER_OFFER_DESCRIPTION_HEALTH' | translate }}"
               name="description"
+              id="description"
               [(ngModel)]="data.description"
               required
               #description="ngModel"

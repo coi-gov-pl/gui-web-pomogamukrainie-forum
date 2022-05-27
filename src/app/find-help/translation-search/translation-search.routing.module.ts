@@ -8,14 +8,14 @@ const routes: Routes = [
   {
     path: '',
     data: {
-      title: null,
+      breadcrumb: { alias: null },
     },
     children: [
       {
         path: '',
         component: TranslationSearchComponent,
         data: {
-          title: null,
+          breadcrumb: { alias: null },
         },
       },
       {
@@ -23,7 +23,8 @@ const routes: Routes = [
         component: NotFoundComponent,
         loadChildren: () => import('../../shared/components/not-found/not-found.module').then((m) => m.NotFoundModule),
         data: {
-          title: null,
+          title: 'PAGE_NOT_FOUND',
+          breadcrumb: { alias: null },
         },
       },
       {
@@ -31,7 +32,7 @@ const routes: Routes = [
         loadChildren: () =>
           import('../view-offer-translation/view-offer-translation.module').then((m) => m.ViewOfferTranslationModule),
         data: {
-          title: BreadcrumbLabels.AD,
+          breadcrumb: { alias: BreadcrumbLabels.AD },
         },
       },
     ],

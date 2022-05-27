@@ -16,7 +16,7 @@
       </div>
       <div class="row mt-3">
         <div class="mb-4">
-          <label>
+          <label for="replyEmail">
             <b>{{ "EMAIL_ADDRESS" | translate }} *</b>
           </label>
           <mat-form-field appearance="outline" class="input-with-disclaimer mb-n2">
@@ -25,7 +25,8 @@
               maxlength="80"
               placeholder="{{ 'PLACEHOLDER_EMAIL' | translate }}"
               required
-              name="title"
+              name="replyEmail"
+              id="replyEmail"
               appEmailValidate
               #email="ngModel"
               [(ngModel)]="data.replyEmail"
@@ -38,7 +39,7 @@
         </div>
       </div>
       <div class="row">
-        <label>
+        <label for="description" [attr.aria-label]="'LABEL_OFFER_DESCRIPTION_MAXCHARS' | translate">
           <b>{{ "LABEL_REPLY_CONTENT" | translate }} *</b>
         </label>
         <mat-form-field appearance="outline" hintLabel="{{ 'CHARS_LEFT' | translate }}">
@@ -49,6 +50,7 @@
             maxlength="2000"
             placeholder="{{ 'PLACEHOLDER_REPLY_CONTENT' | translate }}"
             name="description"
+            id="description"
             [(ngModel)]="data.text"
             #description="ngModel"
             appOfferDescriptionValidate

@@ -1,5 +1,5 @@
 <div>
-  <label
+  <label for="city"
     ><b>{{ label }}</b></label
   >
   <mat-form-field class="example-full-width" appearance="outline">
@@ -13,6 +13,8 @@
       [matAutocomplete]="auto"
       [required]="required"
       (input)="onLocationInput($event)"
+      id="city"
+      name="city"
     />
     <mat-autocomplete
       #auto="matAutocomplete"
@@ -29,7 +31,7 @@
       mat-button
       matSuffix
       mat-icon-button
-      aria-label="Clear"
+      [attr.aria-label]="'CLEAR' | translate"
       (click)="clearValue()"
     >
       <mat-icon class="button-icon" fontSet="material-icons-outlined">close</mat-icon>

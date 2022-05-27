@@ -1,10 +1,11 @@
-import { Component, ElementRef, HostListener, ViewChild, OnDestroy, AfterViewInit } from '@angular/core';
+import { Component, ElementRef, HostListener, ViewChild, OnDestroy, AfterViewInit, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageCode } from '@app/core/translations';
 import { CorePath, LocalStorageKeys } from '@app/shared/models';
 import { AuthService } from '@app/core/auth';
 import { Subject, fromEvent, takeUntil } from 'rxjs';
+import { DOCUMENT } from '@angular/common';
 
 interface Language {
   code: LanguageCode;
@@ -35,7 +36,8 @@ export class SiteHeaderComponent implements AfterViewInit, OnDestroy {
   constructor(
     private router: Router,
     private translateService: TranslateService,
-    public readonly authService: AuthService
+    public readonly authService: AuthService,
+    @Inject(DOCUMENT) private document: Document
   ) {
     this.translateService.onLangChange.subscribe((params) => {
       localStorage.setItem(LocalStorageKeys.LangOption, params.lang);
@@ -65,6 +67,7 @@ export class SiteHeaderComponent implements AfterViewInit, OnDestroy {
   }
 
   getActiveLanguage(langCode: keyof typeof LanguageCode) {
+    this.document.documentElement.lang = langCode.substring(langCode.indexOf('_') + 1).toLowerCase();
     return this.languages.find((lang: Language) => lang.code === langCode);
   }
 

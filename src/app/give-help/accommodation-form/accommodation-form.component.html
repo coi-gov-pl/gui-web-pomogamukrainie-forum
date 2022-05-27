@@ -23,9 +23,9 @@
           ></app-cities-search>
         </div>
         <div class="col-12 col-md-6 col-lg-2">
-          <label
-            ><b>{{ "NUMBER_OF_PEOPLE" | translate }} *</b></label
-          >
+          <label for="guests" class="attribute-name">
+            <b>{{ "NUMBER_OF_PEOPLE" | translate }} *</b>
+          </label>
           <mat-form-field appearance="outline">
             <input
               matInput
@@ -34,6 +34,7 @@
               [appMinMaxValidate]="{ min: 1, max: 99, required: true }"
               [(ngModel)]="data.guests"
               name="guests"
+              id="guests"
               #guests="ngModel"
               inputmode="numeric"
             />
@@ -43,7 +44,7 @@
           </mat-form-field>
         </div>
         <div class="col-12 col-md-6 col-lg-3">
-          <label
+          <label for="lengthOfStay"
             ><b>{{ "LABEL_LENGTH_OF_STAY" | translate }} *</b></label
           >
           <mat-form-field appearance="outline">
@@ -51,6 +52,7 @@
               placeholder="{{ 'PLACEHOLDER_CHOOSE' | translate }}"
               [(ngModel)]="data.lengthOfStay"
               name="lengthOfStay"
+              id="lengthOfStay"
               required
               #lengthOfStay="ngModel"
             >
@@ -62,7 +64,7 @@
           </mat-form-field>
         </div>
         <div class="col-12 col-md-6 col-lg-3">
-          <label
+          <label for="language"
             ><b>{{ "LABEL_HOST_LANG" | translate }} *</b></label
           >
           <mat-form-field appearance="outline">
@@ -71,6 +73,7 @@
               multiple
               [(ngModel)]="data.hostLanguage"
               name="language"
+              id="language"
               required
               #language="ngModel"
             >
@@ -84,7 +87,7 @@
       </div>
       <div class="row">
         <div class="col-lg-7 col-xl-8 mb-3">
-          <label>
+          <label for="description" [attr.aria-label]="'LABEL_OFFER_DESCRIPTION_MAXCHARS' | translate">
             <b>{{ "LABEL_OFFER_DESCRIPTION" | translate }}</b>
             <span> {{ "LABEL_OFFER_DESCRIPTION_MAXCHARS" | translate }} *</span>
           </label>
@@ -95,6 +98,7 @@
               maxlength="2000"
               placeholder="{{ 'PLACEHOLDER_OFFER_DESCRIPTION_ACCOMMODATION' | translate }}"
               name="description"
+              id="description"
               [(ngModel)]="data.description"
               required
               #description="ngModel"
