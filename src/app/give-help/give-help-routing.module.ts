@@ -131,6 +131,13 @@ const routes: Routes = [
           breadcrumb: { alias: BreadcrumbLabels.OTHER },
         },
       },
+      {
+        path: `${CategoryRoutingName.OTHER}/:id`,
+        loadChildren: () => import('./other-form/other-form.module').then((m) => m.OtherFormModule),
+        data: {
+          title: BreadcrumbLabels.OTHER,
+        },
+      },
     ],
   },
 ];

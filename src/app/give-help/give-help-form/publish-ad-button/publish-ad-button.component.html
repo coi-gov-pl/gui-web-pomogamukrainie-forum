@@ -3,7 +3,6 @@
     ><small>{{ "WE_WILL_PUBLISH_YOUR_NAME_IN_AD" | translate }}</small></label
   >
   <button type="submit" id="submit" class="btn btn-dark" [disabled]="form.invalid">
-    <mat-icon fontSet="material-icons-outlined">add</mat-icon>
     <ng-container *ngIf="!isEditRoute; else edit">
       <span>{{ "OFFER_PUBLISH" | translate }}</span>
     </ng-container>

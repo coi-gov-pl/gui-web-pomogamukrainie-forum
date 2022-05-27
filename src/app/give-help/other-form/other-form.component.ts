@@ -83,7 +83,7 @@ export class OtherFormComponent implements OnInit {
   }
 
   get isEditRoute(): boolean {
-    return this.router.url === `/edycja-ogloszenia/pomoc-materialna/${this.offerId}`;
+    return this.router.url === `/edycja-ogloszenia/inne/${this.offerId}`;
   }
 
   canDeactivate(): Observable<boolean | undefined> {

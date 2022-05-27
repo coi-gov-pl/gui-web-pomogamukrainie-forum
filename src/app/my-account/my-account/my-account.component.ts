@@ -16,6 +16,8 @@ import {
   JobResourceService,
   LawResourceService,
   TranslationResourceService,
+  OtherOffer,
+  OtherResourceService,
 } from '@app/core/api';
 import { switchMap, take } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -50,7 +52,8 @@ export class MyAccountComponent implements OnInit {
     private healthResourceService: HealthResourceService,
     private jobResourceService: JobResourceService,
     private lawResourceService: LawResourceService,
-    private translationResourceService: TranslationResourceService
+    private translationResourceService: TranslationResourceService,
+    private otherResourceService: OtherResourceService
   ) {}
 
   public async ngOnInit() {
@@ -83,6 +86,7 @@ export class MyAccountComponent implements OnInit {
       | JobOffer
       | LawOffer
       | TranslationOffer
+      | OtherOffer
   ): void {
     const dialogRef: MatDialogRef<ConfirmRemoveAdComponent> = this.dialog.open(ConfirmRemoveAdComponent, {
       hasBackdrop: true,
@@ -153,6 +157,14 @@ export class MyAccountComponent implements OnInit {
               next: (data) => this.onRemoveSuccess(data),
               error: (error) => this.onRemoveError(error.message),
             });
+        } else if (announcement.type === OtherOffer.TypeEnum.Other) {
+          this.otherResourceService
+            .deleteOther(announcement.id)
+            .pipe(switchMap(() => this.myOffersResource.listMyOffers(this.pageRequest)))
+            .subscribe({
+              next: (data) => this.onRemoveSuccess(data),
+              error: (error) => this.onRemoveError(error.message),
+            });
         }
       }
     });
@@ -166,6 +178,7 @@ export class MyAccountComponent implements OnInit {
       | JobOffer
       | LawOffer
       | TranslationOffer
+      | OtherOffer
   ): void {
     // @TODO: extract to separate util
     let categoryRoute;
@@ -196,6 +209,10 @@ export class MyAccountComponent implements OnInit {
       }
       case TranslationOffer.TypeEnum.Translation: {
         categoryRoute = CategoryRoutingName.TRANSLATIONS;
+        break;
+      }
+      case OtherOffer.TypeEnum.Other: {
+        categoryRoute = CategoryRoutingName.OTHER;
         break;
       }
     }
