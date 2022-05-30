@@ -18,6 +18,7 @@ export interface JobOfferSearchCriteria {
   contractType?: JobOfferSearchCriteria.ContractTypeEnum;
   mode?: JobOfferSearchCriteria.ModeEnum;
   language?: Array<JobOfferSearchCriteria.LanguageEnum>;
+  lang?: JobOfferSearchCriteria.LangEnum;
 }
 export namespace JobOfferSearchCriteria {
   export type IndustryEnum =
@@ -100,5 +101,12 @@ export namespace JobOfferSearchCriteria {
     Pl: 'PL' as LanguageEnum,
     En: 'EN' as LanguageEnum,
     Ru: 'RU' as LanguageEnum,
+  };
+  export type LangEnum = 'UA' | 'PL' | 'EN' | 'RU';
+  export const LangEnum = {
+    Ua: 'UA' as LangEnum,
+    Pl: 'PL' as LangEnum,
+    En: 'EN' as LangEnum,
+    Ru: 'RU' as LangEnum,
   };
 }

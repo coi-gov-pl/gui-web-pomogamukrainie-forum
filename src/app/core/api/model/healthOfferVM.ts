@@ -11,7 +11,7 @@
  */
 import { Location } from './location';
 
-export interface HealthOffer {
+export interface HealthOfferVM {
   id: number;
   userFirstName: string;
   title: string;
@@ -19,13 +19,21 @@ export interface HealthOffer {
   phoneNumber?: string;
   phoneCountryCode?: string;
   modifiedDate?: string;
-  mode: Array<HealthOffer.ModeEnum>;
-  specialization: HealthOffer.SpecializationEnum;
+  detectedLanguage?: HealthOfferVM.DetectedLanguageEnum;
+  mode: Array<HealthOfferVM.ModeEnum>;
+  specialization: HealthOfferVM.SpecializationEnum;
   location?: Location;
-  language: Array<HealthOffer.LanguageEnum>;
-  type: HealthOffer.TypeEnum;
+  language: Array<HealthOfferVM.LanguageEnum>;
+  type: HealthOfferVM.TypeEnum;
 }
-export namespace HealthOffer {
+export namespace HealthOfferVM {
+  export type DetectedLanguageEnum = 'UA' | 'PL' | 'EN' | 'RU';
+  export const DetectedLanguageEnum = {
+    Ua: 'UA' as DetectedLanguageEnum,
+    Pl: 'PL' as DetectedLanguageEnum,
+    En: 'EN' as DetectedLanguageEnum,
+    Ru: 'RU' as DetectedLanguageEnum,
+  };
   export type ModeEnum = 'IN_FACILITY' | 'AT_HOME' | 'ONLINE' | 'BY_PHONE';
   export const ModeEnum = {
     InFacility: 'IN_FACILITY' as ModeEnum,

@@ -16,6 +16,7 @@ export interface HealthOfferSearchCriteria {
   specialization?: HealthOfferSearchCriteria.SpecializationEnum;
   language?: Array<HealthOfferSearchCriteria.LanguageEnum>;
   mode?: Array<HealthOfferSearchCriteria.ModeEnum>;
+  lang?: HealthOfferSearchCriteria.LangEnum;
 }
 export namespace HealthOfferSearchCriteria {
   export type SpecializationEnum =
@@ -48,5 +49,12 @@ export namespace HealthOfferSearchCriteria {
     AtHome: 'AT_HOME' as ModeEnum,
     Online: 'ONLINE' as ModeEnum,
     ByPhone: 'BY_PHONE' as ModeEnum,
+  };
+  export type LangEnum = 'UA' | 'PL' | 'EN' | 'RU';
+  export const LangEnum = {
+    Ua: 'UA' as LangEnum,
+    Pl: 'PL' as LangEnum,
+    En: 'EN' as LangEnum,
+    Ru: 'RU' as LangEnum,
   };
 }

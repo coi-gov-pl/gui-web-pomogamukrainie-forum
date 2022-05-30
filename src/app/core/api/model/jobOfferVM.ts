@@ -11,7 +11,7 @@
  */
 import { Location } from './location';
 
-export interface JobOffer {
+export interface JobOfferVM {
   id: number;
   userFirstName: string;
   title: string;
@@ -19,15 +19,23 @@ export interface JobOffer {
   phoneNumber?: string;
   phoneCountryCode?: string;
   modifiedDate?: string;
-  mode: JobOffer.ModeEnum;
+  detectedLanguage?: JobOfferVM.DetectedLanguageEnum;
+  mode: JobOfferVM.ModeEnum;
   location?: Location;
-  industry: JobOffer.IndustryEnum;
-  workTime: Array<JobOffer.WorkTimeEnum>;
-  contractType: Array<JobOffer.ContractTypeEnum>;
-  language: Array<JobOffer.LanguageEnum>;
-  type: JobOffer.TypeEnum;
+  industry: JobOfferVM.IndustryEnum;
+  workTime: Array<JobOfferVM.WorkTimeEnum>;
+  contractType: Array<JobOfferVM.ContractTypeEnum>;
+  language: Array<JobOfferVM.LanguageEnum>;
+  type: JobOfferVM.TypeEnum;
 }
-export namespace JobOffer {
+export namespace JobOfferVM {
+  export type DetectedLanguageEnum = 'UA' | 'PL' | 'EN' | 'RU';
+  export const DetectedLanguageEnum = {
+    Ua: 'UA' as DetectedLanguageEnum,
+    Pl: 'PL' as DetectedLanguageEnum,
+    En: 'EN' as DetectedLanguageEnum,
+    Ru: 'RU' as DetectedLanguageEnum,
+  };
   export type ModeEnum = 'ONSITE' | 'TELEWORK' | 'MIXED';
   export const ModeEnum = {
     Onsite: 'ONSITE' as ModeEnum,
