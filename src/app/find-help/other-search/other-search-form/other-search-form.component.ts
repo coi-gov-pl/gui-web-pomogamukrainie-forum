@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { MaterialAidOfferSearchCriteria } from '@app/core/api';
+import { OtherOfferSearchCriteria } from '@app/core/api';
 import { StoreUrlService } from '@app/core/store-url';
 import { LocalStorageKeys, StatementAnchors } from '@app/shared/models';
 import { SortingFieldName, SortingOrder } from '@app/shared/models/sortingOrder.model';
@@ -24,17 +24,17 @@ export class OtherSearchFormComponent implements OnInit, OnDestroy {
   ngForm: NgForm = new NgForm([], []);
   formChangesSubscription = new Subscription();
   showClearBtn = false;
-  data: MaterialAidOfferSearchCriteria = {};
+  data: OtherOfferSearchCriteria = {};
   @Output()
-  search = new EventEmitter<MaterialAidOfferSearchCriteria>();
+  search = new EventEmitter<OtherOfferSearchCriteria>();
   // statementAnchor: string = StatementAnchors.OTHER;
 
   constructor(private router: Router, private route: ActivatedRoute, private storeUrlService: StoreUrlService) {}
 
   ngOnInit() {
     if (Object.keys(this.route.snapshot.queryParams).length > 0) {
-      const { query, city, region } = this.route.snapshot.queryParams;
-      this.data = { query, location: city ? { city, region } : undefined };
+      const { searchText, city, region } = this.route.snapshot.queryParams;
+      this.data = { searchText, location: city ? { city, region } : undefined };
     }
 
     this.formChangesSubscription = this.ngForm.form.valueChanges.subscribe((form) => {

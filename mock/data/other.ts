@@ -22,4 +22,6 @@ export const otherList: OffersVMOtherOfferVM = {
       type: 'OTHER',
     },
   ],
+  totalElements: 1,
+  totalPages: 1,
 };

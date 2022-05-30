@@ -26,11 +26,6 @@
       [offerId]="result.id!"
       [category]="categoryRoutingName.OTHER"
     >
-      <app-search-result-attribute
-        *ngIf="result.category"
-        [text]="result.category | translate"
-        icon="interests_outline"
-      ></app-search-result-attribute>
     </app-search-result>
   </div>
   <app-paginator [length]="total" (param)="search()"></app-paginator>

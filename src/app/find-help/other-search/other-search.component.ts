@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { MaterialAidOfferSearchCriteria, OtherOffer, OtherResourceService, Pageable } from '@app/core/api';
+import { OtherOfferSearchCriteria, OtherOfferVM, OtherResourceService, Pageable } from '@app/core/api';
 import { CategoryRoutingName, CorePath } from '@app/shared/models';
 import { ActivatedRoute } from '@angular/router';
 import { MobileViewportDetectService } from '@app/shared/services';
@@ -10,11 +10,11 @@ import { MobileViewportDetectService } from '@app/shared/services';
   styleUrls: ['./other-search.component.scss'],
 })
 export class OtherSearchComponent implements OnInit {
-  results: OtherOffer[] = [];
+  results: OtherOfferVM[] = [];
   total?: number = undefined;
   categoryRoutingName = CategoryRoutingName;
   corePath = CorePath;
-  searchCriteria: MaterialAidOfferSearchCriteria = {}; // TODO: searchCriteria for Other
+  searchCriteria: OtherOfferSearchCriteria = {};
   pagination: Pageable | undefined = {};
   @ViewChild('otherResultsStart', { read: ElementRef }) resultsStart!: ElementRef<HTMLElement>;
 
@@ -25,9 +25,9 @@ export class OtherSearchComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    const { query, city, region } = this.route.snapshot.queryParams;
-    const searchCriteria: MaterialAidOfferSearchCriteria = {
-      query,
+    const { searchText, city, region } = this.route.snapshot.queryParams;
+    const searchCriteria: OtherOfferSearchCriteria = {
+      searchText,
       location: {
         region,
         city,
@@ -36,11 +36,11 @@ export class OtherSearchComponent implements OnInit {
     this.search(searchCriteria);
   }
 
-  search(searchCriteria?: MaterialAidOfferSearchCriteria) {
+  search(searchCriteria?: OtherOfferSearchCriteria) {
     const { page, size, sort } = this.route.snapshot.queryParams;
 
     if (searchCriteria) {
-      this.searchCriteria.category = searchCriteria?.category;
+      this.searchCriteria.searchText = searchCriteria?.searchText;
       this.searchCriteria.location = searchCriteria?.location;
     }
 
