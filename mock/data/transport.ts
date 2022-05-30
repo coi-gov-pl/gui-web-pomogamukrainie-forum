@@ -1,6 +1,6 @@
-import { TransportOfferDefinitionDTO, OffersTransportOffer, TransportOffer } from '@app/core/api';
+import { TransportOfferDefinitionDTO, OffersVMTransportOfferVM, TransportOfferVM } from '@app/core/api';
 
-export const transportOffer = (body: TransportOfferDefinitionDTO): TransportOffer => {
+export const transportOffer = (body: TransportOfferDefinitionDTO): TransportOfferVM => {
   return {
     ...body,
     id: 1,
@@ -10,7 +10,7 @@ export const transportOffer = (body: TransportOfferDefinitionDTO): TransportOffe
   };
 };
 
-export const transportList: OffersTransportOffer = {
+export const transportList: OffersVMTransportOfferVM = {
   content: [
     {
       id: 9,

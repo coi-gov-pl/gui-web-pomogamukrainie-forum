@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { CategoryRoutingName, CorePath } from '@app/shared/models';
 import { defaults } from '@app/shared/utils';
-import { TranslationOffer } from '@app/core/api/model/translationOffer';
+import { TranslationOfferVM } from '@app/core/api/model/translationOfferVM';
 import { Pageable, TranslationResourceService } from '@app/core/api';
 import { TranslationOfferSearchCriteria } from '../../core/api/model/translationOfferSearchCriteria';
 
@@ -13,12 +13,12 @@ import { TranslationOfferSearchCriteria } from '../../core/api/model/translation
 })
 export class ViewOfferTranslationComponent implements OnInit {
   offerId: number = 0;
-  data = defaults<TranslationOffer>();
+  data = defaults<TranslationOfferVM>();
   categoryRouteName = CategoryRoutingName.TRANSLATIONS;
   redirectedFromAccount: boolean;
   originalAccountQueryParams?: Params;
-  offerResults: TranslationOffer[] = [];
-  activeOffer: TranslationOffer | undefined;
+  offerResults: TranslationOfferVM[] = [];
+  activeOffer: TranslationOfferVM | undefined;
   activeIndex: number = 0;
   blurClass = '';
   searchCriteria = defaults<TranslationOfferSearchCriteria>();
@@ -74,13 +74,13 @@ export class ViewOfferTranslationComponent implements OnInit {
   slideOffer(index: number, direction: 'prev' | 'next') {
     this.blurAnimate();
     if (direction === 'prev') {
-      const SLIDE_PREV_DATA: TranslationOffer = this.offerResults[index - 1];
+      const SLIDE_PREV_DATA: TranslationOfferVM = this.offerResults[index - 1];
       this.router.navigate([CorePath.Find, this.categoryRouteName, SLIDE_PREV_DATA.id]);
       this.activeIndex = index >= 0 ? index - 1 : index;
       this.offerId = SLIDE_PREV_DATA.id;
       this.data = SLIDE_PREV_DATA;
     } else {
-      const SLIDE_NEXT_DATA: TranslationOffer = this.offerResults[index + 1];
+      const SLIDE_NEXT_DATA: TranslationOfferVM = this.offerResults[index + 1];
       this.router.navigate([CorePath.Find, this.categoryRouteName, SLIDE_NEXT_DATA.id]);
       this.activeIndex = index >= 0 ? index + 1 : index;
       this.offerId = SLIDE_NEXT_DATA.id;

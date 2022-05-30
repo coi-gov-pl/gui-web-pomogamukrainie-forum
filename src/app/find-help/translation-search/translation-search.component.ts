@@ -1,5 +1,10 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Pageable, TranslationResourceService, TranslationOffer, TranslationOfferSearchCriteria } from '@app/core/api';
+import {
+  Pageable,
+  TranslationResourceService,
+  TranslationOfferVM,
+  TranslationOfferSearchCriteria,
+} from '@app/core/api';
 import { CategoryRoutingName, CorePath } from '@app/shared/models';
 import { ActivatedRoute } from '@angular/router';
 import { MobileViewportDetectService } from '@app/shared/services';
@@ -10,7 +15,7 @@ import { MobileViewportDetectService } from '@app/shared/services';
   styleUrls: ['./translation-search.component.scss'],
 })
 export class TranslationSearchComponent implements OnInit {
-  results: TranslationOffer[] = [];
+  results: TranslationOfferVM[] = [];
   total?: number = undefined;
   categoryRoutingName = CategoryRoutingName;
   corePath = CorePath;

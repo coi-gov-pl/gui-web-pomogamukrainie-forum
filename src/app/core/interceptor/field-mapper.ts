@@ -1,5 +1,5 @@
 import * as pl from '@app/core/translations/pl_PL';
-import { AccommodationOffer, JobOffer, MaterialAidOffer, TransportOffer } from '@app/core/api';
+import { AccommodationOfferVM, JobOfferVM, MaterialAidOfferVM, TransportOfferVM } from '@app/core/api';
 
 type PL_KEYS = keyof typeof pl.default;
 
@@ -7,16 +7,16 @@ type PL_KEYS = keyof typeof pl.default;
  * we add omit and required, we must know the newly added field in api is properly mapped to translate
  */
 type FieldAccommodationOfferMapper = {
-  [P in keyof Required<Omit<AccommodationOffer, 'id' | 'userFirstName' | 'type'>>]: PL_KEYS;
+  [P in keyof Required<Omit<AccommodationOfferVM, 'id' | 'userFirstName' | 'type'>>]: PL_KEYS;
 };
 type FieldMaterialAidOfferMapper = {
-  [P in keyof Required<Omit<MaterialAidOffer, 'id' | 'userFirstName' | 'type'>>]: PL_KEYS;
+  [P in keyof Required<Omit<MaterialAidOfferVM, 'id' | 'userFirstName' | 'type'>>]: PL_KEYS;
 };
 type FieldTransportOfferMapper = {
-  [P in keyof Required<Omit<TransportOffer, 'id' | 'userFirstName' | 'type'>>]: PL_KEYS;
+  [P in keyof Required<Omit<TransportOfferVM, 'id' | 'userFirstName' | 'type'>>]: PL_KEYS;
 };
 type FieldJobOfferMapper = {
-  [P in keyof Required<Omit<JobOffer, 'id' | 'userFirstName' | 'type'>>]: PL_KEYS;
+  [P in keyof Required<Omit<JobOfferVM, 'id' | 'userFirstName' | 'type'>>]: PL_KEYS;
 };
 // other models
 
@@ -45,4 +45,5 @@ export const offerMapper: AllOffersMapper = {
   workTime: 'LABEL_WORK_TIME',
   contractType: 'LABEL_CONTRACT_TYPE',
   language: 'LABEL_JOB_LANG',
+  detectedLanguage: 'LABEL_DETECTED_LANGUAGE',
 };

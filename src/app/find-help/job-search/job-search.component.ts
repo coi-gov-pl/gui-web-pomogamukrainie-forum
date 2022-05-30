@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { JobOffer, JobResourceService, Pageable } from '@app/core/api';
+import { JobOfferVM, JobResourceService, Pageable } from '@app/core/api';
 import { CategoryRoutingName, CorePath } from '@app/shared/models';
 import { ActivatedRoute } from '@angular/router';
 import { JobQuery } from './job-search-form/job-search-form.component';
@@ -11,7 +11,7 @@ import { MobileViewportDetectService } from '@app/shared/services';
   styleUrls: ['./job-search.component.scss'],
 })
 export class JobSearchComponent implements OnInit {
-  results: JobOffer[] = [];
+  results: JobOfferVM[] = [];
   total?: number = undefined;
   categoryRoutingName = CategoryRoutingName;
   corePath = CorePath;

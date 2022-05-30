@@ -1,6 +1,6 @@
-import { MaterialAidOfferDefinitionDTO, MaterialAidOffer, OffersMaterialAidOffer } from '@app/core/api';
+import { MaterialAidOfferDefinitionDTO, MaterialAidOfferVM, OffersVMMaterialAidOfferVM } from '@app/core/api';
 
-export const materialAidOffer = (body: MaterialAidOfferDefinitionDTO): MaterialAidOffer => {
+export const materialAidOffer = (body: MaterialAidOfferDefinitionDTO): MaterialAidOfferVM => {
   return {
     ...body,
     id: 1,
@@ -10,7 +10,7 @@ export const materialAidOffer = (body: MaterialAidOfferDefinitionDTO): MaterialA
   };
 };
 
-export const materialAidList: OffersMaterialAidOffer = {
+export const materialAidList: OffersVMMaterialAidOfferVM = {
   content: [
     {
       id: 5,
