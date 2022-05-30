@@ -14,6 +14,7 @@ import { Location } from './location';
 export interface MaterialAidOfferSearchCriteria {
   category?: MaterialAidOfferSearchCriteria.CategoryEnum;
   location?: Location;
+  lang?: MaterialAidOfferSearchCriteria.LangEnum;
 }
 export namespace MaterialAidOfferSearchCriteria {
   export type CategoryEnum =
@@ -32,5 +33,12 @@ export namespace MaterialAidOfferSearchCriteria {
     CosmeticsAndDomesticDetergents: 'COSMETICS_AND_DOMESTIC_DETERGENTS' as CategoryEnum,
     Furniture: 'FURNITURE' as CategoryEnum,
     Clothing: 'CLOTHING' as CategoryEnum,
+  };
+  export type LangEnum = 'UA' | 'PL' | 'EN' | 'RU';
+  export const LangEnum = {
+    Ua: 'UA' as LangEnum,
+    Pl: 'PL' as LangEnum,
+    En: 'EN' as LangEnum,
+    Ru: 'RU' as LangEnum,
   };
 }

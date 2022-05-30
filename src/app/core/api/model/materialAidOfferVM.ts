@@ -11,7 +11,7 @@
  */
 import { Location } from './location';
 
-export interface MaterialAidOffer {
+export interface MaterialAidOfferVM {
   id: number;
   userFirstName: string;
   title: string;
@@ -19,11 +19,19 @@ export interface MaterialAidOffer {
   phoneNumber?: string;
   phoneCountryCode?: string;
   modifiedDate?: string;
-  category: MaterialAidOffer.CategoryEnum;
+  detectedLanguage?: MaterialAidOfferVM.DetectedLanguageEnum;
+  category: MaterialAidOfferVM.CategoryEnum;
   location: Location;
-  type: MaterialAidOffer.TypeEnum;
+  type: MaterialAidOfferVM.TypeEnum;
 }
-export namespace MaterialAidOffer {
+export namespace MaterialAidOfferVM {
+  export type DetectedLanguageEnum = 'UA' | 'PL' | 'EN' | 'RU';
+  export const DetectedLanguageEnum = {
+    Ua: 'UA' as DetectedLanguageEnum,
+    Pl: 'PL' as DetectedLanguageEnum,
+    En: 'EN' as DetectedLanguageEnum,
+    Ru: 'RU' as DetectedLanguageEnum,
+  };
   export type CategoryEnum =
     | 'FOOD'
     | 'HOUSEHOLD_GOODS'

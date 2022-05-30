@@ -9,10 +9,10 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { LawOffer } from './lawOffer';
+import { OtherOfferVM } from './otherOfferVM';
 
-export interface OffersLawOffer {
-  content?: Array<LawOffer>;
+export interface OffersVMOtherOfferVM {
+  content?: Array<OtherOfferVM>;
   totalElements?: number;
   totalPages?: number;
 }

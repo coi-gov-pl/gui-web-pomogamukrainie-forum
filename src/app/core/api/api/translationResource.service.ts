@@ -25,15 +25,15 @@ import { CustomHttpParameterCodec } from '../encoder';
 import { Observable } from 'rxjs';
 
 // @ts-ignore
-import { OffersTranslationOffer } from '../model/offersTranslationOffer';
+import { OffersVMTranslationOfferVM } from '../model/offersVMTranslationOfferVM';
 // @ts-ignore
 import { Pageable } from '../model/pageable';
-// @ts-ignore
-import { TranslationOffer } from '../model/translationOffer';
 // @ts-ignore
 import { TranslationOfferDefinitionDTO } from '../model/translationOfferDefinitionDTO';
 // @ts-ignore
 import { TranslationOfferSearchCriteria } from '../model/translationOfferSearchCriteria';
+// @ts-ignore
+import { TranslationOfferVM } from '../model/translationOfferVM';
 
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS } from '../variables';
@@ -111,19 +111,19 @@ export class TranslationResourceService {
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<TranslationOffer>;
+  ): Observable<TranslationOfferVM>;
   public createTranslation(
     translationOfferDefinitionDTO: TranslationOfferDefinitionDTO,
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<TranslationOffer>>;
+  ): Observable<HttpResponse<TranslationOfferVM>>;
   public createTranslation(
     translationOfferDefinitionDTO: TranslationOfferDefinitionDTO,
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<TranslationOffer>>;
+  ): Observable<HttpEvent<TranslationOfferVM>>;
   public createTranslation(
     translationOfferDefinitionDTO: TranslationOfferDefinitionDTO,
     observe: any = 'body',
@@ -171,7 +171,7 @@ export class TranslationResourceService {
       }
     }
 
-    return this.httpClient.post<TranslationOffer>(
+    return this.httpClient.post<TranslationOfferVM>(
       `${this.configuration.basePath}/api/secure/translation`,
       translationOfferDefinitionDTO,
       {
@@ -261,35 +261,45 @@ export class TranslationResourceService {
 
   /**
    * @param id
+   * @param lang
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
   public getTranslation(
     id: number,
+    lang?: 'UA' | 'PL' | 'EN' | 'RU',
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<TranslationOffer>;
+  ): Observable<TranslationOfferVM>;
   public getTranslation(
     id: number,
+    lang?: 'UA' | 'PL' | 'EN' | 'RU',
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<TranslationOffer>>;
+  ): Observable<HttpResponse<TranslationOfferVM>>;
   public getTranslation(
     id: number,
+    lang?: 'UA' | 'PL' | 'EN' | 'RU',
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<TranslationOffer>>;
+  ): Observable<HttpEvent<TranslationOfferVM>>;
   public getTranslation(
     id: number,
+    lang?: 'UA' | 'PL' | 'EN' | 'RU',
     observe: any = 'body',
     reportProgress: boolean = false,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<any> {
     if (id === null || id === undefined) {
       throw new Error('Required parameter id was null or undefined when calling getTranslation.');
+    }
+
+    let localVarQueryParameters = new HttpParams({ encoder: this.encoder });
+    if (lang !== undefined && lang !== null) {
+      localVarQueryParameters = this.addToHttpParams(localVarQueryParameters, <any>lang, 'lang');
     }
 
     let localVarHeaders = this.defaultHeaders;
@@ -320,10 +330,11 @@ export class TranslationResourceService {
       }
     }
 
-    return this.httpClient.get<TranslationOffer>(
+    return this.httpClient.get<TranslationOfferVM>(
       `${this.configuration.basePath}/api/translation/${encodeURIComponent(String(id))}`,
       {
         context: localVarHttpContext,
+        params: localVarQueryParameters,
         responseType: <any>responseType_,
         withCredentials: this.configuration.withCredentials,
         headers: localVarHeaders,
@@ -345,21 +356,21 @@ export class TranslationResourceService {
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<OffersTranslationOffer>;
+  ): Observable<OffersVMTranslationOfferVM>;
   public listTranslation(
     pageRequest: Pageable,
     searchCriteria: TranslationOfferSearchCriteria,
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<OffersTranslationOffer>>;
+  ): Observable<HttpResponse<OffersVMTranslationOfferVM>>;
   public listTranslation(
     pageRequest: Pageable,
     searchCriteria: TranslationOfferSearchCriteria,
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<OffersTranslationOffer>>;
+  ): Observable<HttpEvent<OffersVMTranslationOfferVM>>;
   public listTranslation(
     pageRequest: Pageable,
     searchCriteria: TranslationOfferSearchCriteria,
@@ -410,7 +421,7 @@ export class TranslationResourceService {
       }
     }
 
-    return this.httpClient.get<OffersTranslationOffer>(`${this.configuration.basePath}/api/translation`, {
+    return this.httpClient.get<OffersVMTranslationOfferVM>(`${this.configuration.basePath}/api/translation`, {
       context: localVarHttpContext,
       params: localVarQueryParameters,
       responseType: <any>responseType_,

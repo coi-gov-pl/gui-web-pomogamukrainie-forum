@@ -25,25 +25,25 @@ import { CustomHttpParameterCodec } from '../encoder';
 import { Observable } from 'rxjs';
 
 // @ts-ignore
-import { AccommodationOffer } from '../model/accommodationOffer';
+import { AccommodationOfferVM } from '../model/accommodationOfferVM';
 // @ts-ignore
-import { HealthOffer } from '../model/healthOffer';
+import { HealthOfferVM } from '../model/healthOfferVM';
 // @ts-ignore
-import { JobOffer } from '../model/jobOffer';
+import { JobOfferVM } from '../model/jobOfferVM';
 // @ts-ignore
-import { LawOffer } from '../model/lawOffer';
+import { LawOfferVM } from '../model/lawOfferVM';
 // @ts-ignore
-import { MaterialAidOffer } from '../model/materialAidOffer';
+import { MaterialAidOfferVM } from '../model/materialAidOfferVM';
 // @ts-ignore
-import { OffersBaseOffer } from '../model/offersBaseOffer';
+import { OffersVMBaseOfferVM } from '../model/offersVMBaseOfferVM';
 // @ts-ignore
-import { OtherOffer } from '../model/otherOffer';
+import { OtherOfferVM } from '../model/otherOfferVM';
 // @ts-ignore
 import { Pageable } from '../model/pageable';
 // @ts-ignore
-import { TranslationOffer } from '../model/translationOffer';
+import { TranslationOfferVM } from '../model/translationOfferVM';
 // @ts-ignore
-import { TransportOffer } from '../model/transportOffer';
+import { TransportOfferVM } from '../model/transportOfferVM';
 
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS } from '../variables';
@@ -113,66 +113,76 @@ export class MyOffersResourceService {
 
   /**
    * @param id
+   * @param lang
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
   public getMyOffers(
     id: number,
+    lang?: 'UA' | 'PL' | 'EN' | 'RU',
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<
-    | AccommodationOffer
-    | HealthOffer
-    | JobOffer
-    | LawOffer
-    | MaterialAidOffer
-    | OtherOffer
-    | TranslationOffer
-    | TransportOffer
+    | AccommodationOfferVM
+    | HealthOfferVM
+    | JobOfferVM
+    | LawOfferVM
+    | MaterialAidOfferVM
+    | OtherOfferVM
+    | TranslationOfferVM
+    | TransportOfferVM
   >;
   public getMyOffers(
     id: number,
+    lang?: 'UA' | 'PL' | 'EN' | 'RU',
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<
     HttpResponse<
-      | AccommodationOffer
-      | HealthOffer
-      | JobOffer
-      | LawOffer
-      | MaterialAidOffer
-      | OtherOffer
-      | TranslationOffer
-      | TransportOffer
+      | AccommodationOfferVM
+      | HealthOfferVM
+      | JobOfferVM
+      | LawOfferVM
+      | MaterialAidOfferVM
+      | OtherOfferVM
+      | TranslationOfferVM
+      | TransportOfferVM
     >
   >;
   public getMyOffers(
     id: number,
+    lang?: 'UA' | 'PL' | 'EN' | 'RU',
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<
     HttpEvent<
-      | AccommodationOffer
-      | HealthOffer
-      | JobOffer
-      | LawOffer
-      | MaterialAidOffer
-      | OtherOffer
-      | TranslationOffer
-      | TransportOffer
+      | AccommodationOfferVM
+      | HealthOfferVM
+      | JobOfferVM
+      | LawOfferVM
+      | MaterialAidOfferVM
+      | OtherOfferVM
+      | TranslationOfferVM
+      | TransportOfferVM
     >
   >;
   public getMyOffers(
     id: number,
+    lang?: 'UA' | 'PL' | 'EN' | 'RU',
     observe: any = 'body',
     reportProgress: boolean = false,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<any> {
     if (id === null || id === undefined) {
       throw new Error('Required parameter id was null or undefined when calling getMyOffers.');
+    }
+
+    let localVarQueryParameters = new HttpParams({ encoder: this.encoder });
+    if (lang !== undefined && lang !== null) {
+      localVarQueryParameters = this.addToHttpParams(localVarQueryParameters, <any>lang, 'lang');
     }
 
     let localVarHeaders = this.defaultHeaders;
@@ -204,16 +214,17 @@ export class MyOffersResourceService {
     }
 
     return this.httpClient.get<
-      | AccommodationOffer
-      | HealthOffer
-      | JobOffer
-      | LawOffer
-      | MaterialAidOffer
-      | OtherOffer
-      | TranslationOffer
-      | TransportOffer
+      | AccommodationOfferVM
+      | HealthOfferVM
+      | JobOfferVM
+      | LawOfferVM
+      | MaterialAidOfferVM
+      | OtherOfferVM
+      | TranslationOfferVM
+      | TransportOfferVM
     >(`${this.configuration.basePath}/api/secure/my-offers/${encodeURIComponent(String(id))}`, {
       context: localVarHttpContext,
+      params: localVarQueryParameters,
       responseType: <any>responseType_,
       withCredentials: this.configuration.withCredentials,
       headers: localVarHeaders,
@@ -224,29 +235,34 @@ export class MyOffersResourceService {
 
   /**
    * @param pageRequest
+   * @param lang
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
   public listMyOffers(
     pageRequest: Pageable,
+    lang?: 'UA' | 'PL' | 'EN' | 'RU',
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<OffersBaseOffer>;
+  ): Observable<OffersVMBaseOfferVM>;
   public listMyOffers(
     pageRequest: Pageable,
+    lang?: 'UA' | 'PL' | 'EN' | 'RU',
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<OffersBaseOffer>>;
+  ): Observable<HttpResponse<OffersVMBaseOfferVM>>;
   public listMyOffers(
     pageRequest: Pageable,
+    lang?: 'UA' | 'PL' | 'EN' | 'RU',
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<OffersBaseOffer>>;
+  ): Observable<HttpEvent<OffersVMBaseOfferVM>>;
   public listMyOffers(
     pageRequest: Pageable,
+    lang?: 'UA' | 'PL' | 'EN' | 'RU',
     observe: any = 'body',
     reportProgress: boolean = false,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
@@ -258,6 +274,9 @@ export class MyOffersResourceService {
     let localVarQueryParameters = new HttpParams({ encoder: this.encoder });
     if (pageRequest !== undefined && pageRequest !== null) {
       localVarQueryParameters = this.addToHttpParams(localVarQueryParameters, <any>pageRequest, 'pageRequest');
+    }
+    if (lang !== undefined && lang !== null) {
+      localVarQueryParameters = this.addToHttpParams(localVarQueryParameters, <any>lang, 'lang');
     }
 
     let localVarHeaders = this.defaultHeaders;
@@ -288,7 +307,7 @@ export class MyOffersResourceService {
       }
     }
 
-    return this.httpClient.get<OffersBaseOffer>(`${this.configuration.basePath}/api/secure/my-offers`, {
+    return this.httpClient.get<OffersVMBaseOfferVM>(`${this.configuration.basePath}/api/secure/my-offers`, {
       context: localVarHttpContext,
       params: localVarQueryParameters,
       responseType: <any>responseType_,

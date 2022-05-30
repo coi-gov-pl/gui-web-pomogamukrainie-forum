@@ -16,6 +16,7 @@ export interface LawOfferSearchCriteria {
   helpMode?: Array<LawOfferSearchCriteria.HelpModeEnum>;
   helpKind?: LawOfferSearchCriteria.HelpKindEnum;
   language?: Array<LawOfferSearchCriteria.LanguageEnum>;
+  lang?: LawOfferSearchCriteria.LangEnum;
 }
 export namespace LawOfferSearchCriteria {
   export type HelpModeEnum = 'STATIONARY' | 'WITH_ACCESS' | 'ONLINE' | 'BY_EMAIL' | 'BY_PHONE';
@@ -41,5 +42,12 @@ export namespace LawOfferSearchCriteria {
     Pl: 'PL' as LanguageEnum,
     En: 'EN' as LanguageEnum,
     Ru: 'RU' as LanguageEnum,
+  };
+  export type LangEnum = 'UA' | 'PL' | 'EN' | 'RU';
+  export const LangEnum = {
+    Ua: 'UA' as LangEnum,
+    Pl: 'PL' as LangEnum,
+    En: 'EN' as LangEnum,
+    Ru: 'RU' as LangEnum,
   };
 }

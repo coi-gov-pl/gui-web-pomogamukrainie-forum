@@ -11,7 +11,7 @@
  */
 import { Location } from './location';
 
-export interface AccommodationOffer {
+export interface AccommodationOfferVM {
   id: number;
   userFirstName: string;
   title: string;
@@ -19,13 +19,21 @@ export interface AccommodationOffer {
   phoneNumber?: string;
   phoneCountryCode?: string;
   modifiedDate?: string;
+  detectedLanguage?: AccommodationOfferVM.DetectedLanguageEnum;
   location: Location;
   guests: number;
-  lengthOfStay: AccommodationOffer.LengthOfStayEnum;
-  hostLanguage: Array<AccommodationOffer.HostLanguageEnum>;
-  type: AccommodationOffer.TypeEnum;
+  lengthOfStay: AccommodationOfferVM.LengthOfStayEnum;
+  hostLanguage: Array<AccommodationOfferVM.HostLanguageEnum>;
+  type: AccommodationOfferVM.TypeEnum;
 }
-export namespace AccommodationOffer {
+export namespace AccommodationOfferVM {
+  export type DetectedLanguageEnum = 'UA' | 'PL' | 'EN' | 'RU';
+  export const DetectedLanguageEnum = {
+    Ua: 'UA' as DetectedLanguageEnum,
+    Pl: 'PL' as DetectedLanguageEnum,
+    En: 'EN' as DetectedLanguageEnum,
+    Ru: 'RU' as DetectedLanguageEnum,
+  };
   export type LengthOfStayEnum = 'WEEK_1' | 'WEEK_2' | 'MONTH_1' | 'MONTH_2' | 'MONTH_3' | 'LONGER';
   export const LengthOfStayEnum = {
     Week1: 'WEEK_1' as LengthOfStayEnum,

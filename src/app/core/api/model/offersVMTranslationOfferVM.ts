@@ -9,10 +9,10 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { TransportOffer } from './transportOffer';
+import { TranslationOfferVM } from './translationOfferVM';
 
-export interface OffersTransportOffer {
-  content?: Array<TransportOffer>;
+export interface OffersVMTranslationOfferVM {
+  content?: Array<TranslationOfferVM>;
   totalElements?: number;
   totalPages?: number;
 }

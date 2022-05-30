@@ -25,13 +25,13 @@ import { CustomHttpParameterCodec } from '../encoder';
 import { Observable } from 'rxjs';
 
 // @ts-ignore
-import { HealthOffer } from '../model/healthOffer';
-// @ts-ignore
 import { HealthOfferDefinitionDTO } from '../model/healthOfferDefinitionDTO';
 // @ts-ignore
 import { HealthOfferSearchCriteria } from '../model/healthOfferSearchCriteria';
 // @ts-ignore
-import { OffersHealthOffer } from '../model/offersHealthOffer';
+import { HealthOfferVM } from '../model/healthOfferVM';
+// @ts-ignore
+import { OffersVMHealthOfferVM } from '../model/offersVMHealthOfferVM';
 // @ts-ignore
 import { Pageable } from '../model/pageable';
 
@@ -111,19 +111,19 @@ export class HealthResourceService {
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HealthOffer>;
+  ): Observable<HealthOfferVM>;
   public createHealth(
     healthOfferDefinitionDTO: HealthOfferDefinitionDTO,
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<HealthOffer>>;
+  ): Observable<HttpResponse<HealthOfferVM>>;
   public createHealth(
     healthOfferDefinitionDTO: HealthOfferDefinitionDTO,
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<HealthOffer>>;
+  ): Observable<HttpEvent<HealthOfferVM>>;
   public createHealth(
     healthOfferDefinitionDTO: HealthOfferDefinitionDTO,
     observe: any = 'body',
@@ -169,7 +169,7 @@ export class HealthResourceService {
       }
     }
 
-    return this.httpClient.post<HealthOffer>(
+    return this.httpClient.post<HealthOfferVM>(
       `${this.configuration.basePath}/api/secure/health-care`,
       healthOfferDefinitionDTO,
       {
@@ -259,35 +259,45 @@ export class HealthResourceService {
 
   /**
    * @param id
+   * @param lang
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
   public getHealth(
     id: number,
+    lang?: 'UA' | 'PL' | 'EN' | 'RU',
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HealthOffer>;
+  ): Observable<HealthOfferVM>;
   public getHealth(
     id: number,
+    lang?: 'UA' | 'PL' | 'EN' | 'RU',
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<HealthOffer>>;
+  ): Observable<HttpResponse<HealthOfferVM>>;
   public getHealth(
     id: number,
+    lang?: 'UA' | 'PL' | 'EN' | 'RU',
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<HealthOffer>>;
+  ): Observable<HttpEvent<HealthOfferVM>>;
   public getHealth(
     id: number,
+    lang?: 'UA' | 'PL' | 'EN' | 'RU',
     observe: any = 'body',
     reportProgress: boolean = false,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<any> {
     if (id === null || id === undefined) {
       throw new Error('Required parameter id was null or undefined when calling getHealth.');
+    }
+
+    let localVarQueryParameters = new HttpParams({ encoder: this.encoder });
+    if (lang !== undefined && lang !== null) {
+      localVarQueryParameters = this.addToHttpParams(localVarQueryParameters, <any>lang, 'lang');
     }
 
     let localVarHeaders = this.defaultHeaders;
@@ -318,10 +328,11 @@ export class HealthResourceService {
       }
     }
 
-    return this.httpClient.get<HealthOffer>(
+    return this.httpClient.get<HealthOfferVM>(
       `${this.configuration.basePath}/api/health-care/${encodeURIComponent(String(id))}`,
       {
         context: localVarHttpContext,
+        params: localVarQueryParameters,
         responseType: <any>responseType_,
         withCredentials: this.configuration.withCredentials,
         headers: localVarHeaders,
@@ -343,21 +354,21 @@ export class HealthResourceService {
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<OffersHealthOffer>;
+  ): Observable<OffersVMHealthOfferVM>;
   public listHealth(
     pageRequest: Pageable,
     searchCriteria: HealthOfferSearchCriteria,
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<OffersHealthOffer>>;
+  ): Observable<HttpResponse<OffersVMHealthOfferVM>>;
   public listHealth(
     pageRequest: Pageable,
     searchCriteria: HealthOfferSearchCriteria,
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<OffersHealthOffer>>;
+  ): Observable<HttpEvent<OffersVMHealthOfferVM>>;
   public listHealth(
     pageRequest: Pageable,
     searchCriteria: HealthOfferSearchCriteria,
@@ -408,7 +419,7 @@ export class HealthResourceService {
       }
     }
 
-    return this.httpClient.get<OffersHealthOffer>(`${this.configuration.basePath}/api/health-care`, {
+    return this.httpClient.get<OffersVMHealthOfferVM>(`${this.configuration.basePath}/api/health-care`, {
       context: localVarHttpContext,
       params: localVarQueryParameters,
       responseType: <any>responseType_,

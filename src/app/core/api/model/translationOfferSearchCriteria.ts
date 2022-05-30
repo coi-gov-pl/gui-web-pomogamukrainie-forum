@@ -15,6 +15,7 @@ export interface TranslationOfferSearchCriteria {
   location?: Location;
   mode?: Array<TranslationOfferSearchCriteria.ModeEnum>;
   language?: Array<TranslationOfferSearchCriteria.LanguageEnum>;
+  lang?: TranslationOfferSearchCriteria.LangEnum;
 }
 export namespace TranslationOfferSearchCriteria {
   export type ModeEnum = 'STATIONARY' | 'WITH_ACCESS' | 'ONLINE' | 'BY_EMAIL' | 'BY_PHONE';
@@ -31,5 +32,12 @@ export namespace TranslationOfferSearchCriteria {
     Pl: 'PL' as LanguageEnum,
     En: 'EN' as LanguageEnum,
     Ru: 'RU' as LanguageEnum,
+  };
+  export type LangEnum = 'UA' | 'PL' | 'EN' | 'RU';
+  export const LangEnum = {
+    Ua: 'UA' as LangEnum,
+    Pl: 'PL' as LangEnum,
+    En: 'EN' as LangEnum,
+    Ru: 'RU' as LangEnum,
   };
 }
