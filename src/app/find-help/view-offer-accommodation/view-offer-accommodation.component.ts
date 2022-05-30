@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { AccommodationOffer, AccommodationsResourceService, Pageable } from '@app/core/api';
+import {
+  AccommodationOfferVM,
+  AccommodationsResourceService,
+  Pageable,
+  AccommodationOfferSearchCriteria,
+} from '@app/core/api';
 import { CategoryRoutingName, CorePath } from '@app/shared/models';
 import { defaults } from '@app/shared/utils';
 
@@ -11,12 +16,12 @@ import { defaults } from '@app/shared/utils';
 })
 export class ViewOfferAccommodationComponent implements OnInit {
   offerId!: number;
-  data = defaults<AccommodationOffer>();
+  data = defaults<AccommodationOfferVM>();
   categoryRouteName = CategoryRoutingName.ACCOMMODATION;
   redirectedFromAccount: boolean;
   originalAccountQueryParams?: Params | undefined;
-  offerResults: AccommodationOffer[] = [];
-  activeOffer: AccommodationOffer | undefined;
+  offerResults: AccommodationOfferVM[] = [];
+  activeOffer: AccommodationOfferVM | undefined;
   activeIndex: number = 0;
   blurClass = '';
 
@@ -74,23 +79,25 @@ export class ViewOfferAccommodationComponent implements OnInit {
     pageRequest: Pageable,
     capacity: number | undefined
   ) {
+    const searchCriteria = defaults<AccommodationOfferSearchCriteria>();
+    searchCriteria.capacity = capacity;
     if (region && city) {
-      return this.accommodationsResourceService.listByLocationAccommodations(region, city, pageRequest, capacity);
+      return this.accommodationsResourceService.listByLocationAccommodations(region, city, searchCriteria, pageRequest);
     } else {
-      return this.accommodationsResourceService.listAccommodations(pageRequest, capacity);
+      return this.accommodationsResourceService.listAccommodations(searchCriteria, pageRequest);
     }
   }
 
   slideOffer(index: number, direction: 'prev' | 'next') {
     this.blurAnimate();
     if (direction === 'prev') {
-      const SLIDE_PREV_DATA: AccommodationOffer = this.offerResults[index - 1];
+      const SLIDE_PREV_DATA: AccommodationOfferVM = this.offerResults[index - 1];
       this.router.navigate([CorePath.Find, this.categoryRouteName, SLIDE_PREV_DATA.id]);
       this.activeIndex = index >= 0 ? index - 1 : index;
       this.offerId = SLIDE_PREV_DATA.id;
       this.data = SLIDE_PREV_DATA;
     } else {
-      const SLIDE_NEXT_DATA: AccommodationOffer = this.offerResults[index + 1];
+      const SLIDE_NEXT_DATA: AccommodationOfferVM = this.offerResults[index + 1];
       this.router.navigate([CorePath.Find, this.categoryRouteName, SLIDE_NEXT_DATA.id]);
       this.activeIndex = index >= 0 ? index + 1 : index;
       this.offerId = SLIDE_NEXT_DATA.id;

@@ -9,10 +9,10 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { AccommodationOffer } from './accommodationOffer';
+import { HealthOfferVM } from './healthOfferVM';
 
-export interface OffersAccommodationOffer {
-  content?: Array<AccommodationOffer>;
+export interface OffersVMHealthOfferVM {
+  content?: Array<HealthOfferVM>;
   totalElements?: number;
   totalPages?: number;
 }

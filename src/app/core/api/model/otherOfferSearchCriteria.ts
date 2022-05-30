@@ -11,14 +11,12 @@
  */
 import { Location } from './location';
 
-export interface TransportOfferSearchCriteria {
-  origin?: Location;
-  destination?: Location;
-  capacity?: number;
-  transportDate?: string;
-  lang?: TransportOfferSearchCriteria.LangEnum;
+export interface OtherOfferSearchCriteria {
+  location?: Location;
+  searchText?: string;
+  lang?: OtherOfferSearchCriteria.LangEnum;
 }
-export namespace TransportOfferSearchCriteria {
+export namespace OtherOfferSearchCriteria {
   export type LangEnum = 'UA' | 'PL' | 'EN' | 'RU';
   export const LangEnum = {
     Ua: 'UA' as LangEnum,

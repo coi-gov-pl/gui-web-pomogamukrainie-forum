@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Pageable, TransportOffer, TransportResourceService } from '@app/core/api';
+import { Pageable, TransportOfferVM, TransportResourceService } from '@app/core/api';
 import { CategoryRoutingName } from '@app/shared/models';
 import { defaults } from '@app/shared/utils';
 import { CorePath } from '@app/shared/models';
@@ -14,12 +14,12 @@ import { transportOffer } from '../../../../mock/data/transport';
 })
 export class ViewOfferTransportComponent implements OnInit {
   offerId: number = 0;
-  data = defaults<TransportOffer>();
+  data = defaults<TransportOfferVM>();
   categoryRouteName = CategoryRoutingName.TRANSPORT;
   redirectedFromAccount: boolean;
   originalAccountQueryParams?: Params;
-  offerResults: TransportOffer[] = [];
-  activeOffer: TransportOffer | undefined;
+  offerResults: TransportOfferVM[] = [];
+  activeOffer: TransportOfferVM | undefined;
   activeIndex: number = 0;
   blurClass = '';
   searchCriteria = defaults<TransportOfferSearchCriteria>();
@@ -75,13 +75,13 @@ export class ViewOfferTransportComponent implements OnInit {
   slideOffer(index: number, direction: 'prev' | 'next') {
     this.blurAnimate();
     if (direction === 'prev') {
-      const SLIDE_PREV_DATA: TransportOffer = this.offerResults[index - 1];
+      const SLIDE_PREV_DATA: TransportOfferVM = this.offerResults[index - 1];
       this.router.navigate([CorePath.Find, this.categoryRouteName, SLIDE_PREV_DATA.id]);
       this.activeIndex = index >= 0 ? index - 1 : index;
       this.offerId = SLIDE_PREV_DATA.id;
       this.data = SLIDE_PREV_DATA;
     } else {
-      const SLIDE_NEXT_DATA: TransportOffer = this.offerResults[index + 1];
+      const SLIDE_NEXT_DATA: TransportOfferVM = this.offerResults[index + 1];
       this.router.navigate([CorePath.Find, this.categoryRouteName, SLIDE_NEXT_DATA.id]);
       this.activeIndex = index >= 0 ? index + 1 : index;
       this.offerId = SLIDE_NEXT_DATA.id;

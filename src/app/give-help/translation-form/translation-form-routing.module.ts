@@ -9,7 +9,8 @@ const routes: Routes = [
     component: TranslationFormComponent,
     canDeactivate: [CanDeactivateGuard],
     data: {
-      title: null,
+      title: 'GIVE_TRANSLATION_TITLE',
+      breadcrumb: { alias: null },
     },
   },
 ];

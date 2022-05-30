@@ -15,15 +15,15 @@
     <div class="right opacity-50" *ngIf="posted">{{ postedDate | date: "dd/MM/yyyy" }}</div>
   </div>
   <div class="d-sm-flex">
-    <a role="button" (click)="onViewOffer()" class="flex-fill link">
-      <h4 class="text-start text-break">{{ title }}</h4>
+    <button type="button" (click)="onViewOffer()" class="flex-fill link">
+      <h2 class="text-start text-break">{{ title }}</h2>
       <div class="attributes flex-wrap flex-md-nowrap">
         <ng-content select="app-search-result-attribute"></ng-content>
       </div>
       <div class="description text-start text-break">
         {{ description }}
       </div>
-    </a>
+    </button>
     <div class="d-flex">
       <ng-content select="[buttons]"></ng-content>
     </div>

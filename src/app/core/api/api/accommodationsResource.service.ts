@@ -25,11 +25,13 @@ import { CustomHttpParameterCodec } from '../encoder';
 import { Observable } from 'rxjs';
 
 // @ts-ignore
-import { AccommodationOffer } from '../model/accommodationOffer';
-// @ts-ignore
 import { AccommodationOfferDefinitionDTO } from '../model/accommodationOfferDefinitionDTO';
 // @ts-ignore
-import { OffersAccommodationOffer } from '../model/offersAccommodationOffer';
+import { AccommodationOfferSearchCriteria } from '../model/accommodationOfferSearchCriteria';
+// @ts-ignore
+import { AccommodationOfferVM } from '../model/accommodationOfferVM';
+// @ts-ignore
+import { OffersVMAccommodationOfferVM } from '../model/offersVMAccommodationOfferVM';
 // @ts-ignore
 import { Pageable } from '../model/pageable';
 
@@ -109,19 +111,19 @@ export class AccommodationsResourceService {
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<AccommodationOffer>;
+  ): Observable<AccommodationOfferVM>;
   public createAccommodations(
     accommodationOfferDefinitionDTO: AccommodationOfferDefinitionDTO,
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<AccommodationOffer>>;
+  ): Observable<HttpResponse<AccommodationOfferVM>>;
   public createAccommodations(
     accommodationOfferDefinitionDTO: AccommodationOfferDefinitionDTO,
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<AccommodationOffer>>;
+  ): Observable<HttpEvent<AccommodationOfferVM>>;
   public createAccommodations(
     accommodationOfferDefinitionDTO: AccommodationOfferDefinitionDTO,
     observe: any = 'body',
@@ -169,7 +171,7 @@ export class AccommodationsResourceService {
       }
     }
 
-    return this.httpClient.post<AccommodationOffer>(
+    return this.httpClient.post<AccommodationOfferVM>(
       `${this.configuration.basePath}/api/secure/accommodations`,
       accommodationOfferDefinitionDTO,
       {
@@ -259,35 +261,45 @@ export class AccommodationsResourceService {
 
   /**
    * @param id
+   * @param lang
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
   public getAccommodations(
     id: number,
+    lang?: 'UA' | 'PL' | 'EN' | 'RU',
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<AccommodationOffer>;
+  ): Observable<AccommodationOfferVM>;
   public getAccommodations(
     id: number,
+    lang?: 'UA' | 'PL' | 'EN' | 'RU',
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<AccommodationOffer>>;
+  ): Observable<HttpResponse<AccommodationOfferVM>>;
   public getAccommodations(
     id: number,
+    lang?: 'UA' | 'PL' | 'EN' | 'RU',
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<AccommodationOffer>>;
+  ): Observable<HttpEvent<AccommodationOfferVM>>;
   public getAccommodations(
     id: number,
+    lang?: 'UA' | 'PL' | 'EN' | 'RU',
     observe: any = 'body',
     reportProgress: boolean = false,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<any> {
     if (id === null || id === undefined) {
       throw new Error('Required parameter id was null or undefined when calling getAccommodations.');
+    }
+
+    let localVarQueryParameters = new HttpParams({ encoder: this.encoder });
+    if (lang !== undefined && lang !== null) {
+      localVarQueryParameters = this.addToHttpParams(localVarQueryParameters, <any>lang, 'lang');
     }
 
     let localVarHeaders = this.defaultHeaders;
@@ -318,10 +330,11 @@ export class AccommodationsResourceService {
       }
     }
 
-    return this.httpClient.get<AccommodationOffer>(
+    return this.httpClient.get<AccommodationOfferVM>(
       `${this.configuration.basePath}/api/accommodations/${encodeURIComponent(String(id))}`,
       {
         context: localVarHttpContext,
+        params: localVarQueryParameters,
         responseType: <any>responseType_,
         withCredentials: this.configuration.withCredentials,
         headers: localVarHeaders,
@@ -332,46 +345,49 @@ export class AccommodationsResourceService {
   }
 
   /**
+   * @param searchCriteria
    * @param pageRequest
-   * @param capacity
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
   public listAccommodations(
+    searchCriteria: AccommodationOfferSearchCriteria,
     pageRequest: Pageable,
-    capacity?: number,
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<OffersAccommodationOffer>;
+  ): Observable<OffersVMAccommodationOfferVM>;
   public listAccommodations(
+    searchCriteria: AccommodationOfferSearchCriteria,
     pageRequest: Pageable,
-    capacity?: number,
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<OffersAccommodationOffer>>;
+  ): Observable<HttpResponse<OffersVMAccommodationOfferVM>>;
   public listAccommodations(
+    searchCriteria: AccommodationOfferSearchCriteria,
     pageRequest: Pageable,
-    capacity?: number,
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<OffersAccommodationOffer>>;
+  ): Observable<HttpEvent<OffersVMAccommodationOfferVM>>;
   public listAccommodations(
+    searchCriteria: AccommodationOfferSearchCriteria,
     pageRequest: Pageable,
-    capacity?: number,
     observe: any = 'body',
     reportProgress: boolean = false,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<any> {
+    if (searchCriteria === null || searchCriteria === undefined) {
+      throw new Error('Required parameter searchCriteria was null or undefined when calling listAccommodations.');
+    }
     if (pageRequest === null || pageRequest === undefined) {
       throw new Error('Required parameter pageRequest was null or undefined when calling listAccommodations.');
     }
 
     let localVarQueryParameters = new HttpParams({ encoder: this.encoder });
-    if (capacity !== undefined && capacity !== null) {
-      localVarQueryParameters = this.addToHttpParams(localVarQueryParameters, <any>capacity, 'capacity');
+    if (searchCriteria !== undefined && searchCriteria !== null) {
+      localVarQueryParameters = this.addToHttpParams(localVarQueryParameters, <any>searchCriteria, 'searchCriteria');
     }
     if (pageRequest !== undefined && pageRequest !== null) {
       localVarQueryParameters = this.addToHttpParams(localVarQueryParameters, <any>pageRequest, 'pageRequest');
@@ -405,7 +421,7 @@ export class AccommodationsResourceService {
       }
     }
 
-    return this.httpClient.get<OffersAccommodationOffer>(`${this.configuration.basePath}/api/accommodations`, {
+    return this.httpClient.get<OffersVMAccommodationOfferVM>(`${this.configuration.basePath}/api/accommodations`, {
       context: localVarHttpContext,
       params: localVarQueryParameters,
       responseType: <any>responseType_,
@@ -419,43 +435,43 @@ export class AccommodationsResourceService {
   /**
    * @param region
    * @param city
+   * @param searchCriteria
    * @param pageRequest
-   * @param capacity
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
   public listByLocationAccommodations(
     region: string,
     city: string,
+    searchCriteria: AccommodationOfferSearchCriteria,
     pageRequest: Pageable,
-    capacity?: number,
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<OffersAccommodationOffer>;
+  ): Observable<OffersVMAccommodationOfferVM>;
   public listByLocationAccommodations(
     region: string,
     city: string,
+    searchCriteria: AccommodationOfferSearchCriteria,
     pageRequest: Pageable,
-    capacity?: number,
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<OffersAccommodationOffer>>;
+  ): Observable<HttpResponse<OffersVMAccommodationOfferVM>>;
   public listByLocationAccommodations(
     region: string,
     city: string,
+    searchCriteria: AccommodationOfferSearchCriteria,
     pageRequest: Pageable,
-    capacity?: number,
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<OffersAccommodationOffer>>;
+  ): Observable<HttpEvent<OffersVMAccommodationOfferVM>>;
   public listByLocationAccommodations(
     region: string,
     city: string,
+    searchCriteria: AccommodationOfferSearchCriteria,
     pageRequest: Pageable,
-    capacity?: number,
     observe: any = 'body',
     reportProgress: boolean = false,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
@@ -466,6 +482,11 @@ export class AccommodationsResourceService {
     if (city === null || city === undefined) {
       throw new Error('Required parameter city was null or undefined when calling listByLocationAccommodations.');
     }
+    if (searchCriteria === null || searchCriteria === undefined) {
+      throw new Error(
+        'Required parameter searchCriteria was null or undefined when calling listByLocationAccommodations.'
+      );
+    }
     if (pageRequest === null || pageRequest === undefined) {
       throw new Error(
         'Required parameter pageRequest was null or undefined when calling listByLocationAccommodations.'
@@ -473,8 +494,8 @@ export class AccommodationsResourceService {
     }
 
     let localVarQueryParameters = new HttpParams({ encoder: this.encoder });
-    if (capacity !== undefined && capacity !== null) {
-      localVarQueryParameters = this.addToHttpParams(localVarQueryParameters, <any>capacity, 'capacity');
+    if (searchCriteria !== undefined && searchCriteria !== null) {
+      localVarQueryParameters = this.addToHttpParams(localVarQueryParameters, <any>searchCriteria, 'searchCriteria');
     }
     if (pageRequest !== undefined && pageRequest !== null) {
       localVarQueryParameters = this.addToHttpParams(localVarQueryParameters, <any>pageRequest, 'pageRequest');
@@ -508,7 +529,7 @@ export class AccommodationsResourceService {
       }
     }
 
-    return this.httpClient.get<OffersAccommodationOffer>(
+    return this.httpClient.get<OffersVMAccommodationOfferVM>(
       `${this.configuration.basePath}/api/accommodations/${encodeURIComponent(String(region))}/${encodeURIComponent(
         String(city)
       )}`,

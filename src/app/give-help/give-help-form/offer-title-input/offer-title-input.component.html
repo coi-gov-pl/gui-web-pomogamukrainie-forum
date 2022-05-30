@@ -1,4 +1,4 @@
-<label>
+<label for="title">
   <b>{{ "LABEL_OFFER_TITLE" | translate }}</b>
   <span> {{ "LABEL_OFFER_MAXCHARS" | translate }} *</span>
 </label>
@@ -9,6 +9,7 @@
     placeholder="{{ 'PLACEHOLDER_OFFER_TITLE' | translate }}"
     required
     name="title"
+    id="title"
     [ngModel]="value"
     (ngModelChange)="valueChange.emit($event)"
     #title="ngModel"

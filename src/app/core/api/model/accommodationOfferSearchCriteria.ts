@@ -9,10 +9,17 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { TranslationOffer } from './translationOffer';
 
-export interface OffersTranslationOffer {
-  content?: Array<TranslationOffer>;
-  totalElements?: number;
-  totalPages?: number;
+export interface AccommodationOfferSearchCriteria {
+  capacity?: number;
+  lang?: AccommodationOfferSearchCriteria.LangEnum;
+}
+export namespace AccommodationOfferSearchCriteria {
+  export type LangEnum = 'UA' | 'PL' | 'EN' | 'RU';
+  export const LangEnum = {
+    Ua: 'UA' as LangEnum,
+    Pl: 'PL' as LangEnum,
+    En: 'EN' as LangEnum,
+    Ru: 'RU' as LangEnum,
+  };
 }

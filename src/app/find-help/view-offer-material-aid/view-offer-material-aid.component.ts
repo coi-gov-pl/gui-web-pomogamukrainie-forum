@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { MaterialAidOffer, MaterialAidResourceService, Pageable } from '@app/core/api';
+import { MaterialAidOfferVM, MaterialAidResourceService, Pageable } from '@app/core/api';
 import { CategoryRoutingName, CorePath } from '@app/shared/models';
 import { defaults } from '@app/shared/utils';
 import { MaterialAidOfferSearchCriteria } from '../../core/api/model/materialAidOfferSearchCriteria';
@@ -12,12 +12,12 @@ import { MaterialAidOfferSearchCriteria } from '../../core/api/model/materialAid
 })
 export class ViewOfferMaterialAidComponent implements OnInit {
   offerId: number = 0;
-  data = defaults<MaterialAidOffer>();
+  data = defaults<MaterialAidOfferVM>();
   categoryRouteName = CategoryRoutingName.MATERIAL_HELP;
   redirectedFromAccount: boolean;
   originalAccountQueryParams?: Params;
-  offerResults: MaterialAidOffer[] = [];
-  activeOffer: MaterialAidOffer | undefined;
+  offerResults: MaterialAidOfferVM[] = [];
+  activeOffer: MaterialAidOfferVM | undefined;
   activeIndex: number = 0;
   blurClass = '';
   searchCriteria = defaults<MaterialAidOfferSearchCriteria>();
@@ -71,13 +71,13 @@ export class ViewOfferMaterialAidComponent implements OnInit {
   slideOffer(index: number, direction: 'prev' | 'next') {
     this.blurAnimate();
     if (direction === 'prev') {
-      const SLIDE_PREV_DATA: MaterialAidOffer = this.offerResults[index - 1];
+      const SLIDE_PREV_DATA: MaterialAidOfferVM = this.offerResults[index - 1];
       this.router.navigate([CorePath.Find, this.categoryRouteName, SLIDE_PREV_DATA.id]);
       this.activeIndex = index >= 0 ? index - 1 : index;
       this.offerId = SLIDE_PREV_DATA.id;
       this.data = SLIDE_PREV_DATA;
     } else {
-      const SLIDE_NEXT_DATA: MaterialAidOffer = this.offerResults[index + 1];
+      const SLIDE_NEXT_DATA: MaterialAidOfferVM = this.offerResults[index + 1];
       this.router.navigate([CorePath.Find, this.categoryRouteName, SLIDE_NEXT_DATA.id]);
       this.activeIndex = index >= 0 ? index + 1 : index;
       this.offerId = SLIDE_NEXT_DATA.id;

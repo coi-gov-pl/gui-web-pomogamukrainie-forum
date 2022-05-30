@@ -1,5 +1,10 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { MaterialAidOffer, MaterialAidOfferSearchCriteria, MaterialAidResourceService, Pageable } from '@app/core/api';
+import {
+  MaterialAidOfferVM,
+  MaterialAidOfferSearchCriteria,
+  MaterialAidResourceService,
+  Pageable,
+} from '@app/core/api';
 import { CategoryRoutingName, CorePath } from '@app/shared/models';
 import { ActivatedRoute } from '@angular/router';
 import { MobileViewportDetectService } from '@app/shared/services';
@@ -10,7 +15,7 @@ import { MobileViewportDetectService } from '@app/shared/services';
   styleUrls: ['./material-aid-search.component.scss'],
 })
 export class MaterialAidSearchComponent implements OnInit {
-  results: MaterialAidOffer[] = [];
+  results: MaterialAidOfferVM[] = [];
   total?: number = undefined;
   categoryRoutingName = CategoryRoutingName;
   corePath = CorePath;

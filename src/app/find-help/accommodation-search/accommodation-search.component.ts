@@ -1,9 +1,15 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AccommodationQuery } from './accommodation-search-form/accommodation-search-form.component';
-import { AccommodationsResourceService, AccommodationOffer, Pageable } from '@app/core/api';
+import {
+  AccommodationsResourceService,
+  AccommodationOfferVM,
+  Pageable,
+  AccommodationOfferSearchCriteria,
+} from '@app/core/api';
 import { CategoryRoutingName, CorePath } from '@app/shared/models';
 import { ActivatedRoute } from '@angular/router';
 import { MobileViewportDetectService } from '@app/shared/services';
+import { defaults } from '@app/shared/utils';
 
 @Component({
   selector: 'app-accommodation-search',
@@ -11,7 +17,7 @@ import { MobileViewportDetectService } from '@app/shared/services';
   styleUrls: ['./accommodation-search.component.scss'],
 })
 export class AccommodationSearchComponent implements OnInit {
-  results: AccommodationOffer[] = [];
+  results: AccommodationOfferVM[] = [];
   total?: number = undefined;
   categoryRoutingName = CategoryRoutingName;
   corePath = CorePath;
@@ -43,10 +49,12 @@ export class AccommodationSearchComponent implements OnInit {
     pageRequest: Pageable,
     capacity: number | undefined
   ) {
+    const searchCriteria = defaults<AccommodationOfferSearchCriteria>();
+    searchCriteria.capacity = capacity;
     if (region && city) {
-      return this.accommodationsResourceService.listByLocationAccommodations(region, city, pageRequest, capacity);
+      return this.accommodationsResourceService.listByLocationAccommodations(region, city, searchCriteria, pageRequest);
     } else {
-      return this.accommodationsResourceService.listAccommodations(pageRequest, capacity);
+      return this.accommodationsResourceService.listAccommodations(searchCriteria, pageRequest);
     }
   }
 

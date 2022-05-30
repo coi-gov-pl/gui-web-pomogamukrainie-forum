@@ -2,14 +2,15 @@
   <div class="container">
     <div class="row">
       <div class="col-md-4">
-        <label
-          ><b>{{ "TYPE_OF_SUPPORT" | translate }}</b></label
+        <label for="categories">
+          <b>{{ "TYPE_OF_SUPPORT" | translate }}</b></label
         >
         <mat-form-field appearance="outline">
           <mat-select
             [placeholder]="'CHOOSE_FROM_THE_LIST' | translate"
             [(ngModel)]="data.category"
-            name="kategoriePomocy"
+            name="categories"
+            id="categories"
           >
             <mat-option *ngFor="let cat of categories" [value]="cat.value">{{ cat.value | translate }}</mat-option>
           </mat-select>

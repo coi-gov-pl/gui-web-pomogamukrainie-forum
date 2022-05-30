@@ -25,11 +25,13 @@ import { CustomHttpParameterCodec } from '../encoder';
 import { Observable } from 'rxjs';
 
 // @ts-ignore
-import { OffersOtherOffer } from '../model/offersOtherOffer';
-// @ts-ignore
-import { OtherOffer } from '../model/otherOffer';
+import { OffersVMOtherOfferVM } from '../model/offersVMOtherOfferVM';
 // @ts-ignore
 import { OtherOfferDefinitionDTO } from '../model/otherOfferDefinitionDTO';
+// @ts-ignore
+import { OtherOfferSearchCriteria } from '../model/otherOfferSearchCriteria';
+// @ts-ignore
+import { OtherOfferVM } from '../model/otherOfferVM';
 // @ts-ignore
 import { Pageable } from '../model/pageable';
 
@@ -109,19 +111,19 @@ export class OtherResourceService {
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<OtherOffer>;
+  ): Observable<OtherOfferVM>;
   public createOther(
     otherOfferDefinitionDTO: OtherOfferDefinitionDTO,
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<OtherOffer>>;
+  ): Observable<HttpResponse<OtherOfferVM>>;
   public createOther(
     otherOfferDefinitionDTO: OtherOfferDefinitionDTO,
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<OtherOffer>>;
+  ): Observable<HttpEvent<OtherOfferVM>>;
   public createOther(
     otherOfferDefinitionDTO: OtherOfferDefinitionDTO,
     observe: any = 'body',
@@ -167,7 +169,7 @@ export class OtherResourceService {
       }
     }
 
-    return this.httpClient.post<OtherOffer>(
+    return this.httpClient.post<OtherOfferVM>(
       `${this.configuration.basePath}/api/secure/other`,
       otherOfferDefinitionDTO,
       {
@@ -257,35 +259,45 @@ export class OtherResourceService {
 
   /**
    * @param id
+   * @param lang
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
   public getOther(
     id: number,
+    lang?: 'UA' | 'PL' | 'EN' | 'RU',
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<OtherOffer>;
+  ): Observable<OtherOfferVM>;
   public getOther(
     id: number,
+    lang?: 'UA' | 'PL' | 'EN' | 'RU',
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<OtherOffer>>;
+  ): Observable<HttpResponse<OtherOfferVM>>;
   public getOther(
     id: number,
+    lang?: 'UA' | 'PL' | 'EN' | 'RU',
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<OtherOffer>>;
+  ): Observable<HttpEvent<OtherOfferVM>>;
   public getOther(
     id: number,
+    lang?: 'UA' | 'PL' | 'EN' | 'RU',
     observe: any = 'body',
     reportProgress: boolean = false,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<any> {
     if (id === null || id === undefined) {
       throw new Error('Required parameter id was null or undefined when calling getOther.');
+    }
+
+    let localVarQueryParameters = new HttpParams({ encoder: this.encoder });
+    if (lang !== undefined && lang !== null) {
+      localVarQueryParameters = this.addToHttpParams(localVarQueryParameters, <any>lang, 'lang');
     }
 
     let localVarHeaders = this.defaultHeaders;
@@ -316,10 +328,11 @@ export class OtherResourceService {
       }
     }
 
-    return this.httpClient.get<OtherOffer>(
+    return this.httpClient.get<OtherOfferVM>(
       `${this.configuration.basePath}/api/other/${encodeURIComponent(String(id))}`,
       {
         context: localVarHttpContext,
+        params: localVarQueryParameters,
         responseType: <any>responseType_,
         withCredentials: this.configuration.withCredentials,
         headers: localVarHeaders,
@@ -331,29 +344,34 @@ export class OtherResourceService {
 
   /**
    * @param pageRequest
+   * @param searchCriteria
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
   public listOther(
     pageRequest: Pageable,
+    searchCriteria: OtherOfferSearchCriteria,
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<OffersOtherOffer>;
+  ): Observable<OffersVMOtherOfferVM>;
   public listOther(
     pageRequest: Pageable,
+    searchCriteria: OtherOfferSearchCriteria,
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<OffersOtherOffer>>;
+  ): Observable<HttpResponse<OffersVMOtherOfferVM>>;
   public listOther(
     pageRequest: Pageable,
+    searchCriteria: OtherOfferSearchCriteria,
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<OffersOtherOffer>>;
+  ): Observable<HttpEvent<OffersVMOtherOfferVM>>;
   public listOther(
     pageRequest: Pageable,
+    searchCriteria: OtherOfferSearchCriteria,
     observe: any = 'body',
     reportProgress: boolean = false,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
@@ -361,10 +379,16 @@ export class OtherResourceService {
     if (pageRequest === null || pageRequest === undefined) {
       throw new Error('Required parameter pageRequest was null or undefined when calling listOther.');
     }
+    if (searchCriteria === null || searchCriteria === undefined) {
+      throw new Error('Required parameter searchCriteria was null or undefined when calling listOther.');
+    }
 
     let localVarQueryParameters = new HttpParams({ encoder: this.encoder });
     if (pageRequest !== undefined && pageRequest !== null) {
       localVarQueryParameters = this.addToHttpParams(localVarQueryParameters, <any>pageRequest, 'pageRequest');
+    }
+    if (searchCriteria !== undefined && searchCriteria !== null) {
+      localVarQueryParameters = this.addToHttpParams(localVarQueryParameters, <any>searchCriteria, 'searchCriteria');
     }
 
     let localVarHeaders = this.defaultHeaders;
@@ -395,7 +419,7 @@ export class OtherResourceService {
       }
     }
 
-    return this.httpClient.get<OffersOtherOffer>(`${this.configuration.basePath}/api/other`, {
+    return this.httpClient.get<OffersVMOtherOfferVM>(`${this.configuration.basePath}/api/other`, {
       context: localVarHttpContext,
       params: localVarQueryParameters,
       responseType: <any>responseType_,

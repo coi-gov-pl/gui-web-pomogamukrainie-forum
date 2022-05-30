@@ -25,15 +25,15 @@ import { CustomHttpParameterCodec } from '../encoder';
 import { Observable } from 'rxjs';
 
 // @ts-ignore
-import { OffersTransportOffer } from '../model/offersTransportOffer';
+import { OffersVMTransportOfferVM } from '../model/offersVMTransportOfferVM';
 // @ts-ignore
 import { Pageable } from '../model/pageable';
-// @ts-ignore
-import { TransportOffer } from '../model/transportOffer';
 // @ts-ignore
 import { TransportOfferDefinitionDTO } from '../model/transportOfferDefinitionDTO';
 // @ts-ignore
 import { TransportOfferSearchCriteria } from '../model/transportOfferSearchCriteria';
+// @ts-ignore
+import { TransportOfferVM } from '../model/transportOfferVM';
 
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS } from '../variables';
@@ -111,19 +111,19 @@ export class TransportResourceService {
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<TransportOffer>;
+  ): Observable<TransportOfferVM>;
   public createTransport(
     transportOfferDefinitionDTO: TransportOfferDefinitionDTO,
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<TransportOffer>>;
+  ): Observable<HttpResponse<TransportOfferVM>>;
   public createTransport(
     transportOfferDefinitionDTO: TransportOfferDefinitionDTO,
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<TransportOffer>>;
+  ): Observable<HttpEvent<TransportOfferVM>>;
   public createTransport(
     transportOfferDefinitionDTO: TransportOfferDefinitionDTO,
     observe: any = 'body',
@@ -171,7 +171,7 @@ export class TransportResourceService {
       }
     }
 
-    return this.httpClient.post<TransportOffer>(
+    return this.httpClient.post<TransportOfferVM>(
       `${this.configuration.basePath}/api/secure/transport`,
       transportOfferDefinitionDTO,
       {
@@ -261,35 +261,45 @@ export class TransportResourceService {
 
   /**
    * @param id
+   * @param lang
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
   public getTransport(
     id: number,
+    lang?: 'UA' | 'PL' | 'EN' | 'RU',
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<TransportOffer>;
+  ): Observable<TransportOfferVM>;
   public getTransport(
     id: number,
+    lang?: 'UA' | 'PL' | 'EN' | 'RU',
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<TransportOffer>>;
+  ): Observable<HttpResponse<TransportOfferVM>>;
   public getTransport(
     id: number,
+    lang?: 'UA' | 'PL' | 'EN' | 'RU',
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<TransportOffer>>;
+  ): Observable<HttpEvent<TransportOfferVM>>;
   public getTransport(
     id: number,
+    lang?: 'UA' | 'PL' | 'EN' | 'RU',
     observe: any = 'body',
     reportProgress: boolean = false,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<any> {
     if (id === null || id === undefined) {
       throw new Error('Required parameter id was null or undefined when calling getTransport.');
+    }
+
+    let localVarQueryParameters = new HttpParams({ encoder: this.encoder });
+    if (lang !== undefined && lang !== null) {
+      localVarQueryParameters = this.addToHttpParams(localVarQueryParameters, <any>lang, 'lang');
     }
 
     let localVarHeaders = this.defaultHeaders;
@@ -320,10 +330,11 @@ export class TransportResourceService {
       }
     }
 
-    return this.httpClient.get<TransportOffer>(
+    return this.httpClient.get<TransportOfferVM>(
       `${this.configuration.basePath}/api/transport/${encodeURIComponent(String(id))}`,
       {
         context: localVarHttpContext,
+        params: localVarQueryParameters,
         responseType: <any>responseType_,
         withCredentials: this.configuration.withCredentials,
         headers: localVarHeaders,
@@ -346,21 +357,21 @@ export class TransportResourceService {
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<OffersTransportOffer>;
+  ): Observable<OffersVMTransportOfferVM>;
   public listTransport(
     pageRequest: Pageable,
     searchCriteria: TransportOfferSearchCriteria,
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<OffersTransportOffer>>;
+  ): Observable<HttpResponse<OffersVMTransportOfferVM>>;
   public listTransport(
     pageRequest: Pageable,
     searchCriteria: TransportOfferSearchCriteria,
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<OffersTransportOffer>>;
+  ): Observable<HttpEvent<OffersVMTransportOfferVM>>;
   public listTransport(
     pageRequest: Pageable,
     searchCriteria: TransportOfferSearchCriteria,
@@ -411,7 +422,7 @@ export class TransportResourceService {
       }
     }
 
-    return this.httpClient.get<OffersTransportOffer>(`${this.configuration.basePath}/api/transport`, {
+    return this.httpClient.get<OffersVMTransportOfferVM>(`${this.configuration.basePath}/api/transport`, {
       context: localVarHttpContext,
       params: localVarQueryParameters,
       responseType: <any>responseType_,

@@ -153,6 +153,15 @@
     ></app-search-result-attribute>
   </app-search-result>
 
+  <app-search-result
+    *ngIf="currentAnnouncement.type === 'OTHER'"
+    [location]="currentAnnouncement.location"
+    [title]="currentAnnouncement.title"
+    [description]="currentAnnouncement.description"
+    [posted]="currentAnnouncement.modifiedDate"
+  >
+  </app-search-result>
+
   <div class="footer">
     <button type="submit" class="btn btn-dark" (click)="confirmAction(false)">
       <span>{{ "NO" | translate }}</span>

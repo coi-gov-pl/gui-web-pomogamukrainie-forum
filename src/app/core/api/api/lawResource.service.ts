@@ -25,13 +25,13 @@ import { CustomHttpParameterCodec } from '../encoder';
 import { Observable } from 'rxjs';
 
 // @ts-ignore
-import { LawOffer } from '../model/lawOffer';
-// @ts-ignore
 import { LawOfferDefinitionDTO } from '../model/lawOfferDefinitionDTO';
 // @ts-ignore
 import { LawOfferSearchCriteria } from '../model/lawOfferSearchCriteria';
 // @ts-ignore
-import { OffersLawOffer } from '../model/offersLawOffer';
+import { LawOfferVM } from '../model/lawOfferVM';
+// @ts-ignore
+import { OffersVMLawOfferVM } from '../model/offersVMLawOfferVM';
 // @ts-ignore
 import { Pageable } from '../model/pageable';
 
@@ -111,19 +111,19 @@ export class LawResourceService {
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<LawOffer>;
+  ): Observable<LawOfferVM>;
   public createLaw(
     lawOfferDefinitionDTO: LawOfferDefinitionDTO,
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<LawOffer>>;
+  ): Observable<HttpResponse<LawOfferVM>>;
   public createLaw(
     lawOfferDefinitionDTO: LawOfferDefinitionDTO,
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<LawOffer>>;
+  ): Observable<HttpEvent<LawOfferVM>>;
   public createLaw(
     lawOfferDefinitionDTO: LawOfferDefinitionDTO,
     observe: any = 'body',
@@ -169,7 +169,7 @@ export class LawResourceService {
       }
     }
 
-    return this.httpClient.post<LawOffer>(`${this.configuration.basePath}/api/secure/law`, lawOfferDefinitionDTO, {
+    return this.httpClient.post<LawOfferVM>(`${this.configuration.basePath}/api/secure/law`, lawOfferDefinitionDTO, {
       context: localVarHttpContext,
       responseType: <any>responseType_,
       withCredentials: this.configuration.withCredentials,
@@ -255,35 +255,45 @@ export class LawResourceService {
 
   /**
    * @param id
+   * @param lang
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
   public getLaw(
     id: number,
+    lang?: 'UA' | 'PL' | 'EN' | 'RU',
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<LawOffer>;
+  ): Observable<LawOfferVM>;
   public getLaw(
     id: number,
+    lang?: 'UA' | 'PL' | 'EN' | 'RU',
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<LawOffer>>;
+  ): Observable<HttpResponse<LawOfferVM>>;
   public getLaw(
     id: number,
+    lang?: 'UA' | 'PL' | 'EN' | 'RU',
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<LawOffer>>;
+  ): Observable<HttpEvent<LawOfferVM>>;
   public getLaw(
     id: number,
+    lang?: 'UA' | 'PL' | 'EN' | 'RU',
     observe: any = 'body',
     reportProgress: boolean = false,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<any> {
     if (id === null || id === undefined) {
       throw new Error('Required parameter id was null or undefined when calling getLaw.');
+    }
+
+    let localVarQueryParameters = new HttpParams({ encoder: this.encoder });
+    if (lang !== undefined && lang !== null) {
+      localVarQueryParameters = this.addToHttpParams(localVarQueryParameters, <any>lang, 'lang');
     }
 
     let localVarHeaders = this.defaultHeaders;
@@ -314,8 +324,9 @@ export class LawResourceService {
       }
     }
 
-    return this.httpClient.get<LawOffer>(`${this.configuration.basePath}/api/law/${encodeURIComponent(String(id))}`, {
+    return this.httpClient.get<LawOfferVM>(`${this.configuration.basePath}/api/law/${encodeURIComponent(String(id))}`, {
       context: localVarHttpContext,
+      params: localVarQueryParameters,
       responseType: <any>responseType_,
       withCredentials: this.configuration.withCredentials,
       headers: localVarHeaders,
@@ -336,21 +347,21 @@ export class LawResourceService {
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<OffersLawOffer>;
+  ): Observable<OffersVMLawOfferVM>;
   public listLaw(
     pageRequest: Pageable,
     searchCriteria: LawOfferSearchCriteria,
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<OffersLawOffer>>;
+  ): Observable<HttpResponse<OffersVMLawOfferVM>>;
   public listLaw(
     pageRequest: Pageable,
     searchCriteria: LawOfferSearchCriteria,
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<OffersLawOffer>>;
+  ): Observable<HttpEvent<OffersVMLawOfferVM>>;
   public listLaw(
     pageRequest: Pageable,
     searchCriteria: LawOfferSearchCriteria,
@@ -401,7 +412,7 @@ export class LawResourceService {
       }
     }
 
-    return this.httpClient.get<OffersLawOffer>(`${this.configuration.basePath}/api/law`, {
+    return this.httpClient.get<OffersVMLawOfferVM>(`${this.configuration.basePath}/api/law`, {
       context: localVarHttpContext,
       params: localVarQueryParameters,
       responseType: <any>responseType_,
