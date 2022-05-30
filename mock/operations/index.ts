@@ -8,3 +8,4 @@ export * from './job';
 export * from './health';
 export * from './law';
 export * from './translation';
+export * from './other';

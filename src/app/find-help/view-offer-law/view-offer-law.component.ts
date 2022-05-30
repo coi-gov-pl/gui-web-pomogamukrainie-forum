@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { LawOffer, LawOfferSearchCriteria, LawResourceService, Pageable } from '@app/core/api';
+import { LawOfferVM, LawOfferSearchCriteria, LawResourceService, Pageable } from '@app/core/api';
 import { CategoryRoutingName, CorePath } from '@app/shared/models';
 import { defaults } from '@app/shared/utils';
 
@@ -11,12 +11,12 @@ import { defaults } from '@app/shared/utils';
 })
 export class ViewOfferLawComponent implements OnInit {
   offerId!: number;
-  data = defaults<LawOffer>();
+  data = defaults<LawOfferVM>();
   categoryRouteName = CategoryRoutingName.LEGAL_HELP;
   redirectedFromAccount: boolean;
   originalAccountQueryParams?: Params;
-  offerResults: LawOffer[] = [];
-  activeOffer: LawOffer | undefined;
+  offerResults: LawOfferVM[] = [];
+  activeOffer: LawOfferVM | undefined;
   activeIndex: number = 0;
   blurClass = '';
   searchCriteria = defaults<LawOfferSearchCriteria>();
@@ -68,13 +68,13 @@ export class ViewOfferLawComponent implements OnInit {
   slideOffer(index: number, direction: 'prev' | 'next') {
     this.blurAnimate();
     if (direction === 'prev') {
-      const SLIDE_PREV_DATA: LawOffer = this.offerResults[index - 1];
+      const SLIDE_PREV_DATA: LawOfferVM = this.offerResults[index - 1];
       this.router.navigate([CorePath.Find, this.categoryRouteName, SLIDE_PREV_DATA.id]);
       this.activeIndex = index >= 0 ? index - 1 : index;
       this.offerId = SLIDE_PREV_DATA.id;
       this.data = SLIDE_PREV_DATA;
     } else {
-      const SLIDE_NEXT_DATA: LawOffer = this.offerResults[index + 1];
+      const SLIDE_NEXT_DATA: LawOfferVM = this.offerResults[index + 1];
       this.router.navigate([CorePath.Find, this.categoryRouteName, SLIDE_NEXT_DATA.id]);
       this.activeIndex = index >= 0 ? index + 1 : index;
       this.offerId = SLIDE_NEXT_DATA.id;

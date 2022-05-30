@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { LawOffer, LawOfferSearchCriteria, LawResourceService, Pageable } from '@app/core/api';
+import { LawOfferVM, LawOfferSearchCriteria, LawResourceService, Pageable } from '@app/core/api';
 import { CategoryRoutingName, CorePath } from '@app/shared/models';
 import { ActivatedRoute } from '@angular/router';
 import { MobileViewportDetectService } from '@app/shared/services';
@@ -10,7 +10,7 @@ import { MobileViewportDetectService } from '@app/shared/services';
   styleUrls: ['./law-search.component.scss'],
 })
 export class LawSearchComponent implements OnInit {
-  results: LawOffer[] = [];
+  results: LawOfferVM[] = [];
   total?: number = undefined;
   categoryRoutingName = CategoryRoutingName;
   corePath = CorePath;

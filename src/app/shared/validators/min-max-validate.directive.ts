@@ -47,12 +47,12 @@ export class MinMaxValidateDirective implements Validator {
     }
 
     if (valueNumber < min) {
-      error[ErrorCode.min] = { value: value };
+      error[ErrorCode.min] = { value: min };
       return error;
     }
 
     if (valueNumber > max) {
-      error[ErrorCode.max] = { value: value };
+      error[ErrorCode.max] = { value: max };
       return error;
     }
 

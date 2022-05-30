@@ -11,7 +11,7 @@
  */
 import { Location } from './location';
 
-export interface TranslationOffer {
+export interface TranslationOfferVM {
   id: number;
   userFirstName: string;
   title: string;
@@ -19,12 +19,20 @@ export interface TranslationOffer {
   phoneNumber?: string;
   phoneCountryCode?: string;
   modifiedDate?: string;
-  mode: Array<TranslationOffer.ModeEnum>;
+  detectedLanguage?: TranslationOfferVM.DetectedLanguageEnum;
+  mode: Array<TranslationOfferVM.ModeEnum>;
   location?: Location;
-  language: Array<TranslationOffer.LanguageEnum>;
-  type: TranslationOffer.TypeEnum;
+  language: Array<TranslationOfferVM.LanguageEnum>;
+  type: TranslationOfferVM.TypeEnum;
 }
-export namespace TranslationOffer {
+export namespace TranslationOfferVM {
+  export type DetectedLanguageEnum = 'UA' | 'PL' | 'EN' | 'RU';
+  export const DetectedLanguageEnum = {
+    Ua: 'UA' as DetectedLanguageEnum,
+    Pl: 'PL' as DetectedLanguageEnum,
+    En: 'EN' as DetectedLanguageEnum,
+    Ru: 'RU' as DetectedLanguageEnum,
+  };
   export type ModeEnum = 'STATIONARY' | 'WITH_ACCESS' | 'ONLINE' | 'BY_EMAIL' | 'BY_PHONE';
   export const ModeEnum = {
     Stationary: 'STATIONARY' as ModeEnum,

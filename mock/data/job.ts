@@ -1,6 +1,6 @@
-import { JobOffer, JobOfferDefinitionDTO, OffersJobOffer } from '@app/core/api';
+import { JobOfferVM, JobOfferDefinitionDTO, OffersVMJobOfferVM } from '@app/core/api';
 
-export const jobOffer = (body: JobOfferDefinitionDTO): JobOffer => {
+export const jobOffer = (body: JobOfferDefinitionDTO): JobOfferVM => {
   return {
     ...body,
     id: 1,
@@ -10,7 +10,7 @@ export const jobOffer = (body: JobOfferDefinitionDTO): JobOffer => {
   };
 };
 
-export const jobsList: OffersJobOffer = {
+export const jobsList: OffersVMJobOfferVM = {
   content: [
     {
       id: 1,

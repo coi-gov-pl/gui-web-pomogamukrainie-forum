@@ -25,13 +25,13 @@ import { CustomHttpParameterCodec } from '../encoder';
 import { Observable } from 'rxjs';
 
 // @ts-ignore
-import { MaterialAidOffer } from '../model/materialAidOffer';
-// @ts-ignore
 import { MaterialAidOfferDefinitionDTO } from '../model/materialAidOfferDefinitionDTO';
 // @ts-ignore
 import { MaterialAidOfferSearchCriteria } from '../model/materialAidOfferSearchCriteria';
 // @ts-ignore
-import { OffersMaterialAidOffer } from '../model/offersMaterialAidOffer';
+import { MaterialAidOfferVM } from '../model/materialAidOfferVM';
+// @ts-ignore
+import { OffersVMMaterialAidOfferVM } from '../model/offersVMMaterialAidOfferVM';
 // @ts-ignore
 import { Pageable } from '../model/pageable';
 
@@ -177,35 +177,45 @@ export class MaterialAidResourceService {
 
   /**
    * @param id
+   * @param lang
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
   public getMaterialAid(
     id: number,
+    lang?: 'UA' | 'PL' | 'EN' | 'RU',
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<MaterialAidOffer>;
+  ): Observable<MaterialAidOfferVM>;
   public getMaterialAid(
     id: number,
+    lang?: 'UA' | 'PL' | 'EN' | 'RU',
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<MaterialAidOffer>>;
+  ): Observable<HttpResponse<MaterialAidOfferVM>>;
   public getMaterialAid(
     id: number,
+    lang?: 'UA' | 'PL' | 'EN' | 'RU',
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<MaterialAidOffer>>;
+  ): Observable<HttpEvent<MaterialAidOfferVM>>;
   public getMaterialAid(
     id: number,
+    lang?: 'UA' | 'PL' | 'EN' | 'RU',
     observe: any = 'body',
     reportProgress: boolean = false,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<any> {
     if (id === null || id === undefined) {
       throw new Error('Required parameter id was null or undefined when calling getMaterialAid.');
+    }
+
+    let localVarQueryParameters = new HttpParams({ encoder: this.encoder });
+    if (lang !== undefined && lang !== null) {
+      localVarQueryParameters = this.addToHttpParams(localVarQueryParameters, <any>lang, 'lang');
     }
 
     let localVarHeaders = this.defaultHeaders;
@@ -236,10 +246,11 @@ export class MaterialAidResourceService {
       }
     }
 
-    return this.httpClient.get<MaterialAidOffer>(
+    return this.httpClient.get<MaterialAidOfferVM>(
       `${this.configuration.basePath}/api/material-aid/${encodeURIComponent(String(id))}`,
       {
         context: localVarHttpContext,
+        params: localVarQueryParameters,
         responseType: <any>responseType_,
         withCredentials: this.configuration.withCredentials,
         headers: localVarHeaders,
@@ -262,21 +273,21 @@ export class MaterialAidResourceService {
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<OffersMaterialAidOffer>;
+  ): Observable<OffersVMMaterialAidOfferVM>;
   public listMaterialAid(
     pageRequest: Pageable,
     searchCriteria: MaterialAidOfferSearchCriteria,
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<OffersMaterialAidOffer>>;
+  ): Observable<HttpResponse<OffersVMMaterialAidOfferVM>>;
   public listMaterialAid(
     pageRequest: Pageable,
     searchCriteria: MaterialAidOfferSearchCriteria,
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<OffersMaterialAidOffer>>;
+  ): Observable<HttpEvent<OffersVMMaterialAidOfferVM>>;
   public listMaterialAid(
     pageRequest: Pageable,
     searchCriteria: MaterialAidOfferSearchCriteria,
@@ -327,7 +338,7 @@ export class MaterialAidResourceService {
       }
     }
 
-    return this.httpClient.get<OffersMaterialAidOffer>(`${this.configuration.basePath}/api/material-aid`, {
+    return this.httpClient.get<OffersVMMaterialAidOfferVM>(`${this.configuration.basePath}/api/material-aid`, {
       context: localVarHttpContext,
       params: localVarQueryParameters,
       responseType: <any>responseType_,
@@ -349,19 +360,19 @@ export class MaterialAidResourceService {
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<MaterialAidOffer>;
+  ): Observable<MaterialAidOfferVM>;
   public postMaterialAidOfferMaterialAid(
     materialAidOfferDefinitionDTO: MaterialAidOfferDefinitionDTO,
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<MaterialAidOffer>>;
+  ): Observable<HttpResponse<MaterialAidOfferVM>>;
   public postMaterialAidOfferMaterialAid(
     materialAidOfferDefinitionDTO: MaterialAidOfferDefinitionDTO,
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<MaterialAidOffer>>;
+  ): Observable<HttpEvent<MaterialAidOfferVM>>;
   public postMaterialAidOfferMaterialAid(
     materialAidOfferDefinitionDTO: MaterialAidOfferDefinitionDTO,
     observe: any = 'body',
@@ -409,7 +420,7 @@ export class MaterialAidResourceService {
       }
     }
 
-    return this.httpClient.post<MaterialAidOffer>(
+    return this.httpClient.post<MaterialAidOfferVM>(
       `${this.configuration.basePath}/api/secure/material-aid`,
       materialAidOfferDefinitionDTO,
       {

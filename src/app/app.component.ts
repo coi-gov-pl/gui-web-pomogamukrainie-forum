@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageCode } from '@app/core/translations';
 import { StoreUrlService } from '@app/core/store-url';
@@ -8,7 +8,8 @@ import { AngularPlugin } from '@microsoft/applicationinsights-angularplugin-js';
 import { environment } from 'src/environments/environment';
 import { LocalStorageKeys } from '@app/shared/models';
 import { EnvironmentType } from '../environments/model';
-import { filter, Subject, takeUntil } from 'rxjs';
+import { filter, map, Subject, takeUntil } from 'rxjs';
+import { Title } from '@angular/platform-browser';
 
 declare global {
   interface Window {
@@ -44,7 +45,10 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private translateService: TranslateService,
-    private storeUrlService: StoreUrlService
+    private storeUrlService: StoreUrlService,
+    private titleService: Title,
+    private activatedRoute: ActivatedRoute,
+    private translate: TranslateService
   ) {
     if (
       environment.applicationInsightsConnectionString &&
@@ -78,6 +82,25 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.translateService.use(localStorage.getItem(LocalStorageKeys.LangOption) || LanguageCode.pl_PL);
     this.storeUrlService.setPreviousUrl();
+
+    const appTitle = this.titleService.getTitle();
+    this.router.events
+      .pipe(
+        filter((event) => event instanceof NavigationEnd),
+        map(() => {
+          let child = this.activatedRoute.firstChild;
+          while (child?.firstChild) {
+            child = child.firstChild;
+          }
+          if (child?.snapshot.data['title']) {
+            return this.translate.instant(child.snapshot.data['title']);
+          }
+          return appTitle;
+        })
+      )
+      .subscribe((ttl: string) => {
+        this.titleService.setTitle(ttl);
+      });
   }
 
   trackUrl(): void {

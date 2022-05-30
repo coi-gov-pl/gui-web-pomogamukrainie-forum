@@ -16,4 +16,14 @@ export interface TransportOfferSearchCriteria {
   destination?: Location;
   capacity?: number;
   transportDate?: string;
+  lang?: TransportOfferSearchCriteria.LangEnum;
+}
+export namespace TransportOfferSearchCriteria {
+  export type LangEnum = 'UA' | 'PL' | 'EN' | 'RU';
+  export const LangEnum = {
+    Ua: 'UA' as LangEnum,
+    Pl: 'PL' as LangEnum,
+    En: 'EN' as LangEnum,
+    Ru: 'RU' as LangEnum,
+  };
 }

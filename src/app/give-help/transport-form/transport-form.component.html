@@ -2,9 +2,9 @@
   <form (ngSubmit)="submitOffer()" #transportForm="ngForm">
     <div class="container">
       <div class="d-flex">
-        <button class="btn-link ms-auto" type="button" (click)="onCancelButtonClick()">
-          <mat-icon class="button-icon" fontSet="material-icons-outlined">close</mat-icon
-          ><span class="cancel-label">{{ "CANCEL" | translate }}</span>
+        <button class="btn-link btn-cancel ms-auto" type="button" (click)="onCancelButtonClick()">
+          <mat-icon fontSet="material-icons-outlined">close</mat-icon
+          ><span class="label">{{ "CANCEL" | translate }}</span>
         </button>
       </div>
       <div class="row">
@@ -32,22 +32,23 @@
           ></app-cities-search>
         </div>
         <div class="col-lg-3 col-md-12">
-          <label
+          <label for="transportDate"
             ><b>{{ "LABEL_DATE" | translate }}</b></label
           >
-          <app-datepicker [(date)]="data.transportDate" [minDate]="minDate"></app-datepicker>
+          <app-datepicker [(date)]="data.transportDate" [minDate]="minDate" id="transportDate"></app-datepicker>
         </div>
         <div class="col-lg-3 col-md-12">
-          <label
+          <label for="capacity"
             ><b>{{ "LABEL_HOW_MANY_PEOPLE_UCAN_TAKE" | translate }} *</b></label
           >
           <mat-form-field appearance="outline">
             <input
               matInput
               type="text"
-              placeholder="{{ 'PLACEHOLDER_CHOOSE' | translate }}"
+              placeholder="{{ 'PLACEHOLDER_TYPE' | translate }}"
               [(ngModel)]="data.capacity"
               name="capacity"
+              id="capacity"
               [appMinMaxValidate]="{ min: 1, max: 99, required: true }"
               autocomplete="off"
               #capacity="ngModel"
@@ -62,7 +63,7 @@
 
       <div class="row">
         <div class="col-lg-7 col-xl-8 mb-3">
-          <label>
+          <label for="description" [attr.aria-label]="'LABEL_OFFER_DESCRIPTION_MAXCHARS' | translate">
             <b>{{ "LABEL_OFFER_DESCRIPTION" | translate }}</b>
             <span> {{ "LABEL_OFFER_DESCRIPTION_MAXCHARS" | translate }} *</span>
           </label>
@@ -71,8 +72,9 @@
               matInput
               rows="8"
               maxlength="2000"
-              placeholder="{{ 'PLACEHOLDER_OFFER_DESCRIPTION' | translate }}"
+              placeholder="{{ 'PLACEHOLDER_OFFER_DESCRIPTION_TRANSPORT' | translate }}"
               name="description"
+              id="description"
               [(ngModel)]="data.description"
               required
               #description="ngModel"

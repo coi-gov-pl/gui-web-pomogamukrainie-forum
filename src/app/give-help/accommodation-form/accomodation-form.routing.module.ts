@@ -9,7 +9,8 @@ const routes: Routes = [
     component: AccommodationFormComponent,
     canDeactivate: [CanDeactivateGuard],
     data: {
-      title: null,
+      title: 'GIVE_ACCOMODATION_TITLE',
+      breadcrumb: { alias: null },
     },
   },
 ];

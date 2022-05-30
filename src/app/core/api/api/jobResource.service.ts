@@ -25,13 +25,13 @@ import { CustomHttpParameterCodec } from '../encoder';
 import { Observable } from 'rxjs';
 
 // @ts-ignore
-import { JobOffer } from '../model/jobOffer';
-// @ts-ignore
 import { JobOfferDefinitionDTO } from '../model/jobOfferDefinitionDTO';
 // @ts-ignore
 import { JobOfferSearchCriteria } from '../model/jobOfferSearchCriteria';
 // @ts-ignore
-import { OffersJobOffer } from '../model/offersJobOffer';
+import { JobOfferVM } from '../model/jobOfferVM';
+// @ts-ignore
+import { OffersVMJobOfferVM } from '../model/offersVMJobOfferVM';
 // @ts-ignore
 import { Pageable } from '../model/pageable';
 
@@ -111,19 +111,19 @@ export class JobResourceService {
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<JobOffer>;
+  ): Observable<JobOfferVM>;
   public createJob(
     jobOfferDefinitionDTO: JobOfferDefinitionDTO,
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<JobOffer>>;
+  ): Observable<HttpResponse<JobOfferVM>>;
   public createJob(
     jobOfferDefinitionDTO: JobOfferDefinitionDTO,
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<JobOffer>>;
+  ): Observable<HttpEvent<JobOfferVM>>;
   public createJob(
     jobOfferDefinitionDTO: JobOfferDefinitionDTO,
     observe: any = 'body',
@@ -169,7 +169,7 @@ export class JobResourceService {
       }
     }
 
-    return this.httpClient.post<JobOffer>(`${this.configuration.basePath}/api/secure/job`, jobOfferDefinitionDTO, {
+    return this.httpClient.post<JobOfferVM>(`${this.configuration.basePath}/api/secure/job`, jobOfferDefinitionDTO, {
       context: localVarHttpContext,
       responseType: <any>responseType_,
       withCredentials: this.configuration.withCredentials,
@@ -255,35 +255,45 @@ export class JobResourceService {
 
   /**
    * @param id
+   * @param lang
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
   public getJob(
     id: number,
+    lang?: 'UA' | 'PL' | 'EN' | 'RU',
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<JobOffer>;
+  ): Observable<JobOfferVM>;
   public getJob(
     id: number,
+    lang?: 'UA' | 'PL' | 'EN' | 'RU',
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<JobOffer>>;
+  ): Observable<HttpResponse<JobOfferVM>>;
   public getJob(
     id: number,
+    lang?: 'UA' | 'PL' | 'EN' | 'RU',
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<JobOffer>>;
+  ): Observable<HttpEvent<JobOfferVM>>;
   public getJob(
     id: number,
+    lang?: 'UA' | 'PL' | 'EN' | 'RU',
     observe: any = 'body',
     reportProgress: boolean = false,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
   ): Observable<any> {
     if (id === null || id === undefined) {
       throw new Error('Required parameter id was null or undefined when calling getJob.');
+    }
+
+    let localVarQueryParameters = new HttpParams({ encoder: this.encoder });
+    if (lang !== undefined && lang !== null) {
+      localVarQueryParameters = this.addToHttpParams(localVarQueryParameters, <any>lang, 'lang');
     }
 
     let localVarHeaders = this.defaultHeaders;
@@ -314,8 +324,9 @@ export class JobResourceService {
       }
     }
 
-    return this.httpClient.get<JobOffer>(`${this.configuration.basePath}/api/job/${encodeURIComponent(String(id))}`, {
+    return this.httpClient.get<JobOfferVM>(`${this.configuration.basePath}/api/job/${encodeURIComponent(String(id))}`, {
       context: localVarHttpContext,
+      params: localVarQueryParameters,
       responseType: <any>responseType_,
       withCredentials: this.configuration.withCredentials,
       headers: localVarHeaders,
@@ -336,21 +347,21 @@ export class JobResourceService {
     observe?: 'body',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<OffersJobOffer>;
+  ): Observable<OffersVMJobOfferVM>;
   public listJob(
     pageRequest: Pageable,
     searchCriteria: JobOfferSearchCriteria,
     observe?: 'response',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpResponse<OffersJobOffer>>;
+  ): Observable<HttpResponse<OffersVMJobOfferVM>>;
   public listJob(
     pageRequest: Pageable,
     searchCriteria: JobOfferSearchCriteria,
     observe?: 'events',
     reportProgress?: boolean,
     options?: { httpHeaderAccept?: 'application/json'; context?: HttpContext }
-  ): Observable<HttpEvent<OffersJobOffer>>;
+  ): Observable<HttpEvent<OffersVMJobOfferVM>>;
   public listJob(
     pageRequest: Pageable,
     searchCriteria: JobOfferSearchCriteria,
@@ -401,7 +412,7 @@ export class JobResourceService {
       }
     }
 
-    return this.httpClient.get<OffersJobOffer>(`${this.configuration.basePath}/api/job`, {
+    return this.httpClient.get<OffersVMJobOfferVM>(`${this.configuration.basePath}/api/job`, {
       context: localVarHttpContext,
       params: localVarQueryParameters,
       responseType: <any>responseType_,

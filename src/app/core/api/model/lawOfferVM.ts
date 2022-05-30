@@ -11,7 +11,7 @@
  */
 import { Location } from './location';
 
-export interface LawOffer {
+export interface LawOfferVM {
   id: number;
   userFirstName: string;
   title: string;
@@ -19,13 +19,21 @@ export interface LawOffer {
   phoneNumber?: string;
   phoneCountryCode?: string;
   modifiedDate?: string;
+  detectedLanguage?: LawOfferVM.DetectedLanguageEnum;
   location?: Location;
-  helpMode: Array<LawOffer.HelpModeEnum>;
-  helpKind: Array<LawOffer.HelpKindEnum>;
-  language: Array<LawOffer.LanguageEnum>;
-  type: LawOffer.TypeEnum;
+  helpMode: Array<LawOfferVM.HelpModeEnum>;
+  helpKind: Array<LawOfferVM.HelpKindEnum>;
+  language: Array<LawOfferVM.LanguageEnum>;
+  type: LawOfferVM.TypeEnum;
 }
-export namespace LawOffer {
+export namespace LawOfferVM {
+  export type DetectedLanguageEnum = 'UA' | 'PL' | 'EN' | 'RU';
+  export const DetectedLanguageEnum = {
+    Ua: 'UA' as DetectedLanguageEnum,
+    Pl: 'PL' as DetectedLanguageEnum,
+    En: 'EN' as DetectedLanguageEnum,
+    Ru: 'RU' as DetectedLanguageEnum,
+  };
   export type HelpModeEnum = 'STATIONARY' | 'WITH_ACCESS' | 'ONLINE' | 'BY_EMAIL' | 'BY_PHONE';
   export const HelpModeEnum = {
     Stationary: 'STATIONARY' as HelpModeEnum,

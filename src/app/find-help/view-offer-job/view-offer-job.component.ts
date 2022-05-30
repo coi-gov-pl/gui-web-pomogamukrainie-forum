@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { defaults } from '@app/shared/utils';
 import { CategoryRoutingName, CorePath } from '@app/shared/models';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { JobOffer, JobResourceService, Pageable } from '@app/core/api';
+import { JobOfferVM, JobResourceService, Pageable } from '@app/core/api';
 import { JobOfferSearchCriteria } from '@app/core/api/model/jobOfferSearchCriteria';
 
 @Component({
@@ -12,12 +12,12 @@ import { JobOfferSearchCriteria } from '@app/core/api/model/jobOfferSearchCriter
 })
 export class ViewOfferJobComponent implements OnInit {
   offerId!: number;
-  data = defaults<JobOffer>();
+  data = defaults<JobOfferVM>();
   categoryRouteName = CategoryRoutingName.JOB;
   redirectedFromAccount: boolean;
   originalAccountQueryParams?: Params;
-  offerResults: JobOffer[] = [];
-  activeOffer: JobOffer | undefined;
+  offerResults: JobOfferVM[] = [];
+  activeOffer: JobOfferVM | undefined;
   activeIndex: number = 0;
   blurClass = '';
   searchCriteria = defaults<JobOfferSearchCriteria>();
@@ -72,13 +72,13 @@ export class ViewOfferJobComponent implements OnInit {
   slideOffer(index: number, direction: 'prev' | 'next') {
     this.blurAnimate();
     if (direction === 'prev') {
-      const SLIDE_PREV_DATA: JobOffer = this.offerResults[index - 1];
+      const SLIDE_PREV_DATA: JobOfferVM = this.offerResults[index - 1];
       this.router.navigate([CorePath.Find, this.categoryRouteName, SLIDE_PREV_DATA.id]);
       this.activeIndex = index >= 0 ? index - 1 : index;
       this.offerId = SLIDE_PREV_DATA.id;
       this.data = SLIDE_PREV_DATA;
     } else {
-      const SLIDE_NEXT_DATA: JobOffer = this.offerResults[index + 1];
+      const SLIDE_NEXT_DATA: JobOfferVM = this.offerResults[index + 1];
       this.router.navigate([CorePath.Find, this.categoryRouteName, SLIDE_NEXT_DATA.id]);
       this.activeIndex = index >= 0 ? index + 1 : index;
       this.offerId = SLIDE_NEXT_DATA.id;

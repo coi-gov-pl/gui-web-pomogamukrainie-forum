@@ -46,7 +46,7 @@ export class BreadcrumbComponent implements OnInit {
     let route: ActivatedRouteSnapshot | null = findRootRoute(this.route.snapshot);
     let path = [];
     while (route) {
-      const label: string = route.data['title'];
+      const label: string = route.data['breadcrumb']?.alias;
       const disabled = !!route.data['disabled'];
       const newSegments = route.url.map((segment) => segment.path);
       path.push(...newSegments);

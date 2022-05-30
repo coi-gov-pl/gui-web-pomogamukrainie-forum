@@ -8,7 +8,7 @@ import { switchMap, take } from 'rxjs/operators';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ConfirmCancelDialogComponent } from '@app/shared/components';
 import { OfferDataInitService } from '@app/shared/services';
-import { TranslationOffer, TranslationOfferDefinitionDTO, TranslationResourceService } from '@app/core/api';
+import { TranslationOfferVM, TranslationOfferDefinitionDTO, TranslationResourceService } from '@app/core/api';
 import { NgForm } from '@angular/forms';
 import { Observable, of } from 'rxjs';
 
@@ -19,7 +19,7 @@ import { Observable, of } from 'rxjs';
 })
 export class TranslationFormComponent implements OnInit {
   data = defaults<TranslationOfferDefinitionDTO>({});
-  modes = Object.values(TranslationOffer.ModeEnum);
+  modes = Object.values(TranslationOfferVM.ModeEnum);
   LANGUAGES = LANGUAGES;
   PREFIXES = PREFIXES;
   offerId?: number;

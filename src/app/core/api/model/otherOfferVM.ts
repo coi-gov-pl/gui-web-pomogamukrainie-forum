@@ -11,7 +11,7 @@
  */
 import { Location } from './location';
 
-export interface OtherOffer {
+export interface OtherOfferVM {
   id: number;
   userFirstName: string;
   title: string;
@@ -19,10 +19,18 @@ export interface OtherOffer {
   phoneNumber?: string;
   phoneCountryCode?: string;
   modifiedDate?: string;
+  detectedLanguage?: OtherOfferVM.DetectedLanguageEnum;
   location?: Location;
-  type: OtherOffer.TypeEnum;
+  type: OtherOfferVM.TypeEnum;
 }
-export namespace OtherOffer {
+export namespace OtherOfferVM {
+  export type DetectedLanguageEnum = 'UA' | 'PL' | 'EN' | 'RU';
+  export const DetectedLanguageEnum = {
+    Ua: 'UA' as DetectedLanguageEnum,
+    Pl: 'PL' as DetectedLanguageEnum,
+    En: 'EN' as DetectedLanguageEnum,
+    Ru: 'RU' as DetectedLanguageEnum,
+  };
   export type TypeEnum = 'OTHER';
   export const TypeEnum = {
     Other: 'OTHER' as TypeEnum,

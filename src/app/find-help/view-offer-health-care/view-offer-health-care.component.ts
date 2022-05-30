@@ -3,7 +3,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { CategoryRoutingName } from '@app/shared/models';
 import { defaults } from '@app/shared/utils';
 import { CorePath } from '@app/shared/models';
-import { HealthOffer } from '../../core/api/model/healthOffer';
+import { HealthOfferVM } from '../../core/api/model/healthOfferVM';
 import { HealthResourceService } from '../../core/api/api/healthResource.service';
 import { HealthOfferSearchCriteria, Pageable } from '@app/core/api';
 
@@ -14,12 +14,12 @@ import { HealthOfferSearchCriteria, Pageable } from '@app/core/api';
 })
 export class ViewOfferHealthCareComponent implements OnInit {
   offerId: number = 0;
-  data = defaults<HealthOffer>();
+  data = defaults<HealthOfferVM>();
   categoryRouteName = CategoryRoutingName.HEALTH;
   redirectedFromAccount: boolean;
   originalAccountQueryParams?: Params | undefined;
-  offerResults: HealthOffer[] = [];
-  activeOffer: HealthOffer | undefined;
+  offerResults: HealthOfferVM[] = [];
+  activeOffer: HealthOfferVM | undefined;
   activeIndex: number = 0;
   blurClass = '';
   searchCriteria = defaults<HealthOfferSearchCriteria>();
@@ -76,13 +76,13 @@ export class ViewOfferHealthCareComponent implements OnInit {
   slideOffer(index: number, direction: 'prev' | 'next') {
     this.blurAnimate();
     if (direction === 'prev') {
-      const SLIDE_PREV_DATA: HealthOffer = this.offerResults[index - 1];
+      const SLIDE_PREV_DATA: HealthOfferVM = this.offerResults[index - 1];
       this.router.navigate([CorePath.Find, this.categoryRouteName, SLIDE_PREV_DATA.id]);
       this.activeIndex = index >= 0 ? index - 1 : index;
       this.offerId = SLIDE_PREV_DATA.id;
       this.data = SLIDE_PREV_DATA;
     } else {
-      const SLIDE_NEXT_DATA: HealthOffer = this.offerResults[index + 1];
+      const SLIDE_NEXT_DATA: HealthOfferVM = this.offerResults[index + 1];
       this.router.navigate([CorePath.Find, this.categoryRouteName, SLIDE_NEXT_DATA.id]);
       this.activeIndex = index >= 0 ? index + 1 : index;
       this.offerId = SLIDE_NEXT_DATA.id;

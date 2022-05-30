@@ -1,6 +1,6 @@
-import { HealthOfferDefinitionDTO, OffersHealthOffer, HealthOffer } from '@app/core/api';
+import { HealthOfferDefinitionDTO, OffersVMHealthOfferVM, HealthOfferVM } from '@app/core/api';
 
-export const healthOffer = (body: HealthOfferDefinitionDTO): HealthOffer => {
+export const healthOffer = (body: HealthOfferDefinitionDTO): HealthOfferVM => {
   return {
     ...body,
     id: 1,
@@ -10,7 +10,7 @@ export const healthOffer = (body: HealthOfferDefinitionDTO): HealthOffer => {
   };
 };
 
-export const healthList: OffersHealthOffer = {
+export const healthList: OffersVMHealthOfferVM = {
   content: [
     {
       id: 7,

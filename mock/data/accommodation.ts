@@ -1,6 +1,6 @@
-import { AccommodationOfferDefinitionDTO, AccommodationOffer, OffersAccommodationOffer } from '@app/core/api';
+import { AccommodationOfferDefinitionDTO, AccommodationOfferVM, OffersVMAccommodationOfferVM } from '@app/core/api';
 
-export const accommodationOffer = (body: AccommodationOfferDefinitionDTO): AccommodationOffer => {
+export const accommodationOffer = (body: AccommodationOfferDefinitionDTO): AccommodationOfferVM => {
   return {
     ...body,
     id: 1,
@@ -10,7 +10,7 @@ export const accommodationOffer = (body: AccommodationOfferDefinitionDTO): Accom
   };
 };
 
-export const accommodationsList: OffersAccommodationOffer = {
+export const accommodationsList: OffersVMAccommodationOfferVM = {
   content: [
     {
       id: 1,

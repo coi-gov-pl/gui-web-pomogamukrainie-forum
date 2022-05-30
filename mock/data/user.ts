@@ -1,8 +1,8 @@
-import { OffersBaseOffer, UserInfo } from '@app/core/api';
+import { OffersVMBaseOfferVM, UserInfo } from '@app/core/api';
 
 export const loggedUserInfo: UserInfo = { email: 'john@email.invalid', firstName: 'John' };
 
-export const userOffers: OffersBaseOffer = {
+export const userOffers: OffersVMBaseOfferVM = {
   content: [
     {
       id: 1,
@@ -166,7 +166,16 @@ export const userOffers: OffersBaseOffer = {
       mode: ['BY_PHONE'],
       type: 'TRANSLATION',
     },
+    {
+      id: 10001,
+      userFirstName: 'Marta',
+      title: 'Ogłoszenie dowolne',
+      description: 'Treść ogłoszenia dowolnego.',
+      modifiedDate: '2022-03-14T10:36:12Z',
+      location: { region: 'woj. mazowieckie, pow. Warszawa, gm. Warszawa', city: 'Warszawa' },
+      type: 'OTHER',
+    },
   ],
-  totalElements: 9,
+  totalElements: 10,
   totalPages: 2,
 };

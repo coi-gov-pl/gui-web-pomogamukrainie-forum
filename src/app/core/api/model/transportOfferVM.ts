@@ -11,7 +11,7 @@
  */
 import { Location } from './location';
 
-export interface TransportOffer {
+export interface TransportOfferVM {
   id: number;
   userFirstName: string;
   title: string;
@@ -19,13 +19,21 @@ export interface TransportOffer {
   phoneNumber?: string;
   phoneCountryCode?: string;
   modifiedDate?: string;
+  detectedLanguage?: TransportOfferVM.DetectedLanguageEnum;
   origin?: Location;
   destination?: Location;
   capacity: number;
   transportDate?: string;
-  type: TransportOffer.TypeEnum;
+  type: TransportOfferVM.TypeEnum;
 }
-export namespace TransportOffer {
+export namespace TransportOfferVM {
+  export type DetectedLanguageEnum = 'UA' | 'PL' | 'EN' | 'RU';
+  export const DetectedLanguageEnum = {
+    Ua: 'UA' as DetectedLanguageEnum,
+    Pl: 'PL' as DetectedLanguageEnum,
+    En: 'EN' as DetectedLanguageEnum,
+    Ru: 'RU' as DetectedLanguageEnum,
+  };
   export type TypeEnum = 'TRANSPORT';
   export const TypeEnum = {
     Transport: 'TRANSPORT' as TypeEnum,

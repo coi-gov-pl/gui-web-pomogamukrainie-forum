@@ -2,20 +2,22 @@ import { Component, OnInit } from '@angular/core';
 import {
   MyOffersResourceService,
   Pageable,
-  AccommodationOffer,
+  AccommodationOfferVM,
   AccommodationsResourceService,
-  MaterialAidOffer,
+  MaterialAidOfferVM,
   MaterialAidResourceService,
-  OffersBaseOffer,
-  TransportOffer,
+  OffersVMBaseOfferVM,
+  TransportOfferVM,
   TransportResourceService,
-  LawOffer,
-  HealthOffer,
+  LawOfferVM,
+  HealthOfferVM,
   HealthResourceService,
-  JobOffer,
+  JobOfferVM,
   JobResourceService,
   LawResourceService,
   TranslationResourceService,
+  OtherOfferVM,
+  OtherResourceService,
 } from '@app/core/api';
 import { switchMap, take } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -24,7 +26,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ConfirmRemoveAdComponent } from '../confirm-remove-ad/confirm-remove-ad.component';
 import { StoreUrlService } from '@app/core/store-url/store-url.service';
 import { SnackbarService } from '@app/shared/services';
-import { TranslationOffer } from '@app/core/api/model/translationOffer';
+import { TranslationOfferVM } from '@app/core/api/model/translationOfferVM';
 
 @Component({
   selector: 'app-my-account',
@@ -32,7 +34,7 @@ import { TranslationOffer } from '@app/core/api/model/translationOffer';
   styleUrls: ['./my-account.component.scss'],
 })
 export class MyAccountComponent implements OnInit {
-  public myAnnouncements!: OffersBaseOffer;
+  public myAnnouncements!: OffersVMBaseOfferVM;
   pageRequest: Pageable = {};
   categoryRoutingName = CategoryRoutingName;
   total?: number = undefined;
@@ -50,7 +52,8 @@ export class MyAccountComponent implements OnInit {
     private healthResourceService: HealthResourceService,
     private jobResourceService: JobResourceService,
     private lawResourceService: LawResourceService,
-    private translationResourceService: TranslationResourceService
+    private translationResourceService: TranslationResourceService,
+    private otherResourceService: OtherResourceService
   ) {}
 
   public async ngOnInit() {
@@ -76,13 +79,14 @@ export class MyAccountComponent implements OnInit {
 
   removeAnnouncement(
     announcement:
-      | AccommodationOffer
-      | MaterialAidOffer
-      | TransportOffer
-      | HealthOffer
-      | JobOffer
-      | LawOffer
-      | TranslationOffer
+      | AccommodationOfferVM
+      | MaterialAidOfferVM
+      | TransportOfferVM
+      | HealthOfferVM
+      | JobOfferVM
+      | LawOfferVM
+      | TranslationOfferVM
+      | OtherOfferVM
   ): void {
     const dialogRef: MatDialogRef<ConfirmRemoveAdComponent> = this.dialog.open(ConfirmRemoveAdComponent, {
       hasBackdrop: true,
@@ -97,7 +101,7 @@ export class MyAccountComponent implements OnInit {
     dialogRef.componentInstance.confirm.pipe(take(1)).subscribe((confirmed: boolean) => {
       dialogRef.close();
       if (confirmed) {
-        if (announcement.type === TransportOffer.TypeEnum.Transport) {
+        if (announcement.type === TransportOfferVM.TypeEnum.Transport) {
           this.transportResourceService
             .deleteTransport(announcement.id)
             .pipe(switchMap(() => this.myOffersResource.listMyOffers(this.pageRequest)))
@@ -105,7 +109,7 @@ export class MyAccountComponent implements OnInit {
               next: (data) => this.onRemoveSuccess(data),
               error: (error) => this.onRemoveError(error.message),
             });
-        } else if (announcement.type === AccommodationOffer.TypeEnum.Accommodation) {
+        } else if (announcement.type === AccommodationOfferVM.TypeEnum.Accommodation) {
           this.accommodationsResourceService
             .deleteAccommodations(announcement.id)
             .pipe(switchMap(() => this.myOffersResource.listMyOffers(this.pageRequest)))
@@ -113,7 +117,7 @@ export class MyAccountComponent implements OnInit {
               next: (data) => this.onRemoveSuccess(data),
               error: (error) => this.onRemoveError(error.message),
             });
-        } else if (announcement.type === MaterialAidOffer.TypeEnum.MaterialAid) {
+        } else if (announcement.type === MaterialAidOfferVM.TypeEnum.MaterialAid) {
           this.materialAidResourceService
             .deleteMaterialAid(announcement.id)
             .pipe(switchMap(() => this.myOffersResource.listMyOffers(this.pageRequest)))
@@ -121,7 +125,7 @@ export class MyAccountComponent implements OnInit {
               next: (data) => this.onRemoveSuccess(data),
               error: (error) => this.onRemoveError(error.message),
             });
-        } else if (announcement.type === HealthOffer.TypeEnum.Health) {
+        } else if (announcement.type === HealthOfferVM.TypeEnum.Health) {
           this.healthResourceService
             .deleteHealth(announcement.id)
             .pipe(switchMap(() => this.myOffersResource.listMyOffers(this.pageRequest)))
@@ -129,7 +133,7 @@ export class MyAccountComponent implements OnInit {
               next: (data) => this.onRemoveSuccess(data),
               error: (error) => this.onRemoveError(error.message),
             });
-        } else if (announcement.type === JobOffer.TypeEnum.Job) {
+        } else if (announcement.type === JobOfferVM.TypeEnum.Job) {
           this.jobResourceService
             .deleteJob(announcement.id)
             .pipe(switchMap(() => this.myOffersResource.listMyOffers(this.pageRequest)))
@@ -137,7 +141,7 @@ export class MyAccountComponent implements OnInit {
               next: (data) => this.onRemoveSuccess(data),
               error: (error) => this.onRemoveError(error.message),
             });
-        } else if (announcement.type === LawOffer.TypeEnum.Law) {
+        } else if (announcement.type === LawOfferVM.TypeEnum.Law) {
           this.lawResourceService
             .deleteLaw(announcement.id)
             .pipe(switchMap(() => this.myOffersResource.listMyOffers(this.pageRequest)))
@@ -145,9 +149,17 @@ export class MyAccountComponent implements OnInit {
               next: (data) => this.onRemoveSuccess(data),
               error: (error) => this.onRemoveError(error.message),
             });
-        } else if (announcement.type === TranslationOffer.TypeEnum.Translation) {
+        } else if (announcement.type === TranslationOfferVM.TypeEnum.Translation) {
           this.translationResourceService
             .deleteTranslation(announcement.id)
+            .pipe(switchMap(() => this.myOffersResource.listMyOffers(this.pageRequest)))
+            .subscribe({
+              next: (data) => this.onRemoveSuccess(data),
+              error: (error) => this.onRemoveError(error.message),
+            });
+        } else if (announcement.type === OtherOfferVM.TypeEnum.Other) {
+          this.otherResourceService
+            .deleteOther(announcement.id)
             .pipe(switchMap(() => this.myOffersResource.listMyOffers(this.pageRequest)))
             .subscribe({
               next: (data) => this.onRemoveSuccess(data),
@@ -159,43 +171,48 @@ export class MyAccountComponent implements OnInit {
   }
   editAnnouncement(
     announcement:
-      | AccommodationOffer
-      | MaterialAidOffer
-      | TransportOffer
-      | HealthOffer
-      | JobOffer
-      | LawOffer
-      | TranslationOffer
+      | AccommodationOfferVM
+      | MaterialAidOfferVM
+      | TransportOfferVM
+      | HealthOfferVM
+      | JobOfferVM
+      | LawOfferVM
+      | TranslationOfferVM
+      | OtherOfferVM
   ): void {
     // @TODO: extract to separate util
     let categoryRoute;
     switch (announcement.type) {
-      case AccommodationOffer.TypeEnum.Accommodation: {
+      case AccommodationOfferVM.TypeEnum.Accommodation: {
         categoryRoute = CategoryRoutingName.ACCOMMODATION;
         break;
       }
-      case MaterialAidOffer.TypeEnum.MaterialAid: {
+      case MaterialAidOfferVM.TypeEnum.MaterialAid: {
         categoryRoute = CategoryRoutingName.MATERIAL_HELP;
         break;
       }
-      case TransportOffer.TypeEnum.Transport: {
+      case TransportOfferVM.TypeEnum.Transport: {
         categoryRoute = CategoryRoutingName.TRANSPORT;
         break;
       }
-      case HealthOffer.TypeEnum.Health: {
+      case HealthOfferVM.TypeEnum.Health: {
         categoryRoute = CategoryRoutingName.HEALTH;
         break;
       }
-      case JobOffer.TypeEnum.Job: {
+      case JobOfferVM.TypeEnum.Job: {
         categoryRoute = CategoryRoutingName.JOB;
         break;
       }
-      case LawOffer.TypeEnum.Law: {
+      case LawOfferVM.TypeEnum.Law: {
         categoryRoute = CategoryRoutingName.LEGAL_HELP;
         break;
       }
-      case TranslationOffer.TypeEnum.Translation: {
+      case TranslationOfferVM.TypeEnum.Translation: {
         categoryRoute = CategoryRoutingName.TRANSLATIONS;
+        break;
+      }
+      case OtherOfferVM.TypeEnum.Other: {
+        categoryRoute = CategoryRoutingName.OTHER;
         break;
       }
     }
@@ -207,7 +224,7 @@ export class MyAccountComponent implements OnInit {
     this.router.navigate([CorePath.Give, CategoryRoutingName.ACCOMMODATION]);
   }
 
-  private onRemoveSuccess(data: OffersBaseOffer): void {
+  private onRemoveSuccess(data: OffersVMBaseOfferVM): void {
     this.myAnnouncements = data;
     this.snackbarService.openUpperSnackAlert(ALERT_TYPES.OFFER_REMOVED);
   }

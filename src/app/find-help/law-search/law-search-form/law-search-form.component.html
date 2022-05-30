@@ -12,18 +12,23 @@
         ></app-cities-search>
       </div>
       <div class="col-md-6 col-xl-2">
-        <label>
+        <label for="helpKind">
           <b>{{ "LABEL_HELP_KIND" | translate }}</b>
         </label>
         <mat-form-field appearance="outline">
-          <mat-select [placeholder]="'OPTION_ALL' | translate" [(ngModel)]="data.helpKind" name="helpKind">
+          <mat-select
+            [placeholder]="'OPTION_ALL' | translate"
+            [(ngModel)]="data.helpKind"
+            name="helpKind"
+            id="helpKind"
+          >
             <mat-option [value]="null">{{ "OPTION_ALL" | translate }}</mat-option>
             <mat-option *ngFor="let kind of HELP_KIND" [value]="kind.code">{{ kind.label | translate }}</mat-option>
           </mat-select>
         </mat-form-field>
       </div>
       <div class="col-md-6 col-xl-2">
-        <label>
+        <label for="language">
           <b>{{ "LANGUAGE" | translate }}</b>
         </label>
         <mat-form-field appearance="outline">
@@ -32,13 +37,14 @@
             multiple
             [(ngModel)]="data.language"
             name="language"
+            id="language"
           >
             <mat-option *ngFor="let lang of LANGUAGES" [value]="lang.code">{{ lang.label | translate }}</mat-option>
           </mat-select>
         </mat-form-field>
       </div>
       <div class="col-md-6 col-xl-2">
-        <label>
+        <label for="helpMode">
           <b>{{ "LABEL_HELP_MODE" | translate }}</b>
         </label>
         <mat-form-field appearance="outline">
@@ -47,6 +53,7 @@
             multiple
             [(ngModel)]="data.helpMode"
             name="helpMode"
+            id="helpMode"
           >
             <mat-option *ngFor="let mode of HELP_MODE" [value]="mode.code">{{ mode.label | translate }}</mat-option>
           </mat-select>

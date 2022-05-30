@@ -11,6 +11,7 @@ const routes: Routes = [
     component: MyAccountComponent,
     data: {
       title: null,
+      breadcrumb: { alias: null },
     },
   },
 ];

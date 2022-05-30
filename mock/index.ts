@@ -29,6 +29,8 @@ import {
   translationGet,
   translationPost,
   translationDelete,
+  otherPost,
+  otherGet,
 } from './operations';
 
 const port = process.env['PORT'] || 3000;
@@ -63,11 +65,13 @@ router
   .get(`${baseHref}/law`, lawListGet)
   .get(`${baseHref}/translation`, translationListGet)
   .get(`${baseHref}/translation/:id`, translationGet)
+  .get(`${baseHref}/other/:id`, otherGet)
   .post(`${baseHref}/secure/translation`, translationPost)
   .post(`${baseHref}/secure/accommodations`, accommodationsPost)
   .post(`${baseHref}/secure/material-aid`, materialAidPost)
   .post(`${baseHref}/secure/transport`, transportPost)
   .post(`${baseHref}/secure/job`, jobPost)
+  .post(`${baseHref}/secure/other`, otherPost)
   .post(`${baseHref}/message`, messagePost)
   .delete(`${baseHref}/secure/transport/:id`, transportDelete)
   .delete(`${baseHref}/secure/accommodations/:id`, accommodationDelete)

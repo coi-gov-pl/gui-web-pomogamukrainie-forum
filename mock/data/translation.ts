@@ -1,6 +1,6 @@
-import { OffersTranslationOffer, TranslationOffer, TranslationOfferDefinitionDTO } from '@app/core/api';
+import { OffersVMTranslationOfferVM, TranslationOfferVM, TranslationOfferDefinitionDTO } from '@app/core/api';
 
-export const translationOffer = (body: TranslationOfferDefinitionDTO): TranslationOffer => {
+export const translationOffer = (body: TranslationOfferDefinitionDTO): TranslationOfferVM => {
   return {
     ...body,
     id: 1,
@@ -10,7 +10,7 @@ export const translationOffer = (body: TranslationOfferDefinitionDTO): Translati
   };
 };
 
-export const translationList: OffersTranslationOffer = {
+export const translationList: OffersVMTranslationOfferVM = {
   content: [
     {
       id: 9999,

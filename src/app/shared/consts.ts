@@ -1,4 +1,4 @@
-import { AccommodationOffer, AccommodationOfferDefinitionDTO } from '@app/core/api';
+import { AccommodationOfferVM, AccommodationOfferDefinitionDTO } from '@app/core/api';
 import { LanguageCode, LanguageNames, LengthOfStayLabels } from '@app/core/translations';
 import { Option, Prefix } from './models';
 import HostLanguageEnum = AccommodationOfferDefinitionDTO.HostLanguageEnum;
@@ -30,12 +30,12 @@ export const LANGUAGES: Option[] = [
 ];
 
 export const LENGTH_OF_STAY: Option[] = [
-  { code: AccommodationOffer.LengthOfStayEnum.Week1, label: LengthOfStayLabels.WEEK_1 },
-  { code: AccommodationOffer.LengthOfStayEnum.Week2, label: LengthOfStayLabels.WEEK_2 },
-  { code: AccommodationOffer.LengthOfStayEnum.Month1, label: LengthOfStayLabels.MONTH_1 },
-  { code: AccommodationOffer.LengthOfStayEnum.Month2, label: LengthOfStayLabels.MONTH_2 },
-  { code: AccommodationOffer.LengthOfStayEnum.Month3, label: LengthOfStayLabels.MONTH_3 },
-  { code: AccommodationOffer.LengthOfStayEnum.Longer, label: LengthOfStayLabels.LONGER },
+  { code: AccommodationOfferVM.LengthOfStayEnum.Week1, label: LengthOfStayLabels.WEEK_1 },
+  { code: AccommodationOfferVM.LengthOfStayEnum.Week2, label: LengthOfStayLabels.WEEK_2 },
+  { code: AccommodationOfferVM.LengthOfStayEnum.Month1, label: LengthOfStayLabels.MONTH_1 },
+  { code: AccommodationOfferVM.LengthOfStayEnum.Month2, label: LengthOfStayLabels.MONTH_2 },
+  { code: AccommodationOfferVM.LengthOfStayEnum.Month3, label: LengthOfStayLabels.MONTH_3 },
+  { code: AccommodationOfferVM.LengthOfStayEnum.Longer, label: LengthOfStayLabels.LONGER },
 ];
 
 export const MATCH_NON_DIGITS = /[^0-9]+/g;

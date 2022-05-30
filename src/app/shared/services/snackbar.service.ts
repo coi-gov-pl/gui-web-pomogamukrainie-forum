@@ -17,7 +17,7 @@ export class SnackbarService {
   actionButtonLabel = 'OK';
   action = false;
   setAutoHide = true;
-  autoHide = 5000;
+  autoHide = 7500;
 
   constructor(private snackbar: MatSnackBar) {}
 

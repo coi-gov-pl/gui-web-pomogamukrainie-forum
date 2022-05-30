@@ -49,10 +49,20 @@
           ></app-search-result-attribute>
 
           <div class="w-100 flex-column mt-5 mt-sm-auto mb-sm-auto" buttons>
-            <button type="button" class="btn btn-outline-dark btn-edit" (click)="editAnnouncement(announcement)">
+            <button
+              type="button"
+              class="btn btn-outline-dark btn-edit"
+              (click)="editAnnouncement(announcement)"
+              [attr.aria-label]="('EDIT_ANNOUNCEMENT' | translate) + ': ' + announcement.title"
+            >
               {{ "EDIT_ANNOUNCEMENT" | translate }}
             </button>
-            <button type="button" class="btn btn-link btn-sm btn-remove" (click)="removeAnnouncement(announcement)">
+            <button
+              type="button"
+              class="btn btn-link btn-sm btn-remove"
+              (click)="removeAnnouncement(announcement)"
+              [attr.aria-label]="('REMOVE_ANNOUNCEMENT' | translate) + ': ' + announcement.title"
+            >
               {{ "REMOVE_ANNOUNCEMENT" | translate }}
             </button>
           </div>
@@ -75,10 +85,20 @@
           ></app-search-result-attribute>
 
           <div class="w-100 flex-column mt-5 mt-sm-auto mb-sm-auto" buttons>
-            <button type="button" class="btn btn-outline-dark btn-edit" (click)="editAnnouncement(announcement)">
+            <button
+              type="button"
+              class="btn btn-outline-dark btn-edit"
+              (click)="editAnnouncement(announcement)"
+              [attr.aria-label]="('EDIT_ANNOUNCEMENT' | translate) + ': ' + announcement.title"
+            >
               {{ "EDIT_ANNOUNCEMENT" | translate }}
             </button>
-            <button type="button" class="btn btn-link btn-sm btn-remove" (click)="removeAnnouncement(announcement)">
+            <button
+              type="button"
+              class="btn btn-link btn-sm btn-remove"
+              (click)="removeAnnouncement(announcement)"
+              [attr.aria-label]="('REMOVE_ANNOUNCEMENT' | translate) + ': ' + announcement.title"
+            >
               {{ "REMOVE_ANNOUNCEMENT" | translate }}
             </button>
           </div>
@@ -107,10 +127,20 @@
           ></app-search-result-attribute>
 
           <div class="w-100 flex-column mt-5 mt-sm-auto mb-sm-auto" buttons>
-            <button type="button" class="btn btn-outline-dark btn-edit" (click)="editAnnouncement(announcement)">
+            <button
+              type="button"
+              class="btn btn-outline-dark btn-edit"
+              (click)="editAnnouncement(announcement)"
+              [attr.aria-label]="('EDIT_ANNOUNCEMENT' | translate) + ': ' + announcement.title"
+            >
               {{ "EDIT_ANNOUNCEMENT" | translate }}
             </button>
-            <button type="button" class="btn btn-link btn-sm btn-remove" (click)="removeAnnouncement(announcement)">
+            <button
+              type="button"
+              class="btn btn-link btn-sm btn-remove"
+              (click)="removeAnnouncement(announcement)"
+              [attr.aria-label]="('REMOVE_ANNOUNCEMENT' | translate) + ': ' + announcement.title"
+            >
               {{ "REMOVE_ANNOUNCEMENT" | translate }}
             </button>
           </div>
@@ -143,10 +173,20 @@
           ></app-search-result-attribute>
 
           <div class="w-100 flex-column mt-5 mt-sm-auto mb-sm-auto" buttons>
-            <button type="button" class="btn btn-outline-dark btn-edit" (click)="editAnnouncement(announcement)">
+            <button
+              type="button"
+              class="btn btn-outline-dark btn-edit"
+              (click)="editAnnouncement(announcement)"
+              [attr.aria-label]="('EDIT_ANNOUNCEMENT' | translate) + ': ' + announcement.title"
+            >
               {{ "EDIT_ANNOUNCEMENT" | translate }}
             </button>
-            <button type="button" class="btn btn-link btn-sm btn-remove" (click)="removeAnnouncement(announcement)">
+            <button
+              type="button"
+              class="btn btn-link btn-sm btn-remove"
+              (click)="removeAnnouncement(announcement)"
+              [attr.aria-label]="('REMOVE_ANNOUNCEMENT' | translate) + ': ' + announcement.title"
+            >
               {{ "REMOVE_ANNOUNCEMENT" | translate }}
             </button>
           </div>
@@ -189,10 +229,20 @@
           ></app-search-result-attribute>
 
           <div class="w-100 flex-column mt-5 mt-sm-auto mb-sm-auto" buttons>
-            <button type="button" class="btn btn-outline-dark btn-edit" (click)="editAnnouncement(announcement)">
+            <button
+              type="button"
+              class="btn btn-outline-dark btn-edit"
+              (click)="editAnnouncement(announcement)"
+              [attr.aria-label]="('EDIT_ANNOUNCEMENT' | translate) + ': ' + announcement.title"
+            >
               {{ "EDIT_ANNOUNCEMENT" | translate }}
             </button>
-            <button type="button" class="btn btn-link btn-sm btn-remove" (click)="removeAnnouncement(announcement)">
+            <button
+              type="button"
+              class="btn btn-link btn-sm btn-remove"
+              (click)="removeAnnouncement(announcement)"
+              [attr.aria-label]="('REMOVE_ANNOUNCEMENT' | translate) + ': ' + announcement.title"
+            >
               {{ "REMOVE_ANNOUNCEMENT" | translate }}
             </button>
           </div>
@@ -225,10 +275,20 @@
           ></app-search-result-attribute>
 
           <div class="w-100 flex-column mt-5 mt-sm-auto mb-sm-auto" buttons>
-            <button type="button" class="btn btn-outline-dark btn-edit" (click)="editAnnouncement(announcement)">
+            <button
+              type="button"
+              class="btn btn-outline-dark btn-edit"
+              (click)="editAnnouncement(announcement)"
+              [attr.aria-label]="('EDIT_ANNOUNCEMENT' | translate) + ': ' + announcement.title"
+            >
               {{ "EDIT_ANNOUNCEMENT" | translate }}
             </button>
-            <button type="button" class="btn btn-link btn-sm btn-remove" (click)="removeAnnouncement(announcement)">
+            <button
+              type="button"
+              class="btn btn-link btn-sm btn-remove"
+              (click)="removeAnnouncement(announcement)"
+              [attr.aria-label]="('REMOVE_ANNOUNCEMENT' | translate) + ': ' + announcement.title"
+            >
               {{ "REMOVE_ANNOUNCEMENT" | translate }}
             </button>
           </div>
@@ -254,6 +314,25 @@
             icon="corporate_fare"
           ></app-search-result-attribute>
 
+          <div class="w-100 flex-column mt-5 mt-sm-auto mb-sm-auto" buttons>
+            <button type="button" class="btn btn-outline-dark btn-edit" (click)="editAnnouncement(announcement)">
+              {{ "EDIT_ANNOUNCEMENT" | translate }}
+            </button>
+            <button type="button" class="btn btn-link btn-sm btn-remove" (click)="removeAnnouncement(announcement)">
+              {{ "REMOVE_ANNOUNCEMENT" | translate }}
+            </button>
+          </div>
+        </app-search-result>
+        <app-search-result
+          *ngIf="announcement.type === 'OTHER'"
+          [location]="announcement.location"
+          [title]="announcement.title"
+          [description]="announcement.description | truncate: 200:'...'"
+          [posted]="announcement.modifiedDate"
+          [offerId]="announcement.id!"
+          [category]="categoryRoutingName.OTHER"
+          [fromMyAccount]="true"
+        >
           <div class="w-100 flex-column mt-5 mt-sm-auto mb-sm-auto" buttons>
             <button type="button" class="btn btn-outline-dark btn-edit" (click)="editAnnouncement(announcement)">
               {{ "EDIT_ANNOUNCEMENT" | translate }}

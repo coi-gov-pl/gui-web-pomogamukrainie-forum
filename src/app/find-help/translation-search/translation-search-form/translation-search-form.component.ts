@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
-import { TranslationOffer, TranslationOfferSearchCriteria } from '@app/core/api';
+import { TranslationOfferVM, TranslationOfferSearchCriteria } from '@app/core/api';
 import { StoreUrlService } from '@app/core/store-url';
 import { LANGUAGES } from '@app/shared/consts';
 import { LocalStorageKeys, StatementAnchors } from '@app/shared/models';
@@ -27,7 +27,7 @@ export class TranslationSearchFormComponent implements OnInit, OnDestroy {
   formChangesSubscription = new Subscription();
   showClearBtn = false;
   data: TranslationOfferSearchCriteria = {};
-  modes = Object.values(TranslationOffer.ModeEnum);
+  modes = Object.values(TranslationOfferVM.ModeEnum);
   languages = LANGUAGES;
   @Output()
   search = new EventEmitter<TranslationOfferSearchCriteria>();
