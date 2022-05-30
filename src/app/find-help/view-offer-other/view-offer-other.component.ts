@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { OtherOffer, OtherResourceService, Pageable } from '@app/core/api';
+import { OtherOfferVM, OtherResourceService, Pageable, OtherOfferSearchCriteria } from '@app/core/api';
 import { CategoryRoutingName, CorePath } from '@app/shared/models';
 import { defaults } from '@app/shared/utils';
-import { MaterialAidOfferSearchCriteria } from '../../core/api/model/materialAidOfferSearchCriteria';
 
 @Component({
   selector: 'app-view-offer-other',
@@ -12,15 +11,15 @@ import { MaterialAidOfferSearchCriteria } from '../../core/api/model/materialAid
 })
 export class ViewOfferOtherComponent implements OnInit {
   offerId: number = 0;
-  data = defaults<OtherOffer>();
-  categoryRouteName = CategoryRoutingName.MISC;
+  data = defaults<OtherOfferVM>();
+  categoryRouteName = CategoryRoutingName.OTHER;
   redirectedFromAccount: boolean;
   originalAccountQueryParams?: Params;
-  offerResults: OtherOffer[] = [];
-  activeOffer: OtherOffer | undefined;
+  offerResults: OtherOfferVM[] = [];
+  activeOffer: OtherOfferVM | undefined;
   activeIndex: number = 0;
   blurClass = '';
-  searchCriteria = defaults<MaterialAidOfferSearchCriteria>(); // TODO other search criteria
+  searchCriteria = defaults<OtherOfferSearchCriteria>(); // TODO other search criteria
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -50,7 +49,7 @@ export class ViewOfferOtherComponent implements OnInit {
   }
 
   getResults() {
-    this.searchCriteria.category = this.originalAccountQueryParams?.['category'];
+    this.searchCriteria.searchText = this.originalAccountQueryParams?.['searchText'];
     this.searchCriteria.location = this.originalAccountQueryParams?.['location'];
     const SORT = this.originalAccountQueryParams?.['sort']
       ? this.originalAccountQueryParams?.['sort']
@@ -71,13 +70,13 @@ export class ViewOfferOtherComponent implements OnInit {
   slideOffer(index: number, direction: 'prev' | 'next') {
     this.blurAnimate();
     if (direction === 'prev') {
-      const SLIDE_PREV_DATA: OtherOffer = this.offerResults[index - 1];
+      const SLIDE_PREV_DATA: OtherOfferVM = this.offerResults[index - 1];
       this.router.navigate([CorePath.Find, this.categoryRouteName, SLIDE_PREV_DATA.id]);
       this.activeIndex = index >= 0 ? index - 1 : index;
       this.offerId = SLIDE_PREV_DATA.id;
       this.data = SLIDE_PREV_DATA;
     } else {
-      const SLIDE_NEXT_DATA: OtherOffer = this.offerResults[index + 1];
+      const SLIDE_NEXT_DATA: OtherOfferVM = this.offerResults[index + 1];
       this.router.navigate([CorePath.Find, this.categoryRouteName, SLIDE_NEXT_DATA.id]);
       this.activeIndex = index >= 0 ? index + 1 : index;
       this.offerId = SLIDE_NEXT_DATA.id;
