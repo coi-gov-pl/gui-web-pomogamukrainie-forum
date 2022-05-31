@@ -309,4 +309,6 @@ export default {
   HELP_UA_LOGO: 'Logo Pomagamy Ukrainie - Strona główna',
   CLEAR: 'Wyczyść',
   LABEL_DETECTED_LANGUAGE: 'Wykryty język',
+  WHAT_ARE_YOU_LOOKING_FOR_2: 'Czego szukasz',
+  WHAT_ARE_YOU_LOOKING_FOR_2_PLACEHOLDER: 'Wpisz, czego szukasz',
 };
