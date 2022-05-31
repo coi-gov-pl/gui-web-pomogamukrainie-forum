@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { OtherOfferSearchCriteria } from '@app/core/api';
 import { StoreUrlService } from '@app/core/store-url';
-import { LocalStorageKeys, StatementAnchors } from '@app/shared/models';
+import { LocalStorageKeys } from '@app/shared/models';
 import { SortingFieldName, SortingOrder } from '@app/shared/models/sortingOrder.model';
 import { formFieldEmpty } from '@app/shared/utils';
 import { Subscription } from 'rxjs';
@@ -27,7 +27,6 @@ export class OtherSearchFormComponent implements OnInit, OnDestroy {
   data: OtherOfferSearchCriteria = {};
   @Output()
   search = new EventEmitter<OtherOfferSearchCriteria>();
-  // statementAnchor: string = StatementAnchors.OTHER;
 
   constructor(private router: Router, private route: ActivatedRoute, private storeUrlService: StoreUrlService) {}
 

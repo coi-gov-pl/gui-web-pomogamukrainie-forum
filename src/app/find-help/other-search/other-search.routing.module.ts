@@ -26,14 +26,6 @@ const routes: Routes = [
           title: null,
         },
       },
-      // {
-      //   path: ':id',
-      //   loadChildren: () =>
-      //     import('../view-offer-other/view-offer-other.module').then((m) => m.ViewOfferOtherModule),
-      //   data: {
-      //     title: BreadcrumbLabels.AD,
-      //   },
-      // },
     ],
   },
 ];
