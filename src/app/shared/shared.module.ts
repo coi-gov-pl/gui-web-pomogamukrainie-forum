@@ -12,16 +12,8 @@ import { TruncatePipe, TranslateArrayPipe } from '@app/shared/pipes';
 import { PhoneInputModule } from './components/phone-input/phone-input.module';
 import { PhoneInputComponent } from './components/phone-input/phone-input.component';
 import { CopyUrlComponent } from './components/copy-url/copy-url.component';
-import { ConfirmSessionExpiredComponent } from './components/confirm-session-expired/confirm-session-expired.component';
 @NgModule({
-  declarations: [
-    BreadcrumbComponent,
-    TruncatePipe,
-    ConfirmCancelDialogComponent,
-    TranslateArrayPipe,
-    CopyUrlComponent,
-    ConfirmSessionExpiredComponent,
-  ],
+  declarations: [BreadcrumbComponent, TruncatePipe, ConfirmCancelDialogComponent, TranslateArrayPipe, CopyUrlComponent],
   imports: [CommonModule, RouterModule, MatIconModule, TranslateModule, PhoneInputModule],
   exports: [
     MatCardModule,
