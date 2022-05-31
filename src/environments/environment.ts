@@ -8,8 +8,8 @@ export const environment: EnvironmentConfig = {
   production: false,
   environmentType: EnvironmentType.OFFAUTH,
   authConfig: {
-    // // issuer docker: https://github.com/coi-gov-pl/pomocua-ogloszenia
-    // issuer: 'https://local.pomagamukrainie.gov.pl/auth/realms/POMOCUA',
+    // issuer docker: https://github.com/coi-gov-pl/pomocua-ogloszenia
+    issuer: 'https://local.pomagamukrainie.gov.pl/auth/realms/POMOCUA',
     showDebugInformation: true,
     redirectUri: window.location.origin,
     logoutUrl: window.location.origin,
