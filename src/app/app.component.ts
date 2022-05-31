@@ -83,6 +83,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.authService.idleLogout();
+    this.authService.sessionEvents();
     this.translateService.use(localStorage.getItem(LocalStorageKeys.LangOption) || LanguageCode.pl_PL);
     this.storeUrlService.setPreviousUrl();
 
