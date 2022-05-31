@@ -1,14 +1,14 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { MaterialAidOffer, MaterialAidOfferSearchCriteria } from '@app/core/api';
+import { MaterialAidOfferVM, MaterialAidOfferSearchCriteria } from '@app/core/api';
 import { StoreUrlService } from '@app/core/store-url';
 import { LocalStorageKeys, StatementAnchors } from '@app/shared/models';
 import { SortingFieldName, SortingOrder } from '@app/shared/models/sortingOrder.model';
 import { formFieldEmpty } from '@app/shared/utils';
 import { Subscription } from 'rxjs';
 
-const categories = Object.entries(MaterialAidOffer.CategoryEnum).map(([key, value]) => ({
+const categories = Object.entries(MaterialAidOfferVM.CategoryEnum).map(([key, value]) => ({
   code: key,
   value,
 }));

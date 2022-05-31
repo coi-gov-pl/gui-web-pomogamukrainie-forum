@@ -1,6 +1,6 @@
-import { LawOfferDefinitionDTO, OffersLawOffer, LawOffer } from '@app/core/api';
+import { LawOfferDefinitionDTO, OffersVMLawOfferVM, LawOfferVM } from '@app/core/api';
 
-export const lawOffer = (body: LawOfferDefinitionDTO): LawOffer => {
+export const lawOffer = (body: LawOfferDefinitionDTO): LawOfferVM => {
   return {
     ...body,
     id: 1,
@@ -10,7 +10,7 @@ export const lawOffer = (body: LawOfferDefinitionDTO): LawOffer => {
   };
 };
 
-export const lawList: OffersLawOffer = {
+export const lawList: OffersVMLawOfferVM = {
   content: [
     {
       id: 79,

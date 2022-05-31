@@ -1,6 +1,6 @@
-import { OffersOtherOffer, OtherOffer, OtherOfferDefinitionDTO } from '@app/core/api';
+import { OffersVMOtherOfferVM, OtherOfferVM, OtherOfferDefinitionDTO } from '@app/core/api';
 
-export const otherOffer = (body: OtherOfferDefinitionDTO): OtherOffer => {
+export const otherOffer = (body: OtherOfferDefinitionDTO): OtherOfferVM => {
   return {
     ...body,
     id: 1,
@@ -10,7 +10,7 @@ export const otherOffer = (body: OtherOfferDefinitionDTO): OtherOffer => {
   };
 };
 
-export const otherList: OffersOtherOffer = {
+export const otherList: OffersVMOtherOfferVM = {
   content: [
     {
       id: 10001,

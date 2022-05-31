@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Pageable, TransportOffer, TransportOfferSearchCriteria, TransportResourceService } from '@app/core/api';
+import { Pageable, TransportOfferVM, TransportOfferSearchCriteria, TransportResourceService } from '@app/core/api';
 import { CategoryRoutingName, CorePath } from '@app/shared/models';
 import { ActivatedRoute } from '@angular/router';
 import { MobileViewportDetectService } from '@app/shared/services';
@@ -10,7 +10,7 @@ import { MobileViewportDetectService } from '@app/shared/services';
   styleUrls: ['./transport-search.component.scss'],
 })
 export class TransportSearchComponent implements OnInit {
-  results: TransportOffer[] = [];
+  results: TransportOfferVM[] = [];
   total?: number = undefined;
   CategoryRoutingName = CategoryRoutingName;
   corePath = CorePath;

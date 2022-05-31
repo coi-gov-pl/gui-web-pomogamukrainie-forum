@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
-import { LawOffer, LawOfferSearchCriteria } from '@app/core/api';
+import { LawOfferVM, LawOfferSearchCriteria } from '@app/core/api';
 import { StoreUrlService } from '@app/core/store-url';
 import { LANGUAGES } from '@app/shared/consts';
 import { LocalStorageKeys, Option, StatementAnchors } from '@app/shared/models';
@@ -9,12 +9,12 @@ import { SortingFieldName, SortingOrder } from '@app/shared/models/sortingOrder.
 import { formFieldEmpty } from '@app/shared/utils';
 import { Subscription } from 'rxjs';
 
-const HELP_KIND = Object.entries(LawOffer.HelpKindEnum).map(([key, value]) => ({
+const HELP_KIND = Object.entries(LawOfferVM.HelpKindEnum).map(([key, value]) => ({
   code: value,
   label: value,
 }));
 
-const HELP_MODE = Object.entries(LawOffer.HelpModeEnum).map(([key, value]) => ({
+const HELP_MODE = Object.entries(LawOfferVM.HelpModeEnum).map(([key, value]) => ({
   code: value,
   label: value,
 }));
