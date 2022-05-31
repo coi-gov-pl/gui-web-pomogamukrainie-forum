@@ -6,6 +6,8 @@ import { HealthOfferVM } from '@app/core/api';
 import { HealthOfferSearchCriteria } from '@app/core/api/model/healthOfferSearchCriteria';
 import { HealthResourceService } from '@app/core/api/api/healthResource.service';
 import { MobileViewportDetectService } from '@app/shared/services';
+import { TranslateService } from '@ngx-translate/core';
+import { langParam } from '@app/shared/utils';
 
 @Component({
   selector: 'app-health-search',
@@ -24,11 +26,13 @@ export class HealthSearchComponent implements OnInit {
   constructor(
     private healthResourceService: HealthResourceService,
     private route: ActivatedRoute,
-    private mobileViewportDetect: MobileViewportDetectService
+    private mobileViewportDetect: MobileViewportDetectService,
+    private translateService: TranslateService
   ) {}
 
   ngOnInit() {
     const { city, region, specialization, language, healthMode } = this.route.snapshot.queryParams;
+    this.searchCriteria.lang = langParam(this.translateService.currentLang) as HealthOfferSearchCriteria.LangEnum;
     const searchCriteria: HealthOfferSearchCriteria = {
       location: {
         region,
@@ -38,6 +42,12 @@ export class HealthSearchComponent implements OnInit {
       language,
       mode: healthMode,
     };
+
+    this.translateService.onLangChange.subscribe((params) => {
+      this.searchCriteria.lang = langParam(params.lang) as HealthOfferSearchCriteria.LangEnum;
+      this.search();
+    });
+
     this.search(searchCriteria);
   }
 
