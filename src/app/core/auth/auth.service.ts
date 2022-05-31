@@ -32,7 +32,15 @@ export class AuthService {
 
   public idleLogout(): void {
     this.oAuthService.events.pipe(filter((e) => e.type === 'session_terminated')).subscribe((e) => {
-      return console.debug('idleLogout(): Your session has been terminated!');
+      return console.log('idleLogout(): Your session has been terminated!');
+    });
+  }
+
+  public sessionEvents(): void {
+    this.oAuthService.events.subscribe((event) => {
+      return console.log('sessionEvents()', event);
+      // if (event instanceof OAuthErrorEvent) {
+      // }
     });
   }
 
