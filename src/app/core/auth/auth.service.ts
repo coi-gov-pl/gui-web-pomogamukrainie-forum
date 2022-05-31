@@ -32,7 +32,13 @@ export class AuthService {
 
   public idleLogout(): void {
     this.oAuthService.events.pipe(filter((e) => e.type === 'session_terminated')).subscribe((e) => {
-      return console.debug('idleLogout(): Your session has been terminated!');
+      return console.log('idleLogout(): Your session has been terminated!');
+    });
+  }
+
+  public sessionEvents(): void {
+    this.oAuthService.events.subscribe((e) => {
+      return console.log('sessionEvents()', e);
     });
   }
 
@@ -74,4 +80,7 @@ export class AuthService {
       },
     };
   }
+}
+function subscribe(e: any): import('rxjs').OperatorFunction<import('angular-oauth2-oidc').OAuthEvent, unknown> {
+  throw new Error('Function not implemented.');
 }
