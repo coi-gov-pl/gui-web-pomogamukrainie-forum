@@ -12,6 +12,7 @@ import { LoadingService } from '@app/shared/services';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MobileViewportDetectService } from './shared/services/mobile-viewport-detect.service';
+import { ConfirmSessionExpiredDialogModule } from './shared/components/confirm-session-expired/confirm-session-expired.module';
 
 @NgModule({
   declarations: [AppComponent, LoadingComponent],
@@ -23,6 +24,7 @@ import { MobileViewportDetectService } from './shared/services/mobile-viewport-d
     CoreModule,
     MatProgressSpinnerModule,
     BrowserAnimationsModule,
+    ConfirmSessionExpiredDialogModule,
   ],
   entryComponents: [LoadingComponent],
   bootstrap: [AppComponent],
