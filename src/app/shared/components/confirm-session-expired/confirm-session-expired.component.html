@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="icon">
+    <mat-icon fontSet="material-icons-outlined">help_outline</mat-icon>
+  </div>
+  <div class="title">{{ headerText | translate }}</div>
+  <p>{{ "CONFIRM_CANCEL_OFFER_DISC" | translate }}</p>
+  <div class="footer flex-column flex-md-row align-items-center align-items-auto">
+    <button type="submit" class="btn btn-dark" (click)="confirmAction(false)">
+      <span>{{ "NO" | translate }}</span>
+    </button>
+    <button type="submit" class="btn btn-secondary mt-3 mt-md-0" (click)="confirmAction(true)">
+      <span>{{ "YES" | translate }}</span>
+    </button>
+  </div>
+</div>
