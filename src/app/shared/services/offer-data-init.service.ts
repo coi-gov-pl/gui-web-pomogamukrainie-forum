@@ -1,26 +1,28 @@
 import { Injectable } from '@angular/core';
-import { AccommodationOffer, JobOffer, OtherOffer } from '@app/core/api';
+import { AccommodationOfferVM, JobOfferVM, OtherOfferVM } from '@app/core/api';
 import { PREFIXES } from '@app/shared/consts';
 import { CategoryNameKey } from '@app/shared/models';
-import { HealthOffer } from '@app/core/api/model/healthOffer';
-import { LawOffer } from '@app/core/api/model/lawOffer';
-import { MaterialAidOffer } from '@app/core/api/model/materialAidOffer';
-import { TransportOffer } from '@app/core/api/model/transportOffer';
-import { TranslationOffer } from '@app/core/api/model/translationOffer';
+import { HealthOfferVM } from '@app/core/api/model/healthOfferVM';
+import { LawOfferVM } from '@app/core/api/model/lawOfferVM';
+import { MaterialAidOfferVM } from '@app/core/api/model/materialAidOfferVM';
+import { TransportOfferVM } from '@app/core/api/model/transportOfferVM';
+import { TranslationOfferVM } from '@app/core/api/model/translationOfferVM';
 
 @Injectable()
 export class OfferDataInitService {
   initOfferDataForEdit(context: any, category: CategoryNameKey) {
     if (category === CategoryNameKey.ACCOMMODATION) {
-      context.accommodationsResourceService.getAccommodations(context.offerId).subscribe((resp: AccommodationOffer) => {
-        context.phone.phoneNumber = resp.phoneNumber || '';
-        if (resp.phoneCountryCode) {
-          context.phone.prefix = PREFIXES.find((v) => v.prefix === resp.phoneCountryCode)?.prefix || '';
-        }
-        context.data = resp;
-      });
+      context.accommodationsResourceService
+        .getAccommodations(context.offerId)
+        .subscribe((resp: AccommodationOfferVM) => {
+          context.phone.phoneNumber = resp.phoneNumber || '';
+          if (resp.phoneCountryCode) {
+            context.phone.prefix = PREFIXES.find((v) => v.prefix === resp.phoneCountryCode)?.prefix || '';
+          }
+          context.data = resp;
+        });
     } else if (category === CategoryNameKey.HEALTH) {
-      context.HealthResourceService.getHealth(context.offerId).subscribe((resp: HealthOffer) => {
+      context.HealthResourceService.getHealth(context.offerId).subscribe((resp: HealthOfferVM) => {
         context.phone.phoneNumber = resp.phoneNumber || '';
         if (resp.phoneCountryCode) {
           context.phone.prefix = PREFIXES.find((v) => v.prefix === resp.phoneCountryCode)?.prefix || '';
@@ -28,7 +30,7 @@ export class OfferDataInitService {
         context.data = resp;
       });
     } else if (category === CategoryNameKey.JOB) {
-      context.jobResourceService.getJob(context.offerId).subscribe((resp: JobOffer) => {
+      context.jobResourceService.getJob(context.offerId).subscribe((resp: JobOfferVM) => {
         context.phone.phoneNumber = resp.phoneNumber || '';
         if (resp.phoneCountryCode) {
           context.phone.prefix = PREFIXES.find((v) => v.prefix === resp.phoneCountryCode)?.prefix || '';
@@ -36,7 +38,7 @@ export class OfferDataInitService {
         context.data = resp;
       });
     } else if (category === CategoryNameKey.LEGAL_HELP) {
-      context.LawResourceService.getLaw(context.offerId).subscribe((resp: LawOffer) => {
+      context.LawResourceService.getLaw(context.offerId).subscribe((resp: LawOfferVM) => {
         context.phone.phoneNumber = resp.phoneNumber || '';
         if (resp.phoneCountryCode) {
           context.phone.prefix = PREFIXES.find((v) => v.prefix === resp.phoneCountryCode)?.prefix || '';
@@ -44,7 +46,7 @@ export class OfferDataInitService {
         context.data = resp;
       });
     } else if (category === CategoryNameKey.MATERIAL_HELP) {
-      context.materialAidResourceService.getMaterialAid(context.offerId).subscribe((resp: MaterialAidOffer) => {
+      context.materialAidResourceService.getMaterialAid(context.offerId).subscribe((resp: MaterialAidOfferVM) => {
         context.phone.phoneNumber = resp.phoneNumber || '';
         if (resp.phoneCountryCode) {
           context.phone.prefix = PREFIXES.find((v) => v.prefix === resp.phoneCountryCode)?.prefix || '';
@@ -52,7 +54,7 @@ export class OfferDataInitService {
         context.data = resp;
       });
     } else if (category === CategoryNameKey.TRANSPORT) {
-      context.transportResourceService.getTransport(context.offerId).subscribe((resp: TransportOffer) => {
+      context.transportResourceService.getTransport(context.offerId).subscribe((resp: TransportOfferVM) => {
         context.phone.phoneNumber = resp.phoneNumber || '';
         if (resp.phoneCountryCode) {
           context.phone.prefix = PREFIXES.find((v) => v.prefix === resp.phoneCountryCode)?.prefix || '';
@@ -60,7 +62,7 @@ export class OfferDataInitService {
         context.data = resp;
       });
     } else if (category === CategoryNameKey.TRANSLATIONS) {
-      context.translationResourceService.getTranslation(context.offerId).subscribe((resp: TranslationOffer) => {
+      context.translationResourceService.getTranslation(context.offerId).subscribe((resp: TranslationOfferVM) => {
         context.phone.phoneNumber = resp.phoneNumber || '';
         if (resp.phoneCountryCode) {
           context.phone.prefix = PREFIXES.find((v) => v.prefix === resp.phoneCountryCode)?.prefix || '';
@@ -68,7 +70,7 @@ export class OfferDataInitService {
         context.data = resp;
       });
     } else if (category === CategoryNameKey.OTHER) {
-      context.otherResourceService.getOther(context.offerId).subscribe((resp: OtherOffer) => {
+      context.otherResourceService.getOther(context.offerId).subscribe((resp: OtherOfferVM) => {
         context.phone.phoneNumber = resp.phoneNumber || '';
         if (resp.phoneCountryCode) {
           context.phone.prefix = PREFIXES.find((v) => v.prefix === resp.phoneCountryCode)?.prefix || '';

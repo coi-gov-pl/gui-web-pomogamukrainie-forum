@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { JobOffer, JobOfferSearchCriteria, Location } from '@app/core/api';
+import { JobOfferVM, JobOfferSearchCriteria, Location } from '@app/core/api';
 import { StoreUrlService } from '@app/core/store-url';
 import { LANGUAGES } from '@app/shared/consts';
 import { LocalStorageKeys, StatementAnchors } from '@app/shared/models';
@@ -18,17 +18,17 @@ export interface JobQuery {
   language?: Array<JobOfferSearchCriteria.LanguageEnum>;
 }
 
-const modes = Object.entries(JobOffer.ModeEnum).map(([key, value]) => ({
+const modes = Object.entries(JobOfferVM.ModeEnum).map(([key, value]) => ({
   code: key,
   value,
 }));
 
-const contractTypes = Object.entries(JobOffer.ContractTypeEnum).map(([key, value]) => ({
+const contractTypes = Object.entries(JobOfferVM.ContractTypeEnum).map(([key, value]) => ({
   code: key,
   value,
 }));
 
-const workTimes = Object.entries(JobOffer.WorkTimeEnum).map(([key, value]) => ({
+const workTimes = Object.entries(JobOfferVM.WorkTimeEnum).map(([key, value]) => ({
   code: key,
   value,
 }));
@@ -60,7 +60,7 @@ export class JobSearchFormComponent implements OnInit, OnDestroy {
   formChangesSubscription = new Subscription();
   showClearBtn = false;
   data: JobOfferSearchCriteria = {};
-  industries = Object.values(JobOffer.IndustryEnum);
+  industries = Object.values(JobOfferVM.IndustryEnum);
   modes: Option[] = modes;
   contractTypes: Option[] = contractTypes;
   workTimes: Option[] = workTimes;

@@ -307,5 +307,6 @@ export default {
   PAGINATOR_ARIA_LABEL: 'Wybierz stronę oraz ilość wyników na stronę (aktulanie: {{size}})',
   POLISH_CREST: 'godło Polski',
   HELP_UA_LOGO: 'Logo Pomagamy Ukrainie - Strona główna',
-  CLEAR: 'Wyczyść'
+  CLEAR: 'Wyczyść',
+  LABEL_DETECTED_LANGUAGE: 'Wykryty język',
 };
