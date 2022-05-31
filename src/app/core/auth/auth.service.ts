@@ -30,6 +30,12 @@ export class AuthService {
     this.oAuthService.initCodeFlow(undefined, { kc_action: 'UPDATE_PROFILE' });
   }
 
+  public idleLogout(): void {
+    this.oAuthService.events.pipe(filter((e) => e.type === 'session_terminated')).subscribe((e) => {
+      return console.debug('idleLogout(): Your session has been terminated!');
+    });
+  }
+
   public logOut(): void {
     this.oAuthService.postLogoutRedirectUri = environment.authConfig.redirectUri;
     this.oAuthService.logOut();
@@ -42,6 +48,7 @@ export class AuthService {
   public automaticSilentRefresh(): Promise<boolean> {
     if (this.isLoggedIn()) {
       this.oAuthService.events.pipe(filter((res) => res instanceof OAuthErrorEvent)).subscribe((error) => {
+        console.log('oAuthService.events error', error);
         if (error.type === 'token_refresh_error') {
           this.logOut();
         }
