@@ -8,6 +8,6 @@ import { MatDialogModule } from '@angular/material/dialog';
 @NgModule({
   declarations: [ConfirmSessionExpiredComponent],
   imports: [MatDialogModule, MatIconModule, MatButtonModule, CommonModule, TranslateModule],
-  exports: [ConfirmSessionExpiredComponent],
+  exports: [],
 })
 export class ConfirmSessionExpiredDialogModule {}
