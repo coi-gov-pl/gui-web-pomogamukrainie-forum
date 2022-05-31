@@ -60,7 +60,7 @@ export class AuthService {
 
   private createAuthConfig(): AuthConfig {
     return {
-      issuer: environment.authConfig.issuer,
+      // issuer: environment.authConfig.issuer,
       redirectUri:
         sessionStorage.getItem(AuthSessionStorageKeys.CUSTOM_REDIRECT_URI) + '' || environment.authConfig.redirectUri,
       clientId: 'ogloszenia-fe',
