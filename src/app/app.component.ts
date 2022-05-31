@@ -10,6 +10,7 @@ import { LocalStorageKeys } from '@app/shared/models';
 import { EnvironmentType } from '../environments/model';
 import { filter, map, Subject, takeUntil } from 'rxjs';
 import { Title } from '@angular/platform-browser';
+import { AuthService } from './core/auth';
 
 declare global {
   interface Window {
@@ -48,7 +49,8 @@ export class AppComponent implements OnInit, OnDestroy {
     private storeUrlService: StoreUrlService,
     private titleService: Title,
     private activatedRoute: ActivatedRoute,
-    private translate: TranslateService
+    private translate: TranslateService,
+    protected readonly authService: AuthService
   ) {
     if (
       environment.applicationInsightsConnectionString &&
@@ -80,6 +82,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.authService.idleLogout();
     this.translateService.use(localStorage.getItem(LocalStorageKeys.LangOption) || LanguageCode.pl_PL);
     this.storeUrlService.setPreviousUrl();
 
