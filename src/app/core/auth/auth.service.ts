@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AuthConfig, OAuthErrorEvent, OAuthService } from 'angular-oauth2-oidc';
-import { filter, Observable, of, switchMap, take } from 'rxjs';
+import { filter, take } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { AuthSessionStorageKeys } from './model';
-import { ConfirmSessionExpiredComponent } from '@app/shared/components/confirm-session-expired/confirm-session-expired.component';
 import { DIALOG_CANCEL_OFFER_CONFIG } from '@app/shared/consts';
 import { CorePath, SESSION_EXPIRED_HEADERS } from '@app/shared/models';
 import { Router } from '@angular/router';
+import { ConfirmSessionExpiredComponent } from '@app/shared/components';
 
 @Injectable()
 export class AuthService {
