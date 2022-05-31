@@ -37,8 +37,10 @@ export class AuthService {
   }
 
   public sessionEvents(): void {
-    this.oAuthService.events.subscribe((e) => {
-      return console.log('sessionEvents()', e);
+    this.oAuthService.events.subscribe((event) => {
+      return console.log('sessionEvents()', event);
+      // if (event instanceof OAuthErrorEvent) {
+      // }
     });
   }
 
@@ -80,7 +82,4 @@ export class AuthService {
       },
     };
   }
-}
-function subscribe(e: any): import('rxjs').OperatorFunction<import('angular-oauth2-oidc').OAuthEvent, unknown> {
-  throw new Error('Function not implemented.');
 }
