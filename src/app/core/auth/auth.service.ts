@@ -51,7 +51,6 @@ export class AuthService {
         if (error.type === 'token_refresh_error') {
           this.confirmExpire();
         }
-        return Promise.resolve(false);
       });
       this.oAuthService.setupAutomaticSilentRefresh();
     }
