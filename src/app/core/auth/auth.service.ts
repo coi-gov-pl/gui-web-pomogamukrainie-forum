@@ -47,10 +47,11 @@ export class AuthService {
   public automaticSilentRefresh(): Promise<boolean> {
     if (this.isLoggedIn()) {
       this.oAuthService.events.pipe(filter((res) => res instanceof OAuthErrorEvent)).subscribe((error) => {
+        console.log('automaticSilentRefresh error', error);
         if (error.type === 'token_refresh_error') {
           this.confirmExpire();
         }
-        return Promise.resolve(true);
+        return Promise.resolve(false);
       });
       this.oAuthService.setupAutomaticSilentRefresh();
     }
