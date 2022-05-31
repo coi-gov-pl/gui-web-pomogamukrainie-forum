@@ -1,15 +1,19 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { LawOfferVM, LawOfferSearchCriteria, LawResourceService, Pageable } from '@app/core/api';
 import { CategoryRoutingName, CorePath } from '@app/shared/models';
 import { ActivatedRoute } from '@angular/router';
 import { MobileViewportDetectService } from '@app/shared/services';
+import { Subject, takeUntil } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
+import { langParam } from '@app/shared/utils';
 
 @Component({
   selector: 'app-law-search',
   templateUrl: './law-search.component.html',
   styleUrls: ['./law-search.component.scss'],
 })
-export class LawSearchComponent implements OnInit {
+export class LawSearchComponent implements OnInit, OnDestroy {
+  private destroyed$: Subject<void> = new Subject<void>();
   results: LawOfferVM[] = [];
   total?: number = undefined;
   categoryRoutingName = CategoryRoutingName;
@@ -21,10 +25,12 @@ export class LawSearchComponent implements OnInit {
   constructor(
     private lawResourceService: LawResourceService,
     private route: ActivatedRoute,
-    private mobileViewportDetect: MobileViewportDetectService
+    private mobileViewportDetect: MobileViewportDetectService,
+    private translateService: TranslateService
   ) {}
 
   ngOnInit() {
+    this.searchCriteria.lang = langParam(this.translateService.currentLang) as LawOfferSearchCriteria.LangEnum;
     const { city, region, lawMode, lawKind, language } = this.route.snapshot.queryParams;
     const searchCriteria: LawOfferSearchCriteria = {
       location: {
@@ -35,6 +41,12 @@ export class LawSearchComponent implements OnInit {
       helpKind: lawKind,
       language,
     };
+
+    this.translateService.onLangChange.pipe(takeUntil(this.destroyed$)).subscribe((params) => {
+      this.searchCriteria.lang = langParam(params.lang) as LawOfferSearchCriteria.LangEnum;
+      this.search();
+    });
+
     this.search(searchCriteria);
   }
 
@@ -67,5 +79,10 @@ export class LawSearchComponent implements OnInit {
         this.total = undefined;
       },
     });
+  }
+
+  ngOnDestroy() {
+    this.destroyed$.next();
+    this.destroyed$.unsubscribe();
   }
 }

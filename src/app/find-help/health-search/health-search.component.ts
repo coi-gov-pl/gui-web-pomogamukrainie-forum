@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Pageable } from '@app/core/api';
 import { CategoryRoutingName, CorePath } from '@app/shared/models';
 import { ActivatedRoute } from '@angular/router';
@@ -8,13 +8,15 @@ import { HealthResourceService } from '@app/core/api/api/healthResource.service'
 import { MobileViewportDetectService } from '@app/shared/services';
 import { TranslateService } from '@ngx-translate/core';
 import { langParam } from '@app/shared/utils';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-health-search',
   templateUrl: './health-search.component.html',
   styleUrls: ['./health-search.component.scss'],
 })
-export class HealthSearchComponent implements OnInit {
+export class HealthSearchComponent implements OnInit, OnDestroy {
+  private destroyed$: Subject<void> = new Subject<void>();
   results: HealthOfferVM[] = [];
   total?: number = undefined;
   categoryRoutingName = CategoryRoutingName;
@@ -43,7 +45,7 @@ export class HealthSearchComponent implements OnInit {
       mode: healthMode,
     };
 
-    this.translateService.onLangChange.subscribe((params) => {
+    this.translateService.onLangChange.pipe(takeUntil(this.destroyed$)).subscribe((params) => {
       this.searchCriteria.lang = langParam(params.lang) as HealthOfferSearchCriteria.LangEnum;
       this.search();
     });
@@ -80,5 +82,10 @@ export class HealthSearchComponent implements OnInit {
         this.total = undefined;
       },
     });
+  }
+
+  ngOnDestroy() {
+    this.destroyed$.next();
+    this.destroyed$.unsubscribe();
   }
 }
