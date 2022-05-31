@@ -1,12 +1,17 @@
 import { Injectable } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AuthConfig, OAuthErrorEvent, OAuthService } from 'angular-oauth2-oidc';
-import { filter } from 'rxjs';
+import { filter, take } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { AuthSessionStorageKeys } from './model';
+import { DIALOG_CANCEL_OFFER_CONFIG } from '@app/shared/consts';
+import { CorePath, SESSION_EXPIRED_HEADERS } from '@app/shared/models';
+import { Router } from '@angular/router';
+import { ConfirmSessionExpiredComponent } from '@app/shared/components';
 
 @Injectable()
 export class AuthService {
-  constructor(protected readonly oAuthService: OAuthService) {}
+  constructor(protected readonly oAuthService: OAuthService, private dialog: MatDialog, private router: Router) {}
 
   public initAuth(): Promise<boolean> {
     this.oAuthService.configure(this.createAuthConfig());
@@ -30,20 +35,6 @@ export class AuthService {
     this.oAuthService.initCodeFlow(undefined, { kc_action: 'UPDATE_PROFILE' });
   }
 
-  public idleLogout(): void {
-    this.oAuthService.events.pipe(filter((e) => e.type === 'session_terminated')).subscribe((e) => {
-      return console.log('idleLogout(): Your session has been terminated!');
-    });
-  }
-
-  public sessionEvents(): void {
-    this.oAuthService.events.subscribe((event) => {
-      return console.log('sessionEvents()', event);
-      // if (event instanceof OAuthErrorEvent) {
-      // }
-    });
-  }
-
   public logOut(): void {
     this.oAuthService.postLogoutRedirectUri = environment.authConfig.redirectUri;
     this.oAuthService.logOut();
@@ -56,9 +47,8 @@ export class AuthService {
   public automaticSilentRefresh(): Promise<boolean> {
     if (this.isLoggedIn()) {
       this.oAuthService.events.pipe(filter((res) => res instanceof OAuthErrorEvent)).subscribe((error) => {
-        console.log('oAuthService.events error', error);
         if (error.type === 'token_refresh_error') {
-          this.logOut();
+          this.confirmExpire();
         }
       });
       this.oAuthService.setupAutomaticSilentRefresh();
@@ -81,5 +71,23 @@ export class AuthService {
         });
       },
     };
+  }
+
+  confirmExpire() {
+    DIALOG_CANCEL_OFFER_CONFIG.data.headerText = SESSION_EXPIRED_HEADERS.CONFIRM_SESSION_EXPIRED;
+    const dialogRef: MatDialogRef<ConfirmSessionExpiredComponent> = this.dialog.open(
+      ConfirmSessionExpiredComponent,
+      DIALOG_CANCEL_OFFER_CONFIG
+    );
+
+    dialogRef.componentInstance.confirm.pipe(take(1)).subscribe((confirm: boolean) => {
+      if (confirm) {
+        this.router.navigate([CorePath]);
+        this.logOut();
+      }
+      dialogRef.close();
+    });
+    this.router.navigate([CorePath]);
+    this.logOut();
   }
 }

@@ -311,4 +311,6 @@ export default {
   LABEL_DETECTED_LANGUAGE: 'Wykryty język',
   WHAT_ARE_YOU_LOOKING_FOR_2: 'Czego szukasz',
   WHAT_ARE_YOU_LOOKING_FOR_2_PLACEHOLDER: 'Wpisz, czego szukasz',
+  CONFIRM_SESSION_EXPIRED: 'Zostałeś wylogowany z powodu braku aktywności',
+  WARNING: 'Uwaga',
 };

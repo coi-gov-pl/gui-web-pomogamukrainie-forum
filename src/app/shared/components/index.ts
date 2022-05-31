@@ -14,3 +14,4 @@ export * from './loading/loading.component';
 export * from './confirm-cancel-dialog/cancel-dialog.component';
 export * from './remove-account-success/remove-account-success.component';
 export * from './read-more/read-more.module';
+export * from './confirm-session-expired/confirm-session-expired.component';

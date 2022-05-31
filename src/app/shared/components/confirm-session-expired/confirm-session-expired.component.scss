@@ -1,0 +1,51 @@
+@import "src/assets/styles/vars";
+
+:host {
+  text-align: center;
+  font-family: var(--font-open-sans);
+}
+
+.icon {
+  color: $c-yellow;
+  font-size: 24px;
+
+  .material-icons-outlined {
+    font-size: 38px;
+  }
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: -0.19px;
+  color: $c-darkblue;
+  max-width: 310px;
+  margin: 15px auto;
+}
+
+.footer {
+  margin-top: 80px;
+  display: flex;
+  justify-content: space-around;
+  padding-top: 35px;
+
+  button {
+    height: 43px;
+    width: 100%;
+    @media (min-width: $breakpoint-md) {
+      width: 40%;
+    }
+    span {
+      font-size: 14px;
+      letter-spacing: 1.25px;
+      color: $c-darkblue;
+      text-transform: uppercase;
+    }
+  }
+
+  button:first-of-type {
+    span {
+      color: $c-white;
+    }
+  }
+}
