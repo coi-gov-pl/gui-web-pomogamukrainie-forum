@@ -73,6 +73,14 @@ const routes: Routes = [
           breadcrumb: { alias: BreadcrumbLabels.TRANSLATIONS },
         },
       },
+      {
+        path: CategoryRoutingName.OTHER,
+        loadChildren: () => import('./other-search/other-search.module').then((m) => m.OtherSearchModule),
+        data: {
+          title: 'FIND_HELP_TITLE',
+          breadcrumb: { alias: BreadcrumbLabels.OTHER },
+        },
+      },
     ],
   },
 ];
