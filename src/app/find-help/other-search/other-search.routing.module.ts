@@ -23,7 +23,15 @@ const routes: Routes = [
         component: NotFoundComponent,
         loadChildren: () => import('../../shared/components/not-found/not-found.module').then((m) => m.NotFoundModule),
         data: {
-          title: null,
+          title: 'PAGE_NOT_FOUND',
+          breadcrumb: { alias: null },
+        },
+      },
+      {
+        path: ':id',
+        loadChildren: () => import('../view-offer-other/view-offer-other.module').then((m) => m.ViewOfferOtherModule),
+        data: {
+          breadcrumb: { alias: BreadcrumbLabels.AD },
         },
       },
     ],
