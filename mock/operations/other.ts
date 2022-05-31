@@ -15,3 +15,7 @@ export function otherGet(req: express.Request, res: express.Response): express.R
     return res.send();
   }
 }
+
+export function otherListGet(req: express.Request, res: express.Response): express.Response {
+  return res.json(otherList);
+}
