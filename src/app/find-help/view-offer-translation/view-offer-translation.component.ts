@@ -1,17 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { CategoryRoutingName, CorePath } from '@app/shared/models';
-import { defaults } from '@app/shared/utils';
+import { CategoryRoutingName, CorePath, LangParam } from '@app/shared/models';
+import { defaults, langParam } from '@app/shared/utils';
 import { TranslationOfferVM } from '@app/core/api/model/translationOfferVM';
 import { Pageable, TranslationResourceService } from '@app/core/api';
 import { TranslationOfferSearchCriteria } from '../../core/api/model/translationOfferSearchCriteria';
+import { TranslateService } from '@ngx-translate/core';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-view-translations',
   templateUrl: './view-offer-translation.component.html',
   styleUrls: ['./view-offer-translation.component.scss'],
 })
-export class ViewOfferTranslationComponent implements OnInit {
+export class ViewOfferTranslationComponent implements OnInit, OnDestroy {
+  private destroyed$: Subject<void> = new Subject<void>();
   offerId: number = 0;
   data = defaults<TranslationOfferVM>();
   categoryRouteName = CategoryRoutingName.TRANSLATIONS;
@@ -22,26 +25,36 @@ export class ViewOfferTranslationComponent implements OnInit {
   activeIndex: number = 0;
   blurClass = '';
   searchCriteria = defaults<TranslationOfferSearchCriteria>();
+  lang: LangParam;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private translationResourceService: TranslationResourceService
+    private translationResourceService: TranslationResourceService,
+    private translateService: TranslateService
   ) {
     // https://stackoverflow.com/questions/54891110/router-getcurrentnavigation-always-returns-null
     // in constructor, because null will be returned in ngOnInit
     this.redirectedFromAccount = !!this.router.getCurrentNavigation()?.extras?.state?.['redirectFromAccount'];
     this.originalAccountQueryParams = this.router.getCurrentNavigation()?.extras?.state?.['queryParams'];
+
+    this.lang = langParam(this.translateService.currentLang) as LangParam;
   }
 
   ngOnInit(): void {
     this.offerId = Number(this.route.snapshot.paramMap.get('id'));
     this.getTranslationOffer();
     this.getResults();
+
+    this.translateService.onLangChange.pipe(takeUntil(this.destroyed$)).subscribe((params) => {
+      this.lang = langParam(params.lang) as LangParam;
+      this.getTranslationOffer();
+      this.getResults();
+    });
   }
 
   getTranslationOffer() {
-    this.translationResourceService.getTranslation(this.offerId).subscribe(
+    this.translationResourceService.getTranslation(this.offerId, this.lang).subscribe(
       (response) => {
         this.data = response;
       },
@@ -52,6 +65,7 @@ export class ViewOfferTranslationComponent implements OnInit {
   }
 
   getResults() {
+    this.searchCriteria.lang = this.lang;
     this.searchCriteria.location = this.originalAccountQueryParams?.['location'];
     this.searchCriteria.language = this.originalAccountQueryParams?.['language'];
     this.searchCriteria.mode = this.originalAccountQueryParams?.['mode'];
@@ -93,5 +107,10 @@ export class ViewOfferTranslationComponent implements OnInit {
     setTimeout(() => {
       this.blurClass = '';
     }, 300);
+  }
+
+  ngOnDestroy() {
+    this.destroyed$.next();
+    this.destroyed$.unsubscribe();
   }
 }

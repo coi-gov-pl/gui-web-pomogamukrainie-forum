@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { LawOfferVM, LawOfferSearchCriteria, LawResourceService, Pageable } from '@app/core/api';
-import { CategoryRoutingName, CorePath } from '@app/shared/models';
-import { defaults } from '@app/shared/utils';
+import { CategoryRoutingName, CorePath, LangParam } from '@app/shared/models';
+import { defaults, langParam } from '@app/shared/utils';
+import { TranslateService } from '@ngx-translate/core';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-view-offer-law',
   templateUrl: './view-offer-law.component.html',
   styleUrls: ['./view-offer-law.component.scss'],
 })
-export class ViewOfferLawComponent implements OnInit {
+export class ViewOfferLawComponent implements OnInit, OnDestroy {
+  private destroyed$: Subject<void> = new Subject<void>();
   offerId!: number;
   data = defaults<LawOfferVM>();
   categoryRouteName = CategoryRoutingName.LEGAL_HELP;
@@ -20,21 +23,35 @@ export class ViewOfferLawComponent implements OnInit {
   activeIndex: number = 0;
   blurClass = '';
   searchCriteria = defaults<LawOfferSearchCriteria>();
-  constructor(private route: ActivatedRoute, private lawResourceService: LawResourceService, private router: Router) {
+  lang: LangParam;
+  constructor(
+    private route: ActivatedRoute,
+    private lawResourceService: LawResourceService,
+    private router: Router,
+    private translateService: TranslateService
+  ) {
     // https://stackoverflow.com/questions/54891110/router-getcurrentnavigation-always-returns-null
     // in constructor, because null will be returned in ngOnInit
     this.redirectedFromAccount = !!this.router.getCurrentNavigation()?.extras?.state?.['redirectFromAccount'];
     this.originalAccountQueryParams = this.router.getCurrentNavigation()?.extras?.state?.['queryParams'];
+
+    this.lang = langParam(this.translateService.currentLang) as LangParam;
   }
 
   ngOnInit(): void {
     this.offerId = Number(this.route.snapshot.paramMap.get('id'));
     this.getLawOffer();
     this.getResults();
+
+    this.translateService.onLangChange.pipe(takeUntil(this.destroyed$)).subscribe((params) => {
+      this.lang = langParam(params.lang) as LangParam;
+      this.getLawOffer();
+      this.getResults();
+    });
   }
 
   getLawOffer() {
-    this.lawResourceService.getLaw(this.offerId).subscribe(
+    this.lawResourceService.getLaw(this.offerId, this.lang).subscribe(
       (response) => {
         this.data = response;
       },
@@ -45,6 +62,7 @@ export class ViewOfferLawComponent implements OnInit {
   }
 
   getResults() {
+    this.searchCriteria.lang = this.lang;
     this.searchCriteria.location = this.originalAccountQueryParams?.['location'];
     this.searchCriteria.helpKind = this.originalAccountQueryParams?.['helpKind'];
     this.searchCriteria.helpMode = this.originalAccountQueryParams?.['helpMode'];
@@ -87,5 +105,10 @@ export class ViewOfferLawComponent implements OnInit {
     setTimeout(() => {
       this.blurClass = '';
     }, 300);
+  }
+
+  ngOnDestroy() {
+    this.destroyed$.next();
+    this.destroyed$.unsubscribe();
   }
 }
