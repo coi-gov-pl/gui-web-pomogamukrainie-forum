@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Location } from '@app/core/api';
+import { AccommodationOfferSearchCriteria, Location } from '@app/core/api';
 import { StoreUrlService } from '@app/core/store-url';
 import { LocalStorageKeys, StatementAnchors } from '@app/shared/models';
 import { SortingFieldName, SortingOrder } from '@app/shared/models/sortingOrder.model';
@@ -11,6 +11,7 @@ import { Subscription } from 'rxjs';
 export interface AccommodationQuery {
   location?: Location;
   capacity?: number;
+  lang?: AccommodationOfferSearchCriteria.LangEnum;
 }
 
 const cleanForm = {

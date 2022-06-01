@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { AccommodationQuery } from './accommodation-search-form/accommodation-search-form.component';
 import {
   AccommodationsResourceService,
@@ -9,14 +9,17 @@ import {
 import { CategoryRoutingName, CorePath } from '@app/shared/models';
 import { ActivatedRoute } from '@angular/router';
 import { MobileViewportDetectService } from '@app/shared/services';
-import { defaults } from '@app/shared/utils';
+import { defaults, langParam } from '@app/shared/utils';
+import { TranslateService } from '@ngx-translate/core';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-accommodation-search',
   templateUrl: './accommodation-search.component.html',
   styleUrls: ['./accommodation-search.component.scss'],
 })
-export class AccommodationSearchComponent implements OnInit {
+export class AccommodationSearchComponent implements OnInit, OnDestroy {
+  private destroyed$: Subject<void> = new Subject<void>();
   results: AccommodationOfferVM[] = [];
   total?: number = undefined;
   categoryRoutingName = CategoryRoutingName;
@@ -28,10 +31,14 @@ export class AccommodationSearchComponent implements OnInit {
   constructor(
     private accommodationsResourceService: AccommodationsResourceService,
     private route: ActivatedRoute,
-    private mobileViewportDetect: MobileViewportDetectService
+    private mobileViewportDetect: MobileViewportDetectService,
+    private translateService: TranslateService
   ) {}
 
   ngOnInit() {
+    this.searchCriteria.lang = langParam(
+      this.translateService.currentLang
+    ) as AccommodationOfferSearchCriteria.LangEnum;
     const { capacity, city, region } = this.route.snapshot.queryParams;
     const searchCriteria: AccommodationQuery = {
       capacity,
@@ -40,6 +47,12 @@ export class AccommodationSearchComponent implements OnInit {
         city,
       },
     };
+
+    this.translateService.onLangChange.pipe(takeUntil(this.destroyed$)).subscribe((params) => {
+      this.searchCriteria.lang = langParam(params.lang) as AccommodationOfferSearchCriteria.LangEnum;
+      this.search();
+    });
+
     this.search(searchCriteria);
   }
 
@@ -47,10 +60,12 @@ export class AccommodationSearchComponent implements OnInit {
     region: string | undefined,
     city: string | undefined,
     pageRequest: Pageable,
-    capacity: number | undefined
+    capacity: number | undefined,
+    lang: AccommodationOfferSearchCriteria.LangEnum | undefined
   ) {
     const searchCriteria = defaults<AccommodationOfferSearchCriteria>();
     searchCriteria.capacity = capacity;
+    searchCriteria.lang = lang;
     if (region && city) {
       return this.accommodationsResourceService.listByLocationAccommodations(region, city, searchCriteria, pageRequest);
     } else {
@@ -71,9 +86,9 @@ export class AccommodationSearchComponent implements OnInit {
       sort,
     };
 
-    const { location: { region, city } = {}, capacity } = this.searchCriteria;
+    const { location: { region, city } = {}, capacity, lang } = this.searchCriteria;
 
-    this.getResultsObservable(region, city, pageRequest, capacity).subscribe({
+    this.getResultsObservable(region, city, pageRequest, capacity, lang).subscribe({
       next: (results) => {
         this.results = results.content ?? [];
         this.total = results.totalElements;
@@ -86,5 +101,10 @@ export class AccommodationSearchComponent implements OnInit {
         this.total = undefined;
       },
     });
+  }
+
+  ngOnDestroy() {
+    this.destroyed$.next();
+    this.destroyed$.unsubscribe();
   }
 }
