@@ -8,7 +8,7 @@ import { DIALOG_CANCEL_OFFER_CONFIG } from '@app/shared/consts';
 import { SESSION_EXPIRED_HEADERS } from '@app/shared/models';
 import { Router } from '@angular/router';
 import { ConfirmSessionExpiredComponent } from '@app/shared/components';
-import { UrlHelperService } from '../url';
+import { UrlHelperService } from '@app/core/url';
 @Injectable()
 export class AuthService {
   constructor(
