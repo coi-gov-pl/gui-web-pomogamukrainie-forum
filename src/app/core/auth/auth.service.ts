@@ -87,8 +87,7 @@ export class AuthService {
         this.logOut();
       }
       dialogRef.close();
+      this.logOut();
     });
-    this.router.navigate([CorePath]);
-    this.logOut();
   }
 }
