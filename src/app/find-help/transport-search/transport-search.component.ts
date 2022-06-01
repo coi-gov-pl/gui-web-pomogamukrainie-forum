@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Pageable, TransportOfferVM, TransportOfferSearchCriteria, TransportResourceService } from '@app/core/api';
 import { CategoryRoutingName, CorePath } from '@app/shared/models';
 import { ActivatedRoute } from '@angular/router';
@@ -12,7 +12,7 @@ import { Subject, takeUntil } from 'rxjs';
   templateUrl: './transport-search.component.html',
   styleUrls: ['./transport-search.component.scss'],
 })
-export class TransportSearchComponent implements OnInit {
+export class TransportSearchComponent implements OnInit, OnDestroy {
   private destroyed$: Subject<void> = new Subject<void>();
   results: TransportOfferVM[] = [];
   total?: number = undefined;
