@@ -80,7 +80,7 @@ export class AuthService {
   }
 
   confirmExpire() {
-    DIALOG_CANCEL_OFFER_CONFIG.data.headerText = SESSION_EXPIRED_HEADERS.CONFIRM_SESSION_EXPIRED;
+    DIALOG_CANCEL_OFFER_CONFIG.disableClose = true;
     const dialogRef: MatDialogRef<ConfirmSessionExpiredComponent> = this.dialog.open(
       ConfirmSessionExpiredComponent,
       DIALOG_CANCEL_OFFER_CONFIG
@@ -89,10 +89,10 @@ export class AuthService {
     dialogRef.componentInstance.confirm.pipe(take(1)).subscribe((confirm: boolean) => {
       if (confirm) {
         this.logOut();
+        this.router.navigate([this.urlHelperService.basePath(true)]);
       }
       dialogRef.close();
       this.logOut();
-      this.router.navigate([this.urlHelperService.basePath(true)]);
     });
   }
 }
