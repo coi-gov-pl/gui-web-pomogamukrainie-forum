@@ -5,13 +5,18 @@ import { filter, take } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { AuthSessionStorageKeys } from './model';
 import { DIALOG_CANCEL_OFFER_CONFIG } from '@app/shared/consts';
-import { CorePath, SESSION_EXPIRED_HEADERS } from '@app/shared/models';
+import { SESSION_EXPIRED_HEADERS } from '@app/shared/models';
 import { Router } from '@angular/router';
 import { ConfirmSessionExpiredComponent } from '@app/shared/components';
-
+import { UrlHelperService } from '@app/core/url';
 @Injectable()
 export class AuthService {
-  constructor(protected readonly oAuthService: OAuthService, private dialog: MatDialog, private router: Router) {}
+  constructor(
+    protected readonly oAuthService: OAuthService,
+    private dialog: MatDialog,
+    private router: Router,
+    protected urlHelperService: UrlHelperService
+  ) {}
 
   public initAuth(): Promise<boolean> {
     this.oAuthService.configure(this.createAuthConfig());
@@ -47,7 +52,7 @@ export class AuthService {
   public automaticSilentRefresh(): Promise<boolean> {
     if (this.isLoggedIn()) {
       this.oAuthService.events.pipe(filter((res) => res instanceof OAuthErrorEvent)).subscribe((error) => {
-        console.log('automaticSilentRefresh error', error);
+        console.log('oAuthService.events error', error);
         if (error.type === 'token_refresh_error') {
           this.confirmExpire();
         }
@@ -83,7 +88,7 @@ export class AuthService {
 
     dialogRef.componentInstance.confirm.pipe(take(1)).subscribe((confirm: boolean) => {
       if (confirm) {
-        this.router.navigate([CorePath]);
+        this.router.navigate([this.urlHelperService.basePath(true)]);
         this.logOut();
       }
       dialogRef.close();

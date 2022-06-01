@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
   MyOffersResourceService,
   Pageable,
@@ -19,25 +19,31 @@ import {
   OtherOfferVM,
   OtherResourceService,
 } from '@app/core/api';
-import { switchMap, take } from 'rxjs';
+import { Subject, switchMap, take } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ALERT_TYPES, CategoryRoutingName, CorePath } from '@app/shared/models';
+import { ALERT_TYPES, CategoryRoutingName, CorePath, LangParam } from '@app/shared/models';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ConfirmRemoveAdComponent } from '../confirm-remove-ad/confirm-remove-ad.component';
 import { StoreUrlService } from '@app/core/store-url/store-url.service';
 import { SnackbarService } from '@app/shared/services';
 import { TranslationOfferVM } from '@app/core/api/model/translationOfferVM';
+import { langParam } from '@app/shared/utils';
+import { TranslateService } from '@ngx-translate/core';
+import { AuthService } from '@app/core/auth';
+import { UrlHelperService } from '@app/core/url';
 
 @Component({
   selector: 'app-my-account',
   templateUrl: './my-account.component.html',
   styleUrls: ['./my-account.component.scss'],
 })
-export class MyAccountComponent implements OnInit {
+export class MyAccountComponent implements OnInit, OnDestroy {
+  private destroyed$: Subject<void> = new Subject<void>();
   public myAnnouncements!: OffersVMBaseOfferVM;
   pageRequest: Pageable = {};
   categoryRoutingName = CategoryRoutingName;
   total?: number = undefined;
+  lang: LangParam = 'PL';
 
   constructor(
     private router: Router,
@@ -53,13 +59,27 @@ export class MyAccountComponent implements OnInit {
     private jobResourceService: JobResourceService,
     private lawResourceService: LawResourceService,
     private translationResourceService: TranslationResourceService,
-    private otherResourceService: OtherResourceService
+    private otherResourceService: OtherResourceService,
+    private translateService: TranslateService,
+    private readonly authService: AuthService,
+    protected urlHelperService: UrlHelperService
   ) {}
 
   public async ngOnInit() {
+    if (!this.authService.isLoggedIn()) {
+      this.router.navigate([this.urlHelperService.basePath(true)]);
+    }
+    this.lang = langParam(this.translateService.currentLang) as LangParam;
+
     if (!this.route.snapshot.queryParamMap.keys.includes('page')) {
       await this.storeUrlService.setDefaultPaginatorParam();
     }
+
+    this.translateService.onLangChange.subscribe((params) => {
+      this.lang = langParam(params.lang) as LangParam;
+      this.getMyOffers();
+    });
+
     this.getMyOffers();
   }
 
@@ -71,7 +91,7 @@ export class MyAccountComponent implements OnInit {
       size,
       sort,
     };
-    this.myOffersResource.listMyOffers(this.pageRequest).subscribe((results) => {
+    this.myOffersResource.listMyOffers(this.pageRequest, this.lang).subscribe((results) => {
       this.myAnnouncements = results;
       this.total = results.totalElements;
     });
@@ -231,5 +251,10 @@ export class MyAccountComponent implements OnInit {
 
   private onRemoveError(message: string): void {
     this.snackbarService.openBottomSnackAlert(message, ALERT_TYPES.ERROR);
+  }
+
+  ngOnDestroy() {
+    this.destroyed$.next();
+    this.destroyed$.unsubscribe();
   }
 }

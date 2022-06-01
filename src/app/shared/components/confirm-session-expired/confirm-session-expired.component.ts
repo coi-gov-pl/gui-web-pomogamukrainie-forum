@@ -10,13 +10,11 @@ import { DialogData } from '@app/shared/models';
 })
 export class ConfirmSessionExpiredComponent implements OnInit {
   @Output() confirm: EventEmitter<boolean> = new EventEmitter<boolean>();
-  headerText: string = '';
   element: any;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData, private renderer: Renderer2) {}
 
   ngOnInit() {
-    this.headerText = this.data.headerText;
     this.element = this.renderer.selectRootElement(PAGE_LAYOUT_SELECTOR, true);
     this.renderer.addClass(this.element, BLUR_CSS_CLASS);
   }
