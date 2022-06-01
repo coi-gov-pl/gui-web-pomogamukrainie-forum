@@ -88,11 +88,11 @@ export class AuthService {
 
     dialogRef.componentInstance.confirm.pipe(take(1)).subscribe((confirm: boolean) => {
       if (confirm) {
-        this.router.navigate([this.urlHelperService.basePath(true)]);
         this.logOut();
       }
       dialogRef.close();
       this.logOut();
+      this.router.navigate([this.urlHelperService.basePath(true)]);
     });
   }
 }
