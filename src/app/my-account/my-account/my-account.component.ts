@@ -29,6 +29,8 @@ import { SnackbarService } from '@app/shared/services';
 import { TranslationOfferVM } from '@app/core/api/model/translationOfferVM';
 import { langParam } from '@app/shared/utils';
 import { TranslateService } from '@ngx-translate/core';
+import { AuthService } from '@app/core/auth';
+import { UrlHelperService } from '@app/core/url';
 
 @Component({
   selector: 'app-my-account',
@@ -58,11 +60,17 @@ export class MyAccountComponent implements OnInit, OnDestroy {
     private lawResourceService: LawResourceService,
     private translationResourceService: TranslationResourceService,
     private otherResourceService: OtherResourceService,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    private readonly authService: AuthService,
+    protected urlHelperService: UrlHelperService
   ) {}
 
   public async ngOnInit() {
+    if (!this.authService.isLoggedIn()) {
+      this.router.navigate([this.urlHelperService.basePath(true)]);
+    }
     this.lang = langParam(this.translateService.currentLang) as LangParam;
+
     if (!this.route.snapshot.queryParamMap.keys.includes('page')) {
       await this.storeUrlService.setDefaultPaginatorParam();
     }

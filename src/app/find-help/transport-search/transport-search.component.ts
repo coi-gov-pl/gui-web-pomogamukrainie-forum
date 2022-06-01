@@ -1,15 +1,19 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Pageable, TransportOfferVM, TransportOfferSearchCriteria, TransportResourceService } from '@app/core/api';
 import { CategoryRoutingName, CorePath } from '@app/shared/models';
 import { ActivatedRoute } from '@angular/router';
 import { MobileViewportDetectService } from '@app/shared/services';
+import { TranslateService } from '@ngx-translate/core';
+import { langParam } from '@app/shared/utils';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-transport-search',
   templateUrl: './transport-search.component.html',
   styleUrls: ['./transport-search.component.scss'],
 })
-export class TransportSearchComponent implements OnInit {
+export class TransportSearchComponent implements OnInit, OnDestroy {
+  private destroyed$: Subject<void> = new Subject<void>();
   results: TransportOfferVM[] = [];
   total?: number = undefined;
   CategoryRoutingName = CategoryRoutingName;
@@ -21,10 +25,12 @@ export class TransportSearchComponent implements OnInit {
   constructor(
     private transportResourceService: TransportResourceService,
     private route: ActivatedRoute,
-    private mobileViewportDetect: MobileViewportDetectService
+    private mobileViewportDetect: MobileViewportDetectService,
+    private translateService: TranslateService
   ) {}
 
   ngOnInit() {
+    this.searchCriteria.lang = langParam(this.translateService.currentLang) as TransportOfferSearchCriteria.LangEnum;
     const { capacity, transportDate, originCity, originRegion, destinationCity, destinationRegion } =
       this.route.snapshot.queryParams;
     const searchCriteria: TransportOfferSearchCriteria = {
@@ -39,6 +45,12 @@ export class TransportSearchComponent implements OnInit {
         city: destinationCity,
       },
     };
+
+    this.translateService.onLangChange.pipe(takeUntil(this.destroyed$)).subscribe((params) => {
+      this.searchCriteria.lang = langParam(params.lang) as TransportOfferSearchCriteria.LangEnum;
+      this.search();
+    });
+
     this.search(searchCriteria);
   }
 
@@ -71,5 +83,10 @@ export class TransportSearchComponent implements OnInit {
         this.total = undefined;
       },
     });
+  }
+
+  ngOnDestroy() {
+    this.destroyed$.next();
+    this.destroyed$.unsubscribe();
   }
 }
