@@ -313,4 +313,6 @@ export default {
   WHAT_ARE_YOU_LOOKING_FOR_2_PLACEHOLDER: 'Wpisz, czego szukasz',
   CONFIRM_SESSION_EXPIRED: 'Zostałeś wylogowany z powodu braku aktywności',
   WARNING: 'Uwaga',
+  CHANGE_LANGUAGE_TO_TRANSLATE: 'Zmień język strony, aby automatycznie przetłumaczyć treść ogłoszenia.',
+  CONTENT_HAS_BEEN_TRANSLATED: 'Treść ogłoszenia została przetłumaczona przez Google Translate.',
 };
