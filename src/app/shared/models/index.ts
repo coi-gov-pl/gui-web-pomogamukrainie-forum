@@ -10,3 +10,4 @@ export * from './statement-anchors.model';
 export * from './storage.model';
 export * from './dialog.model';
 export * from './phone.model';
+export * from './lang-param.model';
