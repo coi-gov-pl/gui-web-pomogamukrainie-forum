@@ -27,6 +27,8 @@ import { ConfirmRemoveAdComponent } from '../confirm-remove-ad/confirm-remove-ad
 import { StoreUrlService } from '@app/core/store-url/store-url.service';
 import { SnackbarService } from '@app/shared/services';
 import { TranslationOfferVM } from '@app/core/api/model/translationOfferVM';
+import { AuthService } from '@app/core/auth';
+import { UrlHelperService } from '@app/core/url';
 
 @Component({
   selector: 'app-my-account',
@@ -53,10 +55,15 @@ export class MyAccountComponent implements OnInit {
     private jobResourceService: JobResourceService,
     private lawResourceService: LawResourceService,
     private translationResourceService: TranslationResourceService,
-    private otherResourceService: OtherResourceService
+    private otherResourceService: OtherResourceService,
+    private readonly authService: AuthService,
+    protected urlHelperService: UrlHelperService
   ) {}
 
   public async ngOnInit() {
+    if (!this.authService.isLoggedIn()) {
+      this.router.navigate([this.urlHelperService.basePath(true)]);
+    }
     if (!this.route.snapshot.queryParamMap.keys.includes('page')) {
       await this.storeUrlService.setDefaultPaginatorParam();
     }
