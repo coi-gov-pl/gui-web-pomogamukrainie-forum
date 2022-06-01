@@ -1,6 +1,6 @@
 <div class="text-center d-flex flex-column align-items-stretch extra-margin">
   <label for="submit">
-    ><small>{{ "WE_WILL_PUBLISH_YOUR_NAME_IN_AD" | translate }}</small></label
+    <small>{{ "WE_WILL_PUBLISH_YOUR_NAME_IN_AD" | translate }}</small></label
   >
   <button type="submit" id="submit" class="btn btn-dark" [disabled]="form.invalid">
     <ng-container *ngIf="!isEditRoute; else edit">
