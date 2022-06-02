@@ -67,15 +67,23 @@
     </div>
     <div class="content my-3 flex-grow-1">
       <div class="attribute-name">
-        ><b>{{ "LABEL_OFFER_DESCRIPTION" | translate }}</b>
+        <b>{{ "LABEL_OFFER_DESCRIPTION" | translate }}</b>
       </div>
       <p>{{ data.description }}</p>
     </div>
-    <app-back-to-list
-      [categoryRouteName]="categoryRouteName"
-      [redirectedFromAccount]="redirectedFromAccount"
-      [originalAccountQueryParams]="originalAccountQueryParams"
-    ></app-back-to-list>
+    <div>
+      <p *ngIf="data.detectedLanguage === lang" class="translate-info opacity-50">
+        {{ "CHANGE_LANGUAGE_TO_TRANSLATE" | translate }}
+      </p>
+      <p *ngIf="data.detectedLanguage !== lang" class="translate-info opacity-50">
+        {{ "CONTENT_HAS_BEEN_TRANSLATED" | translate }}
+      </p>
+      <app-back-to-list
+        [categoryRouteName]="categoryRouteName"
+        [redirectedFromAccount]="redirectedFromAccount"
+        [originalAccountQueryParams]="originalAccountQueryParams"
+      ></app-back-to-list>
+    </div>
   </mat-card>
   <div class="reply-offer-mat-card w-100 w-md-50">
     <button

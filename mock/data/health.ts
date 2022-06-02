@@ -24,6 +24,7 @@ export const healthList: OffersVMHealthOfferVM = {
       language: ['PL', 'UA'],
       phoneCountryCode: '48',
       phoneNumber: '48123456789',
+      detectedLanguage: 'PL',
       type: 'HEALTH',
     },
     {
