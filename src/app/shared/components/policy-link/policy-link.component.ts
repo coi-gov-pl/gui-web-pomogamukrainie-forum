@@ -15,7 +15,7 @@ export class PolicyLinkComponent {
 
   // TODO: introduce grammatical cases, starting with denominator and accusative.
   @Input() denominator: boolean = true;
-
+  @Input() isReply: boolean = false;
   getSuffixForTranslatedResource(): string {
     const code = localStorage.getItem(LocalStorageKeys.LangOption) || LanguageCode.pl_PL;
     switch (code) {

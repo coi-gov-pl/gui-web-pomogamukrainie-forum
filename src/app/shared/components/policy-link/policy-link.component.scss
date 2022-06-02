@@ -11,4 +11,8 @@
   &:hover {
     text-decoration: underline;
   }
+  &.reply {
+    color: blue;
+    text-decoration: underline;
+  }
 }
