@@ -9,7 +9,7 @@ const routes: Routes = [
     component: OtherFormComponent,
     canDeactivate: [CanDeactivateGuard],
     data: {
-      title: null,
+      title: 'GIVE_OTHER_TITLE',
       breadcrumb: { alias: null },
     },
   },

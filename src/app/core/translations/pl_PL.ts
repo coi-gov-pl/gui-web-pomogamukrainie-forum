@@ -315,4 +315,6 @@ export default {
   WARNING: 'Uwaga',
   CHANGE_LANGUAGE_TO_TRANSLATE: 'Zmień język strony, aby automatycznie przetłumaczyć treść ogłoszenia.',
   CONTENT_HAS_BEEN_TRANSLATED: 'Treść ogłoszenia została przetłumaczona przez Google Translate.',
+  VIEW_OTHER_TITLE: 'Ogłoszenie: Inne - Pomagam Ukrainie',
+  GIVE_OTHER_TITLE:  'Dodaj Ogłoszenie: Inne - Pomagam Ukrainie',
 };
