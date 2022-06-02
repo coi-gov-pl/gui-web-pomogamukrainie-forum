@@ -9,6 +9,7 @@ const routes: Routes = [
     path: '',
     data: {
       title: null,
+      breadcrumb: { alias: null },
     },
     children: [
       {
@@ -16,6 +17,7 @@ const routes: Routes = [
         component: OtherSearchComponent,
         data: {
           title: null,
+          breadcrumb: { alias: null },
         },
       },
       {
