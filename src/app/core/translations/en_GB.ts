@@ -298,7 +298,7 @@ export default {
   PLACEHOLDER_OFFER_DESCRIPTION_MATERIAL_HELP: 'In your description, include essential information about the help you are offering, such as the type of clothes and their size.\n\nEnter your advertisement in Polish. The site will translate it for those who browse advertisements in other languages.',
   PLACEHOLDER_OFFER_DESCRIPTION_OTHER: 'In the description, include the most important information about what you offer. This will help those who need help to find your advertisement.\n\nEnter your advertisement in Polish. The site will translate it for those who browse advertisements in other languages.',
   PLACEHOLDER_OFFER_DESCRIPTION_TRANSLATIONS: 'In the description, include the most important information about what you offer. This will help those who need help to find your advertisement.\n\nEnter your advertisement in Polish. The site will translate it for those who browse advertisements in other languages.',
-  PLACEHOLDER_OFFER_DESCRIPTION_TRANSPORT: 'W opisie zaznacz:\n- ile bagaży możesz zabrać,\n- czy masz fotelik dziecięcy,\n- czy możesz przewieźć zwierzęta.\n\nNapisz ogłoszenie po polsku. Strona przetłumaczy treść osobom, które przeglądają ogłoszenia w innym języku.',
+  PLACEHOLDER_OFFER_DESCRIPTION_TRANSPORT: 'In the description, indicate:\n- how much luggage you can take,\n- if you have a child car seat,\n-  if you can transport pets.\n\nEnter your advertisement in Polish. The site will translate it for those who browse advertisements in other languages.',
   FIND_HELP_TITLE: 'Find help - Help for Ukraine',
   VIEW_ACCOMODATION_TITLE: 'Ad: Accommodation - Help for Ukraine',
   VIEW_HEALTH_TITLE: 'Ad: Health - Help for Ukraine',
