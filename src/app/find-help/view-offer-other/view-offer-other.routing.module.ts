@@ -7,7 +7,8 @@ const routes: Routes = [
     path: '',
     component: ViewOfferOtherComponent,
     data: {
-      title: null,
+      title: 'VIEW_OTHER_TITLE',
+      breadcrumb: { alias: null },
     },
   },
 ];

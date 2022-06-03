@@ -73,8 +73,8 @@
           (change)="onConsentChange()"
           name="consent"
         >
-          {{ "ACCEPT" | translate }}
-          <app-policy-link [denominator]="false"></app-policy-link>
+          <span>{{ "ACCEPT" | translate }} </span>
+          <app-policy-link [denominator]="false" [isReply]="true"></app-policy-link>
         </mat-checkbox>
       </div>
       <div #captchaContainer></div>
