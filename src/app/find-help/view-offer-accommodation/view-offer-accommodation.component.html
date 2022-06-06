@@ -81,7 +81,7 @@
     <button
       *ngIf="!redirectedFromAccount"
       class="d-none d-md-block btn-link dot-nav next"
-      [disabled]="activeIndex === offerResults.length - 1 || redirectedFromAccount"
+      [disabled]="activeIndex === offerResults.length - 1"
       (click)="slideOffer(activeIndex, 'next')"
     >
       <mat-icon fontSet="material-icons-outlined">navigate_next</mat-icon>
