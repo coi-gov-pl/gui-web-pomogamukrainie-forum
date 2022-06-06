@@ -65,7 +65,10 @@ export class ViewOfferMaterialAidComponent implements OnInit, OnDestroy {
   getResults() {
     this.searchCriteria.lang = this.lang;
     this.searchCriteria.category = this.originalAccountQueryParams?.['category'];
-    this.searchCriteria.location = this.originalAccountQueryParams?.['location'];
+    this.searchCriteria.location = {
+      region: this.originalAccountQueryParams?.['region'],
+      city: this.originalAccountQueryParams?.['city'],
+    };
     const SORT = this.originalAccountQueryParams?.['sort']
       ? this.originalAccountQueryParams?.['sort']
       : 'modifiedDate,asc';
