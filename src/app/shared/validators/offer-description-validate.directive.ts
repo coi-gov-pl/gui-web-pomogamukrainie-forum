@@ -2,7 +2,7 @@ import { Directive } from '@angular/core';
 import { AbstractControl, NG_VALIDATORS, ValidationErrors, Validator, Validators } from '@angular/forms';
 import { ErrorCode } from '../components/field-error/errors';
 
-const OFFER_DESCRIPTION_REGEX = /^[^'"%<>`~]+$/;
+const OFFER_DESCRIPTION_REGEX = /^[^"%<>`~]+$/;
 
 @Directive({
   selector: '[appOfferDescriptionValidate]',
