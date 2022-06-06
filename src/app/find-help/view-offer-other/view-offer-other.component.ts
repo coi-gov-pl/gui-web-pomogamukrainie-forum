@@ -64,7 +64,10 @@ export class ViewOfferOtherComponent implements OnInit, OnDestroy {
   getResults() {
     this.searchCriteria.lang = this.lang;
     this.searchCriteria.searchText = this.originalAccountQueryParams?.['searchText'];
-    this.searchCriteria.location = this.originalAccountQueryParams?.['location'];
+    this.searchCriteria.location = {
+      region: this.originalAccountQueryParams?.['region'],
+      city: this.originalAccountQueryParams?.['city'],
+    };
     const SORT = this.originalAccountQueryParams?.['sort']
       ? this.originalAccountQueryParams?.['sort']
       : 'modifiedDate,asc';

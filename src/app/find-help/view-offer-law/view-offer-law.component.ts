@@ -63,7 +63,10 @@ export class ViewOfferLawComponent implements OnInit, OnDestroy {
 
   getResults() {
     this.searchCriteria.lang = this.lang;
-    this.searchCriteria.location = this.originalAccountQueryParams?.['location'];
+    this.searchCriteria.location = {
+      region: this.originalAccountQueryParams?.['region'],
+      city: this.originalAccountQueryParams?.['city'],
+    };
     this.searchCriteria.helpKind = this.originalAccountQueryParams?.['helpKind'];
     this.searchCriteria.helpMode = this.originalAccountQueryParams?.['helpMode'];
     this.searchCriteria.language = this.originalAccountQueryParams?.['language'];
