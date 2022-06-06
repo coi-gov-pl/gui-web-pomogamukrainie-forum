@@ -66,8 +66,15 @@ export class ViewOfferTransportComponent implements OnInit, OnDestroy {
 
   getResults() {
     this.searchCriteria.lang = this.lang;
-    this.searchCriteria.origin = this.originalAccountQueryParams?.['origin'];
-    this.searchCriteria.destination = this.originalAccountQueryParams?.['destination'];
+
+    this.searchCriteria.origin = {
+      region: this.originalAccountQueryParams?.['originRegion'],
+      city: this.originalAccountQueryParams?.['originCity'],
+    };
+    this.searchCriteria.destination = {
+      region: this.originalAccountQueryParams?.['destinationRegion'],
+      city: this.originalAccountQueryParams?.['destinationCity'],
+    };
     this.searchCriteria.capacity = this.originalAccountQueryParams?.['capacity'];
     this.searchCriteria.transportDate = this.originalAccountQueryParams?.['transportDate'];
     const SORT = this.originalAccountQueryParams?.['sort']
