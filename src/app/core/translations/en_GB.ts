@@ -325,7 +325,7 @@ export default {
   CONFIRM_SESSION_EXPIRED: 'You have been automatically logged out because of inactivity',
   WARNING: 'Attention',
   CHANGE_LANGUAGE_TO_TRANSLATE: 'Change the language of the website to automatically translate the content of your advertisement.',
-  CONTENT_HAS_BEEN_TRANSLATED: 'The advertisement has been machine-translated by Microsoft Translator. See the original version',
+  CONTENT_HAS_BEEN_TRANSLATED: 'The advertisement has been machine-translated by Microsoft Translator.',
   VIEW_OTHER_TITLE: 'Ad: Others - Help for Ukraine',
   GIVE_OTHER_TITLE: 'Post an ad: Others - Help for Ukraine',
 };

@@ -325,7 +325,7 @@ export default {
   CONFIRM_SESSION_EXPIRED: 'Ви автоматично вийшли з системи через неактивність.',
   WARNING: 'Увага',
   CHANGE_LANGUAGE_TO_TRANSLATE: 'Змініть мову сторінки, щоб автоматично перекладати вміст оголошення.',
-  CONTENT_HAS_BEEN_TRANSLATED: 'Оголошення було автоматично перекладено MicrosoftTranslator. Переглянути оригінал.',
+  CONTENT_HAS_BEEN_TRANSLATED: 'Оголошення було автоматично перекладено MicrosoftTranslator.',
   VIEW_OTHER_TITLE: 'Оголошення: Інше - Допомагаю Україні',
   GIVE_OTHER_TITLE: 'Додай оголошення: Інше - Допомагаю Україні',
 };
