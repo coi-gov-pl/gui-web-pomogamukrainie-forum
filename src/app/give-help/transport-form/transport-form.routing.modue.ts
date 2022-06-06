@@ -8,7 +8,7 @@ const routes: Routes = [
     path: '',
     component: TransportFormComponent,
     canDeactivate: [CanDeactivateGuard],
-    data: { title: 'GIVE_TRANSPORT_TITLE' },
+    data: { title: 'GIVE_TRANSPORT_TITLE', breadcrumb: { alias: null } },
   },
 ];
 

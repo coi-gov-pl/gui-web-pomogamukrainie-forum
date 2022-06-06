@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '@app/core/auth';
+import { BreadcrumbLabels } from '@app/shared/models';
 import { MyAccountComponent } from './my-account/my-account.component';
 
 const routes: Routes = [
@@ -11,7 +12,7 @@ const routes: Routes = [
     component: MyAccountComponent,
     data: {
       title: null,
-      breadcrumb: { alias: null },
+      breadcrumb: { alias: BreadcrumbLabels.MY_ACCOUNT },
     },
   },
 ];

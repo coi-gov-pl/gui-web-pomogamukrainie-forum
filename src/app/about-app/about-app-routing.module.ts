@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { BreadcrumbLabels } from '@app/shared/models';
 import { AboutAppComponent } from './about-app/about-app.component';
 
 const routes: Routes = [
@@ -8,6 +9,7 @@ const routes: Routes = [
     component: AboutAppComponent,
     data: {
       title: null,
+      breadcrumb: { alias: BreadcrumbLabels.ABOUT },
     },
   },
 ];
