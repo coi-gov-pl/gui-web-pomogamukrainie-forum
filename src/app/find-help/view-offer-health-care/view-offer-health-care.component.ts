@@ -67,7 +67,10 @@ export class ViewOfferHealthCareComponent implements OnInit, OnDestroy {
 
   getResults() {
     this.searchCriteria.lang = this.lang;
-    this.searchCriteria.location = this.originalAccountQueryParams?.['location'];
+    this.searchCriteria.location = {
+      region: this.originalAccountQueryParams?.['region'],
+      city: this.originalAccountQueryParams?.['city'],
+    };
     this.searchCriteria.specialization = this.originalAccountQueryParams?.['specialization'];
     this.searchCriteria.language = this.originalAccountQueryParams?.['language'];
     this.searchCriteria.mode = this.originalAccountQueryParams?.['mode'];

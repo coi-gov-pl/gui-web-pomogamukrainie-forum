@@ -70,7 +70,10 @@ export class ViewOfferJobComponent implements OnInit, OnDestroy {
     this.searchCriteria.contractType = this.originalAccountQueryParams?.['contractType'];
     this.searchCriteria.workTime = this.originalAccountQueryParams?.['workTime'];
     this.searchCriteria.language = this.originalAccountQueryParams?.['language'];
-    this.searchCriteria.location = this.originalAccountQueryParams?.['location'];
+    this.searchCriteria.location = {
+      region: this.originalAccountQueryParams?.['region'],
+      city: this.originalAccountQueryParams?.['city'],
+    };
     const SORT = this.originalAccountQueryParams?.['sort']
       ? this.originalAccountQueryParams?.['sort']
       : 'modifiedDate,asc';
