@@ -10,10 +10,10 @@
         </span>
       </ng-template>
       <ng-template #active>
-        <a *ngIf="i === 0" href="{{ breadcrumb.url }}">
+        <a *ngIf="i === 0" href="{{ breadcrumb.url + getParamsString() }}">
           {{ breadcrumb.label | translate }}
         </a>
-        <a *ngIf="i > 0" routerLink="{{ breadcrumb.url }}">
+        <a *ngIf="i > 0" routerLink="{{ breadcrumb.url }}" [queryParams]="getParams()">
           {{ breadcrumb.label | translate }}
         </a>
       </ng-template>

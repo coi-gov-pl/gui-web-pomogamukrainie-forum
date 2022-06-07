@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ActivatedRouteSnapshot, NavigationEnd, Router } from '@angular/router';
+import { ActivatedRoute, ActivatedRouteSnapshot, NavigationEnd, Router, Params } from '@angular/router';
 import { distinctUntilChanged, filter, startWith } from 'rxjs';
-import { Breadcrumb, BreadcrumbLabels } from '@app/shared/models';
+import { Breadcrumb, BreadcrumbLabels, LocalStorageKeys } from '@app/shared/models';
+import { HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'app-breadcrumb',
@@ -60,6 +61,25 @@ export class BreadcrumbComponent implements OnInit {
 
   activeRoute(): string {
     return this.router.url;
+  }
+
+  getParamsString(): string {
+    const params = this.getParams();
+    let p = new HttpParams();
+    p = p.appendAll(params as Params);
+    return '?' + p.toString();
+  }
+
+  getParams(): Params | null {
+    const params = localStorage
+      .getItem(LocalStorageKeys.PageQuery)
+      ?.split('&')
+      .map((item) => item.split('='))
+      .reduce((acc: Record<string, string>, param: string[]) => {
+        acc[param[0]] = decodeURI(param[1]);
+        return acc;
+      }, {});
+    return params as Params;
   }
 }
 
