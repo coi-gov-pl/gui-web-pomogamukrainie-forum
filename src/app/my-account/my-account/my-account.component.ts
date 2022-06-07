@@ -59,8 +59,7 @@ export class MyAccountComponent implements OnInit, OnDestroy {
     private lawResourceService: LawResourceService,
     private translationResourceService: TranslationResourceService,
     private otherResourceService: OtherResourceService,
-    private translateService: TranslateService,
-    protected urlHelperService: UrlHelperService
+    private translateService: TranslateService
   ) {}
 
   public async ngOnInit() {
