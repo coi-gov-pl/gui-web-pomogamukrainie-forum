@@ -8,6 +8,9 @@ const routes: Routes = [
   {
     path: '',
     component: FindHelpComponent,
+    data: {
+      breadcrumb: { alias: BreadcrumbLabels.SEARCH_FOR_HELP },
+    },
     children: [
       {
         path: '',
