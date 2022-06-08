@@ -31,12 +31,17 @@ export class JobSearchComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.searchCriteria.lang = langParam(this.translateService.currentLang) as JobOfferSearchCriteria.LangEnum;
-    const { city, region } = this.route.snapshot.queryParams;
+    const { city, region, industry, workTime, contractType, mode, language } = this.route.snapshot.queryParams;
     const searchCriteria: JobQuery = {
       location: {
         region,
         city,
       },
+      industry: industry,
+      workTime: workTime,
+      contractType: contractType,
+      mode: mode,
+      language: language,
     };
 
     this.translateService.onLangChange.pipe(takeUntil(this.destroyed$)).subscribe((params) => {
