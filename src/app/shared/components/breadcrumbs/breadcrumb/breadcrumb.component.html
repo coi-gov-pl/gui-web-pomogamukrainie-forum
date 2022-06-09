@@ -4,11 +4,13 @@
       <ng-container
         *ngIf="breadcrumb.url === activeRoute() || breadcrumb.disabled; then inactive; else active"
       ></ng-container>
+
       <ng-template #inactive>
         <span>
           {{ breadcrumb.label | translate }}
         </span>
       </ng-template>
+
       <ng-template #active>
         <a *ngIf="i === 0" href="{{ breadcrumb.url + getParamsString() }}">
           {{ breadcrumb.label | translate }}
