@@ -63,11 +63,14 @@ export class BreadcrumbComponent implements OnInit {
     return this.router.url;
   }
 
-  getParamsString(): string {
+  getParamsString(): string | null {
     const params = this.getParams();
-    let p = new HttpParams();
-    p = p.appendAll(params as Params);
-    return '?' + p.toString();
+    if (params) {
+      let p = new HttpParams();
+      p = p.appendAll(params as Params);
+      return '?' + p.toString();
+    }
+    return null;
   }
 
   getParams(): Params | null {
