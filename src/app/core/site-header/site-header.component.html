@@ -3,13 +3,15 @@
     <div class="container">
       <div class="d-flex flex-row">
         <span>
-          <span class="visually-hidden">{{ "MAIN_PAGE" | translate }}</span>
-          <img
-            class="navbar-brand herb"
-            [src]="'herb.png' | path: 'imagesPath'"
-            [alt]="'POLISH_CREST' | translate"
-            [attr.aria-label]="'POLISH_CREST' | translate"
-          />
+          <a href="/" class="navbar-brand">
+            <span class="visually-hidden">{{ "MAIN_PAGE" | translate }}</span>
+            <img
+              class="logo"
+              [src]="'pomagamyua.svg' | path: 'imagesPath'"
+              [alt]="'HELP_UA_LOGO' | translate"
+              [attr.aria-label]="'HELP_UA_LOGO' | translate"
+            />
+          </a>
         </span>
         <span class="d-none d-md-inline header-element">
           <a href="/" class="navbar-brand">
@@ -19,17 +21,6 @@
               [src]="'logo_kprm_ciemne_tlo.png' | path: 'imagesPath'"
               [alt]="'CHANCELLERY_OF_PRIME_MINISTER' | translate"
               [attr.aria-label]="'CHANCELLERY_OF_PRIME_MINISTER' | translate"
-            />
-          </a>
-        </span>
-        <span class="d-none d-md-inline header-element">
-          <a href="/" class="navbar-brand">
-            <span class="visually-hidden">{{ "MAIN_PAGE" | translate }}</span>
-            <img
-              class="logo"
-              [src]="'pomagamyua.svg' | path: 'imagesPath'"
-              [alt]="'HELP_UA_LOGO' | translate"
-              [attr.aria-label]="'HELP_UA_LOGO' | translate"
             />
           </a>
         </span>
