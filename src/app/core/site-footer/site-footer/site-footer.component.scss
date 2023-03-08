@@ -30,19 +30,6 @@ footer {
     }
   }
 
-  .logo-govpl {
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--c-black-2);
-    display: inline-block;
-    white-space: nowrap;
-    margin-right: 30px;
-
-    img {
-      margin-right: 11px;
-    }
-  }
-
   .footer-nav {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
